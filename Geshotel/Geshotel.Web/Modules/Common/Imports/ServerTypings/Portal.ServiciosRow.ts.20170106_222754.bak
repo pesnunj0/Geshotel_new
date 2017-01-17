@@ -1,0 +1,57 @@
+﻿
+namespace Geshotel.Portal {
+    export interface ServiciosRow {
+        ServicioId?: number;
+        NombreServicio?: string;
+        Abreviatura?: string;
+        TipoServicioId?: number;
+        SwProduccion?: number;
+        SwDescuento?: number;
+        SwAjustes?: number;
+        SwGastos?: number;
+        SwPension?: number;
+        SwRectificativa?: number;
+        TipoUnidadCalculoId?: number;
+        ConceptoAceleradorReservasId?: number;
+        Costo?: number;
+        SumaServicioId?: number;
+        RestaServicioId?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+        TipoHab?: number;
+        TipoPension?: number;
+        TipoServicioNombreTipoServicio?: string;
+    }
+
+    export namespace ServiciosRow {
+        export const idProperty = 'ServicioId';
+        export const nameProperty = 'NombreServicio';
+        export const localTextPrefix = 'Portal.Servicios';
+
+        export namespace Fields {
+            export declare const ServicioId;
+            export declare const NombreServicio;
+            export declare const Abreviatura;
+            export declare const TipoServicioId;
+            export declare const SwProduccion;
+            export declare const SwDescuento;
+            export declare const SwAjustes;
+            export declare const SwGastos;
+            export declare const SwPension;
+            export declare const SwRectificativa;
+            export declare const TipoUnidadCalculoId;
+            export declare const ConceptoAceleradorReservasId;
+            export declare const Costo;
+            export declare const SumaServicioId;
+            export declare const RestaServicioId;
+            export declare const UserId;
+            export declare const FechaModificacion;
+            export declare const TipoHab;
+            export declare const TipoPension;
+            export declare const TipoServicioNombreTipoServicio: string;
+        }
+
+        ['ServicioId', 'NombreServicio', 'Abreviatura', 'TipoServicioId', 'SwProduccion', 'SwDescuento', 'SwAjustes', 'SwGastos', 'SwPension', 'SwRectificativa', 'TipoUnidadCalculoId', 'ConceptoAceleradorReservasId', 'Costo', 'SumaServicioId', 'RestaServicioId', 'UserId', 'FechaModificacion', 'TipoHab', 'TipoPension', 'TipoServicioNombreTipoServicio'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

@@ -1,0 +1,47 @@
+﻿
+namespace Geshotel.Portal {
+    export interface NacionesRow {
+        NacionId?: number;
+        Nacion?: string;
+        DescCorta?: string;
+        MonedaId?: number;
+        IdiomaId?: number;
+        NumeroIne?: number;
+        PaisIsta?: string;
+        Defecto?: number;
+        NombreReal?: string;
+        IdiomaMails?: string;
+        MonedaDescCorta?: string;
+        MonedaDescripcion?: string;
+        MonedaCambio?: number;
+        IdiomaLanguageId?: string;
+        IdiomaLanguageName?: string;
+    }
+
+    export namespace NacionesRow {
+        export const idProperty = 'NacionId';
+        export const nameProperty = 'Nacion';
+        export const localTextPrefix = 'Portal.Naciones';
+
+        export namespace Fields {
+            export declare const NacionId;
+            export declare const Nacion;
+            export declare const DescCorta;
+            export declare const MonedaId;
+            export declare const IdiomaId;
+            export declare const NumeroIne;
+            export declare const PaisIsta;
+            export declare const Defecto;
+            export declare const NombreReal;
+            export declare const IdiomaMails;
+            export declare const MonedaDescCorta: string;
+            export declare const MonedaDescripcion: string;
+            export declare const MonedaCambio: string;
+            export declare const IdiomaLanguageId: string;
+            export declare const IdiomaLanguageName: string;
+        }
+
+        ['NacionId', 'Nacion', 'DescCorta', 'MonedaId', 'IdiomaId', 'NumeroIne', 'PaisIsta', 'Defecto', 'NombreReal', 'IdiomaMails', 'MonedaDescCorta', 'MonedaDescripcion', 'MonedaCambio', 'IdiomaLanguageId', 'IdiomaLanguageName'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

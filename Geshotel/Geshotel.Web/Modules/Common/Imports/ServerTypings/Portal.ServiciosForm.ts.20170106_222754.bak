@@ -1,0 +1,30 @@
+﻿
+
+namespace Geshotel.Portal {
+    export class ServiciosForm extends Serenity.PrefixedContext {
+        static formKey = 'Portal.Servicios';
+    }
+
+    export interface ServiciosForm {
+        NombreServicio: Serenity.StringEditor;
+        Abreviatura: Serenity.StringEditor;
+        TipoServicioId: Serenity.IntegerEditor;
+        SwProduccion: Serenity.IntegerEditor;
+        SwDescuento: Serenity.IntegerEditor;
+        SwAjustes: Serenity.IntegerEditor;
+        SwGastos: Serenity.IntegerEditor;
+        SwPension: Serenity.IntegerEditor;
+        SwRectificativa: Serenity.IntegerEditor;
+        TipoUnidadCalculoId: Serenity.IntegerEditor;
+        ConceptoAceleradorReservasId: Serenity.IntegerEditor;
+        Costo: Serenity.DecimalEditor;
+        SumaServicioId: Serenity.IntegerEditor;
+        RestaServicioId: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+        TipoHab: Serenity.IntegerEditor;
+        TipoPension: Serenity.IntegerEditor;
+    }
+
+    [['ServicioId', () => Serenity.IntegerEditor], ['NombreServicio', () => Serenity.StringEditor], ['Abreviatura', () => Serenity.StringEditor], ['TipoServicioId', () => Serenity.IntegerEditor], ['SwProduccion', () => Serenity.IntegerEditor], ['SwDescuento', () => Serenity.IntegerEditor], ['SwAjustes', () => Serenity.IntegerEditor], ['SwGastos', () => Serenity.IntegerEditor], ['SwPension', () => Serenity.IntegerEditor], ['SwRectificativa', () => Serenity.IntegerEditor], ['TipoUnidadCalculoId', () => Serenity.IntegerEditor], ['ConceptoAceleradorReservasId', () => Serenity.IntegerEditor], ['Costo', () => Serenity.DecimalEditor], ['SumaServicioId', () => Serenity.IntegerEditor], ['RestaServicioId', () => Serenity.IntegerEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor], ['TipoHab', () => Serenity.IntegerEditor], ['TipoPension', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(ServiciosForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+}
