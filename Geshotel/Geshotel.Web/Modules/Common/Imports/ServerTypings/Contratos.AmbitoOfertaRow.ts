@@ -1,21 +1,25 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface AmbitoOfertaRow {
         AmbitoOfertaId?: number;
-        NombreAmbito?: string;
+        Ambito?: string;
     }
 
     export namespace AmbitoOfertaRow {
         export const idProperty = 'AmbitoOfertaId';
-        export const nameProperty = 'NombreAmbito';
+        export const nameProperty = 'Ambito';
         export const localTextPrefix = 'Contratos.AmbitoOferta';
+        export const lookupKey = 'Contratos.AmbitoOferta';
 
-        export namespace Fields {
-            export declare const AmbitoOfertaId;
-            export declare const NombreAmbito;
+        export function getLookup(): Q.Lookup<AmbitoOfertaRow> {
+            return Q.getLookup<AmbitoOfertaRow>('Contratos.AmbitoOferta');
         }
 
-        ['AmbitoOfertaId', 'NombreAmbito'].forEach(x => (<any>Fields)[x] = x);
+        export namespace Fields {
+            export declare const AmbitoOfertaId: string;
+            export declare const Ambito: string;
+        }
+
+        ['AmbitoOfertaId', 'Ambito'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

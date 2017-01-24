@@ -16,10 +16,17 @@ namespace Geshotel.Administration
     /// 
     /// Permission tree hierarchy in dialog is determined by colons (:)
     /// in permission keys.
+    /// *******************************************************************
+    /// Added Empresa & Hotel for permissions for Company & Hotel
+    /// Javier Nuñez
+    /// January 2017
+    /// *******************************************************************
     /// </summary>
     public class PermissionKeys
     {
         public const string Security = "Administration:Security";
         public const string Translation = "Administration:Translation";
+        public const string Empresa = "Administration:Empresa";
+        public const string Hotel = "Administration:Hotel";
     }
 }

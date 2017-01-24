@@ -7,13 +7,11 @@
     export interface UnidadesCalculoForm {
         Uc: Serenity.StringEditor;
         DescripcionUnidadCalculo: Serenity.StringEditor;
-        TipoUnidadCalculoId: Serenity.IntegerEditor;
-        Pax: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
+        TipoUnidadCalculoId: Serenity.LookupEditor;
+        Pax: Serenity.BooleanEditor;
+        ServicioId: Serenity.LookupEditor;
     }
 
-    [['Uc', () => Serenity.StringEditor], ['DescripcionUnidadCalculo', () => Serenity.StringEditor], ['TipoUnidadCalculoId', () => Serenity.IntegerEditor], ['Pax', () => Serenity.IntegerEditor], ['ServicioId', () => Serenity.IntegerEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor]].forEach(x => Object.defineProperty(UnidadesCalculoForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['Uc', () => Serenity.StringEditor], ['DescripcionUnidadCalculo', () => Serenity.StringEditor], ['TipoUnidadCalculoId', () => Serenity.LookupEditor], ['Pax', () => Serenity.BooleanEditor], ['ServicioId', () => Serenity.LookupEditor]].forEach(x => Object.defineProperty(UnidadesCalculoForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

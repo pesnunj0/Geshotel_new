@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("tipos_huesped"), InstanceName("tipos_huesped"), TwoLevelCached]
+    [ConnectionKey("CommonFiles"), DisplayName("tipos_huesped"), InstanceName("tipos_huesped"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposHuesped")]
@@ -20,14 +20,6 @@ namespace Geshotel.Portal.Entities
         {
             get { return Fields.TipoHuespedId[this]; }
             set { Fields.TipoHuespedId[this] = value; }
-        }
-
-        [DisplayName("Empresa"), Column("empresa_Id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
-        [LookupEditor(typeof(EmpresasRow))]
-        public Int16? EmpresaId
-        {
-            get { return Fields.EmpresaId[this]; }
-            set { Fields.EmpresaId[this] = value; }
         }
 
         [DisplayName("Descripcion"), Column("descripcion"), Size(30), NotNull, QuickSearch]
@@ -52,12 +44,6 @@ namespace Geshotel.Portal.Entities
             set { Fields.UcId[this] = value; }
         }
 
-        [DisplayName("Empresa"), Expression("jEmpresa.[empresa]")]
-        public String Empresa
-        {
-            get { return Fields.Empresa[this]; }
-            set { Fields.Empresa[this] = value; }
-        }
 
         [DisplayName("Unidad Calculo"), Expression("jUc.[descripcion_unidad_calculo]")]
         public String UcDescripcionUnidadCalculo
@@ -87,12 +73,10 @@ namespace Geshotel.Portal.Entities
         public class RowFields : RowFieldsBase
         {
             public Int16Field TipoHuespedId;
-            public Int16Field EmpresaId;
             public StringField Descripcion;
             public StringField DescCorta;
             public Int16Field UcId;
 
-            public StringField Empresa;
             public StringField UcDescripcionUnidadCalculo;
 
             public RowFields()

@@ -82,6 +82,7 @@
     "Db.Portal.Servicios.Tipo_UC": "Tipo UC",
     "Db.Portal.TiposHabitacion.EntityPlural": "Tipos Habitación",
     "Db.Portal.TiposHabitacion.EntitySingular": "Tipos Habitación",
+    "Db.Portal.TiposHabitacion.GrupoHabitacion": "Grupo Habitacion",
     "Db.Portal.TiposHabitacion.NumeroPersonas": "Nº Personas",
     "Db.Portal.TiposHotel.EntityPlural": "Tipo Hotel",
     "Db.Portal.TiposHotel.EntitySingular": "Tipo Hotel",
@@ -154,6 +155,7 @@
     "Navigation.Theme Samples/Dashboard v2": "Main Data for Today",
     "Permission.Administration:Translation": "Idiomas y Traducciones",
     "Site.Dashboard.WelcomeMessage": "Bienvenido a la página principal de Geshotel. Utilice la barra de navegación a la izquierda para acceder a otras páginas...",
+    "Site.Layout.Empresa": "Empresa",
     "Site.Layout.FooterCopyright": "Copyright (c) 2017.",
     "Site.Layout.FooterInfo": "Geshotel Cloud",
     "Site.Layout.FooterRights": "Hecho con Serenity Framework. Todos los derechos Reservados"

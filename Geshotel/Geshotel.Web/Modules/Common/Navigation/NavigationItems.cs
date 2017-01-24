@@ -16,11 +16,6 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(9100, "Settings/Administration/Translations", typeof(Administration.TranslationController), icon: "icon-speech")]
 [assembly: NavigationLink(9100, "Settings/Administration/Roles", typeof(Administration.RoleController), icon: "icon-lock")]
 [assembly: NavigationLink(9100, "Settings/Administration/User Management", typeof(Administration.UserController), icon: "icon-people")]
-[assembly: NavigationLink(9100, "Settings/Administration/ComunidadesAutonomas", typeof(Geshotel.Portal.Pages.ComunidadesAutonomasController), icon: "icon-speech")]
-[assembly: NavigationLink(9100, "Settings/Administration/FormasDePago", typeof(Geshotel.Portal.Pages.FormasDePagoController), icon: "fa-money")]
-[assembly: NavigationLink(9100, "Settings/Administration/Monedas", typeof(Geshotel.Portal.Pages.MonedasController), icon: "fa-eur")]
-[assembly: NavigationLink(9100, "Settings/Administration/Naciones", typeof(Geshotel.Portal.Pages.NacionesController), icon: "icon-globe")]
-[assembly: NavigationLink(9100, "Settings/Administration/Provincias", typeof(Geshotel.Portal.Pages.ProvinciasController), icon: "icon-flag")]
 
 
 [assembly: NavigationMenu(9200, "Settings/Customers", icon: "icon-screen-desktop")]
@@ -39,5 +34,10 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(9300, "Settings/CommonData/TiposHuesped", typeof(Geshotel.Portal.Pages.TiposHuespedController), icon: "icon-people")]
 [assembly: NavigationLink(9300, "Settings/CommonData/TiposServicio", typeof(Geshotel.Portal.Pages.TiposServicioController), icon: "fa-opencart")]
 [assembly: NavigationLink(9300, "Settings/CommonData/UnidadesCalculo", typeof(Geshotel.Portal.Pages.UnidadesCalculoController), icon: "fa-pencil")]
+[assembly: NavigationLink(9300, "Settings/CommonData/ComunidadesAutonomas", typeof(Geshotel.Portal.Pages.ComunidadesAutonomasController), icon: "icon-speech")]
+[assembly: NavigationLink(9300, "Settings/CommonData/FormasDePago", typeof(Geshotel.Portal.Pages.FormasDePagoController), icon: "fa-money")]
+[assembly: NavigationLink(9300, "Settings/CommonData/Monedas", typeof(Geshotel.Portal.Pages.MonedasController), icon: "fa-eur")]
+[assembly: NavigationLink(9300, "Settings/CommonData/Naciones", typeof(Geshotel.Portal.Pages.NacionesController), icon: "icon-globe")]
+[assembly: NavigationLink(9300, "Settings/CommonData/Provincias", typeof(Geshotel.Portal.Pages.ProvinciasController), icon: "icon-flag")]
 
 

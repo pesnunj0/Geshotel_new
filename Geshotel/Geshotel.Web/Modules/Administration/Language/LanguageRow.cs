@@ -11,7 +11,7 @@ namespace Geshotel.Administration.Entities
     [ConnectionKey("Default"), DisplayName("Languages"), InstanceName("Language"), TwoLevelCached]
     [ReadPermission(PermissionKeys.Translation)]
     [ModifyPermission(PermissionKeys.Translation)]
-    [LookupScript("Administration.Idioma")]
+    [LookupScript("Administration.Languaje")]
     public sealed class LanguageRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity]

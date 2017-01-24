@@ -7,6 +7,7 @@
         NumeroPersonas?: number;
         Desvios?: number;
         NoShow?: number;
+        GrupoHabitacion?: string;
     }
 
     export namespace TiposHabitacionRow {
@@ -27,9 +28,10 @@
             export declare const NumeroPersonas: string;
             export declare const Desvios: string;
             export declare const NoShow: string;
+            export declare const GrupoHabitacion: string;
         }
 
-        ['TipoHabitacionId', 'DescCorta', 'Descripcion', 'GrupoHabitacionId', 'NumeroPersonas', 'Desvios', 'NoShow'].forEach(x => (<any>Fields)[x] = x);
+        ['TipoHabitacionId', 'DescCorta', 'Descripcion', 'GrupoHabitacionId', 'NumeroPersonas', 'Desvios', 'NoShow', 'GrupoHabitacion'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

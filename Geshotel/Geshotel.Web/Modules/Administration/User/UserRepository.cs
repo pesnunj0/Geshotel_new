@@ -1,7 +1,6 @@
 ﻿
 namespace Geshotel.Administration.Repositories
 {
-    using Geshotel.Administration;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -55,7 +54,7 @@ namespace Geshotel.Administration.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, EmpresasListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -254,6 +253,18 @@ namespace Geshotel.Administration.Repositories
 
         private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Empresa))
+                    query.Where(fld.EmpresaId == user.EmpresaId);
+                if (!Authorization.HasPermission(PermissionKeys.Hotel))
+                    query.Where(fld.HotelId == user.HotelId);
+            }
+        }
     }
 }

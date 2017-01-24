@@ -8,9 +8,12 @@
         DisplayName?: string;
         Email?: string;
         UserImage?: string;
-        EmpresasList?: number[];
         LastDirectoryUpdate?: string;
         IsActive?: number;
+        EmpresaId?: number;
+        HotelId?: number;
+        Empresa?: string;
+        HotelName?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -39,9 +42,12 @@
             export declare const DisplayName: string;
             export declare const Email: string;
             export declare const UserImage: string;
-            export declare const EmpresasList: string;
             export declare const LastDirectoryUpdate: string;
             export declare const IsActive: string;
+            export declare const EmpresaId: string;
+            export declare const HotelId: string;
+            export declare const Empresa: string;
+            export declare const HotelName: string;
             export declare const Password: string;
             export declare const PasswordConfirm: string;
             export declare const InsertUserId: string;
@@ -50,7 +56,7 @@
             export declare const UpdateDate: string;
         }
 
-        ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'EmpresasList', 'LastDirectoryUpdate', 'IsActive', 'Password', 'PasswordConfirm', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
+        ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'EmpresaId', 'HotelId', 'Empresa', 'HotelName', 'Password', 'PasswordConfirm', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

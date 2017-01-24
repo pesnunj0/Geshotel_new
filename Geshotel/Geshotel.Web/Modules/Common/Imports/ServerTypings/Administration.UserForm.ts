@@ -7,7 +7,8 @@
     export interface UserForm {
         Username: Serenity.StringEditor;
         DisplayName: Serenity.StringEditor;
-        EmpresasList: Serenity.LookupEditor;
+        EmpresaId: Serenity.LookupEditor;
+        HotelId: Serenity.LookupEditor;
         Email: Serenity.EmailEditor;
         UserImage: Serenity.ImageUploadEditor;
         Password: Serenity.PasswordEditor;
@@ -15,6 +16,6 @@
         Source: Serenity.StringEditor;
     }
 
-    [['Username', () => Serenity.StringEditor], ['DisplayName', () => Serenity.StringEditor], ['EmpresasList', () => Serenity.LookupEditor], ['Email', () => Serenity.EmailEditor], ['UserImage', () => Serenity.ImageUploadEditor], ['Password', () => Serenity.PasswordEditor], ['PasswordConfirm', () => Serenity.PasswordEditor], ['Source', () => Serenity.StringEditor]].forEach(x => Object.defineProperty(UserForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['Username', () => Serenity.StringEditor], ['DisplayName', () => Serenity.StringEditor], ['EmpresaId', () => Serenity.LookupEditor], ['HotelId', () => Serenity.LookupEditor], ['Email', () => Serenity.EmailEditor], ['UserImage', () => Serenity.ImageUploadEditor], ['Password', () => Serenity.PasswordEditor], ['PasswordConfirm', () => Serenity.PasswordEditor], ['Source', () => Serenity.StringEditor]].forEach(x => Object.defineProperty(UserForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

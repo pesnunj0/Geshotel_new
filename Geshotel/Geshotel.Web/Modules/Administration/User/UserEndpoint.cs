@@ -3,7 +3,6 @@
 namespace Geshotel.Administration.Endpoints
 {
     using Entities;
-    using Administration;
     using Repositories;
     using Serenity;
     using Serenity.ComponentModel;
@@ -50,7 +49,7 @@ namespace Geshotel.Administration.Endpoints
             return new MyRepository().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, EmpresasListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
         }

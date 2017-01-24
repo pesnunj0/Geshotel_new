@@ -1,16 +1,11 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface GruposDeClienteRow {
         GrupoClienteId?: number;
         NombreGrupo?: string;
-        EmpresaId?: number;
-        CtaContable?: string;
-        UserId?: number;
-        FechaModificacion?: string;
-        Huesped?: number;
-        Contratos?: number;
-        Facturar?: number;
-        Agencia?: number;
+        Huesped?: boolean;
+        Contratos?: boolean;
+        Facturar?: boolean;
+        Agencia?: boolean;
         Perfil?: number;
     }
 
@@ -18,22 +13,23 @@ namespace Geshotel.Contratos {
         export const idProperty = 'GrupoClienteId';
         export const nameProperty = 'NombreGrupo';
         export const localTextPrefix = 'Contratos.GruposDeCliente';
+        export const lookupKey = 'Contratos.GruposDeCliente';
 
-        export namespace Fields {
-            export declare const GrupoClienteId;
-            export declare const NombreGrupo;
-            export declare const EmpresaId;
-            export declare const CtaContable;
-            export declare const UserId;
-            export declare const FechaModificacion;
-            export declare const Huesped;
-            export declare const Contratos;
-            export declare const Facturar;
-            export declare const Agencia;
-            export declare const Perfil;
+        export function getLookup(): Q.Lookup<GruposDeClienteRow> {
+            return Q.getLookup<GruposDeClienteRow>('Contratos.GruposDeCliente');
         }
 
-        ['GrupoClienteId', 'NombreGrupo', 'EmpresaId', 'CtaContable', 'UserId', 'FechaModificacion', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(x => (<any>Fields)[x] = x);
+        export namespace Fields {
+            export declare const GrupoClienteId: string;
+            export declare const NombreGrupo: string;
+            export declare const Huesped: string;
+            export declare const Contratos: string;
+            export declare const Facturar: string;
+            export declare const Agencia: string;
+            export declare const Perfil: string;
+        }
+
+        ['GrupoClienteId', 'NombreGrupo', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

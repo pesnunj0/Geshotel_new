@@ -8,7 +8,7 @@
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("categoria_hoteles"), InstanceName("conceptos_acelerador_reservas"), TwoLevelCached]
+    [ConnectionKey("CommonFiles"), DisplayName("categoria_hoteles"), InstanceName("conceptos_acelerador_reservas"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.ConceptosAceleradorReservas")]

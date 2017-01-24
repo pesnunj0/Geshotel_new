@@ -18,7 +18,6 @@ namespace Geshotel.Portal.Columns
         [EditLink]
         public String Descripcion { get; set; }
         public String DescCorta { get; set; }
-        public String Empresa { get; set; }
         public String UcDescripcionUnidadCalculo { get; set; }
     }
 }

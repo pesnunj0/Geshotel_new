@@ -56,7 +56,7 @@ namespace Geshotel
 
                 public static class Login
                 {
-                    public static LocalText FormTitle = "Welcome to GESHOTEL (PMS Application on Cloud Made with Serenity Framework)";
+                    public static LocalText FormTitle = "Welcome to SERENE (Serenity Application Template)";
                     public static LocalText SignInButton = "Sign In";
                     public static LocalText ForgotPassword = "Forgot password?";
                     public static LocalText SignUpButton = "Register a new account";
@@ -151,14 +151,14 @@ namespace Geshotel
 
             public static class Layout
             {
-                public static LocalText FooterCopyright = "Copyright (c) 2017.";
-                public static LocalText FooterInfo = "Geshotel Platform";
+                public static LocalText FooterCopyright = "Copyright (c) 2015.";
+                public static LocalText FooterInfo = "Serenity Platform";
                 public static LocalText FooterRights = "All rights reserved.";
                 public static LocalText GeneralSettings = "General Settings";
                 public static LocalText Language = "Language";
-                public static LocalText Theme = "Theme";
+                public static LocalText Empresa = "Company";
                 public static LocalText Hotel = "Hotel";
-                public static LocalText Empresa = "Empresa";
+                public static LocalText Theme = "Theme";
                 public static LocalText ThemeBlack = "Black";
                 public static LocalText ThemeBlackLight = "Black Light";
                 public static LocalText ThemeBlue = "Blue";

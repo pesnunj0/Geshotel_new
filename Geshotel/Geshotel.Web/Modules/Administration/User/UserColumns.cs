@@ -3,7 +3,6 @@ namespace Geshotel.Administration.Columns
 {
     using Serenity.ComponentModel;
     using System;
-    using System.Collections.Generic;
 
     [ColumnsScript("Administration.User")]
     [BasedOnRow(typeof(Entities.UserRow))]
@@ -15,8 +14,10 @@ namespace Geshotel.Administration.Columns
         public String Username { get; set; }
         [Width(150)]
         public String DisplayName { get; set; }
-        [Width(250), EmpresasListFormatter]
-        public List<Int16> EmpresasList { get; set; }
+        [Width(150),QuickFilter, QuickFilterOption("multiple", true)]
+        public String Empresa { get; set; }
+        [Width(150), QuickFilter, QuickFilterOption("multiple", true)]
+        public String HotelName { get; set; }
         [Width(250)]
         public String Email { get; set; }
         [Width(100)]

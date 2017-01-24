@@ -7,7 +7,7 @@
 
     export namespace CategoriaHotelesRow {
         export const idProperty = 'CategoriaId';
-        export const nameProperty = 'Abreviatura';
+        export const nameProperty = 'Categoria';
         export const localTextPrefix = 'Portal.CategoriaHoteles';
         export const lookupKey = 'Portal.CategoriaHoteles';
 

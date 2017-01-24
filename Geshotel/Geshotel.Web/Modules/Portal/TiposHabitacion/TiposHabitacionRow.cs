@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("tipos_habitacion"), InstanceName("tipos_habitacion"), TwoLevelCached]
+    [ConnectionKey("CommonFiles"), DisplayName("tipos_habitacion"), InstanceName("tipos_habitacion"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposHabitacion")]
@@ -36,11 +36,19 @@ namespace Geshotel.Portal.Entities
             set { Fields.Descripcion[this] = value; }
         }
 
-        [DisplayName("Grupo Habitacion Id"), Column("grupo_habitacion_id")]
+        [DisplayName("Grupo Habitacion Id"), Column("grupo_habitacion_id"), ForeignKey("grupos_habitacion", "grupo_habitacion_id"), LeftJoin("jGrupoHabitacion"), TextualField("GrupoHabitacion")]
+        [LookupEditor(typeof(GruposHabitacionRow), InplaceAdd = true)]
         public Int16? GrupoHabitacionId
         {
             get { return Fields.GrupoHabitacionId[this]; }
             set { Fields.GrupoHabitacionId[this] = value; }
+        }
+
+        [DisplayName("Tipo Hab"), Expression("jGrupoHabitacion.[grupo_habitacion]")]
+        public String GrupoHabitacion
+        {
+            get { return Fields.GrupoHabitacion[this]; }
+            set { Fields.GrupoHabitacion[this] = value; }
         }
 
         [DisplayName("Numero Personas"), Column("numero_personas"), NotNull]
@@ -90,6 +98,8 @@ namespace Geshotel.Portal.Entities
             public Int16Field NumeroPersonas;
             public Int16Field Desvios;
             public Int16Field NoShow;
+
+            public StringField GrupoHabitacion;
 
             public RowFields()
                 : base("tipos_habitacion")

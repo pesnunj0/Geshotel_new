@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface TiposCondicionRow {
         TipoCondicionId?: number;
         Condicion?: string;
@@ -10,11 +9,16 @@ namespace Geshotel.Contratos {
         export const idProperty = 'TipoCondicionId';
         export const nameProperty = 'Condicion';
         export const localTextPrefix = 'Contratos.TiposCondicion';
+        export const lookupKey = 'Contratos.TiposCondicion';
+
+        export function getLookup(): Q.Lookup<TiposCondicionRow> {
+            return Q.getLookup<TiposCondicionRow>('Contratos.TiposCondicion');
+        }
 
         export namespace Fields {
-            export declare const TipoCondicionId;
-            export declare const Condicion;
-            export declare const Literal;
+            export declare const TipoCondicionId: string;
+            export declare const Condicion: string;
+            export declare const Literal: string;
         }
 
         ['TipoCondicionId', 'Condicion', 'Literal'].forEach(x => (<any>Fields)[x] = x);

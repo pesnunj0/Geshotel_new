@@ -8444,3 +8444,9 @@ section.content > .s-DataGrid {
 .s-Contratos-TiposDeImputacionDialog .caption {
   width: 150px;
 }
+.s-Contratos-LineasDeContratoDialog > .size {
+  width: 650px;
+}
+.s-Contratos-LineasDeContratoDialog .caption {
+  width: 150px;
+}

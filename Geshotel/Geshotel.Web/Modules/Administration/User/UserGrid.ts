@@ -16,6 +16,5 @@
         protected getDefaultSortBy() {
             return [UserRow.Fields.Username];
         }
- 
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface FrecuenciaFacturacionRow {
         FrecuenciaId?: number;
         DescripcionCorta?: string;
@@ -12,9 +11,9 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.FrecuenciaFacturacion';
 
         export namespace Fields {
-            export declare const FrecuenciaId;
-            export declare const DescripcionCorta;
-            export declare const Descripcion;
+            export declare const FrecuenciaId: string;
+            export declare const DescripcionCorta: string;
+            export declare const Descripcion: string;
         }
 
         ['FrecuenciaId', 'DescripcionCorta', 'Descripcion'].forEach(x => (<any>Fields)[x] = x);

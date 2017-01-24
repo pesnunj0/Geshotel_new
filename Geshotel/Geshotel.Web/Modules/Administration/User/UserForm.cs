@@ -4,7 +4,6 @@
     using Serenity.ComponentModel;
     using System;
     using System.ComponentModel;
-    using System.Collections.Generic;
 
     [FormScript("Administration.User")]
     [BasedOnRow(typeof(Entities.UserRow))]
@@ -12,7 +11,8 @@
     {
         public String Username { get; set; }
         public String DisplayName { get; set; }
-        public List<Int32> EmpresasList { get; set; }
+        public Int16 EmpresaId { get; set; }
+        public Int16 HotelId { get; set; }
         [EmailEditor]
         public String Email { get; set; }
         public String UserImage { get; set; }

@@ -6,8 +6,8 @@ namespace Geshotel.Administration.Entities
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
+    /* Añado este using para poder acceder a empresasRow y hotelesRow */
     using Geshotel.Portal.Entities;
-    using System.Collections.Generic;
 
     [ConnectionKey("Default"), DisplayName("Users"), InstanceName("User"), TwoLevelCached]
     [ReadPermission(PermissionKeys.Security)]
@@ -27,15 +27,6 @@ namespace Geshotel.Administration.Entities
         {
             get { return Fields.Username[this]; }
             set { Fields.Username[this] = value; }
-        }
-
-        [DisplayName("Empresa")]
-        [LookupEditor(typeof(EmpresasRow), Multiple=true), NotMapped]
-        [LinkingSetRelation(typeof(UsuariosEmpresaRow),"UserID","empresa_id")]
-        public List<Int16> EmpresasList
-        {
-            get { return Fields.EmpresasList[this]; }
-            set { Fields.EmpresasList[this] = value; }
         }
 
         [DisplayName("Source"), Size(4), NotNull, Insertable(false), Updatable(false), DefaultValue("site")]
@@ -64,6 +55,38 @@ namespace Geshotel.Administration.Entities
         {
             get { return Fields.DisplayName[this]; }
             set { Fields.DisplayName[this] = value; }
+        }
+
+        [DisplayName("Empresa"), Column("EmpresaId"), ForeignKey("[Commonfiles].empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+        }
+
+        [DisplayName("Hotel"), Column("HotelId"), ForeignKey("[Commonfiles].hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [LookupEditor(typeof(HotelesRow))]
+        public Int16? HotelId
+        {
+            get { return Fields.HotelId[this]; }
+            set { Fields.HotelId[this] = value; }
+
+        }
+
+        [DisplayName("Hotel"), Expression("jHoteles.hotel")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
         }
 
         [DisplayName("Email"), Size(100)]
@@ -141,9 +164,13 @@ namespace Geshotel.Administration.Entities
             public StringField DisplayName;
             public StringField Email;
             public StringField UserImage;
-            public ListField<Int16> EmpresasList;
             public DateTimeField LastDirectoryUpdate;
             public Int16Field IsActive;
+            public Int16Field EmpresaId;
+            public Int16Field HotelId;
+
+            public StringField Empresa;
+            public StringField HotelName;
 
             public StringField Password;
             public StringField PasswordConfirm;

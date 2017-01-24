@@ -8,6 +8,7 @@ namespace Geshotel.Contratos.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    // Necesario para pillar las Rows de Portal en los Lookupeditor
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Geshotel"), DisplayName("clientes"), InstanceName("clientes"), TwoLevelCached]
@@ -45,8 +46,9 @@ namespace Geshotel.Contratos.Entities
             set { Fields.EmpresaId[this] = value; }
         }
 
-        [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("[Geshotel].clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
+        [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
 //        [LookupEditor(typeof(ClientesRow))]
+        [LookupEditor("Contratos.Clientes")]
         public Int32? AgenciaId
         {
             get { return Fields.AgenciaId[this]; }

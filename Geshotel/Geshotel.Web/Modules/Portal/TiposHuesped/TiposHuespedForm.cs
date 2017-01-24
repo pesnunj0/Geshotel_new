@@ -15,7 +15,6 @@ namespace Geshotel.Portal.Forms
     {
         public String Descripcion { get; set; }
         public String DescCorta { get; set; }
-        public Int16 EmpresaId { get; set; }
         public Int16 UcId { get; set; }
     }
 }

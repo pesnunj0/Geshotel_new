@@ -1,5 +1,5 @@
-﻿using Serenity.Navigation;
-using Meeting = Geshotel.Meeting.Pages;
+﻿//using Serenity.Navigation;
+//using Meeting = Geshotel.Meeting.Pages;
 
 //[assembly: NavigationMenu(8000, "Meeting", icon: "fa-comments")]
 //[assembly: NavigationLink(8000, "Meeting/Meetings", typeof(Meeting.MeetingController))]

@@ -15,7 +15,6 @@ namespace Geshotel.Portal.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 GrupoServicioId { get; set; }
-        public Int16 HotelId { get; set; }
         [EditLink]
         public String NombreGrupo { get; set; }
         public String CtaContable { get; set; }

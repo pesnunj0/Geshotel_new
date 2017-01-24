@@ -9,9 +9,9 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ConnectionKey("CommonFiles"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
+    [ReadPermission("Administration:Hotel")]
+    [ModifyPermission("Administration:Hotel")]
     [LookupScript("Portal.Hoteles")]
     public sealed class HotelesRow : Row, IIdRow, INameRow
     {

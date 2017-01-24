@@ -12,7 +12,7 @@
 
             $(function () {
                 ($('body') as any).vegas({
-                    delay: 10000,
+                    delay: 8000,
                     cover: true,
                     overlay: Q.resolveUrl("~/scripts/vegas/overlays/01.png"),
                     slides: [
@@ -20,7 +20,12 @@
                         { src: Q.resolveUrl('~/content/site/slides/slide2.jpg'), transition: 'fade' },
                         { src: Q.resolveUrl('~/content/site/slides/slide3.jpg'), transition: 'zoomOut' },
                         { src: Q.resolveUrl('~/content/site/slides/slide4.jpg'), transition: 'blur' },
-                        { src: Q.resolveUrl('~/content/site/slides/slide5.jpg'), transition: 'swirlLeft' }
+                        { src: Q.resolveUrl('~/content/site/slides/slide5.jpg'), transition: 'swirlLeft' },
+                        { src: Q.resolveUrl('~/content/site/slides/slide6.jpg'), transition: 'zoomOut' },
+                        { src: Q.resolveUrl('~/content/site/slides/slide7.jpg'), transition: 'swirlLeft' },
+                        { src: Q.resolveUrl('~/content/site/slides/slide8.jpg'), transition: 'swirlLeft' },
+                        { src: Q.resolveUrl('~/content/site/slides/slide9.jpg'), transition: 'fade' },
+                        { src: Q.resolveUrl('~/content/site/slides/slide10.jpg'), transition: 'blur' }
                     ]
                 });
             });

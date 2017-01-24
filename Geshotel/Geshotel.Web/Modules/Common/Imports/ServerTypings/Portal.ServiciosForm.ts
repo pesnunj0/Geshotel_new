@@ -15,13 +15,13 @@
         SwGastos: Serenity.BooleanEditor;
         SwPension: Serenity.BooleanEditor;
         SwRectificativa: Serenity.BooleanEditor;
-        ConceptoAceleradorReservasId: Serenity.IntegerEditor;
-        SumaServicioId: Serenity.IntegerEditor;
-        RestaServicioId: Serenity.IntegerEditor;
-        TipoHab: Serenity.IntegerEditor;
-        TipoPension: Serenity.IntegerEditor;
+        ConceptoAceleradorReservasId: Serenity.LookupEditor;
+        SumaServicioId: Serenity.LookupEditor;
+        RestaServicioId: Serenity.LookupEditor;
+        TipoHab: Serenity.LookupEditor;
+        TipoPension: Serenity.LookupEditor;
     }
 
-    [['NombreServicio', () => Serenity.StringEditor], ['Abreviatura', () => Serenity.StringEditor], ['TipoServicioId', () => Serenity.LookupEditor], ['TipoUnidadCalculoId', () => Serenity.LookupEditor], ['SwProduccion', () => Serenity.BooleanEditor], ['SwDescuento', () => Serenity.BooleanEditor], ['SwAjustes', () => Serenity.BooleanEditor], ['SwGastos', () => Serenity.BooleanEditor], ['SwPension', () => Serenity.BooleanEditor], ['SwRectificativa', () => Serenity.BooleanEditor], ['ConceptoAceleradorReservasId', () => Serenity.IntegerEditor], ['SumaServicioId', () => Serenity.IntegerEditor], ['RestaServicioId', () => Serenity.IntegerEditor], ['TipoHab', () => Serenity.IntegerEditor], ['TipoPension', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(ServiciosForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['NombreServicio', () => Serenity.StringEditor], ['Abreviatura', () => Serenity.StringEditor], ['TipoServicioId', () => Serenity.LookupEditor], ['TipoUnidadCalculoId', () => Serenity.LookupEditor], ['SwProduccion', () => Serenity.BooleanEditor], ['SwDescuento', () => Serenity.BooleanEditor], ['SwAjustes', () => Serenity.BooleanEditor], ['SwGastos', () => Serenity.BooleanEditor], ['SwPension', () => Serenity.BooleanEditor], ['SwRectificativa', () => Serenity.BooleanEditor], ['ConceptoAceleradorReservasId', () => Serenity.LookupEditor], ['SumaServicioId', () => Serenity.LookupEditor], ['RestaServicioId', () => Serenity.LookupEditor], ['TipoHab', () => Serenity.LookupEditor], ['TipoPension', () => Serenity.LookupEditor]].forEach(x => Object.defineProperty(ServiciosForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

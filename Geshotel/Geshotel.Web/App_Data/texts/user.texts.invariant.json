@@ -72,6 +72,7 @@
     "Db.Portal.Servicios.Tipo_UC": "Tipo UC",
     "Db.Portal.TiposHabitacion.EntityPlural": "Tipos Habitación",
     "Db.Portal.TiposHabitacion.EntitySingular": "Tipos Habitación",
+    "Db.Portal.TiposHabitacion.GrupoHabitacion": "Grupo Habitacion",
     "Db.Portal.TiposHabitacion.NumeroPersonas": "Nº Personas",
     "Db.Portal.TiposHotel.EntityPlural": "Tipo Hotel",
     "Db.Portal.TiposHotel.EntitySingular": "Tipo Hotel",

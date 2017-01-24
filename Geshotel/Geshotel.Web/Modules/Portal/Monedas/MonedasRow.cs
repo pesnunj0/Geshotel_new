@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Portal"), DisplayName("monedas"), InstanceName("monedas"), TwoLevelCached]
+    [ConnectionKey("CommonFiles"), DisplayName("monedas"), InstanceName("monedas"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.Monedas")]

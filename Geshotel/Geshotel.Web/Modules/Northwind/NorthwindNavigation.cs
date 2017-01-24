@@ -1,5 +1,5 @@
-﻿using Serenity.Navigation;
-using Northwind = Geshotel.Northwind.Pages;
+﻿//using Serenity.Navigation;
+//using Northwind = Geshotel.Northwind.Pages;
 
 //[assembly: NavigationMenu(7000, "Northwind", icon: "icon-anchor")]
 //[assembly: NavigationLink(7100, "Northwind/Customers", typeof(Northwind.CustomerController), icon: "icon-wallet")]

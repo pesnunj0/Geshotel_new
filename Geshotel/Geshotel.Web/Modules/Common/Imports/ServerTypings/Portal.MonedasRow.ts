@@ -8,7 +8,7 @@
 
     export namespace MonedasRow {
         export const idProperty = 'MonedaId';
-        export const nameProperty = 'DescCorta';
+        export const nameProperty = 'Descripcion';
         export const localTextPrefix = 'Portal.Monedas';
         export const lookupKey = 'Portal.Monedas';
 

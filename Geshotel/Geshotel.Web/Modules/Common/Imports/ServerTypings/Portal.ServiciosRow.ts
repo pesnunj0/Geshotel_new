@@ -21,6 +21,11 @@
         TipoPension?: number;
         TipoServicioNombreTipoServicio?: string;
         Tipo_UC?: string;
+        Concepto?: string;
+        Suma?: string;
+        Resta?: string;
+        NombreTipoHab?: string;
+        NombreTipoPension?: string;
     }
 
     export namespace ServiciosRow {
@@ -55,9 +60,14 @@
             export declare const TipoPension: string;
             export declare const TipoServicioNombreTipoServicio: string;
             export declare const Tipo_UC: string;
+            export declare const Concepto: string;
+            export declare const Suma: string;
+            export declare const Resta: string;
+            export declare const NombreTipoHab: string;
+            export declare const NombreTipoPension: string;
         }
 
-        ['ServicioId', 'NombreServicio', 'Abreviatura', 'TipoServicioId', 'SwProduccion', 'SwDescuento', 'SwAjustes', 'SwGastos', 'SwPension', 'SwRectificativa', 'TipoUnidadCalculoId', 'ConceptoAceleradorReservasId', 'Costo', 'SumaServicioId', 'RestaServicioId', 'UserId', 'FechaModificacion', 'TipoHab', 'TipoPension', 'TipoServicioNombreTipoServicio', 'Tipo_UC'].forEach(x => (<any>Fields)[x] = x);
+        ['ServicioId', 'NombreServicio', 'Abreviatura', 'TipoServicioId', 'SwProduccion', 'SwDescuento', 'SwAjustes', 'SwGastos', 'SwPension', 'SwRectificativa', 'TipoUnidadCalculoId', 'ConceptoAceleradorReservasId', 'Costo', 'SumaServicioId', 'RestaServicioId', 'UserId', 'FechaModificacion', 'TipoHab', 'TipoPension', 'TipoServicioNombreTipoServicio', 'Tipo_UC', 'Concepto', 'Suma', 'Resta', 'NombreTipoHab', 'NombreTipoPension'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

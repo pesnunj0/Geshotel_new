@@ -17,14 +17,19 @@ namespace Geshotel.Portal.Columns
         public Int16 HotelId { get; set; }
         [EditLink]
         public String Hotel { get; set; }
+        [Width(150), QuickFilter]
         public String Empresa { get; set; }
+        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String TipoHotel { get; set; }
+        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String Categoria { get; set; }
         public String NombreCorto { get; set; }
         public String Direccion { get; set; }
         public String Poblacion { get; set; }
         public String Zip { get; set; }
+        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String Provincia { get; set; }
+        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String Nacion { get; set; }
         public String Telefono { get; set; }
         public String Fax { get; set; }

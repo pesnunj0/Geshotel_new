@@ -13,6 +13,8 @@
     {
         private static string[] databaseKeys = new[] {
             "Default"
+            , "Geshotel"
+            , "CommonFiles"
             , "Northwind"
         };
 
@@ -130,7 +132,7 @@
             //    SkippedMigrations = true;
             //    return;
             //}
-            return;
+
 
             string databaseType = isOracle ? "OracleManaged" : serverType;
 

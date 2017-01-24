@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Portal"), DisplayName("formas_de_pago"), InstanceName("formas_de_pago"), TwoLevelCached]
+    [ConnectionKey("CommonFiles"), DisplayName("formas_de_pago"), InstanceName("formas_de_pago"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.FromasDePago")]

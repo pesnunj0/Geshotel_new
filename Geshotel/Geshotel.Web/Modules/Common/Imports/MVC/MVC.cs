@@ -284,6 +284,20 @@ namespace MVC
             {
                 public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
             }
+
+        }
+
+        public static class Contratos
+        {
+            public static class Clientes
+            {
+                public const string ClientesIndex = "~/Modules/Contratos/Clientes/ClientesIndex.cshtml";
+            }
+
+            public static class LineasDeContrato
+            {
+                public const string LineasDeContratoIndex = "~/Modules/Contratos/LineasDeContrato/LineasDeContratoIndex.cshtml";
+            }
         }
 
         public static class Errors
@@ -443,11 +457,6 @@ namespace MVC
             public static class FormasDePago
             {
                 public const string FormasDePagoIndex = "~/Modules/Portal/FormasDePago/FormasDePagoIndex.cshtml";
-            }
-
-            public static class GruposDeCliente
-            {
-                public const string GruposDeClienteIndex = "~/Modules/Portal/GruposDeCliente/GruposDeClienteIndex.cshtml";
             }
 
             public static class GruposDeServicios

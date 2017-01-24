@@ -18,7 +18,7 @@ namespace Geshotel.Portal.Columns
         [EditLink]
         public String DescCorta { get; set; }
         public String Descripcion { get; set; }
-        public Int16 GrupoHabitacionId { get; set; }
+        public String GrupoHabitacion { get; set; }
         public Int16 NumeroPersonas { get; set; }
         public Int16 Desvios { get; set; }
         public Int16 NoShow { get; set; }
