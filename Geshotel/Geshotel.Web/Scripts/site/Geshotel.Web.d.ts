@@ -1942,7 +1942,7 @@ declare namespace Geshotel.Contratos {
         Razon: Serenity.StringEditor;
         DescCorta: Serenity.StringEditor;
         EmpresaId: Serenity.LookupEditor;
-        AgenciaId: Serenity.IntegerEditor;
+        AgenciaId: Serenity.LookupEditor;
         ClienteDefecto: Serenity.BooleanEditor;
         GrupoClienteId: Serenity.LookupEditor;
         TipoDocumentoId: Serenity.LookupEditor;
@@ -5191,8 +5191,6 @@ declare namespace Geshotel.Portal {
         CheckinOnLine: Serenity.IntegerEditor;
         MinimoDiasCheckinOnline: Serenity.IntegerEditor;
         ZoomMapa: Serenity.IntegerEditor;
-        Lat: Serenity.DecimalEditor;
-        Lng: Serenity.DecimalEditor;
         Ancho: Serenity.IntegerEditor;
         Alto: Serenity.IntegerEditor;
         OverbookingLimit: Serenity.DecimalEditor;

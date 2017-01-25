@@ -23,10 +23,12 @@ namespace Geshotel.Migrations.DefaultDB
             // Foreign Keys related to another schema must be done with script
             // I Tried it but Inschema seems not working in FluentMigrator
             // Javier January 2017
-            IfDatabase("MySql")
-                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.DefaultDB.DefaultDB_20170118_182700_FK_Mysql.sql");
-            IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")
-                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.DefaultDB.DefaultDB_20170118_182700_FK_SQL_Server.sql");
+            Update.Table("Users").Set(new { EmpresaID = "1" }).AllRows();
+            Update.Table("Users").Set(new { HotelID = "1" }).AllRows();
+            //IfDatabase("MySql")
+            //    .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.DefaultDB.DefaultDB_20170118_182700_FK_Mysql.sql");
+            //IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")
+            //    .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.DefaultDB.DefaultDB_20170118_182700_FK_SQL_Server.sql");
 
         }
         public override void Down()

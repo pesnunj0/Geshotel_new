@@ -16,6 +16,6 @@ Date: 2017-01-20 16:00:42
 
 Owner : Javier Nuñez
 */
-ALTER TABLE `users` ADD FOREIGN KEY (`HotelId`) REFERENCES `commonfiles`.`hoteles` (`hotel_id`);
-ALTER TABLE `users` ADD FOREIGN KEY (`EmpresaId`) REFERENCES `commonfiles`.`empresas` (`empresa_id`);
+ALTER TABLE `users` ADD FOREIGN KEY (`HotelId`) REFERENCES `geshotel_commonfiles_v1`.`hoteles` (`hotel_id`);
+ALTER TABLE `users` ADD FOREIGN KEY (`EmpresaId`) REFERENCES `geshotel_commonfiles_v1`.`empresas` (`empresa_id`);
 
