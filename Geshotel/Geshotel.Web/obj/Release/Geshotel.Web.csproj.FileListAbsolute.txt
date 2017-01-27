@@ -49,3 +49,4 @@ C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\bin\S
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\bin\ru-ru\MsieJavaScriptEngine.resources.dll
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\obj\Release\Geshotel.Web.dll
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\obj\Release\Geshotel.Web.pdb
+C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\obj\Release\Geshotel.Web.csprojResolveAssemblyReference.cache

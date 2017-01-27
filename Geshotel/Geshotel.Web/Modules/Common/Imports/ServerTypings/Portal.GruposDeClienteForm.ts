@@ -6,17 +6,13 @@
 
     export interface GruposDeClienteForm {
         NombreGrupo: Serenity.StringEditor;
-        EmpresaId: Serenity.IntegerEditor;
-        CtaContable: Serenity.StringEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
-        Huesped: Serenity.IntegerEditor;
-        Contratos: Serenity.IntegerEditor;
-        Facturar: Serenity.IntegerEditor;
-        Agencia: Serenity.IntegerEditor;
+        Huesped: Serenity.BooleanEditor;
+        Contratos: Serenity.BooleanEditor;
+        Facturar: Serenity.BooleanEditor;
+        Agencia: Serenity.BooleanEditor;
         Perfil: Serenity.IntegerEditor;
     }
 
-    [['NombreGrupo', () => Serenity.StringEditor], ['EmpresaId', () => Serenity.IntegerEditor], ['CtaContable', () => Serenity.StringEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor], ['Huesped', () => Serenity.IntegerEditor], ['Contratos', () => Serenity.IntegerEditor], ['Facturar', () => Serenity.IntegerEditor], ['Agencia', () => Serenity.IntegerEditor], ['Perfil', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(GruposDeClienteForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['NombreGrupo', () => Serenity.StringEditor], ['Huesped', () => Serenity.BooleanEditor], ['Contratos', () => Serenity.BooleanEditor], ['Facturar', () => Serenity.BooleanEditor], ['Agencia', () => Serenity.BooleanEditor], ['Perfil', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(GruposDeClienteForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

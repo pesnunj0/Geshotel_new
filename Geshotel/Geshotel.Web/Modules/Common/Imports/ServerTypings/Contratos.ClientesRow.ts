@@ -45,7 +45,7 @@
         Empresa?: string;
         Agencia?: string;
         NombreGrupo?: string;
-        Documento?: string;
+        TipoDocumento?: string;
         Nacion?: string;
         Provincia?: string;
         FacturaNacion?: string;
@@ -108,14 +108,14 @@
             export declare const Empresa: string;
             export declare const Agencia: string;
             export declare const NombreGrupo: string;
-            export declare const Documento: string;
+            export declare const TipoDocumento: string;
             export declare const Nacion: string;
             export declare const Provincia: string;
             export declare const FacturaNacion: string;
             export declare const FacturaProvincia: string;
         }
 
-        ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'AgenciaId', 'ClienteDefecto', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'Agencia', 'NombreGrupo', 'Documento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia'].forEach(x => (<any>Fields)[x] = x);
+        ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'AgenciaId', 'ClienteDefecto', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'Agencia', 'NombreGrupo', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

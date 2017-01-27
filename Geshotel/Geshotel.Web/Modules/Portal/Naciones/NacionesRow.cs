@@ -45,7 +45,7 @@ namespace Geshotel.Portal.Entities
             set { Fields.MonedaId[this] = value; }
         }
 
-        [DisplayName("Idioma"), Column("idioma_id"), ForeignKey("[Default].languages", "Id"), LeftJoin("jIdioma"), TextualField("IdiomaLanguageName")]
+        [DisplayName("Idioma"), Column("idioma_id"), ForeignKey("[geshotel_default_v1].languages", "Id"), LeftJoin("jIdioma"), TextualField("IdiomaLanguageName")]
         [LookupEditor(typeof(LanguageRow))]
         public Int32? IdiomaId
         {

@@ -459,6 +459,11 @@ namespace MVC
                 public const string FormasDePagoIndex = "~/Modules/Portal/FormasDePago/FormasDePagoIndex.cshtml";
             }
 
+            public static class GruposDeCliente
+            {
+                public const string GruposDeClienteIndex = "~/Modules/Portal/GruposDeCliente/GruposDeClienteIndex.cshtml";
+            }
+
             public static class GruposDeServicios
             {
                 public const string GruposDeServiciosIndex = "~/Modules/Portal/GruposDeServicios/GruposDeServiciosIndex.cshtml";

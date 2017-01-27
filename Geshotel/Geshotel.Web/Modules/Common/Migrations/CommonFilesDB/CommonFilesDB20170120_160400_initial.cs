@@ -8,7 +8,6 @@ namespace Geshotel.Migrations.CommonFilesDB
 
         public override void Up()
         {
-            Create.Schema("commonfiles");
             IfDatabase("MySql")
                 .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_MySql.sql");
             IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")

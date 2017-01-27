@@ -2,14 +2,10 @@
     export interface GruposDeClienteRow {
         GrupoClienteId?: number;
         NombreGrupo?: string;
-        EmpresaId?: number;
-        CtaContable?: string;
-        UserId?: number;
-        FechaModificacion?: string;
-        Huesped?: number;
-        Contratos?: number;
-        Facturar?: number;
-        Agencia?: number;
+        Huesped?: boolean;
+        Contratos?: boolean;
+        Facturar?: boolean;
+        Agencia?: boolean;
         Perfil?: number;
     }
 
@@ -26,10 +22,6 @@
         export namespace Fields {
             export declare const GrupoClienteId: string;
             export declare const NombreGrupo: string;
-            export declare const EmpresaId: string;
-            export declare const CtaContable: string;
-            export declare const UserId: string;
-            export declare const FechaModificacion: string;
             export declare const Huesped: string;
             export declare const Contratos: string;
             export declare const Facturar: string;
@@ -37,7 +29,7 @@
             export declare const Perfil: string;
         }
 
-        ['GrupoClienteId', 'NombreGrupo', 'EmpresaId', 'CtaContable', 'UserId', 'FechaModificacion', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(x => (<any>Fields)[x] = x);
+        ['GrupoClienteId', 'NombreGrupo', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

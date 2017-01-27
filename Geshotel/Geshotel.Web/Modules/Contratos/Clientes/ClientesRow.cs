@@ -38,7 +38,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DescCorta[this] = value; }
         }
 
-        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
+        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("[Geshotel_Commonfiles_v1].empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
         [LookupEditor(typeof(EmpresasRow))]
         public Int16? EmpresaId
         {
@@ -47,8 +47,8 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
-//        [LookupEditor(typeof(ClientesRow))]
-        [LookupEditor("Contratos.Clientes")]
+        [LookupEditor(typeof(ClientesRow))]
+     
         public Int32? AgenciaId
         {
             get { return Fields.AgenciaId[this]; }
@@ -62,7 +62,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ClienteDefecto[this] = value; }
         }
 
-        [DisplayName("Grupo Cliente"), Column("grupo_cliente_id"), NotNull, ForeignKey("grupos_de_cliente", "grupo_cliente_id"), LeftJoin("jGrupoCliente")]
+        [DisplayName("Grupo Cliente"), Column("grupo_cliente_id"), NotNull, ForeignKey("[Geshotel_Commonfiles_v1].grupos_de_cliente", "grupo_cliente_id"), LeftJoin("jGrupoCliente")]
         [LookupEditor(typeof(GruposDeClienteRow))]
         public Int16? GrupoClienteId
         {
@@ -78,7 +78,7 @@ namespace Geshotel.Contratos.Entities
         }
 
 
-        [DisplayName("Tipo Documento"), Column("tipo_documento_id"), Size(1), ForeignKey("tipos_documento", "tipo_documento_id"), LeftJoin("jTipoDocumento")]
+        [DisplayName("Tipo Documento"), Column("tipo_documento_id"), Size(1), ForeignKey("[Geshotel_Commonfiles_v1].tipos_documento", "tipo_documento_id"), LeftJoin("jTipoDocumento")]
         [LookupEditor(typeof(TiposDocumentoRow))]
         public String TipoDocumentoId
         {
@@ -87,10 +87,10 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Tipo_Doc"), Expression("jTipoDocumento.[tipo_documento]")]
-        public String Documento
+        public String TipoDocumento
         {
-            get { return Fields.Documento[this]; }
-            set { Fields.Documento[this] = value; }
+            get { return Fields.TipoDocumento[this]; }
+            set { Fields.TipoDocumento[this] = value; }
         }
 
 
@@ -129,7 +129,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Zip[this] = value; }
         }
 
-        [DisplayName("Nacion"), Column("nacion_id"), ForeignKey("[portal].naciones", "nacion_id"), LeftJoin("jNacion"), TextualField("Nacion")]
+        [DisplayName("Nacion"), Column("nacion_id"), ForeignKey("[Geshotel_Commonfiles_v1].naciones", "nacion_id"), LeftJoin("jNacion"), TextualField("Nacion")]
         [LookupEditor(typeof(NacionesRow))]
         public Int16? NacionId
         {
@@ -137,7 +137,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.NacionId[this] = value; }
         }
 
-        [DisplayName("Provincia"), Column("provincia_id"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvincia"), TextualField("Provincia")]
+        [DisplayName("Provincia"), Column("provincia_id"), ForeignKey("[Geshotel_Commonfiles_v1].provincias", "provincia_id"), LeftJoin("jProvincia"), TextualField("Provincia")]
         [LookupEditor(typeof(ProvinciasRow))]
         public Int16? ProvinciaId
         {
@@ -250,7 +250,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ZipFra[this] = value; }
         }
 
-        [DisplayName("Nacion Factura"), Column("nacion_id_factura"), ForeignKey("naciones", "nacion_id"), LeftJoin("jNacionIdFactura"), TextualField("FacturaNacion")]
+        [DisplayName("Nacion Factura"), Column("nacion_id_factura"), ForeignKey("[Geshotel_Commonfiles_v1].naciones", "nacion_id"), LeftJoin("jNacionIdFactura"), TextualField("FacturaNacion")]
         [LookupEditor(typeof(NacionesRow))]
         public Int16? NacionIdFactura
         {
@@ -258,7 +258,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.NacionIdFactura[this] = value; }
         }
 
-        [DisplayName("Provincia Factura"), Column("provincia_id_factura"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvinciaIdFactura"), TextualField("FacturaProvincia")]
+        [DisplayName("Provincia Factura"), Column("provincia_id_factura"), ForeignKey("[Geshotel_Commonfiles_v1].provincias", "provincia_id"), LeftJoin("jProvinciaIdFactura"), TextualField("FacturaProvincia")]
         [LookupEditor(typeof(ProvinciasRow))]
         public Int16? ProvinciaIdFactura
         {
@@ -266,14 +266,14 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ProvinciaIdFactura[this] = value; }
         }
 
-        [DisplayName("Cliente Factura"), Column("Cliente_factura"), Size(4), NotNull]
+        [DisplayName("Cliente Factura"), Column("Cliente_factura"), Size(4), NotNull,DefaultValue(0)]
         public Boolean? ClienteFactura
         {
             get { return Fields.ClienteFactura[this]; }
             set { Fields.ClienteFactura[this] = value; }
         }
 
-        [DisplayName("Huesped"), Column("Cliente_huesped"), Size(4), NotNull]
+        [DisplayName("Huesped"), Column("Cliente_huesped"), Size(4), NotNull, DefaultValue(0)]
         public Boolean? ClienteHuesped
         {
             get { return Fields.ClienteHuesped[this]; }
@@ -447,7 +447,7 @@ namespace Geshotel.Contratos.Entities
 
             public StringField NombreGrupo;
 
-            public StringField Documento;
+            public StringField TipoDocumento;
 
             public StringField Nacion;
 

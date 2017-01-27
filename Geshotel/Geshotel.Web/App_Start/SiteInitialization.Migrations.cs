@@ -12,7 +12,7 @@
     public static partial class SiteInitialization
     {
         private static string[] databaseKeys = new[] {
-            "Commonfiles"
+            "CommonFiles"
             ,"Default"
             , "Geshotel"
             , "Northwind"

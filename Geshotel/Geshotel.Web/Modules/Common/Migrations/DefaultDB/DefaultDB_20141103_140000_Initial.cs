@@ -44,33 +44,65 @@ namespace Geshotel.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "en",
-                LanguageName = "English"
-            });
-
-            Insert.IntoTable("Languages").Row(new
-            {
-                LanguageId = "ru",
-                LanguageName = "Russian"
-            });
-
-            Insert.IntoTable("Languages").Row(new
-            {
                 LanguageId = "es",
                 LanguageName = "Spanish"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "tr",
-                LanguageName = "Turkish"
+                LanguageId = "en",
+                LanguageName = "English"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "fr",
+                LanguageName = "Français"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
                 LanguageId = "de",
-                LanguageName = "German"
+                LanguageName = "Deutsch"
             });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "nl",
+                LanguageName = "Nederlands"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "da",
+                LanguageName = "Dansk"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "pt",
+                LanguageName = "Português"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "sw",
+                LanguageName = "Swenska"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "it",
+                LanguageName = "Italiano"
+            });
+
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "ru",
+                LanguageName = "Russian"
+            });
+ 
 
             Insert.IntoTable("Languages").Row(new
             {
@@ -80,33 +112,52 @@ namespace Geshotel.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "it",
-                LanguageName = "Italian"
+                LanguageId = "no",
+                LanguageName = "Norsk"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "pt",
-                LanguageName = "Portuguese"
+                LanguageId = "fi",
+                LanguageName = "Päät"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "pt-BR",
-                LanguageName = "Portuguese (Brazil)"
+                LanguageId = "ro",
+                LanguageName = "Românesc"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "fa",
-                LanguageName = "Farsi"
+                LanguageId = "lb",
+                LanguageName = "Lëtzebuerger"
             });
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "vi-VN",
-                LanguageName = "Vietnamese (Vietnam)"
+                LanguageId = "el",
+                LanguageName = "Greek"
             });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "po",
+                LanguageName = "Polska"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "ro",
+                LanguageName = "Românesc"
+            });
+
+            Insert.IntoTable("Languages").Row(new
+            {
+                LanguageId = "jp",
+                LanguageName = "Japanesse"
+            });
+
         }
     }
 }

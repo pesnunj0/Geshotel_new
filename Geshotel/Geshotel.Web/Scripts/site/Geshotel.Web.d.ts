@@ -268,6 +268,26 @@ declare namespace Geshotel.Portal {
     }
 }
 declare namespace Geshotel.Portal {
+    class GruposDeClienteDialog extends Serenity.EntityDialog<GruposDeClienteRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: GruposDeClienteForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposDeClienteGrid extends Serenity.EntityGrid<GruposDeClienteRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof GruposDeClienteDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
     class FormasDePagoDialog extends Serenity.EntityDialog<FormasDePagoRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1942,7 +1962,7 @@ declare namespace Geshotel.Contratos {
         Razon: Serenity.StringEditor;
         DescCorta: Serenity.StringEditor;
         EmpresaId: Serenity.LookupEditor;
-        AgenciaId: Serenity.LookupEditor;
+        AgenciaId: Serenity.IntegerEditor;
         ClienteDefecto: Serenity.BooleanEditor;
         GrupoClienteId: Serenity.LookupEditor;
         TipoDocumentoId: Serenity.LookupEditor;

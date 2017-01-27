@@ -28,6 +28,7 @@ using Portal = Geshotel.Portal.Pages;
 
 [assembly: NavigationLink(9300, "Settings/CommonData/CategoriaHoteles", typeof(Geshotel.Portal.Pages.CategoriaHotelesController), icon: "icon-star")]
 [assembly: NavigationLink(9300, "Settings/CommonData/GruposDeServicios", typeof(Geshotel.Portal.Pages.GruposDeServiciosController), icon: "icon-basket-loaded")]
+[assembly: NavigationLink(9300, "Settings/CommonData/GruposDeCliente", typeof(Geshotel.Portal.Pages.GruposDeClienteController), icon: "icon-people")]
 [assembly: NavigationLink(9300, "Settings/CommonData/GruposHabitacion", typeof(Geshotel.Portal.Pages.GruposHabitacionController), icon: "fa-bed")]
 [assembly: NavigationLink(9300, "Settings/CommonData/TiposHabitacion", typeof(Geshotel.Portal.Pages.TiposHabitacionController), icon: "fa-bed")]
 [assembly: NavigationLink(9300, "Settings/CommonData/TiposHotel", typeof(Geshotel.Portal.Pages.TiposHotelController), icon: "fa-home")]
