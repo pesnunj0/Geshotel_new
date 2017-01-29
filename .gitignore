@@ -5,3 +5,4 @@ Geshotel/Geshotel.Web/Scripts/site/Geshotel.Web.js.map
 Geshotel/Geshotel.Web/node_modules/
 Geshotel/Geshotel.Web/Geshotel.Web.csproj.user
 packages/
+*.bak
