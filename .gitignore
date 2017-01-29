@@ -6,3 +6,4 @@ Geshotel/Geshotel.Web/node_modules/
 Geshotel/Geshotel.Web/Geshotel.Web.csproj.user
 packages/
 *.bak
+*.orig
