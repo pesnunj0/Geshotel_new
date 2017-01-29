@@ -943,3588 +943,6 @@ var Geshotel;
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChartInDialog = (function (_super) {
-            __extends(ChartInDialog, _super);
-            function ChartInDialog() {
-                _super.apply(this, arguments);
-            }
-            ChartInDialog.initializePage = function () {
-                $(function () {
-                    $('#LaunchDialogButton').click(function (e) {
-                        (new ChartInDialog()).dialogOpen();
-                    });
-                });
-            };
-            ChartInDialog.prototype.onDialogOpen = function () {
-                var _this = this;
-                _super.prototype.onDialogOpen.call(this);
-                BasicSamples.BasicSamplesService.OrdersByShipper({}, function (response) {
-                    _this.areaChart = new Morris.Area({
-                        element: _this.idPrefix + 'Chart',
-                        resize: true, parseTime: false,
-                        data: response.Values,
-                        xkey: 'Month',
-                        ykeys: response.ShipperKeys, labels: response.ShipperLabels, hideHover: 'auto'
-                    });
-                });
-            };
-            ChartInDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                this.areaChart && this.areaChart.redraw();
-            };
-            ChartInDialog.prototype.getTemplate = function () {
-                // you could also put this in a ChartInDialog.Template.html file. it's here for simplicity.
-                return "<div id='~_Chart'></div>";
-            };
-            ChartInDialog.prototype.getDialogOptions = function () {
-                var opt = _super.prototype.getDialogOptions.call(this);
-                opt.title = 'Orders by Shipper';
-                return opt;
-            };
-            ChartInDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.resizable(),
-                Serenity.Decorators.maximizable()
-            ], ChartInDialog);
-            return ChartInDialog;
-        }(Serenity.TemplatedDialog));
-        BasicSamples.ChartInDialog = ChartInDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductDialog = (function (_super) {
-            __extends(ProductDialog, _super);
-            function ProductDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.ProductForm(this.idPrefix);
-            }
-            ProductDialog.prototype.getFormKey = function () { return Northwind.ProductForm.formKey; };
-            ProductDialog.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
-            ProductDialog.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
-            ProductDialog.prototype.getNameProperty = function () { return Northwind.ProductRow.nameProperty; };
-            ProductDialog.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
-            ProductDialog.prototype.getLanguages = function () {
-                return Geshotel.LanguageList.getValue();
-            };
-            ProductDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.maximizable()
-            ], ProductDialog);
-            return ProductDialog;
-        }(Serenity.EntityDialog));
-        Northwind.ProductDialog = ProductDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CloneableEntityDialog = (function (_super) {
-            __extends(CloneableEntityDialog, _super);
-            function CloneableEntityDialog() {
-                _super.apply(this, arguments);
-            }
-            CloneableEntityDialog.prototype.updateInterface = function () {
-                // by default cloneButton is hidden in base UpdateInterface method
-                _super.prototype.updateInterface.call(this);
-                // here we show it if it is edit mode (not new)
-                this.cloneButton.toggle(this.isEditMode());
-            };
-            /**
-             * Overriding this method is optional to customize cloned entity
-             */
-            CloneableEntityDialog.prototype.getCloningEntity = function () {
-                var clone = _super.prototype.getCloningEntity.call(this);
-                // add (Clone) suffix if it's not already added
-                var suffix = ' (Clone)';
-                if (!Q.endsWith(clone.ProductName || '', suffix)) {
-                    clone.ProductName = (clone.ProductName || '') + suffix;
-                }
-                // it's better to clear image for this sample
-                // otherwise we would have to create a temporary copy of it
-                // and upload
-                clone.ProductImage = null;
-                // let's clear fields not logical to be cloned
-                clone.UnitsInStock = 0;
-                clone.UnitsOnOrder = 0;
-                return clone;
-            };
-            CloneableEntityDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.maximizable()
-            ], CloneableEntityDialog);
-            return CloneableEntityDialog;
-        }(Geshotel.Northwind.ProductDialog));
-        BasicSamples.CloneableEntityDialog = CloneableEntityDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var ProductGrid = (function (_super) {
-            __extends(ProductGrid, _super);
-            function ProductGrid(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.pendingChanges = {};
-                this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
-            }
-            ProductGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
-            ProductGrid.prototype.getDialogType = function () { return Northwind.ProductDialog; };
-            ProductGrid.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
-            ProductGrid.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
-            ProductGrid.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
-            ProductGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: Northwind.ProductService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    reportTitle: 'Product List',
-                    columnTitles: {
-                        'Discontinued': 'Dis.',
-                    },
-                    tableOptions: {
-                        columnStyles: {
-                            ProductID: {
-                                columnWidth: 25,
-                                halign: 'right'
-                            },
-                            Discountinued: {
-                                columnWidth: 25
-                            }
-                        }
-                    }
-                }));
-                buttons.push({
-                    title: 'Save Changes',
-                    cssClass: 'apply-changes-button disabled',
-                    onClick: function (e) { return _this.saveClick(); },
-                    separator: true
-                });
-                return buttons;
-            };
-            ProductGrid.prototype.onViewProcessData = function (response) {
-                this.pendingChanges = {};
-                this.setSaveButtonState();
-                return _super.prototype.onViewProcessData.call(this, response);
-            };
-            // PLEASE NOTE! Inline editing in grids is not something Serenity supports nor recommends.
-            // SlickGrid has some set of limitations, UI is very hard to use on some devices like mobile, 
-            // custom widgets and validations are not possible, and as a bonus the code can become a mess.
-            // 
-            // This was just a sample how-to after much requests, and is not supported. 
-            // This is all we can offer, please don't ask us to Guide you...
-            /**
-             * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
-             * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
-             * no event handlers to rendered cell contents
-             */
-            ProductGrid.prototype.numericInputFormatter = function (ctx) {
-                var klass = 'edit numeric';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                if (pending && pending[ctx.column.field] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, ctx.column.field);
-                return "<input type='text' class='" + klass +
-                    "' data-field='" + ctx.column.field +
-                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
-            };
-            ProductGrid.prototype.stringInputFormatter = function (ctx) {
-                var klass = 'edit string';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                var column = ctx.column;
-                if (pending && pending[column.field] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, column.field);
-                return "<input type='text' class='" + klass +
-                    "' data-field='" + column.field +
-                    "' value='" + Q.htmlEncode(value) +
-                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
-            };
-            /**
-             * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
-             */
-            ProductGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
-                var fld = Northwind.ProductRow.Fields;
-                var klass = 'edit';
-                var item = ctx.item;
-                var pending = this.pendingChanges[item.ProductID];
-                var column = ctx.column;
-                if (pending && pending[idField] !== undefined) {
-                    klass += ' dirty';
-                }
-                var value = this.getEffectiveValue(item, idField);
-                var markup = "<select class='" + klass +
-                    "' data-field='" + idField +
-                    "' style='width: 100%; max-width: 100%'>";
-                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
-                    var c = _a[_i];
-                    var id = c[lookup.idField];
-                    markup += "<option value='" + id + "'";
-                    if (id == value) {
-                        markup += " selected";
-                    }
-                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
-                }
-                return markup + "</select>";
-            };
-            ProductGrid.prototype.getEffectiveValue = function (item, field) {
-                var pending = this.pendingChanges[item.ProductID];
-                if (pending && pending[field] !== undefined) {
-                    return pending[field];
-                }
-                return item[field];
-            };
-            ProductGrid.prototype.getColumns = function () {
-                var _this = this;
-                var columns = _super.prototype.getColumns.call(this);
-                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
-                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
-                var fld = Northwind.ProductRow.Fields;
-                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
-                var category = Q.first(columns, function (x) { return x.field === fld.CategoryName; });
-                category.referencedFields = [fld.CategoryID];
-                category.format = function (ctx) { return _this.selectFormatter(ctx, fld.CategoryID, Northwind.CategoryRow.getLookup()); };
-                var supplier = Q.first(columns, function (x) { return x.field === fld.SupplierCompanyName; });
-                supplier.referencedFields = [fld.SupplierID];
-                supplier.format = function (ctx) { return _this.selectFormatter(ctx, fld.SupplierID, Northwind.SupplierRow.getLookup()); };
-                Q.first(columns, function (x) { return x.field === fld.UnitPrice; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.UnitsInStock; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.UnitsOnOrder; }).format = num;
-                Q.first(columns, function (x) { return x.field === fld.ReorderLevel; }).format = num;
-                return columns;
-            };
-            ProductGrid.prototype.inputsChange = function (e) {
-                var cell = this.slickGrid.getCellFromEvent(e);
-                var item = this.itemAt(cell.row);
-                var input = $(e.target);
-                var field = input.data('field');
-                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
-                var pending = this.pendingChanges[item.ProductID];
-                var effective = this.getEffectiveValue(item, field);
-                var oldText;
-                if (input.hasClass("numeric"))
-                    oldText = Q.formatNumber(effective, '0.##');
-                else
-                    oldText = effective;
-                var value;
-                if (field === 'UnitPrice') {
-                    value = Q.parseDecimal(text);
-                    if (value == null || isNaN(value)) {
-                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
-                        input.val(oldText);
-                        input.focus();
-                        return;
-                    }
-                }
-                else if (input.hasClass("numeric")) {
-                    var i = Q.parseInteger(text);
-                    if (isNaN(i) || i > 32767 || i < 0) {
-                        Q.notifyError(Q.text('Validation.Integer'), '', null);
-                        input.val(oldText);
-                        input.focus();
-                        return;
-                    }
-                    value = i;
-                }
-                else
-                    value = text;
-                if (!pending) {
-                    this.pendingChanges[item.ProductID] = pending = {};
-                }
-                pending[field] = value;
-                item[field] = value;
-                this.view.refresh();
-                if (input.hasClass("numeric"))
-                    value = Q.formatNumber(value, '0.##');
-                input.val(value).addClass('dirty');
-                this.setSaveButtonState();
-            };
-            ProductGrid.prototype.setSaveButtonState = function () {
-                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
-            };
-            ProductGrid.prototype.saveClick = function () {
-                if (Object.keys(this.pendingChanges).length === 0) {
-                    return;
-                }
-                // this calls save service for all modified rows, one by one
-                // you could write a batch update service
-                var keys = Object.keys(this.pendingChanges);
-                var current = -1;
-                var self = this;
-                (function saveNext() {
-                    if (++current >= keys.length) {
-                        self.refresh();
-                        return;
-                    }
-                    var key = keys[current];
-                    var entity = Q.deepClone(self.pendingChanges[key]);
-                    entity.ProductID = key;
-                    Q.serviceRequest('Northwind/Product/Update', {
-                        EntityId: key,
-                        Entity: entity
-                    }, function (response) {
-                        delete self.pendingChanges[key];
-                        saveNext();
-                    });
-                })();
-            };
-            ProductGrid.prototype.getQuickFilters = function () {
-                var flt = _super.prototype.getQuickFilters.call(this);
-                var q = Q.parseQueryString();
-                if (q["cat"]) {
-                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
-                    category.init = function (e) {
-                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
-                    };
-                }
-                return flt;
-            };
-            ProductGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ProductGrid);
-            return ProductGrid;
-        }(Serenity.EntityGrid));
-        Northwind.ProductGrid = ProductGrid;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-         */
-        var CloneableEntityGrid = (function (_super) {
-            __extends(CloneableEntityGrid, _super);
-            function CloneableEntityGrid(container) {
-                _super.call(this, container);
-            }
-            CloneableEntityGrid.prototype.getDialogType = function () { return BasicSamples.CloneableEntityDialog; };
-            CloneableEntityGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CloneableEntityGrid);
-            return CloneableEntityGrid;
-        }(Geshotel.Northwind.ProductGrid));
-        BasicSamples.CloneableEntityGrid = CloneableEntityGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderGrid = (function (_super) {
-            __extends(OrderGrid, _super);
-            function OrderGrid(container) {
-                _super.call(this, container);
-            }
-            OrderGrid.prototype.getColumnsKey = function () { return "Northwind.Order"; };
-            OrderGrid.prototype.getDialogType = function () { return Northwind.OrderDialog; };
-            OrderGrid.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
-            OrderGrid.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
-            OrderGrid.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
-            OrderGrid.prototype.getQuickFilters = function () {
-                var _this = this;
-                var filters = _super.prototype.getQuickFilters.call(this);
-                filters.push({
-                    type: Serenity.LookupEditor,
-                    options: {
-                        lookupKey: Northwind.ProductRow.lookupKey
-                    },
-                    field: 'ProductID',
-                    title: 'Contains Product in Details',
-                    handler: function (w) {
-                        _this.view.params.ProductID = Q.toId(w.value);
-                    }
-                });
-                return filters;
-            };
-            OrderGrid.prototype.createQuickFilters = function () {
-                _super.prototype.createQuickFilters.call(this);
-                var fld = Northwind.OrderRow.Fields;
-                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
-            };
-            OrderGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: Northwind.OrderService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            OrderGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.splice(1, 0, {
-                    field: 'Print Invoice',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
-                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            OrderGrid.prototype.onClick = function (e, row, cell) {
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                // if user clicks "i" element, e.g. icon
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('print-invoice')) {
-                        Geshotel.Common.ReportHelper.execute({
-                            reportKey: 'Northwind.OrderDetail',
-                            params: {
-                                OrderID: item.OrderID
-                            }
-                        });
-                    }
-                }
-            };
-            OrderGrid.prototype.set_shippingState = function (value) {
-                this.shippingStateFilter.value = value == null ? '' : value.toString();
-            };
-            OrderGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], OrderGrid);
-            return OrderGrid;
-        }(Serenity.EntityGrid));
-        Northwind.OrderGrid = OrderGrid;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DefaultValuesInNewGrid = (function (_super) {
-            __extends(DefaultValuesInNewGrid, _super);
-            function DefaultValuesInNewGrid(container) {
-                _super.call(this, container);
-            }
-            /**
-             * This method is called when New Item button is clicked.
-             * By default, it calls EditItem with an empty entity.
-             * This is a good place to fill in default values for New Item button.
-             */
-            DefaultValuesInNewGrid.prototype.addButtonClick = function () {
-                this.editItem({
-                    CustomerID: 'ANTON',
-                    RequiredDate: Q.formatDate(new Date(), 'yyyy-MM-dd'),
-                    EmployeeID: Geshotel.Northwind.EmployeeRow.getLookup().items
-                        .filter(function (x) { return x.FullName === 'Robert King'; })[0].EmployeeID,
-                    ShipVia: Geshotel.Northwind.ShipperRow.getLookup().items
-                        .filter(function (x) { return x.CompanyName === 'Speedy Express'; })[0].ShipperID
-                });
-            };
-            DefaultValuesInNewGrid.prototype.getButtons = function () {
-                var _this = this;
-                // preserving default New Item button
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push({
-                    title: 'Add Order from the Queen',
-                    cssClass: 'add-button',
-                    onClick: function () {
-                        // using EditItem method as a shortcut to create a new Order dialog,
-                        // bind to its events, load our order row, and open dialog
-                        _this.editItem({
-                            CustomerID: 'QUEEN',
-                            EmployeeID: Geshotel.Northwind.EmployeeRow.getLookup().items
-                                .filter(function (x) { return x.FullName === 'Nancy Davolio'; })[0].EmployeeID,
-                            ShipVia: Geshotel.Northwind.ShipperRow.getLookup().items
-                                .filter(function (x) { return x.CompanyName === 'United Package'; })[0].ShipperID
-                        });
-                    }
-                });
-                buttons.push({
-                    title: 'Add Order with 5 Chai by Laura', cssClass: 'add-note-button',
-                    onClick: function () {
-                        // we could use EditItem here too, but for demonstration
-                        // purposes we are manually creating dialog this time
-                        var dlg = new Geshotel.Northwind.OrderDialog();
-                        // let grid watch for changes to manually created dialog, 
-                        // so when a new item is saved, grid can refresh itself
-                        _this.initDialog(dlg);
-                        // get a reference to product Chai
-                        var chai = Geshotel.Northwind.ProductRow.getLookup().items
-                            .filter(function (x) { return x.ProductName === 'Chai'; })[0];
-                        // LoadEntityAndOpenDialog, loads an OrderRow 
-                        // to dialog and opens it
-                        var lauraCallahanID = Geshotel.Northwind.EmployeeRow.getLookup().items
-                            .filter(function (x) { return x.FullName === 'Laura Callahan'; })[0].EmployeeID;
-                        dlg.loadEntityAndOpenDialog({
-                            CustomerID: 'GOURL',
-                            EmployeeID: lauraCallahanID,
-                            DetailList: [{
-                                    ProductID: chai.ProductID,
-                                    ProductName: chai.ProductName,
-                                    UnitPrice: chai.UnitPrice,
-                                    Quantity: 5,
-                                    LineTotal: chai.UnitPrice * 5
-                                }]
-                        });
-                    }
-                });
-                return buttons;
-            };
-            DefaultValuesInNewGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], DefaultValuesInNewGrid);
-            return DefaultValuesInNewGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.DefaultValuesInNewGrid = DefaultValuesInNewGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DialogBoxes;
-        (function (DialogBoxes) {
-            function initializePage() {
-                confirmDialogButtons();
-                confirmWithCustomTitle();
-                information();
-                warning();
-                alert();
-                alertWithHtmlContent();
-            }
-            DialogBoxes.initializePage = initializePage;
-            function confirmDialogButtons() {
-                // here we demonstrate how you can detect which button user has clicked
-                // second parameter is Yes handler and it is called only when user clicks Yes.
-                // third parameter has some additional options, that you should only use when needed
-                $('#ConfirmDialogButtons').click(function () {
-                    Q.confirm("Click one of buttons, or close dialog with [x] on top right, i'll tell you what you did!", function () {
-                        Q.notifySuccess("You clicked YES. Great!");
-                    }, {
-                        onNo: function () {
-                            Q.notifyInfo("You clicked NO. Why?");
-                        },
-                        onCancel: function () {
-                            Q.notifyError("You clicked X. Operation is cancelled. Will try again?");
-                        }
-                    });
-                });
-            }
-            function confirmWithCustomTitle() {
-                $('#ConfirmWithCustomTitle').click(function () {
-                    Q.confirm("This confirmation has a custom title", function () {
-                        Q.notifySuccess("Allright!");
-                    }, {
-                        title: 'Some Custom Confirmation Title'
-                    });
-                });
-            }
-            function information() {
-                $('#Information').click(function () {
-                    Q.information("What a nice day", function () {
-                        Q.notifySuccess("No problem!");
-                    });
-                });
-            }
-            function warning() {
-                $('#Warning').click(function () {
-                    Q.warning("Hey, be careful!");
-                });
-            }
-            function alert() {
-                $('#Alert').click(function () {
-                    Q.alert("Houston, we got a problem!");
-                });
-            }
-            function alertWithHtmlContent() {
-                $('#AlertWithHtmlContent').click(function () {
-                    Q.alert("<h4>Here is some HTML content!</h4>" +
-                        "<ul><li>Item 1</li><li>Item 2</li >" +
-                        "<li>Visit <a href='http://serenity.is/' target='_blank' style='color: #ddf'>http://serenity.is/</a>!</li></ul>", {
-                        htmlEncode: false
-                    });
-                });
-            }
-        })(DialogBoxes = BasicSamples.DialogBoxes || (BasicSamples.DialogBoxes = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDialog = (function (_super) {
-            __extends(OrderDialog, _super);
-            function OrderDialog() {
-                _super.call(this);
-                this.form = new Northwind.OrderForm(this.idPrefix);
-            }
-            OrderDialog.prototype.getFormKey = function () { return Northwind.OrderForm.formKey; };
-            OrderDialog.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
-            OrderDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
-            OrderDialog.prototype.getNameProperty = function () { return Northwind.OrderRow.nameProperty; };
-            OrderDialog.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
-            OrderDialog.prototype.getToolbarButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push(Geshotel.Common.ReportHelper.createToolButton({
-                    title: 'Invoice',
-                    cssClass: 'export-pdf-button',
-                    reportKey: 'Northwind.OrderDetail',
-                    getParams: function () { return ({
-                        OrderID: _this.get_entityId()
-                    }); }
-                }));
-                return buttons;
-            };
-            OrderDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
-            };
-            OrderDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDialog);
-            return OrderDialog;
-        }(Serenity.EntityDialog));
-        Northwind.OrderDialog = OrderDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A version of order dialog converted to a panel by adding Serenity.Decorators.panel decorator.
-         */
-        var EntityDialogAsPanel = (function (_super) {
-            __extends(EntityDialogAsPanel, _super);
-            function EntityDialogAsPanel() {
-                _super.call(this);
-                this.element.addClass('flex-layout');
-            }
-            EntityDialogAsPanel = __decorate([
-                Serenity.Decorators.panel()
-            ], EntityDialogAsPanel);
-            return EntityDialogAsPanel;
-        }(Geshotel.Northwind.OrderDialog));
-        BasicSamples.EntityDialogAsPanel = EntityDialogAsPanel;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryDialog = (function (_super) {
-            __extends(CategoryDialog, _super);
-            function CategoryDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.CategoryForm(this.idPrefix);
-            }
-            CategoryDialog.prototype.getFormKey = function () { return Northwind.CategoryForm.formKey; };
-            CategoryDialog.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
-            CategoryDialog.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
-            CategoryDialog.prototype.getNameProperty = function () { return Northwind.CategoryRow.nameProperty; };
-            CategoryDialog.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
-            CategoryDialog.prototype.getLanguages = function () {
-                return Geshotel.LanguageList.getValue();
-            };
-            CategoryDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CategoryDialog);
-            return CategoryDialog;
-        }(Serenity.EntityDialog));
-        Northwind.CategoryDialog = CategoryDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Category/CategoryDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GetInsertedRecordIdDialog = (function (_super) {
-            __extends(GetInsertedRecordIdDialog, _super);
-            function GetInsertedRecordIdDialog() {
-                _super.apply(this, arguments);
-            }
-            /**
-             * This method is called after the save request to service
-             * is completed succesfully. This can be an insert or update.
-             *
-             * @param response Response that is returned from server
-             */
-            GetInsertedRecordIdDialog.prototype.onSaveSuccess = function (response) {
-                // check that this is an insert
-                if (this.isNew) {
-                    Q.notifySuccess("Just inserted a category with ID: " + response.EntityId);
-                    // you could also open a new dialog
-                    // new Northwind.CategoryDialog().loadByIdAndOpenDialog(response.EntityId);
-                    // but let's better load inserted record using Retrieve service
-                    Geshotel.Northwind.CategoryService.Retrieve({
-                        EntityId: response.EntityId
-                    }, function (resp) {
-                        Q.notifyInfo("Looks like the category you added has name: " + resp.Entity.CategoryName);
-                    });
-                }
-            };
-            GetInsertedRecordIdDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GetInsertedRecordIdDialog);
-            return GetInsertedRecordIdDialog;
-        }(Geshotel.Northwind.CategoryDialog));
-        BasicSamples.GetInsertedRecordIdDialog = GetInsertedRecordIdDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var CategoryGrid = (function (_super) {
-            __extends(CategoryGrid, _super);
-            function CategoryGrid(container) {
-                _super.call(this, container);
-            }
-            CategoryGrid.prototype.getColumnsKey = function () { return "Northwind.Category"; };
-            CategoryGrid.prototype.getDialogType = function () { return Northwind.CategoryDialog; };
-            CategoryGrid.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
-            CategoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
-            CategoryGrid.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
-            CategoryGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CategoryGrid);
-            return CategoryGrid;
-        }(Serenity.EntityGrid));
-        Northwind.CategoryGrid = CategoryGrid;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Category/CategoryGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of CategoryGrid to override dialog type to GetInsertedRecordIdDialog
-         */
-        var GetInsertedRecordIdGrid = (function (_super) {
-            __extends(GetInsertedRecordIdGrid, _super);
-            function GetInsertedRecordIdGrid(container) {
-                _super.call(this, container);
-            }
-            GetInsertedRecordIdGrid.prototype.getDialogType = function () { return BasicSamples.GetInsertedRecordIdDialog; };
-            GetInsertedRecordIdGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GetInsertedRecordIdGrid);
-            return GetInsertedRecordIdGrid;
-        }(Geshotel.Northwind.CategoryGrid));
-        BasicSamples.GetInsertedRecordIdGrid = GetInsertedRecordIdGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Styling for columns is done with CSS in site.basicsamples.less file.
-         * When comparing this to MultiColumnDialog sample, you may notice that
-         * this version requires much less JS and CSS code.
-         */
-        var MultiColumnResponsiveDialog = (function (_super) {
-            __extends(MultiColumnResponsiveDialog, _super);
-            function MultiColumnResponsiveDialog() {
-                _super.call(this);
-            }
-            MultiColumnResponsiveDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MultiColumnResponsiveDialog);
-            return MultiColumnResponsiveDialog;
-        }(Geshotel.Northwind.OrderDialog));
-        BasicSamples.MultiColumnResponsiveDialog = MultiColumnResponsiveDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to MultiColumnResponsiveDialog
-         */
-        var MultiColumnResponsiveGrid = (function (_super) {
-            __extends(MultiColumnResponsiveGrid, _super);
-            function MultiColumnResponsiveGrid(container) {
-                _super.call(this, container);
-            }
-            MultiColumnResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.MultiColumnResponsiveDialog; };
-            MultiColumnResponsiveGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MultiColumnResponsiveGrid);
-            return MultiColumnResponsiveGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.MultiColumnResponsiveGrid = MultiColumnResponsiveGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom order dialog subclass that will have a tab to display and edit selected customer details.
-         */
-        var OtherFormInTabDialog = (function (_super) {
-            __extends(OtherFormInTabDialog, _super);
-            function OtherFormInTabDialog() {
-                var _this = this;
-                _super.call(this);
-                // entity dialogs by default creates a property grid on element with ID "PropertyGrid".
-                // here we explicitly create another, the customer property grid (vertical form) on element with ID "CustomerPropertyGrid".
-                this.customerPropertyGrid = new Serenity.PropertyGrid(this.byId("CustomerPropertyGrid"), {
-                    items: Q.getForm(Geshotel.Northwind.CustomerForm.formKey).filter(function (x) { return x.name != 'CustomerID'; }),
-                    useCategories: true
-                });
-                // this is just a helper to access editors if needed
-                this.customerForm = new Geshotel.Northwind.CustomerForm(this.customerPropertyGrid.idPrefix);
-                // initialize validator for customer form
-                this.customerValidator = this.byId("CustomerForm").validate(Q.validateOptions({}));
-                var selfChange = 0;
-                // creating another toolbar for customer tab that will only save Customer
-                new Serenity.Toolbar(this.byId("CustomerToolbar"), {
-                    buttons: [{
-                            cssClass: "apply-changes-button",
-                            title: Q.text("Controls.EntityDialog.SaveButton"),
-                            onClick: function () {
-                                var id = _this.getCustomerID();
-                                if (!id)
-                                    return;
-                                if (!_this.customerValidator.form())
-                                    return;
-                                // prepare an empty entity to serialize customer details into
-                                var c = {};
-                                _this.customerPropertyGrid.save(c);
-                                Geshotel.Northwind.CustomerService.Update({
-                                    EntityId: id,
-                                    Entity: c
-                                }, function (response) {
-                                    // reload customer list just in case
-                                    Q.reloadLookup(Geshotel.Northwind.CustomerRow.lookupKey);
-                                    // set flag that we are triggering customer select change event
-                                    // otherwise active tab will change to first one
-                                    selfChange++;
-                                    try {
-                                        // trigger change so that customer select updates its text
-                                        // in case if Company Name is changed
-                                        _this.form.CustomerID.element.change();
-                                    }
-                                    finally {
-                                        selfChange--;
-                                    }
-                                    Q.notifySuccess("Saved customer details");
-                                });
-                            }
-                        }]
-                });
-                this.form.CustomerID.change(function (e) {
-                    if (selfChange)
-                        return;
-                    var customerID = _this.getCustomerID();
-                    Serenity.TabsExtensions.setDisabled(_this.tabs, 'Customer', !customerID);
-                    if (!customerID) {
-                        // no customer is selected, just load an empty entity
-                        _this.customerPropertyGrid.load({});
-                        return;
-                    }
-                    // load selected customer into customer form by calling CustomerService
-                    Geshotel.Northwind.CustomerService.Retrieve({
-                        EntityId: customerID
-                    }, function (response) {
-                        _this.customerPropertyGrid.load(response.Entity);
-                    });
-                });
-            }
-            OtherFormInTabDialog.prototype.getCustomerID = function () {
-                var customerID = this.form.CustomerID.value;
-                if (Q.isEmptyOrNull(customerID))
-                    return null;
-                // unfortunately, CustomerID (a string) used in this form and 
-                // the ID (auto increment ID) are different, so we need to 
-                // find numeric ID from customer lookups. 
-                // you'll probably won't need this step.
-                return Q.first(Geshotel.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-            };
-            OtherFormInTabDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Customer', !this.getCustomerID());
-            };
-            OtherFormInTabDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OtherFormInTabDialog);
-            return OtherFormInTabDialog;
-        }(Geshotel.Northwind.OrderDialog));
-        BasicSamples.OtherFormInTabDialog = OtherFormInTabDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to OtherFormInTabDialog
-         */
-        var OtherFormInTabGrid = (function (_super) {
-            __extends(OtherFormInTabGrid, _super);
-            function OtherFormInTabGrid(container) {
-                _super.call(this, container);
-            }
-            OtherFormInTabGrid.prototype.getDialogType = function () { return BasicSamples.OtherFormInTabDialog; };
-            OtherFormInTabGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OtherFormInTabGrid);
-            return OtherFormInTabGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.OtherFormInTabGrid = OtherFormInTabGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom order dialog subclass that will have a tab to display and edit selected customer details.
-         * With single toolbar for all forms
-         */
-        var OtherFormInTabOneBarDialog = (function (_super) {
-            __extends(OtherFormInTabOneBarDialog, _super);
-            function OtherFormInTabOneBarDialog() {
-                var _this = this;
-                _super.call(this);
-                this.selfChange = 0;
-                // entity dialogs by default creates a property grid on element with ID "PropertyGrid".
-                // here we explicitly create another, the customer property grid (vertical form) on element with ID "CustomerPropertyGrid".
-                this.customerPropertyGrid = new Serenity.PropertyGrid(this.byId("CustomerPropertyGrid"), {
-                    items: Q.getForm(Geshotel.Northwind.CustomerForm.formKey).filter(function (x) { return x.name != 'CustomerID'; }),
-                    useCategories: true
-                });
-                // this is just a helper to access editors if needed
-                this.customerForm = new Geshotel.Northwind.CustomerForm(this.customerPropertyGrid.idPrefix);
-                // initialize validator for customer form
-                this.customerValidator = this.byId("CustomerForm").validate(Q.validateOptions({}));
-                this.form.CustomerID.change(function (e) {
-                    if (_this.selfChange)
-                        return;
-                    var customerID = _this.getCustomerID();
-                    Serenity.TabsExtensions.setDisabled(_this.tabs, 'Customer', !customerID);
-                    if (!customerID) {
-                        // no customer is selected, just load an empty entity
-                        _this.customerPropertyGrid.load({});
-                        return;
-                    }
-                    // load selected customer into customer form by calling CustomerService
-                    Geshotel.Northwind.CustomerService.Retrieve({
-                        EntityId: customerID
-                    }, function (response) {
-                        _this.customerPropertyGrid.load(response.Entity);
-                    });
-                });
-            }
-            OtherFormInTabOneBarDialog.prototype.getCustomerID = function () {
-                var customerID = this.form.CustomerID.value;
-                if (Q.isEmptyOrNull(customerID))
-                    return null;
-                // unfortunately, CustomerID (a string) used in this form and 
-                // the ID (auto increment ID) are different, so we need to 
-                // find numeric ID from customer lookups. 
-                // you'll probably won't need this step.
-                return Q.first(Geshotel.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-            };
-            OtherFormInTabOneBarDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Customer', !this.getCustomerID());
-            };
-            // Save the customer and the order 
-            OtherFormInTabOneBarDialog.prototype.saveCustomer = function (callback, onSuccess) {
-                var _this = this;
-                var id = this.getCustomerID();
-                if (!id) {
-                    // If id of Customer isn't present, we save only Order entity
-                    onSuccess(null);
-                }
-                else {
-                    // Get current tab
-                    var currTab = Serenity.TabsExtensions.activeTabKey(this.tabs);
-                    // Select the correct tab and validate to see the error message in tab
-                    Serenity.TabsExtensions.selectTab(this.tabs, "Customer");
-                    if (!this.customerValidator.form()) {
-                        return false;
-                    }
-                    // Re-select initial tab
-                    Serenity.TabsExtensions.selectTab(this.tabs, currTab);
-                    // prepare an empty entity to serialize customer details into
-                    var c = {};
-                    this.customerPropertyGrid.save(c);
-                    Geshotel.Northwind.CustomerService.Update({
-                        EntityId: id,
-                        Entity: c
-                    }, function (response) {
-                        // reload customer list just in case
-                        Q.reloadLookup(Geshotel.Northwind.CustomerRow.lookupKey);
-                        // set flag that we are triggering customer select change event
-                        // otherwise active tab will change to first one
-                        _this.selfChange++;
-                        try {
-                            // trigger change so that customer select updates its text
-                            // in case if Company Name is changed
-                            _this.form.CustomerID.element.change();
-                        }
-                        finally {
-                            _this.selfChange--;
-                        }
-                        onSuccess(response);
-                    });
-                }
-                return true;
-            };
-            // Call super.save to save Order entity
-            OtherFormInTabOneBarDialog.prototype.saveOrder = function (callback) {
-                _super.prototype.save.call(this, callback);
-            };
-            OtherFormInTabOneBarDialog.prototype.saveAll = function (callback) {
-                var _this = this;
-                this.saveCustomer(callback, 
-                // If customer successa, save Order entity
-                function (resp) { return _this.saveOrder(callback); });
-            };
-            // This is called when save/update button is pressed
-            OtherFormInTabOneBarDialog.prototype.save = function (callback) {
-                this.saveAll(callback);
-            };
-            OtherFormInTabOneBarDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OtherFormInTabOneBarDialog);
-            return OtherFormInTabOneBarDialog;
-        }(Geshotel.Northwind.OrderDialog));
-        BasicSamples.OtherFormInTabOneBarDialog = OtherFormInTabOneBarDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to OtherFormInTabOneBarDialog
-         */
-        var OtherFormInTabOneBarGrid = (function (_super) {
-            __extends(OtherFormInTabOneBarGrid, _super);
-            function OtherFormInTabOneBarGrid(container) {
-                _super.call(this, container);
-            }
-            OtherFormInTabOneBarGrid.prototype.getDialogType = function () { return BasicSamples.OtherFormInTabOneBarDialog; };
-            OtherFormInTabOneBarGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OtherFormInTabOneBarGrid);
-            return OtherFormInTabOneBarGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.OtherFormInTabOneBarGrid = OtherFormInTabOneBarGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var PopulateLinkedDataDialog = (function (_super) {
-            __extends(PopulateLinkedDataDialog, _super);
-            function PopulateLinkedDataDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new BasicSamples.PopulateLinkedDataForm(this.idPrefix);
-                // "changeSelect2" is only fired when user changes the selection
-                // but "change" is fired when dialog sets customer on load too
-                // so we prefer "changeSelect2", as initial customer details 
-                // will get populated by initial load, we don't want extra call
-                this.form.CustomerID.changeSelect2(function (e) {
-                    var customerID = _this.form.CustomerID.value;
-                    if (Q.isEmptyOrNull(customerID)) {
-                        _this.setCustomerDetails({});
-                        return;
-                    }
-                    // in northwind CustomerID is a string like "ALFKI", 
-                    // while its actual integer ID value is 1.
-                    // so we need to convert customer ID to ID.
-                    // you won't have to do this conversion with your tables
-                    var id = Q.first(Geshotel.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == customerID; }).ID;
-                    Geshotel.Northwind.CustomerService.Retrieve({
-                        EntityId: id
-                    }, function (response) {
-                        _this.setCustomerDetails(response.Entity);
-                    });
-                });
-            }
-            PopulateLinkedDataDialog.prototype.getFormKey = function () { return BasicSamples.PopulateLinkedDataForm.formKey; };
-            PopulateLinkedDataDialog.prototype.getIdProperty = function () { return Geshotel.Northwind.OrderRow.idProperty; };
-            PopulateLinkedDataDialog.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.OrderRow.localTextPrefix; };
-            PopulateLinkedDataDialog.prototype.getNameProperty = function () { return Geshotel.Northwind.OrderRow.nameProperty; };
-            PopulateLinkedDataDialog.prototype.getService = function () { return Geshotel.Northwind.OrderService.baseUrl; };
-            PopulateLinkedDataDialog.prototype.setCustomerDetails = function (details) {
-                this.form.CustomerCity.value = details.City;
-                this.form.CustomerContactName.value = details.ContactName;
-                this.form.CustomerContactTitle.value = details.ContactTitle;
-                this.form.CustomerCountry.value = details.Country;
-                this.form.CustomerFax.value = details.Fax;
-                this.form.CustomerPhone.value = details.Phone;
-                this.form.CustomerRegion.value = details.Region;
-            };
-            /**
-             * This dialog will have CSS class "s-PopulateLinkedDataDialog"
-             * We are changing it here to "s-OrderDialog", to make it use default OrderDialog styles
-             * This has no effect other than looks on populate linked data demonstration
-             */
-            PopulateLinkedDataDialog.prototype.getCssClass = function () {
-                return _super.prototype.getCssClass.call(this) + " s-OrderDialog s-Northwind-OrderDialog";
-            };
-            PopulateLinkedDataDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PopulateLinkedDataDialog);
-            return PopulateLinkedDataDialog;
-        }(Serenity.EntityDialog));
-        BasicSamples.PopulateLinkedDataDialog = PopulateLinkedDataDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A subclass of OrderGrid that launches PopulateLinkedDataDialog
-         */
-        var PopulateLinkedDataGrid = (function (_super) {
-            __extends(PopulateLinkedDataGrid, _super);
-            function PopulateLinkedDataGrid(container) {
-                _super.call(this, container);
-            }
-            PopulateLinkedDataGrid.prototype.getDialogType = function () { return BasicSamples.PopulateLinkedDataDialog; };
-            PopulateLinkedDataGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PopulateLinkedDataGrid);
-            return PopulateLinkedDataGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.PopulateLinkedDataGrid = PopulateLinkedDataGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierDialog = (function (_super) {
-            __extends(SupplierDialog, _super);
-            function SupplierDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.SupplierForm(this.idPrefix);
-            }
-            SupplierDialog.prototype.getFormKey = function () { return Northwind.SupplierForm.formKey; };
-            SupplierDialog.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
-            SupplierDialog.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
-            SupplierDialog.prototype.getNameProperty = function () { return Northwind.SupplierRow.nameProperty; };
-            SupplierDialog.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
-            SupplierDialog.prototype.getLanguages = function () {
-                return Geshotel.LanguageList.getValue();
-            };
-            SupplierDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SupplierDialog);
-            return SupplierDialog;
-        }(Serenity.EntityDialog));
-        Northwind.SupplierDialog = SupplierDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ReadOnlyDialog = (function (_super) {
-            __extends(ReadOnlyDialog, _super);
-            function ReadOnlyDialog() {
-                _super.apply(this, arguments);
-            }
-            /**
-             * This is the method that gets list of tool
-             * buttons to be created in a dialog.
-             *
-             * Here we'll remove save and close button, and
-             * apply changes buttons.
-             */
-            ReadOnlyDialog.prototype.getToolbarButtons = function () {
-                var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "save-and-close-button"; }), 1);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "apply-changes-button"; }), 1);
-                // We could also remove delete button here, but for demonstration 
-                // purposes we'll hide it in another method (updateInterface)
-                // buttons.splice(Q.indexOf(buttons, x => x.cssClass == "delete-button"), 1);
-                return buttons;
-            };
-            /**
-             * This method is a good place to update states of
-             * interface elements. It is called after dialog
-             * is initialized and an entity is loaded into dialog.
-             * This is also called in new item mode.
-             */
-            ReadOnlyDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                // finding all editor elements and setting their readonly attribute
-                // note that this helper method only works with basic inputs, 
-                // some editors require widget based set readonly overload (setReadOnly)
-                Serenity.EditorUtils.setReadonly(this.element.find('.editor'), true);
-                // remove required asterisk (*)
-                this.element.find('sup').hide();
-                // here is a way to locate a button by its css class
-                // note that this method is not available in 
-                // getToolbarButtons() because buttons are not 
-                // created there yet!
-                // 
-                // this.toolbar.findButton('delete-button').hide();
-                // entity dialog also has reference variables to
-                // its default buttons, lets use them to hide delete button
-                this.deleteButton.hide();
-                // we could also hide save buttons just like delete button,
-                // but they are null now as we removed them in getToolbarButtons()
-                // if we didn't we could write like this:
-                // 
-                // this.applyChangesButton.hide();
-                // this.saveAndCloseButton.hide();
-                // instead of hiding, we could disable a button
-                // 
-                // this.deleteButton.toggleClass('disabled', true);
-            };
-            /**
-             * This method is called when dialog title needs to be updated.
-             * Base class returns something like 'Edit xyz' for edit mode,
-             * and 'New xyz' for new record mode.
-             *
-             * But our dialog is readonly, so we should change it to 'View xyz'
-             */
-            ReadOnlyDialog.prototype.getEntityTitle = function () {
-                if (!this.isEditMode()) {
-                    // we shouldn't hit here, but anyway for demo...
-                    return "How did you manage to open this dialog in new record mode?";
-                }
-                else {
-                    // entitySingular is type of record this dialog edits. something like 'Supplier'.
-                    // you could hardcode it, but this is for demonstration
-                    var entityType = _super.prototype.getEntitySingular.call(this);
-                    // get name field value of record this dialog edits
-                    var name_1 = this.getEntityNameFieldValue() || "";
-                    // you could use Q.format with a local text, but again demo...
-                    return 'View ' + entityType + " (" + name_1 + ")";
-                }
-            };
-            /**
-             * This method is actually the one that calls getEntityTitle()
-             * and updates the dialog title. We could do it here too...
-             */
-            ReadOnlyDialog.prototype.updateTitle = function () {
-                _super.prototype.updateTitle.call(this);
-                // remove super.updateTitle() call above and uncomment 
-                // below line if you'd like to use this version
-                // 
-                // this.dialogTitle = 'View Supplier (' + this.getEntityNameFieldValue() + ')';
-            };
-            ReadOnlyDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ReadOnlyDialog);
-            return ReadOnlyDialog;
-        }(Geshotel.Northwind.SupplierDialog));
-        BasicSamples.ReadOnlyDialog = ReadOnlyDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var SupplierGrid = (function (_super) {
-            __extends(SupplierGrid, _super);
-            function SupplierGrid(container) {
-                _super.call(this, container);
-            }
-            SupplierGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
-            SupplierGrid.prototype.getDialogType = function () { return Northwind.SupplierDialog; };
-            SupplierGrid.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
-            SupplierGrid.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
-            SupplierGrid.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
-            SupplierGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SupplierGrid);
-            return SupplierGrid;
-        }(Serenity.EntityGrid));
-        Northwind.SupplierGrid = SupplierGrid;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * A readonly grid that launches ReadOnlyDialog
-         */
-        var ReadOnlyGrid = (function (_super) {
-            __extends(ReadOnlyGrid, _super);
-            function ReadOnlyGrid(container) {
-                _super.call(this, container);
-            }
-            ReadOnlyGrid.prototype.getDialogType = function () { return BasicSamples.ReadOnlyDialog; };
-            /**
-             * Removing add button from grid using its css class
-             */
-            ReadOnlyGrid.prototype.getButtons = function () {
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
-                return buttons;
-            };
-            ReadOnlyGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ReadOnlyGrid);
-            return ReadOnlyGrid;
-        }(Geshotel.Northwind.SupplierGrid));
-        BasicSamples.ReadOnlyGrid = ReadOnlyGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Adding Responsive attribute makes this dialog use full screen in mobile devices.
-         */
-        var ResponsiveDialog = (function (_super) {
-            __extends(ResponsiveDialog, _super);
-            function ResponsiveDialog() {
-                _super.call(this);
-            }
-            ResponsiveDialog.prototype.getFormKey = function () { return Geshotel.Northwind.OrderForm.formKey; };
-            ResponsiveDialog.prototype.getIdProperty = function () { return Geshotel.Northwind.OrderRow.idProperty; };
-            ResponsiveDialog.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.OrderRow.localTextPrefix; };
-            ResponsiveDialog.prototype.getNameProperty = function () { return Geshotel.Northwind.OrderRow.nameProperty; };
-            ResponsiveDialog.prototype.getService = function () { return Geshotel.Northwind.OrderService.baseUrl; };
-            ResponsiveDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive(),
-                Serenity.Decorators.maximizable()
-            ], ResponsiveDialog);
-            return ResponsiveDialog;
-        }(Serenity.EntityDialog));
-        BasicSamples.ResponsiveDialog = ResponsiveDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to ResponsiveDialog
-         */
-        var ResponsiveGrid = (function (_super) {
-            __extends(ResponsiveGrid, _super);
-            function ResponsiveGrid(container) {
-                _super.call(this, container);
-            }
-            ResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.ResponsiveDialog; };
-            ResponsiveGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResponsiveGrid);
-            return ResponsiveGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.ResponsiveGrid = ResponsiveGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerDialog = (function (_super) {
-            __extends(CustomerDialog, _super);
-            function CustomerDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Northwind.CustomerForm(this.idPrefix);
-                this.ordersGrid = new Northwind.CustomerOrdersGrid(this.byId('OrdersGrid'));
-                this.ordersGrid.element.flexHeightOnly(1);
-                this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
-                Geshotel.DialogUtils.pendingChangesConfirmation(this.element, function () { return _this.getSaveState() != _this.loadedState; });
-            }
-            CustomerDialog.prototype.getFormKey = function () { return Northwind.CustomerForm.formKey; };
-            CustomerDialog.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
-            CustomerDialog.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
-            CustomerDialog.prototype.getNameProperty = function () { return Northwind.CustomerRow.nameProperty; };
-            CustomerDialog.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
-            CustomerDialog.prototype.getSaveState = function () {
-                try {
-                    return $.toJSON(this.getSaveEntity());
-                }
-                catch (e) {
-                    return null;
-                }
-            };
-            CustomerDialog.prototype.loadResponse = function (data) {
-                _super.prototype.loadResponse.call(this, data);
-                this.loadedState = this.getSaveState();
-            };
-            CustomerDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
-                this.ordersGrid.customerID = entity.CustomerID;
-            };
-            CustomerDialog.prototype.onSaveSuccess = function (response) {
-                _super.prototype.onSaveSuccess.call(this, response);
-                Q.reloadLookup('Northwind.Customer');
-            };
-            CustomerDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomerDialog);
-            return CustomerDialog;
-        }(Serenity.EntityDialog));
-        Northwind.CustomerDialog = CustomerDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Customer/CustomerDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var SerialAutoNumberDialog = (function (_super) {
-            __extends(SerialAutoNumberDialog, _super);
-            function SerialAutoNumberDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form.CustomerID.element.on('keyup', function (e) {
-                    // only auto number when a key between 'A' and 'Z' is pressed
-                    if (e.which >= 65 && e.which <= 90)
-                        _this.getNextNumber();
-                });
-            }
-            SerialAutoNumberDialog.prototype.afterLoadEntity = function () {
-                _super.prototype.afterLoadEntity.call(this);
-                // fill next number in new record mode
-                if (this.isNew())
-                    this.getNextNumber();
-            };
-            SerialAutoNumberDialog.prototype.getNextNumber = function () {
-                var _this = this;
-                var val = Q.trimToNull(this.form.CustomerID.value);
-                // we will only get next number when customer ID is empty or 1 character in length
-                if (!val || val.length <= 1) {
-                    // if no customer ID yet (new record mode probably) use 'C' as a prefix
-                    var prefix = (val || 'C').toUpperCase();
-                    // call our service, see CustomerEndpoint.cs and CustomerRepository.cs
-                    Geshotel.Northwind.CustomerService.GetNextNumber({
-                        Prefix: prefix,
-                        Length: 5 // we want service to search for and return serials of 5 in length
-                    }, function (response) {
-                        _this.form.CustomerID.value = response.Serial;
-                        // this is to mark numerical part after prefix
-                        _this.form.CustomerID.element[0].setSelectionRange(prefix.length, response.Serial.length);
-                    });
-                }
-            };
-            SerialAutoNumberDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SerialAutoNumberDialog);
-            return SerialAutoNumberDialog;
-        }(Geshotel.Northwind.CustomerDialog));
-        BasicSamples.SerialAutoNumberDialog = SerialAutoNumberDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var CustomerGrid = (function (_super) {
-            __extends(CustomerGrid, _super);
-            function CustomerGrid(container) {
-                _super.call(this, container);
-            }
-            CustomerGrid.prototype.getColumnsKey = function () { return "Northwind.Customer"; };
-            CustomerGrid.prototype.getDialogType = function () { return Northwind.CustomerDialog; };
-            CustomerGrid.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
-            CustomerGrid.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
-            CustomerGrid.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
-            CustomerGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    service: 'Northwind/Customer/ListExcel',
-                    separator: true
-                }));
-                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            CustomerGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], CustomerGrid);
-            return CustomerGrid;
-        }(Serenity.EntityGrid));
-        Northwind.CustomerGrid = CustomerGrid;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Customer/CustomerGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of CustomerGrid to override dialog type to SerialAutoNumberDialog
-         */
-        var SerialAutoNumberGrid = (function (_super) {
-            __extends(SerialAutoNumberGrid, _super);
-            function SerialAutoNumberGrid(container) {
-                _super.call(this, container);
-            }
-            SerialAutoNumberGrid.prototype.getDialogType = function () { return BasicSamples.SerialAutoNumberDialog; };
-            SerialAutoNumberGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SerialAutoNumberGrid);
-            return SerialAutoNumberGrid;
-        }(Geshotel.Northwind.CustomerGrid));
-        BasicSamples.SerialAutoNumberGrid = SerialAutoNumberGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Common;
-    (function (Common) {
-        var GridEditorDialog = (function (_super) {
-            __extends(GridEditorDialog, _super);
-            function GridEditorDialog() {
-                _super.apply(this, arguments);
-            }
-            GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
-            GridEditorDialog.prototype.destroy = function () {
-                this.onSave = null;
-                this.onDelete = null;
-                _super.prototype.destroy.call(this);
-            };
-            GridEditorDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                // apply changes button doesn't work properly with in-memory grids yet
-                if (this.applyChangesButton) {
-                    this.applyChangesButton.hide();
-                }
-            };
-            GridEditorDialog.prototype.saveHandler = function (options, callback) {
-                this.onSave && this.onSave(options, callback);
-            };
-            GridEditorDialog.prototype.deleteHandler = function (options, callback) {
-                this.onDelete && this.onDelete(options, callback);
-            };
-            GridEditorDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GridEditorDialog);
-            return GridEditorDialog;
-        }(Serenity.EntityDialog));
-        Common.GridEditorDialog = GridEditorDialog;
-    })(Common = Geshotel.Common || (Geshotel.Common = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Common/Helpers/GridEditorDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChangingLookupTextDialog = (function (_super) {
-            __extends(ChangingLookupTextDialog, _super);
-            function ChangingLookupTextDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new BasicSamples.ChangingLookupTextForm(this.idPrefix);
-                this.form.ProductID.changeSelect2(function (e) {
-                    var productID = Q.toId(_this.form.ProductID.value);
-                    if (productID != null) {
-                        _this.form.UnitPrice.value = Geshotel.Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
-                    }
-                });
-                this.form.Discount.addValidationRule(this.uniqueName, function (e) {
-                    var price = _this.form.UnitPrice.value;
-                    var quantity = _this.form.Quantity.value;
-                    var discount = _this.form.Discount.value;
-                    if (price != null && quantity != null && discount != null &&
-                        discount > 0 && discount >= price * quantity) {
-                        return "Discount can't be higher than total price!";
-                    }
-                });
-            }
-            ChangingLookupTextDialog.prototype.getFormKey = function () { return BasicSamples.ChangingLookupTextForm.formKey; };
-            ChangingLookupTextDialog.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.OrderDetailRow.localTextPrefix; };
-            ChangingLookupTextDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                this.toolbar.findButton('apply-changes-button').hide();
-                this.toolbar.findButton('save-and-close-button').hide();
-            };
-            ChangingLookupTextDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ChangingLookupTextDialog);
-            return ChangingLookupTextDialog;
-        }(Geshotel.Common.GridEditorDialog));
-        BasicSamples.ChangingLookupTextDialog = ChangingLookupTextDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our custom product editor type
-         */
-        var ChangingLookupTextEditor = (function (_super) {
-            __extends(ChangingLookupTextEditor, _super);
-            function ChangingLookupTextEditor(container, options) {
-                _super.call(this, container, options);
-            }
-            ChangingLookupTextEditor.prototype.getLookupKey = function () {
-                return Geshotel.Northwind.ProductRow.lookupKey;
-            };
-            ChangingLookupTextEditor.prototype.getItemText = function (item, lookup) {
-                return _super.prototype.getItemText.call(this, item, lookup) +
-                    ' (' +
-                    '$' + Q.formatNumber(item.UnitPrice, '#,##0.00') +
-                    ', ' + (item.UnitsInStock > 0 ? (item.UnitsInStock + ' in stock') : 'out of stock') +
-                    ', ' + (item.SupplierCompanyName || 'Unknown') +
-                    ')';
-            };
-            ChangingLookupTextEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], ChangingLookupTextEditor);
-            return ChangingLookupTextEditor;
-        }(Serenity.LookupEditorBase));
-        BasicSamples.ChangingLookupTextEditor = ChangingLookupTextEditor;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Common;
-    (function (Common) {
-        var GridEditorBase = (function (_super) {
-            __extends(GridEditorBase, _super);
-            function GridEditorBase(container) {
-                _super.call(this, container);
-                this.nextId = 1;
-            }
-            GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
-            GridEditorBase.prototype.id = function (entity) {
-                return entity[this.getIdProperty()];
-            };
-            GridEditorBase.prototype.getNextId = function () {
-                return "`" + this.nextId++;
-            };
-            GridEditorBase.prototype.setNewId = function (entity) {
-                entity[this.getIdProperty()] = this.getNextId();
-            };
-            GridEditorBase.prototype.save = function (opt, callback) {
-                var _this = this;
-                var request = opt.request;
-                var row = Q.deepClone(request.Entity);
-                var id = this.id(row);
-                if (id == null) {
-                    row[this.getIdProperty()] = this.getNextId();
-                }
-                if (!this.validateEntity(row, id)) {
-                    return;
-                }
-                var items = this.view.getItems().slice();
-                if (id == null) {
-                    items.push(row);
-                }
-                else {
-                    var index = Q.indexOf(items, function (x) { return _this.id(x) === id; });
-                    items[index] = Q.deepClone({}, items[index], row);
-                }
-                this.setEntities(items);
-                callback({});
-            };
-            GridEditorBase.prototype.deleteEntity = function (id) {
-                this.view.deleteItem(id);
-                return true;
-            };
-            GridEditorBase.prototype.validateEntity = function (row, id) {
-                return true;
-            };
-            GridEditorBase.prototype.setEntities = function (items) {
-                this.view.setItems(items, true);
-            };
-            GridEditorBase.prototype.getNewEntity = function () {
-                return {};
-            };
-            GridEditorBase.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: this.getAddButtonCaption(),
-                        cssClass: 'add-button',
-                        onClick: function () {
-                            _this.createEntityDialog(_this.getItemType(), function (dlg) {
-                                var dialog = dlg;
-                                dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
-                                dialog.loadEntityAndOpenDialog(_this.getNewEntity());
-                            });
-                        }
-                    }];
-            };
-            GridEditorBase.prototype.editItem = function (entityOrId) {
-                var _this = this;
-                var id = entityOrId;
-                var item = this.view.getItemById(id);
-                this.createEntityDialog(this.getItemType(), function (dlg) {
-                    var dialog = dlg;
-                    dialog.onDelete = function (opt, callback) {
-                        if (!_this.deleteEntity(id)) {
-                            return;
-                        }
-                        callback({});
-                    };
-                    dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
-                    dialog.loadEntityAndOpenDialog(item);
-                });
-                ;
-            };
-            GridEditorBase.prototype.getEditValue = function (property, target) {
-                target[property.name] = this.value;
-            };
-            GridEditorBase.prototype.setEditValue = function (source, property) {
-                this.value = source[property.name];
-            };
-            Object.defineProperty(GridEditorBase.prototype, "value", {
-                get: function () {
-                    var p = this.getIdProperty();
-                    return this.view.getItems().map(function (x) {
-                        var y = Q.deepClone(x);
-                        var id = y[p];
-                        if (id && id.toString().charAt(0) == '`')
-                            delete y[p];
-                        return y;
-                    });
-                },
-                set: function (value) {
-                    var _this = this;
-                    var p = this.getIdProperty();
-                    this.view.setItems((value || []).map(function (x) {
-                        var y = Q.deepClone(x);
-                        if (y[p] == null)
-                            y[p] = "`" + _this.getNextId();
-                        return y;
-                    }), true);
-                },
-                enumerable: true,
-                configurable: true
-            });
-            GridEditorBase.prototype.getGridCanLoad = function () {
-                return false;
-            };
-            GridEditorBase.prototype.usePager = function () {
-                return false;
-            };
-            GridEditorBase.prototype.getInitialTitle = function () {
-                return null;
-            };
-            GridEditorBase.prototype.createQuickSearchInput = function () {
-            };
-            GridEditorBase = __decorate([
-                Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-                Serenity.Decorators.editor(),
-                Serenity.Decorators.element("<div/>")
-            ], GridEditorBase);
-            return GridEditorBase;
-        }(Serenity.EntityGrid));
-        Common.GridEditorBase = GridEditorBase;
-    })(Common = Geshotel.Common || (Geshotel.Common = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailsEditor = (function (_super) {
-            __extends(OrderDetailsEditor, _super);
-            function OrderDetailsEditor(container) {
-                _super.call(this, container);
-            }
-            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Northwind.OrderDetail"; };
-            OrderDetailsEditor.prototype.getDialogType = function () { return Northwind.OrderDetailDialog; };
-            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
-            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
-                row.ProductID = Q.toId(row.ProductID);
-                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductID === row.ProductID; });
-                if (sameProduct && this.id(sameProduct) !== id) {
-                    Q.alert('This product is already in order details!');
-                    return false;
-                }
-                row.ProductName = Northwind.ProductRow.getLookup().itemById[row.ProductID].ProductName;
-                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
-                return true;
-            };
-            OrderDetailsEditor = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDetailsEditor);
-            return OrderDetailsEditor;
-        }(Geshotel.Common.GridEditorBase));
-        Northwind.OrderDetailsEditor = OrderDetailsEditor;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/OrderDetail/OrderDetailsEditor.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our subclass of Order Details editor with a CategoryID property
-         */
-        var FilteredLookupDetailEditor = (function (_super) {
-            __extends(FilteredLookupDetailEditor, _super);
-            function FilteredLookupDetailEditor(container) {
-                _super.call(this, container);
-            }
-            FilteredLookupDetailEditor.prototype.getDialogType = function () { return BasicSamples.FilteredLookupOrderDetailDialog; };
-            /**
-             * This method is called to initialize an edit dialog created by
-             * grid editor when Add button or an edit link is clicked
-             * We have an opportunity here to pass CategoryID to edit dialog
-             */
-            FilteredLookupDetailEditor.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                // passing category ID from grid editor to detail dialog
-                dialog.categoryID = this.categoryID;
-            };
-            FilteredLookupDetailEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], FilteredLookupDetailEditor);
-            return FilteredLookupDetailEditor;
-        }(Geshotel.Northwind.OrderDetailsEditor));
-        BasicSamples.FilteredLookupDetailEditor = FilteredLookupDetailEditor;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Basic order dialog with a category selection
-         */
-        var FilteredLookupInDetailDialog = (function (_super) {
-            __extends(FilteredLookupInDetailDialog, _super);
-            function FilteredLookupInDetailDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new BasicSamples.FilteredLookupInDetailForm(this.idPrefix);
-                this.form.CategoryID.change(function (e) {
-                    _this.form.DetailList.categoryID = Q.toId(_this.form.CategoryID.value);
-                });
-            }
-            FilteredLookupInDetailDialog.prototype.getFormKey = function () { return BasicSamples.FilteredLookupInDetailForm.formKey; };
-            FilteredLookupInDetailDialog.prototype.getIdProperty = function () { return Geshotel.Northwind.OrderRow.idProperty; };
-            FilteredLookupInDetailDialog.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.OrderRow.localTextPrefix; };
-            FilteredLookupInDetailDialog.prototype.getNameProperty = function () { return Geshotel.Northwind.OrderRow.nameProperty; };
-            FilteredLookupInDetailDialog.prototype.getService = function () { return Geshotel.Northwind.OrderService.baseUrl; };
-            FilteredLookupInDetailDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], FilteredLookupInDetailDialog);
-            return FilteredLookupInDetailDialog;
-        }(Serenity.EntityDialog));
-        BasicSamples.FilteredLookupInDetailDialog = FilteredLookupInDetailDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to FilteredLookupInDetailDialog
-         */
-        var FilteredLookupInDetailGrid = (function (_super) {
-            __extends(FilteredLookupInDetailGrid, _super);
-            function FilteredLookupInDetailGrid(container) {
-                _super.call(this, container);
-            }
-            FilteredLookupInDetailGrid.prototype.getDialogType = function () { return BasicSamples.FilteredLookupInDetailDialog; };
-            FilteredLookupInDetailGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], FilteredLookupInDetailGrid);
-            return FilteredLookupInDetailGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.FilteredLookupInDetailGrid = FilteredLookupInDetailGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var Northwind;
-    (function (Northwind) {
-        var OrderDetailDialog = (function (_super) {
-            __extends(OrderDetailDialog, _super);
-            function OrderDetailDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Northwind.OrderDetailForm(this.idPrefix);
-                this.form.ProductID.changeSelect2(function (e) {
-                    var productID = Q.toId(_this.form.ProductID.value);
-                    if (productID != null) {
-                        _this.form.UnitPrice.value = Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
-                    }
-                });
-                this.form.Discount.addValidationRule(this.uniqueName, function (e) {
-                    var price = _this.form.UnitPrice.value;
-                    var quantity = _this.form.Quantity.value;
-                    var discount = _this.form.Discount.value;
-                    if (price != null && quantity != null && discount != null &&
-                        discount > 0 && discount >= price * quantity) {
-                        return "Discount can't be higher than total price!";
-                    }
-                });
-            }
-            OrderDetailDialog.prototype.getFormKey = function () { return Northwind.OrderDetailForm.formKey; };
-            OrderDetailDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
-            OrderDetailDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDetailDialog);
-            return OrderDetailDialog;
-        }(Geshotel.Common.GridEditorDialog));
-        Northwind.OrderDetailDialog = OrderDetailDialog;
-    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/OrderDetail/OrderDetailDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our subclass of order detail dialog with a CategoryID property
-         * that will be used to set CascadeValue of product editor
-         */
-        var FilteredLookupOrderDetailDialog = (function (_super) {
-            __extends(FilteredLookupOrderDetailDialog, _super);
-            function FilteredLookupOrderDetailDialog() {
-                _super.call(this);
-                this.form = new Geshotel.Northwind.OrderDetailForm(this.idPrefix);
-                // we can set cascade field in constructor
-                // we could also use FilterField but in this case, when CategoryID is null
-                // lookup editor would show all products in any category
-                this.form.ProductID.cascadeField = Geshotel.Northwind.ProductRow.Fields.CategoryID;
-                // but CategoryID value is not yet available here as detail editor will set it 
-                // after calling constructor (creating a detail dialog) so we'll use BeforeLoadEntity
-            }
-            /**
-             * This method is called just before an entity is loaded to dialog
-             * This is also called for new record mode with an empty entity
-             */
-            FilteredLookupOrderDetailDialog.prototype.beforeLoadEntity = function (entity) {
-                _super.prototype.beforeLoadEntity.call(this, entity);
-                // setting cascade value here
-                // make sure you have [LookupInclude] on CategoryID property of ProductRow
-                // otherwise this field won't be available in lookup script (will always be null),
-                // so can't be filtered and you'll end up with an empty product list.
-                this.form.ProductID.cascadeValue = this.categoryID;
-            };
-            FilteredLookupOrderDetailDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], FilteredLookupOrderDetailDialog);
-            return FilteredLookupOrderDetailDialog;
-        }(Geshotel.Northwind.OrderDetailDialog));
-        BasicSamples.FilteredLookupOrderDetailDialog = FilteredLookupOrderDetailDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductDialog.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * This is our custom product dialog that uses a different product form
-         * (LookupFilterByMultipleForm) with our special category editor.
-         */
-        var LookupFilterByMultipleDialog = (function (_super) {
-            __extends(LookupFilterByMultipleDialog, _super);
-            function LookupFilterByMultipleDialog() {
-                _super.apply(this, arguments);
-            }
-            LookupFilterByMultipleDialog.prototype.getFormKey = function () { return BasicSamples.LookupFilterByMultipleForm.formKey; };
-            LookupFilterByMultipleDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LookupFilterByMultipleDialog);
-            return LookupFilterByMultipleDialog;
-        }(Geshotel.Northwind.ProductDialog));
-        BasicSamples.LookupFilterByMultipleDialog = LookupFilterByMultipleDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of ProductGrid to override dialog type to CloneableEntityDialog
-         */
-        var LookupFilterByMultipleGrid = (function (_super) {
-            __extends(LookupFilterByMultipleGrid, _super);
-            function LookupFilterByMultipleGrid(container) {
-                _super.call(this, container);
-            }
-            LookupFilterByMultipleGrid.prototype.getDialogType = function () { return BasicSamples.LookupFilterByMultipleDialog; };
-            /**
-             * This method is called just before List request is sent to service.
-             * You have an opportunity here to cancel request or modify it.
-             * Here we'll add a custom criteria to list request.
-             */
-            LookupFilterByMultipleGrid.prototype.onViewSubmit = function () {
-                if (!_super.prototype.onViewSubmit.call(this)) {
-                    return false;
-                }
-                // this has no relation to our lookup editor but as we'll allow picking only 
-                // categories of Produce and Seafood in product dialog, it's better to show
-                // only products from these categories in grid too
-                var request = this.view.params;
-                request.Criteria = Serenity.Criteria.and(request.Criteria, [['CategoryName'], 'in', [['Produce', 'Seafood']]]);
-                // brackets used are important above, NOT ['CategoryName', 'in', ['Produce', 'Seafood']]
-                return true;
-            };
-            LookupFilterByMultipleGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LookupFilterByMultipleGrid);
-            return LookupFilterByMultipleGrid;
-        }(Geshotel.Northwind.ProductGrid));
-        BasicSamples.LookupFilterByMultipleGrid = LookupFilterByMultipleGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * This is our category editor that will show only categories of Produce and
-         * Seafood. We are subclassing LookupEditorBase which also LookupEditor
-         * derives from.
-         *
-         * After compiling and transforming templates, this editor type will be
-         * available in server side to use in our LookupFilterByMultipleForm,
-         * which is a version of ProductForm that uses our custom editor.
-         */
-        var ProduceSeafoodCategoryEditor = (function (_super) {
-            __extends(ProduceSeafoodCategoryEditor, _super);
-            function ProduceSeafoodCategoryEditor(container, opt) {
-                _super.call(this, container, opt);
-            }
-            /**
-             * Normally LookupEditor requires a lookup key to determine which set of
-             * lookup data to show in editor. As our editor will only show category
-             * data, we lock it to category lookup key.
-             */
-            ProduceSeafoodCategoryEditor.prototype.getLookupKey = function () {
-                return Geshotel.Northwind.CategoryRow.lookupKey;
-            };
-            /**
-             * Here we are filtering by category name but you could filter by any field.
-             * Just make sure the fields you filter on has [LookupInclude] attribute on them,
-             * otherwise their value will be null in client side as they are not sent back
-             * from server in lookup script.
-             */
-            ProduceSeafoodCategoryEditor.prototype.getItems = function (lookup) {
-                return _super.prototype.getItems.call(this, lookup).filter(function (x) {
-                    return x.CategoryName === 'Produce' || x.CategoryName === 'Seafood';
-                });
-            };
-            ProduceSeafoodCategoryEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], ProduceSeafoodCategoryEditor);
-            return ProduceSeafoodCategoryEditor;
-        }(Serenity.LookupEditorBase));
-        BasicSamples.ProduceSeafoodCategoryEditor = ProduceSeafoodCategoryEditor;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var HardcodedValuesDialog = (function (_super) {
-            __extends(HardcodedValuesDialog, _super);
-            function HardcodedValuesDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new BasicSamples.HardcodedValuesForm(this.idPrefix);
-                this.dialogTitle = "Please select some value";
-                this.form.SomeValue.changeSelect2(function (e) {
-                    Q.notifySuccess("You selected item with key: " + _this.form.SomeValue.value);
-                });
-            }
-            HardcodedValuesDialog.prototype.getFormKey = function () { return BasicSamples.HardcodedValuesForm.formKey; };
-            HardcodedValuesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], HardcodedValuesDialog);
-            return HardcodedValuesDialog;
-        }(Serenity.PropertyDialog));
-        BasicSamples.HardcodedValuesDialog = HardcodedValuesDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Our select editor with hardcoded values.
-         *
-         * When you define a new editor type, make sure you build
-         * and transform templates for it to be available
-         * in server side forms, e.g. [HardCodedValuesEditor]
-         */
-        var HardcodedValuesEditor = (function (_super) {
-            __extends(HardcodedValuesEditor, _super);
-            function HardcodedValuesEditor(container) {
-                _super.call(this, container, null);
-                // add option accepts a key (id) value and display text value
-                this.addOption("key1", "Text 1");
-                this.addOption("key2", "Text 2");
-                // you may also use addItem which accepts a Select2Item parameter
-                this.addItem({
-                    id: "key3",
-                    text: "Text 3"
-                });
-                // don't let selecting this one (disabled)
-                this.addItem({
-                    id: "key4",
-                    text: "Text 4",
-                    disabled: true
-                });
-            }
-            HardcodedValuesEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], HardcodedValuesEditor);
-            return HardcodedValuesEditor;
-        }(Serenity.Select2Editor));
-        BasicSamples.HardcodedValuesEditor = HardcodedValuesEditor;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    /**
-     * This is an editor widget but it only displays a text, not edits it.
-     *
-     */
-    var StaticTextBlock = (function (_super) {
-        __extends(StaticTextBlock, _super);
-        function StaticTextBlock(container, options) {
-            _super.call(this, container, options);
-            // hide the caption label for this editor if in a form. ugly hack
-            if (this.options.hideLabel)
-                this.element.closest('.field').find('.caption').hide();
-            this.updateElementContent();
-        }
-        StaticTextBlock.prototype.updateElementContent = function () {
-            var text = Q.coalesce(this.options.text, this.value);
-            // if isLocalText is set, text is actually a local text key
-            if (this.options.isLocalText)
-                text = Q.text(text);
-            // don't html encode if isHtml option is true
-            if (this.options.isHtml)
-                this.element.html(text);
-            else
-                this.element.text(text);
-        };
-        /**
-         * By implementing ISetEditValue interface, we allow this editor to display its field value.
-         * But only do this when our text content is not explicitly set in options
-         */
-        StaticTextBlock.prototype.setEditValue = function (source, property) {
-            if (this.options.text == null) {
-                this.value = Q.coalesce(this.options.text, source[property.name]);
-                this.updateElementContent();
-            }
-        };
-        StaticTextBlock = __decorate([
-            Serenity.Decorators.element("<div/>"),
-            Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
-        ], StaticTextBlock);
-        return StaticTextBlock;
-    }(Serenity.Widget));
-    Geshotel.StaticTextBlock = StaticTextBlock;
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var StaticTextBlockDialog = (function (_super) {
-            __extends(StaticTextBlockDialog, _super);
-            function StaticTextBlockDialog() {
-                _super.call(this);
-                this.form = new BasicSamples.StaticTextBlockForm(this.idPrefix);
-                this.dialogTitle = "A form with static text blocks";
-            }
-            StaticTextBlockDialog.prototype.getFormKey = function () { return BasicSamples.StaticTextBlockForm.formKey; };
-            /**
-             * Here we override loadInitialEntity method to set value for "DisplayFieldValue" field.
-             * If this was an EntityDialog, your field value would be originating from server side entity.
-             */
-            StaticTextBlockDialog.prototype.loadInitialEntity = function () {
-                this.propertyGrid.load({
-                    DisplayFieldValue: 'This content comes from <b>the value</b> of <em>DisplayFieldValue</em> field.'
-                });
-            };
-            StaticTextBlockDialog.prototype.getDialogOptions = function () {
-                var opt = _super.prototype.getDialogOptions.call(this);
-                opt.width = 650;
-                return opt;
-            };
-            StaticTextBlockDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], StaticTextBlockDialog);
-            return StaticTextBlockDialog;
-        }(Serenity.PropertyDialog));
-        BasicSamples.StaticTextBlockDialog = StaticTextBlockDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CancellableBulkActionGrid = (function (_super) {
-            __extends(CancellableBulkActionGrid, _super);
-            function CancellableBulkActionGrid(container) {
-                _super.call(this, container);
-            }
-            CancellableBulkActionGrid.prototype.createToolbarExtensions = function () {
-                _super.prototype.createToolbarExtensions.call(this);
-                this.rowSelection = new Serenity.GridRowSelectionMixin(this);
-            };
-            CancellableBulkActionGrid.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: 'Perform Bulk Action on Selected Orders',
-                        cssClass: 'send-button',
-                        onClick: function () {
-                            if (!_this.onViewSubmit()) {
-                                return;
-                            }
-                            var action = new BasicSamples.OrderBulkAction();
-                            action.done = function () { return _this.rowSelection.resetCheckedAndRefresh(); };
-                            action.execute(_this.rowSelection.getSelectedKeys());
-                        }
-                    }];
-            };
-            CancellableBulkActionGrid.prototype.getColumns = function () {
-                var _this = this;
-                var columns = _super.prototype.getColumns.call(this);
-                columns.splice(0, 0, Serenity.GridRowSelectionMixin.createSelectColumn(function () { return _this.rowSelection; }));
-                return columns;
-            };
-            CancellableBulkActionGrid.prototype.getViewOptions = function () {
-                var opt = _super.prototype.getViewOptions.call(this);
-                opt.rowsPerPage = 2500;
-                return opt;
-            };
-            CancellableBulkActionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CancellableBulkActionGrid);
-            return CancellableBulkActionGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.CancellableBulkActionGrid = CancellableBulkActionGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ConditionalFormattingGrid = (function (_super) {
-            __extends(ConditionalFormattingGrid, _super);
-            function ConditionalFormattingGrid(container) {
-                _super.call(this, container);
-            }
-            ConditionalFormattingGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
-            ConditionalFormattingGrid.prototype.getDialogType = function () { return Geshotel.Northwind.ProductDialog; };
-            ConditionalFormattingGrid.prototype.getIdProperty = function () { return Geshotel.Northwind.ProductRow.idProperty; };
-            ConditionalFormattingGrid.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.ProductRow.localTextPrefix; };
-            ConditionalFormattingGrid.prototype.getService = function () { return Geshotel.Northwind.ProductService.baseUrl; };
-            /**
-             * We override getColumns() to be able to add a custom CSS class to UnitPrice
-             * We could also add this class in ProductColumns.cs but didn't want to modify
-             * it solely for this sample.
-             */
-            ConditionalFormattingGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                var fld = Geshotel.Northwind.ProductRow.Fields;
-                // adding a specific css class to UnitPrice column, 
-                // to be able to format cell with a different background
-                Q.first(columns, function (x) { return x.field == fld.UnitPrice; }).cssClass += " col-unit-price";
-                return columns;
-            };
-            /**
-             * This method is called for all rows
-             * @param item Data item for current row
-             * @param index Index of the row in grid
-             */
-            ConditionalFormattingGrid.prototype.getItemCssClass = function (item, index) {
-                var klass = "";
-                if (item.Discontinued == true)
-                    klass += " discontinued";
-                else if (item.UnitsInStock <= 0)
-                    klass += " out-of-stock";
-                else if (item.UnitsInStock < 20)
-                    klass += " critical-stock";
-                else if (item.UnitsInStock > 50)
-                    klass += " needs-reorder";
-                if (item.UnitPrice >= 50)
-                    klass += " high-price";
-                else if (item.UnitPrice >= 20)
-                    klass += " medium-price";
-                else
-                    klass += " low-price";
-                return Q.trimToNull(klass);
-            };
-            ConditionalFormattingGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ConditionalFormattingGrid);
-            return ConditionalFormattingGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.ConditionalFormattingGrid = ConditionalFormattingGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomLinksInGrid = (function (_super) {
-            __extends(CustomLinksInGrid, _super);
-            function CustomLinksInGrid(container) {
-                _super.call(this, container);
-            }
-            /**
-             * We override getColumns() to change format functions for some columns.
-             * You could also write them as formatter classes, and use them at server side
-             */
-            CustomLinksInGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                var fld = Geshotel.Northwind.OrderRow.Fields;
-                Q.first(columns, function (x) { return x.field == fld.CustomerCompanyName; }).format =
-                    function (ctx) { return ("<a href=\"javascript:;\" class=\"customer-link\">" + Q.htmlEncode(ctx.value) + "</a>"); };
-                Q.first(columns, function (x) { return x.field == fld.OrderDate; }).format =
-                    function (ctx) { return ("<a href=\"javascript:;\" class=\"date-link\">" + Q.formatDate(ctx.value) + "</a>"); };
-                Q.first(columns, function (x) { return x.field == fld.EmployeeFullName; }).format =
-                    function (ctx) { return ("<a href=\"javascript:;\" class=\"employee-link\">" + Q.htmlEncode(ctx.value) + "</a>"); };
-                Q.first(columns, function (x) { return x.field == fld.ShipCountry; }).format =
-                    function (ctx) { return ("<a href=\"javascript:;\" class=\"ship-country-link\">" + Q.htmlEncode(ctx.value) + "</a>"); };
-                return columns;
-            };
-            CustomLinksInGrid.prototype.onClick = function (e, row, cell) {
-                // let base grid handle clicks for its edit links
-                _super.prototype.onClick.call(this, e, row, cell);
-                // if base grid already handled, we shouldn"t handle it again
-                if (e.isDefaultPrevented()) {
-                    return;
-                }
-                // get reference to current item
-                var item = this.itemAt(row);
-                // get reference to clicked element
-                var target = $(e.target);
-                if (target.hasClass("customer-link")) {
-                    e.preventDefault();
-                    var message = Q.format("<p>You have clicked an order from customer: {0}.</p>" +
-                        "<p>If you click Yes, i'll open Customer dialog.</p>" +
-                        "<p>If you click No, i'll open Order dialog.</p>", Q.htmlEncode(item.CustomerCompanyName));
-                    Q.confirm(message, function () {
-                        // CustomerDialog doesn't use CustomerID but ID (identity)
-                        // so need to find customer to get its actual ID
-                        var customer = Q.first(Geshotel.Northwind.CustomerRow.getLookup().items, function (x) { return x.CustomerID == item.CustomerID; });
-                        new Geshotel.Northwind.CustomerDialog().loadByIdAndOpenDialog(customer.ID);
-                    }, {
-                        htmlEncode: false,
-                        onNo: function () {
-                            new Geshotel.Northwind.OrderDialog().loadByIdAndOpenDialog(item.OrderID);
-                        }
-                    });
-                }
-                else if (target.hasClass("date-link")) {
-                    e.preventDefault();
-                    var ordersInSameDate = Q.count(this.view.getItems(), function (x) { return x.OrderDate == item.OrderDate; });
-                    Q.notifyInfo("You clicked an order from date " +
-                        Q.formatDate(item.OrderDate) + ". There are " +
-                        ordersInSameDate + " orders from the same date that is loaded in grid at the moment");
-                }
-                else if (target.hasClass("employee-link")) {
-                    e.preventDefault();
-                    Q.notifySuccess("You clicked an employee name, " +
-                        "so i've opened a new Order Dialog from same customer " +
-                        "with that employee prepopulated!");
-                    new Geshotel.Northwind.OrderDialog().loadEntityAndOpenDialog({
-                        CustomerID: item.CustomerID,
-                        EmployeeID: item.EmployeeID
-                    });
-                }
-                else if (target.hasClass("ship-country-link")) {
-                    e.preventDefault();
-                    Q.notifySuccess("Let's filter the grid to orders from " + item.ShipCountry);
-                    var countryFilter = this.findQuickFilter(Serenity.LookupEditor, Geshotel.Northwind.OrderRow.Fields.ShipCountry);
-                    countryFilter.value = item.ShipCountry;
-                    this.refresh();
-                }
-            };
-            /**
-             * This method is called for columns with [EditLink] attribute,
-             * but only for edit links of this grid's own item type.
-             * It is also called by Add Product button with a NULL entityOrId
-             * parameter so we should check that entityOrId is a string
-             * to be sure it is originating from a link.
-             *
-             * As we changed format for other columns, this will only be called
-             * for links in remaining OrderID column
-             */
-            CustomLinksInGrid.prototype.editItem = function (entityOrId) {
-                // check that this is an edit link click, not add button, ID is always a string
-                if (typeof entityOrId == "string") {
-                    // convert ID to an integer, and find order with that ID
-                    var item = this.view.getItemById(Q.toId(entityOrId));
-                    // date is a ISO string, so need to parse it first
-                    var date = Q.formatDate(item.OrderDate);
-                    // ask for confirmation
-                    Q.confirm(Q.format("You clicked edit link for order with ID: {0} and Date: {1}. Should i open that order?", item.OrderID, date), function () {
-                        new Geshotel.Northwind.OrderDialog().loadByIdAndOpenDialog(item.OrderID);
-                    });
-                }
-                else {
-                    _super.prototype.editItem.call(this, entityOrId);
-                }
-            };
-            CustomLinksInGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomLinksInGrid);
-            return CustomLinksInGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.CustomLinksInGrid = CustomLinksInGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleDialog = (function (_super) {
-            __extends(DragDropSampleDialog, _super);
-            function DragDropSampleDialog() {
-                _super.apply(this, arguments);
-                this.form = new BasicSamples.DragDropSampleForm(this.idPrefix);
-            }
-            DragDropSampleDialog.prototype.getFormKey = function () { return BasicSamples.DragDropSampleForm.formKey; };
-            DragDropSampleDialog.prototype.getIdProperty = function () { return BasicSamples.DragDropSampleRow.idProperty; };
-            DragDropSampleDialog.prototype.getLocalTextPrefix = function () { return BasicSamples.DragDropSampleRow.localTextPrefix; };
-            DragDropSampleDialog.prototype.getNameProperty = function () { return BasicSamples.DragDropSampleRow.nameProperty; };
-            DragDropSampleDialog.prototype.getService = function () { return BasicSamples.DragDropSampleService.baseUrl; };
-            DragDropSampleDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], DragDropSampleDialog);
-            return DragDropSampleDialog;
-        }(Serenity.EntityDialog));
-        BasicSamples.DragDropSampleDialog = DragDropSampleDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleGrid = (function (_super) {
-            __extends(DragDropSampleGrid, _super);
-            function DragDropSampleGrid(container) {
-                var _this = this;
-                _super.call(this, container);
-                new Serenity.TreeGridMixin({
-                    grid: this,
-                    toggleField: BasicSamples.DragDropSampleRow.Fields.Title,
-                    getParentId: function (x) { return x.ParentId; },
-                    initialCollapse: function () { return false; },
-                });
-                // save prior drag target to restore its color during drag
-                var priorDragTarget;
-                // prevent the grid from cancelling drag'n'drop by default
-                this.slickGrid.onDragInit.subscribe(function (e, dd) {
-                    e.stopImmediatePropagation();
-                });
-                // this method is called when an item is about to be dragged
-                this.slickGrid.onDragStart.subscribe(function (e, dd) {
-                    // only allow edit links to be dragged
-                    if (!$(e.target).hasClass('s-EditLink'))
-                        return;
-                    // make sure there is a cell in source location
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    if (!cell) {
-                        return;
-                    }
-                    // notify that we'll handle drag
-                    e.stopImmediatePropagation();
-                    // save details about dragged item
-                    dd.row = cell.row;
-                    var item = _this.itemAt(cell.row);
-                    dd.item = item;
-                    // a unique name for our operation
-                    dd.mode = "move";
-                    // create an absolute position helper shown during dragging
-                    var helper = $("<span></span>")
-                        .addClass('drag-helper')
-                        .text("Moving " + item.Title)
-                        .appendTo(document.body);
-                    dd.helper = helper;
-                });
-                // this method is periodically called during drag
-                this.slickGrid.onDrag.subscribe(function (e, dd) {
-                    // only handle our operation
-                    if (dd.mode != "move") {
-                        return;
-                    }
-                    // if we changed color of some target before, reset it
-                    if (priorDragTarget && priorDragTarget != e.target) {
-                        $(priorDragTarget).css('background-color', '');
-                        priorDragTarget = null;
-                    }
-                    // find target, the source will drag into
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    var target = !cell ? null : _this.itemAt(cell.row);
-                    // accept only edit links and valid items as drag target
-                    var reject = !$(e.target).hasClass('s-EditLink') || !_this.canMoveUnder(dd.item, target);
-                    if (reject) {
-                        dd.helper.text("Can't move " + dd.item.Title + " here");
-                    }
-                    else {
-                        dd.helper.text("Move " + dd.item.Title + " under " + $(e.target).text());
-                        // change color of current drag target
-                        $(e.target).css('background-color', '#ddeeee');
-                        priorDragTarget = e.target;
-                    }
-                    // toggle class of helper to show relevant accept / reject icon
-                    dd.helper.toggleClass('reject', reject);
-                    // position helper next to current mouse position
-                    dd.helper.css({ top: e.pageY + 5, left: e.pageX + 4 });
-                });
-                // this is called when drag is completed
-                this.slickGrid.onDragEnd.subscribe(function (e, dd) {
-                    if (dd.mode != "move") {
-                        return;
-                    }
-                    // prevent browser from changing url
-                    e.preventDefault();
-                    // clear indicator color and drag helper
-                    priorDragTarget && $(priorDragTarget).css('background-color', '');
-                    dd.helper.remove();
-                    // determine target row
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    var item = dd.item;
-                    var target = !cell ? null : _this.itemAt(cell.row);
-                    // check again that this is valid drag target
-                    if ($(e.target).hasClass('s-EditLink') && _this.canMoveUnder(item, target)) {
-                        // this will move our primary drag source under new parent
-                        var moveItem = function (onSuccess) {
-                            BasicSamples.DragDropSampleService.Update({
-                                EntityId: item.Id,
-                                Entity: {
-                                    ParentId: target.Id
-                                }
-                            }, onSuccess);
-                        };
-                        // if drag source has some children, need some confirmation
-                        var children = _this.getChildren(dd.item);
-                        if (children.length > 0) {
-                            Q.confirm('Move its children alongside the item?', function () {
-                                // if responded yes, moving item under new parent should be enough
-                                moveItem(function () { return _this.refresh(); });
-                            }, {
-                                onNo: function () {
-                                    // if responded no, children should move under old parent of item
-                                    var oldParentId = item.ParentId == null ? null : item.ParentId;
-                                    var moveNextChild = function (onSuccess) {
-                                        var _this = this;
-                                        if (children.length) {
-                                            var x = children.shift();
-                                            BasicSamples.DragDropSampleService.Update({
-                                                EntityId: x.Id,
-                                                Entity: {
-                                                    ParentId: oldParentId || null
-                                                }
-                                            }, function () { return moveNextChild(onSuccess); }, {
-                                                onError: function () { return _this.refresh(); }
-                                            });
-                                        }
-                                        else
-                                            onSuccess();
-                                    };
-                                    // first move item itself under new parent, 
-                                    // then move its children under old parent one by one
-                                    moveItem(function () { return moveNextChild(function () { return _this.refresh(); }); });
-                                }
-                            });
-                        }
-                        else {
-                            // item has no children, just move it under new parent
-                            moveItem(function () { return _this.refresh(); });
-                        }
-                    }
-                    return false;
-                });
-            }
-            DragDropSampleGrid.prototype.getColumnsKey = function () { return 'BasicSamples.DragDropSample'; };
-            DragDropSampleGrid.prototype.getDialogType = function () { return BasicSamples.DragDropSampleDialog; };
-            DragDropSampleGrid.prototype.getIdProperty = function () { return BasicSamples.DragDropSampleRow.idProperty; };
-            DragDropSampleGrid.prototype.getLocalTextPrefix = function () { return BasicSamples.DragDropSampleRow.localTextPrefix; };
-            DragDropSampleGrid.prototype.getService = function () { return BasicSamples.DragDropSampleService.baseUrl; };
-            /**
-             * This method will determine if item can be moved under a given target
-             * An item can't be moved under itself, under one of its children
-             */
-            DragDropSampleGrid.prototype.canMoveUnder = function (item, target) {
-                if (!item || !target || item.Id == target.Id || item.ParentId == target.Id)
-                    return false;
-                if (Q.any(this.getParents(target), function (x) { return x.Id == item.Id; }))
-                    return false;
-                return true;
-            };
-            /**
-             * Gets children list of an item
-             */
-            DragDropSampleGrid.prototype.getChildren = function (item) {
-                return this.getItems().filter(function (x) { return x.ParentId == item.Id; });
-            };
-            /**
-             * Gets all parents of an item
-             */
-            DragDropSampleGrid.prototype.getParents = function (item) {
-                // use this to prevent infinite recursion
-                var visited = {};
-                var result = [];
-                // while item has a parent and not visited yet
-                while (item.ParentId && !visited[item.ParentId]) {
-                    // find parent by its ID
-                    item = this.view.getItemById(item.ParentId);
-                    if (!item)
-                        break;
-                    result.push(item);
-                    visited[item.Id] = true;
-                }
-                return result;
-            };
-            DragDropSampleGrid.prototype.getButtons = function () {
-                return [];
-            };
-            DragDropSampleGrid.prototype.usePager = function () {
-                return false;
-            };
-            DragDropSampleGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], DragDropSampleGrid);
-            return DragDropSampleGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.DragDropSampleGrid = DragDropSampleGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var SelectableEntityGrid = (function (_super) {
-        __extends(SelectableEntityGrid, _super);
-        function SelectableEntityGrid() {
-            _super.apply(this, arguments);
-        }
-        SelectableEntityGrid.prototype.getSlickOptions = function () {
-            var opt = _super.prototype.getSlickOptions.call(this);
-            opt.enableTextSelectionOnCells = true;
-            opt.selectedCellCssClass = "slick-row-selected";
-            opt.enableCellNavigation = true;
-            return opt;
-        };
-        SelectableEntityGrid.prototype.createSlickGrid = function () {
-            var grid = _super.prototype.createSlickGrid.call(this);
-            grid.setSelectionModel(new Slick.RowSelectionModel());
-            return grid;
-        };
-        SelectableEntityGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], SelectableEntityGrid);
-        return SelectableEntityGrid;
-    }(Serenity.EntityGrid));
-    Geshotel.SelectableEntityGrid = SelectableEntityGrid;
-})(Geshotel || (Geshotel = {}));
-/// <reference path="SelectableEntityGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var RowSelectionGrid = (function (_super) {
-            __extends(RowSelectionGrid, _super);
-            function RowSelectionGrid(container) {
-                _super.call(this, container);
-            }
-            RowSelectionGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
-            RowSelectionGrid.prototype.getDialogType = function () { return Geshotel.Northwind.SupplierDialog; };
-            RowSelectionGrid.prototype.getIdProperty = function () { return Geshotel.Northwind.SupplierRow.idProperty; };
-            RowSelectionGrid.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.SupplierRow.localTextPrefix; };
-            RowSelectionGrid.prototype.getService = function () { return Geshotel.Northwind.SupplierService.baseUrl; };
-            RowSelectionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RowSelectionGrid);
-            return RowSelectionGrid;
-        }(Geshotel.SelectableEntityGrid));
-        BasicSamples.RowSelectionGrid = RowSelectionGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GridFilteredByCriteria = (function (_super) {
-            __extends(GridFilteredByCriteria, _super);
-            function GridFilteredByCriteria(container) {
-                _super.call(this, container);
-            }
-            GridFilteredByCriteria.prototype.onViewSubmit = function () {
-                // only continue if base class returns true (didn't cancel request)
-                if (!_super.prototype.onViewSubmit.call(this)) {
-                    return false;
-                }
-                // view object is the data source for grid (SlickRemoteView)
-                // this is an EntityGrid so its Params object is a ListRequest
-                var request = this.view.params;
-                // list request has a Criteria parameter
-                // we AND criteria here to existing one because 
-                // otherwise we might clear filter set by 
-                // an edit filter dialog if any.
-                request.Criteria = Serenity.Criteria.and(request.Criteria, [['UnitsInStock'], '>', 10], [['CategoryName'], '!=', 'Condiments'], [['Discontinued'], '=', 0]);
-                // TypeScript doesn't support operator overloading
-                // so we had to use array syntax above to build criteria.
-                // Make sure you write
-                // [['Field'], '>', 10] (which means field A is greater than 10)
-                // not 
-                // ['A', '>', 10] (which means string 'A' is greater than 10
-                return true;
-            };
-            GridFilteredByCriteria = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GridFilteredByCriteria);
-            return GridFilteredByCriteria;
-        }(Geshotel.Northwind.ProductGrid));
-        BasicSamples.GridFilteredByCriteria = GridFilteredByCriteria;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var GroupingAndSummariesInGrid = (function (_super) {
-            __extends(GroupingAndSummariesInGrid, _super);
-            function GroupingAndSummariesInGrid(container) {
-                _super.call(this, container);
-            }
-            GroupingAndSummariesInGrid.prototype.createSlickGrid = function () {
-                var grid = _super.prototype.createSlickGrid.call(this);
-                // need to register this plugin for grouping or you'll have errors
-                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
-                this.view.setSummaryOptions({
-                    aggregators: [
-                        new Slick.Aggregators.Avg('UnitPrice'),
-                        new Slick.Aggregators.Sum('UnitsInStock'),
-                        new Slick.Aggregators.Max('UnitsOnOrder'),
-                        new Slick.Aggregators.Avg('ReorderLevel')
-                    ]
-                });
-                return grid;
-            };
-            GroupingAndSummariesInGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                Q.first(columns, function (x) { return x.field === 'UnitsOnOrder'; })
-                    .groupTotalsFormatter = function (totals, col) {
-                    return (totals.max ? ('max: ' + Q.coalesce(totals.max[col.field], '')) : '');
-                };
-                Q.first(columns, function (x) { return x.field === 'ReorderLevel'; })
-                    .groupTotalsFormatter = function (totals, col) {
-                    return (totals.avg ? ('avg: ' + Q.coalesce(Q.formatNumber(totals.avg[col.field], '0.'), '')) : '');
-                };
-                return columns;
-            };
-            GroupingAndSummariesInGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.showFooterRow = true;
-                return opt;
-            };
-            GroupingAndSummariesInGrid.prototype.usePager = function () {
-                return false;
-            };
-            GroupingAndSummariesInGrid.prototype.getButtons = function () {
-                var _this = this;
-                return [{
-                        title: 'Group By Category',
-                        cssClass: 'expand-all-button',
-                        onClick: function () { return _this.view.setGrouping([{
-                                getter: 'CategoryName'
-                            }]); }
-                    },
-                    {
-                        title: 'Group By Category and Supplier',
-                        cssClass: 'expand-all-button',
-                        onClick: function () { return _this.view.setGrouping([{
-                                formatter: function (x) { return 'Category: ' + x.value + ' (' + x.count + ' items)'; },
-                                getter: 'CategoryName'
-                            }, {
-                                formatter: function (x) { return 'Supplier: ' + x.value + ' (' + x.count + ' items)'; },
-                                getter: 'SupplierCompanyName'
-                            }]); }
-                    }, {
-                        title: 'No Grouping',
-                        cssClass: 'collapse-all-button',
-                        onClick: function () { return _this.view.setGrouping([]); }
-                    }];
-            };
-            GroupingAndSummariesInGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GroupingAndSummariesInGrid);
-            return GroupingAndSummariesInGrid;
-        }(Geshotel.Northwind.ProductGrid));
-        BasicSamples.GroupingAndSummariesInGrid = GroupingAndSummariesInGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InitialValuesForQuickFilters = (function (_super) {
-            __extends(InitialValuesForQuickFilters, _super);
-            function InitialValuesForQuickFilters(container) {
-                _super.call(this, container);
-            }
-            /**
-             * This method is called to get list of quick filters to be created for this grid.
-             * By default, it returns quick filter objects corresponding to properties that
-             * have a [QuickFilter] attribute at server side OrderColumns.cs
-             */
-            InitialValuesForQuickFilters.prototype.getQuickFilters = function () {
-                // get quick filter list from base class
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Geshotel.Northwind.OrderRow.Fields;
-                // quick filter init method is a good place to set initial
-                // value for a quick filter editor, just after it is created
-                Q.first(filters, function (x) { return x.field == fld.OrderDate; }).init = function (w) {
-                    // w is a reference to the editor for this quick filter widget
-                    // here we cast it to DateEditor, and set its value as date.
-                    // note that in Javascript, months are 0 based, so date below
-                    // is actually 2016-05-01
-                    w.valueAsDate = new Date(2016, 4, 1);
-                    // setting start date was simple. but this quick filter is actually
-                    // a combination of two date editors. to get reference to second one,
-                    // need to find its next sibling element by its class
-                    var endDate = w.element.nextAll(".s-DateEditor").getWidget(Serenity.DateEditor);
-                    endDate.valueAsDate = new Date(2016, 6, 1);
-                };
-                Q.first(filters, function (x) { return x.field == fld.ShippingState; }).init = function (w) {
-                    // enum editor has a string value, so need to call toString()
-                    w.value = Geshotel.Northwind.OrderShippingState.NotShipped.toString();
-                };
-                return filters;
-            };
-            /**
-             * This method is another possible place to modify quick filter widgets.
-             * It is where the quick filter widgets are actually created.
-             *
-             * By default, it calls getQuickFilters() then renders UI for these
-             * quick filters.
-             *
-             * We could use getQuickFilters() method for ShipVia too,
-             * but this is for demonstration purposes
-             */
-            InitialValuesForQuickFilters.prototype.createQuickFilters = function () {
-                // let base class to create quick filters first
-                _super.prototype.createQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Geshotel.Northwind.OrderRow.Fields;
-                // find a quick filter widget by its field name
-                this.findQuickFilter(Serenity.LookupEditor, fld.ShipVia).values = ["1", "2"];
-            };
-            InitialValuesForQuickFilters = __decorate([
-                Serenity.Decorators.registerClass()
-            ], InitialValuesForQuickFilters);
-            return InitialValuesForQuickFilters;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.InitialValuesForQuickFilters = InitialValuesForQuickFilters;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Customer/CustomerGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineActionGrid = (function (_super) {
-            __extends(InlineActionGrid, _super);
-            function InlineActionGrid(container) {
-                _super.call(this, container);
-            }
-            InlineActionGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.unshift({
-                    field: 'Delete Row',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action delete-row" title="delete">' +
-                        '<i class="fa fa-trash-o text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                columns.splice(1, 0, {
-                    field: 'View Details',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action view-details" title="view details"></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                columns.splice(2, 0, {
-                    field: 'New Order',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action new-order" title="new order"></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            InlineActionGrid.prototype.onClick = function (e, row, cell) {
-                var _this = this;
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                // if user clicks "i" element, e.g. icon
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('delete-row')) {
-                        Q.confirm('Delete record?', function () {
-                            Geshotel.Northwind.CustomerService.Delete({
-                                EntityId: item.ID,
-                            }, function (response) {
-                                _this.refresh();
-                            });
-                        });
-                    }
-                    else if (target.hasClass('view-details')) {
-                        this.editItem(item.ID);
-                    }
-                    else if (target.hasClass('new-order')) {
-                        var dlg = new Geshotel.Northwind.OrderDialog();
-                        this.initDialog(dlg);
-                        dlg.loadEntityAndOpenDialog({
-                            CustomerID: item.CustomerID
-                        });
-                    }
-                }
-            };
-            InlineActionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], InlineActionGrid);
-            return InlineActionGrid;
-        }(Geshotel.Northwind.CustomerGrid));
-        BasicSamples.InlineActionGrid = InlineActionGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineImageFormatter = (function () {
-            function InlineImageFormatter() {
-            }
-            InlineImageFormatter.prototype.format = function (ctx) {
-                var file = (this.fileProperty ? ctx.item[this.fileProperty] : ctx.value);
-                if (!file || !file.length)
-                    return "";
-                var href = Q.resolveUrl("~/upload/" + file);
-                if (this.thumb) {
-                    var parts = file.split('.');
-                    file = parts.slice(0, parts.length - 1).join('.') + '_t.jpg';
-                }
-                var src = Q.resolveUrl('~/upload/' + file);
-                return ("<a class=\"inline-image\" target='_blank' href=\"" + href + "\">") +
-                    ("<img src=\"" + src + "\" style='max-height: 145px; max-width: 100%;' /></a>");
-            };
-            InlineImageFormatter.prototype.initializeColumn = function (column) {
-                if (this.fileProperty) {
-                    column.referencedFields = column.referencedFields || [];
-                    column.referencedFields.push(this.fileProperty);
-                }
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], InlineImageFormatter.prototype, "fileProperty", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], InlineImageFormatter.prototype, "thumb", void 0);
-            InlineImageFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], InlineImageFormatter);
-            return InlineImageFormatter;
-        }());
-        BasicSamples.InlineImageFormatter = InlineImageFormatter;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var InlineImageInGrid = (function (_super) {
-            __extends(InlineImageInGrid, _super);
-            function InlineImageInGrid(container) {
-                _super.call(this, container);
-            }
-            InlineImageInGrid.prototype.getColumnsKey = function () { return "BasicSamples.InlineImageInGrid"; };
-            InlineImageInGrid.prototype.getDialogType = function () { return Geshotel.Northwind.ProductDialog; };
-            InlineImageInGrid.prototype.getIdProperty = function () { return Geshotel.Northwind.ProductRow.idProperty; };
-            InlineImageInGrid.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.ProductRow.localTextPrefix; };
-            InlineImageInGrid.prototype.getService = function () { return Geshotel.Northwind.ProductService.baseUrl; };
-            InlineImageInGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.rowHeight = 150;
-                return opt;
-            };
-            InlineImageInGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], InlineImageInGrid);
-            return InlineImageInGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.InlineImageInGrid = InlineImageInGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportDialog = (function (_super) {
-            __extends(ProductExcelImportDialog, _super);
-            function ProductExcelImportDialog() {
-                _super.call(this);
-                this.form = new BasicSamples.ProductExcelImportForm(this.idPrefix);
-            }
-            ProductExcelImportDialog.prototype.getDialogTitle = function () {
-                return "Excel Import";
-            };
-            ProductExcelImportDialog.prototype.getDialogButtons = function () {
-                var _this = this;
-                return [
-                    {
-                        text: 'Import',
-                        click: function () {
-                            if (!_this.validateBeforeSave())
-                                return;
-                            if (_this.form.FileName.value == null ||
-                                Q.isEmptyOrNull(_this.form.FileName.value.Filename)) {
-                                Q.notifyError("Please select a file!");
-                                return;
-                            }
-                            BasicSamples.ProductExcelImportService.ExcelImport({
-                                FileName: _this.form.FileName.value.Filename
-                            }, function (response) {
-                                Q.notifyInfo('Inserted: ' + (response.Inserted || 0) +
-                                    ', Updated: ' + (response.Updated || 0));
-                                if (response.ErrorList != null && response.ErrorList.length > 0) {
-                                    Q.notifyError(response.ErrorList.join(',\r\n '));
-                                }
-                                _this.dialogClose();
-                            });
-                        },
-                    },
-                    {
-                        text: 'Cancel',
-                        click: function () { return _this.dialogClose(); }
-                    }
-                ];
-            };
-            ProductExcelImportDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ProductExcelImportDialog);
-            return ProductExcelImportDialog;
-        }(Serenity.PropertyDialog));
-        BasicSamples.ProductExcelImportDialog = ProductExcelImportDialog;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Product/ProductGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportGrid = (function (_super) {
-            __extends(ProductExcelImportGrid, _super);
-            function ProductExcelImportGrid(container) {
-                _super.call(this, container);
-            }
-            /**
-             * This method is called to get list of buttons to be created.
-             */
-            ProductExcelImportGrid.prototype.getButtons = function () {
-                var _this = this;
-                // call base method to get list of buttons
-                var buttons = _super.prototype.getButtons.call(this);
-                // add our import button
-                buttons.push({
-                    title: 'Import From Excel',
-                    cssClass: 'export-xlsx-button',
-                    onClick: function () {
-                        // open import dialog, let it handle rest
-                        var dialog = new BasicSamples.ProductExcelImportDialog();
-                        dialog.element.on('dialogclose', function () {
-                            _this.refresh();
-                            dialog = null;
-                        });
-                        dialog.dialogOpen();
-                    }
-                });
-                return buttons;
-            };
-            ProductExcelImportGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ProductExcelImportGrid);
-            return ProductExcelImportGrid;
-        }(Geshotel.Northwind.ProductGrid));
-        BasicSamples.ProductExcelImportGrid = ProductExcelImportGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var QuickFilterCustomization = (function (_super) {
-            __extends(QuickFilterCustomization, _super);
-            function QuickFilterCustomization(container) {
-                _super.call(this, container);
-            }
-            QuickFilterCustomization.prototype.getColumnsKey = function () { return "Northwind.Order"; };
-            QuickFilterCustomization.prototype.getDialogType = function () { return Geshotel.Northwind.OrderDialog; };
-            QuickFilterCustomization.prototype.getIdProperty = function () { return Geshotel.Northwind.OrderRow.idProperty; };
-            QuickFilterCustomization.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.OrderRow.localTextPrefix; };
-            QuickFilterCustomization.prototype.getService = function () { return Geshotel.Northwind.OrderService.baseUrl; };
-            /**
-             * This method is called to get list of quick filters to be created for this grid.
-             * By default, it returns quick filter objects corresponding to properties that
-             * have a [QuickFilter] attribute at server side OrderColumns.cs
-             */
-            QuickFilterCustomization.prototype.getQuickFilters = function () {
-                // get quick filter list from base class, e.g. columns
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // get a reference to order row field names
-                var fld = Geshotel.Northwind.OrderRow.Fields;
-                // we start by turning CustomerID filter to a Not Equal one
-                var filter = Q.first(filters, function (x) { return x.field == fld.CustomerID; });
-                filter.title = "Customer Not Equal To";
-                filter.handler = function (h) {
-                    // if filter is active, e.g. editor has some value
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.CustomerID], '!=', h.value]);
-                    }
-                };
-                // turn order date filter to exact match, not a range
-                filter = Q.first(filters, function (x) { return x.field == fld.OrderDate; });
-                filter.title = "Order Date Is Exactly";
-                // element method in DataGrid turns this into a range editor, clear it to prevent
-                filter.element = function (e) { };
-                // need to override handler too, otherwise default handler will try to handle a date range
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.EqualityFilter[fld.OrderDate] = h.value;
-                    }
-                    else {
-                        h.request.EqualityFilter[fld.OrderDate] = null;
-                    }
-                };
-                // make employee filter a textbox, instead of lookup, and search by starts with
-                filter = Q.first(filters, function (x) { return x.field == fld.EmployeeID; });
-                filter.title = "Employee Name Starts With";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.EmployeeFullName], 'like', h.value + '%']);
-                    }
-                };
-                // turn shipping state into a boolean filter
-                filter = Q.first(filters, function (x) { return x.field == fld.ShippingState; });
-                filter.title = "Show Only Shipped";
-                filter.type = Serenity.BooleanEditor;
-                filter.handler = function (h) {
-                    h.active = !!h.value;
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, ['is not null', [fld.ShippedDate]]);
-                    }
-                };
-                // ship via filters by NOT IN
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipVia; });
-                filter.title = "Ship Via Not IN";
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipVia], 'not in', [h.value]]);
-                    }
-                };
-                // ship country filters by NOT contains
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipCountry; });
-                filter.title = "Ship Country NOT Contains";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipCountry], 'not like', '%' + h.value + '%']);
-                    }
-                };
-                // ship city filters by GREATER THAN (>)
-                filter = Q.first(filters, function (x) { return x.field == fld.ShipCity; });
-                filter.title = "Ship City Greater Than";
-                filter.type = Serenity.StringEditor;
-                filter.handler = function (h) {
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.ShipCity], '>', h.value]);
-                    }
-                };
-                // create a range editor for freight
-                var endFreight = null;
-                filters.push({
-                    field: fld.Freight,
-                    type: Serenity.DecimalEditor,
-                    title: 'Freight Between',
-                    element: function (e1) {
-                        e1.css("width", "80px");
-                        endFreight = Serenity.Widget.create({
-                            type: Serenity.DecimalEditor,
-                            element: function (e2) { return e2.insertAfter(e1).css("width", "80px"); }
-                        });
-                        endFreight.element.change(function (x) { return e1.triggerHandler("change"); });
-                        $("<span/>").addClass("range-separator").text("-").insertAfter(e1);
-                    },
-                    handler: function (h) {
-                        var active1 = h.value != null && !isNaN(h.value);
-                        var active2 = endFreight.value != null && !isNaN(endFreight.value);
-                        h.active = active1 || active2;
-                        if (active1)
-                            h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.Freight], '>=', h.value]);
-                        if (active2)
-                            h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [[fld.Freight], '<=', endFreight.value]);
-                    }
-                });
-                return filters;
-            };
-            QuickFilterCustomization = __decorate([
-                Serenity.Decorators.registerClass()
-            ], QuickFilterCustomization);
-            return QuickFilterCustomization;
-        }(Serenity.EntityGrid));
-        BasicSamples.QuickFilterCustomization = QuickFilterCustomization;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Supplier/SupplierGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var RemovingAddButton = (function (_super) {
-            __extends(RemovingAddButton, _super);
-            function RemovingAddButton(container) {
-                _super.call(this, container);
-            }
-            /**
-             * This method is called to get list of buttons to be created.
-             */
-            RemovingAddButton.prototype.getButtons = function () {
-                // call base method to get list of buttons
-                // by default, base entity grid adds a few buttons, 
-                // add, refresh, column selection in order.
-                var buttons = _super.prototype.getButtons.call(this);
-                // here is several methods to remove add button
-                // only one is enabled, others are commented
-                // METHOD 1
-                // we would be able to simply return an empty button list,
-                // but this would also remove all other buttons
-                // return [];
-                // METHOD 2
-                // remove by splicing (something like delete by index)
-                // here we hard code add button index (not nice!)
-                // buttons.splice(0, 1);
-                // METHOD 3 - recommended
-                // remove by splicing, but this time find button index
-                // by its css class. it is the best and safer method
-                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
-                return buttons;
-            };
-            RemovingAddButton = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RemovingAddButton);
-            return RemovingAddButton;
-        }(Geshotel.Northwind.SupplierGrid));
-        BasicSamples.RemovingAddButton = RemovingAddButton;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomerGrossSalesGrid = (function (_super) {
-            __extends(CustomerGrossSalesGrid, _super);
-            function CustomerGrossSalesGrid(container) {
-                _super.call(this, container);
-                this.nextId = 1;
-            }
-            CustomerGrossSalesGrid.prototype.getColumnsKey = function () { return "BasicSamples.CustomerGrossSales"; };
-            CustomerGrossSalesGrid.prototype.getIdProperty = function () { return "__id"; };
-            CustomerGrossSalesGrid.prototype.getNameProperty = function () { return BasicSamples.CustomerGrossSalesRow.nameProperty; };
-            CustomerGrossSalesGrid.prototype.getLocalTextPrefix = function () { return BasicSamples.CustomerGrossSalesRow.localTextPrefix; };
-            CustomerGrossSalesGrid.prototype.getService = function () { return BasicSamples.CustomerGrossSalesService.baseUrl; };
-            /**
-             * This method is called to preprocess data returned from the list service
-             */
-            CustomerGrossSalesGrid.prototype.onViewProcessData = function (response) {
-                response = _super.prototype.onViewProcessData.call(this, response);
-                // there is no __id property in CustomerGrossSalesRow but 
-                // this is javascript and we can set any property of an object
-                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
-                    var x = _a[_i];
-                    x.__id = this.nextId++;
-                }
-                return response;
-            };
-            CustomerGrossSalesGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = [];
-                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    service: BasicSamples.CustomerGrossSalesService.baseUrl + '/ListExcel',
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    separator: true
-                }));
-                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            CustomerGrossSalesGrid.prototype.createSlickGrid = function () {
-                var grid = _super.prototype.createSlickGrid.call(this);
-                // need to register this plugin for grouping or you'll have errors
-                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
-                this.view.setSummaryOptions({
-                    aggregators: [
-                        new Slick.Aggregators.Sum('GrossAmount')
-                    ]
-                });
-                this.view.setGrouping([{
-                        getter: 'ContactName'
-                    }]);
-                return grid;
-            };
-            CustomerGrossSalesGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.showFooterRow = true;
-                return opt;
-            };
-            CustomerGrossSalesGrid.prototype.usePager = function () {
-                return false;
-            };
-            CustomerGrossSalesGrid.prototype.getQuickFilters = function () {
-                var filters = _super.prototype.getQuickFilters.call(this);
-                // we create a date-range quick filter, which is a composite
-                // filter with two date time editors
-                var orderDate = this.dateRangeQuickFilter('OrderDate', 'Order Date');
-                // need to override its handler, as default date-range filter will set Criteria parameter of list request.
-                // we need to set StartDate and EndDate custom parameters of our CustomerGrossSalesListRequest
-                orderDate.handler = function (args) {
-                    // args.widget here is the start date editor. value of a date editor is a ISO date string
-                    var start = args.widget.value;
-                    // to find end date editor, need to search it by its css class among siblings
-                    var end = args.widget.element.nextAll('.s-DateEditor')
-                        .getWidget(Serenity.DateEditor).value;
-                    args.request.StartDate = start;
-                    args.request.EndDate = end;
-                    // active option controls when a filter editor looks active, e.g. its label is blueish
-                    args.active = !Q.isEmptyOrNull(start) || !Q.isEmptyOrNull(end);
-                };
-                filters.push(orderDate);
-                return filters;
-            };
-            CustomerGrossSalesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomerGrossSalesGrid);
-            return CustomerGrossSalesGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.CustomerGrossSalesGrid = CustomerGrossSalesGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var TreeGrid = (function (_super) {
-            __extends(TreeGrid, _super);
-            function TreeGrid(container) {
-                _super.call(this, container);
-                this.treeMixin = new Serenity.TreeGridMixin({
-                    grid: this,
-                    // bring tree items initially collapsed
-                    initialCollapse: function () { return true; },
-                    // which column to place tree toggle / expand/collapse button
-                    toggleField: Geshotel.Northwind.OrderRow.Fields.CustomerCompanyName,
-                    getParentId: function (x) {
-                        // as we don't have parentId column here, we are cheating by using modulus 10 and 50
-                        // e.g. order with ID 1605 will have parent 1600, order with ID 1613 will have parent 1610
-                        var parentId = Math.floor(x.OrderID / 10) * 10;
-                        if (parentId == x.OrderID) {
-                            parentId = Math.floor(x.OrderID / 50) * 50;
-                            // orders with ID 16050 and 17000 should have NULL parent
-                            if (parentId == x.OrderID)
-                                return null;
-                        }
-                        // if you had a ParentID column, you'd just return x.ParentID
-                        return parentId;
-                    }
-                });
-            }
-            TreeGrid.prototype.usePager = function () {
-                return false;
-            };
-            TreeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TreeGrid);
-            return TreeGrid;
-        }(Geshotel.Northwind.OrderGrid));
-        BasicSamples.TreeGrid = TreeGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ViewWithoutIDGrid = (function (_super) {
-            __extends(ViewWithoutIDGrid, _super);
-            function ViewWithoutIDGrid(container) {
-                _super.call(this, container);
-                // this is our autoincrementing counter
-                this.nextId = 1;
-            }
-            ViewWithoutIDGrid.prototype.getColumnsKey = function () { return "Northwind.SalesByCategory"; };
-            ViewWithoutIDGrid.prototype.getIdProperty = function () { return "__id"; };
-            ViewWithoutIDGrid.prototype.getNameProperty = function () { return Geshotel.Northwind.SalesByCategoryRow.nameProperty; };
-            ViewWithoutIDGrid.prototype.getLocalTextPrefix = function () { return Geshotel.Northwind.SalesByCategoryRow.localTextPrefix; };
-            ViewWithoutIDGrid.prototype.getService = function () { return Geshotel.Northwind.SalesByCategoryService.baseUrl; };
-            /**
-             * This method is called to preprocess data returned from the list service
-             */
-            ViewWithoutIDGrid.prototype.onViewProcessData = function (response) {
-                response = _super.prototype.onViewProcessData.call(this, response);
-                // there is no __id property in SalesByCategoryRow but 
-                // this is javascript and we can set any property of an object
-                for (var _i = 0, _a = response.Entities; _i < _a.length; _i++) {
-                    var x = _a[_i];
-                    x.__id = this.nextId++;
-                }
-                return response;
-            };
-            ViewWithoutIDGrid.prototype.getButtons = function () {
-                return [];
-            };
-            ViewWithoutIDGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ViewWithoutIDGrid);
-            return ViewWithoutIDGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.ViewWithoutIDGrid = ViewWithoutIDGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var VSGalleryQAGrid = (function (_super) {
-            __extends(VSGalleryQAGrid, _super);
-            function VSGalleryQAGrid(container) {
-                _super.call(this, container);
-            }
-            VSGalleryQAGrid.prototype.getColumnsKey = function () { return "BasicSamples.VSGalleryQA"; };
-            VSGalleryQAGrid.prototype.getIdProperty = function () { return "ThreadId"; };
-            VSGalleryQAGrid.prototype.getService = function () { return BasicSamples.VSGalleryQAService.baseUrl; };
-            VSGalleryQAGrid.prototype.getButtons = function () {
-                return [];
-            };
-            VSGalleryQAGrid.prototype.getSlickOptions = function () {
-                var opt = _super.prototype.getSlickOptions.call(this);
-                opt.rowHeight = 250;
-                return opt;
-            };
-            VSGalleryQAGrid.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                Q.first(columns, function (x) { return x.field == 'Posts'; }).format = function (ctx) {
-                    var posts = ctx.value;
-                    if (!posts || !posts.length)
-                        return "";
-                    var i = 0;
-                    var text = "<ul class='posts'>";
-                    for (var _i = 0, posts_1 = posts; _i < posts_1.length; _i++) {
-                        var post = posts_1[_i];
-                        text += "<li class='" + (i++ % 2 == 0 ? 'even' : 'odd') + "'><h4>";
-                        text += post.PostedByName + " - ";
-                        text += Q.formatDate(post.PostedOn, 'g');
-                        text += "</h4><pre>";
-                        text += Q.htmlEncode(post.Message);
-                        text += "</pre></li>";
-                    }
-                    text += "</ul>";
-                    return text;
-                };
-                return columns;
-            };
-            VSGalleryQAGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            VSGalleryQAGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], VSGalleryQAGrid);
-            return VSGalleryQAGrid;
-        }(Serenity.EntityGrid));
-        BasicSamples.VSGalleryQAGrid = VSGalleryQAGrid;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
     var BasicProgressDialog = (function (_super) {
         __extends(BasicProgressDialog, _super);
         function BasicProgressDialog() {
@@ -4865,6 +1283,179 @@ var Geshotel;
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
+    var Common;
+    (function (Common) {
+        var GridEditorBase = (function (_super) {
+            __extends(GridEditorBase, _super);
+            function GridEditorBase(container) {
+                _super.call(this, container);
+                this.nextId = 1;
+            }
+            GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
+            GridEditorBase.prototype.id = function (entity) {
+                return entity[this.getIdProperty()];
+            };
+            GridEditorBase.prototype.getNextId = function () {
+                return "`" + this.nextId++;
+            };
+            GridEditorBase.prototype.setNewId = function (entity) {
+                entity[this.getIdProperty()] = this.getNextId();
+            };
+            GridEditorBase.prototype.save = function (opt, callback) {
+                var _this = this;
+                var request = opt.request;
+                var row = Q.deepClone(request.Entity);
+                var id = this.id(row);
+                if (id == null) {
+                    row[this.getIdProperty()] = this.getNextId();
+                }
+                if (!this.validateEntity(row, id)) {
+                    return;
+                }
+                var items = this.view.getItems().slice();
+                if (id == null) {
+                    items.push(row);
+                }
+                else {
+                    var index = Q.indexOf(items, function (x) { return _this.id(x) === id; });
+                    items[index] = Q.deepClone({}, items[index], row);
+                }
+                this.setEntities(items);
+                callback({});
+            };
+            GridEditorBase.prototype.deleteEntity = function (id) {
+                this.view.deleteItem(id);
+                return true;
+            };
+            GridEditorBase.prototype.validateEntity = function (row, id) {
+                return true;
+            };
+            GridEditorBase.prototype.setEntities = function (items) {
+                this.view.setItems(items, true);
+            };
+            GridEditorBase.prototype.getNewEntity = function () {
+                return {};
+            };
+            GridEditorBase.prototype.getButtons = function () {
+                var _this = this;
+                return [{
+                        title: this.getAddButtonCaption(),
+                        cssClass: 'add-button',
+                        onClick: function () {
+                            _this.createEntityDialog(_this.getItemType(), function (dlg) {
+                                var dialog = dlg;
+                                dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
+                                dialog.loadEntityAndOpenDialog(_this.getNewEntity());
+                            });
+                        }
+                    }];
+            };
+            GridEditorBase.prototype.editItem = function (entityOrId) {
+                var _this = this;
+                var id = entityOrId;
+                var item = this.view.getItemById(id);
+                this.createEntityDialog(this.getItemType(), function (dlg) {
+                    var dialog = dlg;
+                    dialog.onDelete = function (opt, callback) {
+                        if (!_this.deleteEntity(id)) {
+                            return;
+                        }
+                        callback({});
+                    };
+                    dialog.onSave = function (opt, callback) { return _this.save(opt, callback); };
+                    dialog.loadEntityAndOpenDialog(item);
+                });
+                ;
+            };
+            GridEditorBase.prototype.getEditValue = function (property, target) {
+                target[property.name] = this.value;
+            };
+            GridEditorBase.prototype.setEditValue = function (source, property) {
+                this.value = source[property.name];
+            };
+            Object.defineProperty(GridEditorBase.prototype, "value", {
+                get: function () {
+                    var p = this.getIdProperty();
+                    return this.view.getItems().map(function (x) {
+                        var y = Q.deepClone(x);
+                        var id = y[p];
+                        if (id && id.toString().charAt(0) == '`')
+                            delete y[p];
+                        return y;
+                    });
+                },
+                set: function (value) {
+                    var _this = this;
+                    var p = this.getIdProperty();
+                    this.view.setItems((value || []).map(function (x) {
+                        var y = Q.deepClone(x);
+                        if (y[p] == null)
+                            y[p] = "`" + _this.getNextId();
+                        return y;
+                    }), true);
+                },
+                enumerable: true,
+                configurable: true
+            });
+            GridEditorBase.prototype.getGridCanLoad = function () {
+                return false;
+            };
+            GridEditorBase.prototype.usePager = function () {
+                return false;
+            };
+            GridEditorBase.prototype.getInitialTitle = function () {
+                return null;
+            };
+            GridEditorBase.prototype.createQuickSearchInput = function () {
+            };
+            GridEditorBase = __decorate([
+                Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+                Serenity.Decorators.editor(),
+                Serenity.Decorators.element("<div/>")
+            ], GridEditorBase);
+            return GridEditorBase;
+        }(Serenity.EntityGrid));
+        Common.GridEditorBase = GridEditorBase;
+    })(Common = Geshotel.Common || (Geshotel.Common = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Common;
+    (function (Common) {
+        var GridEditorDialog = (function (_super) {
+            __extends(GridEditorDialog, _super);
+            function GridEditorDialog() {
+                _super.apply(this, arguments);
+            }
+            GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
+            GridEditorDialog.prototype.destroy = function () {
+                this.onSave = null;
+                this.onDelete = null;
+                _super.prototype.destroy.call(this);
+            };
+            GridEditorDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                // apply changes button doesn't work properly with in-memory grids yet
+                if (this.applyChangesButton) {
+                    this.applyChangesButton.hide();
+                }
+            };
+            GridEditorDialog.prototype.saveHandler = function (options, callback) {
+                this.onSave && this.onSave(options, callback);
+            };
+            GridEditorDialog.prototype.deleteHandler = function (options, callback) {
+                this.onDelete && this.onDelete(options, callback);
+            };
+            GridEditorDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], GridEditorDialog);
+            return GridEditorDialog;
+        }(Serenity.EntityDialog));
+        Common.GridEditorDialog = GridEditorDialog;
+    })(Common = Geshotel.Common || (Geshotel.Common = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
     var LanguageList;
     (function (LanguageList) {
         function getValue() {
@@ -5042,54 +1633,6 @@ var Geshotel;
 (function (Geshotel) {
     var Administration;
     (function (Administration) {
-        var UserCompanyForm = (function (_super) {
-            __extends(UserCompanyForm, _super);
-            function UserCompanyForm() {
-                _super.apply(this, arguments);
-            }
-            UserCompanyForm.formKey = 'Administration.UserCompany';
-            return UserCompanyForm;
-        }(Serenity.PrefixedContext));
-        Administration.UserCompanyForm = UserCompanyForm;
-        [['UsuarioId', function () { return Serenity.IntegerEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(UserCompanyForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Administration;
-    (function (Administration) {
-        var UserCompanyRow;
-        (function (UserCompanyRow) {
-            UserCompanyRow.idProperty = 'UsuarioId';
-            UserCompanyRow.localTextPrefix = 'Administration.UserCompany';
-            var Fields;
-            (function (Fields) {
-            })(Fields = UserCompanyRow.Fields || (UserCompanyRow.Fields = {}));
-            ['UsuarioId', 'EmpresaId'].forEach(function (x) { return Fields[x] = x; });
-        })(UserCompanyRow = Administration.UserCompanyRow || (Administration.UserCompanyRow = {}));
-    })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Administration;
-    (function (Administration) {
-        var UserCompanyService;
-        (function (UserCompanyService) {
-            UserCompanyService.baseUrl = 'Administration/UserCompany';
-            var Methods;
-            (function (Methods) {
-            })(Methods = UserCompanyService.Methods || (UserCompanyService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                UserCompanyService[x] = function (r, s, o) { return Q.serviceRequest(UserCompanyService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = UserCompanyService.baseUrl + '/' + x;
-            });
-        })(UserCompanyService = Administration.UserCompanyService || (Administration.UserCompanyService = {}));
-    })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Administration;
-    (function (Administration) {
         var UserForm = (function (_super) {
             __extends(UserForm, _super);
             function UserForm() {
@@ -5208,250 +1751,6 @@ var Geshotel;
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var BasicSamplesService;
-        (function (BasicSamplesService) {
-            BasicSamplesService.baseUrl = 'BasicSamples/BasicSamples';
-            var Methods;
-            (function (Methods) {
-            })(Methods = BasicSamplesService.Methods || (BasicSamplesService.Methods = {}));
-            ['OrdersByShipper', 'OrderBulkAction'].forEach(function (x) {
-                BasicSamplesService[x] = function (r, s, o) { return Q.serviceRequest(BasicSamplesService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = BasicSamplesService.baseUrl + '/' + x;
-            });
-        })(BasicSamplesService = BasicSamples.BasicSamplesService || (BasicSamples.BasicSamplesService = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ChangingLookupTextForm = (function (_super) {
-            __extends(ChangingLookupTextForm, _super);
-            function ChangingLookupTextForm() {
-                _super.apply(this, arguments);
-            }
-            ChangingLookupTextForm.formKey = 'BasicSamples.ChangingLookupText';
-            return ChangingLookupTextForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.ChangingLookupTextForm = ChangingLookupTextForm;
-        [['ProductID', function () { return BasicSamples.ChangingLookupTextEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['Quantity', function () { return Serenity.IntegerEditor; }], ['Discount', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(ChangingLookupTextForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomerGrossSalesRow;
-        (function (CustomerGrossSalesRow) {
-            CustomerGrossSalesRow.nameProperty = 'ContactName';
-            CustomerGrossSalesRow.localTextPrefix = 'BasicSamples.GrossSales';
-            var Fields;
-            (function (Fields) {
-            })(Fields = CustomerGrossSalesRow.Fields || (CustomerGrossSalesRow.Fields = {}));
-            ['CustomerId', 'ContactName', 'ProductId', 'ProductName', 'GrossAmount'].forEach(function (x) { return Fields[x] = x; });
-        })(CustomerGrossSalesRow = BasicSamples.CustomerGrossSalesRow || (BasicSamples.CustomerGrossSalesRow = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var CustomerGrossSalesService;
-        (function (CustomerGrossSalesService) {
-            CustomerGrossSalesService.baseUrl = 'BasicSamples/CustomerGrossSales';
-            var Methods;
-            (function (Methods) {
-            })(Methods = CustomerGrossSalesService.Methods || (CustomerGrossSalesService.Methods = {}));
-            ['List'].forEach(function (x) {
-                CustomerGrossSalesService[x] = function (r, s, o) { return Q.serviceRequest(CustomerGrossSalesService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = CustomerGrossSalesService.baseUrl + '/' + x;
-            });
-        })(CustomerGrossSalesService = BasicSamples.CustomerGrossSalesService || (BasicSamples.CustomerGrossSalesService = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleForm = (function (_super) {
-            __extends(DragDropSampleForm, _super);
-            function DragDropSampleForm() {
-                _super.apply(this, arguments);
-            }
-            DragDropSampleForm.formKey = 'BasicSamples.DragDropSample';
-            return DragDropSampleForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.DragDropSampleForm = DragDropSampleForm;
-        [['Title', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(DragDropSampleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleRow;
-        (function (DragDropSampleRow) {
-            DragDropSampleRow.idProperty = 'Id';
-            DragDropSampleRow.nameProperty = 'Title';
-            DragDropSampleRow.localTextPrefix = 'BasicSamples.DragDropSample';
-            var Fields;
-            (function (Fields) {
-            })(Fields = DragDropSampleRow.Fields || (DragDropSampleRow.Fields = {}));
-            ['Id', 'ParentId', 'Title'].forEach(function (x) { return Fields[x] = x; });
-        })(DragDropSampleRow = BasicSamples.DragDropSampleRow || (BasicSamples.DragDropSampleRow = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var DragDropSampleService;
-        (function (DragDropSampleService) {
-            DragDropSampleService.baseUrl = 'BasicSamples/DragDropSample';
-            var Methods;
-            (function (Methods) {
-            })(Methods = DragDropSampleService.Methods || (DragDropSampleService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                DragDropSampleService[x] = function (r, s, o) { return Q.serviceRequest(DragDropSampleService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = DragDropSampleService.baseUrl + '/' + x;
-            });
-        })(DragDropSampleService = BasicSamples.DragDropSampleService || (BasicSamples.DragDropSampleService = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var FilteredLookupInDetailForm = (function (_super) {
-            __extends(FilteredLookupInDetailForm, _super);
-            function FilteredLookupInDetailForm() {
-                _super.apply(this, arguments);
-            }
-            FilteredLookupInDetailForm.formKey = 'BasicSamples.FilteredLookupInDetail';
-            return FilteredLookupInDetailForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.FilteredLookupInDetailForm = FilteredLookupInDetailForm;
-        [['CustomerID', function () { return Geshotel.Northwind.CustomerEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['CategoryID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return BasicSamples.FilteredLookupDetailEditor; }]].forEach(function (x) { return Object.defineProperty(FilteredLookupInDetailForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var HardcodedValuesForm = (function (_super) {
-            __extends(HardcodedValuesForm, _super);
-            function HardcodedValuesForm() {
-                _super.apply(this, arguments);
-            }
-            HardcodedValuesForm.formKey = 'BasicSamples.HarcodedValues';
-            return HardcodedValuesForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.HardcodedValuesForm = HardcodedValuesForm;
-        [['SomeValue', function () { return BasicSamples.HardcodedValuesEditor; }]].forEach(function (x) { return Object.defineProperty(HardcodedValuesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var LookupFilterByMultipleForm = (function (_super) {
-            __extends(LookupFilterByMultipleForm, _super);
-            function LookupFilterByMultipleForm() {
-                _super.apply(this, arguments);
-            }
-            LookupFilterByMultipleForm.formKey = 'BasicSamples.LookupFilterByMultiple';
-            return LookupFilterByMultipleForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.LookupFilterByMultipleForm = LookupFilterByMultipleForm;
-        [['ProductName', function () { return Serenity.StringEditor; }], ['ProductImage', function () { return Serenity.ImageUploadEditor; }], ['Discontinued', function () { return Serenity.BooleanEditor; }], ['SupplierID', function () { return Serenity.LookupEditor; }], ['CategoryID', function () { return BasicSamples.ProduceSeafoodCategoryEditor; }], ['QuantityPerUnit', function () { return Serenity.StringEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['UnitsInStock', function () { return Serenity.IntegerEditor; }], ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }], ['ReorderLevel', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LookupFilterByMultipleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var PopulateLinkedDataForm = (function (_super) {
-            __extends(PopulateLinkedDataForm, _super);
-            function PopulateLinkedDataForm() {
-                _super.apply(this, arguments);
-            }
-            PopulateLinkedDataForm.formKey = 'BasicSamples.PopulateLinkedData';
-            return PopulateLinkedDataForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.PopulateLinkedDataForm = PopulateLinkedDataForm;
-        [['CustomerID', function () { return Geshotel.Northwind.CustomerEditor; }], ['CustomerContactName', function () { return Serenity.StringEditor; }], ['CustomerContactTitle', function () { return Serenity.StringEditor; }], ['CustomerCity', function () { return Serenity.StringEditor; }], ['CustomerRegion', function () { return Serenity.StringEditor; }], ['CustomerCountry', function () { return Serenity.StringEditor; }], ['CustomerPhone', function () { return Serenity.StringEditor; }], ['CustomerFax', function () { return Serenity.StringEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['RequiredDate', function () { return Serenity.DateEditor; }], ['EmployeeID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return Geshotel.Northwind.OrderDetailsEditor; }]].forEach(function (x) { return Object.defineProperty(PopulateLinkedDataForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportForm = (function (_super) {
-            __extends(ProductExcelImportForm, _super);
-            function ProductExcelImportForm() {
-                _super.apply(this, arguments);
-            }
-            ProductExcelImportForm.formKey = 'BasicSamples.ProductExcelImport';
-            return ProductExcelImportForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.ProductExcelImportForm = ProductExcelImportForm;
-        [['FileName', function () { return Serenity.ImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(ProductExcelImportForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var ProductExcelImportService;
-        (function (ProductExcelImportService) {
-            ProductExcelImportService.baseUrl = 'BasicSamples/ProductExcelImport';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ProductExcelImportService.Methods || (ProductExcelImportService.Methods = {}));
-            ['ExcelImport'].forEach(function (x) {
-                ProductExcelImportService[x] = function (r, s, o) { return Q.serviceRequest(ProductExcelImportService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ProductExcelImportService.baseUrl + '/' + x;
-            });
-        })(ProductExcelImportService = BasicSamples.ProductExcelImportService || (BasicSamples.ProductExcelImportService = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var StaticTextBlockForm = (function (_super) {
-            __extends(StaticTextBlockForm, _super);
-            function StaticTextBlockForm() {
-                _super.apply(this, arguments);
-            }
-            StaticTextBlockForm.formKey = 'BasicSamples.StaticTextBlock';
-            return StaticTextBlockForm;
-        }(Serenity.PrefixedContext));
-        BasicSamples.StaticTextBlockForm = StaticTextBlockForm;
-        [['StaticText', function () { return Geshotel.StaticTextBlock; }], ['SomeInput', function () { return Serenity.StringEditor; }], ['HtmlList', function () { return Geshotel.StaticTextBlock; }], ['FromLocalText', function () { return Geshotel.StaticTextBlock; }], ['DisplayFieldValue', function () { return Geshotel.StaticTextBlock; }]].forEach(function (x) { return Object.defineProperty(StaticTextBlockForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var VSGalleryQAService;
-        (function (VSGalleryQAService) {
-            VSGalleryQAService.baseUrl = 'BasicSamples/VSGalleryQA';
-            var Methods;
-            (function (Methods) {
-            })(Methods = VSGalleryQAService.Methods || (VSGalleryQAService.Methods = {}));
-            ['List'].forEach(function (x) {
-                VSGalleryQAService[x] = function (r, s, o) { return Q.serviceRequest(VSGalleryQAService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = VSGalleryQAService.baseUrl + '/' + x;
-            });
-        })(VSGalleryQAService = BasicSamples.VSGalleryQAService || (BasicSamples.VSGalleryQAService = {}));
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
     var Common;
     (function (Common) {
         var UserPreferenceRow;
@@ -5487,22 +1786,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var AmbitoOfertaForm = (function (_super) {
-            __extends(AmbitoOfertaForm, _super);
-            function AmbitoOfertaForm() {
-                _super.apply(this, arguments);
-            }
-            AmbitoOfertaForm.formKey = 'Contratos.AmbitoOferta';
-            return AmbitoOfertaForm;
-        }(Serenity.PrefixedContext));
-        Contratos.AmbitoOfertaForm = AmbitoOfertaForm;
-        [['AmbitoOfertaId', function () { return Serenity.IntegerEditor; }], ['NombreAmbito', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(AmbitoOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var AmbitoOfertaRow;
         (function (AmbitoOfertaRow) {
             AmbitoOfertaRow.idProperty = 'AmbitoOfertaId';
@@ -5524,23 +1807,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var AmbitoOfertaService;
-        (function (AmbitoOfertaService) {
-            AmbitoOfertaService.baseUrl = 'Contratos/AmbitoOferta';
-            var Methods;
-            (function (Methods) {
-            })(Methods = AmbitoOfertaService.Methods || (AmbitoOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                AmbitoOfertaService[x] = function (r, s, o) { return Q.serviceRequest(AmbitoOfertaService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = AmbitoOfertaService.baseUrl + '/' + x;
-            });
-        })(AmbitoOfertaService = Contratos.AmbitoOfertaService || (Contratos.AmbitoOfertaService = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var ClientesForm = (function (_super) {
             __extends(ClientesForm, _super);
             function ClientesForm() {
@@ -5550,7 +1816,7 @@ var Geshotel;
             return ClientesForm;
         }(Serenity.PrefixedContext));
         Contratos.ClientesForm = ClientesForm;
-        [['Razon', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }], ['AgenciaId', function () { return Serenity.IntegerEditor; }], ['ClienteDefecto', function () { return Serenity.BooleanEditor; }], ['GrupoClienteId', function () { return Serenity.LookupEditor; }], ['TipoDocumentoId', function () { return Serenity.LookupEditor; }], ['Nif', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['ProvinciaId', function () { return Serenity.LookupEditor; }], ['CtaContableAnticipo', function () { return Serenity.StringEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['CtaDepositos', function () { return Serenity.StringEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['Contacto', function () { return Serenity.StringEditor; }], ['TelefonoContacto', function () { return Serenity.StringEditor; }], ['FaxContacto', function () { return Serenity.StringEditor; }], ['EmailContacto', function () { return Serenity.StringEditor; }], ['CifFra', function () { return Serenity.StringEditor; }], ['DireccionFra', function () { return Serenity.StringEditor; }], ['PoblacionFra', function () { return Serenity.StringEditor; }], ['ZipFra', function () { return Serenity.StringEditor; }], ['NacionIdFactura', function () { return Serenity.LookupEditor; }], ['ProvinciaIdFactura', function () { return Serenity.LookupEditor; }], ['ClienteFactura', function () { return Serenity.BooleanEditor; }], ['PermiteCredito', function () { return Serenity.BooleanEditor; }], ['LimiteCredito', function () { return Serenity.DecimalEditor; }], ['FacturaAnticipada', function () { return Serenity.BooleanEditor; }], ['VencimientoFacturasId', function () { return Serenity.IntegerEditor; }], ['ClienteBavel', function () { return Serenity.StringEditor; }], ['DingusExtras', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(ClientesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['Razon', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }], ['AgenciaId', function () { return Serenity.LookupEditor; }], ['ClienteDefecto', function () { return Serenity.BooleanEditor; }], ['GrupoClienteId', function () { return Serenity.LookupEditor; }], ['TipoDocumentoId', function () { return Serenity.LookupEditor; }], ['Nif', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['ProvinciaId', function () { return Serenity.LookupEditor; }], ['CtaContableAnticipo', function () { return Serenity.StringEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['CtaDepositos', function () { return Serenity.StringEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['Contacto', function () { return Serenity.StringEditor; }], ['TelefonoContacto', function () { return Serenity.StringEditor; }], ['FaxContacto', function () { return Serenity.StringEditor; }], ['EmailContacto', function () { return Serenity.StringEditor; }], ['CifFra', function () { return Serenity.StringEditor; }], ['DireccionFra', function () { return Serenity.StringEditor; }], ['PoblacionFra', function () { return Serenity.StringEditor; }], ['ZipFra', function () { return Serenity.StringEditor; }], ['NacionIdFactura', function () { return Serenity.LookupEditor; }], ['ProvinciaIdFactura', function () { return Serenity.LookupEditor; }], ['ClienteFactura', function () { return Serenity.BooleanEditor; }], ['PermiteCredito', function () { return Serenity.BooleanEditor; }], ['LimiteCredito', function () { return Serenity.DecimalEditor; }], ['FacturaAnticipada', function () { return Serenity.BooleanEditor; }], ['VencimientoFacturasId', function () { return Serenity.IntegerEditor; }], ['ClienteBavel', function () { return Serenity.StringEditor; }], ['DingusExtras', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(ClientesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -5595,22 +1861,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var FrecuenciaFacturacionForm = (function (_super) {
-            __extends(FrecuenciaFacturacionForm, _super);
-            function FrecuenciaFacturacionForm() {
-                _super.apply(this, arguments);
-            }
-            FrecuenciaFacturacionForm.formKey = 'Contratos.FrecuenciaFacturacion';
-            return FrecuenciaFacturacionForm;
-        }(Serenity.PrefixedContext));
-        Contratos.FrecuenciaFacturacionForm = FrecuenciaFacturacionForm;
-        [['FrecuenciaId', function () { return Serenity.IntegerEditor; }], ['DescripcionCorta', function () { return Serenity.StringEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(FrecuenciaFacturacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var FrecuenciaFacturacionRow;
         (function (FrecuenciaFacturacionRow) {
             FrecuenciaFacturacionRow.idProperty = 'FrecuenciaId';
@@ -5621,56 +1871,6 @@ var Geshotel;
             })(Fields = FrecuenciaFacturacionRow.Fields || (FrecuenciaFacturacionRow.Fields = {}));
             ['FrecuenciaId', 'DescripcionCorta', 'Descripcion'].forEach(function (x) { return Fields[x] = x; });
         })(FrecuenciaFacturacionRow = Contratos.FrecuenciaFacturacionRow || (Contratos.FrecuenciaFacturacionRow = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var FrecuenciaFacturacionService;
-        (function (FrecuenciaFacturacionService) {
-            FrecuenciaFacturacionService.baseUrl = 'Contratos/FrecuenciaFacturacion';
-            var Methods;
-            (function (Methods) {
-            })(Methods = FrecuenciaFacturacionService.Methods || (FrecuenciaFacturacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                FrecuenciaFacturacionService[x] = function (r, s, o) { return Q.serviceRequest(FrecuenciaFacturacionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = FrecuenciaFacturacionService.baseUrl + '/' + x;
-            });
-        })(FrecuenciaFacturacionService = Contratos.FrecuenciaFacturacionService || (Contratos.FrecuenciaFacturacionService = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var GruposDeClienteForm = (function (_super) {
-            __extends(GruposDeClienteForm, _super);
-            function GruposDeClienteForm() {
-                _super.apply(this, arguments);
-            }
-            GruposDeClienteForm.formKey = 'Contratos.GruposDeCliente';
-            return GruposDeClienteForm;
-        }(Serenity.PrefixedContext));
-        Contratos.GruposDeClienteForm = GruposDeClienteForm;
-        [['GrupoClienteId', function () { return Serenity.IntegerEditor; }], ['NombreGrupo', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['Huesped', function () { return Serenity.IntegerEditor; }], ['Contratos', function () { return Serenity.IntegerEditor; }], ['Facturar', function () { return Serenity.IntegerEditor; }], ['Agencia', function () { return Serenity.IntegerEditor; }], ['Perfil', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(GruposDeClienteForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var GruposDeClienteService;
-        (function (GruposDeClienteService) {
-            GruposDeClienteService.baseUrl = 'Contratos/GruposDeCliente';
-            var Methods;
-            (function (Methods) {
-            })(Methods = GruposDeClienteService.Methods || (GruposDeClienteService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                GruposDeClienteService[x] = function (r, s, o) { return Q.serviceRequest(GruposDeClienteService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = GruposDeClienteService.baseUrl + '/' + x;
-            });
-        })(GruposDeClienteService = Contratos.GruposDeClienteService || (Contratos.GruposDeClienteService = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -5725,22 +1925,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var TipoAplicacionOfertaForm = (function (_super) {
-            __extends(TipoAplicacionOfertaForm, _super);
-            function TipoAplicacionOfertaForm() {
-                _super.apply(this, arguments);
-            }
-            TipoAplicacionOfertaForm.formKey = 'Contratos.TipoAplicacionOferta';
-            return TipoAplicacionOfertaForm;
-        }(Serenity.PrefixedContext));
-        Contratos.TipoAplicacionOfertaForm = TipoAplicacionOfertaForm;
-        [['TipoAplicacionOfertaId', function () { return Serenity.StringEditor; }], ['AplicableSegunFechaDe', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TipoAplicacionOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var TipoAplicacionOfertaRow;
         (function (TipoAplicacionOfertaRow) {
             TipoAplicacionOfertaRow.idProperty = 'TipoAplicacionOfertaId';
@@ -5756,39 +1940,6 @@ var Geshotel;
             })(Fields = TipoAplicacionOfertaRow.Fields || (TipoAplicacionOfertaRow.Fields = {}));
             ['TipoAplicacionOfertaId', 'AplicableSegunFechaDe'].forEach(function (x) { return Fields[x] = x; });
         })(TipoAplicacionOfertaRow = Contratos.TipoAplicacionOfertaRow || (Contratos.TipoAplicacionOfertaRow = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var TipoAplicacionOfertaService;
-        (function (TipoAplicacionOfertaService) {
-            TipoAplicacionOfertaService.baseUrl = 'Contratos/TipoAplicacionOferta';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TipoAplicacionOfertaService.Methods || (TipoAplicacionOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TipoAplicacionOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TipoAplicacionOfertaService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TipoAplicacionOfertaService.baseUrl + '/' + x;
-            });
-        })(TipoAplicacionOfertaService = Contratos.TipoAplicacionOfertaService || (Contratos.TipoAplicacionOfertaService = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var TiposCondicionForm = (function (_super) {
-            __extends(TiposCondicionForm, _super);
-            function TiposCondicionForm() {
-                _super.apply(this, arguments);
-            }
-            TiposCondicionForm.formKey = 'Contratos.TiposCondicion';
-            return TiposCondicionForm;
-        }(Serenity.PrefixedContext));
-        Contratos.TiposCondicionForm = TiposCondicionForm;
-        [['TipoCondicionId', function () { return Serenity.IntegerEditor; }], ['Condicion', function () { return Serenity.StringEditor; }], ['Literal', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposCondicionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -5816,39 +1967,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var TiposCondicionService;
-        (function (TiposCondicionService) {
-            TiposCondicionService.baseUrl = 'Contratos/TiposCondicion';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposCondicionService.Methods || (TiposCondicionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposCondicionService[x] = function (r, s, o) { return Q.serviceRequest(TiposCondicionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposCondicionService.baseUrl + '/' + x;
-            });
-        })(TiposCondicionService = Contratos.TiposCondicionService || (Contratos.TiposCondicionService = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var TiposDeImputacionForm = (function (_super) {
-            __extends(TiposDeImputacionForm, _super);
-            function TiposDeImputacionForm() {
-                _super.apply(this, arguments);
-            }
-            TiposDeImputacionForm.formKey = 'Contratos.TiposDeImputacion';
-            return TiposDeImputacionForm;
-        }(Serenity.PrefixedContext));
-        Contratos.TiposDeImputacionForm = TiposDeImputacionForm;
-        [['TipoImputacionId', function () { return Serenity.IntegerEditor; }], ['Imputacion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposDeImputacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var TiposDeImputacionRow;
         (function (TiposDeImputacionRow) {
             TiposDeImputacionRow.idProperty = 'TipoImputacionId';
@@ -5870,39 +1988,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var TiposDeImputacionService;
-        (function (TiposDeImputacionService) {
-            TiposDeImputacionService.baseUrl = 'Contratos/TiposDeImputacion';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposDeImputacionService.Methods || (TiposDeImputacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDeImputacionService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeImputacionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposDeImputacionService.baseUrl + '/' + x;
-            });
-        })(TiposDeImputacionService = Contratos.TiposDeImputacionService || (Contratos.TiposDeImputacionService = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var TiposDeOfertaForm = (function (_super) {
-            __extends(TiposDeOfertaForm, _super);
-            function TiposDeOfertaForm() {
-                _super.apply(this, arguments);
-            }
-            TiposDeOfertaForm.formKey = 'Contratos.TiposDeOferta';
-            return TiposDeOfertaForm;
-        }(Serenity.PrefixedContext));
-        Contratos.TiposDeOfertaForm = TiposDeOfertaForm;
-        [['TipoOfertaId', function () { return Serenity.IntegerEditor; }], ['Oferta', function () { return Serenity.StringEditor; }], ['PermitirMMayorQueN', function () { return Serenity.IntegerEditor; }], ['Rejilla', function () { return Serenity.IntegerEditor; }], ['Observaciones', function () { return Serenity.StringEditor; }], ['OrdenAplicacion', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(TiposDeOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var TiposDeOfertaRow;
         (function (TiposDeOfertaRow) {
             TiposDeOfertaRow.idProperty = 'TipoOfertaId';
@@ -5918,23 +2003,6 @@ var Geshotel;
             })(Fields = TiposDeOfertaRow.Fields || (TiposDeOfertaRow.Fields = {}));
             ['TipoOfertaId', 'Oferta', 'PermitirMMayorQueN', 'Rejilla', 'Observaciones', 'OrdenAplicacion'].forEach(function (x) { return Fields[x] = x; });
         })(TiposDeOfertaRow = Contratos.TiposDeOfertaRow || (Contratos.TiposDeOfertaRow = {}));
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var TiposDeOfertaService;
-        (function (TiposDeOfertaService) {
-            TiposDeOfertaService.baseUrl = 'Contratos/TiposDeOferta';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposDeOfertaService.Methods || (TiposDeOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDeOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeOfertaService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposDeOfertaService.baseUrl + '/' + x;
-            });
-        })(TiposDeOfertaService = Contratos.TiposDeOfertaService || (Contratos.TiposDeOfertaService = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -7507,22 +3575,6 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
-        var EstadosFacturasForm = (function (_super) {
-            __extends(EstadosFacturasForm, _super);
-            function EstadosFacturasForm() {
-                _super.apply(this, arguments);
-            }
-            EstadosFacturasForm.formKey = 'Portal.EstadosFacturas';
-            return EstadosFacturasForm;
-        }(Serenity.PrefixedContext));
-        Portal.EstadosFacturasForm = EstadosFacturasForm;
-        [['EstadoFacturaId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['EsError', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(EstadosFacturasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
         var EstadosFacturasRow;
         (function (EstadosFacturasRow) {
             EstadosFacturasRow.idProperty = 'EstadoFacturaId';
@@ -7538,23 +3590,6 @@ var Geshotel;
             })(Fields = EstadosFacturasRow.Fields || (EstadosFacturasRow.Fields = {}));
             ['EstadoFacturaId', 'Descripcion', 'EsError'].forEach(function (x) { return Fields[x] = x; });
         })(EstadosFacturasRow = Portal.EstadosFacturasRow || (Portal.EstadosFacturasRow = {}));
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var EstadosFacturasService;
-        (function (EstadosFacturasService) {
-            EstadosFacturasService.baseUrl = 'Portal/EstadosFacturas';
-            var Methods;
-            (function (Methods) {
-            })(Methods = EstadosFacturasService.Methods || (EstadosFacturasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                EstadosFacturasService[x] = function (r, s, o) { return Q.serviceRequest(EstadosFacturasService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = EstadosFacturasService.baseUrl + '/' + x;
-            });
-        })(EstadosFacturasService = Portal.EstadosFacturasService || (Portal.EstadosFacturasService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -7993,22 +4028,6 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
-        var ReservaEstadosForm = (function (_super) {
-            __extends(ReservaEstadosForm, _super);
-            function ReservaEstadosForm() {
-                _super.apply(this, arguments);
-            }
-            ReservaEstadosForm.formKey = 'Portal.ReservaEstados';
-            return ReservaEstadosForm;
-        }(Serenity.PrefixedContext));
-        Portal.ReservaEstadosForm = ReservaEstadosForm;
-        [['EstadoReservaId', function () { return Serenity.IntegerEditor; }], ['Estado', function () { return Serenity.StringEditor; }], ['EsErrorFechaini', function () { return Serenity.IntegerEditor; }], ['EsErrorFechafin', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservaEstadosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
         var ReservaEstadosRow;
         (function (ReservaEstadosRow) {
             ReservaEstadosRow.idProperty = 'EstadoReservaId';
@@ -8024,23 +4043,6 @@ var Geshotel;
             })(Fields = ReservaEstadosRow.Fields || (ReservaEstadosRow.Fields = {}));
             ['EstadoReservaId', 'Estado', 'EsErrorFechaini', 'EsErrorFechafin'].forEach(function (x) { return Fields[x] = x; });
         })(ReservaEstadosRow = Portal.ReservaEstadosRow || (Portal.ReservaEstadosRow = {}));
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var ReservaEstadosService;
-        (function (ReservaEstadosService) {
-            ReservaEstadosService.baseUrl = 'Portal/ReservaEstados';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ReservaEstadosService.Methods || (ReservaEstadosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservaEstadosService[x] = function (r, s, o) { return Q.serviceRequest(ReservaEstadosService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = ReservaEstadosService.baseUrl + '/' + x;
-            });
-        })(ReservaEstadosService = Portal.ReservaEstadosService || (Portal.ReservaEstadosService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -8122,22 +4124,6 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
-        var TiposDocumentoForm = (function (_super) {
-            __extends(TiposDocumentoForm, _super);
-            function TiposDocumentoForm() {
-                _super.apply(this, arguments);
-            }
-            TiposDocumentoForm.formKey = 'Portal.TiposDocumento';
-            return TiposDocumentoForm;
-        }(Serenity.PrefixedContext));
-        Portal.TiposDocumentoForm = TiposDocumentoForm;
-        [['DocumentoId', function () { return Serenity.StringEditor; }], ['Documento', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposDocumentoForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
         var TiposDocumentoRow;
         (function (TiposDocumentoRow) {
             TiposDocumentoRow.idProperty = 'DocumentoId';
@@ -8153,23 +4139,6 @@ var Geshotel;
             })(Fields = TiposDocumentoRow.Fields || (TiposDocumentoRow.Fields = {}));
             ['DocumentoId', 'Documento'].forEach(function (x) { return Fields[x] = x; });
         })(TiposDocumentoRow = Portal.TiposDocumentoRow || (Portal.TiposDocumentoRow = {}));
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var TiposDocumentoService;
-        (function (TiposDocumentoService) {
-            TiposDocumentoService.baseUrl = 'Portal/TiposDocumento';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposDocumentoService.Methods || (TiposDocumentoService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDocumentoService[x] = function (r, s, o) { return Q.serviceRequest(TiposDocumentoService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposDocumentoService.baseUrl + '/' + x;
-            });
-        })(TiposDocumentoService = Portal.TiposDocumentoService || (Portal.TiposDocumentoService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -8338,22 +4307,6 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
-        var TiposPensionForm = (function (_super) {
-            __extends(TiposPensionForm, _super);
-            function TiposPensionForm() {
-                _super.apply(this, arguments);
-            }
-            TiposPensionForm.formKey = 'Portal.TiposPension';
-            return TiposPensionForm;
-        }(Serenity.PrefixedContext));
-        Portal.TiposPensionForm = TiposPensionForm;
-        [['TipoPensionId', function () { return Serenity.IntegerEditor; }], ['TipoPension', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposPensionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
         var TiposPensionRow;
         (function (TiposPensionRow) {
             TiposPensionRow.idProperty = 'TipoPensionId';
@@ -8369,23 +4322,6 @@ var Geshotel;
             })(Fields = TiposPensionRow.Fields || (TiposPensionRow.Fields = {}));
             ['TipoPensionId', 'TipoPension'].forEach(function (x) { return Fields[x] = x; });
         })(TiposPensionRow = Portal.TiposPensionRow || (Portal.TiposPensionRow = {}));
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var TiposPensionService;
-        (function (TiposPensionService) {
-            TiposPensionService.baseUrl = 'Portal/TiposPension';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposPensionService.Methods || (TiposPensionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposPensionService[x] = function (r, s, o) { return Q.serviceRequest(TiposPensionService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposPensionService.baseUrl + '/' + x;
-            });
-        })(TiposPensionService = Portal.TiposPensionService || (Portal.TiposPensionService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -10061,6 +5997,103 @@ var Geshotel;
 (function (Geshotel) {
     var Northwind;
     (function (Northwind) {
+        var CategoryDialog = (function (_super) {
+            __extends(CategoryDialog, _super);
+            function CategoryDialog() {
+                _super.apply(this, arguments);
+                this.form = new Northwind.CategoryForm(this.idPrefix);
+            }
+            CategoryDialog.prototype.getFormKey = function () { return Northwind.CategoryForm.formKey; };
+            CategoryDialog.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
+            CategoryDialog.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
+            CategoryDialog.prototype.getNameProperty = function () { return Northwind.CategoryRow.nameProperty; };
+            CategoryDialog.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
+            CategoryDialog.prototype.getLanguages = function () {
+                return Geshotel.LanguageList.getValue();
+            };
+            CategoryDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryDialog);
+            return CategoryDialog;
+        }(Serenity.EntityDialog));
+        Northwind.CategoryDialog = CategoryDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var CategoryGrid = (function (_super) {
+            __extends(CategoryGrid, _super);
+            function CategoryGrid(container) {
+                _super.call(this, container);
+            }
+            CategoryGrid.prototype.getColumnsKey = function () { return "Northwind.Category"; };
+            CategoryGrid.prototype.getDialogType = function () { return Northwind.CategoryDialog; };
+            CategoryGrid.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
+            CategoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
+            CategoryGrid.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
+            CategoryGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CategoryGrid);
+            return CategoryGrid;
+        }(Serenity.EntityGrid));
+        Northwind.CategoryGrid = CategoryGrid;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var CustomerDialog = (function (_super) {
+            __extends(CustomerDialog, _super);
+            function CustomerDialog() {
+                var _this = this;
+                _super.call(this);
+                this.form = new Northwind.CustomerForm(this.idPrefix);
+                this.ordersGrid = new Northwind.CustomerOrdersGrid(this.byId('OrdersGrid'));
+                this.ordersGrid.element.flexHeightOnly(1);
+                this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+                Geshotel.DialogUtils.pendingChangesConfirmation(this.element, function () { return _this.getSaveState() != _this.loadedState; });
+            }
+            CustomerDialog.prototype.getFormKey = function () { return Northwind.CustomerForm.formKey; };
+            CustomerDialog.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
+            CustomerDialog.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
+            CustomerDialog.prototype.getNameProperty = function () { return Northwind.CustomerRow.nameProperty; };
+            CustomerDialog.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
+            CustomerDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            CustomerDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            CustomerDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+                this.ordersGrid.customerID = entity.CustomerID;
+            };
+            CustomerDialog.prototype.onSaveSuccess = function (response) {
+                _super.prototype.onSaveSuccess.call(this, response);
+                Q.reloadLookup('Northwind.Customer');
+            };
+            CustomerDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CustomerDialog);
+            return CustomerDialog;
+        }(Serenity.EntityDialog));
+        Northwind.CustomerDialog = CustomerDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
         var CustomerEditor = (function (_super) {
             __extends(CustomerEditor, _super);
             function CustomerEditor(hidden) {
@@ -10078,6 +6111,84 @@ var Geshotel;
             return CustomerEditor;
         }(Serenity.LookupEditorBase));
         Northwind.CustomerEditor = CustomerEditor;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var CustomerGrid = (function (_super) {
+            __extends(CustomerGrid, _super);
+            function CustomerGrid(container) {
+                _super.call(this, container);
+            }
+            CustomerGrid.prototype.getColumnsKey = function () { return "Northwind.Customer"; };
+            CustomerGrid.prototype.getDialogType = function () { return Northwind.CustomerDialog; };
+            CustomerGrid.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
+            CustomerGrid.prototype.getLocalTextPrefix = function () { return Northwind.CustomerRow.localTextPrefix; };
+            CustomerGrid.prototype.getService = function () { return Northwind.CustomerService.baseUrl; };
+            CustomerGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Northwind/Customer/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            CustomerGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], CustomerGrid);
+            return CustomerGrid;
+        }(Serenity.EntityGrid));
+        Northwind.CustomerGrid = CustomerGrid;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var OrderDialog = (function (_super) {
+            __extends(OrderDialog, _super);
+            function OrderDialog() {
+                _super.call(this);
+                this.form = new Northwind.OrderForm(this.idPrefix);
+            }
+            OrderDialog.prototype.getFormKey = function () { return Northwind.OrderForm.formKey; };
+            OrderDialog.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
+            OrderDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
+            OrderDialog.prototype.getNameProperty = function () { return Northwind.OrderRow.nameProperty; };
+            OrderDialog.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
+            OrderDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push(Geshotel.Common.ReportHelper.createToolButton({
+                    title: 'Invoice',
+                    cssClass: 'export-pdf-button',
+                    reportKey: 'Northwind.OrderDetail',
+                    getParams: function () { return ({
+                        OrderID: _this.get_entityId()
+                    }); }
+                }));
+                return buttons;
+            };
+            OrderDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
+            };
+            OrderDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDialog);
+            return OrderDialog;
+        }(Serenity.EntityDialog));
+        Northwind.OrderDialog = OrderDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
 /// <reference path="../Order/OrderDialog.ts" />
@@ -10100,6 +6211,102 @@ var Geshotel;
             return CustomerOrderDialog;
         }(Northwind.OrderDialog));
         Northwind.CustomerOrderDialog = CustomerOrderDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var OrderGrid = (function (_super) {
+            __extends(OrderGrid, _super);
+            function OrderGrid(container) {
+                _super.call(this, container);
+            }
+            OrderGrid.prototype.getColumnsKey = function () { return "Northwind.Order"; };
+            OrderGrid.prototype.getDialogType = function () { return Northwind.OrderDialog; };
+            OrderGrid.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
+            OrderGrid.prototype.getLocalTextPrefix = function () { return Northwind.OrderRow.localTextPrefix; };
+            OrderGrid.prototype.getService = function () { return Northwind.OrderService.baseUrl; };
+            OrderGrid.prototype.getQuickFilters = function () {
+                var _this = this;
+                var filters = _super.prototype.getQuickFilters.call(this);
+                filters.push({
+                    type: Serenity.LookupEditor,
+                    options: {
+                        lookupKey: Northwind.ProductRow.lookupKey
+                    },
+                    field: 'ProductID',
+                    title: 'Contains Product in Details',
+                    handler: function (w) {
+                        _this.view.params.ProductID = Q.toId(w.value);
+                    }
+                });
+                return filters;
+            };
+            OrderGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                var fld = Northwind.OrderRow.Fields;
+                this.shippingStateFilter = this.findQuickFilter(Serenity.EnumEditor, fld.ShippingState);
+            };
+            OrderGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Northwind.OrderService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            OrderGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                columns.splice(1, 0, {
+                    field: 'Print Invoice',
+                    name: '',
+                    format: function (ctx) { return '<a class="inline-action print-invoice" title="invoice">' +
+                        '<i class="fa fa-file-pdf-o text-red"></i></a>'; },
+                    width: 24,
+                    minWidth: 24,
+                    maxWidth: 24
+                });
+                return columns;
+            };
+            OrderGrid.prototype.onClick = function (e, row, cell) {
+                _super.prototype.onClick.call(this, e, row, cell);
+                if (e.isDefaultPrevented())
+                    return;
+                var item = this.itemAt(row);
+                var target = $(e.target);
+                // if user clicks "i" element, e.g. icon
+                if (target.parent().hasClass('inline-action'))
+                    target = target.parent();
+                if (target.hasClass('inline-action')) {
+                    e.preventDefault();
+                    if (target.hasClass('print-invoice')) {
+                        Geshotel.Common.ReportHelper.execute({
+                            reportKey: 'Northwind.OrderDetail',
+                            params: {
+                                OrderID: item.OrderID
+                            }
+                        });
+                    }
+                }
+            };
+            OrderGrid.prototype.set_shippingState = function (value) {
+                this.shippingStateFilter.value = value == null ? '' : value.toString();
+            };
+            OrderGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], OrderGrid);
+            return OrderGrid;
+        }(Serenity.EntityGrid));
+        Northwind.OrderGrid = OrderGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
 /// <reference path="../Order/OrderGrid.ts" />
@@ -10409,52 +6616,344 @@ var Geshotel;
         Northwind.FreightFormatter = FreightFormatter;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
-/// <reference path="../../Common/Helpers/BulkServiceAction.ts" />
+/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 var Geshotel;
 (function (Geshotel) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        var OrderBulkAction = (function (_super) {
-            __extends(OrderBulkAction, _super);
-            function OrderBulkAction() {
-                _super.apply(this, arguments);
-            }
-            /**
-             * This controls how many service requests will be used in parallel.
-             * Determine this number based on how many requests your server
-             * might be able to handle, and amount of wait on external resources.
-             */
-            OrderBulkAction.prototype.getParallelRequests = function () {
-                return 10;
-            };
-            /**
-             * These number of records IDs will be sent to your service in one
-             * service call. If your service is designed to handle one record only,
-             * set it to 1. But note that, if you have 5000 records, this will
-             * result in 5000 service calls / requests.
-             */
-            OrderBulkAction.prototype.getBatchSize = function () {
-                return 5;
-            };
-            /**
-             * This is where you should call your service.
-             * Batch parameter contains the selected order IDs
-             * that should be processed in this service call.
-             */
-            OrderBulkAction.prototype.executeForBatch = function (batch) {
+    var Northwind;
+    (function (Northwind) {
+        var OrderDetailDialog = (function (_super) {
+            __extends(OrderDetailDialog, _super);
+            function OrderDetailDialog() {
                 var _this = this;
-                BasicSamples.BasicSamplesService.OrderBulkAction({
-                    OrderIDs: batch.map(function (x) { return Q.parseInteger(x); })
-                }, function (response) { return _this.set_successCount(_this.get_successCount() + batch.length); }, {
-                    blockUI: false,
-                    onError: function (response) { return _this.set_errorCount(_this.get_errorCount() + batch.length); },
-                    onCleanup: function () { return _this.serviceCallCleanup(); }
+                _super.call(this);
+                this.form = new Northwind.OrderDetailForm(this.idPrefix);
+                this.form.ProductID.changeSelect2(function (e) {
+                    var productID = Q.toId(_this.form.ProductID.value);
+                    if (productID != null) {
+                        _this.form.UnitPrice.value = Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
+                    }
                 });
+                this.form.Discount.addValidationRule(this.uniqueName, function (e) {
+                    var price = _this.form.UnitPrice.value;
+                    var quantity = _this.form.Quantity.value;
+                    var discount = _this.form.Discount.value;
+                    if (price != null && quantity != null && discount != null &&
+                        discount > 0 && discount >= price * quantity) {
+                        return "Discount can't be higher than total price!";
+                    }
+                });
+            }
+            OrderDetailDialog.prototype.getFormKey = function () { return Northwind.OrderDetailForm.formKey; };
+            OrderDetailDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
+            OrderDetailDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailDialog);
+            return OrderDetailDialog;
+        }(Geshotel.Common.GridEditorDialog));
+        Northwind.OrderDetailDialog = OrderDetailDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var OrderDetailsEditor = (function (_super) {
+            __extends(OrderDetailsEditor, _super);
+            function OrderDetailsEditor(container) {
+                _super.call(this, container);
+            }
+            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Northwind.OrderDetail"; };
+            OrderDetailsEditor.prototype.getDialogType = function () { return Northwind.OrderDetailDialog; };
+            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
+            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.ProductID = Q.toId(row.ProductID);
+                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductID === row.ProductID; });
+                if (sameProduct && this.id(sameProduct) !== id) {
+                    Q.alert('This product is already in order details!');
+                    return false;
+                }
+                row.ProductName = Northwind.ProductRow.getLookup().itemById[row.ProductID].ProductName;
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                return true;
             };
-            return OrderBulkAction;
-        }(Geshotel.Common.BulkServiceAction));
-        BasicSamples.OrderBulkAction = OrderBulkAction;
-    })(BasicSamples = Geshotel.BasicSamples || (Geshotel.BasicSamples = {}));
+            OrderDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailsEditor);
+            return OrderDetailsEditor;
+        }(Geshotel.Common.GridEditorBase));
+        Northwind.OrderDetailsEditor = OrderDetailsEditor;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var ProductDialog = (function (_super) {
+            __extends(ProductDialog, _super);
+            function ProductDialog() {
+                _super.apply(this, arguments);
+                this.form = new Northwind.ProductForm(this.idPrefix);
+            }
+            ProductDialog.prototype.getFormKey = function () { return Northwind.ProductForm.formKey; };
+            ProductDialog.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
+            ProductDialog.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
+            ProductDialog.prototype.getNameProperty = function () { return Northwind.ProductRow.nameProperty; };
+            ProductDialog.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
+            ProductDialog.prototype.getLanguages = function () {
+                return Geshotel.LanguageList.getValue();
+            };
+            ProductDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.maximizable()
+            ], ProductDialog);
+            return ProductDialog;
+        }(Serenity.EntityDialog));
+        Northwind.ProductDialog = ProductDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var ProductGrid = (function (_super) {
+            __extends(ProductGrid, _super);
+            function ProductGrid(container) {
+                var _this = this;
+                _super.call(this, container);
+                this.pendingChanges = {};
+                this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+            }
+            ProductGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
+            ProductGrid.prototype.getDialogType = function () { return Northwind.ProductDialog; };
+            ProductGrid.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
+            ProductGrid.prototype.getLocalTextPrefix = function () { return Northwind.ProductRow.localTextPrefix; };
+            ProductGrid.prototype.getService = function () { return Northwind.ProductService.baseUrl; };
+            ProductGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Northwind.ProductService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Product List',
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            ProductID: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                buttons.push({
+                    title: 'Save Changes',
+                    cssClass: 'apply-changes-button disabled',
+                    onClick: function (e) { return _this.saveClick(); },
+                    separator: true
+                });
+                return buttons;
+            };
+            ProductGrid.prototype.onViewProcessData = function (response) {
+                this.pendingChanges = {};
+                this.setSaveButtonState();
+                return _super.prototype.onViewProcessData.call(this, response);
+            };
+            // PLEASE NOTE! Inline editing in grids is not something Serenity supports nor recommends.
+            // SlickGrid has some set of limitations, UI is very hard to use on some devices like mobile, 
+            // custom widgets and validations are not possible, and as a bonus the code can become a mess.
+            // 
+            // This was just a sample how-to after much requests, and is not supported. 
+            // This is all we can offer, please don't ask us to Guide you...
+            /**
+             * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+             * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+             * no event handlers to rendered cell contents
+             */
+            ProductGrid.prototype.numericInputFormatter = function (ctx) {
+                var klass = 'edit numeric';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                if (pending && pending[ctx.column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, ctx.column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + ctx.column.field +
+                    "' value='" + Q.formatNumber(value, '0.##') + "'/>";
+            };
+            ProductGrid.prototype.stringInputFormatter = function (ctx) {
+                var klass = 'edit string';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                var column = ctx.column;
+                if (pending && pending[column.field] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, column.field);
+                return "<input type='text' class='" + klass +
+                    "' data-field='" + column.field +
+                    "' value='" + Q.htmlEncode(value) +
+                    "' maxlength='" + column.sourceItem.maxLength + "'/>";
+            };
+            /**
+             * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+             */
+            ProductGrid.prototype.selectFormatter = function (ctx, idField, lookup) {
+                var fld = Northwind.ProductRow.Fields;
+                var klass = 'edit';
+                var item = ctx.item;
+                var pending = this.pendingChanges[item.ProductID];
+                var column = ctx.column;
+                if (pending && pending[idField] !== undefined) {
+                    klass += ' dirty';
+                }
+                var value = this.getEffectiveValue(item, idField);
+                var markup = "<select class='" + klass +
+                    "' data-field='" + idField +
+                    "' style='width: 100%; max-width: 100%'>";
+                for (var _i = 0, _a = lookup.items; _i < _a.length; _i++) {
+                    var c = _a[_i];
+                    var id = c[lookup.idField];
+                    markup += "<option value='" + id + "'";
+                    if (id == value) {
+                        markup += " selected";
+                    }
+                    markup += ">" + Q.htmlEncode(c[lookup.textField]) + "</option>";
+                }
+                return markup + "</select>";
+            };
+            ProductGrid.prototype.getEffectiveValue = function (item, field) {
+                var pending = this.pendingChanges[item.ProductID];
+                if (pending && pending[field] !== undefined) {
+                    return pending[field];
+                }
+                return item[field];
+            };
+            ProductGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                var num = function (ctx) { return _this.numericInputFormatter(ctx); };
+                var str = function (ctx) { return _this.stringInputFormatter(ctx); };
+                var fld = Northwind.ProductRow.Fields;
+                Q.first(columns, function (x) { return x.field === 'QuantityPerUnit'; }).format = str;
+                var category = Q.first(columns, function (x) { return x.field === fld.CategoryName; });
+                category.referencedFields = [fld.CategoryID];
+                category.format = function (ctx) { return _this.selectFormatter(ctx, fld.CategoryID, Northwind.CategoryRow.getLookup()); };
+                var supplier = Q.first(columns, function (x) { return x.field === fld.SupplierCompanyName; });
+                supplier.referencedFields = [fld.SupplierID];
+                supplier.format = function (ctx) { return _this.selectFormatter(ctx, fld.SupplierID, Northwind.SupplierRow.getLookup()); };
+                Q.first(columns, function (x) { return x.field === fld.UnitPrice; }).format = num;
+                Q.first(columns, function (x) { return x.field === fld.UnitsInStock; }).format = num;
+                Q.first(columns, function (x) { return x.field === fld.UnitsOnOrder; }).format = num;
+                Q.first(columns, function (x) { return x.field === fld.ReorderLevel; }).format = num;
+                return columns;
+            };
+            ProductGrid.prototype.inputsChange = function (e) {
+                var cell = this.slickGrid.getCellFromEvent(e);
+                var item = this.itemAt(cell.row);
+                var input = $(e.target);
+                var field = input.data('field');
+                var text = Q.coalesce(Q.trimToNull(input.val()), '0');
+                var pending = this.pendingChanges[item.ProductID];
+                var effective = this.getEffectiveValue(item, field);
+                var oldText;
+                if (input.hasClass("numeric"))
+                    oldText = Q.formatNumber(effective, '0.##');
+                else
+                    oldText = effective;
+                var value;
+                if (field === 'UnitPrice') {
+                    value = Q.parseDecimal(text);
+                    if (value == null || isNaN(value)) {
+                        Q.notifyError(Q.text('Validation.Decimal'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                }
+                else if (input.hasClass("numeric")) {
+                    var i = Q.parseInteger(text);
+                    if (isNaN(i) || i > 32767 || i < 0) {
+                        Q.notifyError(Q.text('Validation.Integer'), '', null);
+                        input.val(oldText);
+                        input.focus();
+                        return;
+                    }
+                    value = i;
+                }
+                else
+                    value = text;
+                if (!pending) {
+                    this.pendingChanges[item.ProductID] = pending = {};
+                }
+                pending[field] = value;
+                item[field] = value;
+                this.view.refresh();
+                if (input.hasClass("numeric"))
+                    value = Q.formatNumber(value, '0.##');
+                input.val(value).addClass('dirty');
+                this.setSaveButtonState();
+            };
+            ProductGrid.prototype.setSaveButtonState = function () {
+                this.toolbar.findButton('apply-changes-button').toggleClass('disabled', Object.keys(this.pendingChanges).length === 0);
+            };
+            ProductGrid.prototype.saveClick = function () {
+                if (Object.keys(this.pendingChanges).length === 0) {
+                    return;
+                }
+                // this calls save service for all modified rows, one by one
+                // you could write a batch update service
+                var keys = Object.keys(this.pendingChanges);
+                var current = -1;
+                var self = this;
+                (function saveNext() {
+                    if (++current >= keys.length) {
+                        self.refresh();
+                        return;
+                    }
+                    var key = keys[current];
+                    var entity = Q.deepClone(self.pendingChanges[key]);
+                    entity.ProductID = key;
+                    Q.serviceRequest('Northwind/Product/Update', {
+                        EntityId: key,
+                        Entity: entity
+                    }, function (response) {
+                        delete self.pendingChanges[key];
+                        saveNext();
+                    });
+                })();
+            };
+            ProductGrid.prototype.getQuickFilters = function () {
+                var flt = _super.prototype.getQuickFilters.call(this);
+                var q = Q.parseQueryString();
+                if (q["cat"]) {
+                    var category = Q.tryFirst(flt, function (x) { return x.field == "CategoryID"; });
+                    category.init = function (e) {
+                        e.element.getWidget(Serenity.LookupEditor).value = q["cat"];
+                    };
+                }
+                return flt;
+            };
+            ProductGrid = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.filterable()
+            ], ProductGrid);
+            return ProductGrid;
+        }(Serenity.EntityGrid));
+        Northwind.ProductGrid = ProductGrid;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
@@ -10709,6 +7208,54 @@ var Geshotel;
             return ShipperGrid;
         }(Serenity.EntityGrid));
         Northwind.ShipperGrid = ShipperGrid;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var SupplierDialog = (function (_super) {
+            __extends(SupplierDialog, _super);
+            function SupplierDialog() {
+                _super.apply(this, arguments);
+                this.form = new Northwind.SupplierForm(this.idPrefix);
+            }
+            SupplierDialog.prototype.getFormKey = function () { return Northwind.SupplierForm.formKey; };
+            SupplierDialog.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
+            SupplierDialog.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
+            SupplierDialog.prototype.getNameProperty = function () { return Northwind.SupplierRow.nameProperty; };
+            SupplierDialog.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
+            SupplierDialog.prototype.getLanguages = function () {
+                return Geshotel.LanguageList.getValue();
+            };
+            SupplierDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupplierDialog);
+            return SupplierDialog;
+        }(Serenity.EntityDialog));
+        Northwind.SupplierDialog = SupplierDialog;
+    })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Northwind;
+    (function (Northwind) {
+        var SupplierGrid = (function (_super) {
+            __extends(SupplierGrid, _super);
+            function SupplierGrid(container) {
+                _super.call(this, container);
+            }
+            SupplierGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
+            SupplierGrid.prototype.getDialogType = function () { return Northwind.SupplierDialog; };
+            SupplierGrid.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
+            SupplierGrid.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
+            SupplierGrid.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
+            SupplierGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SupplierGrid);
+            return SupplierGrid;
+        }(Serenity.EntityGrid));
+        Northwind.SupplierGrid = SupplierGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
