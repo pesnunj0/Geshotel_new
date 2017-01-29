@@ -10,6 +10,7 @@
         "target": "es5"
     },
     "exclude": [
-        "Scripts/site/Geshotel.Web.d.ts"
+        "Scripts/site/Geshotel.Web.d.ts",
+        "node_modules/"
     ]
 }
