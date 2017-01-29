@@ -8,3 +8,4 @@ packages/
 *.bak
 *.orig
 Geshotel/Geshotel.Web/Geshotel.Web.csproj.user
+Geshotel/Geshotel.Web/App_Data/mail
