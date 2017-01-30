@@ -9,7 +9,7 @@ namespace Geshotel.Contratos.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("Frecuencia Facturacion"), InstanceName("Frecuencia Facturacion"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("Frecuencia Facturacion"), InstanceName("Frecuencia Facturacion"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     public sealed class FrecuenciaFacturacionRow : Row, IIdRow, INameRow

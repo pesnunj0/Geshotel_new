@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     // Necesario para pillar las Rows de Portal en los Lookupeditor
     using Geshotel.Portal.Entities;
 
-    [ConnectionKey("Geshotel"), DisplayName("Lineas De Contrato"), InstanceName("Lineas De Contrato"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("Lineas De Contrato"), InstanceName("Lineas De Contrato"), TwoLevelCached]
     [ReadPermission("Reservas:General")]
     [ModifyPermission("Contratos:General")]
     public sealed class LineasDeContratoRow : Row, IIdRow

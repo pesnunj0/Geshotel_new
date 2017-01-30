@@ -8,12 +8,12 @@ namespace Geshotel.Migrations.CommonFilesDB
 
         public override void Up()
         {
-            IfDatabase("MySql")
-                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_MySql.sql");
-            IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")
-                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_SQL_Server.sql");
-            IfDatabase("Postgres")
-                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_PostgreSQL.sql");
+            //IfDatabase("MySql")
+            //    .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_MySql.sql");
+            //IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")
+            //    .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_SQL_Server.sql");
+            //IfDatabase("Postgres")
+            //    .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_PostgreSQL.sql");
         }
         public override void Down()
         {

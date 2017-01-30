@@ -567,8 +567,6 @@
     <EmbeddedResource Include="Modules\Common\Migrations\CommonFilesDB\CommonFilesDB_Initial_Script_Mysql.sql" />
     <EmbeddedResource Include="Modules\Common\Migrations\CommonFilesDB\CommonFilesDB_Initial_Script_PostgreSQL.sql" />
     <EmbeddedResource Include="Modules\Common\Migrations\CommonFilesDB\CommonFilesDB_Initial_Script_SQL_Server.sql" />
-    <EmbeddedResource Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182700_FK_Mysql.sql" />
-    <EmbeddedResource Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182700_FK_SQL_Server.sql" />
     <EmbeddedResource Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170123_163900_Initial_SQL_Server.sql" />
     <EmbeddedResource Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170123_163900_Initial_Mysql.sql" />
     <Content Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantIndex.cshtml" />
@@ -2256,6 +2254,8 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\GeshotelDB_20170123_163900_Initial.cs" />
+    <Compile Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170130_120000_Contratos.cs" />
     <Compile Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170123_163900_Initial.cs" />
     <Compile Include="Modules\Common\Migrations\MigrationUtils.cs" />
     <Compile Include="Modules\Common\Migrations\NorthwindDB\NorthwindDB_20161126_141700_ForwardDates.cs" />

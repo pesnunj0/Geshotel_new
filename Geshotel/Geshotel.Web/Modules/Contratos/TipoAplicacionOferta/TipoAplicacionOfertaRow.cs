@@ -9,7 +9,7 @@ namespace Geshotel.Contratos.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("tipo_aplicacion_oferta"), InstanceName("tipo_aplicacion_oferta"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("tipo_aplicacion_oferta"), InstanceName("tipo_aplicacion_oferta"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Contratos.TipoAplicacionOferta")]

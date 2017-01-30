@@ -59,8 +59,8 @@ namespace Geshotel.Portal.Columns
         public Int16 CheckinOnLine { get; set; }
         public Int16 MinimoDiasCheckinOnline { get; set; }
         public Int16 ZoomMapa { get; set; }
-        //public Double Lat { get; set; }
-        //public Double Lng { get; set; }
+        public Decimal Lat { get; set; }
+        public Decimal Lng { get; set; }
         public Int16 Ancho { get; set; }
         public Int16 Alto { get; set; }
         public Double OverbookingLimit { get; set; }

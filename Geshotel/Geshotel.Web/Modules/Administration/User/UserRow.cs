@@ -57,7 +57,7 @@ namespace Geshotel.Administration.Entities
             set { Fields.DisplayName[this] = value; }
         }
 
-        [DisplayName("Empresa"), Column("EmpresaId"), ForeignKey("[Geshotel_Commonfiles_v1].empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [DisplayName("Empresa"), Column("EmpresaId"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
         [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
@@ -73,7 +73,7 @@ namespace Geshotel.Administration.Entities
             set { Fields.Empresa[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("HotelId"), ForeignKey("[Geshotel_Commonfiles_v1].hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [DisplayName("Hotel"), Column("HotelId"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
         [LookupEditor(typeof(HotelesRow))]
         public Int16? HotelId
         {

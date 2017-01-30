@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
     using Geshotel.Administration.Entities;
 
-    [ConnectionKey("CommonFiles"), DisplayName("naciones"), InstanceName("naciones"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("naciones"), InstanceName("naciones"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.Naciones")]
@@ -45,7 +45,7 @@ namespace Geshotel.Portal.Entities
             set { Fields.MonedaId[this] = value; }
         }
 
-        [DisplayName("Idioma"), Column("idioma_id"), ForeignKey("[geshotel_default_v1].languages", "Id"), LeftJoin("jIdioma"), TextualField("IdiomaLanguageName")]
+        [DisplayName("Idioma"), Column("idioma_id"), ForeignKey("languages", "Id"), LeftJoin("jIdioma"), TextualField("IdiomaLanguageName")]
         [LookupEditor(typeof(LanguageRow))]
         public Int32? IdiomaId
         {

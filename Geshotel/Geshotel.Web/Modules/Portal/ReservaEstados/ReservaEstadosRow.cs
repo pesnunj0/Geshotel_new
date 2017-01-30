@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Geshotel"), DisplayName("reserva_estados"), InstanceName("reserva_estados"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("reserva_estados"), InstanceName("reserva_estados"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.ReservasEstados")]

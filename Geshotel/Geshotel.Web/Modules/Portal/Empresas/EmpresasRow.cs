@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("CommonFiles"), DisplayName("empresas"), InstanceName("empresas"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("empresas"), InstanceName("empresas"), TwoLevelCached]
     [ReadPermission("Administration:Empresa")]
     [ModifyPermission("Administration:Empresa")]
     [LookupScript("Portal.Empresas")]

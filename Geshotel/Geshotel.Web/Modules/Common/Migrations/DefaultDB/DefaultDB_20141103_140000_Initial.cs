@@ -10,6 +10,13 @@ namespace Geshotel.Migrations.DefaultDB
     {
         public override void Up()
         {
+            IfDatabase("MySql")
+                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_MySql.sql");
+            IfDatabase("SqlServer", "SqlServer2000", "SqlServerCe")
+                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_SQL_Server.sql");
+            IfDatabase("Postgres")
+                .Execute.EmbeddedScript("Geshotel.Modules.Common.Migrations.CommonFilesDB.CommonFilesDB_Initial_Script_PostgreSQL.sql");
+
             this.CreateTableWithId32("Users", "UserId", s => s
                 .WithColumn("Username").AsString(100).NotNullable()
                 .WithColumn("DisplayName").AsString(100).NotNullable()
@@ -29,7 +36,7 @@ namespace Geshotel.Migrations.DefaultDB
             {
                 Username = "admin",
                 DisplayName = "admin",
-                Email = "admin@dummy.com",
+                Email = "admin@geshotel.com",
                 Source = "site",
                 PasswordHash = "rfqpSPYs0ekFlPyvIRTXsdhE/qrTHFF+kKsAUla7pFkXL4BgLGlTe89GDX5DBysenMDj8AqbIZPybqvusyCjwQ",
                 PasswordSalt = "hJf_F",

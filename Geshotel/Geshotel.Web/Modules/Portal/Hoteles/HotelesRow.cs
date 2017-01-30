@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("CommonFiles"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
     [ReadPermission("Administration:Hotel")]
     [ModifyPermission("Administration:Hotel")]
     [LookupScript("Portal.Hoteles")]
@@ -293,19 +293,19 @@ namespace Geshotel.Portal.Entities
             set { Fields.ZoomMapa[this] = value; }
         }
 
-        //[DisplayName("Lat"), Column("lat"), Size(30), Scale(15)]
-        //public Double? Lat
-        //{
-        //    get { return Fields.Lat[this]; }
-        //    set { Fields.Lat[this] = value; }
-        //}
+        [DisplayName("Lat"), Column("lat"), Size(30), Scale(15)]
+        public Decimal? Lat
+        {
+            get { return Fields.Lat[this]; }
+            set { Fields.Lat[this] = value; }
+        }
 
-        //[DisplayName("Lng"), Column("lng"), Size(30), Scale(15)]
-        //public Double? Lng
-        //{
-        //    get { return Fields.Lng[this]; }
-        //    set { Fields.Lng[this] = value; }
-        //}
+        [DisplayName("Lng"), Column("lng"), Size(30), Scale(15)]
+        public Decimal? Lng
+        {
+            get { return Fields.Lng[this]; }
+            set { Fields.Lng[this] = value; }
+        }
 
         [DisplayName("Ancho"), Column("ancho")]
         public Int16? Ancho
@@ -512,8 +512,8 @@ namespace Geshotel.Portal.Entities
             public Int16Field CheckinOnLine;
             public Int16Field MinimoDiasCheckinOnline;
             public Int16Field ZoomMapa;
-            //public DoubleField Lat;
-            //public DoubleField Lng;
+            public DecimalField Lat;
+            public DecimalField Lng;
             public Int16Field Ancho;
             public Int16Field Alto;
             public DoubleField OverbookingLimit;

@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("CommonFiles"), DisplayName("estados_facturas"), InstanceName("estados_facturas"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("estados_facturas"), InstanceName("estados_facturas"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.EstadosFactura")]

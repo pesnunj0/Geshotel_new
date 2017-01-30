@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("CommonFiles"), DisplayName("tipos_huesped"), InstanceName("tipos_huesped"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("tipos_huesped"), InstanceName("tipos_huesped"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposHuesped")]
