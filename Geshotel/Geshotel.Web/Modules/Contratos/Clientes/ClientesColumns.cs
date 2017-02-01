@@ -20,8 +20,8 @@ namespace Geshotel.Contratos.Columns
         public String DescCorta { get; set; }
         [Width(100),QuickFilter, QuickFilterOption("multiple", true)]
         public String Empresa { get; set; }
+        [Width(130), LookupEditor(typeof(Scripts.ClientesAgenciaLookup)), QuickFilter]
         public String Agencia { get; set; }
-        //public Int32 AgenciaId { get; set; }
         public Boolean ClienteDefecto { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String NombreGrupo { get; set; }
