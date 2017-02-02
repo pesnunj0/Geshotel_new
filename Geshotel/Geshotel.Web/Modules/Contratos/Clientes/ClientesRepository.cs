@@ -48,7 +48,7 @@ namespace Geshotel.Contratos.Repositories
                 base.ApplyFilters(query);
 
                     query.Where(
-                        fld.GrupoClienteId == 1 || fld.GrupoClienteId == 2               
+                         fld.GrupoClienteId == 2               
                            .ToString()
                             );
                 

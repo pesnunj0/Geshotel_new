@@ -24,8 +24,6 @@ namespace Geshotel.Contratos.Columns
         public String Agencia { get; set; }
         public Boolean ClienteDefecto { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
-        public String NombreGrupo { get; set; }
-        //public Int16 GrupoClienteId { get; set; }
         public String TipoDocumento { get; set; }
         public String Nif { get; set; }
 //        public DateTime FechaDocumento { get; set; }

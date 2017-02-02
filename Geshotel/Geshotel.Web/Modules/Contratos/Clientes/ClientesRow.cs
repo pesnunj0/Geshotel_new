@@ -13,7 +13,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("clientes"), InstanceName("clientes"), TwoLevelCached]
     [ReadPermission("Todos:General")]
-    [ModifyPermission("Administration:General")]
+    [ModifyPermission("Contratos:General")]
     [LookupScript("Contratos.Clientes")]
     public sealed class ClientesRow : Row, IIdRow, INameRow
     {
@@ -46,8 +46,15 @@ namespace Geshotel.Contratos.Entities
             set { Fields.EmpresaId[this] = value; }
         }
 
+        [DisplayName("Empresa"), Expression("jEmpresa.[empresa]")]
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+        }
+
         [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
-        [LookupEditor(typeof(Scripts.ClientesAgenciaLookup))]
+        [LookupEditor(typeof(AgenciasRow))]
 
         public Int32? AgenciaId
         {
@@ -55,13 +62,12 @@ namespace Geshotel.Contratos.Entities
             set { Fields.AgenciaId[this] = value; }
         }
 
-        //[DisplayName("Agencia"), Size(15), LookupFiltering("Contratos.ClientesAgencia")]
-        //public String Agencia
-        //{
-        //    get { return Fields.Agencia[this]; }
-        //    set { Fields.Agencia[this] = value; }
-        //}
-
+        [DisplayName("Agencia"), Expression("jAgencia.[razon]")]
+        public String Agencia
+        {
+            get { return Fields.Agencia[this]; }
+            set { Fields.Agencia[this] = value; }
+        }
 
         [DisplayName("Cliente Defecto"), Column("cliente_defecto"), Size(4), NotNull]
         public Boolean? ClienteDefecto
@@ -70,19 +76,12 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ClienteDefecto[this] = value; }
         }
 
-        [DisplayName("Grupo Cliente"), Column("grupo_cliente_id"), NotNull, ForeignKey("grupos_de_cliente", "grupo_cliente_id"), LeftJoin("jGrupoCliente")]
+        [DisplayName("Grupo Cliente"), Column("grupo_cliente_id"), NotNull, ForeignKey("grupos_de_cliente","grupo_cliente_id"), LeftJoin("jGrupoCliente")]
         [LookupEditor(typeof(GruposDeClienteRow))]
         public Int16? GrupoClienteId
         {
             get { return Fields.GrupoClienteId[this]; }
             set { Fields.GrupoClienteId[this] = value; }
-        }
-
-        [DisplayName("Grupo Cliente"), Expression("jGrupoCliente.[nombre_grupo]")]
-        public String NombreGrupo
-        {
-            get { return Fields.NombreGrupo[this]; }
-            set { Fields.NombreGrupo[this] = value; }
         }
 
 
@@ -344,19 +343,6 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DingusExtras[this] = value; }
         }
 
-        [DisplayName("Empresa"), Expression("jEmpresa.[empresa]")]
-        public String Empresa
-        {
-            get { return Fields.Empresa[this]; }
-            set { Fields.Empresa[this] = value; }
-        }
-
-        [DisplayName("Agencia Razon"), Expression("jAgencia.[razon]")]
-        public String Agencia
-        {
-            get { return Fields.Agencia[this]; }
-            set { Fields.Agencia[this] = value; }
-        }
 
         [DisplayName("Nacion Fra"), Expression("jNacionIdFactura.[nacion]")]
         public String FacturaNacion
@@ -453,7 +439,6 @@ namespace Geshotel.Contratos.Entities
 
             public StringField Agencia;
 
-            public StringField NombreGrupo;
 
             public StringField TipoDocumento;
 

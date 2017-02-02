@@ -58,7 +58,7 @@ namespace Geshotel.Administration.Entities
         }
 
         [DisplayName("Empresa"), Column("EmpresaId"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
-        [LookupEditor("Portal.Empresas")]
+        [LookupEditor(typeof(EmpresasRow))]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }

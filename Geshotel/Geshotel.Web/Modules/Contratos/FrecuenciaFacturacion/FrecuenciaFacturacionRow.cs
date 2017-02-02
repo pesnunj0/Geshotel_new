@@ -12,6 +12,7 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), DisplayName("Frecuencia Facturacion"), InstanceName("Frecuencia Facturacion"), TwoLevelCached]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("Contratos.FrecuenciaFacturacion")]
     public sealed class FrecuenciaFacturacionRow : Row, IIdRow, INameRow
     {
         [DisplayName("Frecuencia Id"), Column("frecuencia_id"), Identity]
@@ -42,7 +43,7 @@ namespace Geshotel.Contratos.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.DescripcionCorta; }
+            get { return Fields.Descripcion; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

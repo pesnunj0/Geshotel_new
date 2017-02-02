@@ -43,7 +43,7 @@ namespace Geshotel.Contratos.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Condicion; }
+            get { return Fields.Literal; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

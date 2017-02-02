@@ -1,265 +1,590 @@
-﻿/// <reference types="jquery" />
-/// <reference types="jquery.validation" />
-/// <reference types="jqueryui" />
-/// <reference types="jquery.blockui" />
-declare namespace Geshotel.Administration {
-    class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
+﻿declare namespace Geshotel.Portal {
+    class UnidadesCalculoDialog extends Serenity.EntityDialog<UnidadesCalculoRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: LanguageForm;
+        protected form: UnidadesCalculoForm;
     }
 }
-declare namespace Geshotel.Administration {
-    class LanguageGrid extends Serenity.EntityGrid<LanguageRow, any> {
+declare namespace Geshotel.Portal {
+    class UnidadesCalculoGrid extends Serenity.EntityGrid<UnidadesCalculoRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof LanguageDialog;
+        protected getDialogType(): typeof UnidadesCalculoDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
     }
 }
-declare namespace Geshotel.Administration {
-    class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
+declare namespace Geshotel.Portal {
+    class TiposUnidadCalculoDialog extends Serenity.EntityDialog<TiposUnidadCalculoRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: RoleForm;
-        protected getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
+        protected form: TiposUnidadCalculoForm;
     }
 }
-declare namespace Geshotel.Administration {
-    class RoleGrid extends Serenity.EntityGrid<RoleRow, any> {
+declare namespace Geshotel.Portal {
+    class TiposUnidadCalculoGrid extends Serenity.EntityGrid<TiposUnidadCalculoRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof RoleDialog;
+        protected getDialogType(): typeof TiposUnidadCalculoDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposServicioDialog extends Serenity.EntityDialog<TiposServicioRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TiposServicioForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposServicioGrid extends Serenity.EntityGrid<TiposServicioRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposServicioDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHuespedDialog extends Serenity.EntityDialog<TiposHuespedRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TiposHuespedForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHuespedGrid extends Serenity.EntityGrid<TiposHuespedRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposHuespedDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHotelDialog extends Serenity.EntityDialog<TiposHotelRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TiposHotelForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHotelGrid extends Serenity.EntityGrid<TiposHotelRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposHotelDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHabitacionDialog extends Serenity.EntityDialog<TiposHabitacionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TiposHabitacionForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHabitacionGrid extends Serenity.EntityGrid<TiposHabitacionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposHabitacionDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class ServiciosDialog extends Serenity.EntityDialog<ServiciosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ServiciosForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class ServiciosGrid extends Serenity.EntityGrid<ServiciosRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ServiciosDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class ProvinciasDialog extends Serenity.EntityDialog<ProvinciasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProvinciasForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class ProvinciasGrid extends Serenity.EntityGrid<ProvinciasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProvinciasDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace Geshotel.Administration {
-    class RolePermissionDialog extends Serenity.TemplatedDialog<RolePermissionDialogOptions> {
-        private permissions;
-        constructor(opt: RolePermissionDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface RolePermissionDialogOptions {
-        roleID?: number;
-        title?: string;
+declare namespace Geshotel.Portal {
+    class NacionesDialog extends Serenity.EntityDialog<NacionesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: NacionesForm;
     }
 }
-declare namespace Geshotel.Administration {
-    class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
+declare namespace Geshotel.Portal {
+    class NacionesGrid extends Serenity.EntityGrid<NacionesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof NacionesDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
-        private hasChanges;
-        private searchText;
-        private sourceLanguage;
-        private targetLanguage;
-        private targetLanguageKey;
         constructor(container: JQuery);
-        protected onClick(e: JQueryEventObject, row: number, cell: number): any;
-        protected getColumns(): Slick.Column[];
-        protected createToolbarExtensions(): void;
-        protected saveChanges(language: string): RSVP.Promise<any>;
-        protected onViewSubmit(): boolean;
-        protected getButtons(): Serenity.ToolButton[];
-        protected createQuickSearchInput(): void;
-        protected onViewFilter(item: TranslationItem): boolean;
+        protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class MonedasDialog extends Serenity.EntityDialog<MonedasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MonedasForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class MonedasGrid extends Serenity.EntityGrid<MonedasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MonedasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class HotelesDialog extends Serenity.EntityDialog<HotelesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: HotelesForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class HotelesGrid extends Serenity.EntityGrid<HotelesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof HotelesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposHabitacionDialog extends Serenity.EntityDialog<GruposHabitacionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: GruposHabitacionForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposHabitacionGrid extends Serenity.EntityGrid<GruposHabitacionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof GruposHabitacionDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposDeServiciosDialog extends Serenity.EntityDialog<GruposDeServiciosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: GruposDeServiciosForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposDeServiciosGrid extends Serenity.EntityGrid<GruposDeServiciosRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof GruposDeServiciosDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposDeClienteDialog extends Serenity.EntityDialog<GruposDeClienteRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: GruposDeClienteForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class GruposDeClienteGrid extends Serenity.EntityGrid<GruposDeClienteRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof GruposDeClienteDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class FormasDePagoDialog extends Serenity.EntityDialog<FormasDePagoRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: FormasDePagoForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class FormasDePagoGrid extends Serenity.EntityGrid<FormasDePagoRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof FormasDePagoDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class EmpresasDialog extends Serenity.EntityDialog<EmpresasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: EmpresasForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class EmpresasGrid extends Serenity.EntityGrid<EmpresasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EmpresasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class ComunidadesAutonomasDialog extends Serenity.EntityDialog<ComunidadesAutonomasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ComunidadesAutonomasForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class ComunidadesAutonomasGrid extends Serenity.EntityGrid<ComunidadesAutonomasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ComunidadesAutonomasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class CategoriaHotelesDialog extends Serenity.EntityDialog<CategoriaHotelesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CategoriaHotelesForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class CategoriaHotelesGrid extends Serenity.EntityGrid<CategoriaHotelesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoriaHotelesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Organization {
+    class ContactDialog extends Serenity.EntityDialog<ContactRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ContactForm;
+    }
+}
+declare namespace Geshotel.Organization {
+    class ContactGrid extends Serenity.EntityGrid<ContactRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ContactDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Organization {
+    class BusinessUnitDialog extends Serenity.EntityDialog<BusinessUnitRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: BusinessUnitForm;
+    }
+}
+declare namespace Geshotel.Organization {
+    class BusinessUnitEditor extends Serenity.LookupEditorBase<BusinessUnitRow, any> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItemText(item: BusinessUnitRow, lookup: Q.Lookup<BusinessUnitRow>): string;
+    }
+}
+declare namespace Geshotel.Organization {
+    class BusinessUnitGrid extends Serenity.EntityGrid<BusinessUnitRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof BusinessUnitDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected subDialogDataChange(): void;
         protected usePager(): boolean;
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
 }
-declare namespace Geshotel.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
-declare namespace Geshotel.Administration {
-    class EmpresasListFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Geshotel.Administration {
-    class UserDialog extends Serenity.EntityDialog<UserRow, any> {
+declare namespace Geshotel.Northwind {
+    class TerritoryDialog extends Serenity.EntityDialog<TerritoryRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
-        protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: UserForm;
-        constructor();
-        protected getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-        protected afterLoadEntity(): void;
+        protected form: TerritoryForm;
+        protected getLanguages(): string[][];
     }
 }
-declare namespace Geshotel.Administration {
-    class UserGrid extends Serenity.EntityGrid<UserRow, any> {
+declare namespace Geshotel.Northwind {
+    class TerritoryGrid extends Serenity.EntityGrid<TerritoryRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof UserDialog;
+        protected getDialogType(): any;
         protected getIdProperty(): string;
-        protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
     }
 }
-declare namespace Geshotel.Administration {
-    class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
+declare namespace Geshotel.Northwind {
+    class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
+        protected getFormKey(): string;
         protected getIdProperty(): string;
-        private searchText;
-        private byParentKey;
-        private rolePermissions;
-        constructor(container: JQuery, opt: PermissionCheckEditorOptions);
-        private getItemGrantRevokeClass(item, grant);
-        private getItemEffectiveClass(item);
-        protected getColumns(): Slick.Column[];
-        setItems(items: PermissionCheckItem[]): void;
-        protected onViewSubmit(): boolean;
-        protected onViewFilter(item: PermissionCheckItem): boolean;
-        private matchContains(item);
-        private getDescendants(item, excludeGroups);
-        protected onClick(e: any, row: any, cell: any): void;
-        private getParentKey(key);
-        protected getButtons(): Serenity.ToolButton[];
-        protected createToolbarExtensions(): void;
-        private getSortedGroupAndPermissionKeys(titleByKey);
-        get_value(): UserPermissionRow[];
-        set_value(value: UserPermissionRow[]): void;
-        get_rolePermissions(): string[];
-        set_rolePermissions(value: string[]): void;
-    }
-    interface PermissionCheckEditorOptions {
-        showRevoke?: boolean;
-    }
-    interface PermissionCheckItem {
-        ParentKey?: string;
-        Key?: string;
-        Title?: string;
-        IsGroup?: boolean;
-        GrantRevoke?: boolean;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SupplierForm;
+        protected getLanguages(): string[][];
     }
 }
-declare namespace Geshotel.Administration {
-    class UserPermissionDialog extends Serenity.TemplatedDialog<UserPermissionDialogOptions> {
-        private permissions;
-        constructor(opt: UserPermissionDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface UserPermissionDialogOptions {
-        userID?: number;
-        username?: string;
+declare namespace Geshotel.Northwind {
+    class SupplierGrid extends Serenity.EntityGrid<SupplierRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
-declare namespace Geshotel.Administration {
-    class RoleCheckEditor extends Serenity.CheckTreeEditor<Serenity.CheckTreeItem<any>, any> {
-        private searchText;
-        constructor(div: JQuery);
-        protected createToolbarExtensions(): void;
-        protected getButtons(): any[];
-        protected getTreeItems(): Serenity.CheckTreeItem<any>[];
-        protected onViewFilter(item: any): boolean;
+declare namespace Geshotel.Northwind {
+    class ShipperDialog extends Serenity.EntityDialog<ShipperRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ShipperForm;
+        protected getLanguages(): string[][];
     }
 }
-declare namespace Geshotel.Administration {
-    class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {
-        private permissions;
-        constructor(opt: UserRoleDialogOptions);
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        protected getTemplate(): string;
-    }
-    interface UserRoleDialogOptions {
-        userID: number;
-        username: string;
-    }
-}
-declare namespace Geshotel {
-    class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
-        constructor();
-        cancelled: boolean;
-        max: number;
-        value: number;
-        title: string;
-        cancelTitle: string;
-        getDialogOptions(): JQueryUI.DialogOptions;
-        initDialog(): void;
-        getTemplate(): string;
-    }
-}
-declare namespace Geshotel.Common {
-    class BulkServiceAction {
-        protected keys: string[];
-        protected queue: string[];
-        protected queueIndex: number;
-        protected progressDialog: BasicProgressDialog;
-        protected pendingRequests: number;
-        protected completedRequests: number;
-        protected errorByKey: Q.Dictionary<Serenity.ServiceError>;
-        private successCount;
-        private errorCount;
-        done: () => void;
-        protected createProgressDialog(): void;
-        protected getConfirmationFormat(): string;
-        protected getConfirmationMessage(targetCount: any): string;
-        protected confirm(targetCount: any, action: any): void;
-        protected getNothingToProcessMessage(): string;
-        protected nothingToProcess(): void;
-        protected getParallelRequests(): number;
-        protected getBatchSize(): number;
-        protected startParallelExecution(): void;
-        protected serviceCallCleanup(): void;
-        protected executeForBatch(batch: string[]): void;
-        protected executeNextBatch(): void;
-        protected getAllHadErrorsFormat(): string;
-        protected showAllHadErrors(): void;
-        protected getSomeHadErrorsFormat(): string;
-        protected showSomeHadErrors(): void;
-        protected getAllSuccessFormat(): string;
-        protected showAllSuccess(): void;
-        protected showResults(): void;
-        execute(keys: string[]): void;
-        get_successCount(): any;
-        set_successCount(value: number): void;
-        get_errorCount(): any;
-        set_errorCount(value: number): void;
-    }
-}
-declare namespace Geshotel.DialogUtils {
-    function pendingChangesConfirmation(element: JQuery, hasPendingChanges: () => boolean): void;
-}
-declare namespace Geshotel.Common {
-    class EnumSelectFormatter implements Slick.Formatter {
-        constructor();
+declare namespace Geshotel.Northwind {
+    class ShipperFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
-        enumKey: string;
-        allowClear: boolean;
-        emptyItemText: string;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class ShipperGrid extends Serenity.EntityGrid<ShipperRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Northwind {
+    class PhoneEditor extends Serenity.StringEditor {
+        constructor(input: JQuery);
+        protected formatValue(): void;
+        protected getFormattedValue(): string;
+        multiple: boolean;
+        get_value(): string;
+        set_value(value: string): void;
+        static validate(phone: string, isMultiple: boolean): string;
+        static isValidPhone(phone: string): boolean;
+        static formatPhone(phone: any): any;
+        static formatMulti(phone: string, format: (s: string) => string): string;
+        static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class RegionDialog extends Serenity.EntityDialog<RegionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: RegionForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Geshotel.Northwind {
+    class RegionGrid extends Serenity.EntityGrid<RegionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Northwind {
+    class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProductForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Geshotel.Northwind {
+    class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private pendingChanges;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+        protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
+        /**
+         * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
+         * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
+         * no event handlers to rendered cell contents
+         */
+        private numericInputFormatter(ctx);
+        private stringInputFormatter(ctx);
+        /**
+         * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
+         */
+        private selectFormatter(ctx, idField, lookup);
+        private getEffectiveValue(item, field);
+        protected getColumns(): Slick.Column[];
+        private inputsChange(e);
+        private setSaveButtonState();
+        private saveClick();
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Common {
-    interface ExcelExportOptions {
-        grid: Serenity.DataGrid<any, any>;
-        service: string;
-        onViewSubmit: () => boolean;
-        title?: string;
-        hint?: string;
-        separator?: boolean;
+    class GridEditorDialog<TEntity> extends Serenity.EntityDialog<TEntity, any> {
+        protected getIdProperty(): string;
+        onSave: (options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void) => void;
+        onDelete: (options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void) => void;
+        destroy(): void;
+        protected updateInterface(): void;
+        protected saveHandler(options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void): void;
+        protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
     }
-    namespace ExcelExportHelper {
-        function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
+}
+declare namespace Geshotel.Northwind {
+    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: OrderDetailForm;
+        constructor();
     }
 }
 declare namespace Geshotel.Common {
@@ -286,19 +611,680 @@ declare namespace Geshotel.Common {
         protected createQuickSearchInput(): void;
     }
 }
-declare namespace Geshotel.Common {
-    class GridEditorDialog<TEntity> extends Serenity.EntityDialog<TEntity, any> {
-        protected getIdProperty(): string;
-        onSave: (options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void) => void;
-        onDelete: (options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void) => void;
-        destroy(): void;
-        protected updateInterface(): void;
-        protected saveHandler(options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void): void;
-        protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
+declare namespace Geshotel.Northwind {
+    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
-declare namespace Geshotel.LanguageList {
-    function getValue(): string[][];
+declare namespace Geshotel.Northwind {
+    class FreightFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OrderForm;
+        constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected shippingStateFilter: Serenity.EnumEditor;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        set_shippingState(value: number): void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
+        private textEditor;
+        constructor();
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        text: string;
+        okClick: () => void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        value: NoteRow[];
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class EmployeeFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        genderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CustomerForm;
+        private ordersGrid;
+        private loadedState;
+        constructor();
+        getSaveState(): string;
+        loadResponse(data: any): void;
+        loadEntity(entity: CustomerRow): void;
+        onSaveSuccess(response: any): void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CustomerEditor extends Serenity.LookupEditorBase<CustomerRow, any> {
+        constructor(hidden: JQuery);
+        protected getLookupKey(): string;
+        protected getItemText(item: any, lookup: any): string;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CustomerOrderDialog extends OrderDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CustomerOrdersGrid extends OrderGrid {
+        protected getDialogType(): typeof CustomerOrderDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _customerID;
+        customerID: string;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class EmployeeListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CategoryForm;
+        protected getLanguages(): string[][];
+    }
+}
+declare namespace Geshotel.Northwind {
+    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): any;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Membership {
+    class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingTypeForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingTypeGrid extends Serenity.EntityGrid<MeetingTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingTypeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingLocationDialog extends Serenity.EntityDialog<MeetingLocationRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingLocationForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingLocationDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingDecisionRelevantDialog extends Serenity.EntityDialog<MeetingDecisionRelevantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: MeetingDecisionRelevantForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingDecisionRelevantGrid extends Serenity.EntityGrid<MeetingDecisionRelevantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDecisionRelevantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingDecisionDialog extends Serenity.EntityDialog<MeetingDecisionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingDecisionForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingDecisionGrid extends Serenity.EntityGrid<MeetingDecisionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDecisionDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _meetingId;
+        meetingId: string;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAttendeeDialog extends Common.GridEditorDialog<MeetingAttendeeRow> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: MeetingAttendeeForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAttendeeDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        protected getButtons(): any[];
+        protected createToolbarExtensions(): void;
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaTypeDialog extends Serenity.EntityDialog<MeetingAgendaTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaTypeForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaTypeGrid extends Serenity.EntityGrid<MeetingAgendaTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaTypeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaRelevantDialog extends Serenity.EntityDialog<MeetingAgendaRelevantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaRelevantForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaRelevantGrid extends Serenity.EntityGrid<MeetingAgendaRelevantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaRelevantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaDialog extends Serenity.EntityDialog<MeetingAgendaRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaForm;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _meetingId;
+        meetingId: string;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingForm;
+        private agendaGrid;
+        private decisionGrid;
+        constructor();
+        protected arrange(): void;
+        loadEntity(entity: MeetingRow): void;
+    }
+}
+declare namespace Geshotel.Meeting {
+    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ReleasesDialog extends Serenity.EntityDialog<ReleasesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ReleasesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ReleasesGrid extends Serenity.EntityGrid<ReleasesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ReleasesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasRejillasDialog extends Serenity.EntityDialog<OfertasRejillasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: OfertasRejillasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasRejillasGrid extends Serenity.EntityGrid<OfertasRejillasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfertasRejillasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasDialog extends Serenity.EntityDialog<OfertasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OfertasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasGrid extends Serenity.EntityGrid<OfertasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfertasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class LineasDialog extends Serenity.EntityDialog<LineasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: LineasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class LineasGrid extends Serenity.EntityGrid<LineasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof LineasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class EdadesDialog extends Serenity.EntityDialog<EdadesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: EdadesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class EdadesGrid extends Serenity.EntityGrid<EdadesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof EdadesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class CuposDialog extends Serenity.EntityDialog<CuposRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: CuposForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class CuposGrid extends Serenity.EntityGrid<CuposRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CuposDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosDialog extends Serenity.EntityDialog<ContratosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ContratosForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosGrid extends Serenity.EntityGrid<ContratosRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ContratosDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ClientesDialog extends Serenity.EntityDialog<ClientesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ClientesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ClientesGrid extends Serenity.EntityGrid<ClientesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ClientesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Contratos {
+    class AgenciasDialog extends Serenity.EntityDialog<AgenciasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: AgenciasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class AgenciasGrid extends Serenity.EntityGrid<AgenciasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AgenciasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.ScriptInitialization {
+}
+declare namespace Geshotel.Common {
+    class UserPreferenceStorage implements Serenity.SettingStorage {
+        getItem(key: string): string;
+        setItem(key: string, data: string): void;
+    }
+}
+declare var jsPDF: any;
+declare namespace Geshotel.Common {
+    interface PdfExportOptions {
+        grid: Serenity.DataGrid<any, any>;
+        onViewSubmit: () => boolean;
+        title?: string;
+        hint?: string;
+        separator?: boolean;
+        reportTitle?: string;
+        titleTop?: number;
+        titleFontSize?: number;
+        fileName?: string;
+        pageNumbers?: boolean;
+        columnTitles?: {
+            [key: string]: string;
+        };
+        tableOptions?: jsPDF.AutoTableOptions;
+        output?: string;
+        autoPrint?: boolean;
+    }
+    namespace PdfExportHelper {
+        function exportToPdf(options: PdfExportOptions): void;
+        function createToolButton(options: PdfExportOptions): Serenity.ToolButton;
+    }
+}
+declare var jsPDF: any;
+declare namespace Geshotel.Common {
+    class ReportDialog extends Serenity.TemplatedDialog<ReportDialogOptions> {
+        private report;
+        private propertyItems;
+        private propertyGrid;
+        constructor(options: ReportDialogOptions);
+        protected getDialogButtons(): any;
+        protected createPropertyGrid(): void;
+        protected loadReport(reportKey: string): void;
+        protected updateInterface(): void;
+        executeReport(target: string, ext: string, download: boolean): void;
+        getToolbarButtons(): {
+            title: string;
+            cssClass: string;
+            onClick: () => void;
+        }[];
+    }
+    interface ReportDialogOptions {
+        reportKey: string;
+    }
+}
+declare namespace Geshotel.Common {
+    interface ReportExecuteOptions {
+        reportKey: string;
+        download?: boolean;
+        extension?: 'pdf' | 'htm' | 'html' | 'xlsx' | 'docx';
+        getParams?: () => any;
+        params?: {
+            [key: string]: any;
+        };
+        target?: string;
+    }
+    interface ReportButtonOptions extends ReportExecuteOptions {
+        title?: string;
+        cssClass?: string;
+        icon?: string;
+    }
+    namespace ReportHelper {
+        function createToolButton(options: ReportButtonOptions): Serenity.ToolButton;
+        function execute(options: ReportExecuteOptions): void;
+    }
+}
+declare var jsPDF: any;
+declare namespace Geshotel.Common {
+    class ReportPage extends Serenity.Widget<any> {
+        private reportKey;
+        private propertyItems;
+        private propertyGrid;
+        constructor(element: JQuery);
+        protected updateMatchFlags(text: string): void;
+        protected categoryClick(e: any): void;
+        protected reportLinkClick(e: any): void;
+    }
+}
+declare namespace Geshotel.Common {
+    class EmpresaSelection extends Serenity.Widget<any> {
+        constructor(select: JQuery, currentEmpresa: string);
+    }
+}
+declare namespace Geshotel.Common {
+    class LanguageSelection extends Serenity.Widget<any> {
+        constructor(select: JQuery, currentLanguage: string);
+    }
+}
+declare namespace Geshotel.Common {
+    class SidebarSearch extends Serenity.Widget<any> {
+        private menuUL;
+        constructor(input: JQuery, menuUL: JQuery);
+        protected updateMatchFlags(text: string): void;
+    }
+}
+declare namespace Geshotel.Common {
+    class ThemeSelection extends Serenity.Widget<any> {
+        constructor(select: JQuery);
+        protected getCurrentTheme(): string;
+    }
 }
 declare namespace Geshotel.Administration {
 }
@@ -723,6 +1709,193 @@ declare namespace Geshotel.Common {
     }
 }
 declare namespace Geshotel.Contratos {
+    class AgenciasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface AgenciasForm {
+        Razon: Serenity.StringEditor;
+        DescCorta: Serenity.StringEditor;
+        Nombre: Serenity.StringEditor;
+        Apellidos: Serenity.StringEditor;
+        EmpresaId: Serenity.IntegerEditor;
+        AgenciaId: Serenity.IntegerEditor;
+        MercadoId: Serenity.IntegerEditor;
+        ClienteDefecto: Serenity.BooleanEditor;
+        GrupoClienteId: Serenity.IntegerEditor;
+        TipoDocumentoId: Serenity.StringEditor;
+        Nif: Serenity.StringEditor;
+        FechaDocumento: Serenity.DateEditor;
+        SexoId: Serenity.StringEditor;
+        Direccion: Serenity.StringEditor;
+        Poblacion: Serenity.StringEditor;
+        Zip: Serenity.StringEditor;
+        NacionId: Serenity.IntegerEditor;
+        ProvinciaId: Serenity.IntegerEditor;
+        CtaContableAnticipo: Serenity.StringEditor;
+        CtaContable: Serenity.StringEditor;
+        DptoContable: Serenity.StringEditor;
+        CtaDepositos: Serenity.StringEditor;
+        Telefono: Serenity.StringEditor;
+        Email: Serenity.StringEditor;
+        Fax: Serenity.StringEditor;
+        Contacto: Serenity.StringEditor;
+        TelefonoContacto: Serenity.StringEditor;
+        FaxContacto: Serenity.StringEditor;
+        EmailContacto: Serenity.StringEditor;
+        AceptaLopd: Serenity.DateEditor;
+        CifFra: Serenity.StringEditor;
+        DireccionFra: Serenity.StringEditor;
+        PoblacionFra: Serenity.StringEditor;
+        ZipFra: Serenity.StringEditor;
+        NacionIdFactura: Serenity.IntegerEditor;
+        ProvinciaIdFactura: Serenity.IntegerEditor;
+        ClienteFactura: Serenity.BooleanEditor;
+        ClienteHuesped: Serenity.BooleanEditor;
+        PermiteCredito: Serenity.BooleanEditor;
+        LimiteCredito: Serenity.DecimalEditor;
+        FacturaAnticipada: Serenity.BooleanEditor;
+        VencimientoFacturasId: Serenity.IntegerEditor;
+        FechaNacimiento: Serenity.DateEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+        ClienteBavel: Serenity.StringEditor;
+        Foto1: Serenity.StringEditor;
+        Foto2: Serenity.StringEditor;
+        DingusExtras: Serenity.BooleanEditor;
+        IdClubhd: Serenity.StringEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface AgenciasRow {
+        ClienteId?: number;
+        Razon?: string;
+        DescCorta?: string;
+        Nombre?: string;
+        Apellidos?: string;
+        EmpresaId?: number;
+        AgenciaId?: number;
+        MercadoId?: number;
+        ClienteDefecto?: boolean;
+        GrupoClienteId?: number;
+        TipoDocumentoId?: string;
+        Nif?: string;
+        FechaDocumento?: string;
+        SexoId?: string;
+        Direccion?: string;
+        Poblacion?: string;
+        Zip?: string;
+        NacionId?: number;
+        ProvinciaId?: number;
+        CtaContableAnticipo?: string;
+        CtaContable?: string;
+        DptoContable?: string;
+        CtaDepositos?: string;
+        Telefono?: string;
+        Email?: string;
+        Fax?: string;
+        Contacto?: string;
+        TelefonoContacto?: string;
+        FaxContacto?: string;
+        EmailContacto?: string;
+        AceptaLopd?: string;
+        CifFra?: string;
+        DireccionFra?: string;
+        PoblacionFra?: string;
+        ZipFra?: string;
+        NacionIdFactura?: number;
+        ProvinciaIdFactura?: number;
+        ClienteFactura?: boolean;
+        ClienteHuesped?: boolean;
+        PermiteCredito?: boolean;
+        LimiteCredito?: number;
+        FacturaAnticipada?: boolean;
+        VencimientoFacturasId?: number;
+        FechaNacimiento?: string;
+        UserId?: number;
+        FechaModificacion?: string;
+        ClienteBavel?: string;
+        Foto1?: string;
+        Foto2?: string;
+        DingusExtras?: boolean;
+        IdClubhd?: string;
+    }
+    namespace AgenciasRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const ClienteId: any;
+            const Razon: any;
+            const DescCorta: any;
+            const Nombre: any;
+            const Apellidos: any;
+            const EmpresaId: any;
+            const AgenciaId: any;
+            const MercadoId: any;
+            const ClienteDefecto: any;
+            const GrupoClienteId: any;
+            const TipoDocumentoId: any;
+            const Nif: any;
+            const FechaDocumento: any;
+            const SexoId: any;
+            const Direccion: any;
+            const Poblacion: any;
+            const Zip: any;
+            const NacionId: any;
+            const ProvinciaId: any;
+            const CtaContableAnticipo: any;
+            const CtaContable: any;
+            const DptoContable: any;
+            const CtaDepositos: any;
+            const Telefono: any;
+            const Email: any;
+            const Fax: any;
+            const Contacto: any;
+            const TelefonoContacto: any;
+            const FaxContacto: any;
+            const EmailContacto: any;
+            const AceptaLopd: any;
+            const CifFra: any;
+            const DireccionFra: any;
+            const PoblacionFra: any;
+            const ZipFra: any;
+            const NacionIdFactura: any;
+            const ProvinciaIdFactura: any;
+            const ClienteFactura: any;
+            const ClienteHuesped: any;
+            const PermiteCredito: any;
+            const LimiteCredito: any;
+            const FacturaAnticipada: any;
+            const VencimientoFacturasId: any;
+            const FechaNacimiento: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const ClienteBavel: any;
+            const Foto1: any;
+            const Foto2: any;
+            const DingusExtras: any;
+            const IdClubhd: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace AgenciasService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<AgenciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AgenciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AgenciasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AgenciasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
     interface AmbitoOfertaRow {
         AmbitoOfertaId?: number;
         Ambito?: string;
@@ -906,6 +2079,442 @@ declare namespace Geshotel.Contratos {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ClientesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ClientesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosEdadesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ContratosEdadesForm {
+        TipoHuespedId: Serenity.IntegerEditor;
+        EdadMinima: Serenity.IntegerEditor;
+        EdadMaxima: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface ContratosEdadesRow {
+        ContratoId?: number;
+        TipoHuespedId?: number;
+        EdadMinima?: number;
+        EdadMaxima?: number;
+        UserId?: number;
+    }
+    namespace ContratosEdadesRow {
+        const idProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const ContratoId: any;
+            const TipoHuespedId: any;
+            const EdadMinima: any;
+            const EdadMaxima: any;
+            const UserId: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace ContratosEdadesService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<ContratosEdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ContratosEdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ContratosEdadesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ContratosEdadesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ContratosForm {
+        HotelId: Serenity.IntegerEditor;
+        ClienteId: Serenity.IntegerEditor;
+        FechaContrato: Serenity.DateEditor;
+        FechaDesde: Serenity.DateEditor;
+        FechaHasta: Serenity.DateEditor;
+        ContratoIdOriginal: Serenity.IntegerEditor;
+        ContratoIdSiguiente: Serenity.IntegerEditor;
+        NumeroContratoCliente: Serenity.StringEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+        TemporadaId: Serenity.IntegerEditor;
+        ImpuestoIncluido: Serenity.BooleanEditor;
+        MercadoId: Serenity.IntegerEditor;
+        ClienteIdPadre: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface ContratosRow {
+        ContratoId?: number;
+        HotelId?: number;
+        ClienteId?: number;
+        FechaContrato?: string;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        ContratoIdOriginal?: number;
+        ContratoIdSiguiente?: number;
+        NumeroContratoCliente?: string;
+        UserId?: number;
+        FechaModificacion?: string;
+        TemporadaId?: number;
+        ImpuestoIncluido?: boolean;
+        MercadoId?: number;
+        ClienteIdPadre?: number;
+    }
+    namespace ContratosRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const ContratoId: any;
+            const HotelId: any;
+            const ClienteId: any;
+            const FechaContrato: any;
+            const FechaDesde: any;
+            const FechaHasta: any;
+            const ContratoIdOriginal: any;
+            const ContratoIdSiguiente: any;
+            const NumeroContratoCliente: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const TemporadaId: any;
+            const ImpuestoIncluido: any;
+            const MercadoId: any;
+            const ClienteIdPadre: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace ContratosService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<ContratosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ContratosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ContratosRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ContratosRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class CuposForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface CuposForm {
+        ClienteId: Serenity.IntegerEditor;
+        HotelId: Serenity.IntegerEditor;
+        FechaDesde: Serenity.DateEditor;
+        FechaHasta: Serenity.DateEditor;
+        TipoHabitacionId: Serenity.IntegerEditor;
+        Garantia: Serenity.DecimalEditor;
+        ReservaAutomatica: Serenity.StringEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface CuposRow {
+        CupoId?: number;
+        ClienteId?: number;
+        HotelId?: number;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        TipoHabitacionId?: number;
+        Garantia?: number;
+        ReservaAutomatica?: number[];
+        UserId?: number;
+        FechaModificacion?: string;
+        ClienteRazon?: string;
+        ClienteDescCorta?: string;
+        ClienteNombre?: string;
+        ClienteApellidos?: string;
+        ClienteEmpresaId?: number;
+        ClienteAgenciaId?: number;
+        ClienteMercadoId?: number;
+        ClienteClienteDefecto?: boolean;
+        ClienteGrupoClienteId?: number;
+        ClienteTipoDocumentoId?: string;
+        ClienteNif?: string;
+        ClienteFechaDocumento?: string;
+        ClienteSexoId?: string;
+        ClienteDireccion?: string;
+        ClientePoblacion?: string;
+        ClienteZip?: string;
+        ClienteNacionId?: number;
+        ClienteProvinciaId?: number;
+        ClienteCtaContableAnticipo?: string;
+        ClienteCtaContable?: string;
+        ClienteDptoContable?: string;
+        ClienteCtaDepositos?: string;
+        ClienteTelefono?: string;
+        ClienteEmail?: string;
+        ClienteFax?: string;
+        ClienteContacto?: string;
+        ClienteTelefonoContacto?: string;
+        ClienteFaxContacto?: string;
+        ClienteEmailContacto?: string;
+        ClienteAceptaLopd?: string;
+        ClienteCifFra?: string;
+        ClienteDireccionFra?: string;
+        ClientePoblacionFra?: string;
+        ClienteZipFra?: string;
+        ClienteNacionIdFactura?: number;
+        ClienteProvinciaIdFactura?: number;
+        ClienteClienteFactura?: boolean;
+        ClienteClienteHuesped?: boolean;
+        ClientePermiteCredito?: boolean;
+        ClienteLimiteCredito?: number;
+        ClienteFacturaAnticipada?: boolean;
+        ClienteVencimientoFacturasId?: number;
+        ClienteFechaNacimiento?: string;
+        ClienteUserId?: number;
+        ClienteFechaModificacion?: string;
+        ClienteClienteBavel?: string;
+        ClienteFoto1?: string;
+        ClienteFoto2?: string;
+        ClienteDingusExtras?: boolean;
+        ClienteIdClubhd?: string;
+        Hotel?: string;
+        HotelEmpresaId?: number;
+        HotelTipoHotelId?: number;
+        HotelCategoriaId?: number;
+        HotelNombreCorto?: string;
+        HotelDireccion?: string;
+        HotelPoblacion?: string;
+        HotelZip?: string;
+        HotelProvinciaId?: number;
+        HotelNacionId?: number;
+        HotelTelefono?: string;
+        HotelFax?: string;
+        HotelCtaManocorriente?: string;
+        HotelDptoContable?: string;
+        HotelCtaContableCajas?: string;
+        HotelCtaContableBanco?: string;
+        HotelFechaInicioPrograma?: string;
+        HotelRutaFicheroPolicia?: string;
+        HotelContadorFicheroPolicia?: number;
+        HotelIdentificadorFicheroPolicia?: string;
+        HotelEmailReservas?: string;
+        HotelEmailVentas?: string;
+        HotelEmailSmtp?: string;
+        HotelTextoCancelacion?: string;
+        HotelUsuarioIsta?: string;
+        HotelPasswordIsta?: string;
+        HotelUrlIsta?: string;
+        HotelMunicipioIsta?: string;
+        HotelNumeroRegistroIsta?: number;
+        HotelRutaBavel?: string;
+        HotelDingusUsuario?: string;
+        HotelDingusPassword?: string;
+        HotelDingusHotelCode?: string;
+        HotelDingusTraductor?: string;
+        HotelDingusUrl?: string;
+        HotelCheckinOnLine?: number;
+        HotelMinimoDiasCheckinOnline?: number;
+        HotelZoomMapa?: number;
+        HotelLat?: number;
+        HotelLng?: number;
+        HotelAncho?: number;
+        HotelAlto?: number;
+        HotelOverbookingLimit?: number;
+        TipoHabitacionDescCorta?: string;
+        TipoHabitacionDescripcion?: string;
+        TipoHabitacionGrupoHabitacionId?: number;
+        TipoHabitacionNumeroPersonas?: number;
+        TipoHabitacionDesvios?: number;
+        TipoHabitacionNoShow?: number;
+    }
+    namespace CuposRow {
+        const idProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const CupoId: any;
+            const ClienteId: any;
+            const HotelId: any;
+            const FechaDesde: any;
+            const FechaHasta: any;
+            const TipoHabitacionId: any;
+            const Garantia: any;
+            const ReservaAutomatica: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const ClienteRazon: string;
+            const ClienteDescCorta: string;
+            const ClienteNombre: string;
+            const ClienteApellidos: string;
+            const ClienteEmpresaId: string;
+            const ClienteAgenciaId: string;
+            const ClienteMercadoId: string;
+            const ClienteClienteDefecto: string;
+            const ClienteGrupoClienteId: string;
+            const ClienteTipoDocumentoId: string;
+            const ClienteNif: string;
+            const ClienteFechaDocumento: string;
+            const ClienteSexoId: string;
+            const ClienteDireccion: string;
+            const ClientePoblacion: string;
+            const ClienteZip: string;
+            const ClienteNacionId: string;
+            const ClienteProvinciaId: string;
+            const ClienteCtaContableAnticipo: string;
+            const ClienteCtaContable: string;
+            const ClienteDptoContable: string;
+            const ClienteCtaDepositos: string;
+            const ClienteTelefono: string;
+            const ClienteEmail: string;
+            const ClienteFax: string;
+            const ClienteContacto: string;
+            const ClienteTelefonoContacto: string;
+            const ClienteFaxContacto: string;
+            const ClienteEmailContacto: string;
+            const ClienteAceptaLopd: string;
+            const ClienteCifFra: string;
+            const ClienteDireccionFra: string;
+            const ClientePoblacionFra: string;
+            const ClienteZipFra: string;
+            const ClienteNacionIdFactura: string;
+            const ClienteProvinciaIdFactura: string;
+            const ClienteClienteFactura: string;
+            const ClienteClienteHuesped: string;
+            const ClientePermiteCredito: string;
+            const ClienteLimiteCredito: string;
+            const ClienteFacturaAnticipada: string;
+            const ClienteVencimientoFacturasId: string;
+            const ClienteFechaNacimiento: string;
+            const ClienteUserId: string;
+            const ClienteFechaModificacion: string;
+            const ClienteClienteBavel: string;
+            const ClienteFoto1: string;
+            const ClienteFoto2: string;
+            const ClienteDingusExtras: string;
+            const ClienteIdClubhd: string;
+            const Hotel: string;
+            const HotelEmpresaId: string;
+            const HotelTipoHotelId: string;
+            const HotelCategoriaId: string;
+            const HotelNombreCorto: string;
+            const HotelDireccion: string;
+            const HotelPoblacion: string;
+            const HotelZip: string;
+            const HotelProvinciaId: string;
+            const HotelNacionId: string;
+            const HotelTelefono: string;
+            const HotelFax: string;
+            const HotelCtaManocorriente: string;
+            const HotelDptoContable: string;
+            const HotelCtaContableCajas: string;
+            const HotelCtaContableBanco: string;
+            const HotelFechaInicioPrograma: string;
+            const HotelRutaFicheroPolicia: string;
+            const HotelContadorFicheroPolicia: string;
+            const HotelIdentificadorFicheroPolicia: string;
+            const HotelEmailReservas: string;
+            const HotelEmailVentas: string;
+            const HotelEmailSmtp: string;
+            const HotelTextoCancelacion: string;
+            const HotelUsuarioIsta: string;
+            const HotelPasswordIsta: string;
+            const HotelUrlIsta: string;
+            const HotelMunicipioIsta: string;
+            const HotelNumeroRegistroIsta: string;
+            const HotelRutaBavel: string;
+            const HotelDingusUsuario: string;
+            const HotelDingusPassword: string;
+            const HotelDingusHotelCode: string;
+            const HotelDingusTraductor: string;
+            const HotelDingusUrl: string;
+            const HotelCheckinOnLine: string;
+            const HotelMinimoDiasCheckinOnline: string;
+            const HotelZoomMapa: string;
+            const HotelLat: string;
+            const HotelLng: string;
+            const HotelAncho: string;
+            const HotelAlto: string;
+            const HotelOverbookingLimit: string;
+            const TipoHabitacionDescCorta: string;
+            const TipoHabitacionDescripcion: string;
+            const TipoHabitacionGrupoHabitacionId: string;
+            const TipoHabitacionNumeroPersonas: string;
+            const TipoHabitacionDesvios: string;
+            const TipoHabitacionNoShow: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace CuposService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<CuposRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CuposRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CuposRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CuposRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class EdadesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface EdadesForm {
+        TipoHuespedId: Serenity.IntegerEditor;
+        EdadMinima: Serenity.IntegerEditor;
+        EdadMaxima: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface EdadesRow {
+        ContratoId?: number;
+        TipoHuespedId?: number;
+        EdadMinima?: number;
+        EdadMaxima?: number;
+        UserId?: number;
+    }
+    namespace EdadesRow {
+        const idProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const ContratoId: any;
+            const TipoHuespedId: any;
+            const EdadMinima: any;
+            const EdadMaxima: any;
+            const UserId: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace EdadesService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<EdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<EdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<EdadesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<EdadesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -1118,6 +2727,524 @@ declare namespace Geshotel.Contratos {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<LineasDeContratoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<LineasDeContratoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class LineasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface LineasForm {
+        ContratoId: Serenity.IntegerEditor;
+        Oferta: Serenity.BooleanEditor;
+        Desde: Serenity.DateEditor;
+        Hasta: Serenity.DateEditor;
+        ServicioId: Serenity.IntegerEditor;
+        UnidadCalculoId: Serenity.IntegerEditor;
+        FrecuenciaId: Serenity.IntegerEditor;
+        TipoImputacionId: Serenity.IntegerEditor;
+        Importe: Serenity.DecimalEditor;
+        N: Serenity.IntegerEditor;
+        TipoOfertaId: Serenity.IntegerEditor;
+        M: Serenity.DecimalEditor;
+        AmbitoOfertaId: Serenity.IntegerEditor;
+        Lunes: Serenity.BooleanEditor;
+        Martes: Serenity.BooleanEditor;
+        Miercoles: Serenity.BooleanEditor;
+        Jueves: Serenity.BooleanEditor;
+        Viernes: Serenity.BooleanEditor;
+        Sabado: Serenity.BooleanEditor;
+        Domingo: Serenity.BooleanEditor;
+        PagFactura: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface LineasRow {
+        LineaContratoId?: number;
+        ContratoId?: number;
+        Oferta?: boolean;
+        Desde?: string;
+        Hasta?: string;
+        ServicioId?: number;
+        UnidadCalculoId?: number;
+        FrecuenciaId?: number;
+        TipoImputacionId?: number;
+        Importe?: number;
+        N?: number;
+        TipoOfertaId?: number;
+        M?: number;
+        AmbitoOfertaId?: number;
+        Lunes?: boolean;
+        Martes?: boolean;
+        Miercoles?: boolean;
+        Jueves?: boolean;
+        Viernes?: boolean;
+        Sabado?: boolean;
+        Domingo?: boolean;
+        PagFactura?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+    }
+    namespace LineasRow {
+        const idProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const LineaContratoId: any;
+            const ContratoId: any;
+            const Oferta: any;
+            const Desde: any;
+            const Hasta: any;
+            const ServicioId: any;
+            const UnidadCalculoId: any;
+            const FrecuenciaId: any;
+            const TipoImputacionId: any;
+            const Importe: any;
+            const N: any;
+            const TipoOfertaId: any;
+            const M: any;
+            const AmbitoOfertaId: any;
+            const Lunes: any;
+            const Martes: any;
+            const Miercoles: any;
+            const Jueves: any;
+            const Viernes: any;
+            const Sabado: any;
+            const Domingo: any;
+            const PagFactura: any;
+            const UserId: any;
+            const FechaModificacion: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace LineasService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<LineasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<LineasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<LineasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<LineasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface OfertasForm {
+        Texto: Serenity.StringEditor;
+        ContratoId: Serenity.IntegerEditor;
+        FechaDesde: Serenity.DateEditor;
+        FechaHasta: Serenity.DateEditor;
+        TipoAplicacionOfertaId: Serenity.StringEditor;
+        AplicableAuto: Serenity.BooleanEditor;
+        FechaReservaDesde: Serenity.DateEditor;
+        FechaReservaHasta: Serenity.DateEditor;
+        EstanciaMinimaDias: Serenity.IntegerEditor;
+        EstanciaMaximaDias: Serenity.IntegerEditor;
+        DiasDeAntelacion: Serenity.IntegerEditor;
+        TipoServicioId: Serenity.IntegerEditor;
+        ServicioId: Serenity.IntegerEditor;
+        UnidadCalculoId: Serenity.IntegerEditor;
+        ServicioLigadoId: Serenity.IntegerEditor;
+        CupoOferta: Serenity.IntegerEditor;
+        Precio: Serenity.DecimalEditor;
+        N: Serenity.DecimalEditor;
+        TipoOfertaId: Serenity.IntegerEditor;
+        M: Serenity.DecimalEditor;
+        AmbitoOfertaId: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+        ImpuestoIncluido: Serenity.BooleanEditor;
+        TipoImputacionId: Serenity.IntegerEditor;
+        OrdenAplicacion: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasRejillasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface OfertasRejillasForm {
+        OfertaId: Serenity.IntegerEditor;
+        N: Serenity.IntegerEditor;
+        TipoCondicionId: Serenity.IntegerEditor;
+        TipoAplicacion: Serenity.IntegerEditor;
+        M: Serenity.DecimalEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface OfertasRejillasRow {
+        RejillaId?: number;
+        OfertaId?: number;
+        N?: number;
+        TipoCondicionId?: number;
+        TipoAplicacion?: number;
+        M?: number;
+    }
+    namespace OfertasRejillasRow {
+        const idProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const RejillaId: any;
+            const OfertaId: any;
+            const N: any;
+            const TipoCondicionId: any;
+            const TipoAplicacion: any;
+            const M: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace OfertasRejillasService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<OfertasRejillasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfertasRejillasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfertasRejillasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfertasRejillasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface OfertasRow {
+        OfertaId?: number;
+        Texto?: string;
+        ContratoId?: number;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        TipoAplicacionOfertaId?: string;
+        AplicableAuto?: boolean;
+        FechaReservaDesde?: string;
+        FechaReservaHasta?: string;
+        EstanciaMinimaDias?: number;
+        EstanciaMaximaDias?: number;
+        DiasDeAntelacion?: number;
+        TipoServicioId?: number;
+        ServicioId?: number;
+        UnidadCalculoId?: number;
+        ServicioLigadoId?: number;
+        CupoOferta?: number;
+        Precio?: number;
+        N?: number;
+        TipoOfertaId?: number;
+        M?: number;
+        AmbitoOfertaId?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+        ImpuestoIncluido?: boolean;
+        TipoImputacionId?: number;
+        OrdenAplicacion?: number;
+    }
+    namespace OfertasRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const OfertaId: any;
+            const Texto: any;
+            const ContratoId: any;
+            const FechaDesde: any;
+            const FechaHasta: any;
+            const TipoAplicacionOfertaId: any;
+            const AplicableAuto: any;
+            const FechaReservaDesde: any;
+            const FechaReservaHasta: any;
+            const EstanciaMinimaDias: any;
+            const EstanciaMaximaDias: any;
+            const DiasDeAntelacion: any;
+            const TipoServicioId: any;
+            const ServicioId: any;
+            const UnidadCalculoId: any;
+            const ServicioLigadoId: any;
+            const CupoOferta: any;
+            const Precio: any;
+            const N: any;
+            const TipoOfertaId: any;
+            const M: any;
+            const AmbitoOfertaId: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const ImpuestoIncluido: any;
+            const TipoImputacionId: any;
+            const OrdenAplicacion: any;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace OfertasService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<OfertasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfertasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfertasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfertasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ReleasesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ReleasesForm {
+        ClienteId: Serenity.IntegerEditor;
+        HotelId: Serenity.IntegerEditor;
+        FechaDesde: Serenity.DateEditor;
+        FechaHasta: Serenity.DateEditor;
+        Observaciones: Serenity.StringEditor;
+        Dias: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface ReleasesRow {
+        ReleaseId?: number;
+        ClienteId?: number;
+        HotelId?: number;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        Observaciones?: string;
+        Dias?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+        ClienteRazon?: string;
+        ClienteDescCorta?: string;
+        ClienteNombre?: string;
+        ClienteApellidos?: string;
+        ClienteEmpresaId?: number;
+        ClienteAgenciaId?: number;
+        ClienteMercadoId?: number;
+        ClienteClienteDefecto?: boolean;
+        ClienteGrupoClienteId?: number;
+        ClienteTipoDocumentoId?: string;
+        ClienteNif?: string;
+        ClienteFechaDocumento?: string;
+        ClienteSexoId?: string;
+        ClienteDireccion?: string;
+        ClientePoblacion?: string;
+        ClienteZip?: string;
+        ClienteNacionId?: number;
+        ClienteProvinciaId?: number;
+        ClienteCtaContableAnticipo?: string;
+        ClienteCtaContable?: string;
+        ClienteDptoContable?: string;
+        ClienteCtaDepositos?: string;
+        ClienteTelefono?: string;
+        ClienteEmail?: string;
+        ClienteFax?: string;
+        ClienteContacto?: string;
+        ClienteTelefonoContacto?: string;
+        ClienteFaxContacto?: string;
+        ClienteEmailContacto?: string;
+        ClienteAceptaLopd?: string;
+        ClienteCifFra?: string;
+        ClienteDireccionFra?: string;
+        ClientePoblacionFra?: string;
+        ClienteZipFra?: string;
+        ClienteNacionIdFactura?: number;
+        ClienteProvinciaIdFactura?: number;
+        ClienteClienteFactura?: boolean;
+        ClienteClienteHuesped?: boolean;
+        ClientePermiteCredito?: boolean;
+        ClienteLimiteCredito?: number;
+        ClienteFacturaAnticipada?: boolean;
+        ClienteVencimientoFacturasId?: number;
+        ClienteFechaNacimiento?: string;
+        ClienteUserId?: number;
+        ClienteFechaModificacion?: string;
+        ClienteClienteBavel?: string;
+        ClienteFoto1?: string;
+        ClienteFoto2?: string;
+        ClienteDingusExtras?: boolean;
+        ClienteIdClubhd?: string;
+        Hotel?: string;
+        HotelEmpresaId?: number;
+        HotelTipoHotelId?: number;
+        HotelCategoriaId?: number;
+        HotelNombreCorto?: string;
+        HotelDireccion?: string;
+        HotelPoblacion?: string;
+        HotelZip?: string;
+        HotelProvinciaId?: number;
+        HotelNacionId?: number;
+        HotelTelefono?: string;
+        HotelFax?: string;
+        HotelCtaManocorriente?: string;
+        HotelDptoContable?: string;
+        HotelCtaContableCajas?: string;
+        HotelCtaContableBanco?: string;
+        HotelFechaInicioPrograma?: string;
+        HotelRutaFicheroPolicia?: string;
+        HotelContadorFicheroPolicia?: number;
+        HotelIdentificadorFicheroPolicia?: string;
+        HotelEmailReservas?: string;
+        HotelEmailVentas?: string;
+        HotelEmailSmtp?: string;
+        HotelTextoCancelacion?: string;
+        HotelUsuarioIsta?: string;
+        HotelPasswordIsta?: string;
+        HotelUrlIsta?: string;
+        HotelMunicipioIsta?: string;
+        HotelNumeroRegistroIsta?: number;
+        HotelRutaBavel?: string;
+        HotelDingusUsuario?: string;
+        HotelDingusPassword?: string;
+        HotelDingusHotelCode?: string;
+        HotelDingusTraductor?: string;
+        HotelDingusUrl?: string;
+        HotelCheckinOnLine?: number;
+        HotelMinimoDiasCheckinOnline?: number;
+        HotelZoomMapa?: number;
+        HotelLat?: number;
+        HotelLng?: number;
+        HotelAncho?: number;
+        HotelAlto?: number;
+        HotelOverbookingLimit?: number;
+    }
+    namespace ReleasesRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const ReleaseId: any;
+            const ClienteId: any;
+            const HotelId: any;
+            const FechaDesde: any;
+            const FechaHasta: any;
+            const Observaciones: any;
+            const Dias: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const ClienteRazon: string;
+            const ClienteDescCorta: string;
+            const ClienteNombre: string;
+            const ClienteApellidos: string;
+            const ClienteEmpresaId: string;
+            const ClienteAgenciaId: string;
+            const ClienteMercadoId: string;
+            const ClienteClienteDefecto: string;
+            const ClienteGrupoClienteId: string;
+            const ClienteTipoDocumentoId: string;
+            const ClienteNif: string;
+            const ClienteFechaDocumento: string;
+            const ClienteSexoId: string;
+            const ClienteDireccion: string;
+            const ClientePoblacion: string;
+            const ClienteZip: string;
+            const ClienteNacionId: string;
+            const ClienteProvinciaId: string;
+            const ClienteCtaContableAnticipo: string;
+            const ClienteCtaContable: string;
+            const ClienteDptoContable: string;
+            const ClienteCtaDepositos: string;
+            const ClienteTelefono: string;
+            const ClienteEmail: string;
+            const ClienteFax: string;
+            const ClienteContacto: string;
+            const ClienteTelefonoContacto: string;
+            const ClienteFaxContacto: string;
+            const ClienteEmailContacto: string;
+            const ClienteAceptaLopd: string;
+            const ClienteCifFra: string;
+            const ClienteDireccionFra: string;
+            const ClientePoblacionFra: string;
+            const ClienteZipFra: string;
+            const ClienteNacionIdFactura: string;
+            const ClienteProvinciaIdFactura: string;
+            const ClienteClienteFactura: string;
+            const ClienteClienteHuesped: string;
+            const ClientePermiteCredito: string;
+            const ClienteLimiteCredito: string;
+            const ClienteFacturaAnticipada: string;
+            const ClienteVencimientoFacturasId: string;
+            const ClienteFechaNacimiento: string;
+            const ClienteUserId: string;
+            const ClienteFechaModificacion: string;
+            const ClienteClienteBavel: string;
+            const ClienteFoto1: string;
+            const ClienteFoto2: string;
+            const ClienteDingusExtras: string;
+            const ClienteIdClubhd: string;
+            const Hotel: string;
+            const HotelEmpresaId: string;
+            const HotelTipoHotelId: string;
+            const HotelCategoriaId: string;
+            const HotelNombreCorto: string;
+            const HotelDireccion: string;
+            const HotelPoblacion: string;
+            const HotelZip: string;
+            const HotelProvinciaId: string;
+            const HotelNacionId: string;
+            const HotelTelefono: string;
+            const HotelFax: string;
+            const HotelCtaManocorriente: string;
+            const HotelDptoContable: string;
+            const HotelCtaContableCajas: string;
+            const HotelCtaContableBanco: string;
+            const HotelFechaInicioPrograma: string;
+            const HotelRutaFicheroPolicia: string;
+            const HotelContadorFicheroPolicia: string;
+            const HotelIdentificadorFicheroPolicia: string;
+            const HotelEmailReservas: string;
+            const HotelEmailVentas: string;
+            const HotelEmailSmtp: string;
+            const HotelTextoCancelacion: string;
+            const HotelUsuarioIsta: string;
+            const HotelPasswordIsta: string;
+            const HotelUrlIsta: string;
+            const HotelMunicipioIsta: string;
+            const HotelNumeroRegistroIsta: string;
+            const HotelRutaBavel: string;
+            const HotelDingusUsuario: string;
+            const HotelDingusPassword: string;
+            const HotelDingusHotelCode: string;
+            const HotelDingusTraductor: string;
+            const HotelDingusUrl: string;
+            const HotelCheckinOnLine: string;
+            const HotelMinimoDiasCheckinOnline: string;
+            const HotelZoomMapa: string;
+            const HotelLat: string;
+            const HotelLng: string;
+            const HotelAncho: string;
+            const HotelAlto: string;
+            const HotelOverbookingLimit: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace ReleasesService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<ReleasesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ReleasesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReleasesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReleasesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -4667,1119 +6794,266 @@ declare namespace Geshotel {
         };
     }
 }
-declare namespace Geshotel.Common {
-    class EmpresaSelection extends Serenity.Widget<any> {
-        constructor(select: JQuery, currentEmpresa: string);
+declare namespace Geshotel {
+    class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
+        constructor();
+        cancelled: boolean;
+        max: number;
+        value: number;
+        title: string;
+        cancelTitle: string;
+        getDialogOptions(): JQueryUI.DialogOptions;
+        initDialog(): void;
+        getTemplate(): string;
     }
 }
 declare namespace Geshotel.Common {
-    class LanguageSelection extends Serenity.Widget<any> {
-        constructor(select: JQuery, currentLanguage: string);
+    class BulkServiceAction {
+        protected keys: string[];
+        protected queue: string[];
+        protected queueIndex: number;
+        protected progressDialog: BasicProgressDialog;
+        protected pendingRequests: number;
+        protected completedRequests: number;
+        protected errorByKey: Q.Dictionary<Serenity.ServiceError>;
+        private successCount;
+        private errorCount;
+        done: () => void;
+        protected createProgressDialog(): void;
+        protected getConfirmationFormat(): string;
+        protected getConfirmationMessage(targetCount: any): string;
+        protected confirm(targetCount: any, action: any): void;
+        protected getNothingToProcessMessage(): string;
+        protected nothingToProcess(): void;
+        protected getParallelRequests(): number;
+        protected getBatchSize(): number;
+        protected startParallelExecution(): void;
+        protected serviceCallCleanup(): void;
+        protected executeForBatch(batch: string[]): void;
+        protected executeNextBatch(): void;
+        protected getAllHadErrorsFormat(): string;
+        protected showAllHadErrors(): void;
+        protected getSomeHadErrorsFormat(): string;
+        protected showSomeHadErrors(): void;
+        protected getAllSuccessFormat(): string;
+        protected showAllSuccess(): void;
+        protected showResults(): void;
+        execute(keys: string[]): void;
+        get_successCount(): any;
+        set_successCount(value: number): void;
+        get_errorCount(): any;
+        set_errorCount(value: number): void;
+    }
+}
+declare namespace Geshotel.DialogUtils {
+    function pendingChangesConfirmation(element: JQuery, hasPendingChanges: () => boolean): void;
+}
+declare namespace Geshotel.Common {
+    class EnumSelectFormatter implements Slick.Formatter {
+        constructor();
+        format(ctx: Slick.FormatterContext): string;
+        enumKey: string;
+        allowClear: boolean;
+        emptyItemText: string;
     }
 }
 declare namespace Geshotel.Common {
-    class SidebarSearch extends Serenity.Widget<any> {
-        private menuUL;
-        constructor(input: JQuery, menuUL: JQuery);
-        protected updateMatchFlags(text: string): void;
-    }
-}
-declare namespace Geshotel.Common {
-    class ThemeSelection extends Serenity.Widget<any> {
-        constructor(select: JQuery);
-        protected getCurrentTheme(): string;
-    }
-}
-declare var jsPDF: any;
-declare namespace Geshotel.Common {
-    interface PdfExportOptions {
+    interface ExcelExportOptions {
         grid: Serenity.DataGrid<any, any>;
+        service: string;
         onViewSubmit: () => boolean;
         title?: string;
         hint?: string;
         separator?: boolean;
-        reportTitle?: string;
-        titleTop?: number;
-        titleFontSize?: number;
-        fileName?: string;
-        pageNumbers?: boolean;
-        columnTitles?: {
-            [key: string]: string;
-        };
-        tableOptions?: jsPDF.AutoTableOptions;
-        output?: string;
-        autoPrint?: boolean;
     }
-    namespace PdfExportHelper {
-        function exportToPdf(options: PdfExportOptions): void;
-        function createToolButton(options: PdfExportOptions): Serenity.ToolButton;
+    namespace ExcelExportHelper {
+        function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
     }
 }
-declare var jsPDF: any;
-declare namespace Geshotel.Common {
-    class ReportDialog extends Serenity.TemplatedDialog<ReportDialogOptions> {
-        private report;
-        private propertyItems;
-        private propertyGrid;
-        constructor(options: ReportDialogOptions);
-        protected getDialogButtons(): any;
-        protected createPropertyGrid(): void;
-        protected loadReport(reportKey: string): void;
-        protected updateInterface(): void;
-        executeReport(target: string, ext: string, download: boolean): void;
-        getToolbarButtons(): {
-            title: string;
-            cssClass: string;
-            onClick: () => void;
-        }[];
-    }
-    interface ReportDialogOptions {
-        reportKey: string;
-    }
+declare namespace Geshotel.LanguageList {
+    function getValue(): string[][];
 }
-declare namespace Geshotel.Common {
-    interface ReportExecuteOptions {
-        reportKey: string;
-        download?: boolean;
-        extension?: 'pdf' | 'htm' | 'html' | 'xlsx' | 'docx';
-        getParams?: () => any;
-        params?: {
-            [key: string]: any;
-        };
-        target?: string;
-    }
-    interface ReportButtonOptions extends ReportExecuteOptions {
-        title?: string;
-        cssClass?: string;
-        icon?: string;
-    }
-    namespace ReportHelper {
-        function createToolButton(options: ReportButtonOptions): Serenity.ToolButton;
-        function execute(options: ReportExecuteOptions): void;
-    }
-}
-declare var jsPDF: any;
-declare namespace Geshotel.Common {
-    class ReportPage extends Serenity.Widget<any> {
-        private reportKey;
-        private propertyItems;
-        private propertyGrid;
-        constructor(element: JQuery);
-        protected updateMatchFlags(text: string): void;
-        protected categoryClick(e: any): void;
-        protected reportLinkClick(e: any): void;
-    }
-}
-declare namespace Geshotel.ScriptInitialization {
-}
-declare namespace Geshotel.Common {
-    class UserPreferenceStorage implements Serenity.SettingStorage {
-        getItem(key: string): string;
-        setItem(key: string, data: string): void;
-    }
-}
-declare namespace Geshotel.Contratos {
-    class ClientesDialog extends Serenity.EntityDialog<ClientesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ClientesForm;
-    }
-}
-declare namespace Geshotel.Contratos {
-    class ClientesGrid extends Serenity.EntityGrid<ClientesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ClientesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Contratos {
-    class LineasDeContratoDialog extends Serenity.EntityDialog<LineasDeContratoRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: LineasDeContratoForm;
-    }
-}
-declare namespace Geshotel.Contratos {
-    class LineasDeContratoGrid extends Serenity.EntityGrid<LineasDeContratoRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof LineasDeContratoDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingForm;
-        private agendaGrid;
-        private decisionGrid;
-        constructor();
-        protected arrange(): void;
-        loadEntity(entity: MeetingRow): void;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaDialog extends Serenity.EntityDialog<MeetingAgendaRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _meetingId;
-        meetingId: string;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaRelevantDialog extends Serenity.EntityDialog<MeetingAgendaRelevantRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaRelevantForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaRelevantGrid extends Serenity.EntityGrid<MeetingAgendaRelevantRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaRelevantDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaTypeDialog extends Serenity.EntityDialog<MeetingAgendaTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaTypeForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAgendaTypeGrid extends Serenity.EntityGrid<MeetingAgendaTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAttendeeDialog extends Common.GridEditorDialog<MeetingAttendeeRow> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected form: MeetingAttendeeForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAttendeeDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        protected getButtons(): any[];
-        protected createToolbarExtensions(): void;
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingDecisionDialog extends Serenity.EntityDialog<MeetingDecisionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingDecisionForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingDecisionGrid extends Serenity.EntityGrid<MeetingDecisionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDecisionDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _meetingId;
-        meetingId: string;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingDecisionRelevantDialog extends Serenity.EntityDialog<MeetingDecisionRelevantRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: MeetingDecisionRelevantForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingDecisionRelevantGrid extends Serenity.EntityGrid<MeetingDecisionRelevantRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDecisionRelevantDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingLocationDialog extends Serenity.EntityDialog<MeetingLocationRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingLocationForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingLocationDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingTypeForm;
-    }
-}
-declare namespace Geshotel.Meeting {
-    class MeetingTypeGrid extends Serenity.EntityGrid<MeetingTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Membership {
-    class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CategoryDialog extends Serenity.EntityDialog<CategoryRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CategoryForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CategoryGrid extends Serenity.EntityGrid<CategoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CustomerForm;
-        private ordersGrid;
-        private loadedState;
-        constructor();
-        getSaveState(): string;
-        loadResponse(data: any): void;
-        loadEntity(entity: CustomerRow): void;
-        onSaveSuccess(response: any): void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CustomerEditor extends Serenity.LookupEditorBase<CustomerRow, any> {
-        constructor(hidden: JQuery);
-        protected getLookupKey(): string;
-        protected getItemText(item: any, lookup: any): string;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Northwind {
-    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OrderForm;
-        constructor();
-        getToolbarButtons(): Serenity.ToolButton[];
-        protected updateInterface(): void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CustomerOrderDialog extends OrderDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected shippingStateFilter: Serenity.EnumEditor;
-        constructor(container: JQuery);
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        protected createQuickFilters(): void;
-        protected getButtons(): Serenity.ToolButton[];
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-        set_shippingState(value: number): void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class CustomerOrdersGrid extends OrderGrid {
-        protected getDialogType(): typeof CustomerOrderDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _customerID;
-        customerID: string;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class EmployeeListFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class EmployeeFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        genderProperty: string;
-        initializeColumn(column: Slick.Column): void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class NoteDialog extends Serenity.TemplatedDialog<any> {
-        private textEditor;
-        constructor();
-        protected getTemplate(): string;
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        text: string;
-        okClick: () => void;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
-        private isDirty;
-        private items;
+declare namespace Geshotel.Administration {
+    class RoleCheckEditor extends Serenity.CheckTreeEditor<Serenity.CheckTreeItem<any>, any> {
+        private searchText;
         constructor(div: JQuery);
+        protected createToolbarExtensions(): void;
+        protected getButtons(): any[];
+        protected getTreeItems(): Serenity.CheckTreeItem<any>[];
+        protected onViewFilter(item: any): boolean;
+    }
+}
+declare namespace Geshotel.Administration {
+    class UserRoleDialog extends Serenity.TemplatedDialog<UserRoleDialogOptions> {
+        private permissions;
+        constructor(opt: UserRoleDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
         protected getTemplate(): string;
-        protected updateContent(): void;
-        protected addClick(): void;
-        protected editClick(e: any): void;
-        deleteClick(e: any): void;
-        value: NoteRow[];
-        getEditValue(prop: Serenity.PropertyItem, target: any): void;
-        setEditValue(source: any, prop: Serenity.PropertyItem): void;
-        get_isDirty(): boolean;
-        set_isDirty(value: any): void;
-        onChange: () => void;
+    }
+    interface UserRoleDialogOptions {
+        userID: number;
+        username: string;
     }
 }
-declare namespace Geshotel.Northwind {
-    class FreightFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class OrderDetailDialog extends Common.GridEditorDialog<OrderDetailRow> {
-        protected getFormKey(): string;
-        protected getLocalTextPrefix(): string;
-        protected form: OrderDetailForm;
-        constructor();
-    }
-}
-declare namespace Geshotel.Northwind {
-    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderDetailDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        validateEntity(row: any, id: any): boolean;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
-        protected getFormKey(): string;
+declare namespace Geshotel.Administration {
+    class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ProductForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Geshotel.Northwind {
-    class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        private pendingChanges;
-        constructor(container: JQuery);
+        private searchText;
+        private byParentKey;
+        private rolePermissions;
+        constructor(container: JQuery, opt: PermissionCheckEditorOptions);
+        private getItemGrantRevokeClass(item, grant);
+        private getItemEffectiveClass(item);
+        protected getColumns(): Slick.Column[];
+        setItems(items: PermissionCheckItem[]): void;
+        protected onViewSubmit(): boolean;
+        protected onViewFilter(item: PermissionCheckItem): boolean;
+        private matchContains(item);
+        private getDescendants(item, excludeGroups);
+        protected onClick(e: any, row: any, cell: any): void;
+        private getParentKey(key);
         protected getButtons(): Serenity.ToolButton[];
-        protected onViewProcessData(response: any): Serenity.ListResponse<ProductRow>;
-        /**
-         * It would be nice if we could use autonumeric, Serenity editors etc. here, to control input validation,
-         * but it's not supported by SlickGrid as we are only allowed to return a string, and should attach
-         * no event handlers to rendered cell contents
-         */
-        private numericInputFormatter(ctx);
-        private stringInputFormatter(ctx);
-        /**
-         * Sorry but you cannot use LookupEditor, e.g. Select2 here, only possible is a SELECT element
-         */
-        private selectFormatter(ctx, idField, lookup);
-        private getEffectiveValue(item, field);
-        protected getColumns(): Slick.Column[];
-        private inputsChange(e);
-        private setSaveButtonState();
-        private saveClick();
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createToolbarExtensions(): void;
+        private getSortedGroupAndPermissionKeys(titleByKey);
+        get_value(): UserPermissionRow[];
+        set_value(value: UserPermissionRow[]): void;
+        get_rolePermissions(): string[];
+        set_rolePermissions(value: string[]): void;
+    }
+    interface PermissionCheckEditorOptions {
+        showRevoke?: boolean;
+    }
+    interface PermissionCheckItem {
+        ParentKey?: string;
+        Key?: string;
+        Title?: string;
+        IsGroup?: boolean;
+        GrantRevoke?: boolean;
     }
 }
-declare namespace Geshotel.Northwind {
-    class RegionDialog extends Serenity.EntityDialog<RegionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: RegionForm;
-        protected getLanguages(): string[][];
+declare namespace Geshotel.Administration {
+    class UserPermissionDialog extends Serenity.TemplatedDialog<UserPermissionDialogOptions> {
+        private permissions;
+        constructor(opt: UserPermissionDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getTemplate(): string;
+    }
+    interface UserPermissionDialogOptions {
+        userID?: number;
+        username?: string;
     }
 }
-declare namespace Geshotel.Northwind {
-    class RegionGrid extends Serenity.EntityGrid<RegionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Northwind {
-    class PhoneEditor extends Serenity.StringEditor {
-        constructor(input: JQuery);
-        protected formatValue(): void;
-        protected getFormattedValue(): string;
-        multiple: boolean;
-        get_value(): string;
-        set_value(value: string): void;
-        static validate(phone: string, isMultiple: boolean): string;
-        static isValidPhone(phone: string): boolean;
-        static formatPhone(phone: any): any;
-        static formatMulti(phone: string, format: (s: string) => string): string;
-        static isValidMulti(phone: string, check: (s: string) => boolean): boolean;
-    }
-}
-declare namespace Geshotel.Northwind {
-    class ShipperDialog extends Serenity.EntityDialog<ShipperRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ShipperForm;
-        protected getLanguages(): string[][];
-    }
-}
-declare namespace Geshotel.Northwind {
-    class ShipperFormatter implements Slick.Formatter {
+declare namespace Geshotel.Administration {
+    class EmpresasListFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
     }
 }
-declare namespace Geshotel.Northwind {
-    class ShipperGrid extends Serenity.EntityGrid<ShipperRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Northwind {
-    class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
+declare namespace Geshotel.Administration {
+    class UserDialog extends Serenity.EntityDialog<UserRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
+        protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: SupplierForm;
-        protected getLanguages(): string[][];
+        protected form: UserForm;
+        constructor();
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+        protected afterLoadEntity(): void;
     }
 }
-declare namespace Geshotel.Northwind {
-    class SupplierGrid extends Serenity.EntityGrid<SupplierRow, any> {
+declare namespace Geshotel.Administration {
+    class UserGrid extends Serenity.EntityGrid<UserRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): any;
+        protected getDialogType(): typeof UserDialog;
         protected getIdProperty(): string;
+        protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getDefaultSortBy(): string[];
     }
 }
-declare namespace Geshotel.Northwind {
-    class TerritoryDialog extends Serenity.EntityDialog<TerritoryRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TerritoryForm;
-        protected getLanguages(): string[][];
-    }
+declare namespace Geshotel.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
 }
-declare namespace Geshotel.Northwind {
-    class TerritoryGrid extends Serenity.EntityGrid<TerritoryRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): any;
+declare namespace Geshotel.Administration {
+    class TranslationGrid extends Serenity.EntityGrid<TranslationItem, any> {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        private hasChanges;
+        private searchText;
+        private sourceLanguage;
+        private targetLanguage;
+        private targetLanguageKey;
         constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Organization {
-    class BusinessUnitDialog extends Serenity.EntityDialog<BusinessUnitRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: BusinessUnitForm;
-    }
-}
-declare namespace Geshotel.Organization {
-    class BusinessUnitEditor extends Serenity.LookupEditorBase<BusinessUnitRow, any> {
-        constructor(hidden: JQuery);
-        protected getLookupKey(): string;
-        protected getItemText(item: BusinessUnitRow, lookup: Q.Lookup<BusinessUnitRow>): string;
-    }
-}
-declare namespace Geshotel.Organization {
-    class BusinessUnitGrid extends Serenity.EntityGrid<BusinessUnitRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof BusinessUnitDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected subDialogDataChange(): void;
-        protected usePager(): boolean;
+        protected onClick(e: JQueryEventObject, row: number, cell: number): any;
         protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        protected createToolbarExtensions(): void;
+        protected saveChanges(language: string): RSVP.Promise<any>;
+        protected onViewSubmit(): boolean;
+        protected getButtons(): Serenity.ToolButton[];
+        protected createQuickSearchInput(): void;
+        protected onViewFilter(item: TranslationItem): boolean;
+        protected usePager(): boolean;
     }
 }
-declare namespace Geshotel.Organization {
-    class ContactDialog extends Serenity.EntityDialog<ContactRow, any> {
+declare namespace Geshotel.Administration {
+    class RolePermissionDialog extends Serenity.TemplatedDialog<RolePermissionDialogOptions> {
+        private permissions;
+        constructor(opt: RolePermissionDialogOptions);
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getTemplate(): string;
+    }
+    interface RolePermissionDialogOptions {
+        roleID?: number;
+        title?: string;
+    }
+}
+declare namespace Geshotel.Administration {
+    class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: ContactForm;
+        protected form: RoleForm;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
     }
 }
-declare namespace Geshotel.Organization {
-    class ContactGrid extends Serenity.EntityGrid<ContactRow, any> {
+declare namespace Geshotel.Administration {
+    class RoleGrid extends Serenity.EntityGrid<RoleRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof ContactDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class CategoriaHotelesDialog extends Serenity.EntityDialog<CategoriaHotelesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CategoriaHotelesForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class CategoriaHotelesGrid extends Serenity.EntityGrid<CategoriaHotelesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CategoriaHotelesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class ComunidadesAutonomasDialog extends Serenity.EntityDialog<ComunidadesAutonomasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ComunidadesAutonomasForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class ComunidadesAutonomasGrid extends Serenity.EntityGrid<ComunidadesAutonomasRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ComunidadesAutonomasDialog;
+        protected getDialogType(): typeof RoleDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
     }
 }
-declare namespace Geshotel.Portal {
-    class EmpresasDialog extends Serenity.EntityDialog<EmpresasRow, any> {
+declare namespace Geshotel.Administration {
+    class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: EmpresasForm;
+        protected form: LanguageForm;
     }
 }
-declare namespace Geshotel.Portal {
-    class EmpresasGrid extends Serenity.EntityGrid<EmpresasRow, any> {
+declare namespace Geshotel.Administration {
+    class LanguageGrid extends Serenity.EntityGrid<LanguageRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof EmpresasDialog;
+        protected getDialogType(): typeof LanguageDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class FormasDePagoDialog extends Serenity.EntityDialog<FormasDePagoRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: FormasDePagoForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class FormasDePagoGrid extends Serenity.EntityGrid<FormasDePagoRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof FormasDePagoDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposDeClienteDialog extends Serenity.EntityDialog<GruposDeClienteRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: GruposDeClienteForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposDeClienteGrid extends Serenity.EntityGrid<GruposDeClienteRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof GruposDeClienteDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposDeServiciosDialog extends Serenity.EntityDialog<GruposDeServiciosRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: GruposDeServiciosForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposDeServiciosGrid extends Serenity.EntityGrid<GruposDeServiciosRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof GruposDeServiciosDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposHabitacionDialog extends Serenity.EntityDialog<GruposHabitacionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: GruposHabitacionForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class GruposHabitacionGrid extends Serenity.EntityGrid<GruposHabitacionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof GruposHabitacionDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class HotelesDialog extends Serenity.EntityDialog<HotelesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: HotelesForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class HotelesGrid extends Serenity.EntityGrid<HotelesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof HotelesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class MonedasDialog extends Serenity.EntityDialog<MonedasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MonedasForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class MonedasGrid extends Serenity.EntityGrid<MonedasRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MonedasDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class NacionesDialog extends Serenity.EntityDialog<NacionesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: NacionesForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class NacionesGrid extends Serenity.EntityGrid<NacionesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof NacionesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class ProvinciasDialog extends Serenity.EntityDialog<ProvinciasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ProvinciasForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class ProvinciasGrid extends Serenity.EntityGrid<ProvinciasRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ProvinciasDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getDefaultSortBy(): string[];
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class ServiciosDialog extends Serenity.EntityDialog<ServiciosRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ServiciosForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class ServiciosGrid extends Serenity.EntityGrid<ServiciosRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ServiciosDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHabitacionDialog extends Serenity.EntityDialog<TiposHabitacionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TiposHabitacionForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHabitacionGrid extends Serenity.EntityGrid<TiposHabitacionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TiposHabitacionDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHotelDialog extends Serenity.EntityDialog<TiposHotelRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TiposHotelForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHotelGrid extends Serenity.EntityGrid<TiposHotelRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TiposHotelDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHuespedDialog extends Serenity.EntityDialog<TiposHuespedRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TiposHuespedForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposHuespedGrid extends Serenity.EntityGrid<TiposHuespedRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TiposHuespedDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposServicioDialog extends Serenity.EntityDialog<TiposServicioRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TiposServicioForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposServicioGrid extends Serenity.EntityGrid<TiposServicioRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TiposServicioDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposUnidadCalculoDialog extends Serenity.EntityDialog<TiposUnidadCalculoRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: TiposUnidadCalculoForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class TiposUnidadCalculoGrid extends Serenity.EntityGrid<TiposUnidadCalculoRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof TiposUnidadCalculoDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Portal {
-    class UnidadesCalculoDialog extends Serenity.EntityDialog<UnidadesCalculoRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: UnidadesCalculoForm;
-    }
-}
-declare namespace Geshotel.Portal {
-    class UnidadesCalculoGrid extends Serenity.EntityGrid<UnidadesCalculoRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof UnidadesCalculoDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }

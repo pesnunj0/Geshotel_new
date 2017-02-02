@@ -160,6 +160,13 @@ namespace MVC
         public static class Contratos
         {
 
+            public static class Agencias
+            {
+
+                public const string AgenciasIndex = "~/Modules/Contratos/Agencias/AgenciasIndex.cshtml";
+            }
+
+
             public static class Clientes
             {
 
@@ -167,10 +174,52 @@ namespace MVC
             }
 
 
-            public static class LineasDeContrato
+            public static class Contratos_
             {
 
-                public const string LineasDeContratoIndex = "~/Modules/Contratos/LineasDeContrato/LineasDeContratoIndex.cshtml";
+                public const string ContratosIndex = "~/Modules/Contratos/Contratos/ContratosIndex.cshtml";
+            }
+
+
+            public static class Cupos
+            {
+
+                public const string CuposIndex = "~/Modules/Contratos/Cupos/CuposIndex.cshtml";
+            }
+
+
+            public static class Edades
+            {
+
+                public const string EdadesIndex = "~/Modules/Contratos/Edades/EdadesIndex.cshtml";
+            }
+
+
+            public static class Lineas
+            {
+
+                public const string LineasIndex = "~/Modules/Contratos/Lineas/LineasIndex.cshtml";
+            }
+
+
+            public static class Ofertas
+            {
+
+                public const string OfertasIndex = "~/Modules/Contratos/Ofertas/OfertasIndex.cshtml";
+            }
+
+
+            public static class OfertasRejillas
+            {
+
+                public const string OfertasRejillasIndex = "~/Modules/Contratos/OfertasRejillas/OfertasRejillasIndex.cshtml";
+            }
+
+
+            public static class Releases
+            {
+
+                public const string ReleasesIndex = "~/Modules/Contratos/Releases/ReleasesIndex.cshtml";
             }
         }
 

@@ -16,7 +16,7 @@ namespace Geshotel.Administration.Columns
         public String DisplayName { get; set; }
         [Width(150),QuickFilter, QuickFilterOption("multiple", true)]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("multiple", true)]
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"),QuickFilterOption("multiple", true)]
         public String HotelName { get; set; }
         [Width(250)]
         public String Email { get; set; }

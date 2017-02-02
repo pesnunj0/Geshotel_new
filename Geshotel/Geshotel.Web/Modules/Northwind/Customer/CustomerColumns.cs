@@ -24,7 +24,7 @@ namespace Geshotel.Northwind.Columns
         [Width(130), LookupEditor(typeof(Scripts.CustomerCountryLookup)), QuickFilter]
         public String Country { get; set; }
         [Width(120), LookupEditor(typeof(Scripts.CustomerCityLookup))]
-        [QuickFilter, QuickFilterOption("cascadeFrom", "Country")]
+        [QuickFilter, QuickFilterOption("CascadeFrom", "Country")]
         public String City { get; set; }
         [Width(120)]
         public String Phone { get; set; }

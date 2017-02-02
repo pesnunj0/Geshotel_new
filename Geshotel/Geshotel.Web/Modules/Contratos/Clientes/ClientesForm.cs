@@ -17,8 +17,11 @@ namespace Geshotel.Contratos.Forms
         public String Razon { get; set; }
         public String DescCorta { get; set; }
         public Int16 EmpresaId { get; set; }
+        [DisplayName("Agencia"), LookupFiltering("Contratos.ClientesAgencia")]
         public Int32 AgenciaId { get; set; }
         public Boolean ClienteDefecto { get; set; }
+
+        [DisplayName("Tipo Cliente"),DefaultValue(2)]
         public Int16 GrupoClienteId { get; set; }
         public String TipoDocumentoId { get; set; }
         public String Nif { get; set; }
@@ -36,11 +39,13 @@ namespace Geshotel.Contratos.Forms
         public String CtaDepositos { get; set; }
         [Category("Contacto")]
         public String Telefono { get; set; }
+        [EmailEditor]
         public String Email { get; set; }
         public String Fax { get; set; }
         public String Contacto { get; set; }
         public String TelefonoContacto { get; set; }
         public String FaxContacto { get; set; }
+        [EmailEditor]
         public String EmailContacto { get; set; }
         [Category("Facturación")]
         public String CifFra { get; set; }
