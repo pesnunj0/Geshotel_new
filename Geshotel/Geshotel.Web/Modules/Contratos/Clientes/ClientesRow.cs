@@ -54,8 +54,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
-        [LookupEditor(typeof(AgenciasRow))]
-
+        [LookupEditor(typeof(AgenciasRow), FilterField = "GrupoClienteId", FilterValue = 1)]
         public Int32? AgenciaId
         {
             get { return Fields.AgenciaId[this]; }

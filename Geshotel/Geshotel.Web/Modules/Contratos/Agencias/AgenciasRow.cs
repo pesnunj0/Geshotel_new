@@ -78,7 +78,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ClienteDefecto[this] = value; }
         }
 
-        [DisplayName("Grupo Cliente Id"), Column("grupo_cliente_id"), NotNull]
+        [DisplayName("Grupo Cliente Id"), Column("grupo_cliente_id"), NotNull, LookupInclude]
         public Int16? GrupoClienteId
         {
             get { return Fields.GrupoClienteId[this]; }
