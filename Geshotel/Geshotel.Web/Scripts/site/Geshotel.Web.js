@@ -3436,6 +3436,52 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var TemporadasDialog = (function (_super) {
+            __extends(TemporadasDialog, _super);
+            function TemporadasDialog() {
+                _super.apply(this, arguments);
+                this.form = new Contratos.TemporadasForm(this.idPrefix);
+            }
+            TemporadasDialog.prototype.getFormKey = function () { return Contratos.TemporadasForm.formKey; };
+            TemporadasDialog.prototype.getIdProperty = function () { return Contratos.TemporadasRow.idProperty; };
+            TemporadasDialog.prototype.getLocalTextPrefix = function () { return Contratos.TemporadasRow.localTextPrefix; };
+            TemporadasDialog.prototype.getNameProperty = function () { return Contratos.TemporadasRow.nameProperty; };
+            TemporadasDialog.prototype.getService = function () { return Contratos.TemporadasService.baseUrl; };
+            TemporadasDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], TemporadasDialog);
+            return TemporadasDialog;
+        }(Serenity.EntityDialog));
+        Contratos.TemporadasDialog = TemporadasDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var TemporadasGrid = (function (_super) {
+            __extends(TemporadasGrid, _super);
+            function TemporadasGrid(container) {
+                _super.call(this, container);
+            }
+            TemporadasGrid.prototype.getColumnsKey = function () { return 'Contratos.Temporadas'; };
+            TemporadasGrid.prototype.getDialogType = function () { return Contratos.TemporadasDialog; };
+            TemporadasGrid.prototype.getIdProperty = function () { return Contratos.TemporadasRow.idProperty; };
+            TemporadasGrid.prototype.getLocalTextPrefix = function () { return Contratos.TemporadasRow.localTextPrefix; };
+            TemporadasGrid.prototype.getService = function () { return Contratos.TemporadasService.baseUrl; };
+            TemporadasGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TemporadasGrid);
+            return TemporadasGrid;
+        }(Serenity.EntityGrid));
+        Contratos.TemporadasGrid = TemporadasGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var ReleasesDialog = (function (_super) {
             __extends(ReleasesDialog, _super);
             function ReleasesDialog() {
@@ -3567,6 +3613,52 @@ var Geshotel;
             return OfertasGrid;
         }(Serenity.EntityGrid));
         Contratos.OfertasGrid = OfertasGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var MercadosDialog = (function (_super) {
+            __extends(MercadosDialog, _super);
+            function MercadosDialog() {
+                _super.apply(this, arguments);
+                this.form = new Contratos.MercadosForm(this.idPrefix);
+            }
+            MercadosDialog.prototype.getFormKey = function () { return Contratos.MercadosForm.formKey; };
+            MercadosDialog.prototype.getIdProperty = function () { return Contratos.MercadosRow.idProperty; };
+            MercadosDialog.prototype.getLocalTextPrefix = function () { return Contratos.MercadosRow.localTextPrefix; };
+            MercadosDialog.prototype.getNameProperty = function () { return Contratos.MercadosRow.nameProperty; };
+            MercadosDialog.prototype.getService = function () { return Contratos.MercadosService.baseUrl; };
+            MercadosDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MercadosDialog);
+            return MercadosDialog;
+        }(Serenity.EntityDialog));
+        Contratos.MercadosDialog = MercadosDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var MercadosGrid = (function (_super) {
+            __extends(MercadosGrid, _super);
+            function MercadosGrid(container) {
+                _super.call(this, container);
+            }
+            MercadosGrid.prototype.getColumnsKey = function () { return 'Contratos.Mercados'; };
+            MercadosGrid.prototype.getDialogType = function () { return Contratos.MercadosDialog; };
+            MercadosGrid.prototype.getIdProperty = function () { return Contratos.MercadosRow.idProperty; };
+            MercadosGrid.prototype.getLocalTextPrefix = function () { return Contratos.MercadosRow.localTextPrefix; };
+            MercadosGrid.prototype.getService = function () { return Contratos.MercadosService.baseUrl; };
+            MercadosGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MercadosGrid);
+            return MercadosGrid;
+        }(Serenity.EntityGrid));
+        Contratos.MercadosGrid = MercadosGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -5192,6 +5284,55 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var MercadosForm = (function (_super) {
+            __extends(MercadosForm, _super);
+            function MercadosForm() {
+                _super.apply(this, arguments);
+            }
+            MercadosForm.formKey = 'Contratos.Mercados';
+            return MercadosForm;
+        }(Serenity.PrefixedContext));
+        Contratos.MercadosForm = MercadosForm;
+        [['MercadoId', function () { return Serenity.IntegerEditor; }], ['Mercado', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MercadosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var MercadosRow;
+        (function (MercadosRow) {
+            MercadosRow.idProperty = 'MercadoId';
+            MercadosRow.nameProperty = 'Mercado';
+            MercadosRow.localTextPrefix = 'Contratos.Mercados';
+            var Fields;
+            (function (Fields) {
+            })(Fields = MercadosRow.Fields || (MercadosRow.Fields = {}));
+            ['MercadoId', 'Mercado', 'EmpresaId', 'Empresa', 'EmpresaEmpresaContable', 'EmpresaDireccion', 'EmpresaPoblacion', 'EmpresaZip', 'EmpresaProvinciaId', 'EmpresaTelefono', 'EmpresaFax', 'EmpresaCif', 'EmpresaRutaFicheros'].forEach(function (x) { return Fields[x] = x; });
+        })(MercadosRow = Contratos.MercadosRow || (Contratos.MercadosRow = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var MercadosService;
+        (function (MercadosService) {
+            MercadosService.baseUrl = 'Contratos/Mercados';
+            var Methods;
+            (function (Methods) {
+            })(Methods = MercadosService.Methods || (MercadosService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                MercadosService[x] = function (r, s, o) { return Q.serviceRequest(MercadosService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = MercadosService.baseUrl + '/' + x;
+            });
+        })(MercadosService = Contratos.MercadosService || (Contratos.MercadosService = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var OfertasForm = (function (_super) {
             __extends(OfertasForm, _super);
             function OfertasForm() {
@@ -5332,6 +5473,55 @@ var Geshotel;
                 Methods[x] = ReleasesService.baseUrl + '/' + x;
             });
         })(ReleasesService = Contratos.ReleasesService || (Contratos.ReleasesService = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var TemporadasForm = (function (_super) {
+            __extends(TemporadasForm, _super);
+            function TemporadasForm() {
+                _super.apply(this, arguments);
+            }
+            TemporadasForm.formKey = 'Contratos.Temporadas';
+            return TemporadasForm;
+        }(Serenity.PrefixedContext));
+        Contratos.TemporadasForm = TemporadasForm;
+        [['TemporadaId', function () { return Serenity.IntegerEditor; }], ['Temporada', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }], ['Ano', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(TemporadasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var TemporadasRow;
+        (function (TemporadasRow) {
+            TemporadasRow.idProperty = 'TemporadaId';
+            TemporadasRow.nameProperty = 'Temporada';
+            TemporadasRow.localTextPrefix = 'Contratos.Temporadas';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TemporadasRow.Fields || (TemporadasRow.Fields = {}));
+            ['TemporadaId', 'Temporada', 'EmpresaId', 'Ano', 'FechaDesde', 'FechaHasta', 'Empresa', 'EmpresaEmpresaContable', 'EmpresaDireccion', 'EmpresaPoblacion', 'EmpresaZip', 'EmpresaProvinciaId', 'EmpresaTelefono', 'EmpresaFax', 'EmpresaCif', 'EmpresaRutaFicheros'].forEach(function (x) { return Fields[x] = x; });
+        })(TemporadasRow = Contratos.TemporadasRow || (Contratos.TemporadasRow = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var TemporadasService;
+        (function (TemporadasService) {
+            TemporadasService.baseUrl = 'Contratos/Temporadas';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TemporadasService.Methods || (TemporadasService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TemporadasService[x] = function (r, s, o) { return Q.serviceRequest(TemporadasService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TemporadasService.baseUrl + '/' + x;
+            });
+        })(TemporadasService = Contratos.TemporadasService || (Contratos.TemporadasService = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

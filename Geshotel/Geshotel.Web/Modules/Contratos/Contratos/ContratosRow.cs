@@ -22,12 +22,20 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ContratoId[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
+        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
         [LookupEditor(typeof(HotelesRow))]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
             set { Fields.HotelId[this] = value; }
+
+        }
+
+        [DisplayName("Hotel"), Expression("jHoteles.hotel")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
         }
 
         [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
@@ -36,6 +44,13 @@ namespace Geshotel.Contratos.Entities
         {
             get { return Fields.ClienteId[this]; }
             set { Fields.ClienteId[this] = value; }
+        }
+
+        [DisplayName("Cliente"),Expression("jCliente.razon")]
+        public String ClienteName
+        {
+            get { return Fields.ClienteName[this]; }
+            set { Fields.ClienteName[this] = value; }
         }
 
         [DisplayName("Fecha Contrato"), Column("fecha_contrato"), NotNull]
@@ -132,6 +147,9 @@ namespace Geshotel.Contratos.Entities
             public Int16Field TemporadaId;
             public BooleanField ImpuestoIncluido;
             public Int16Field MercadoId;
+
+            public StringField HotelName;
+            public StringField ClienteName;
 
 
             public RowFields()

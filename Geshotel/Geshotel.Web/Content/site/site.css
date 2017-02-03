@@ -8546,3 +8546,15 @@ section.content > .s-DataGrid {
 .s-Contratos-AgenciasDialog .caption {
   width: 150px;
 }
+.s-Contratos-MercadosDialog > .size {
+  width: 650px;
+}
+.s-Contratos-MercadosDialog .caption {
+  width: 150px;
+}
+.s-Contratos-TemporadasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-TemporadasDialog .caption {
+  width: 150px;
+}

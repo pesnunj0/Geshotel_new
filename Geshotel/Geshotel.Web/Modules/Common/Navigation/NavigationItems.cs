@@ -4,7 +4,13 @@ using Portal = Geshotel.Portal.Pages;
 
 [assembly: NavigationLink(1000, "Dashboard", url: "~/", permission: "", icon: "icon-speedometer")]
 
-[assembly: NavigationLink(8000, "Contratos/Clientes", typeof(Geshotel.Contratos.Pages.ClientesController))]
+[assembly: NavigationMenu(8000, "Contratos", icon:"icon-layers")]
+
+[assembly: NavigationLink(8000, "Contratos/Agencias", typeof(Geshotel.Contratos.Pages.AgenciasController), icon: "icon-people")]
+[assembly: NavigationLink(8000, "Contratos/Touroperadores", typeof(Geshotel.Contratos.Pages.ClientesController),icon: "icon-user")]
+[assembly: NavigationLink(8000, "Contratos/Contratos", typeof(Geshotel.Contratos.Pages.ContratosController), icon:"icon-note")]
+[assembly: NavigationLink(8000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
+[assembly: NavigationLink(8000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]
 
 
 [assembly: NavigationMenu(9000, "Settings", icon: "icon-settings")]

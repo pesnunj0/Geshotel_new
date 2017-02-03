@@ -2190,6 +2190,18 @@
     <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.AgenciasService.ts" />
     <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.AgenciasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Agencias\AgenciasGrid.ts" />
+    <Content Include="Modules\Contratos\Mercados\MercadosIndex.cshtml" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosRow.ts" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosService.ts" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosForm.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Mercados\MercadosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Mercados\MercadosDialog.ts" />
+    <Content Include="Modules\Contratos\Temporadas\TemporadasIndex.cshtml" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasRow.ts" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasService.ts" />
+    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasForm.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2304,6 +2316,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170123_163900_Initial.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_120000_TemporadasYMercados.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170130_120000_Contratos.cs" />
     <Compile Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170130_120000_Contratos.cs" />
     <Compile Include="Modules\Common\Migrations\GeshotelDB\GeshotelDB_20170123_163900_Initial.cs" />
@@ -2742,6 +2755,18 @@
     <Compile Include="Modules\Contratos\Agencias\AgenciasRepository.cs" />
     <Compile Include="Modules\Contratos\Agencias\AgenciasEndpoint.cs" />
     <Compile Include="Modules\Contratos\Agencias\AgenciasPage.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosRow.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosColumns.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosForm.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosRepository.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosEndpoint.cs" />
+    <Compile Include="Modules\Contratos\Mercados\MercadosPage.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasRow.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasColumns.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasForm.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasRepository.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasEndpoint.cs" />
+    <Compile Include="Modules\Contratos\Temporadas\TemporadasPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

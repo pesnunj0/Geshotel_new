@@ -999,6 +999,26 @@ declare namespace Geshotel.Meeting {
     }
 }
 declare namespace Geshotel.Contratos {
+    class TemporadasDialog extends Serenity.EntityDialog<TemporadasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TemporadasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class TemporadasGrid extends Serenity.EntityGrid<TemporadasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TemporadasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
     class ReleasesDialog extends Serenity.EntityDialog<ReleasesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1051,6 +1071,26 @@ declare namespace Geshotel.Contratos {
     class OfertasGrid extends Serenity.EntityGrid<OfertasRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OfertasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class MercadosDialog extends Serenity.EntityDialog<MercadosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MercadosForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class MercadosGrid extends Serenity.EntityGrid<MercadosRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MercadosDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -2842,6 +2882,69 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+    class MercadosForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface MercadosForm {
+        Mercado: Serenity.StringEditor;
+        EmpresaId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface MercadosRow {
+        MercadoId?: number;
+        Mercado?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        EmpresaEmpresaContable?: string;
+        EmpresaDireccion?: string;
+        EmpresaPoblacion?: string;
+        EmpresaZip?: string;
+        EmpresaProvinciaId?: number;
+        EmpresaTelefono?: string;
+        EmpresaFax?: string;
+        EmpresaCif?: string;
+        EmpresaRutaFicheros?: string;
+    }
+    namespace MercadosRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const MercadoId: any;
+            const Mercado: any;
+            const EmpresaId: any;
+            const Empresa: string;
+            const EmpresaEmpresaContable: string;
+            const EmpresaDireccion: string;
+            const EmpresaPoblacion: string;
+            const EmpresaZip: string;
+            const EmpresaProvinciaId: string;
+            const EmpresaTelefono: string;
+            const EmpresaFax: string;
+            const EmpresaCif: string;
+            const EmpresaRutaFicheros: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace MercadosService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<MercadosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MercadosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MercadosRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MercadosRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
     class OfertasForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -3245,6 +3348,78 @@ declare namespace Geshotel.Contratos {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReleasesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReleasesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    class TemporadasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TemporadasForm {
+        Temporada: Serenity.StringEditor;
+        EmpresaId: Serenity.IntegerEditor;
+        Ano: Serenity.IntegerEditor;
+        FechaDesde: Serenity.DateEditor;
+        FechaHasta: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface TemporadasRow {
+        TemporadaId?: number;
+        Temporada?: string;
+        EmpresaId?: number;
+        Ano?: number;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        Empresa?: string;
+        EmpresaEmpresaContable?: string;
+        EmpresaDireccion?: string;
+        EmpresaPoblacion?: string;
+        EmpresaZip?: string;
+        EmpresaProvinciaId?: number;
+        EmpresaTelefono?: string;
+        EmpresaFax?: string;
+        EmpresaCif?: string;
+        EmpresaRutaFicheros?: string;
+    }
+    namespace TemporadasRow {
+        const idProperty: string;
+        const nameProperty: string;
+        const localTextPrefix: string;
+        namespace Fields {
+            const TemporadaId: any;
+            const Temporada: any;
+            const EmpresaId: any;
+            const Ano: any;
+            const FechaDesde: any;
+            const FechaHasta: any;
+            const Empresa: string;
+            const EmpresaEmpresaContable: string;
+            const EmpresaDireccion: string;
+            const EmpresaPoblacion: string;
+            const EmpresaZip: string;
+            const EmpresaProvinciaId: string;
+            const EmpresaTelefono: string;
+            const EmpresaFax: string;
+            const EmpresaCif: string;
+            const EmpresaRutaFicheros: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace TemporadasService {
+        const baseUrl: string;
+        function Create(request: Serenity.SaveRequest<TemporadasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TemporadasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TemporadasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TemporadasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
