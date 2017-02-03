@@ -8,3 +8,7 @@ packages/
 *.bak
 *.orig
 Geshotel/Geshotel.Web/Geshotel.Web.csproj.user
+Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind_v1.ldf
+Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind_v1.mdf
+Geshotel/Geshotel.Web/App_Data/GeshotelDB.ldf
+Geshotel/Geshotel.Web/App_Data/GeshotelDB.mdf

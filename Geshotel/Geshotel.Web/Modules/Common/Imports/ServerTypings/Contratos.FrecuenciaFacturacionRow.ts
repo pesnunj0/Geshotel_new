@@ -7,8 +7,13 @@
 
     export namespace FrecuenciaFacturacionRow {
         export const idProperty = 'FrecuenciaId';
-        export const nameProperty = 'DescripcionCorta';
+        export const nameProperty = 'Descripcion';
         export const localTextPrefix = 'Contratos.FrecuenciaFacturacion';
+        export const lookupKey = 'Contratos.FrecuenciaFacturacion';
+
+        export function getLookup(): Q.Lookup<FrecuenciaFacturacionRow> {
+            return Q.getLookup<FrecuenciaFacturacionRow>('Contratos.FrecuenciaFacturacion');
+        }
 
         export namespace Fields {
             export declare const FrecuenciaId: string;

@@ -63,8 +63,8 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Garantia[this] = value; }
         }
 
-        [DisplayName("Reserva Automatica"), Column("reserva_automatica"), Size(1), NotNull]
-        public byte[] ReservaAutomatica
+        [DisplayName("Reserva Automatica"), Column("reserva_automatica"), NotNull]
+        public Boolean? ReservaAutomatica
         {
             get { return Fields.ReservaAutomatica[this]; }
             set { Fields.ReservaAutomatica[this] = value; }
@@ -798,7 +798,7 @@ namespace Geshotel.Contratos.Entities
             public DateTimeField FechaHasta;
             public Int16Field TipoHabitacionId;
             public DecimalField Garantia;
-            public ByteArrayField ReservaAutomatica;
+            public BooleanField ReservaAutomatica;
             public Int16Field UserId;
             public DateTimeField FechaModificacion;
 

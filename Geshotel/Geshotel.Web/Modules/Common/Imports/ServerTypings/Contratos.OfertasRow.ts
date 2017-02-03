@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface OfertasRow {
         OfertaId?: number;
         Texto?: string;
@@ -36,33 +35,33 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.Ofertas';
 
         export namespace Fields {
-            export declare const OfertaId;
-            export declare const Texto;
-            export declare const ContratoId;
-            export declare const FechaDesde;
-            export declare const FechaHasta;
-            export declare const TipoAplicacionOfertaId;
-            export declare const AplicableAuto;
-            export declare const FechaReservaDesde;
-            export declare const FechaReservaHasta;
-            export declare const EstanciaMinimaDias;
-            export declare const EstanciaMaximaDias;
-            export declare const DiasDeAntelacion;
-            export declare const TipoServicioId;
-            export declare const ServicioId;
-            export declare const UnidadCalculoId;
-            export declare const ServicioLigadoId;
-            export declare const CupoOferta;
-            export declare const Precio;
-            export declare const N;
-            export declare const TipoOfertaId;
-            export declare const M;
-            export declare const AmbitoOfertaId;
-            export declare const UserId;
-            export declare const FechaModificacion;
-            export declare const ImpuestoIncluido;
-            export declare const TipoImputacionId;
-            export declare const OrdenAplicacion;
+            export declare const OfertaId: string;
+            export declare const Texto: string;
+            export declare const ContratoId: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
+            export declare const TipoAplicacionOfertaId: string;
+            export declare const AplicableAuto: string;
+            export declare const FechaReservaDesde: string;
+            export declare const FechaReservaHasta: string;
+            export declare const EstanciaMinimaDias: string;
+            export declare const EstanciaMaximaDias: string;
+            export declare const DiasDeAntelacion: string;
+            export declare const TipoServicioId: string;
+            export declare const ServicioId: string;
+            export declare const UnidadCalculoId: string;
+            export declare const ServicioLigadoId: string;
+            export declare const CupoOferta: string;
+            export declare const Precio: string;
+            export declare const N: string;
+            export declare const TipoOfertaId: string;
+            export declare const M: string;
+            export declare const AmbitoOfertaId: string;
+            export declare const UserId: string;
+            export declare const FechaModificacion: string;
+            export declare const ImpuestoIncluido: string;
+            export declare const TipoImputacionId: string;
+            export declare const OrdenAplicacion: string;
         }
 
         ['OfertaId', 'Texto', 'ContratoId', 'FechaDesde', 'FechaHasta', 'TipoAplicacionOfertaId', 'AplicableAuto', 'FechaReservaDesde', 'FechaReservaHasta', 'EstanciaMinimaDias', 'EstanciaMaximaDias', 'DiasDeAntelacion', 'TipoServicioId', 'ServicioId', 'UnidadCalculoId', 'ServicioLigadoId', 'CupoOferta', 'Precio', 'N', 'TipoOfertaId', 'M', 'AmbitoOfertaId', 'UserId', 'FechaModificacion', 'ImpuestoIncluido', 'TipoImputacionId', 'OrdenAplicacion'].forEach(x => (<any>Fields)[x] = x);

@@ -39,18 +39,12 @@
         CheckinOnLine?: number;
         MinimoDiasCheckinOnline?: number;
         ZoomMapa?: number;
+        Lat?: number;
+        Lng?: number;
         Ancho?: number;
         Alto?: number;
         OverbookingLimit?: number;
         Empresa?: string;
-        EmpresaEmpresaContable?: string;
-        EmpresaDireccion?: string;
-        EmpresaPoblacion?: string;
-        EmpresaZip?: string;
-        EmpresaProvinciaId?: number;
-        EmpresaTelefono?: string;
-        EmpresaFax?: string;
-        EmpresaCif?: string;
         TipoHotel?: string;
         TipoHotelAbreviatura?: string;
         Categoria?: string;
@@ -112,18 +106,12 @@
             export declare const CheckinOnLine: string;
             export declare const MinimoDiasCheckinOnline: string;
             export declare const ZoomMapa: string;
+            export declare const Lat: string;
+            export declare const Lng: string;
             export declare const Ancho: string;
             export declare const Alto: string;
             export declare const OverbookingLimit: string;
             export declare const Empresa: string;
-            export declare const EmpresaEmpresaContable: string;
-            export declare const EmpresaDireccion: string;
-            export declare const EmpresaPoblacion: string;
-            export declare const EmpresaZip: string;
-            export declare const EmpresaProvinciaId: string;
-            export declare const EmpresaTelefono: string;
-            export declare const EmpresaFax: string;
-            export declare const EmpresaCif: string;
             export declare const TipoHotel: string;
             export declare const TipoHotelAbreviatura: string;
             export declare const Categoria: string;
@@ -135,7 +123,7 @@
             export declare const ProvinciaDefectoIsta: string;
         }
 
-        ['HotelId', 'Hotel', 'EmpresaId', 'TipoHotelId', 'CategoriaId', 'NombreCorto', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'NacionId', 'Telefono', 'Fax', 'CtaManocorriente', 'DptoContable', 'CtaContableCajas', 'CtaContableBanco', 'FechaInicioPrograma', 'RutaFicheroPolicia', 'ContadorFicheroPolicia', 'IdentificadorFicheroPolicia', 'EmailReservas', 'EmailVentas', 'EmailSmtp', 'TextoCancelacion', 'UsuarioIsta', 'PasswordIsta', 'UrlIsta', 'MunicipioIsta', 'NumeroRegistroIsta', 'RutaBavel', 'DingusUsuario', 'DingusPassword', 'DingusHotelCode', 'DingusTraductor', 'DingusUrl', 'CheckinOnLine', 'MinimoDiasCheckinOnline', 'ZoomMapa', 'Ancho', 'Alto', 'OverbookingLimit', 'Empresa', 'EmpresaEmpresaContable', 'EmpresaDireccion', 'EmpresaPoblacion', 'EmpresaZip', 'EmpresaProvinciaId', 'EmpresaTelefono', 'EmpresaFax', 'EmpresaCif', 'TipoHotel', 'TipoHotelAbreviatura', 'Categoria', 'CategoriaAbreviatura', 'Provincia', 'Nacion', 'ProvinciaComunidadAutonomaId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(x => (<any>Fields)[x] = x);
+        ['HotelId', 'Hotel', 'EmpresaId', 'TipoHotelId', 'CategoriaId', 'NombreCorto', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'NacionId', 'Telefono', 'Fax', 'CtaManocorriente', 'DptoContable', 'CtaContableCajas', 'CtaContableBanco', 'FechaInicioPrograma', 'RutaFicheroPolicia', 'ContadorFicheroPolicia', 'IdentificadorFicheroPolicia', 'EmailReservas', 'EmailVentas', 'EmailSmtp', 'TextoCancelacion', 'UsuarioIsta', 'PasswordIsta', 'UrlIsta', 'MunicipioIsta', 'NumeroRegistroIsta', 'RutaBavel', 'DingusUsuario', 'DingusPassword', 'DingusHotelCode', 'DingusTraductor', 'DingusUrl', 'CheckinOnLine', 'MinimoDiasCheckinOnline', 'ZoomMapa', 'Lat', 'Lng', 'Ancho', 'Alto', 'OverbookingLimit', 'Empresa', 'TipoHotel', 'TipoHotelAbreviatura', 'Categoria', 'CategoriaAbreviatura', 'Provincia', 'Nacion', 'ProvinciaComunidadAutonomaId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

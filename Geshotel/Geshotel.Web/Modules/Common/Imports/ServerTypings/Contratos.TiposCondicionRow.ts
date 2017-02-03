@@ -7,7 +7,7 @@
 
     export namespace TiposCondicionRow {
         export const idProperty = 'TipoCondicionId';
-        export const nameProperty = 'Condicion';
+        export const nameProperty = 'Literal';
         export const localTextPrefix = 'Contratos.TiposCondicion';
         export const lookupKey = 'Contratos.TiposCondicion';
 

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface ReleasesRow {
         ReleaseId?: number;
         ClienteId?: number;
@@ -111,15 +110,15 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.Releases';
 
         export namespace Fields {
-            export declare const ReleaseId;
-            export declare const ClienteId;
-            export declare const HotelId;
-            export declare const FechaDesde;
-            export declare const FechaHasta;
-            export declare const Observaciones;
-            export declare const Dias;
-            export declare const UserId;
-            export declare const FechaModificacion;
+            export declare const ReleaseId: string;
+            export declare const ClienteId: string;
+            export declare const HotelId: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
+            export declare const Observaciones: string;
+            export declare const Dias: string;
+            export declare const UserId: string;
+            export declare const FechaModificacion: string;
             export declare const ClienteRazon: string;
             export declare const ClienteDescCorta: string;
             export declare const ClienteNombre: string;

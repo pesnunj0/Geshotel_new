@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface CuposRow {
         CupoId?: number;
         ClienteId?: number;
@@ -8,7 +7,7 @@ namespace Geshotel.Contratos {
         FechaHasta?: string;
         TipoHabitacionId?: number;
         Garantia?: number;
-        ReservaAutomatica?: number[];
+        ReservaAutomatica?: boolean;
         UserId?: number;
         FechaModificacion?: string;
         ClienteRazon?: string;
@@ -117,16 +116,16 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.Cupos';
 
         export namespace Fields {
-            export declare const CupoId;
-            export declare const ClienteId;
-            export declare const HotelId;
-            export declare const FechaDesde;
-            export declare const FechaHasta;
-            export declare const TipoHabitacionId;
-            export declare const Garantia;
-            export declare const ReservaAutomatica;
-            export declare const UserId;
-            export declare const FechaModificacion;
+            export declare const CupoId: string;
+            export declare const ClienteId: string;
+            export declare const HotelId: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
+            export declare const TipoHabitacionId: string;
+            export declare const Garantia: string;
+            export declare const ReservaAutomatica: string;
+            export declare const UserId: string;
+            export declare const FechaModificacion: string;
             export declare const ClienteRazon: string;
             export declare const ClienteDescCorta: string;
             export declare const ClienteNombre: string;

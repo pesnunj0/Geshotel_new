@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface TemporadasRow {
         TemporadaId?: number;
         Temporada?: string;
@@ -25,12 +24,12 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.Temporadas';
 
         export namespace Fields {
-            export declare const TemporadaId;
-            export declare const Temporada;
-            export declare const EmpresaId;
-            export declare const Ano;
-            export declare const FechaDesde;
-            export declare const FechaHasta;
+            export declare const TemporadaId: string;
+            export declare const Temporada: string;
+            export declare const EmpresaId: string;
+            export declare const Ano: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
             export declare const Empresa: string;
             export declare const EmpresaEmpresaContable: string;
             export declare const EmpresaDireccion: string;

@@ -1284,6 +1284,18 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Common.UserPreferenceUpdateRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AmbitoOfertaRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1299,19 +1311,115 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ClientesService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CuposColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CuposForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CuposRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CuposService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FrecuenciaFacturacionRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasDeContratoColumns.ts">
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasDeContratoForm.ts">
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasDeContratoRow.ts">
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasDeContratoService.ts">
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.MercadosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.MercadosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.MercadosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.MercadosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.OfertasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ReleasesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ReleasesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ReleasesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ReleasesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TipoAplicacionOfertaRow.ts">
@@ -2141,65 +2249,32 @@
     <TypeScriptCompile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoGrid.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <Content Include="Modules\Contratos\Contratos\ContratosIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosDialog.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesForm.ts" />
     <Content Include="Modules\Contratos\Cupos\CuposIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.CuposRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.CuposService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.CuposForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Cupos\CuposGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Cupos\CuposDialog.ts" />
     <Content Include="Modules\Contratos\Releases\ReleasesIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ReleasesRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ReleasesService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.ReleasesForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Releases\ReleasesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Releases\ReleasesDialog.ts" />
     <Content Include="Modules\Contratos\Edades\EdadesIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.EdadesRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.EdadesService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.EdadesForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesDialog.ts" />
     <Content Include="Modules\Contratos\Lineas\LineasIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.LineasRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.LineasService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.LineasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Lineas\LineasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Lineas\LineasDialog.ts" />
     <Content Include="Modules\Contratos\Ofertas\OfertasIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Ofertas\OfertasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Ofertas\OfertasDialog.ts" />
     <Content Include="Modules\Contratos\OfertasRejillas\OfertasRejillasIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.OfertasRejillasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\OfertasRejillas\OfertasRejillasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\OfertasRejillas\OfertasRejillasDialog.ts" />
     <Content Include="Modules\Contratos\Agencias\AgenciasIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.AgenciasRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.AgenciasService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.AgenciasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Agencias\AgenciasGrid.ts" />
     <Content Include="Modules\Contratos\Mercados\MercadosIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.MercadosForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Mercados\MercadosGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Mercados\MercadosDialog.ts" />
     <Content Include="Modules\Contratos\Temporadas\TemporadasIndex.cshtml" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasRow.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasService.ts" />
-    <TypeScriptCompile Include="C:\Users\Administrator\Documents\GitHub\Geshotel_new\Geshotel\Geshotel.Web\Modules\Common\Imports\ServerTypings\Contratos.TemporadasForm.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasDialog.ts" />
   </ItemGroup>
@@ -2258,21 +2333,6 @@
     <Compile Include="Modules\Common\Imports\ClientTypes\Administration.RoleCheckEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.ChangingLookupTextEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.FilteredLookupDetailEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.HardcodedValuesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.InlineImageFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.ProduceSeafoodCategoryEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Common\Imports\ClientTypes\Common.EnumSelectFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2306,15 +2366,13 @@
     <Compile Include="Modules\Common\Imports\ClientTypes\Organization.BusinessUnitEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\StaticTextBlockAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Common\Migrations\CommonFilesDB\CommonFilesDB20170120_160400_initial.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161126_200000_Organization.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170123_163900_Initial.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_120000_TemporadasYMercados.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170130_120000_Contratos.cs" />
