@@ -14,6 +14,7 @@ namespace Geshotel.Contratos.Forms
     public class ContratosForm
     {
         public Int16 HotelId { get; set; }
+        [DisplayName("Touroperador")]
         public Int32 ClienteId { get; set; }
         public DateTime FechaContrato { get; set; }
         public DateTime FechaDesde { get; set; }
@@ -22,6 +23,7 @@ namespace Geshotel.Contratos.Forms
         public Int16 UserId { get; set; }
         public DateTime FechaModificacion { get; set; }
         public Int16 TemporadaId { get; set; }
+        [DefaultValue(1)]
         public Boolean ImpuestoIncluido { get; set; }
         public Int16 MercadoId { get; set; }
     }

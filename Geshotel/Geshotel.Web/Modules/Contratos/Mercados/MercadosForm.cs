@@ -14,6 +14,6 @@ namespace Geshotel.Contratos.Forms
     public class MercadosForm
     {
         public String Mercado { get; set; }
-        public Int16 EmpresaId { get; set; }
+        public Int16 HotelId { get; set; }
     }
 }

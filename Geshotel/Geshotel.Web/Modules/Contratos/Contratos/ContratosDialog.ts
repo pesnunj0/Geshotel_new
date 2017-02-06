@@ -12,5 +12,17 @@ namespace Geshotel.Contratos {
 
         protected form = new ContratosForm(this.idPrefix);
 
+        // Adding the following to instantiate ContratosLineasGrid.ts
+
+        private LineasGrid: ContratosLineasGrid;
+
+        constructor() {
+            super();
+            this.LineasGrid = new ContratosLineasGrid(this.byId("LineasGrid"));
+            this.tabs.on('tabsactivate', (e, i) => {
+                this.arrange();
+            });
+        }
+
     }
 }

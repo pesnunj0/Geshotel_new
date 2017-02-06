@@ -31,7 +31,7 @@ namespace Geshotel.Migrations.DefaultDB
                 .ForeignKey("FK_ficheros_contratos_contrato_id", "contratos", "contrato_id")
                 .WithColumn("titulo").AsString(100).NotNullable()
                 .WithColumn("url").AsString(255).NotNullable()
-                .WithColumn("user_id").AsInt16()
+                .WithColumn("user_id").AsInt32()
                 .WithColumn("fecha_modificacion").AsDateTime();
 
             Create.Table("releases")
@@ -44,7 +44,7 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("fecha_hasta").AsDate().NotNullable()
                 .WithColumn("observaciones").AsString(100).Nullable()
                 .WithColumn("dias").AsInt16().Nullable()
-                .WithColumn("user_id").AsInt16().Nullable()
+                .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDate().Nullable();
         }
         public override void Down()

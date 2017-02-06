@@ -52,7 +52,7 @@ namespace Geshotel.Migrations.DefaultDB
             Insert.IntoTable("Languages").Row(new
             {
                 LanguageId = "es",
-                LanguageName = "Spanish"
+                LanguageName = "Español"
             });
 
             Insert.IntoTable("Languages").Row(new
@@ -155,8 +155,8 @@ namespace Geshotel.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "ro",
-                LanguageName = "Românesc"
+                LanguageId = "hu",
+                LanguageName = "Hungarian"
             });
 
             Insert.IntoTable("Languages").Row(new

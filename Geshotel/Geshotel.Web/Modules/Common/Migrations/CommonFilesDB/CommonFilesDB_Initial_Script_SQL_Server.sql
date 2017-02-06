@@ -970,220 +970,655 @@ CREATE INDEX [tipo_hab] ON servicios ([tipo_hab]);
 -- ----------------------------
 -- Records of servicios
 -- ----------------------------
-INSERT INTO servicios VALUES ('Alojamiento B1', 'A1', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '1', '2008-12-10 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Desayuno', 'HD', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '1', '2009-02-02 00:00:00', null, '1');
-INSERT INTO servicios VALUES ('Media Pension', 'MP', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '2', '2011-03-11 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Todo Incluido', 'TI', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '1', '2011-08-17 00:00:00', null, '4');
-INSERT INTO servicios VALUES ('Todo Incluido Bebidas', 'TIB', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '7', null, null, '4');
-INSERT INTO servicios VALUES ('Alojamiento B2', 'A2', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '7', '2015-08-24 00:00:00', '2', null);
-INSERT INTO servicios VALUES ('Cunas', 'CUN', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Gala Navidad HD', 'GNHD', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Gala Fin de Año', 'GF', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2015-01-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Bungalow 1 Dormitorio', 'B1', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '7', null, '1', null);
-INSERT INTO servicios VALUES ('Bungalow 2 Dormitorios', 'B2', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '7', null, '2', null);
-INSERT INTO servicios VALUES ('Bar Piscina 1 Comidas', 'BP1C', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Bar Piscina 1 Bebidas', 'BP1B', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Bar Salon Bebidas', 'BSB', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Bar Piscina 2 Comidas ', 'BP2C', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Bar Piscina 2 Bebidas ', 'BP2B', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Bar Restaurante Bebidas', 'BRB', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-07-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Bar Restaurante Comidas', 'BRC', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-10-07 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Gala Navidad', 'GN', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Gala Fin de Año HD', 'GFHD', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', null, null, null);
-INSERT INTO servicios VALUES ('Habitacion Overbooking', 'HAOVB', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler de Sombrilla', 'ALQSO', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Cabinas Telefonicas', 'CABTF', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Divisa', 'DIVIS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Exposiciones y Desfiles', 'EXPOS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '37', '2015-05-12 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Internet', 'INTER', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Lavadoras', 'LAVAD', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Caja de Seguridad', 'SAFE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Tabaco', 'TAB', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Telefono', 'TELEF', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-01-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Babychangingtable (Cambiador)', 'CAMBI', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Babytrolly (Carrito)', 'CARRI', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Rent a Car', 'RENT', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-08-07 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Tenis', 'TENIS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Babychair (Trona)', 'TRONA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Wellness Center', 'WELLN', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Wellcome Package', 'WPACK', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alojamiento Premier', 'AP', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '1', '2009-03-04 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Alojamiento Kid Suite', 'AKS', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '1', '2009-03-04 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Premier', 'PRE', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '1', '2009-03-04 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Kid Suite', 'KS', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '1', '2009-03-04 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Pension Completa', 'PC', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '1', '2009-06-02 00:00:00', null, '3');
-INSERT INTO servicios VALUES ('Varios', 'Var', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-03-11 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade de B1 a B2', 'B1AB2', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '11', '10', '2', '2009-06-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento Publicidad Habitacion', 'DESH', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-09-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento Pension', 'DESP', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-04-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento Cobro', 'Desc', '3', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '2', '2009-05-18 13:47:27', null, null);
-INSERT INTO servicios VALUES ('Anticipo Factura', 'ANT', '3', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '2', '2009-05-18 13:49:24', null, null);
-INSERT INTO servicios VALUES ('Depositos', 'DEP', '7', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '2', '2009-10-27 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Ajustes Produccion Pension', 'AJPEN', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-05-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Ajustes Produccion Habitacion', 'AJUHA', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-05-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Ajustes Produccion Galas', 'AJUGA', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-05-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Ajustes Produccion Otros', 'AJUOT', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-05-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Habitacion Permisos (Late check out)', 'PER', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-08-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade B2 A KS', 'B2AKS', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '56', '11', '2', '2009-06-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Animadores', 'ANIM', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-06-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade MP a TI', 'MP2TI', '2', Null, Null, Null, Null, Null, Null, '2', null, null, '4', '3', '2', '2009-06-23 00:00:00', null, '4');
-INSERT INTO servicios VALUES ('Persona Extra SA/día', 'CS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '37', '2015-06-01 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Varios Golosinas', 'GOLOS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-07-03 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Salón de Conferencias', 'CONFE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-11-24 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Sillon de Masajes', 'SILLO', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-07-03 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Bisutería', 'BISUT', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-07-03 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Roturas', 'ROTUR', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '9', '2009-09-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Publicidad', 'PUBLI', '6', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '2', '2009-07-03 10:30:02', null, null);
-INSERT INTO servicios VALUES ('Luz para Tenis', 'Luz', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-07-08 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade Desayuno a TI', 'De2TI', '2', Null, Null, Null, Null, Null, Null, '2', null, null, '4', '2', '2', '2009-07-09 00:00:00', null, '4');
-INSERT INTO servicios VALUES ('Upgrade Desayuno a MP', 'DE2MP', '2', Null, Null, Null, Null, Null, Null, '2', null, null, '3', '2', '2', '2009-07-09 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Suplemento Gala Navidad MP (contratos)', 'GNMP', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Navidad TI (contratos)', 'GNTI', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Fin de Año MP (contratos)', 'GFMP', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Fin de Año TI (contratos)', 'GFTI', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suite 1 Dormitorio', 'SUITE1', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '7', '2013-10-04 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Suite 2 Dormitorios', 'SUITE2', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '7', '2013-10-04 00:00:00', '2', null);
-INSERT INTO servicios VALUES ('Alojamiento Suite 1', 'SU1', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '7', '2013-10-04 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Alojamiento Suite 2', 'SU2', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '7', '2013-10-04 00:00:00', '2', null);
-INSERT INTO servicios VALUES ('Upgrade A1 a A2', 'A1UA2', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '95', '94', '2', '2009-07-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade A2 a KS', 'A2UKS', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '56', '95', '2', '2009-07-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Calefaccion', 'Cal', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-07-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Carga Partidas vivas', 'CCI', '3', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '2', '2009-07-31 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Comisión bancaria', 'Comis', '6', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '7', '2009-08-28 16:48:22', null, null);
-INSERT INTO servicios VALUES ('Provisión Publicidad', 'ProvP', '6', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '7', '2009-08-28 16:48:46', null, null);
-INSERT INTO servicios VALUES ('Habitación Rectificativa', 'HABRE', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-06-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Desayuno rectificativa', 'DESRE', '2', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-06-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Media Pensión Rectificativa', 'MPRE', '2', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-06-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Todo Incluido Rectificativa', 'TIRE', '2', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-06-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Supl. Doble Uso Ind.', 'SDUI', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '9', '2009-09-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Coco´s birthday', 'COCO', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-10-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Artículos Merchandising', 'MERCHA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-06-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Regularización cobro', 'REGUL', '6', Null, Null, Null, Null, Null, Null, '1', null, '0.00', null, null, '7', '2009-11-30 11:09:21', null, null);
-INSERT INTO servicios VALUES ('Produccion Habitacion Garantia', 'GAR', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2009-12-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Solo Alojamiento', 'SS', '2', Null, Null, Null, Null, Null, Null, '2', null, '0.00', null, null, '1', '2009-12-25 19:48:23', null, null);
-INSERT INTO servicios VALUES ('Habitacion', 'HAB', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2009-12-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Mando TV', 'TV', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2010-04-08 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Snack', 'SNK', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2010-04-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Pesa', 'PES', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2010-04-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade Cenas ', 'CEN', '2', Null, Null, Null, Null, Null, Null, '1', null, null, '3', null, '7', '2011-02-15 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Cenas Niños', 'CEN', '2', Null, Null, Null, Null, Null, Null, '1', null, null, '3', null, '2', '2010-04-14 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Upgrade de A1 a PRE', 'UA1PR', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '55', '94', '1', '2010-07-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Almuerzo', 'ALMUE', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2010-05-25 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Merchandising', 'MERCH', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2010-07-26 00:00:00', null, null);
-INSERT INTO servicios VALUES ('SIAM PARK', 'SIAM', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2010-08-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Misnusvalidos 1 Dorm', 'M1', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '2', '2010-10-07 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Minusvalidos 2 Dorm.', 'M2', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '2', '2010-10-07 00:00:00', '2', null);
-INSERT INTO servicios VALUES ('Alojamiento M1', 'AM1', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '2', '2010-10-07 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Alojamiento M2', 'AM2', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '2', '2010-10-07 00:00:00', '2', null);
-INSERT INTO servicios VALUES ('Máquinas recreativas', 'RECRE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-10-16 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Báscula maletas', 'BASCU', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2010-10-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Máquinas expendedoras (VENDING)', 'EXPEN', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-01-24 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Máquinas de café', 'CAFÉ', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2010-11-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade SS a HD', 'SSHD', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, '2', null, '7', '2010-12-22 00:00:00', null, '1');
-INSERT INTO servicios VALUES ('Upgrade SS a MP', 'SSMP', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, '3', null, '7', '2010-12-22 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Upgrade SS a TI', 'SSTI', '2', Null, Null, Null, Null, Null, Null, '2', '2', null, '4', null, '7', '2010-12-22 00:00:00', null, '4');
-INSERT INTO servicios VALUES ('Gala Navidad pasante 24.12', 'GNAP', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2014-12-24 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Gala Fin de Año pasante', 'GFINP', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2014-12-24 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Navidad SS (contratos)', 'GNSS', '5', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Fin de Año SS (contratos)', 'GFISS', '5', Null, Null, Null, Null, Null, Null, '2', '2', null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Kid Suite +', 'KS+', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '2', '2011-01-27 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Alojamiento KS+', 'AKS+', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '2', '2011-01-27 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Productos Lavandería', 'LAVAN', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '37', '2011-02-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Compensaciones OVB', 'COVB', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-03-02 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Compensaciones', 'COMP', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-03-02 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Pretty Woman', 'PREWO', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-04-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Junior Suite Mar', 'JSM', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-13 14:02:54', '1', null);
-INSERT INTO servicios VALUES ('Alojamiento Junior Suite Mar', 'AJSM', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2011-06-13 16:17:44', '1', null);
-INSERT INTO servicios VALUES ('Suite Mar', 'SUITM', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-13 16:18:51', '2', null);
-INSERT INTO servicios VALUES ('Alojamiento Suite Mar', 'ASUIT', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2011-06-13 16:19:43', '2', null);
-INSERT INTO servicios VALUES ('Duplex Mar', 'DUPM', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-13 16:20:38', '4', null);
-INSERT INTO servicios VALUES ('Alojamiento Duplex Mar', 'ADUPM', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2011-06-13 16:22:19', '4', null);
-INSERT INTO servicios VALUES ('Junior Suite', 'JS', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-14 16:47:28', '1', null);
-INSERT INTO servicios VALUES ('Alojamiento Junior Suite', 'AJS', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '7', '2013-01-24 00:00:00', '1', null);
-INSERT INTO servicios VALUES ('Suite', 'SUIT', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-14 16:49:38', '2', null);
-INSERT INTO servicios VALUES ('Alojamiento Suite', 'ASUIT', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2011-06-14 16:50:58', '2', null);
-INSERT INTO servicios VALUES ('Duplex', 'DUP', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2011-06-14 16:52:32', '4', null);
-INSERT INTO servicios VALUES ('Alojamiento Duplex', 'ADUP', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2011-06-14 16:53:21', '4', null);
-INSERT INTO servicios VALUES ('HD Spa Wellness Center', 'SPA', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-06-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Limpieza toallas', 'LTOAL', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2011-09-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Snack Bar', 'SNACK', '4', Null, Null, Null, Null, Null, Null, '1', '2', null, null, null, '7', '2012-02-10 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Comisión Transfer', 'TRANS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-07-06 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Ingresos Reciclaje', 'IREC', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2011-07-26 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Flores y tartas habitaciones', 'FLTA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-08-31 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Impresiones y fotocopias', 'IMFOT', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-08-31 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Restaurante Italiano (Bebidas)', 'ITALI', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-06-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Venta productos estética (spa HDBR)', 'VTAES', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-09-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler DVDs', 'DVD', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-10-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade de A1 a Kid Suite', 'A1KS', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-10-05 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler electrodomésticos', 'ELECT', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-10-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Cancelaciones reservas', 'CANCE', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-08-08 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade Cena Japones', 'JAPO', '2', Null, Null, Null, Null, Null, Null, '1', null, null, '3', null, '2', '2011-11-03 00:00:00', null, '2');
-INSERT INTO servicios VALUES ('Descuento publicidad pensión', 'DtoPu', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-09-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Gala Navidad pasante 25.12', 'GNA25', '5', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-12-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade MP/TI-Gala 24/12', 'UG24', '4', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade MP/TI-Gala 25/12', 'UG25', '4', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade MP/TI-Gala 31/12', 'UG31', '4', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2011-12-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Aportación publicidad-guías', 'PBGUI', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-11-12 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Vista Mar', 'Vista', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2011-12-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Seguro Bicicletas', 'BICI', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-01-11 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Paquete material nautico', 'MATNA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-02-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Curso de Windsurf y Catamarán', 'WIDCA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-02-29 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Cena', 'CENA', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-05-12 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Habitación interempresa', 'HABINT', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-03-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Todo Incuido interempresa', 'TINTE', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-03-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alojamiento Interempresa', 'AINT', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-03-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Habitación rectificativa interempresa', 'Rinte', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-05-07 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Todo Incluido Rectificativa Interempresa', 'TIRIN', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-05-07 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Restaurante Italiano (Comidas)', 'ITACO', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-06-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Restaurante principal (Comidas)', 'RESTP', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-03-26 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Restaurante principal (Bebidas)', 'RESTP', '4', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-06-18 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Upgrade Premier a B2', 'UPRB2', '1', Null, Null, Null, Null, Null, Null, '1', null, null, '11', '55', '7', '2012-08-01 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Aire Acondicionado', 'AIRE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-09-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('VIP PACKAGE', 'PVIP', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2012-11-16 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Peticiones obsequios para clientes(tartas, vino..)', 'OBSEQ', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-12-21 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Gala Navidad TI (contratos) 25.12', 'NTI25', '5', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2012-12-24 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Publicidad Marketing Dinámico', 'MARKE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-02-19 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Masajes', 'MASAJ', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-02-27 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suite Premier', 'A1PRE', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2013-10-04 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Suite Tecnologica', 'TECS2', '1', Null, Null, Null, Null, Null, Null, '1', '1', '0.00', null, null, '2', '2013-10-04 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Alojamiento SUPRE', 'AA1PR', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2013-10-04 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Alojamiento TECS2', 'AA2PR', '1', Null, Null, Null, Null, Null, Null, '2', '99', '0.00', null, null, '2', '2013-10-04 00:00:00', '4', null);
-INSERT INTO servicios VALUES ('Desayuno interempresa', 'DESIN', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-04-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Venta cápsulas café', 'CAFÉ', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-06-13 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Venta Pizzas', 'PIZZA', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-06-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler Ipad', 'Ipad', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-06-26 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Paquete Naútico', 'NAUTI', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-07-30 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler MIFI', 'MIFI', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '2', '2013-09-12 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Comida Animadores', 'Anima', '2', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-10-22 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Habitación permisos contrato (Late check-out)', 'LCOC', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2013-10-23 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Producción garantía no ocupada', 'GNocu', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-01-27 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Venta de aceite vegetal usado', 'ACEIT', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-02-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Arrendamiento Terraza', 'ARREN', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-02-28 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Refacturaciones consumos', 'CONSU', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-03-12 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Fotografía', 'FOTO', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-05-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Pintura', 'PINTU', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-05-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Suplemento Sailor', 'SAILOR', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-05-19 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler Cama Balinesa', 'BALI', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2014-05-19 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler Bicicletas', 'BICIS', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-06-25 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento publicidad ', 'Publi', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-07-04 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Day Use', 'DAYUS', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-08-01 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alquiler Babyphone', 'BPHON', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2014-09-05 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Muñeco Be Chachi', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '7', '2014-11-10 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Puzzle Chachi (formula Creativa)', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Bolsa Chachi', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Libro El Secreto de los Chachis', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Libro de los dibujos Chachis', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Libro actividades Chachis', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Disco CD Chachi', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Super-pack Chachi', 'CHACH', '3', Null, Null, Null, Null, Null, Null, '2', null, null, null, null, '37', '2014-09-15 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Cambio HAB misma Categoría', 'HAB=', '1', Null, Null, Null, Null, Null, Null, '1', null, '30.00', null, null, '37', '2015-02-20 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Camisetas Animación', 'CAMIS', '3', Null, Null, Null, Null, Null, Null, '2', null, '10.00', null, null, '37', '2015-03-27 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento Habitación', 'DESH', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '37', '2015-06-11 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Sorteos de animación', 'SORTE', '3', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-08-25 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Comisión venta Sun Care', 'SUNCA', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-09-14 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Alojamiento Villas', 'AVILL', '1', Null, Null, Null, Null, Null, Null, '2', '99', null, null, null, '2', '2015-09-14 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Villas', 'VILL', '1', Null, Null, Null, Null, Null, Null, '1', '1', null, null, null, '2', '2015-09-14 00:00:00', '3', null);
-INSERT INTO servicios VALUES ('Taza Chachi', 'TAZA', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-11-09 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Descuento publicidad suplemento VIP', 'DTVIP', '3', Null, Null, Null, Null, Null, Null, '1', '2', null, null, null, '7', '2015-11-25 00:00:00', null, null);
-INSERT INTO servicios VALUES ('Muñeco Be Chachi grande', 'CHACH', '1', Null, Null, Null, Null, Null, Null, '1', null, null, null, null, '7', '2015-11-26 00:00:00', null, null);
-
+SET IDENTITY_INSERT [dbo].[servicios] ON
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'1', N'Alojamiento B1', N'A1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'1', N'2008-12-10 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'2', N'Desayuno', N'HD', N'2', N'1', N'0', N'0', N'0', N'1', N'0', N'2', N'2', null, null, null, N'1', N'2009-02-02 00:00:00', null, N'1')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'3', N'Media Pension', N'MP', N'2', N'1', N'0', N'0', N'0', N'1', N'0', N'2', N'2', null, null, null, N'2', N'2011-03-11 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'4', N'Todo Incluido', N'TI', N'2', N'1', N'0', N'0', N'0', N'1', N'0', N'2', N'2', null, null, null, N'1', N'2011-08-17 00:00:00', null, N'4')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'5', N'Todo Incluido Bebidas', N'TIB', N'2', N'1', N'0', N'0', N'0', N'1', N'0', N'2', N'2', null, null, null, N'7', null, null, N'4')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'6', N'Alojamiento B2', N'A2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'7', N'2015-08-24 00:00:00', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'7', N'Cunas', N'CUN', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'8', N'Gala Navidad HD', N'GNHD', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'9', N'Gala Fin de Año', N'GF', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2015-01-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'10', N'Bungalow 1 Dormitorio', N'B1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'7', null, N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'11', N'Bungalow 2 Dormitorios', N'B2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'7', null, N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'12', N'Bar Piscina 1 Comidas', N'BP1C', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'13', N'Bar Piscina 1 Bebidas', N'BP1B', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'14', N'Bar Salon Bebidas', N'BSB', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'15', N'Bar Piscina 2 Comidas ', N'BP2C', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'16', N'Bar Piscina 2 Bebidas ', N'BP2B', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'17', N'Bar Restaurante Bebidas', N'BRB', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-07-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'18', N'Bar Restaurante Comidas', N'BRC', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-10-07 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'19', N'Gala Navidad', N'GN', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'20', N'Gala Fin de Año HD', N'GFHD', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', null, null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'21', N'Habitacion Overbooking', N'HAOVB', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'22', N'Alquiler de Sombrilla', N'ALQSO', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'23', N'Cabinas Telefonicas', N'CABTF', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'24', N'Divisa', N'DIVIS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'25', N'Exposiciones y Desfiles', N'EXPOS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'37', N'2015-05-12 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'26', N'Internet', N'INTER', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'27', N'Lavadoras', N'LAVAD', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'28', N'Caja de Seguridad', N'SAFE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'29', N'Tabaco', N'TAB', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'30', N'Telefono', N'TELEF', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-01-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'31', N'Babychangingtable (Cambiador)', N'CAMBI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'32', N'Babytrolly (Carrito)', N'CARRI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'33', N'Rent a Car', N'RENT', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-08-07 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'34', N'Tenis', N'TENIS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'35', N'Babychair (Trona)', N'TRONA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'36', N'Wellness Center', N'WELLN', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'37', N'Wellcome Package', N'WPACK', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'38', N'Alojamiento Premier', N'AP', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'1', N'2009-03-04 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'39', N'Alojamiento Kid Suite', N'AKS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'1', N'2009-03-04 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'40', N'Premier', N'PRE', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'1', N'2009-03-04 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'41', N'Kid Suite', N'KS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'1', N'2009-03-04 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'42', N'Pension Completa', N'PC', N'2', N'1', N'0', N'0', N'0', N'1', N'0', N'2', N'2', null, null, null, N'1', N'2009-06-02 00:00:00', null, N'3')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'43', N'Varios', N'Var', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-03-11 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'44', N'Upgrade de B1 a B2', N'B1AB2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'11', N'10', N'2', N'2009-06-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'45', N'Descuento Publicidad Habitacion', N'DESH', N'1', N'1', N'1', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-09-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'46', N'Descuento Pension', N'DESP', N'2', N'1', N'1', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-04-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'47', N'Descuento Cobro', N'Desc', N'3', N'0', N'1', N'0', N'0', N'0', N'0', N'1', null, N'0', null, null, N'2', N'2009-05-18 13:47:27', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'48', N'Anticipo Factura', N'ANT', N'3', N'0', N'0', N'0', N'0', N'0', N'0', N'1', null, N'0', null, null, N'2', N'2009-05-18 13:49:24', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'49', N'Depositos', N'DEP', N'7', N'0', N'0', N'0', N'0', N'0', N'0', N'1', null, N'0', null, null, N'2', N'2009-10-27 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'50', N'Ajustes Produccion Pension', N'AJPEN', N'2', N'1', N'0', N'1', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-05-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'51', N'Ajustes Produccion Habitacion', N'AJUHA', N'1', N'1', N'0', N'1', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-05-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'52', N'Ajustes Produccion Galas', N'AJUGA', N'5', N'1', N'0', N'1', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-05-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'53', N'Ajustes Produccion Otros', N'AJUOT', N'3', N'1', N'0', N'1', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-05-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'54', N'Habitacion Permisos (Late check out)', N'PER', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-08-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'55', N'Upgrade B2 A KS', N'B2AKS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'56', N'11', N'2', N'2009-06-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'56', N'Animadores', N'ANIM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-06-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'57', N'Upgrade MP a TI', N'MP2TI', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, N'4', N'3', N'2', N'2009-06-23 00:00:00', null, N'4')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'58', N'Persona Extra SA/día', N'CS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'37', N'2015-06-01 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'59', N'Varios Golosinas', N'GOLOS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-07-03 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'60', N'Salón de Conferencias', N'CONFE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-11-24 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'61', N'Sillon de Masajes', N'SILLO', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-07-03 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'62', N'Bisutería', N'BISUT', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-07-03 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'63', N'Roturas', N'ROTUR', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'9', N'2009-09-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'64', N'Publicidad', N'PUBLI', N'6', N'0', N'0', N'0', N'1', N'0', N'0', N'1', null, N'0', null, null, N'2', N'2009-07-03 10:30:02', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'65', N'Luz para Tenis', N'Luz', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-07-08 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'66', N'Upgrade Desayuno a TI', N'De2TI', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, N'4', N'2', N'2', N'2009-07-09 00:00:00', null, N'4')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'67', N'Upgrade Desayuno a MP', N'DE2MP', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, N'3', N'2', N'2', N'2009-07-09 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'68', N'Suplemento Gala Navidad MP (contratos)', N'GNMP', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'69', N'Suplemento Gala Navidad TI (contratos)', N'GNTI', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'70', N'Suplemento Gala Fin de Año MP (contratos)', N'GFMP', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'71', N'Suplemento Gala Fin de Año TI (contratos)', N'GFTI', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'72', N'Suite 1 Dormitorio', N'SUITE1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'7', N'2013-10-04 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'73', N'Suite 2 Dormitorios', N'SUITE2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'7', N'2013-10-04 00:00:00', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'74', N'Alojamiento Suite 1', N'SU1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'7', N'2013-10-04 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'75', N'Alojamiento Suite 2', N'SU2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'7', N'2013-10-04 00:00:00', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'76', N'Upgrade A1 a A2', N'A1UA2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'95', N'94', N'2', N'2009-07-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'77', N'Upgrade A2 a KS', N'A2UKS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'56', N'95', N'2', N'2009-07-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'78', N'Calefaccion', N'Cal', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-07-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'79', N'Carga Partidas vivas', N'CCI', N'3', N'0', N'0', N'0', N'0', N'0', N'0', N'1', null, N'0', null, null, N'2', N'2009-07-31 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'80', N'Comisión bancaria', N'Comis', N'6', N'0', N'0', N'0', N'1', N'0', N'0', N'1', null, N'0', null, null, N'7', N'2009-08-28 16:48:22', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'81', N'Provisión Publicidad', N'ProvP', N'6', N'0', N'0', N'0', N'0', N'0', N'0', N'1', null, N'0', null, null, N'7', N'2009-08-28 16:48:46', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'82', N'Habitación Rectificativa', N'HABRE', N'1', N'1', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, null, N'7', N'2011-06-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'83', N'Desayuno rectificativa', N'DESRE', N'2', N'1', N'0', N'0', N'0', N'0', N'1', N'2', null, null, null, null, N'7', N'2011-06-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'84', N'Media Pensión Rectificativa', N'MPRE', N'2', N'1', N'0', N'0', N'0', N'0', N'1', N'2', null, null, null, null, N'7', N'2011-06-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'85', N'Todo Incluido Rectificativa', N'TIRE', N'2', N'1', N'0', N'0', N'0', N'0', N'1', N'2', null, null, null, null, N'7', N'2011-06-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'86', N'Supl. Doble Uso Ind.', N'SDUI', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'9', N'2009-09-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'87', N'Coco´s birthday', N'COCO', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-10-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'88', N'Artículos Merchandising', N'MERCHA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-06-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'89', N'Regularización cobro', N'REGUL', N'6', N'0', N'0', N'0', N'1', N'0', N'0', N'1', null, N'0', null, null, N'7', N'2009-11-30 11:09:21', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'90', N'Produccion Habitacion Garantia', N'GAR', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2009-12-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'91', N'Solo Alojamiento', N'SS', N'2', N'0', N'0', N'0', N'0', N'1', N'0', N'2', null, N'0', null, null, N'1', N'2009-12-25 19:48:23', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'92', N'Habitacion', N'HAB', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2009-12-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'93', N'Mando TV', N'TV', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2010-04-08 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'94', N'Snack', N'SNK', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2010-04-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'95', N'Pesa', N'PES', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2010-04-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'96', N'Upgrade Cenas ', N'CEN', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'3', null, N'7', N'2011-02-15 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'97', N'Cenas Niños', N'CEN', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'3', null, N'2', N'2010-04-14 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'98', N'Upgrade de A1 a PRE', N'UA1PR', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'55', N'94', N'1', N'2010-07-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'99', N'Almuerzo', N'ALMUE', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2010-05-25 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'100', N'Merchandising', N'MERCH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2010-07-26 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'101', N'SIAM PARK', N'SIAM', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2010-08-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'102', N'Misnusvalidos 1 Dorm', N'M1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'2', N'2010-10-07 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'103', N'Minusvalidos 2 Dorm.', N'M2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'2', N'2010-10-07 00:00:00', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'104', N'Alojamiento M1', N'AM1', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'2', N'2010-10-07 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'105', N'Alojamiento M2', N'AM2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'2', N'2010-10-07 00:00:00', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'106', N'Máquinas recreativas', N'RECRE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-10-16 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'107', N'Báscula maletas', N'BASCU', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2010-10-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'108', N'Máquinas expendedoras (VENDING)', N'EXPEN', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-01-24 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'109', N'Máquinas de café', N'CAFÉ', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2010-11-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'110', N'Upgrade SS a HD', N'SSHD', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'2', null, N'2', null, N'7', N'2010-12-22 00:00:00', null, N'1')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'111', N'Upgrade SS a MP', N'SSMP', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'2', null, N'3', null, N'7', N'2010-12-22 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'112', N'Upgrade SS a TI', N'SSTI', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'2', null, N'4', null, N'7', N'2010-12-22 00:00:00', null, N'4')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'113', N'Gala Navidad pasante 24.12', N'GNAP', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2014-12-24 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'114', N'Gala Fin de Año pasante', N'GFINP', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2014-12-24 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'115', N'Suplemento Gala Navidad SS (contratos)', N'GNSS', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'2', null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'116', N'Suplemento Gala Fin de Año SS (contratos)', N'GFISS', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'2', null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'117', N'Kid Suite +', N'KS+', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'2', N'2011-01-27 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'118', N'Alojamiento KS+', N'AKS+', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'2', N'2011-01-27 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'119', N'Productos Lavandería', N'LAVAN', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'37', N'2011-02-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'120', N'Compensaciones OVB', N'COVB', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-03-02 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'121', N'Compensaciones', N'COMP', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-03-02 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'122', N'Pretty Woman', N'PREWO', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-04-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'123', N'Junior Suite Mar', N'JSM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-13 14:02:54', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'124', N'Alojamiento Junior Suite Mar', N'AJSM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2011-06-13 16:17:44', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'125', N'Suite Mar', N'SUITM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-13 16:18:51', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'126', N'Alojamiento Suite Mar', N'ASUIT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2011-06-13 16:19:43', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'127', N'Duplex Mar', N'DUPM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-13 16:20:38', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'128', N'Alojamiento Duplex Mar', N'ADUPM', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2011-06-13 16:22:19', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'129', N'Junior Suite', N'JS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-14 16:47:28', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'130', N'Alojamiento Junior Suite', N'AJS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'7', N'2013-01-24 00:00:00', N'1', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'131', N'Suite', N'SUIT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-14 16:49:38', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'132', N'Alojamiento Suite', N'ASUIT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2011-06-14 16:50:58', N'2', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'133', N'Duplex', N'DUP', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2011-06-14 16:52:32', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'134', N'Alojamiento Duplex', N'ADUP', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2011-06-14 16:53:21', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'135', N'HD Spa Wellness Center', N'SPA', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-06-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'136', N'Limpieza toallas', N'LTOAL', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2011-09-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'137', N'Snack Bar', N'SNACK', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'2', null, null, null, N'7', N'2012-02-10 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'138', N'Comisión Transfer', N'TRANS', N'3', N'1', N'0', N'0', N'1', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-07-06 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'139', N'Ingresos Reciclaje', N'IREC', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2011-07-26 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'140', N'Flores y tartas habitaciones', N'FLTA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-08-31 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'141', N'Impresiones y fotocopias', N'IMFOT', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-08-31 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'142', N'Restaurante Italiano (Bebidas)', N'ITALI', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-06-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'143', N'Venta productos estética (spa HDBR)', N'VTAES', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-09-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'144', N'Alquiler DVDs', N'DVD', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-10-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'145', N'Upgrade de A1 a Kid Suite', N'A1KS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-10-05 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'146', N'Alquiler electrodomésticos', N'ELECT', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-10-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'147', N'Cancelaciones reservas', N'CANCE', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-08-08 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'148', N'Upgrade Cena Japones', N'JAPO', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'3', null, N'2', N'2011-11-03 00:00:00', null, N'2')
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'149', N'Descuento publicidad pensión', N'DtoPu', N'2', N'1', N'1', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-09-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'150', N'Gala Navidad pasante 25.12', N'GNA25', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2011-12-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'151', N'Upgrade MP/TI-Gala 24/12', N'UG24', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'152', N'Upgrade MP/TI-Gala 25/12', N'UG25', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'153', N'Upgrade MP/TI-Gala 31/12', N'UG31', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2011-12-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'154', N'Aportación publicidad-guías', N'PBGUI', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-11-12 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'155', N'Suplemento Vista Mar', N'Vista', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2011-12-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'156', N'Seguro Bicicletas', N'BICI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-01-11 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'157', N'Paquete material nautico', N'MATNA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-02-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'158', N'Curso de Windsurf y Catamarán', N'WIDCA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-02-29 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'159', N'Cena', N'CENA', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-05-12 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'160', N'Habitación interempresa', N'HABINT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-03-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'161', N'Todo Incuido interempresa', N'TINTE', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-03-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'162', N'Alojamiento Interempresa', N'AINT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-03-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'163', N'Habitación rectificativa interempresa', N'Rinte', N'1', N'1', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, null, N'7', N'2012-05-07 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'164', N'Todo Incluido Rectificativa Interempresa', N'TIRIN', N'2', N'1', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, null, N'7', N'2012-05-07 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'165', N'Restaurante Italiano (Comidas)', N'ITACO', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-06-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'166', N'Restaurante principal (Comidas)', N'RESTP', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-03-26 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'167', N'Restaurante principal (Bebidas)', N'RESTP', N'4', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-06-18 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'168', N'Upgrade Premier a B2', N'UPRB2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, N'11', N'55', N'7', N'2012-08-01 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'169', N'Aire Acondicionado', N'AIRE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-09-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'170', N'VIP PACKAGE', N'PVIP', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2012-11-16 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'171', N'Peticiones obsequios para clientes(tartas, vino..)', N'OBSEQ', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-12-21 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'172', N'Suplemento Gala Navidad TI (contratos) 25.12', N'NTI25', N'5', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2012-12-24 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'173', N'Publicidad Marketing Dinámico', N'MARKE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-02-19 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'174', N'Masajes', N'MASAJ', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-02-27 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'175', N'Suite Premier', N'A1PRE', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2013-10-04 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'176', N'Suite Tecnologica', N'TECS2', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', N'0', null, null, N'2', N'2013-10-04 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'177', N'Alojamiento SUPRE', N'AA1PR', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2013-10-04 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'178', N'Alojamiento TECS2', N'AA2PR', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', N'0', null, null, N'2', N'2013-10-04 00:00:00', N'4', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'179', N'Desayuno interempresa', N'DESIN', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-04-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'180', N'Venta cápsulas café', N'CAFÉ', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-06-13 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'181', N'Venta Pizzas', N'PIZZA', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-06-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'182', N'Alquiler Ipad', N'Ipad', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-06-26 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'183', N'Paquete Naútico', N'NAUTI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-07-30 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'184', N'Alquiler MIFI', N'MIFI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'2', N'2013-09-12 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'185', N'Comida Animadores', N'Anima', N'2', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-10-22 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'186', N'Habitación permisos contrato (Late check-out)', N'LCOC', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2013-10-23 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'187', N'Producción garantía no ocupada', N'GNocu', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-01-27 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'188', N'Venta de aceite vegetal usado', N'ACEIT', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-02-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'189', N'Arrendamiento Terraza', N'ARREN', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-02-28 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'190', N'Refacturaciones consumos', N'CONSU', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-03-12 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'191', N'Fotografía', N'FOTO', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-05-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'192', N'Pintura', N'PINTU', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-05-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'193', N'Suplemento Sailor', N'SAILOR', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-05-19 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'194', N'Alquiler Cama Balinesa', N'BALI', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2014-05-19 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'195', N'Alquiler Bicicletas', N'BICIS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-06-25 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'196', N'Descuento publicidad ', N'Publi', N'1', N'1', N'1', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-07-04 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'197', N'Day Use', N'DAYUS', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-08-01 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'198', N'Alquiler Babyphone', N'BPHON', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2014-09-05 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'199', N'Muñeco Be Chachi', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'7', N'2014-11-10 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'200', N'Puzzle Chachi (formula Creativa)', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'201', N'Bolsa Chachi', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'202', N'Libro El Secreto de los Chachis', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'203', N'Libro de los dibujos Chachis', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'204', N'Libro actividades Chachis', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'205', N'Disco CD Chachi', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'206', N'Super-pack Chachi', N'CHACH', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, null, null, null, N'37', N'2014-09-15 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'207', N'Cambio HAB misma Categoría', N'HAB=', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, N'30', null, null, N'37', N'2015-02-20 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'208', N'Camisetas Animación', N'CAMIS', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'2', null, N'10', null, null, N'37', N'2015-03-27 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'209', N'Descuento Habitación', N'DESH', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'37', N'2015-06-11 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'210', N'Sorteos de animación', N'SORTE', N'3', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-08-25 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'211', N'Comisión venta Sun Care', N'SUNCA', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-09-14 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'212', N'Alojamiento Villas', N'AVILL', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'2', N'99', null, null, null, N'2', N'2015-09-14 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'213', N'Villas', N'VILL', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', N'1', null, null, null, N'2', N'2015-09-14 00:00:00', N'3', null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'214', N'Taza Chachi', N'TAZA', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-11-09 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'215', N'Descuento publicidad suplemento VIP', N'DTVIP', N'3', N'1', N'1', N'0', N'0', N'0', N'0', N'1', N'2', null, null, null, N'7', N'2015-11-25 00:00:00', null, null)
+GO
+GO
+INSERT INTO [dbo].[servicios] ([servicio_id], [nombre_servicio], [abreviatura], [tipo_servicio_id], [sw_produccion], [sw_descuento], [sw_ajustes], [sw_gastos], [sw_pension], [sw_rectificativa], [tipo_unidad_calculo_id], [concepto_acelerador_reservas_id], [costo], [suma_servicio_id], [resta_servicio_id], [user_id], [fecha_modificacion], [tipo_hab], [tipo_pension]) VALUES (N'216', N'Muñeco Be Chachi grande', N'CHACH', N'1', N'1', N'0', N'0', N'0', N'0', N'0', N'1', null, null, null, null, N'7', N'2015-11-26 00:00:00', null, null)
+GO
+GO
+SET IDENTITY_INSERT [dbo].[servicios] OFF
+GO

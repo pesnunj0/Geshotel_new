@@ -15,13 +15,15 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ClienteId { get; set; }
-        [EditLink]
+        [EditLink,QuickFilter]
         public String Razon { get; set; }
         public String DescCorta { get; set; }
         [Width(100),QuickFilter, QuickFilterOption("multiple", true)]
         public String Empresa { get; set; }
         [Width(130), LookupEditor(typeof(Scripts.ClientesAgenciaLookup)), QuickFilter]
         public String Agencia { get; set; }
+
+        [Width(90), QuickFilter,AlignCenter]
         public Boolean ClienteDefecto { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String TipoDocumento { get; set; }

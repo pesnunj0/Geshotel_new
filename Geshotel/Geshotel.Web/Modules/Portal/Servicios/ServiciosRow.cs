@@ -36,7 +36,7 @@ namespace Geshotel.Portal.Entities
             set { Fields.Abreviatura[this] = value; }
         }
 
-        [DisplayName("Tipo Servicio"), Column("tipo_servicio_id"), NotNull, ForeignKey("tipos_servicio", "tipo_servicio_id"), LeftJoin("jTipoServicio"), TextualField("TipoServicioNombreTipoServicio")]
+        [DisplayName("Tipo Servicio"), Column("tipo_servicio_id"), NotNull, ForeignKey("tipos_servicio", "tipo_servicio_id"), LeftJoin("jTipoServicio"), LookupInclude, TextualField("TipoServicioNombreTipoServicio")]
         [LookupEditor(typeof(TiposServicioRow), InplaceAdd = true)]
         public Int16? TipoServicioId
         {

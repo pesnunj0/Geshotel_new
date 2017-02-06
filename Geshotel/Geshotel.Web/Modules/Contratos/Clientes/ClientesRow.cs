@@ -315,7 +315,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Usuario"), Column("user_id")]
-        public Int16? UserId
+        public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
@@ -429,7 +429,7 @@ namespace Geshotel.Contratos.Entities
             public DoubleField LimiteCredito;
             public BooleanField FacturaAnticipada;
             public Int16Field VencimientoFacturasId;
-            public Int16Field UserId;
+            public Int32Field UserId;
             public DateTimeField FechaModificacion;
             public StringField ClienteBavel;
             public BooleanField DingusExtras;

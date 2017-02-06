@@ -47,7 +47,7 @@ CREATE TABLE clientes (
   [factura_anticipada] bit DEFAULT NULL,
   [vencimiento_facturas_id] smallint DEFAULT NULL,
   [fecha_nacimiento] date DEFAULT NULL,
-  [user_id] smallint DEFAULT NULL,
+  [user_id] int DEFAULT NULL,
   [fecha_modificacion] datetime2(0) DEFAULT NULL,
   [cliente_bavel] varchar(20) DEFAULT NULL,
   [foto1] varchar(256) DEFAULT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE lineas_de_contrato (
   [sabado] bit NOT NULL DEFAULT '1',
   [domingo] bit NOT NULL DEFAULT '1',
   [pag_factura] smallint DEFAULT '1',
-  [user_id] smallint DEFAULT NULL,
+  [user_id] int DEFAULT NULL,
   [fecha_modificacion] datetime2(0) DEFAULT NULL,
   PRIMARY KEY ([linea_contrato_id])
 )  ;
@@ -122,12 +122,12 @@ CREATE TABLE contratos (
   [contrato_id_original] int DEFAULT NULL,
   [contrato_id_siguiente] int DEFAULT NULL,
   [numero_contrato_cliente] varchar(40) DEFAULT NULL,
-  [user_id] smallint DEFAULT NULL,
-  [fecha_modificacion] datetime2(0) DEFAULT NULL,
   [temporada_id] smallint DEFAULT NULL,
   [impuesto_incluido] bit DEFAULT '1',
   [mercado_id] smallint DEFAULT NULL,
   [cliente_id_padre] int DEFAULT NULL,
+  [user_id] int DEFAULT NULL,
+  [fecha_modificacion] datetime2(0) DEFAULT NULL,
   PRIMARY KEY ([contrato_id])
 )  ;
 

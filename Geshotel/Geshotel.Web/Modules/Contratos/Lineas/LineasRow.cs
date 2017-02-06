@@ -13,6 +13,7 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), DisplayName("Lineas"), InstanceName("Lineas"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
     [ModifyPermission("Contratos:General")]
+ //   [ForeignKey("servicios","servicio_id")]
     public sealed class LineasRow : Row, IIdRow
     {
         [DisplayName("Linea Contrato Id"), Column("linea_contrato_id"), Identity]
@@ -50,7 +51,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Hasta[this] = value; }
         }
 
-        [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jServicios"), TextualField("servicio")]
+        [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jServicios"), TextualField("Servicio")]
         [LookupEditor(typeof(ServiciosRow))]
         public Int32? ServicioId
         {
@@ -58,11 +59,25 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioId[this] = value; }
         }
 
-        [DisplayName("Servicio"),Expression("jServicios.[servicio]")]
+        [DisplayName("Servicio"),Expression("jServicios.[nombre_servicio]")]
         public String Servicio
         {
             get { return Fields.Servicio[this]; }
             set { Fields.Servicio[this] = value; }
+        }
+        [DisplayName("Tipo Servicio"), Expression("jservicios.[tipo_servicio_id]"), ForeignKey("tipos_servicio","tipo_servicio_id"), LeftJoin("jTiposServicio")]
+        [LookupEditor(typeof(TiposServicioRow))]
+        public Int16? TipoServicioId
+        {
+            get { return Fields.TipoServicioId[this]; }
+            set { Fields.TipoServicioId[this] = value; }
+        }
+
+        [DisplayName("Tipo Servicio"), Expression("jTiposServicio.[nombre_tipo_servicio]")]
+        public String TipoServicio
+        {
+            get { return Fields.TipoServicio[this]; }
+            set { Fields.TipoServicio[this] = value; }
         }
 
         [DisplayName("U. Calculo"), Column("unidad_calculo_id"), NotNull, ForeignKey("unidades_calculo", "unidad_calculo_id"), LeftJoin("jUc"), TextualField("UC")]
@@ -97,8 +112,8 @@ namespace Geshotel.Contratos.Entities
         }
 
 
-        [DisplayName("Imputacion"), Column("tipo_imputacion_id"),NotNull,DefaultValue(0), ForeignKey("tipos_imputacion", "tipo_imputacion_id"), LeftJoin("jImputacion"), TextualField("Imputacion")]
-        [LookupEditor(typeof(FrecuenciaFacturacionRow))]
+        [DisplayName("Imputacion"), Column("tipo_imputacion_id"),NotNull,DefaultValue(0), ForeignKey("tipos_de_imputacion", "tipo_imputacion_id"), LeftJoin("jImputacion"), TextualField("Imputacion")]
+        [LookupEditor(typeof(TiposDeImputacionRow))]
         public Int16? TipoImputacionId
         {
             get { return Fields.TipoImputacionId[this]; }
@@ -206,9 +221,9 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Usuario"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUser"), TextualField("Usuario")]
-        [LookupEditor(typeof(FrecuenciaFacturacionRow))]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
 
-        public Int16? UserId
+        public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
@@ -253,6 +268,7 @@ namespace Geshotel.Contratos.Entities
             public Int16Field FrecuenciaId;
             public Int16Field TipoImputacionId;
             public DoubleField Importe;
+            public Int16Field TipoServicioId;
             //public Int16Field N;
             //public Int16Field TipoOfertaId;
             //public DoubleField M;
@@ -265,7 +281,7 @@ namespace Geshotel.Contratos.Entities
             public BooleanField Sabado;
             public BooleanField Domingo;
             public Int16Field PagFactura;
-            public Int16Field UserId;
+            public Int32Field UserId;
             public DateTimeField FechaModificacion;
 
             public StringField Servicio;
@@ -273,6 +289,7 @@ namespace Geshotel.Contratos.Entities
             public StringField Frecuencia;
             public StringField Imputacion;
             public StringField Usuario;
+            public StringField TipoServicio;
 
             public RowFields()
                 : base("[dbo].[lineas_de_contrato]")

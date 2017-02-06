@@ -31,6 +31,24 @@ namespace Geshotel.Contratos.Entities
 
         }
 
+        [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas","empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor(typeof(EmpresasRow))]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+
         [DisplayName("Hotel"), Expression("jHoteles.hotel")]
         public String HotelName
         {
@@ -38,7 +56,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.HotelName[this] = value; }
         }
 
-        [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
+        [DisplayName("Touroperador"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
         [LookupEditor(typeof(ClientesRow))]
         public Int32? ClienteId
         {
@@ -46,11 +64,11 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ClienteId[this] = value; }
         }
 
-        [DisplayName("Cliente"),Expression("jCliente.razon")]
-        public String ClienteName
+        [DisplayName("Touroperador"),Expression("jCliente.razon")]
+        public String Touroperador
         {
-            get { return Fields.ClienteName[this]; }
-            set { Fields.ClienteName[this] = value; }
+            get { return Fields.Touroperador[this]; }
+            set { Fields.Touroperador[this] = value; }
         }
 
         [DisplayName("Fecha Contrato"), Column("fecha_contrato"), NotNull]
@@ -95,11 +113,18 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaModificacion[this] = value; }
         }
 
-        [DisplayName("Temporada"), Column("temporada_id")]
+        [DisplayName("Temporada"), Column("temporada_id"),ForeignKey("temporadas","temporada_id"),LeftJoin("jTemporadas")]
+        [LookupEditor(typeof(TemporadasRow))]
         public Int16? TemporadaId
         {
             get { return Fields.TemporadaId[this]; }
             set { Fields.TemporadaId[this] = value; }
+        }
+        [DisplayName("Temporada"),Expression("jTemporadas.[temporada]")]
+        public String Temporada
+        {
+            get { return Fields.Temporada[this]; }
+            set { Fields.Temporada[this] = value; }
         }
 
         [DisplayName("Impuesto Incluido"), Column("impuesto_incluido")]
@@ -109,11 +134,18 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ImpuestoIncluido[this] = value; }
         }
 
-        [DisplayName("Mercado"), Column("mercado_id")]
+        [DisplayName("Mercado"), Column("mercado_id"),ForeignKey("mercados","mercado_id"),LeftJoin("jMercados")]
+        [LookupEditor(typeof(MercadosRow))]
         public Int16? MercadoId
         {
             get { return Fields.MercadoId[this]; }
             set { Fields.MercadoId[this] = value; }
+        }
+        [DisplayName("Mercado"), Expression("jMercados.[mercado]")]
+        public String Mercado
+        {
+            get { return Fields.Mercado[this]; }
+            set { Fields.Mercado[this] = value; }
         }
 
         IIdField IIdRow.IdField
@@ -123,7 +155,7 @@ namespace Geshotel.Contratos.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.NumeroContratoCliente; }
+            get { return Fields.Touroperador; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -149,8 +181,11 @@ namespace Geshotel.Contratos.Entities
             public Int16Field MercadoId;
 
             public StringField HotelName;
-            public StringField ClienteName;
-
+            public StringField Touroperador;
+            public Int16Field EmpresaId;
+            public StringField Empresa;
+            public StringField Mercado;
+            public StringField Temporada;
 
             public RowFields()
                 : base("[dbo].[contratos]")

@@ -14,7 +14,7 @@ namespace Geshotel.Contratos.Forms
     public class LineasForm
     {
         public Int32 ContratoId { get; set; }
-        public Boolean Oferta { get; set; }
+        //public Boolean Oferta { get; set; }
         public DateTime Desde { get; set; }
         public DateTime Hasta { get; set; }
         public Int32 ServicioId { get; set; }
@@ -22,17 +22,25 @@ namespace Geshotel.Contratos.Forms
         public Int16 FrecuenciaId { get; set; }
         public Int16 TipoImputacionId { get; set; }
         public Double Importe { get; set; }
-        public Int16 N { get; set; }
-        public Int16 TipoOfertaId { get; set; }
-        public Double M { get; set; }
-        public Int16 AmbitoOfertaId { get; set; }
+        //public Int16 N { get; set; }
+        //public Int16 TipoOfertaId { get; set; }
+        //public Double M { get; set; }
+        //public Int16 AmbitoOfertaId { get; set; }
+        [DefaultValue(1)]
         public Boolean Lunes { get; set; }
+        [DefaultValue(1)]
         public Boolean Martes { get; set; }
+        [DefaultValue(1)]
         public Boolean Miercoles { get; set; }
+        [DefaultValue(1)]
         public Boolean Jueves { get; set; }
+        [DefaultValue(1)]
         public Boolean Viernes { get; set; }
+        [DefaultValue(1)]
         public Boolean Sabado { get; set; }
+        [DefaultValue(1)]
         public Boolean Domingo { get; set; }
+        [DefaultValue(1)]
         public Int16 PagFactura { get; set; }
         public Int16 UserId { get; set; }
         public DateTime FechaModificacion { get; set; }

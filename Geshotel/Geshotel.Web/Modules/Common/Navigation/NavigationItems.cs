@@ -11,6 +11,8 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(8000, "Contratos/Contratos", typeof(Geshotel.Contratos.Pages.ContratosController), icon:"icon-note")]
 [assembly: NavigationLink(8000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
 [assembly: NavigationLink(8000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]
+[assembly: NavigationLink(8000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
+[assembly: NavigationLink(8000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]
 
 
 [assembly: NavigationMenu(9000, "Settings", icon: "icon-settings")]

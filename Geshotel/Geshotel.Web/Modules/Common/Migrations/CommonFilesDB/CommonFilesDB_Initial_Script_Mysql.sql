@@ -624,12 +624,12 @@ CREATE TABLE `servicios` (
   `nombre_servicio` varchar(50) NOT NULL,
   `abreviatura` varchar(6) NOT NULL,
   `tipo_servicio_id` smallint(6) NOT NULL,
-  `sw_produccion` bit(4) NOT NULL DEFAULT b'1',
-  `sw_descuento` bit(4) DEFAULT b'0',
-  `sw_ajustes` bit(4) DEFAULT b'0',
-  `sw_gastos` bit(4) DEFAULT b'0',
-  `sw_pension` bit(4) NOT NULL DEFAULT b'0',
-  `sw_rectificativa` bit(4) DEFAULT b'0',
+  `sw_produccion` bit(1) NOT NULL DEFAULT b'1',
+  `sw_descuento` bit(1) DEFAULT b'0',
+  `sw_ajustes` bit(1) DEFAULT b'0',
+  `sw_gastos` bit(1) DEFAULT b'0',
+  `sw_pension` bit(1) NOT NULL DEFAULT b'0',
+  `sw_rectificativa` bit(1) DEFAULT b'0',
   `tipo_unidad_calculo_id` smallint(6) DEFAULT NULL,
   `concepto_acelerador_reservas_id` smallint(6) DEFAULT NULL,
   `costo` float(6,2) DEFAULT '0.00',
@@ -1163,7 +1163,7 @@ CREATE TABLE `unidades_calculo` (
   `UC` varchar(4) NOT NULL,
   `descripcion_unidad_calculo` varchar(30) NOT NULL,
   `tipo_unidad_calculo_id` smallint(6) DEFAULT NULL,
-  `pax` bit(4) DEFAULT NULL,
+  `pax` bit(1) DEFAULT NULL,
   `servicio_id` int(6) DEFAULT NULL,
   `user_id` int(6) DEFAULT NULL,
   `fecha_modificacion` datetime DEFAULT NULL,
@@ -1173,8 +1173,7 @@ CREATE TABLE `unidades_calculo` (
   KEY `tipo_unidad_calculo_id` (`tipo_unidad_calculo_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `unidades_calculo_ibfk_1` FOREIGN KEY (`servicio_id`) REFERENCES `servicios` (`servicio_id`),
-  CONSTRAINT `unidades_calculo_ibfk_2` FOREIGN KEY (`tipo_unidad_calculo_id`) REFERENCES `tipos_unidad_calculo` (`tipo_unidad_calculo_id`),
-  CONSTRAINT `unidades_calculo_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `default`.`users` (`UserId`)
+  CONSTRAINT `unidades_calculo_ibfk_2` FOREIGN KEY (`tipo_unidad_calculo_id`) REFERENCES `tipos_unidad_calculo` (`tipo_unidad_calculo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='InnoDB free: 10240 kB';
 
 -- ----------------------------

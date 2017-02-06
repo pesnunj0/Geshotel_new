@@ -8,6 +8,7 @@ namespace Geshotel.Contratos.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Agencias"), InstanceName("Agencias"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
@@ -36,61 +37,45 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DescCorta[this] = value; }
         }
 
-        [DisplayName("Nombre"), Column("nombre"), Size(30)]
-        public String Nombre
-        {
-            get { return Fields.Nombre[this]; }
-            set { Fields.Nombre[this] = value; }
-        }
-
-        [DisplayName("Apellidos"), Column("apellidos"), Size(50)]
-        public String Apellidos
-        {
-            get { return Fields.Apellidos[this]; }
-            set { Fields.Apellidos[this] = value; }
-        }
-
-        [DisplayName("Empresa Id"), Column("empresa_id"), NotNull]
+        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
+        [LookupEditor(typeof(EmpresasRow))]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
             set { Fields.EmpresaId[this] = value; }
         }
 
-        [DisplayName("Agencia Id"), Column("agencia_id")]
-        public Int32? AgenciaId
+        [DisplayName("Empresa"), Expression("jEmpresa.[empresa]")]
+        public String Empresa
         {
-            get { return Fields.AgenciaId[this]; }
-            set { Fields.AgenciaId[this] = value; }
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
         }
 
-        [DisplayName("Mercado Id"), Column("mercado_id")]
-        public Int16? MercadoId
-        {
-            get { return Fields.MercadoId[this]; }
-            set { Fields.MercadoId[this] = value; }
-        }
-
-        [DisplayName("Cliente Defecto"), Column("cliente_defecto")]
-        public Boolean? ClienteDefecto
-        {
-            get { return Fields.ClienteDefecto[this]; }
-            set { Fields.ClienteDefecto[this] = value; }
-        }
-
-        [DisplayName("Grupo Cliente Id"), Column("grupo_cliente_id"), NotNull, LookupInclude]
+        [DisplayName("Grupo Cliente"), Column("grupo_cliente_id"), NotNull, ForeignKey("grupos_de_cliente", "grupo_cliente_id"), LeftJoin("jGrupoCliente"),LookupInclude]
+        [LookupEditor(typeof(GruposDeClienteRow))]
         public Int16? GrupoClienteId
         {
             get { return Fields.GrupoClienteId[this]; }
             set { Fields.GrupoClienteId[this] = value; }
         }
 
-        [DisplayName("Tipo Documento Id"), Column("tipo_documento_id"), Size(1)]
+
+        [DisplayName("Tipo Documento"), Column("tipo_documento_id"), Size(1), ForeignKey("tipos_documento", "tipo_documento_id"), LeftJoin("jTipoDocumento")]
+        [LookupEditor(typeof(TiposDocumentoRow))]
         public String TipoDocumentoId
         {
             get { return Fields.TipoDocumentoId[this]; }
             set { Fields.TipoDocumentoId[this] = value; }
         }
+
+        [DisplayName("Tipo_Doc"), Expression("jTipoDocumento.[tipo_documento]")]
+        public String TipoDocumento
+        {
+            get { return Fields.TipoDocumento[this]; }
+            set { Fields.TipoDocumento[this] = value; }
+        }
+
 
         [DisplayName("Nif"), Column("nif"), Size(20)]
         public String Nif
@@ -104,13 +89,6 @@ namespace Geshotel.Contratos.Entities
         {
             get { return Fields.FechaDocumento[this]; }
             set { Fields.FechaDocumento[this] = value; }
-        }
-
-        [DisplayName("Sexo Id"), Column("sexo_id"), Size(1)]
-        public String SexoId
-        {
-            get { return Fields.SexoId[this]; }
-            set { Fields.SexoId[this] = value; }
         }
 
         [DisplayName("Direccion"), Column("direccion"), Size(70)]
@@ -134,14 +112,16 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Zip[this] = value; }
         }
 
-        [DisplayName("Nacion Id"), Column("nacion_id")]
+        [DisplayName("Nacion"), Column("nacion_id"), ForeignKey("naciones", "nacion_id"), LeftJoin("jNacion"), TextualField("Nacion")]
+        [LookupEditor(typeof(NacionesRow))]
         public Int16? NacionId
         {
             get { return Fields.NacionId[this]; }
             set { Fields.NacionId[this] = value; }
         }
 
-        [DisplayName("Provincia Id"), Column("provincia_id")]
+        [DisplayName("Provincia"), Column("provincia_id"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvincia"), TextualField("Provincia")]
+        [LookupEditor(typeof(ProvinciasRow))]
         public Int16? ProvinciaId
         {
             get { return Fields.ProvinciaId[this]; }
@@ -225,13 +205,6 @@ namespace Geshotel.Contratos.Entities
             set { Fields.EmailContacto[this] = value; }
         }
 
-        [DisplayName("Acepta Lopd"), Column("acepta_lopd")]
-        public DateTime? AceptaLopd
-        {
-            get { return Fields.AceptaLopd[this]; }
-            set { Fields.AceptaLopd[this] = value; }
-        }
-
         [DisplayName("Cif Fra"), Column("cif_fra"), Size(20)]
         public String CifFra
         {
@@ -260,35 +233,37 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ZipFra[this] = value; }
         }
 
-        [DisplayName("Nacion Id Factura"), Column("nacion_id_factura")]
+        [DisplayName("Nacion Factura"), Column("nacion_id_factura"), ForeignKey("naciones", "nacion_id"), LeftJoin("jNacionIdFactura"), TextualField("FacturaNacion")]
+        [LookupEditor(typeof(NacionesRow))]
         public Int16? NacionIdFactura
         {
             get { return Fields.NacionIdFactura[this]; }
             set { Fields.NacionIdFactura[this] = value; }
         }
 
-        [DisplayName("Provincia Id Factura"), Column("provincia_id_factura")]
+        [DisplayName("Provincia Factura"), Column("provincia_id_factura"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvinciaIdFactura"), TextualField("FacturaProvincia")]
+        [LookupEditor(typeof(ProvinciasRow))]
         public Int16? ProvinciaIdFactura
         {
             get { return Fields.ProvinciaIdFactura[this]; }
             set { Fields.ProvinciaIdFactura[this] = value; }
         }
 
-        [DisplayName("Cliente Factura"), Column("Cliente_factura")]
+        [DisplayName("Cliente Factura"), Column("Cliente_factura"), Size(4), NotNull, DefaultValue(0)]
         public Boolean? ClienteFactura
         {
             get { return Fields.ClienteFactura[this]; }
             set { Fields.ClienteFactura[this] = value; }
         }
 
-        [DisplayName("Cliente Huesped"), Column("Cliente_huesped")]
+        [DisplayName("Huesped"), Column("Cliente_huesped"), Size(4), NotNull, DefaultValue(0)]
         public Boolean? ClienteHuesped
         {
             get { return Fields.ClienteHuesped[this]; }
             set { Fields.ClienteHuesped[this] = value; }
         }
 
-        [DisplayName("Permite Credito"), Column("permite_credito")]
+        [DisplayName("Permite Credito"), Column("permite_credito"), Size(4), NotNull]
         public Boolean? PermiteCredito
         {
             get { return Fields.PermiteCredito[this]; }
@@ -302,29 +277,22 @@ namespace Geshotel.Contratos.Entities
             set { Fields.LimiteCredito[this] = value; }
         }
 
-        [DisplayName("Factura Anticipada"), Column("factura_anticipada")]
+        [DisplayName("Factura Anticipada"), Column("factura_anticipada"), Size(4)]
         public Boolean? FacturaAnticipada
         {
             get { return Fields.FacturaAnticipada[this]; }
             set { Fields.FacturaAnticipada[this] = value; }
         }
 
-        [DisplayName("Vencimiento Facturas Id"), Column("vencimiento_facturas_id")]
+        [DisplayName("Vencimiento Facturas"), Column("vencimiento_facturas_id")]
         public Int16? VencimientoFacturasId
         {
             get { return Fields.VencimientoFacturasId[this]; }
             set { Fields.VencimientoFacturasId[this] = value; }
         }
 
-        [DisplayName("Fecha Nacimiento"), Column("fecha_nacimiento")]
-        public DateTime? FechaNacimiento
-        {
-            get { return Fields.FechaNacimiento[this]; }
-            set { Fields.FechaNacimiento[this] = value; }
-        }
-
-        [DisplayName("User Id"), Column("user_id")]
-        public Int16? UserId
+        [DisplayName("Usuario"), Column("user_id")]
+        public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
@@ -344,32 +312,41 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ClienteBavel[this] = value; }
         }
 
-        [DisplayName("Foto1"), Column("foto1"), Size(256)]
-        public String Foto1
-        {
-            get { return Fields.Foto1[this]; }
-            set { Fields.Foto1[this] = value; }
-        }
-
-        [DisplayName("Foto2"), Column("foto2"), Size(256)]
-        public String Foto2
-        {
-            get { return Fields.Foto2[this]; }
-            set { Fields.Foto2[this] = value; }
-        }
-
-        [DisplayName("Dingus Extras"), Column("dingus_extras")]
+        [DisplayName("Dingus Extras"), Column("dingus_extras"), Size(1)]
         public Boolean? DingusExtras
         {
             get { return Fields.DingusExtras[this]; }
             set { Fields.DingusExtras[this] = value; }
         }
 
-        [DisplayName("Id Clubhd"), Column("id_clubhd"), Size(15)]
-        public String IdClubhd
+
+        [DisplayName("Nacion Fra"), Expression("jNacionIdFactura.[nacion]")]
+        public String FacturaNacion
         {
-            get { return Fields.IdClubhd[this]; }
-            set { Fields.IdClubhd[this] = value; }
+            get { return Fields.FacturaNacion[this]; }
+            set { Fields.FacturaNacion[this] = value; }
+        }
+
+        [DisplayName("Provincia Fra"), Expression("jProvinciaIdFactura.[provincia]")]
+        public String FacturaProvincia
+        {
+            get { return Fields.FacturaProvincia[this]; }
+            set { Fields.FacturaProvincia[this] = value; }
+        }
+
+
+        [DisplayName("Nacion"), Expression("jNacion.[nacion]")]
+        public String Nacion
+        {
+            get { return Fields.Nacion[this]; }
+            set { Fields.Nacion[this] = value; }
+        }
+
+        [DisplayName("Provincia"), Expression("jProvincia.[provincia]")]
+        public String Provincia
+        {
+            get { return Fields.Provincia[this]; }
+            set { Fields.Provincia[this] = value; }
         }
 
         IIdField IIdRow.IdField
@@ -394,17 +371,13 @@ namespace Geshotel.Contratos.Entities
             public Int32Field ClienteId;
             public StringField Razon;
             public StringField DescCorta;
-            public StringField Nombre;
-            public StringField Apellidos;
             public Int16Field EmpresaId;
-            public Int32Field AgenciaId;
-            public Int16Field MercadoId;
-            public BooleanField ClienteDefecto;
+
+
             public Int16Field GrupoClienteId;
             public StringField TipoDocumentoId;
             public StringField Nif;
             public DateTimeField FechaDocumento;
-            public StringField SexoId;
             public StringField Direccion;
             public StringField Poblacion;
             public StringField Zip;
@@ -421,7 +394,6 @@ namespace Geshotel.Contratos.Entities
             public StringField TelefonoContacto;
             public StringField FaxContacto;
             public StringField EmailContacto;
-            public DateTimeField AceptaLopd;
             public StringField CifFra;
             public StringField DireccionFra;
             public StringField PoblacionFra;
@@ -434,17 +406,25 @@ namespace Geshotel.Contratos.Entities
             public DoubleField LimiteCredito;
             public BooleanField FacturaAnticipada;
             public Int16Field VencimientoFacturasId;
-            public DateTimeField FechaNacimiento;
-            public Int16Field UserId;
+            public Int32Field UserId;
             public DateTimeField FechaModificacion;
             public StringField ClienteBavel;
-            public StringField Foto1;
-            public StringField Foto2;
             public BooleanField DingusExtras;
-            public StringField IdClubhd;
+
+            public StringField Empresa;
+
+            public StringField TipoDocumento;
+
+            public StringField Nacion;
+
+            public StringField Provincia;
+
+            public StringField FacturaNacion;
+
+            public StringField FacturaProvincia;
 
             public RowFields()
-                : base("[dbo].[clientes]")
+                : base("clientes")
             {
                 LocalTextPrefix = "Contratos.Agencias";
             }

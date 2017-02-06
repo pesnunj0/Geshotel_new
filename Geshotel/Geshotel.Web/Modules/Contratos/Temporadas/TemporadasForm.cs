@@ -14,7 +14,7 @@ namespace Geshotel.Contratos.Forms
     public class TemporadasForm
     {
         public String Temporada { get; set; }
-        public Int16 EmpresaId { get; set; }
+        public Int16 HotelId { get; set; }
         public Int16 Ano { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }

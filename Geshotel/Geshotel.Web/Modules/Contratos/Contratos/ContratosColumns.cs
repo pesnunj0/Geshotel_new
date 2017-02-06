@@ -15,22 +15,25 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ContratoId { get; set; }
-        [EditLink, Width(120)]
-        public String ClienteName { get; set; }
-        [Width(120)]
+
+        [Width(150), QuickFilter, QuickFilterOption("multiple", true), Hidden]
+        public String Empresa { get; set; }
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true)]
         public String HotelName { get; set; }
-        [Width(120),DisplayName("Fecha Contrato")]
+
+        [EditLink, Width(120), QuickFilter, QuickFilterOption("multiple", true)]
+        public String Touroperador { get; set; }
+ 
+        [Width(120),DisplayName("Fecha Contrato") , QuickFilter]
         public DateTime FechaContrato { get; set; }
-        [Width(80), DisplayName("Desde")]
+        [Width(80), DisplayName("Desde"), QuickFilter]
         public DateTime FechaDesde { get; set; }
-        [Width(80), DisplayName("Hasta")]
+        [Width(80), DisplayName("Hasta"), QuickFilter]
         public DateTime FechaHasta { get; set; }
-         [EditLink]
         public String NumeroContratoCliente { get; set; }
         [Width(120),AlignCenter]
         public Boolean ImpuestoIncluido { get; set; }
-        public Int16 TemporadaId { get; set; }
-        
-        public Int16 MercadoId { get; set; }
+        public String Temporada { get; set; }
+        public String Mercado { get; set; }
     }
 }

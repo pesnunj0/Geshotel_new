@@ -17,6 +17,9 @@ namespace Geshotel.Contratos.Columns
         public Int16 MercadoId { get; set; }
         [EditLink]
         public String Mercado { get; set; }
+        [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true)]
+        public String HotelName { get; set; }
     }
 }
