@@ -21,14 +21,14 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ReleaseId[this] = value; }
         }
 
-        [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("[dbo].[clientes]", "cliente_id"), LeftJoin("jCliente"), TextualField("ClienteRazon")]
+        [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("[clientes]", "cliente_id"), LeftJoin("jCliente"), TextualField("ClienteRazon")]
         public Int32? ClienteId
         {
             get { return Fields.ClienteId[this]; }
             set { Fields.ClienteId[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("[dbo].[hoteles]", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
+        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("[hoteles]", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -853,7 +853,7 @@ namespace Geshotel.Contratos.Entities
             public DoubleField HotelOverbookingLimit;
 
             public RowFields()
-                : base("[dbo].[releases]")
+                : base("[releases]")
             {
                 LocalTextPrefix = "Contratos.Releases";
             }

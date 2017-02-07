@@ -92,7 +92,7 @@ namespace Geshotel.Contratos.Entities
             public StringField HotelName;
 
             public RowFields()
-                : base("[dbo].[mercados]")
+                : base("[mercados]")
             {
                 LocalTextPrefix = "Contratos.Mercados";
             }

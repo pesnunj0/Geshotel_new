@@ -251,7 +251,7 @@ namespace Geshotel.Contratos.Entities
             public Int16Field OrdenAplicacion;
 
             public RowFields()
-                : base("[dbo].[ofertas]")
+                : base("[ofertas]")
             {
                 LocalTextPrefix = "Contratos.Ofertas";
             }

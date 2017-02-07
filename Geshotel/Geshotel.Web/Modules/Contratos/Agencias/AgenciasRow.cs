@@ -291,11 +291,18 @@ namespace Geshotel.Contratos.Entities
             set { Fields.VencimientoFacturasId[this] = value; }
         }
 
-        [DisplayName("Usuario"), Column("user_id")]
+        [DisplayName("Usuario"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUsers")]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
+        }
+        [DisplayName("Usuario"), Expression("jUsers.Username")]
+        public String UserName
+        {
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
         [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
@@ -422,6 +429,7 @@ namespace Geshotel.Contratos.Entities
             public StringField FacturaNacion;
 
             public StringField FacturaProvincia;
+            public StringField UserName;
 
             public RowFields()
                 : base("clientes")

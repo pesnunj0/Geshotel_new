@@ -57,7 +57,7 @@ namespace Geshotel.Contratos.Columns
         public Boolean FacturaAnticipada { get; set; }
         public Int16 VencimientoFacturasId { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public Int32 UserId { get; set; }
+        public String UserName { get; set; }
         public DateTime FechaModificacion { get; set; }
         public String ClienteBavel { get; set; }
 

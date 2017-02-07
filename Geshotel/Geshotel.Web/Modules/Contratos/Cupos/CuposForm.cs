@@ -18,9 +18,10 @@ namespace Geshotel.Contratos.Forms
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         public Int16 TipoHabitacionId { get; set; }
+        public Int16 Cupo { get; set; }
         public Decimal Garantia { get; set; }
-        public byte[] ReservaAutomatica { get; set; }
-        public Int16 UserId { get; set; }
-        public DateTime FechaModificacion { get; set; }
+        [DefaultValue(0)]
+        public Boolean ReservaAutomatica { get; set; }
+
     }
 }

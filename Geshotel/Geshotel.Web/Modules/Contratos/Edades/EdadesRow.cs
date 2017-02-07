@@ -70,7 +70,7 @@ namespace Geshotel.Contratos.Entities
             public Int16Field UserId;
 
             public RowFields()
-                : base("[dbo].[contratos_edades]")
+                : base("[contratos_edades]")
             {
                 LocalTextPrefix = "Contratos.Edades";
             }

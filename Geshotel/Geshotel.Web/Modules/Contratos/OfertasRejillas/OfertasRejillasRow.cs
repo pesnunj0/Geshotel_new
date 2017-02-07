@@ -78,7 +78,7 @@ namespace Geshotel.Contratos.Entities
             public DoubleField M;
 
             public RowFields()
-                : base("[dbo].[ofertas_rejillas]")
+                : base("[ofertas_rejillas]")
             {
                 LocalTextPrefix = "Contratos.OfertasRejillas";
             }

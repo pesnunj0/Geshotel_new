@@ -60,8 +60,8 @@ namespace Geshotel.Contratos.Columns
         [Width(100),AlignCenter]
         public Boolean FacturaAnticipada { get; set; }
         public Int16 VencimientoFacturasId { get; set; }
-//        public Int16 UserId { get; set; }
-//        public DateTime FechaModificacion { get; set; }
+        public String UserName { get; set; }
+        public DateTime FechaModificacion { get; set; }
         public String ClienteBavel { get; set; }
         [Width(100), AlignCenter]
         public Boolean DingusExtras { get; set; }

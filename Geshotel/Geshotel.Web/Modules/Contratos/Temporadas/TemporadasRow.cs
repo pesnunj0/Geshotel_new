@@ -117,7 +117,7 @@ namespace Geshotel.Contratos.Entities
             public StringField Empresa;
 
             public RowFields()
-                : base("[dbo].[temporadas]")
+                : base("[temporadas]")
             {
                 LocalTextPrefix = "Contratos.Temporadas";
             }

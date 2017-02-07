@@ -16,19 +16,20 @@ var Geshotel;
         var LanguageDialog = (function (_super) {
             __extends(LanguageDialog, _super);
             function LanguageDialog() {
-                _super.apply(this, arguments);
-                this.form = new Administration.LanguageForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Administration.LanguageForm(_this.idPrefix);
+                return _this;
             }
             LanguageDialog.prototype.getFormKey = function () { return Administration.LanguageForm.formKey; };
             LanguageDialog.prototype.getIdProperty = function () { return Administration.LanguageRow.idProperty; };
             LanguageDialog.prototype.getLocalTextPrefix = function () { return Administration.LanguageRow.localTextPrefix; };
             LanguageDialog.prototype.getNameProperty = function () { return Administration.LanguageRow.nameProperty; };
             LanguageDialog.prototype.getService = function () { return Administration.LanguageService.baseUrl; };
-            LanguageDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LanguageDialog);
             return LanguageDialog;
         }(Serenity.EntityDialog));
+        LanguageDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LanguageDialog);
         Administration.LanguageDialog = LanguageDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -39,7 +40,7 @@ var Geshotel;
         var LanguageGrid = (function (_super) {
             __extends(LanguageGrid, _super);
             function LanguageGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             LanguageGrid.prototype.getColumnsKey = function () { return "Administration.Language"; };
             LanguageGrid.prototype.getDialogType = function () { return Administration.LanguageDialog; };
@@ -49,11 +50,11 @@ var Geshotel;
             LanguageGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.LanguageRow.Fields.LanguageName];
             };
-            LanguageGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LanguageGrid);
             return LanguageGrid;
         }(Serenity.EntityGrid));
+        LanguageGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LanguageGrid);
         Administration.LanguageGrid = LanguageGrid;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -64,8 +65,9 @@ var Geshotel;
         var RoleDialog = (function (_super) {
             __extends(RoleDialog, _super);
             function RoleDialog() {
-                _super.apply(this, arguments);
-                this.form = new Administration.RoleForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Administration.RoleForm(_this.idPrefix);
+                return _this;
             }
             RoleDialog.prototype.getFormKey = function () { return Administration.RoleForm.formKey; };
             RoleDialog.prototype.getIdProperty = function () { return Administration.RoleRow.idProperty; };
@@ -92,11 +94,11 @@ var Geshotel;
                 _super.prototype.updateInterface.call(this);
                 this.toolbar.findButton("edit-permissions-button").toggleClass("disabled", this.isNewOrDeleted());
             };
-            RoleDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RoleDialog);
             return RoleDialog;
         }(Serenity.EntityDialog));
+        RoleDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RoleDialog);
         Administration.RoleDialog = RoleDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -107,7 +109,7 @@ var Geshotel;
         var RoleGrid = (function (_super) {
             __extends(RoleGrid, _super);
             function RoleGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             RoleGrid.prototype.getColumnsKey = function () { return "Administration.Role"; };
             RoleGrid.prototype.getDialogType = function () { return Administration.RoleDialog; };
@@ -117,11 +119,11 @@ var Geshotel;
             RoleGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.RoleRow.Fields.RoleName];
             };
-            RoleGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RoleGrid);
             return RoleGrid;
         }(Serenity.EntityGrid));
+        RoleGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RoleGrid);
         Administration.RoleGrid = RoleGrid;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -132,18 +134,18 @@ var Geshotel;
         var RolePermissionDialog = (function (_super) {
             __extends(RolePermissionDialog, _super);
             function RolePermissionDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.PermissionCheckEditor(this.byId('Permissions'), {
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.PermissionCheckEditor(_this.byId('Permissions'), {
                     showRevoke: false
                 });
                 Administration.RolePermissionService.List({
-                    RoleID: this.options.roleID,
+                    RoleID: _this.options.roleID,
                     Module: null,
                     Submodule: null
                 }, function (response) {
                     _this.permissions.set_value(response.Entities.map(function (x) { return ({ PermissionKey: x }); }));
                 });
+                return _this;
             }
             RolePermissionDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -165,18 +167,19 @@ var Geshotel;
                     }, {
                         text: Q.text('Dialogs.CancelButton'),
                         click: function () { return _this.dialogClose(); }
-                    }];
+                    }
+                ];
                 opt.title = Q.format(Q.text('Site.RolePermissionDialog.DialogTitle'), this.options.title);
                 return opt;
             };
             RolePermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
-            RolePermissionDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RolePermissionDialog);
             return RolePermissionDialog;
         }(Serenity.TemplatedDialog));
+        RolePermissionDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RolePermissionDialog);
         Administration.RolePermissionDialog = RolePermissionDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -187,9 +190,8 @@ var Geshotel;
         var TranslationGrid = (function (_super) {
             __extends(TranslationGrid, _super);
             function TranslationGrid(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.element.on('keyup.' + this.uniqueName + ' change.' + this.uniqueName, 'input.custom-text', function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.element.on('keyup.' + _this.uniqueName + ' change.' + _this.uniqueName, 'input.custom-text', function (e) {
                     var value = Q.trimToNull($(e.target).val());
                     if (value === '') {
                         value = null;
@@ -197,6 +199,7 @@ var Geshotel;
                     _this.view.getItemById($(e.target).data('key')).CustomText = value;
                     _this.hasChanges = true;
                 });
+                return _this;
             }
             TranslationGrid.prototype.getIdProperty = function () { return "Key"; };
             TranslationGrid.prototype.getLocalTextPrefix = function () { return "Administration.Translation"; };
@@ -369,11 +372,11 @@ var Geshotel;
             TranslationGrid.prototype.usePager = function () {
                 return false;
             };
-            TranslationGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TranslationGrid);
             return TranslationGrid;
         }(Serenity.EntityGrid));
+        TranslationGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TranslationGrid);
         Administration.TranslationGrid = TranslationGrid;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -412,11 +415,11 @@ var Geshotel;
                     return Q.htmlEncode(g.Empresa);
                 }).join(", ");
             };
-            EmpresasListFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], EmpresasListFormatter);
             return EmpresasListFormatter;
         }());
+        EmpresasListFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], EmpresasListFormatter);
         Administration.EmpresasListFormatter = EmpresasListFormatter;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -427,17 +430,17 @@ var Geshotel;
         var UserDialog = (function (_super) {
             __extends(UserDialog, _super);
             function UserDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Administration.UserForm(this.idPrefix);
-                this.form.Password.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this) || this;
+                _this.form = new Administration.UserForm(_this.idPrefix);
+                _this.form.Password.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value.length < 7)
                         return "Password must be at least 7 characters!";
                 });
-                this.form.PasswordConfirm.addValidationRule(this.uniqueName, function (e) {
+                _this.form.PasswordConfirm.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value != _this.form.PasswordConfirm.value)
                         return "The passwords entered doesn't match!";
                 });
+                return _this;
             }
             UserDialog.prototype.getFormKey = function () { return Administration.UserForm.formKey; };
             UserDialog.prototype.getIdProperty = function () { return Administration.UserRow.idProperty; };
@@ -485,11 +488,11 @@ var Geshotel;
                 this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
                     .closest('.field').find('sup').toggle(this.isNew());
             };
-            UserDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserDialog);
             return UserDialog;
         }(Serenity.EntityDialog));
+        UserDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserDialog);
         Administration.UserDialog = UserDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -500,7 +503,7 @@ var Geshotel;
         var UserGrid = (function (_super) {
             __extends(UserGrid, _super);
             function UserGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             UserGrid.prototype.getColumnsKey = function () { return "Administration.User"; };
             UserGrid.prototype.getDialogType = function () { return Administration.UserDialog; };
@@ -511,11 +514,11 @@ var Geshotel;
             UserGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.UserRow.Fields.Username];
             };
-            UserGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserGrid);
             return UserGrid;
         }(Serenity.EntityGrid));
+        UserGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserGrid);
         Administration.UserGrid = UserGrid;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -526,20 +529,20 @@ var Geshotel;
         var PermissionCheckEditor = (function (_super) {
             __extends(PermissionCheckEditor, _super);
             function PermissionCheckEditor(container, opt) {
-                var _this = this;
-                _super.call(this, container, opt);
-                this.rolePermissions = {};
+                var _this = _super.call(this, container, opt) || this;
+                _this.rolePermissions = {};
                 var titleByKey = {};
-                var permissionKeys = this.getSortedGroupAndPermissionKeys(titleByKey);
-                var items = permissionKeys.map(function (key) { return {
+                var permissionKeys = _this.getSortedGroupAndPermissionKeys(titleByKey);
+                var items = permissionKeys.map(function (key) { return ({
                     Key: key,
                     ParentKey: _this.getParentKey(key),
                     Title: titleByKey[key],
                     GrantRevoke: null,
                     IsGroup: key.charAt(key.length - 1) === ':'
-                }; });
-                this.byParentKey = Q.toGrouping(items, function (x) { return x.ParentKey; });
-                this.setItems(items);
+                }); });
+                _this.byParentKey = Q.toGrouping(items, function (x) { return x.ParentKey; });
+                _this.setItems(items);
+                return _this;
             }
             PermissionCheckEditor.prototype.getIdProperty = function () { return "Key"; };
             PermissionCheckEditor.prototype.getItemGrantRevokeClass = function (item, grant) {
@@ -783,11 +786,11 @@ var Geshotel;
                 }
                 this.setItems(this.getItems());
             };
-            PermissionCheckEditor = __decorate([
-                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
-            ], PermissionCheckEditor);
             return PermissionCheckEditor;
         }(Serenity.DataGrid));
+        PermissionCheckEditor = __decorate([
+            Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
+        ], PermissionCheckEditor);
         Administration.PermissionCheckEditor = PermissionCheckEditor;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -798,25 +801,25 @@ var Geshotel;
         var UserPermissionDialog = (function (_super) {
             __extends(UserPermissionDialog, _super);
             function UserPermissionDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.PermissionCheckEditor(this.byId('Permissions'), {
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.PermissionCheckEditor(_this.byId('Permissions'), {
                     showRevoke: true
                 });
                 Administration.UserPermissionService.List({
-                    UserID: this.options.userID,
+                    UserID: _this.options.userID,
                     Module: null,
                     Submodule: null
                 }, function (response) {
                     _this.permissions.set_value(response.Entities);
                 });
                 Administration.UserPermissionService.ListRolePermissions({
-                    UserID: this.options.userID,
+                    UserID: _this.options.userID,
                     Module: null,
                     Submodule: null,
                 }, function (response) {
                     _this.permissions.set_rolePermissions(response.Entities);
                 });
+                return _this;
             }
             UserPermissionDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -838,18 +841,19 @@ var Geshotel;
                     }, {
                         text: Q.text('Dialogs.CancelButton'),
                         click: function () { return _this.dialogClose(); }
-                    }];
+                    }
+                ];
                 opt.title = Q.format(Q.text('Site.UserPermissionDialog.DialogTitle'), this.options.username);
                 return opt;
             };
             UserPermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
-            UserPermissionDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserPermissionDialog);
             return UserPermissionDialog;
         }(Serenity.TemplatedDialog));
+        UserPermissionDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserPermissionDialog);
         Administration.UserPermissionDialog = UserPermissionDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -860,7 +864,7 @@ var Geshotel;
         var RoleCheckEditor = (function (_super) {
             __extends(RoleCheckEditor, _super);
             function RoleCheckEditor(div) {
-                _super.call(this, div);
+                return _super.call(this, div) || this;
             }
             RoleCheckEditor.prototype.createToolbarExtensions = function () {
                 var _this = this;
@@ -874,10 +878,10 @@ var Geshotel;
                 return [];
             };
             RoleCheckEditor.prototype.getTreeItems = function () {
-                return Administration.RoleRow.getLookup().items.map(function (role) { return {
+                return Administration.RoleRow.getLookup().items.map(function (role) { return ({
                     id: role.RoleId.toString(),
                     text: role.RoleName
-                }; });
+                }); });
             };
             RoleCheckEditor.prototype.onViewFilter = function (item) {
                 return _super.prototype.onViewFilter.call(this, item) &&
@@ -885,11 +889,11 @@ var Geshotel;
                         Select2.util.stripDiacritics(item.text || '')
                             .toUpperCase().indexOf(this.searchText) >= 0);
             };
-            RoleCheckEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], RoleCheckEditor);
             return RoleCheckEditor;
         }(Serenity.CheckTreeEditor));
+        RoleCheckEditor = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], RoleCheckEditor);
         Administration.RoleCheckEditor = RoleCheckEditor;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -900,14 +904,14 @@ var Geshotel;
         var UserRoleDialog = (function (_super) {
             __extends(UserRoleDialog, _super);
             function UserRoleDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.RoleCheckEditor(this.byId('Roles'));
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.RoleCheckEditor(_this.byId('Roles'));
                 Administration.UserRoleService.List({
-                    UserID: this.options.userID
+                    UserID: _this.options.userID
                 }, function (response) {
                     _this.permissions.value = response.Entities.map(function (x) { return x.toString(); });
                 });
+                return _this;
             }
             UserRoleDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -933,11 +937,11 @@ var Geshotel;
             UserRoleDialog.prototype.getTemplate = function () {
                 return "<div id='~_Roles'></div>";
             };
-            UserRoleDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserRoleDialog);
             return UserRoleDialog;
         }(Serenity.TemplatedDialog));
+        UserRoleDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserRoleDialog);
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -946,15 +950,15 @@ var Geshotel;
     var BasicProgressDialog = (function (_super) {
         __extends(BasicProgressDialog, _super);
         function BasicProgressDialog() {
-            var _this = this;
-            _super.call(this);
-            this.byId('ProgressBar').progressbar({
+            var _this = _super.call(this) || this;
+            _this.byId('ProgressBar').progressbar({
                 max: 100,
                 value: 0,
                 change: function (e, v) {
                     _this.byId('ProgressLabel').text(_this.value + ' / ' + _this.max);
                 }
             });
+            return _this;
         }
         Object.defineProperty(BasicProgressDialog.prototype, "max", {
             get: function () {
@@ -1226,20 +1230,20 @@ var Geshotel;
                 sb += "</select>";
                 return sb;
             };
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "enumKey", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "allowClear", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
-            EnumSelectFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], EnumSelectFormatter);
             return EnumSelectFormatter;
         }());
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "enumKey", void 0);
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "allowClear", void 0);
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
+        EnumSelectFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], EnumSelectFormatter);
         Common.EnumSelectFormatter = EnumSelectFormatter;
     })(Common = Geshotel.Common || (Geshotel.Common = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1288,8 +1292,9 @@ var Geshotel;
         var GridEditorBase = (function (_super) {
             __extends(GridEditorBase, _super);
             function GridEditorBase(container) {
-                _super.call(this, container);
-                this.nextId = 1;
+                var _this = _super.call(this, container) || this;
+                _this.nextId = 1;
+                return _this;
             }
             GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
             GridEditorBase.prototype.id = function (entity) {
@@ -1408,13 +1413,13 @@ var Geshotel;
             };
             GridEditorBase.prototype.createQuickSearchInput = function () {
             };
-            GridEditorBase = __decorate([
-                Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-                Serenity.Decorators.editor(),
-                Serenity.Decorators.element("<div/>")
-            ], GridEditorBase);
             return GridEditorBase;
         }(Serenity.EntityGrid));
+        GridEditorBase = __decorate([
+            Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+            Serenity.Decorators.editor(),
+            Serenity.Decorators.element("<div/>")
+        ], GridEditorBase);
         Common.GridEditorBase = GridEditorBase;
     })(Common = Geshotel.Common || (Geshotel.Common = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1425,7 +1430,7 @@ var Geshotel;
         var GridEditorDialog = (function (_super) {
             __extends(GridEditorDialog, _super);
             function GridEditorDialog() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
             GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
             GridEditorDialog.prototype.destroy = function () {
@@ -1446,11 +1451,11 @@ var Geshotel;
             GridEditorDialog.prototype.deleteHandler = function (options, callback) {
                 this.onDelete && this.onDelete(options, callback);
             };
-            GridEditorDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GridEditorDialog);
             return GridEditorDialog;
         }(Serenity.EntityDialog));
+        GridEditorDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], GridEditorDialog);
         Common.GridEditorDialog = GridEditorDialog;
     })(Common = Geshotel.Common || (Geshotel.Common = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1478,11 +1483,11 @@ var Geshotel;
         var LanguageForm = (function (_super) {
             __extends(LanguageForm, _super);
             function LanguageForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            LanguageForm.formKey = 'Administration.Language';
             return LanguageForm;
         }(Serenity.PrefixedContext));
+        LanguageForm.formKey = 'Administration.Language';
         Administration.LanguageForm = LanguageForm;
         [['LanguageId', function () { return Serenity.StringEditor; }], ['LanguageName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(LanguageForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
@@ -1532,11 +1537,11 @@ var Geshotel;
         var RoleForm = (function (_super) {
             __extends(RoleForm, _super);
             function RoleForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            RoleForm.formKey = 'Administration.Role';
             return RoleForm;
         }(Serenity.PrefixedContext));
+        RoleForm.formKey = 'Administration.Role';
         Administration.RoleForm = RoleForm;
         [['RoleName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(RoleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
@@ -1636,11 +1641,11 @@ var Geshotel;
         var UserForm = (function (_super) {
             __extends(UserForm, _super);
             function UserForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            UserForm.formKey = 'Administration.User';
             return UserForm;
         }(Serenity.PrefixedContext));
+        UserForm.formKey = 'Administration.User';
         Administration.UserForm = UserForm;
         [['Username', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['UserImage', function () { return Serenity.ImageUploadEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['PasswordConfirm', function () { return Serenity.PasswordEditor; }], ['Source', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(UserForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
@@ -1789,11 +1794,11 @@ var Geshotel;
         var AgenciasForm = (function (_super) {
             __extends(AgenciasForm, _super);
             function AgenciasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            AgenciasForm.formKey = 'Contratos.Agencias';
             return AgenciasForm;
         }(Serenity.PrefixedContext));
+        AgenciasForm.formKey = 'Contratos.Agencias';
         Contratos.AgenciasForm = AgenciasForm;
         [['Razon', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['Nombre', function () { return Serenity.StringEditor; }], ['Apellidos', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }], ['AgenciaId', function () { return Serenity.IntegerEditor; }], ['MercadoId', function () { return Serenity.IntegerEditor; }], ['ClienteDefecto', function () { return Serenity.BooleanEditor; }], ['GrupoClienteId', function () { return Serenity.IntegerEditor; }], ['TipoDocumentoId', function () { return Serenity.StringEditor; }], ['Nif', function () { return Serenity.StringEditor; }], ['FechaDocumento', function () { return Serenity.DateEditor; }], ['SexoId', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['NacionId', function () { return Serenity.IntegerEditor; }], ['ProvinciaId', function () { return Serenity.IntegerEditor; }], ['CtaContableAnticipo', function () { return Serenity.StringEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['CtaDepositos', function () { return Serenity.StringEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['Contacto', function () { return Serenity.StringEditor; }], ['TelefonoContacto', function () { return Serenity.StringEditor; }], ['FaxContacto', function () { return Serenity.StringEditor; }], ['EmailContacto', function () { return Serenity.StringEditor; }], ['AceptaLopd', function () { return Serenity.DateEditor; }], ['CifFra', function () { return Serenity.StringEditor; }], ['DireccionFra', function () { return Serenity.StringEditor; }], ['PoblacionFra', function () { return Serenity.StringEditor; }], ['ZipFra', function () { return Serenity.StringEditor; }], ['NacionIdFactura', function () { return Serenity.IntegerEditor; }], ['ProvinciaIdFactura', function () { return Serenity.IntegerEditor; }], ['ClienteFactura', function () { return Serenity.BooleanEditor; }], ['ClienteHuesped', function () { return Serenity.BooleanEditor; }], ['PermiteCredito', function () { return Serenity.BooleanEditor; }], ['LimiteCredito', function () { return Serenity.DecimalEditor; }], ['FacturaAnticipada', function () { return Serenity.BooleanEditor; }], ['VencimientoFacturasId', function () { return Serenity.IntegerEditor; }], ['FechaNacimiento', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['ClienteBavel', function () { return Serenity.StringEditor; }], ['Foto1', function () { return Serenity.StringEditor; }], ['Foto2', function () { return Serenity.StringEditor; }], ['DingusExtras', function () { return Serenity.BooleanEditor; }], ['IdClubhd', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(AgenciasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -1864,11 +1869,11 @@ var Geshotel;
         var ClientesForm = (function (_super) {
             __extends(ClientesForm, _super);
             function ClientesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ClientesForm.formKey = 'Contratos.Clientes';
             return ClientesForm;
         }(Serenity.PrefixedContext));
+        ClientesForm.formKey = 'Contratos.Clientes';
         Contratos.ClientesForm = ClientesForm;
         [['Razon', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }], ['AgenciaId', function () { return Serenity.LookupEditor; }], ['ClienteDefecto', function () { return Serenity.BooleanEditor; }], ['GrupoClienteId', function () { return Serenity.LookupEditor; }], ['TipoDocumentoId', function () { return Serenity.LookupEditor; }], ['Nif', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['ProvinciaId', function () { return Serenity.LookupEditor; }], ['CtaContableAnticipo', function () { return Serenity.StringEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['CtaDepositos', function () { return Serenity.StringEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['Contacto', function () { return Serenity.StringEditor; }], ['TelefonoContacto', function () { return Serenity.StringEditor; }], ['FaxContacto', function () { return Serenity.StringEditor; }], ['EmailContacto', function () { return Serenity.EmailEditor; }], ['CifFra', function () { return Serenity.StringEditor; }], ['DireccionFra', function () { return Serenity.StringEditor; }], ['PoblacionFra', function () { return Serenity.StringEditor; }], ['ZipFra', function () { return Serenity.StringEditor; }], ['NacionIdFactura', function () { return Serenity.LookupEditor; }], ['ProvinciaIdFactura', function () { return Serenity.LookupEditor; }], ['ClienteFactura', function () { return Serenity.BooleanEditor; }], ['PermiteCredito', function () { return Serenity.BooleanEditor; }], ['LimiteCredito', function () { return Serenity.DecimalEditor; }], ['FacturaAnticipada', function () { return Serenity.BooleanEditor; }], ['VencimientoFacturasId', function () { return Serenity.IntegerEditor; }], ['ClienteBavel', function () { return Serenity.StringEditor; }], ['DingusExtras', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(ClientesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -1918,11 +1923,11 @@ var Geshotel;
         var ContratosEdadesForm = (function (_super) {
             __extends(ContratosEdadesForm, _super);
             function ContratosEdadesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ContratosEdadesForm.formKey = 'Contratos.ContratosEdades';
             return ContratosEdadesForm;
         }(Serenity.PrefixedContext));
+        ContratosEdadesForm.formKey = 'Contratos.ContratosEdades';
         Contratos.ContratosEdadesForm = ContratosEdadesForm;
         [['ContratoId', function () { return Serenity.IntegerEditor; }], ['TipoHuespedId', function () { return Serenity.IntegerEditor; }], ['EdadMinima', function () { return Serenity.IntegerEditor; }], ['EdadMaxima', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ContratosEdadesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -1966,11 +1971,11 @@ var Geshotel;
         var ContratosForm = (function (_super) {
             __extends(ContratosForm, _super);
             function ContratosForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ContratosForm.formKey = 'Contratos.Contratos';
             return ContratosForm;
         }(Serenity.PrefixedContext));
+        ContratosForm.formKey = 'Contratos.Contratos';
         Contratos.ContratosForm = ContratosForm;
         [['HotelId', function () { return Serenity.LookupEditor; }], ['ClienteId', function () { return Serenity.LookupEditor; }], ['FechaContrato', function () { return Serenity.DateEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['NumeroContratoCliente', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['TemporadaId', function () { return Serenity.IntegerEditor; }], ['ImpuestoIncluido', function () { return Serenity.BooleanEditor; }], ['MercadoId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ContratosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2015,11 +2020,11 @@ var Geshotel;
         var CuposForm = (function (_super) {
             __extends(CuposForm, _super);
             function CuposForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            CuposForm.formKey = 'Contratos.Cupos';
             return CuposForm;
         }(Serenity.PrefixedContext));
+        CuposForm.formKey = 'Contratos.Cupos';
         Contratos.CuposForm = CuposForm;
         [['ClienteId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['TipoHabitacionId', function () { return Serenity.IntegerEditor; }], ['Garantia', function () { return Serenity.DecimalEditor; }], ['ReservaAutomatica', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(CuposForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2063,11 +2068,11 @@ var Geshotel;
         var EdadesForm = (function (_super) {
             __extends(EdadesForm, _super);
             function EdadesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            EdadesForm.formKey = 'Contratos.Edades';
             return EdadesForm;
         }(Serenity.PrefixedContext));
+        EdadesForm.formKey = 'Contratos.Edades';
         Contratos.EdadesForm = EdadesForm;
         [['TipoHuespedId', function () { return Serenity.IntegerEditor; }], ['EdadMinima', function () { return Serenity.IntegerEditor; }], ['EdadMaxima', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(EdadesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2132,11 +2137,11 @@ var Geshotel;
         var LineasForm = (function (_super) {
             __extends(LineasForm, _super);
             function LineasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            LineasForm.formKey = 'Contratos.Lineas';
             return LineasForm;
         }(Serenity.PrefixedContext));
+        LineasForm.formKey = 'Contratos.Lineas';
         Contratos.LineasForm = LineasForm;
         [['ContratoId', function () { return Serenity.IntegerEditor; }], ['Oferta', function () { return Serenity.BooleanEditor; }], ['Desde', function () { return Serenity.DateEditor; }], ['Hasta', function () { return Serenity.DateEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['FrecuenciaId', function () { return Serenity.LookupEditor; }], ['TipoImputacionId', function () { return Serenity.LookupEditor; }], ['Importe', function () { return Serenity.DecimalEditor; }], ['N', function () { return Serenity.IntegerEditor; }], ['TipoOfertaId', function () { return Serenity.IntegerEditor; }], ['M', function () { return Serenity.DecimalEditor; }], ['AmbitoOfertaId', function () { return Serenity.IntegerEditor; }], ['Lunes', function () { return Serenity.BooleanEditor; }], ['Martes', function () { return Serenity.BooleanEditor; }], ['Miercoles', function () { return Serenity.BooleanEditor; }], ['Jueves', function () { return Serenity.BooleanEditor; }], ['Viernes', function () { return Serenity.BooleanEditor; }], ['Sabado', function () { return Serenity.BooleanEditor; }], ['Domingo', function () { return Serenity.BooleanEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(LineasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2180,11 +2185,11 @@ var Geshotel;
         var MercadosForm = (function (_super) {
             __extends(MercadosForm, _super);
             function MercadosForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MercadosForm.formKey = 'Contratos.Mercados';
             return MercadosForm;
         }(Serenity.PrefixedContext));
+        MercadosForm.formKey = 'Contratos.Mercados';
         Contratos.MercadosForm = MercadosForm;
         [['Mercado', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(MercadosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2234,11 +2239,11 @@ var Geshotel;
         var OfertasForm = (function (_super) {
             __extends(OfertasForm, _super);
             function OfertasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            OfertasForm.formKey = 'Contratos.Ofertas';
             return OfertasForm;
         }(Serenity.PrefixedContext));
+        OfertasForm.formKey = 'Contratos.Ofertas';
         Contratos.OfertasForm = OfertasForm;
         [['Texto', function () { return Serenity.StringEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['TipoAplicacionOfertaId', function () { return Serenity.StringEditor; }], ['AplicableAuto', function () { return Serenity.BooleanEditor; }], ['FechaReservaDesde', function () { return Serenity.DateEditor; }], ['FechaReservaHasta', function () { return Serenity.DateEditor; }], ['EstanciaMinimaDias', function () { return Serenity.IntegerEditor; }], ['EstanciaMaximaDias', function () { return Serenity.IntegerEditor; }], ['DiasDeAntelacion', function () { return Serenity.IntegerEditor; }], ['TipoServicioId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['ServicioLigadoId', function () { return Serenity.IntegerEditor; }], ['CupoOferta', function () { return Serenity.IntegerEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['N', function () { return Serenity.DecimalEditor; }], ['TipoOfertaId', function () { return Serenity.IntegerEditor; }], ['M', function () { return Serenity.DecimalEditor; }], ['AmbitoOfertaId', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['ImpuestoIncluido', function () { return Serenity.BooleanEditor; }], ['TipoImputacionId', function () { return Serenity.IntegerEditor; }], ['OrdenAplicacion', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(OfertasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2250,11 +2255,11 @@ var Geshotel;
         var OfertasRejillasForm = (function (_super) {
             __extends(OfertasRejillasForm, _super);
             function OfertasRejillasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            OfertasRejillasForm.formKey = 'Contratos.OfertasRejillas';
             return OfertasRejillasForm;
         }(Serenity.PrefixedContext));
+        OfertasRejillasForm.formKey = 'Contratos.OfertasRejillas';
         Contratos.OfertasRejillasForm = OfertasRejillasForm;
         [['OfertaId', function () { return Serenity.IntegerEditor; }], ['N', function () { return Serenity.IntegerEditor; }], ['TipoCondicionId', function () { return Serenity.IntegerEditor; }], ['TipoAplicacion', function () { return Serenity.IntegerEditor; }], ['M', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(OfertasRejillasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2331,11 +2336,11 @@ var Geshotel;
         var ReleasesForm = (function (_super) {
             __extends(ReleasesForm, _super);
             function ReleasesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ReleasesForm.formKey = 'Contratos.Releases';
             return ReleasesForm;
         }(Serenity.PrefixedContext));
+        ReleasesForm.formKey = 'Contratos.Releases';
         Contratos.ReleasesForm = ReleasesForm;
         [['ClienteId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Observaciones', function () { return Serenity.StringEditor; }], ['Dias', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(ReleasesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2380,11 +2385,11 @@ var Geshotel;
         var TemporadasForm = (function (_super) {
             __extends(TemporadasForm, _super);
             function TemporadasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TemporadasForm.formKey = 'Contratos.Temporadas';
             return TemporadasForm;
         }(Serenity.PrefixedContext));
+        TemporadasForm.formKey = 'Contratos.Temporadas';
         Contratos.TemporadasForm = TemporadasForm;
         [['Temporada', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.IntegerEditor; }], ['Ano', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(TemporadasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -2513,11 +2518,11 @@ var Geshotel;
         var MeetingAgendaForm = (function (_super) {
             __extends(MeetingAgendaForm, _super);
             function MeetingAgendaForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingAgendaForm.formKey = 'Meeting.MeetingAgenda';
             return MeetingAgendaForm;
         }(Serenity.PrefixedContext));
+        MeetingAgendaForm.formKey = 'Meeting.MeetingAgenda';
         Meeting.MeetingAgendaForm = MeetingAgendaForm;
         [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaNumber', function () { return Serenity.IntegerEditor; }], ['Title', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['AgendaTypeId', function () { return Serenity.IntegerEditor; }], ['RequestedByContactId', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.MultipleImageUploadEditor; }], ['Attachments', function () { return Serenity.MultipleImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2529,11 +2534,11 @@ var Geshotel;
         var MeetingAgendaRelevantForm = (function (_super) {
             __extends(MeetingAgendaRelevantForm, _super);
             function MeetingAgendaRelevantForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingAgendaRelevantForm.formKey = 'Meeting.MeetingAgendaRelevant';
             return MeetingAgendaRelevantForm;
         }(Serenity.PrefixedContext));
+        MeetingAgendaRelevantForm.formKey = 'Meeting.MeetingAgendaRelevant';
         Meeting.MeetingAgendaRelevantForm = MeetingAgendaRelevantForm;
         [['AgendaId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2610,11 +2615,11 @@ var Geshotel;
         var MeetingAgendaTypeForm = (function (_super) {
             __extends(MeetingAgendaTypeForm, _super);
             function MeetingAgendaTypeForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingAgendaTypeForm.formKey = 'Meeting.MeetingAgendaType';
             return MeetingAgendaTypeForm;
         }(Serenity.PrefixedContext));
+        MeetingAgendaTypeForm.formKey = 'Meeting.MeetingAgendaType';
         Meeting.MeetingAgendaTypeForm = MeetingAgendaTypeForm;
         [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2661,13 +2666,13 @@ var Geshotel;
 (function (Geshotel) {
     var Meeting;
     (function (Meeting) {
+        var MeetingAttendanceStatus;
         (function (MeetingAttendanceStatus) {
             MeetingAttendanceStatus[MeetingAttendanceStatus["NotSet"] = 0] = "NotSet";
             MeetingAttendanceStatus[MeetingAttendanceStatus["Attended"] = 1] = "Attended";
             MeetingAttendanceStatus[MeetingAttendanceStatus["Absent"] = 2] = "Absent";
             MeetingAttendanceStatus[MeetingAttendanceStatus["AbsentWithPermission"] = 3] = "AbsentWithPermission";
-        })(Meeting.MeetingAttendanceStatus || (Meeting.MeetingAttendanceStatus = {}));
-        var MeetingAttendanceStatus = Meeting.MeetingAttendanceStatus;
+        })(MeetingAttendanceStatus = Meeting.MeetingAttendanceStatus || (Meeting.MeetingAttendanceStatus = {}));
         Serenity.Decorators.registerEnum(MeetingAttendanceStatus, 'Meeting.MeetingAttendanceStatus');
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2678,11 +2683,11 @@ var Geshotel;
         var MeetingAttendeeForm = (function (_super) {
             __extends(MeetingAttendeeForm, _super);
             function MeetingAttendeeForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingAttendeeForm.formKey = 'Meeting.MeetingAttendee';
             return MeetingAttendeeForm;
         }(Serenity.PrefixedContext));
+        MeetingAttendeeForm.formKey = 'Meeting.MeetingAttendee';
         Meeting.MeetingAttendeeForm = MeetingAttendeeForm;
         [['MeetingId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }], ['AttendeeType', function () { return Serenity.EnumEditor; }], ['AttendanceStatus', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAttendeeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2706,11 +2711,11 @@ var Geshotel;
 (function (Geshotel) {
     var Meeting;
     (function (Meeting) {
+        var MeetingAttendeeType;
         (function (MeetingAttendeeType) {
             MeetingAttendeeType[MeetingAttendeeType["Attendee"] = 1] = "Attendee";
             MeetingAttendeeType[MeetingAttendeeType["Guest"] = 2] = "Guest";
-        })(Meeting.MeetingAttendeeType || (Meeting.MeetingAttendeeType = {}));
-        var MeetingAttendeeType = Meeting.MeetingAttendeeType;
+        })(MeetingAttendeeType = Meeting.MeetingAttendeeType || (Meeting.MeetingAttendeeType = {}));
         Serenity.Decorators.registerEnum(MeetingAttendeeType, 'Meeting.MeetingAttendeeType');
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2721,11 +2726,11 @@ var Geshotel;
         var MeetingDecisionForm = (function (_super) {
             __extends(MeetingDecisionForm, _super);
             function MeetingDecisionForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingDecisionForm.formKey = 'Meeting.MeetingDecision';
             return MeetingDecisionForm;
         }(Serenity.PrefixedContext));
+        MeetingDecisionForm.formKey = 'Meeting.MeetingDecision';
         Meeting.MeetingDecisionForm = MeetingDecisionForm;
         [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaId', function () { return Serenity.IntegerEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['DecisionNumber', function () { return Serenity.IntegerEditor; }], ['ResponsibleContactId', function () { return Serenity.IntegerEditor; }], ['DueDate', function () { return Serenity.DateEditor; }], ['ResolutionStatus', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.StringEditor; }], ['Attachments', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2737,11 +2742,11 @@ var Geshotel;
         var MeetingDecisionRelevantForm = (function (_super) {
             __extends(MeetingDecisionRelevantForm, _super);
             function MeetingDecisionRelevantForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingDecisionRelevantForm.formKey = 'Meeting.MeetingDecisionRelevant';
             return MeetingDecisionRelevantForm;
         }(Serenity.PrefixedContext));
+        MeetingDecisionRelevantForm.formKey = 'Meeting.MeetingDecisionRelevant';
         Meeting.MeetingDecisionRelevantForm = MeetingDecisionRelevantForm;
         [['DecisionId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2818,11 +2823,11 @@ var Geshotel;
         var MeetingForm = (function (_super) {
             __extends(MeetingForm, _super);
             function MeetingForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingForm.formKey = 'Meeting.Meeting';
             return MeetingForm;
         }(Serenity.PrefixedContext));
+        MeetingForm.formKey = 'Meeting.Meeting';
         Meeting.MeetingForm = MeetingForm;
         [['MeetingName', function () { return Serenity.StringEditor; }], ['MeetingTypeId', function () { return Serenity.LookupEditor; }], ['MeetingNumber', function () { return Serenity.StringEditor; }], ['StartDate', function () { return Serenity.DateTimeEditor; }], ['EndDate', function () { return Serenity.DateTimeEditor; }], ['LocationId', function () { return Serenity.LookupEditor; }], ['UnitId', function () { return Geshotel.Organization.BusinessUnitEditor; }], ['OrganizerContactId', function () { return Serenity.LookupEditor; }], ['ReporterContactId', function () { return Serenity.LookupEditor; }], ['AttendeeList', function () { return Meeting.MeetingAttendeeEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2834,11 +2839,11 @@ var Geshotel;
         var MeetingLocationForm = (function (_super) {
             __extends(MeetingLocationForm, _super);
             function MeetingLocationForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingLocationForm.formKey = 'Meeting.MeetingLocation';
             return MeetingLocationForm;
         }(Serenity.PrefixedContext));
+        MeetingLocationForm.formKey = 'Meeting.MeetingLocation';
         Meeting.MeetingLocationForm = MeetingLocationForm;
         [['Name', function () { return Serenity.StringEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['Latitude', function () { return Serenity.DecimalEditor; }], ['Longitude', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingLocationForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2921,11 +2926,11 @@ var Geshotel;
         var MeetingTypeForm = (function (_super) {
             __extends(MeetingTypeForm, _super);
             function MeetingTypeForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MeetingTypeForm.formKey = 'Meeting.MeetingType';
             return MeetingTypeForm;
         }(Serenity.PrefixedContext));
+        MeetingTypeForm.formKey = 'Meeting.MeetingType';
         Meeting.MeetingTypeForm = MeetingTypeForm;
         [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
@@ -2975,11 +2980,11 @@ var Geshotel;
         var ChangePasswordForm = (function (_super) {
             __extends(ChangePasswordForm, _super);
             function ChangePasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ChangePasswordForm.formKey = 'Membership.ChangePassword';
             return ChangePasswordForm;
         }(Serenity.PrefixedContext));
+        ChangePasswordForm.formKey = 'Membership.ChangePassword';
         Membership.ChangePasswordForm = ChangePasswordForm;
         [['OldPassword', function () { return Serenity.PasswordEditor; }], ['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ChangePasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
@@ -2991,11 +2996,11 @@ var Geshotel;
         var ForgotPasswordForm = (function (_super) {
             __extends(ForgotPasswordForm, _super);
             function ForgotPasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
             return ForgotPasswordForm;
         }(Serenity.PrefixedContext));
+        ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
         Membership.ForgotPasswordForm = ForgotPasswordForm;
         [['Email', function () { return Serenity.EmailEditor; }]].forEach(function (x) { return Object.defineProperty(ForgotPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
@@ -3007,11 +3012,11 @@ var Geshotel;
         var LoginForm = (function (_super) {
             __extends(LoginForm, _super);
             function LoginForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            LoginForm.formKey = 'Membership.Login';
             return LoginForm;
         }(Serenity.PrefixedContext));
+        LoginForm.formKey = 'Membership.Login';
         Membership.LoginForm = LoginForm;
         [['Username', function () { return Serenity.StringEditor; }], ['Password', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(LoginForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
@@ -3023,11 +3028,11 @@ var Geshotel;
         var ResetPasswordForm = (function (_super) {
             __extends(ResetPasswordForm, _super);
             function ResetPasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ResetPasswordForm.formKey = 'Membership.ResetPassword';
             return ResetPasswordForm;
         }(Serenity.PrefixedContext));
+        ResetPasswordForm.formKey = 'Membership.ResetPassword';
         Membership.ResetPasswordForm = ResetPasswordForm;
         [['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ResetPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
@@ -3039,11 +3044,11 @@ var Geshotel;
         var SignUpForm = (function (_super) {
             __extends(SignUpForm, _super);
             function SignUpForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            SignUpForm.formKey = 'Membership.SignUp';
             return SignUpForm;
         }(Serenity.PrefixedContext));
+        SignUpForm.formKey = 'Membership.SignUp';
         Membership.SignUpForm = SignUpForm;
         [['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['ConfirmEmail', function () { return Serenity.EmailEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(SignUpForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
@@ -3055,11 +3060,11 @@ var Geshotel;
         var CategoryForm = (function (_super) {
             __extends(CategoryForm, _super);
             function CategoryForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            CategoryForm.formKey = 'Northwind.Category';
             return CategoryForm;
         }(Serenity.PrefixedContext));
+        CategoryForm.formKey = 'Northwind.Category';
         Northwind.CategoryForm = CategoryForm;
         [['CategoryName', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(CategoryForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3190,11 +3195,11 @@ var Geshotel;
         var CustomerForm = (function (_super) {
             __extends(CustomerForm, _super);
             function CustomerForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            CustomerForm.formKey = 'Northwind.Customer';
             return CustomerForm;
         }(Serenity.PrefixedContext));
+        CustomerForm.formKey = 'Northwind.Customer';
         Northwind.CustomerForm = CustomerForm;
         [['CustomerID', function () { return Serenity.StringEditor; }], ['CompanyName', function () { return Serenity.StringEditor; }], ['ContactName', function () { return Serenity.StringEditor; }], ['ContactTitle', function () { return Serenity.StringEditor; }], ['Representatives', function () { return Serenity.LookupEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['City', function () { return Serenity.StringEditor; }], ['Region', function () { return Serenity.StringEditor; }], ['PostalCode', function () { return Serenity.StringEditor; }], ['Country', function () { return Serenity.StringEditor; }], ['Phone', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['NoteList', function () { return Northwind.NotesEditor; }], ['LastContactDate', function () { return Serenity.DateEditor; }], ['LastContactedBy', function () { return Serenity.LookupEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['SendBulletin', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(CustomerForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3293,11 +3298,11 @@ var Geshotel;
 (function (Geshotel) {
     var Northwind;
     (function (Northwind) {
+        var Gender;
         (function (Gender) {
             Gender[Gender["Male"] = 1] = "Male";
             Gender[Gender["Female"] = 2] = "Female";
-        })(Northwind.Gender || (Northwind.Gender = {}));
-        var Gender = Northwind.Gender;
+        })(Gender = Northwind.Gender || (Northwind.Gender = {}));
         Serenity.Decorators.registerEnum(Gender, 'Geshotel.Northwind.Entities.Gender');
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3324,11 +3329,11 @@ var Geshotel;
         var OrderDetailForm = (function (_super) {
             __extends(OrderDetailForm, _super);
             function OrderDetailForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            OrderDetailForm.formKey = 'Northwind.OrderDetail';
             return OrderDetailForm;
         }(Serenity.PrefixedContext));
+        OrderDetailForm.formKey = 'Northwind.OrderDetail';
         Northwind.OrderDetailForm = OrderDetailForm;
         [['ProductID', function () { return Serenity.LookupEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['Quantity', function () { return Serenity.IntegerEditor; }], ['Discount', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(OrderDetailForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3372,11 +3377,11 @@ var Geshotel;
         var OrderForm = (function (_super) {
             __extends(OrderForm, _super);
             function OrderForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            OrderForm.formKey = 'Northwind.Order';
             return OrderForm;
         }(Serenity.PrefixedContext));
+        OrderForm.formKey = 'Northwind.Order';
         Northwind.OrderForm = OrderForm;
         [['CustomerID', function () { return Northwind.CustomerEditor; }], ['OrderDate', function () { return Serenity.DateEditor; }], ['RequiredDate', function () { return Serenity.DateEditor; }], ['EmployeeID', function () { return Serenity.LookupEditor; }], ['DetailList', function () { return Northwind.OrderDetailsEditor; }], ['ShippedDate', function () { return Serenity.DateEditor; }], ['ShipVia', function () { return Serenity.LookupEditor; }], ['Freight', function () { return Serenity.DecimalEditor; }], ['ShipName', function () { return Serenity.StringEditor; }], ['ShipAddress', function () { return Serenity.StringEditor; }], ['ShipCity', function () { return Serenity.StringEditor; }], ['ShipRegion', function () { return Serenity.StringEditor; }], ['ShipPostalCode', function () { return Serenity.StringEditor; }], ['ShipCountry', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(OrderForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3423,11 +3428,11 @@ var Geshotel;
 (function (Geshotel) {
     var Northwind;
     (function (Northwind) {
+        var OrderShippingState;
         (function (OrderShippingState) {
             OrderShippingState[OrderShippingState["NotShipped"] = 0] = "NotShipped";
             OrderShippingState[OrderShippingState["Shipped"] = 1] = "Shipped";
-        })(Northwind.OrderShippingState || (Northwind.OrderShippingState = {}));
-        var OrderShippingState = Northwind.OrderShippingState;
+        })(OrderShippingState = Northwind.OrderShippingState || (Northwind.OrderShippingState = {}));
         Serenity.Decorators.registerEnum(OrderShippingState, 'Northwind.OrderShippingState');
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3438,11 +3443,11 @@ var Geshotel;
         var ProductForm = (function (_super) {
             __extends(ProductForm, _super);
             function ProductForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ProductForm.formKey = 'Northwind.Product';
             return ProductForm;
         }(Serenity.PrefixedContext));
+        ProductForm.formKey = 'Northwind.Product';
         Northwind.ProductForm = ProductForm;
         [['ProductName', function () { return Serenity.StringEditor; }], ['ProductImage', function () { return Serenity.ImageUploadEditor; }], ['Discontinued', function () { return Serenity.BooleanEditor; }], ['SupplierID', function () { return Serenity.LookupEditor; }], ['CategoryID', function () { return Serenity.LookupEditor; }], ['QuantityPerUnit', function () { return Serenity.StringEditor; }], ['UnitPrice', function () { return Serenity.DecimalEditor; }], ['UnitsInStock', function () { return Serenity.IntegerEditor; }], ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }], ['ReorderLevel', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ProductForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3540,11 +3545,11 @@ var Geshotel;
         var RegionForm = (function (_super) {
             __extends(RegionForm, _super);
             function RegionForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            RegionForm.formKey = 'Northwind.Region';
             return RegionForm;
         }(Serenity.PrefixedContext));
+        RegionForm.formKey = 'Northwind.Region';
         Northwind.RegionForm = RegionForm;
         [['RegionID', function () { return Serenity.IntegerEditor; }], ['RegionDescription', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(RegionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3626,11 +3631,11 @@ var Geshotel;
         var ShipperForm = (function (_super) {
             __extends(ShipperForm, _super);
             function ShipperForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ShipperForm.formKey = 'Northwind.Shipper';
             return ShipperForm;
         }(Serenity.PrefixedContext));
+        ShipperForm.formKey = 'Northwind.Shipper';
         Northwind.ShipperForm = ShipperForm;
         [['CompanyName', function () { return Serenity.StringEditor; }], ['Phone', function () { return Northwind.PhoneEditor; }]].forEach(function (x) { return Object.defineProperty(ShipperForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3680,11 +3685,11 @@ var Geshotel;
         var SupplierForm = (function (_super) {
             __extends(SupplierForm, _super);
             function SupplierForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            SupplierForm.formKey = 'Northwind.Supplier';
             return SupplierForm;
         }(Serenity.PrefixedContext));
+        SupplierForm.formKey = 'Northwind.Supplier';
         Northwind.SupplierForm = SupplierForm;
         [['CompanyName', function () { return Serenity.StringEditor; }], ['ContactName', function () { return Serenity.StringEditor; }], ['ContactTitle', function () { return Serenity.StringEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['Region', function () { return Serenity.StringEditor; }], ['PostalCode', function () { return Serenity.StringEditor; }], ['Country', function () { return Serenity.StringEditor; }], ['City', function () { return Serenity.StringEditor; }], ['Phone', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['HomePage', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(SupplierForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3734,11 +3739,11 @@ var Geshotel;
         var TerritoryForm = (function (_super) {
             __extends(TerritoryForm, _super);
             function TerritoryForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TerritoryForm.formKey = 'Northwind.Territory';
             return TerritoryForm;
         }(Serenity.PrefixedContext));
+        TerritoryForm.formKey = 'Northwind.Territory';
         Northwind.TerritoryForm = TerritoryForm;
         [['TerritoryID', function () { return Serenity.StringEditor; }], ['TerritoryDescription', function () { return Serenity.StringEditor; }], ['RegionID', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TerritoryForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
@@ -3788,11 +3793,11 @@ var Geshotel;
         var BusinessUnitForm = (function (_super) {
             __extends(BusinessUnitForm, _super);
             function BusinessUnitForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            BusinessUnitForm.formKey = 'Organization.BusinessUnit';
             return BusinessUnitForm;
         }(Serenity.PrefixedContext));
+        BusinessUnitForm.formKey = 'Organization.BusinessUnit';
         Organization.BusinessUnitForm = BusinessUnitForm;
         [['Name', function () { return Serenity.StringEditor; }], ['ParentUnitId', function () { return Organization.BusinessUnitEditor; }]].forEach(function (x) { return Object.defineProperty(BusinessUnitForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
@@ -3842,11 +3847,11 @@ var Geshotel;
         var ContactForm = (function (_super) {
             __extends(ContactForm, _super);
             function ContactForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ContactForm.formKey = 'Organization.Contact';
             return ContactForm;
         }(Serenity.PrefixedContext));
+        ContactForm.formKey = 'Organization.Contact';
         Organization.ContactForm = ContactForm;
         [['Title', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['IdentityNo', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(ContactForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
@@ -3896,11 +3901,11 @@ var Geshotel;
         var CategoriaHotelesForm = (function (_super) {
             __extends(CategoriaHotelesForm, _super);
             function CategoriaHotelesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            CategoriaHotelesForm.formKey = 'Portal.CategoriaHoteles';
             return CategoriaHotelesForm;
         }(Serenity.PrefixedContext));
+        CategoriaHotelesForm.formKey = 'Portal.CategoriaHoteles';
         Portal.CategoriaHotelesForm = CategoriaHotelesForm;
         [['Abreviatura', function () { return Serenity.StringEditor; }], ['Categoria', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(CategoriaHotelesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -3950,11 +3955,11 @@ var Geshotel;
         var ComunidadesAutonomasForm = (function (_super) {
             __extends(ComunidadesAutonomasForm, _super);
             function ComunidadesAutonomasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ComunidadesAutonomasForm.formKey = 'Portal.ComunidadesAutonomas';
             return ComunidadesAutonomasForm;
         }(Serenity.PrefixedContext));
+        ComunidadesAutonomasForm.formKey = 'Portal.ComunidadesAutonomas';
         Portal.ComunidadesAutonomasForm = ComunidadesAutonomasForm;
         [['ComunidadAutonoma', function () { return Serenity.StringEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['ComunidadAutonomaIsta', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(ComunidadesAutonomasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4025,11 +4030,11 @@ var Geshotel;
         var EmpresasForm = (function (_super) {
             __extends(EmpresasForm, _super);
             function EmpresasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            EmpresasForm.formKey = 'Portal.Empresas';
             return EmpresasForm;
         }(Serenity.PrefixedContext));
+        EmpresasForm.formKey = 'Portal.Empresas';
         Portal.EmpresasForm = EmpresasForm;
         [['Empresa', function () { return Serenity.StringEditor; }], ['EmpresaContable', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['ProvinciaId', function () { return Serenity.LookupEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['Cif', function () { return Serenity.StringEditor; }], ['RutaFicheros', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(EmpresasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4100,11 +4105,11 @@ var Geshotel;
         var FormasDePagoForm = (function (_super) {
             __extends(FormasDePagoForm, _super);
             function FormasDePagoForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            FormasDePagoForm.formKey = 'Portal.FormasDePago';
             return FormasDePagoForm;
         }(Serenity.PrefixedContext));
+        FormasDePagoForm.formKey = 'Portal.FormasDePago';
         Portal.FormasDePagoForm = FormasDePagoForm;
         [['FormaPago', function () { return Serenity.StringEditor; }], ['Credito', function () { return Serenity.BooleanEditor; }], ['SwEfectivo', function () { return Serenity.BooleanEditor; }], ['SwTarjeta', function () { return Serenity.BooleanEditor; }], ['TarjetaLength', function () { return Serenity.StringEditor; }], ['TarjetaPrefixes', function () { return Serenity.StringEditor; }], ['TarjetaCheckdigit', function () { return Serenity.BooleanEditor; }], ['SwDingus', function () { return Serenity.BooleanEditor; }], ['ProduccionTpv', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(FormasDePagoForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4154,11 +4159,11 @@ var Geshotel;
         var GruposDeClienteForm = (function (_super) {
             __extends(GruposDeClienteForm, _super);
             function GruposDeClienteForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            GruposDeClienteForm.formKey = 'Portal.GruposDeCliente';
             return GruposDeClienteForm;
         }(Serenity.PrefixedContext));
+        GruposDeClienteForm.formKey = 'Portal.GruposDeCliente';
         Portal.GruposDeClienteForm = GruposDeClienteForm;
         [['NombreGrupo', function () { return Serenity.StringEditor; }], ['Huesped', function () { return Serenity.BooleanEditor; }], ['Contratos', function () { return Serenity.BooleanEditor; }], ['Facturar', function () { return Serenity.BooleanEditor; }], ['Agencia', function () { return Serenity.BooleanEditor; }], ['Perfil', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(GruposDeClienteForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4208,11 +4213,11 @@ var Geshotel;
         var GruposDeServiciosForm = (function (_super) {
             __extends(GruposDeServiciosForm, _super);
             function GruposDeServiciosForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            GruposDeServiciosForm.formKey = 'Portal.GruposDeServicios';
             return GruposDeServiciosForm;
         }(Serenity.PrefixedContext));
+        GruposDeServiciosForm.formKey = 'Portal.GruposDeServicios';
         Portal.GruposDeServiciosForm = GruposDeServiciosForm;
         [['HotelId', function () { return Serenity.IntegerEditor; }], ['NombreGrupo', function () { return Serenity.StringEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(GruposDeServiciosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4262,11 +4267,11 @@ var Geshotel;
         var GruposHabitacionForm = (function (_super) {
             __extends(GruposHabitacionForm, _super);
             function GruposHabitacionForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            GruposHabitacionForm.formKey = 'Portal.GruposHabitacion';
             return GruposHabitacionForm;
         }(Serenity.PrefixedContext));
+        GruposHabitacionForm.formKey = 'Portal.GruposHabitacion';
         Portal.GruposHabitacionForm = GruposHabitacionForm;
         [['Habitacion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(GruposHabitacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4316,11 +4321,11 @@ var Geshotel;
         var HotelesForm = (function (_super) {
             __extends(HotelesForm, _super);
             function HotelesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            HotelesForm.formKey = 'Portal.Hoteles';
             return HotelesForm;
         }(Serenity.PrefixedContext));
+        HotelesForm.formKey = 'Portal.Hoteles';
         Portal.HotelesForm = HotelesForm;
         [['Hotel', function () { return Serenity.StringEditor; }], ['EmpresaId', function () { return Serenity.LookupEditor; }], ['TipoHotelId', function () { return Serenity.LookupEditor; }], ['CategoriaId', function () { return Serenity.LookupEditor; }], ['NombreCorto', function () { return Serenity.StringEditor; }], ['Direccion', function () { return Serenity.StringEditor; }], ['Poblacion', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['ProvinciaId', function () { return Serenity.LookupEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['Telefono', function () { return Serenity.StringEditor; }], ['Fax', function () { return Serenity.StringEditor; }], ['EmailReservas', function () { return Serenity.StringEditor; }], ['EmailVentas', function () { return Serenity.StringEditor; }], ['EmailSmtp', function () { return Serenity.StringEditor; }], ['TextoCancelacion', function () { return Serenity.StringEditor; }], ['CtaManocorriente', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['CtaContableCajas', function () { return Serenity.StringEditor; }], ['CtaContableBanco', function () { return Serenity.StringEditor; }], ['FechaInicioPrograma', function () { return Serenity.DateEditor; }], ['RutaFicheroPolicia', function () { return Serenity.StringEditor; }], ['ContadorFicheroPolicia', function () { return Serenity.IntegerEditor; }], ['IdentificadorFicheroPolicia', function () { return Serenity.StringEditor; }], ['UsuarioIsta', function () { return Serenity.StringEditor; }], ['PasswordIsta', function () { return Serenity.StringEditor; }], ['UrlIsta', function () { return Serenity.StringEditor; }], ['MunicipioIsta', function () { return Serenity.StringEditor; }], ['NumeroRegistroIsta', function () { return Serenity.IntegerEditor; }], ['RutaBavel', function () { return Serenity.StringEditor; }], ['DingusUsuario', function () { return Serenity.StringEditor; }], ['DingusPassword', function () { return Serenity.StringEditor; }], ['DingusHotelCode', function () { return Serenity.StringEditor; }], ['DingusTraductor', function () { return Serenity.StringEditor; }], ['DingusUrl', function () { return Serenity.StringEditor; }], ['CheckinOnLine', function () { return Serenity.IntegerEditor; }], ['MinimoDiasCheckinOnline', function () { return Serenity.IntegerEditor; }], ['ZoomMapa', function () { return Serenity.IntegerEditor; }], ['Lat', function () { return Serenity.DecimalEditor; }], ['Lng', function () { return Serenity.DecimalEditor; }], ['Ancho', function () { return Serenity.IntegerEditor; }], ['Alto', function () { return Serenity.IntegerEditor; }], ['OverbookingLimit', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(HotelesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4370,11 +4375,11 @@ var Geshotel;
         var MonedasForm = (function (_super) {
             __extends(MonedasForm, _super);
             function MonedasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            MonedasForm.formKey = 'Portal.Monedas';
             return MonedasForm;
         }(Serenity.PrefixedContext));
+        MonedasForm.formKey = 'Portal.Monedas';
         Portal.MonedasForm = MonedasForm;
         [['Descripcion', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['Cambio', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(MonedasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4424,11 +4429,11 @@ var Geshotel;
         var NacionesForm = (function (_super) {
             __extends(NacionesForm, _super);
             function NacionesForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            NacionesForm.formKey = 'Portal.Naciones';
             return NacionesForm;
         }(Serenity.PrefixedContext));
+        NacionesForm.formKey = 'Portal.Naciones';
         Portal.NacionesForm = NacionesForm;
         [['Nacion', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['MonedaId', function () { return Serenity.LookupEditor; }], ['IdiomaId', function () { return Serenity.LookupEditor; }], ['NumeroIne', function () { return Serenity.IntegerEditor; }], ['PaisIsta', function () { return Serenity.StringEditor; }], ['Defecto', function () { return Serenity.IntegerEditor; }], ['NombreReal', function () { return Serenity.StringEditor; }], ['IdiomaMails', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(NacionesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4478,11 +4483,11 @@ var Geshotel;
         var ProvinciasForm = (function (_super) {
             __extends(ProvinciasForm, _super);
             function ProvinciasForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ProvinciasForm.formKey = 'Portal.Provincias';
             return ProvinciasForm;
         }(Serenity.PrefixedContext));
+        ProvinciasForm.formKey = 'Portal.Provincias';
         Portal.ProvinciasForm = ProvinciasForm;
         [['Provincia', function () { return Serenity.StringEditor; }], ['ComunidadAutonomaId', function () { return Serenity.LookupEditor; }], ['NacionId', function () { return Serenity.LookupEditor; }], ['ProvinciaIsta', function () { return Serenity.StringEditor; }], ['DefectoIsta', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ProvinciasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4553,11 +4558,11 @@ var Geshotel;
         var ServiciosForm = (function (_super) {
             __extends(ServiciosForm, _super);
             function ServiciosForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ServiciosForm.formKey = 'Portal.Servicios';
             return ServiciosForm;
         }(Serenity.PrefixedContext));
+        ServiciosForm.formKey = 'Portal.Servicios';
         Portal.ServiciosForm = ServiciosForm;
         [['NombreServicio', function () { return Serenity.StringEditor; }], ['Abreviatura', function () { return Serenity.StringEditor; }], ['TipoServicioId', function () { return Serenity.LookupEditor; }], ['TipoUnidadCalculoId', function () { return Serenity.LookupEditor; }], ['SwProduccion', function () { return Serenity.BooleanEditor; }], ['SwDescuento', function () { return Serenity.BooleanEditor; }], ['SwAjustes', function () { return Serenity.BooleanEditor; }], ['SwGastos', function () { return Serenity.BooleanEditor; }], ['SwPension', function () { return Serenity.BooleanEditor; }], ['SwRectificativa', function () { return Serenity.BooleanEditor; }], ['ConceptoAceleradorReservasId', function () { return Serenity.LookupEditor; }], ['SumaServicioId', function () { return Serenity.LookupEditor; }], ['RestaServicioId', function () { return Serenity.LookupEditor; }], ['TipoHab', function () { return Serenity.LookupEditor; }], ['TipoPension', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(ServiciosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4649,11 +4654,11 @@ var Geshotel;
         var TiposHabitacionForm = (function (_super) {
             __extends(TiposHabitacionForm, _super);
             function TiposHabitacionForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TiposHabitacionForm.formKey = 'Portal.TiposHabitacion';
             return TiposHabitacionForm;
         }(Serenity.PrefixedContext));
+        TiposHabitacionForm.formKey = 'Portal.TiposHabitacion';
         Portal.TiposHabitacionForm = TiposHabitacionForm;
         [['DescCorta', function () { return Serenity.StringEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['GrupoHabitacionId', function () { return Serenity.LookupEditor; }], ['NumeroPersonas', function () { return Serenity.IntegerEditor; }], ['Desvios', function () { return Serenity.IntegerEditor; }], ['NoShow', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4703,11 +4708,11 @@ var Geshotel;
         var TiposHotelForm = (function (_super) {
             __extends(TiposHotelForm, _super);
             function TiposHotelForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TiposHotelForm.formKey = 'Portal.TiposHotel';
             return TiposHotelForm;
         }(Serenity.PrefixedContext));
+        TiposHotelForm.formKey = 'Portal.TiposHotel';
         Portal.TiposHotelForm = TiposHotelForm;
         [['TipoHotel', function () { return Serenity.StringEditor; }], ['Abreviatura', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4757,11 +4762,11 @@ var Geshotel;
         var TiposHuespedForm = (function (_super) {
             __extends(TiposHuespedForm, _super);
             function TiposHuespedForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TiposHuespedForm.formKey = 'Portal.TiposHuesped';
             return TiposHuespedForm;
         }(Serenity.PrefixedContext));
+        TiposHuespedForm.formKey = 'Portal.TiposHuesped';
         Portal.TiposHuespedForm = TiposHuespedForm;
         [['Descripcion', function () { return Serenity.StringEditor; }], ['DescCorta', function () { return Serenity.StringEditor; }], ['UcId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHuespedForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4832,11 +4837,11 @@ var Geshotel;
         var TiposServicioForm = (function (_super) {
             __extends(TiposServicioForm, _super);
             function TiposServicioForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TiposServicioForm.formKey = 'Portal.TiposServicio';
             return TiposServicioForm;
         }(Serenity.PrefixedContext));
+        TiposServicioForm.formKey = 'Portal.TiposServicio';
         Portal.TiposServicioForm = TiposServicioForm;
         [['NombreTipoServicio', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposServicioForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4886,11 +4891,11 @@ var Geshotel;
         var TiposUnidadCalculoForm = (function (_super) {
             __extends(TiposUnidadCalculoForm, _super);
             function TiposUnidadCalculoForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            TiposUnidadCalculoForm.formKey = 'Portal.TiposUnidadCalculo';
             return TiposUnidadCalculoForm;
         }(Serenity.PrefixedContext));
+        TiposUnidadCalculoForm.formKey = 'Portal.TiposUnidadCalculo';
         Portal.TiposUnidadCalculoForm = TiposUnidadCalculoForm;
         [['Uc', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposUnidadCalculoForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -4940,11 +4945,11 @@ var Geshotel;
         var UnidadesCalculoForm = (function (_super) {
             __extends(UnidadesCalculoForm, _super);
             function UnidadesCalculoForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            UnidadesCalculoForm.formKey = 'Portal.UnidadesCalculo';
             return UnidadesCalculoForm;
         }(Serenity.PrefixedContext));
+        UnidadesCalculoForm.formKey = 'Portal.UnidadesCalculo';
         Portal.UnidadesCalculoForm = UnidadesCalculoForm;
         [['Uc', function () { return Serenity.StringEditor; }], ['DescripcionUnidadCalculo', function () { return Serenity.StringEditor; }], ['TipoUnidadCalculoId', function () { return Serenity.LookupEditor; }], ['Pax', function () { return Serenity.BooleanEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(UnidadesCalculoForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
@@ -5009,9 +5014,9 @@ var Geshotel;
         var EmpresaSelection = (function (_super) {
             __extends(EmpresaSelection, _super);
             function EmpresaSelection(select, currentEmpresa) {
-                _super.call(this, select);
+                var _this = _super.call(this, select) || this;
                 currentEmpresa = Q.coalesce(currentEmpresa, '1');
-                this.change(function (e) {
+                _this.change(function (e) {
                     $.cookie('EmpresaPreference', select.val(), {
                         path: Q.Config.applicationPath,
                         expires: 365
@@ -5037,6 +5042,7 @@ var Geshotel;
                     }
                     select.val(currentEmpresa);
                 });
+                return _this;
             }
             return EmpresaSelection;
         }(Serenity.Widget));
@@ -5050,9 +5056,9 @@ var Geshotel;
         var LanguageSelection = (function (_super) {
             __extends(LanguageSelection, _super);
             function LanguageSelection(select, currentLanguage) {
-                _super.call(this, select);
+                var _this = _super.call(this, select) || this;
                 currentLanguage = Q.coalesce(currentLanguage, 'es');
-                this.change(function (e) {
+                _this.change(function (e) {
                     $.cookie('LanguagePreference', select.val(), {
                         path: Q.Config.applicationPath,
                         expires: 365
@@ -5078,6 +5084,7 @@ var Geshotel;
                     }
                     select.val(currentLanguage);
                 });
+                return _this;
             }
             return LanguageSelection;
         }(Serenity.Widget));
@@ -5091,15 +5098,15 @@ var Geshotel;
         var SidebarSearch = (function (_super) {
             __extends(SidebarSearch, _super);
             function SidebarSearch(input, menuUL) {
-                var _this = this;
-                _super.call(this, input);
+                var _this = _super.call(this, input) || this;
                 new Serenity.QuickSearchInput(input, {
                     onSearch: function (field, text, success) {
                         _this.updateMatchFlags(text);
                         success(true);
                     }
                 });
-                this.menuUL = menuUL;
+                _this.menuUL = menuUL;
+                return _this;
             }
             SidebarSearch.prototype.updateMatchFlags = function (text) {
                 var liList = this.menuUL.find('li').removeClass('non-match');
@@ -5144,9 +5151,8 @@ var Geshotel;
         var ThemeSelection = (function (_super) {
             __extends(ThemeSelection, _super);
             function ThemeSelection(select) {
-                var _this = this;
-                _super.call(this, select);
-                this.change(function (e) {
+                var _this = _super.call(this, select) || this;
+                _this.change(function (e) {
                     $.cookie('ThemePreference', select.val(), {
                         path: Q.Config.applicationPath,
                         expires: 365
@@ -5166,7 +5172,8 @@ var Geshotel;
                 Q.addOption(select, 'yellow-light', Q.text('Site.Layout.ThemeYellowLight'));
                 Q.addOption(select, 'black', Q.text('Site.Layout.ThemeBlack'));
                 Q.addOption(select, 'black-light', Q.text('Site.Layout.ThemeBlackLight'));
-                select.val(this.getCurrentTheme());
+                select.val(_this.getCurrentTheme());
+                return _this;
             }
             ThemeSelection.prototype.getCurrentTheme = function () {
                 var skinClass = Q.first(($('body').attr('class') || '').split(' '), function (x) { return Q.startsWith(x, 'skin-'); });
@@ -5372,9 +5379,10 @@ var Geshotel;
         var ReportDialog = (function (_super) {
             __extends(ReportDialog, _super);
             function ReportDialog(options) {
-                _super.call(this, options);
-                this.updateInterface();
-                this.loadReport(this.options.reportKey);
+                var _this = _super.call(this, options) || this;
+                _this.updateInterface();
+                _this.loadReport(_this.options.reportKey);
+                return _this;
             }
             ReportDialog.prototype.getDialogButtons = function () {
                 return null;
@@ -5491,8 +5499,7 @@ var Geshotel;
         var ReportPage = (function (_super) {
             __extends(ReportPage, _super);
             function ReportPage(element) {
-                var _this = this;
-                _super.call(this, element);
+                var _this = _super.call(this, element) || this;
                 $('.report-link', element).click(function (e) { return _this.reportLinkClick(e); });
                 $('div.line', element).click(function (e) { return _this.categoryClick(e); });
                 new Serenity.QuickSearchInput($('.s-QuickSearchBar input', element), {
@@ -5501,6 +5508,7 @@ var Geshotel;
                         done(true);
                     }
                 });
+                return _this;
             }
             ReportPage.prototype.updateMatchFlags = function (text) {
                 var liList = $('.report-list', this.element).find('li').removeClass('non-match');
@@ -5599,20 +5607,21 @@ var Geshotel;
         var AgenciasDialog = (function (_super) {
             __extends(AgenciasDialog, _super);
             function AgenciasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.AgenciasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.AgenciasForm(_this.idPrefix);
+                return _this;
             }
             AgenciasDialog.prototype.getFormKey = function () { return Contratos.AgenciasForm.formKey; };
             AgenciasDialog.prototype.getIdProperty = function () { return Contratos.AgenciasRow.idProperty; };
             AgenciasDialog.prototype.getLocalTextPrefix = function () { return Contratos.AgenciasRow.localTextPrefix; };
             AgenciasDialog.prototype.getNameProperty = function () { return Contratos.AgenciasRow.nameProperty; };
             AgenciasDialog.prototype.getService = function () { return Contratos.AgenciasService.baseUrl; };
-            AgenciasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], AgenciasDialog);
             return AgenciasDialog;
         }(Serenity.EntityDialog));
+        AgenciasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], AgenciasDialog);
         Contratos.AgenciasDialog = AgenciasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5623,18 +5632,18 @@ var Geshotel;
         var AgenciasGrid = (function (_super) {
             __extends(AgenciasGrid, _super);
             function AgenciasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             AgenciasGrid.prototype.getColumnsKey = function () { return 'Contratos.Agencias'; };
             AgenciasGrid.prototype.getDialogType = function () { return Contratos.AgenciasDialog; };
             AgenciasGrid.prototype.getIdProperty = function () { return Contratos.AgenciasRow.idProperty; };
             AgenciasGrid.prototype.getLocalTextPrefix = function () { return Contratos.AgenciasRow.localTextPrefix; };
             AgenciasGrid.prototype.getService = function () { return Contratos.AgenciasService.baseUrl; };
-            AgenciasGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AgenciasGrid);
             return AgenciasGrid;
         }(Serenity.EntityGrid));
+        AgenciasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], AgenciasGrid);
         Contratos.AgenciasGrid = AgenciasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5645,20 +5654,21 @@ var Geshotel;
         var ClientesDialog = (function (_super) {
             __extends(ClientesDialog, _super);
             function ClientesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.ClientesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.ClientesForm(_this.idPrefix);
+                return _this;
             }
             ClientesDialog.prototype.getFormKey = function () { return Contratos.ClientesForm.formKey; };
             ClientesDialog.prototype.getIdProperty = function () { return Contratos.ClientesRow.idProperty; };
             ClientesDialog.prototype.getLocalTextPrefix = function () { return Contratos.ClientesRow.localTextPrefix; };
             ClientesDialog.prototype.getNameProperty = function () { return Contratos.ClientesRow.nameProperty; };
             ClientesDialog.prototype.getService = function () { return Contratos.ClientesService.baseUrl; };
-            ClientesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ClientesDialog);
             return ClientesDialog;
         }(Serenity.EntityDialog));
+        ClientesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ClientesDialog);
         Contratos.ClientesDialog = ClientesDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5669,7 +5679,7 @@ var Geshotel;
         var ClientesGrid = (function (_super) {
             __extends(ClientesGrid, _super);
             function ClientesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ClientesGrid.prototype.getColumnsKey = function () { return 'Contratos.Clientes'; };
             ClientesGrid.prototype.getDialogType = function () { return Contratos.ClientesDialog; };
@@ -5691,12 +5701,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            ClientesGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ClientesGrid);
             return ClientesGrid;
         }(Serenity.EntityGrid));
+        ClientesGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ClientesGrid);
         Contratos.ClientesGrid = ClientesGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5707,20 +5717,25 @@ var Geshotel;
         var ContratosDialog = (function (_super) {
             __extends(ContratosDialog, _super);
             function ContratosDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.ContratosForm(this.idPrefix);
+                var _this = _super.call(this) || this;
+                _this.form = new Contratos.ContratosForm(_this.idPrefix);
+                _this.LineasGrid = new Contratos.ContratosLineasGrid(_this.byId("LineasGrid"));
+                _this.tabs.on('tabsactivate', function (e, i) {
+                    _this.arrange();
+                });
+                return _this;
             }
             ContratosDialog.prototype.getFormKey = function () { return Contratos.ContratosForm.formKey; };
             ContratosDialog.prototype.getIdProperty = function () { return Contratos.ContratosRow.idProperty; };
             ContratosDialog.prototype.getLocalTextPrefix = function () { return Contratos.ContratosRow.localTextPrefix; };
             ContratosDialog.prototype.getNameProperty = function () { return Contratos.ContratosRow.nameProperty; };
             ContratosDialog.prototype.getService = function () { return Contratos.ContratosService.baseUrl; };
-            ContratosDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ContratosDialog);
             return ContratosDialog;
         }(Serenity.EntityDialog));
+        ContratosDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ContratosDialog);
         Contratos.ContratosDialog = ContratosDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5731,19 +5746,64 @@ var Geshotel;
         var ContratosGrid = (function (_super) {
             __extends(ContratosGrid, _super);
             function ContratosGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ContratosGrid.prototype.getColumnsKey = function () { return 'Contratos.Contratos'; };
             ContratosGrid.prototype.getDialogType = function () { return Contratos.ContratosDialog; };
             ContratosGrid.prototype.getIdProperty = function () { return Contratos.ContratosRow.idProperty; };
             ContratosGrid.prototype.getLocalTextPrefix = function () { return Contratos.ContratosRow.localTextPrefix; };
             ContratosGrid.prototype.getService = function () { return Contratos.ContratosService.baseUrl; };
-            ContratosGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ContratosGrid);
             return ContratosGrid;
         }(Serenity.EntityGrid));
+        ContratosGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosGrid);
         Contratos.ContratosGrid = ContratosGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ContratosLineasGrid = (function (_super) {
+            __extends(ContratosLineasGrid, _super);
+            function ContratosLineasGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ContratosLineasGrid.prototype.getColumnsKey = function () { return 'Contratos.Lineas'; };
+            ContratosLineasGrid.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
+            ContratosLineasGrid.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
+            ContratosLineasGrid.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
+            ContratosLineasGrid.prototype.addButtonClick = function () {
+                this.editItem({ ContratoID: this.contratoID });
+            };
+            ContratosLineasGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ContratosLineasGrid.prototype.getGridCanLoad = function () {
+                return this.contratoID != null;
+                //return super.getGridCanLoad() && !!this.contratoID;
+            };
+            Object.defineProperty(ContratosLineasGrid.prototype, "contratoID", {
+                get: function () {
+                    return this._contratoID;
+                },
+                set: function (value) {
+                    if (this._contratoID !== value) {
+                        this._contratoID = value;
+                        this.setEquality(Contratos.LineasRow.Fields.ContratoId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            return ContratosLineasGrid;
+        }(Serenity.EntityGrid));
+        ContratosLineasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosLineasGrid);
+        Contratos.ContratosLineasGrid = ContratosLineasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -5753,19 +5813,20 @@ var Geshotel;
         var CuposDialog = (function (_super) {
             __extends(CuposDialog, _super);
             function CuposDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.CuposForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.CuposForm(_this.idPrefix);
+                return _this;
             }
             CuposDialog.prototype.getFormKey = function () { return Contratos.CuposForm.formKey; };
             CuposDialog.prototype.getIdProperty = function () { return Contratos.CuposRow.idProperty; };
             CuposDialog.prototype.getLocalTextPrefix = function () { return Contratos.CuposRow.localTextPrefix; };
             CuposDialog.prototype.getService = function () { return Contratos.CuposService.baseUrl; };
-            CuposDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], CuposDialog);
             return CuposDialog;
         }(Serenity.EntityDialog));
+        CuposDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], CuposDialog);
         Contratos.CuposDialog = CuposDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5776,18 +5837,18 @@ var Geshotel;
         var CuposGrid = (function (_super) {
             __extends(CuposGrid, _super);
             function CuposGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             CuposGrid.prototype.getColumnsKey = function () { return 'Contratos.Cupos'; };
             CuposGrid.prototype.getDialogType = function () { return Contratos.CuposDialog; };
             CuposGrid.prototype.getIdProperty = function () { return Contratos.CuposRow.idProperty; };
             CuposGrid.prototype.getLocalTextPrefix = function () { return Contratos.CuposRow.localTextPrefix; };
             CuposGrid.prototype.getService = function () { return Contratos.CuposService.baseUrl; };
-            CuposGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CuposGrid);
             return CuposGrid;
         }(Serenity.EntityGrid));
+        CuposGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CuposGrid);
         Contratos.CuposGrid = CuposGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5798,19 +5859,20 @@ var Geshotel;
         var EdadesDialog = (function (_super) {
             __extends(EdadesDialog, _super);
             function EdadesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.EdadesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.EdadesForm(_this.idPrefix);
+                return _this;
             }
             EdadesDialog.prototype.getFormKey = function () { return Contratos.EdadesForm.formKey; };
             EdadesDialog.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
             EdadesDialog.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
             EdadesDialog.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
-            EdadesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], EdadesDialog);
             return EdadesDialog;
         }(Serenity.EntityDialog));
+        EdadesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], EdadesDialog);
         Contratos.EdadesDialog = EdadesDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5821,18 +5883,18 @@ var Geshotel;
         var EdadesGrid = (function (_super) {
             __extends(EdadesGrid, _super);
             function EdadesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             EdadesGrid.prototype.getColumnsKey = function () { return 'Contratos.Edades'; };
             EdadesGrid.prototype.getDialogType = function () { return Contratos.EdadesDialog; };
             EdadesGrid.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
             EdadesGrid.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
             EdadesGrid.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
-            EdadesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], EdadesGrid);
             return EdadesGrid;
         }(Serenity.EntityGrid));
+        EdadesGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], EdadesGrid);
         Contratos.EdadesGrid = EdadesGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5843,19 +5905,20 @@ var Geshotel;
         var LineasDialog = (function (_super) {
             __extends(LineasDialog, _super);
             function LineasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.LineasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.LineasForm(_this.idPrefix);
+                return _this;
             }
             LineasDialog.prototype.getFormKey = function () { return Contratos.LineasForm.formKey; };
             LineasDialog.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
             LineasDialog.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
             LineasDialog.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
-            LineasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], LineasDialog);
             return LineasDialog;
         }(Serenity.EntityDialog));
+        LineasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], LineasDialog);
         Contratos.LineasDialog = LineasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5866,18 +5929,18 @@ var Geshotel;
         var LineasGrid = (function (_super) {
             __extends(LineasGrid, _super);
             function LineasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             LineasGrid.prototype.getColumnsKey = function () { return 'Contratos.Lineas'; };
             LineasGrid.prototype.getDialogType = function () { return Contratos.LineasDialog; };
             LineasGrid.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
             LineasGrid.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
             LineasGrid.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
-            LineasGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LineasGrid);
             return LineasGrid;
         }(Serenity.EntityGrid));
+        LineasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LineasGrid);
         Contratos.LineasGrid = LineasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5888,20 +5951,21 @@ var Geshotel;
         var MercadosDialog = (function (_super) {
             __extends(MercadosDialog, _super);
             function MercadosDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.MercadosForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.MercadosForm(_this.idPrefix);
+                return _this;
             }
             MercadosDialog.prototype.getFormKey = function () { return Contratos.MercadosForm.formKey; };
             MercadosDialog.prototype.getIdProperty = function () { return Contratos.MercadosRow.idProperty; };
             MercadosDialog.prototype.getLocalTextPrefix = function () { return Contratos.MercadosRow.localTextPrefix; };
             MercadosDialog.prototype.getNameProperty = function () { return Contratos.MercadosRow.nameProperty; };
             MercadosDialog.prototype.getService = function () { return Contratos.MercadosService.baseUrl; };
-            MercadosDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MercadosDialog);
             return MercadosDialog;
         }(Serenity.EntityDialog));
+        MercadosDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MercadosDialog);
         Contratos.MercadosDialog = MercadosDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5912,18 +5976,18 @@ var Geshotel;
         var MercadosGrid = (function (_super) {
             __extends(MercadosGrid, _super);
             function MercadosGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MercadosGrid.prototype.getColumnsKey = function () { return 'Contratos.Mercados'; };
             MercadosGrid.prototype.getDialogType = function () { return Contratos.MercadosDialog; };
             MercadosGrid.prototype.getIdProperty = function () { return Contratos.MercadosRow.idProperty; };
             MercadosGrid.prototype.getLocalTextPrefix = function () { return Contratos.MercadosRow.localTextPrefix; };
             MercadosGrid.prototype.getService = function () { return Contratos.MercadosService.baseUrl; };
-            MercadosGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MercadosGrid);
             return MercadosGrid;
         }(Serenity.EntityGrid));
+        MercadosGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MercadosGrid);
         Contratos.MercadosGrid = MercadosGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5934,20 +5998,21 @@ var Geshotel;
         var OfertasDialog = (function (_super) {
             __extends(OfertasDialog, _super);
             function OfertasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.OfertasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.OfertasForm(_this.idPrefix);
+                return _this;
             }
             OfertasDialog.prototype.getFormKey = function () { return Contratos.OfertasForm.formKey; };
             OfertasDialog.prototype.getIdProperty = function () { return Contratos.OfertasRow.idProperty; };
             OfertasDialog.prototype.getLocalTextPrefix = function () { return Contratos.OfertasRow.localTextPrefix; };
             OfertasDialog.prototype.getNameProperty = function () { return Contratos.OfertasRow.nameProperty; };
             OfertasDialog.prototype.getService = function () { return Contratos.OfertasService.baseUrl; };
-            OfertasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], OfertasDialog);
             return OfertasDialog;
         }(Serenity.EntityDialog));
+        OfertasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], OfertasDialog);
         Contratos.OfertasDialog = OfertasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5958,18 +6023,18 @@ var Geshotel;
         var OfertasGrid = (function (_super) {
             __extends(OfertasGrid, _super);
             function OfertasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             OfertasGrid.prototype.getColumnsKey = function () { return 'Contratos.Ofertas'; };
             OfertasGrid.prototype.getDialogType = function () { return Contratos.OfertasDialog; };
             OfertasGrid.prototype.getIdProperty = function () { return Contratos.OfertasRow.idProperty; };
             OfertasGrid.prototype.getLocalTextPrefix = function () { return Contratos.OfertasRow.localTextPrefix; };
             OfertasGrid.prototype.getService = function () { return Contratos.OfertasService.baseUrl; };
-            OfertasGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OfertasGrid);
             return OfertasGrid;
         }(Serenity.EntityGrid));
+        OfertasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], OfertasGrid);
         Contratos.OfertasGrid = OfertasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5980,19 +6045,20 @@ var Geshotel;
         var OfertasRejillasDialog = (function (_super) {
             __extends(OfertasRejillasDialog, _super);
             function OfertasRejillasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.OfertasRejillasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.OfertasRejillasForm(_this.idPrefix);
+                return _this;
             }
             OfertasRejillasDialog.prototype.getFormKey = function () { return Contratos.OfertasRejillasForm.formKey; };
             OfertasRejillasDialog.prototype.getIdProperty = function () { return Contratos.OfertasRejillasRow.idProperty; };
             OfertasRejillasDialog.prototype.getLocalTextPrefix = function () { return Contratos.OfertasRejillasRow.localTextPrefix; };
             OfertasRejillasDialog.prototype.getService = function () { return Contratos.OfertasRejillasService.baseUrl; };
-            OfertasRejillasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], OfertasRejillasDialog);
             return OfertasRejillasDialog;
         }(Serenity.EntityDialog));
+        OfertasRejillasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], OfertasRejillasDialog);
         Contratos.OfertasRejillasDialog = OfertasRejillasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6003,18 +6069,18 @@ var Geshotel;
         var OfertasRejillasGrid = (function (_super) {
             __extends(OfertasRejillasGrid, _super);
             function OfertasRejillasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             OfertasRejillasGrid.prototype.getColumnsKey = function () { return 'Contratos.OfertasRejillas'; };
             OfertasRejillasGrid.prototype.getDialogType = function () { return Contratos.OfertasRejillasDialog; };
             OfertasRejillasGrid.prototype.getIdProperty = function () { return Contratos.OfertasRejillasRow.idProperty; };
             OfertasRejillasGrid.prototype.getLocalTextPrefix = function () { return Contratos.OfertasRejillasRow.localTextPrefix; };
             OfertasRejillasGrid.prototype.getService = function () { return Contratos.OfertasRejillasService.baseUrl; };
-            OfertasRejillasGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OfertasRejillasGrid);
             return OfertasRejillasGrid;
         }(Serenity.EntityGrid));
+        OfertasRejillasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], OfertasRejillasGrid);
         Contratos.OfertasRejillasGrid = OfertasRejillasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6025,20 +6091,21 @@ var Geshotel;
         var ReleasesDialog = (function (_super) {
             __extends(ReleasesDialog, _super);
             function ReleasesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.ReleasesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.ReleasesForm(_this.idPrefix);
+                return _this;
             }
             ReleasesDialog.prototype.getFormKey = function () { return Contratos.ReleasesForm.formKey; };
             ReleasesDialog.prototype.getIdProperty = function () { return Contratos.ReleasesRow.idProperty; };
             ReleasesDialog.prototype.getLocalTextPrefix = function () { return Contratos.ReleasesRow.localTextPrefix; };
             ReleasesDialog.prototype.getNameProperty = function () { return Contratos.ReleasesRow.nameProperty; };
             ReleasesDialog.prototype.getService = function () { return Contratos.ReleasesService.baseUrl; };
-            ReleasesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ReleasesDialog);
             return ReleasesDialog;
         }(Serenity.EntityDialog));
+        ReleasesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ReleasesDialog);
         Contratos.ReleasesDialog = ReleasesDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6049,18 +6116,18 @@ var Geshotel;
         var ReleasesGrid = (function (_super) {
             __extends(ReleasesGrid, _super);
             function ReleasesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ReleasesGrid.prototype.getColumnsKey = function () { return 'Contratos.Releases'; };
             ReleasesGrid.prototype.getDialogType = function () { return Contratos.ReleasesDialog; };
             ReleasesGrid.prototype.getIdProperty = function () { return Contratos.ReleasesRow.idProperty; };
             ReleasesGrid.prototype.getLocalTextPrefix = function () { return Contratos.ReleasesRow.localTextPrefix; };
             ReleasesGrid.prototype.getService = function () { return Contratos.ReleasesService.baseUrl; };
-            ReleasesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ReleasesGrid);
             return ReleasesGrid;
         }(Serenity.EntityGrid));
+        ReleasesGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ReleasesGrid);
         Contratos.ReleasesGrid = ReleasesGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6071,20 +6138,21 @@ var Geshotel;
         var TemporadasDialog = (function (_super) {
             __extends(TemporadasDialog, _super);
             function TemporadasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Contratos.TemporadasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.TemporadasForm(_this.idPrefix);
+                return _this;
             }
             TemporadasDialog.prototype.getFormKey = function () { return Contratos.TemporadasForm.formKey; };
             TemporadasDialog.prototype.getIdProperty = function () { return Contratos.TemporadasRow.idProperty; };
             TemporadasDialog.prototype.getLocalTextPrefix = function () { return Contratos.TemporadasRow.localTextPrefix; };
             TemporadasDialog.prototype.getNameProperty = function () { return Contratos.TemporadasRow.nameProperty; };
             TemporadasDialog.prototype.getService = function () { return Contratos.TemporadasService.baseUrl; };
-            TemporadasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TemporadasDialog);
             return TemporadasDialog;
         }(Serenity.EntityDialog));
+        TemporadasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TemporadasDialog);
         Contratos.TemporadasDialog = TemporadasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6095,18 +6163,18 @@ var Geshotel;
         var TemporadasGrid = (function (_super) {
             __extends(TemporadasGrid, _super);
             function TemporadasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TemporadasGrid.prototype.getColumnsKey = function () { return 'Contratos.Temporadas'; };
             TemporadasGrid.prototype.getDialogType = function () { return Contratos.TemporadasDialog; };
             TemporadasGrid.prototype.getIdProperty = function () { return Contratos.TemporadasRow.idProperty; };
             TemporadasGrid.prototype.getLocalTextPrefix = function () { return Contratos.TemporadasRow.localTextPrefix; };
             TemporadasGrid.prototype.getService = function () { return Contratos.TemporadasService.baseUrl; };
-            TemporadasGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TemporadasGrid);
             return TemporadasGrid;
         }(Serenity.EntityGrid));
+        TemporadasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TemporadasGrid);
         Contratos.TemporadasGrid = TemporadasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6117,13 +6185,12 @@ var Geshotel;
         var MeetingDialog = (function (_super) {
             __extends(MeetingDialog, _super);
             function MeetingDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Meeting.MeetingForm(this.idPrefix);
-                this.agendaGrid = new Meeting.MeetingAgendaGrid(this.byId('AgendaGrid'));
-                this.decisionGrid = new Meeting.MeetingDecisionGrid(this.byId('DecisionGrid'));
-                this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
-                this.form.EndDate.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this) || this;
+                _this.form = new Meeting.MeetingForm(_this.idPrefix);
+                _this.agendaGrid = new Meeting.MeetingAgendaGrid(_this.byId('AgendaGrid'));
+                _this.decisionGrid = new Meeting.MeetingDecisionGrid(_this.byId('DecisionGrid'));
+                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
+                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.EndDate.valueAsDate != null &&
                         _this.form.StartDate.valueAsDate != null &&
                         _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
@@ -6131,6 +6198,7 @@ var Geshotel;
                     }
                     return null;
                 });
+                return _this;
             }
             MeetingDialog.prototype.getFormKey = function () { return Meeting.MeetingForm.formKey; };
             MeetingDialog.prototype.getIdProperty = function () { return Meeting.MeetingRow.idProperty; };
@@ -6149,13 +6217,13 @@ var Geshotel;
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
                 //this.agendaGrid.customerID = entity.CustomerID;
             };
-            MeetingDialog = __decorate([
-                Serenity.Decorators.maximizable(),
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDialog);
             return MeetingDialog;
         }(Serenity.EntityDialog));
+        MeetingDialog = __decorate([
+            Serenity.Decorators.maximizable(),
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingDialog);
         Meeting.MeetingDialog = MeetingDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6166,18 +6234,18 @@ var Geshotel;
         var MeetingGrid = (function (_super) {
             __extends(MeetingGrid, _super);
             function MeetingGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingGrid.prototype.getColumnsKey = function () { return 'Meeting.Meeting'; };
             MeetingGrid.prototype.getDialogType = function () { return Meeting.MeetingDialog; };
             MeetingGrid.prototype.getIdProperty = function () { return Meeting.MeetingRow.idProperty; };
             MeetingGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingRow.localTextPrefix; };
             MeetingGrid.prototype.getService = function () { return Meeting.MeetingService.baseUrl; };
-            MeetingGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingGrid);
             return MeetingGrid;
         }(Serenity.EntityGrid));
+        MeetingGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingGrid);
         Meeting.MeetingGrid = MeetingGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6188,20 +6256,21 @@ var Geshotel;
         var MeetingAgendaDialog = (function (_super) {
             __extends(MeetingAgendaDialog, _super);
             function MeetingAgendaDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingAgendaForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingAgendaForm(_this.idPrefix);
+                return _this;
             }
             MeetingAgendaDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaForm.formKey; };
             MeetingAgendaDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRow.idProperty; };
             MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRow.localTextPrefix; };
             MeetingAgendaDialog.prototype.getNameProperty = function () { return Meeting.MeetingAgendaRow.nameProperty; };
             MeetingAgendaDialog.prototype.getService = function () { return Meeting.MeetingAgendaService.baseUrl; };
-            MeetingAgendaDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaDialog);
             return MeetingAgendaDialog;
         }(Serenity.EntityDialog));
+        MeetingAgendaDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingAgendaDialog);
         Meeting.MeetingAgendaDialog = MeetingAgendaDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6212,7 +6281,7 @@ var Geshotel;
         var MeetingAgendaGrid = (function (_super) {
             __extends(MeetingAgendaGrid, _super);
             function MeetingAgendaGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingAgendaGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgenda'; };
             MeetingAgendaGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaDialog; };
@@ -6242,11 +6311,11 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
-            MeetingAgendaGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaGrid);
             return MeetingAgendaGrid;
         }(Serenity.EntityGrid));
+        MeetingAgendaGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingAgendaGrid);
         Meeting.MeetingAgendaGrid = MeetingAgendaGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6257,19 +6326,20 @@ var Geshotel;
         var MeetingAgendaRelevantDialog = (function (_super) {
             __extends(MeetingAgendaRelevantDialog, _super);
             function MeetingAgendaRelevantDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingAgendaRelevantForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingAgendaRelevantForm(_this.idPrefix);
+                return _this;
             }
             MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaRelevantForm.formKey; };
             MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRelevantRow.idProperty; };
             MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRelevantRow.localTextPrefix; };
             MeetingAgendaRelevantDialog.prototype.getService = function () { return Meeting.MeetingAgendaRelevantService.baseUrl; };
-            MeetingAgendaRelevantDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaRelevantDialog);
             return MeetingAgendaRelevantDialog;
         }(Serenity.EntityDialog));
+        MeetingAgendaRelevantDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingAgendaRelevantDialog);
         Meeting.MeetingAgendaRelevantDialog = MeetingAgendaRelevantDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6280,18 +6350,18 @@ var Geshotel;
         var MeetingAgendaRelevantGrid = (function (_super) {
             __extends(MeetingAgendaRelevantGrid, _super);
             function MeetingAgendaRelevantGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingAgendaRelevantGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgendaRelevant'; };
             MeetingAgendaRelevantGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaRelevantDialog; };
             MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return Meeting.MeetingAgendaRelevantRow.idProperty; };
             MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaRelevantRow.localTextPrefix; };
             MeetingAgendaRelevantGrid.prototype.getService = function () { return Meeting.MeetingAgendaRelevantService.baseUrl; };
-            MeetingAgendaRelevantGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaRelevantGrid);
             return MeetingAgendaRelevantGrid;
         }(Serenity.EntityGrid));
+        MeetingAgendaRelevantGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingAgendaRelevantGrid);
         Meeting.MeetingAgendaRelevantGrid = MeetingAgendaRelevantGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6302,20 +6372,21 @@ var Geshotel;
         var MeetingAgendaTypeDialog = (function (_super) {
             __extends(MeetingAgendaTypeDialog, _super);
             function MeetingAgendaTypeDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingAgendaTypeForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingAgendaTypeForm(_this.idPrefix);
+                return _this;
             }
             MeetingAgendaTypeDialog.prototype.getFormKey = function () { return Meeting.MeetingAgendaTypeForm.formKey; };
             MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return Meeting.MeetingAgendaTypeRow.idProperty; };
             MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaTypeRow.localTextPrefix; };
             MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return Meeting.MeetingAgendaTypeRow.nameProperty; };
             MeetingAgendaTypeDialog.prototype.getService = function () { return Meeting.MeetingAgendaTypeService.baseUrl; };
-            MeetingAgendaTypeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaTypeDialog);
             return MeetingAgendaTypeDialog;
         }(Serenity.EntityDialog));
+        MeetingAgendaTypeDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingAgendaTypeDialog);
         Meeting.MeetingAgendaTypeDialog = MeetingAgendaTypeDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6326,18 +6397,18 @@ var Geshotel;
         var MeetingAgendaTypeGrid = (function (_super) {
             __extends(MeetingAgendaTypeGrid, _super);
             function MeetingAgendaTypeGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingAgendaTypeGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingAgendaType'; };
             MeetingAgendaTypeGrid.prototype.getDialogType = function () { return Meeting.MeetingAgendaTypeDialog; };
             MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return Meeting.MeetingAgendaTypeRow.idProperty; };
             MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAgendaTypeRow.localTextPrefix; };
             MeetingAgendaTypeGrid.prototype.getService = function () { return Meeting.MeetingAgendaTypeService.baseUrl; };
-            MeetingAgendaTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaTypeGrid);
             return MeetingAgendaTypeGrid;
         }(Serenity.EntityGrid));
+        MeetingAgendaTypeGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingAgendaTypeGrid);
         Meeting.MeetingAgendaTypeGrid = MeetingAgendaTypeGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6348,18 +6419,19 @@ var Geshotel;
         var MeetingAttendeeDialog = (function (_super) {
             __extends(MeetingAttendeeDialog, _super);
             function MeetingAttendeeDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingAttendeeForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingAttendeeForm(_this.idPrefix);
+                return _this;
             }
             MeetingAttendeeDialog.prototype.getFormKey = function () { return Meeting.MeetingAttendeeForm.formKey; };
             MeetingAttendeeDialog.prototype.getIdProperty = function () { return Meeting.MeetingAttendeeRow.idProperty; };
             MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingAttendeeRow.localTextPrefix; };
-            MeetingAttendeeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAttendeeDialog);
             return MeetingAttendeeDialog;
         }(Geshotel.Common.GridEditorDialog));
+        MeetingAttendeeDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingAttendeeDialog);
         Meeting.MeetingAttendeeDialog = MeetingAttendeeDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6371,9 +6443,8 @@ var Geshotel;
         var MeetingAttendeeEditor = (function (_super) {
             __extends(MeetingAttendeeEditor, _super);
             function MeetingAttendeeEditor(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.slickContainer.on('change', 'select', function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.slickContainer.on('change', 'select', function (e) {
                     var cell = _this.slickGrid.getCellFromEvent(e);
                     if (!cell)
                         return;
@@ -6382,6 +6453,7 @@ var Geshotel;
                     item[field] = Q.toId($(e.target).val());
                     _this.view.updateItem(_this.id(item), item);
                 });
+                return _this;
             }
             MeetingAttendeeEditor.prototype.getColumnsKey = function () { return 'Meeting.MeetingAttendee'; };
             MeetingAttendeeEditor.prototype.getDialogType = function () { return Meeting.MeetingAttendeeDialog; };
@@ -6453,11 +6525,11 @@ var Geshotel;
                     }
                 }
             };
-            MeetingAttendeeEditor = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAttendeeEditor);
             return MeetingAttendeeEditor;
         }(Geshotel.Common.GridEditorBase));
+        MeetingAttendeeEditor = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingAttendeeEditor);
         Meeting.MeetingAttendeeEditor = MeetingAttendeeEditor;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6468,20 +6540,21 @@ var Geshotel;
         var MeetingDecisionDialog = (function (_super) {
             __extends(MeetingDecisionDialog, _super);
             function MeetingDecisionDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingDecisionForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingDecisionForm(_this.idPrefix);
+                return _this;
             }
             MeetingDecisionDialog.prototype.getFormKey = function () { return Meeting.MeetingDecisionForm.formKey; };
             MeetingDecisionDialog.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRow.idProperty; };
             MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRow.localTextPrefix; };
             MeetingDecisionDialog.prototype.getNameProperty = function () { return Meeting.MeetingDecisionRow.nameProperty; };
             MeetingDecisionDialog.prototype.getService = function () { return Meeting.MeetingDecisionService.baseUrl; };
-            MeetingDecisionDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDecisionDialog);
             return MeetingDecisionDialog;
         }(Serenity.EntityDialog));
+        MeetingDecisionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingDecisionDialog);
         Meeting.MeetingDecisionDialog = MeetingDecisionDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6492,7 +6565,7 @@ var Geshotel;
         var MeetingDecisionGrid = (function (_super) {
             __extends(MeetingDecisionGrid, _super);
             function MeetingDecisionGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingDecisionGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingDecision'; };
             MeetingDecisionGrid.prototype.getDialogType = function () { return Meeting.MeetingDecisionDialog; };
@@ -6522,11 +6595,11 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
-            MeetingDecisionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingDecisionGrid);
             return MeetingDecisionGrid;
         }(Serenity.EntityGrid));
+        MeetingDecisionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingDecisionGrid);
         Meeting.MeetingDecisionGrid = MeetingDecisionGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6537,19 +6610,20 @@ var Geshotel;
         var MeetingDecisionRelevantDialog = (function (_super) {
             __extends(MeetingDecisionRelevantDialog, _super);
             function MeetingDecisionRelevantDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingDecisionRelevantForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingDecisionRelevantForm(_this.idPrefix);
+                return _this;
             }
             MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return Meeting.MeetingDecisionRelevantForm.formKey; };
             MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRelevantRow.idProperty; };
             MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRelevantRow.localTextPrefix; };
             MeetingDecisionRelevantDialog.prototype.getService = function () { return Meeting.MeetingDecisionRelevantService.baseUrl; };
-            MeetingDecisionRelevantDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDecisionRelevantDialog);
             return MeetingDecisionRelevantDialog;
         }(Serenity.EntityDialog));
+        MeetingDecisionRelevantDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingDecisionRelevantDialog);
         Meeting.MeetingDecisionRelevantDialog = MeetingDecisionRelevantDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6560,18 +6634,18 @@ var Geshotel;
         var MeetingDecisionRelevantGrid = (function (_super) {
             __extends(MeetingDecisionRelevantGrid, _super);
             function MeetingDecisionRelevantGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingDecisionRelevantGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingDecisionRelevant'; };
             MeetingDecisionRelevantGrid.prototype.getDialogType = function () { return Meeting.MeetingDecisionRelevantDialog; };
             MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return Meeting.MeetingDecisionRelevantRow.idProperty; };
             MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingDecisionRelevantRow.localTextPrefix; };
             MeetingDecisionRelevantGrid.prototype.getService = function () { return Meeting.MeetingDecisionRelevantService.baseUrl; };
-            MeetingDecisionRelevantGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingDecisionRelevantGrid);
             return MeetingDecisionRelevantGrid;
         }(Serenity.EntityGrid));
+        MeetingDecisionRelevantGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingDecisionRelevantGrid);
         Meeting.MeetingDecisionRelevantGrid = MeetingDecisionRelevantGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6582,20 +6656,21 @@ var Geshotel;
         var MeetingLocationDialog = (function (_super) {
             __extends(MeetingLocationDialog, _super);
             function MeetingLocationDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingLocationForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingLocationForm(_this.idPrefix);
+                return _this;
             }
             MeetingLocationDialog.prototype.getFormKey = function () { return Meeting.MeetingLocationForm.formKey; };
             MeetingLocationDialog.prototype.getIdProperty = function () { return Meeting.MeetingLocationRow.idProperty; };
             MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingLocationRow.localTextPrefix; };
             MeetingLocationDialog.prototype.getNameProperty = function () { return Meeting.MeetingLocationRow.nameProperty; };
             MeetingLocationDialog.prototype.getService = function () { return Meeting.MeetingLocationService.baseUrl; };
-            MeetingLocationDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingLocationDialog);
             return MeetingLocationDialog;
         }(Serenity.EntityDialog));
+        MeetingLocationDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingLocationDialog);
         Meeting.MeetingLocationDialog = MeetingLocationDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6606,18 +6681,18 @@ var Geshotel;
         var MeetingLocationGrid = (function (_super) {
             __extends(MeetingLocationGrid, _super);
             function MeetingLocationGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingLocationGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingLocation'; };
             MeetingLocationGrid.prototype.getDialogType = function () { return Meeting.MeetingLocationDialog; };
             MeetingLocationGrid.prototype.getIdProperty = function () { return Meeting.MeetingLocationRow.idProperty; };
             MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingLocationRow.localTextPrefix; };
             MeetingLocationGrid.prototype.getService = function () { return Meeting.MeetingLocationService.baseUrl; };
-            MeetingLocationGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingLocationGrid);
             return MeetingLocationGrid;
         }(Serenity.EntityGrid));
+        MeetingLocationGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingLocationGrid);
         Meeting.MeetingLocationGrid = MeetingLocationGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6628,20 +6703,21 @@ var Geshotel;
         var MeetingTypeDialog = (function (_super) {
             __extends(MeetingTypeDialog, _super);
             function MeetingTypeDialog() {
-                _super.apply(this, arguments);
-                this.form = new Meeting.MeetingTypeForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Meeting.MeetingTypeForm(_this.idPrefix);
+                return _this;
             }
             MeetingTypeDialog.prototype.getFormKey = function () { return Meeting.MeetingTypeForm.formKey; };
             MeetingTypeDialog.prototype.getIdProperty = function () { return Meeting.MeetingTypeRow.idProperty; };
             MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return Meeting.MeetingTypeRow.localTextPrefix; };
             MeetingTypeDialog.prototype.getNameProperty = function () { return Meeting.MeetingTypeRow.nameProperty; };
             MeetingTypeDialog.prototype.getService = function () { return Meeting.MeetingTypeService.baseUrl; };
-            MeetingTypeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingTypeDialog);
             return MeetingTypeDialog;
         }(Serenity.EntityDialog));
+        MeetingTypeDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MeetingTypeDialog);
         Meeting.MeetingTypeDialog = MeetingTypeDialog;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6652,18 +6728,18 @@ var Geshotel;
         var MeetingTypeGrid = (function (_super) {
             __extends(MeetingTypeGrid, _super);
             function MeetingTypeGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MeetingTypeGrid.prototype.getColumnsKey = function () { return 'Meeting.MeetingType'; };
             MeetingTypeGrid.prototype.getDialogType = function () { return Meeting.MeetingTypeDialog; };
             MeetingTypeGrid.prototype.getIdProperty = function () { return Meeting.MeetingTypeRow.idProperty; };
             MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return Meeting.MeetingTypeRow.localTextPrefix; };
             MeetingTypeGrid.prototype.getService = function () { return Meeting.MeetingTypeService.baseUrl; };
-            MeetingTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingTypeGrid);
             return MeetingTypeGrid;
         }(Serenity.EntityGrid));
+        MeetingTypeGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], MeetingTypeGrid);
         Meeting.MeetingTypeGrid = MeetingTypeGrid;
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6674,20 +6750,19 @@ var Geshotel;
         var ChangePasswordPanel = (function (_super) {
             __extends(ChangePasswordPanel, _super);
             function ChangePasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ChangePasswordForm(this.idPrefix);
-                this.form.NewPassword.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
                         return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -6703,13 +6778,14 @@ var Geshotel;
                         }
                     });
                 });
+                return _this;
             }
             ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
-            ChangePasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ChangePasswordPanel);
             return ChangePasswordPanel;
         }(Serenity.PropertyPanel));
+        ChangePasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ChangePasswordPanel);
         Membership.ChangePasswordPanel = ChangePasswordPanel;
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6720,10 +6796,9 @@ var Geshotel;
         var ForgotPasswordPanel = (function (_super) {
             __extends(ForgotPasswordPanel, _super);
             function ForgotPasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ForgotPasswordForm(this.idPrefix);
-                this.byId('SubmitButton').click(function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -6739,13 +6814,14 @@ var Geshotel;
                         }
                     });
                 });
+                return _this;
             }
             ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
-            ForgotPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ForgotPasswordPanel);
             return ForgotPasswordPanel;
         }(Serenity.PropertyPanel));
+        ForgotPasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ForgotPasswordPanel);
         Membership.ForgotPasswordPanel = ForgotPasswordPanel;
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6756,8 +6832,7 @@ var Geshotel;
         var LoginPanel = (function (_super) {
             __extends(LoginPanel, _super);
             function LoginPanel(container) {
-                var _this = this;
-                _super.call(this, container);
+                var _this = _super.call(this, container) || this;
                 $(function () {
                     $('body').vegas({
                         delay: 8000,
@@ -6777,8 +6852,8 @@ var Geshotel;
                         ]
                     });
                 });
-                this.form = new Membership.LoginForm(this.idPrefix);
-                this.byId('LoginButton').click(function (e) {
+                _this.form = new Membership.LoginForm(_this.idPrefix);
+                _this.byId('LoginButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -6799,13 +6874,14 @@ var Geshotel;
                         }
                     });
                 });
+                return _this;
             }
             LoginPanel.prototype.getFormKey = function () { return Membership.LoginForm.formKey; };
-            LoginPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LoginPanel);
             return LoginPanel;
         }(Serenity.PropertyPanel));
+        LoginPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LoginPanel);
         Membership.LoginPanel = LoginPanel;
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6816,20 +6892,19 @@ var Geshotel;
         var ResetPasswordPanel = (function (_super) {
             __extends(ResetPasswordPanel, _super);
             function ResetPasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ResetPasswordForm(this.idPrefix);
-                this.form.NewPassword.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value.length < 7) {
                         return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -6846,13 +6921,14 @@ var Geshotel;
                         }
                     });
                 });
+                return _this;
             }
             ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
-            ResetPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResetPasswordPanel);
             return ResetPasswordPanel;
         }(Serenity.PropertyPanel));
+        ResetPasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ResetPasswordPanel);
         Membership.ResetPasswordPanel = ResetPasswordPanel;
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6863,20 +6939,19 @@ var Geshotel;
         var SignUpPanel = (function (_super) {
             __extends(SignUpPanel, _super);
             function SignUpPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.SignUpForm(this.idPrefix);
-                this.form.ConfirmEmail.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.SignUpForm(_this.idPrefix);
+                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
                         return Q.text('Validation.EmailConfirm');
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -6895,13 +6970,14 @@ var Geshotel;
                         }
                     });
                 });
+                return _this;
             }
             SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
-            SignUpPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SignUpPanel);
             return SignUpPanel;
         }(Serenity.PropertyPanel));
+        SignUpPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SignUpPanel);
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = Geshotel.Membership || (Geshotel.Membership = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6912,8 +6988,9 @@ var Geshotel;
         var CategoryDialog = (function (_super) {
             __extends(CategoryDialog, _super);
             function CategoryDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.CategoryForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.CategoryForm(_this.idPrefix);
+                return _this;
             }
             CategoryDialog.prototype.getFormKey = function () { return Northwind.CategoryForm.formKey; };
             CategoryDialog.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
@@ -6923,11 +7000,11 @@ var Geshotel;
             CategoryDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            CategoryDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CategoryDialog);
             return CategoryDialog;
         }(Serenity.EntityDialog));
+        CategoryDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CategoryDialog);
         Northwind.CategoryDialog = CategoryDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6938,18 +7015,18 @@ var Geshotel;
         var CategoryGrid = (function (_super) {
             __extends(CategoryGrid, _super);
             function CategoryGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             CategoryGrid.prototype.getColumnsKey = function () { return "Northwind.Category"; };
             CategoryGrid.prototype.getDialogType = function () { return Northwind.CategoryDialog; };
             CategoryGrid.prototype.getIdProperty = function () { return Northwind.CategoryRow.idProperty; };
             CategoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.CategoryRow.localTextPrefix; };
             CategoryGrid.prototype.getService = function () { return Northwind.CategoryService.baseUrl; };
-            CategoryGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CategoryGrid);
             return CategoryGrid;
         }(Serenity.EntityGrid));
+        CategoryGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CategoryGrid);
         Northwind.CategoryGrid = CategoryGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6960,13 +7037,13 @@ var Geshotel;
         var CustomerDialog = (function (_super) {
             __extends(CustomerDialog, _super);
             function CustomerDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Northwind.CustomerForm(this.idPrefix);
-                this.ordersGrid = new Northwind.CustomerOrdersGrid(this.byId('OrdersGrid'));
-                this.ordersGrid.element.flexHeightOnly(1);
-                this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
-                Geshotel.DialogUtils.pendingChangesConfirmation(this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                var _this = _super.call(this) || this;
+                _this.form = new Northwind.CustomerForm(_this.idPrefix);
+                _this.ordersGrid = new Northwind.CustomerOrdersGrid(_this.byId('OrdersGrid'));
+                _this.ordersGrid.element.flexHeightOnly(1);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                Geshotel.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                return _this;
             }
             CustomerDialog.prototype.getFormKey = function () { return Northwind.CustomerForm.formKey; };
             CustomerDialog.prototype.getIdProperty = function () { return Northwind.CustomerRow.idProperty; };
@@ -6994,11 +7071,11 @@ var Geshotel;
                 _super.prototype.onSaveSuccess.call(this, response);
                 Q.reloadLookup('Northwind.Customer');
             };
-            CustomerDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomerDialog);
             return CustomerDialog;
         }(Serenity.EntityDialog));
+        CustomerDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CustomerDialog);
         Northwind.CustomerDialog = CustomerDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7009,7 +7086,7 @@ var Geshotel;
         var CustomerEditor = (function (_super) {
             __extends(CustomerEditor, _super);
             function CustomerEditor(hidden) {
-                _super.call(this, hidden);
+                return _super.call(this, hidden) || this;
             }
             CustomerEditor.prototype.getLookupKey = function () {
                 return 'Northwind.Customer';
@@ -7017,11 +7094,11 @@ var Geshotel;
             CustomerEditor.prototype.getItemText = function (item, lookup) {
                 return _super.prototype.getItemText.call(this, item, lookup) + ' [' + item.CustomerID + ']';
             };
-            CustomerEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], CustomerEditor);
             return CustomerEditor;
         }(Serenity.LookupEditorBase));
+        CustomerEditor = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], CustomerEditor);
         Northwind.CustomerEditor = CustomerEditor;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7032,7 +7109,7 @@ var Geshotel;
         var CustomerGrid = (function (_super) {
             __extends(CustomerGrid, _super);
             function CustomerGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             CustomerGrid.prototype.getColumnsKey = function () { return "Northwind.Customer"; };
             CustomerGrid.prototype.getDialogType = function () { return Northwind.CustomerDialog; };
@@ -7054,12 +7131,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            CustomerGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], CustomerGrid);
             return CustomerGrid;
         }(Serenity.EntityGrid));
+        CustomerGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], CustomerGrid);
         Northwind.CustomerGrid = CustomerGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7070,8 +7147,9 @@ var Geshotel;
         var OrderDialog = (function (_super) {
             __extends(OrderDialog, _super);
             function OrderDialog() {
-                _super.call(this);
-                this.form = new Northwind.OrderForm(this.idPrefix);
+                var _this = _super.call(this) || this;
+                _this.form = new Northwind.OrderForm(_this.idPrefix);
+                return _this;
             }
             OrderDialog.prototype.getFormKey = function () { return Northwind.OrderForm.formKey; };
             OrderDialog.prototype.getIdProperty = function () { return Northwind.OrderRow.idProperty; };
@@ -7095,11 +7173,11 @@ var Geshotel;
                 _super.prototype.updateInterface.call(this);
                 this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
             };
-            OrderDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDialog);
             return OrderDialog;
         }(Serenity.EntityDialog));
+        OrderDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], OrderDialog);
         Northwind.OrderDialog = OrderDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7111,17 +7189,17 @@ var Geshotel;
         var CustomerOrderDialog = (function (_super) {
             __extends(CustomerOrderDialog, _super);
             function CustomerOrderDialog() {
-                _super.call(this);
+                return _super.call(this) || this;
             }
             CustomerOrderDialog.prototype.updateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 Serenity.EditorUtils.setReadOnly(this.form.CustomerID, true);
             };
-            CustomerOrderDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomerOrderDialog);
             return CustomerOrderDialog;
         }(Northwind.OrderDialog));
+        CustomerOrderDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CustomerOrderDialog);
         Northwind.CustomerOrderDialog = CustomerOrderDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7132,7 +7210,7 @@ var Geshotel;
         var OrderGrid = (function (_super) {
             __extends(OrderGrid, _super);
             function OrderGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             OrderGrid.prototype.getColumnsKey = function () { return "Northwind.Order"; };
             OrderGrid.prototype.getDialogType = function () { return Northwind.OrderDialog; };
@@ -7212,12 +7290,12 @@ var Geshotel;
             OrderGrid.prototype.set_shippingState = function (value) {
                 this.shippingStateFilter.value = value == null ? '' : value.toString();
             };
-            OrderGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], OrderGrid);
             return OrderGrid;
         }(Serenity.EntityGrid));
+        OrderGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], OrderGrid);
         Northwind.OrderGrid = OrderGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7229,7 +7307,7 @@ var Geshotel;
         var CustomerOrdersGrid = (function (_super) {
             __extends(CustomerOrdersGrid, _super);
             function CustomerOrdersGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             CustomerOrdersGrid.prototype.getDialogType = function () { return Northwind.CustomerOrderDialog; };
             CustomerOrdersGrid.prototype.getColumns = function () {
@@ -7263,11 +7341,11 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
-            CustomerOrdersGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CustomerOrdersGrid);
             return CustomerOrdersGrid;
         }(Northwind.OrderGrid));
+        CustomerOrdersGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CustomerOrdersGrid);
         Northwind.CustomerOrdersGrid = CustomerOrdersGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7286,11 +7364,11 @@ var Geshotel;
                 var z;
                 return idList.map(function (x) { return ((z = byId[x]) ? z.FullName : x); }).join(", ");
             };
-            EmployeeListFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], EmployeeListFormatter);
             return EmployeeListFormatter;
         }());
+        EmployeeListFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], EmployeeListFormatter);
         Northwind.EmployeeListFormatter = EmployeeListFormatter;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7316,14 +7394,14 @@ var Geshotel;
                 if (this.genderProperty)
                     column.referencedFields.push(this.genderProperty);
             };
-            __decorate([
-                Serenity.Decorators.option()
-            ], EmployeeFormatter.prototype, "genderProperty", void 0);
-            EmployeeFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], EmployeeFormatter);
             return EmployeeFormatter;
         }());
+        __decorate([
+            Serenity.Decorators.option()
+        ], EmployeeFormatter.prototype, "genderProperty", void 0);
+        EmployeeFormatter = __decorate([
+            Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+        ], EmployeeFormatter);
         Northwind.EmployeeFormatter = EmployeeFormatter;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7334,8 +7412,9 @@ var Geshotel;
         var NoteDialog = (function (_super) {
             __extends(NoteDialog, _super);
             function NoteDialog() {
-                _super.call(this);
-                this.textEditor = new Serenity.HtmlNoteContentEditor(this.byId('Text'));
+                var _this = _super.call(this) || this;
+                _this.textEditor = new Serenity.HtmlNoteContentEditor(_this.byId('Text'));
+                return _this;
             }
             NoteDialog.prototype.getTemplate = function () {
                 return ("<form id='~_Form' class='s-Form'>" +
@@ -7370,11 +7449,11 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
-            NoteDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], NoteDialog);
             return NoteDialog;
         }(Serenity.TemplatedDialog));
+        NoteDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], NoteDialog);
         Northwind.NoteDialog = NoteDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7385,9 +7464,8 @@ var Geshotel;
         var NotesEditor = (function (_super) {
             __extends(NotesEditor, _super);
             function NotesEditor(div) {
-                var _this = this;
-                _super.call(this, div);
-                new Serenity.Toolbar(this.byId('Toolbar'), {
+                var _this = _super.call(this, div) || this;
+                new Serenity.Toolbar(_this.byId('Toolbar'), {
                     buttons: [{
                             title: 'Add Note',
                             cssClass: 'add-button',
@@ -7397,6 +7475,7 @@ var Geshotel;
                             }
                         }]
                 });
+                return _this;
             }
             NotesEditor.prototype.getTemplate = function () {
                 return "<div><div id='~_Toolbar'></div><ul id='~_NoteList'></ul></div>";
@@ -7501,12 +7580,12 @@ var Geshotel;
             NotesEditor.prototype.set_isDirty = function (value) {
                 this.isDirty = value;
             };
-            NotesEditor = __decorate([
-                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-                Serenity.Decorators.element("<div/>")
-            ], NotesEditor);
             return NotesEditor;
         }(Serenity.TemplatedWidget));
+        NotesEditor = __decorate([
+            Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+            Serenity.Decorators.element("<div/>")
+        ], NotesEditor);
         Northwind.NotesEditor = NotesEditor;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7520,11 +7599,11 @@ var Geshotel;
             FreightFormatter.prototype.format = function (ctx) {
                 return "<span class='freight-symbol'>" + Q.htmlEncode(ctx.value) + '</span>';
             };
-            FreightFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], FreightFormatter);
             return FreightFormatter;
         }());
+        FreightFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], FreightFormatter);
         Northwind.FreightFormatter = FreightFormatter;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7536,16 +7615,15 @@ var Geshotel;
         var OrderDetailDialog = (function (_super) {
             __extends(OrderDetailDialog, _super);
             function OrderDetailDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Northwind.OrderDetailForm(this.idPrefix);
-                this.form.ProductID.changeSelect2(function (e) {
+                var _this = _super.call(this) || this;
+                _this.form = new Northwind.OrderDetailForm(_this.idPrefix);
+                _this.form.ProductID.changeSelect2(function (e) {
                     var productID = Q.toId(_this.form.ProductID.value);
                     if (productID != null) {
                         _this.form.UnitPrice.value = Northwind.ProductRow.getLookup().itemById[productID].UnitPrice;
                     }
                 });
-                this.form.Discount.addValidationRule(this.uniqueName, function (e) {
+                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
                     var price = _this.form.UnitPrice.value;
                     var quantity = _this.form.Quantity.value;
                     var discount = _this.form.Discount.value;
@@ -7554,14 +7632,15 @@ var Geshotel;
                         return "Discount can't be higher than total price!";
                     }
                 });
+                return _this;
             }
             OrderDetailDialog.prototype.getFormKey = function () { return Northwind.OrderDetailForm.formKey; };
             OrderDetailDialog.prototype.getLocalTextPrefix = function () { return Northwind.OrderDetailRow.localTextPrefix; };
-            OrderDetailDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDetailDialog);
             return OrderDetailDialog;
         }(Geshotel.Common.GridEditorDialog));
+        OrderDetailDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], OrderDetailDialog);
         Northwind.OrderDetailDialog = OrderDetailDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7573,7 +7652,7 @@ var Geshotel;
         var OrderDetailsEditor = (function (_super) {
             __extends(OrderDetailsEditor, _super);
             function OrderDetailsEditor(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             OrderDetailsEditor.prototype.getColumnsKey = function () { return "Northwind.OrderDetail"; };
             OrderDetailsEditor.prototype.getDialogType = function () { return Northwind.OrderDetailDialog; };
@@ -7589,11 +7668,11 @@ var Geshotel;
                 row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
                 return true;
             };
-            OrderDetailsEditor = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderDetailsEditor);
             return OrderDetailsEditor;
         }(Geshotel.Common.GridEditorBase));
+        OrderDetailsEditor = __decorate([
+            Serenity.Decorators.registerClass()
+        ], OrderDetailsEditor);
         Northwind.OrderDetailsEditor = OrderDetailsEditor;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7604,8 +7683,9 @@ var Geshotel;
         var ProductDialog = (function (_super) {
             __extends(ProductDialog, _super);
             function ProductDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.ProductForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.ProductForm(_this.idPrefix);
+                return _this;
             }
             ProductDialog.prototype.getFormKey = function () { return Northwind.ProductForm.formKey; };
             ProductDialog.prototype.getIdProperty = function () { return Northwind.ProductRow.idProperty; };
@@ -7615,12 +7695,12 @@ var Geshotel;
             ProductDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            ProductDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.maximizable()
-            ], ProductDialog);
             return ProductDialog;
         }(Serenity.EntityDialog));
+        ProductDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.maximizable()
+        ], ProductDialog);
         Northwind.ProductDialog = ProductDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7631,10 +7711,10 @@ var Geshotel;
         var ProductGrid = (function (_super) {
             __extends(ProductGrid, _super);
             function ProductGrid(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.pendingChanges = {};
-                this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+                var _this = _super.call(this, container) || this;
+                _this.pendingChanges = {};
+                _this.slickContainer.on('change', '.edit:input', function (e) { return _this.inputsChange(e); });
+                return _this;
             }
             ProductGrid.prototype.getColumnsKey = function () { return "Northwind.Product"; };
             ProductGrid.prototype.getDialogType = function () { return Northwind.ProductDialog; };
@@ -7858,12 +7938,12 @@ var Geshotel;
                 }
                 return flt;
             };
-            ProductGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ProductGrid);
             return ProductGrid;
         }(Serenity.EntityGrid));
+        ProductGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ProductGrid);
         Northwind.ProductGrid = ProductGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7874,8 +7954,9 @@ var Geshotel;
         var RegionDialog = (function (_super) {
             __extends(RegionDialog, _super);
             function RegionDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.RegionForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.RegionForm(_this.idPrefix);
+                return _this;
             }
             RegionDialog.prototype.getFormKey = function () { return Northwind.RegionForm.formKey; };
             RegionDialog.prototype.getIdProperty = function () { return Northwind.RegionRow.idProperty; };
@@ -7885,11 +7966,11 @@ var Geshotel;
             RegionDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            RegionDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RegionDialog);
             return RegionDialog;
         }(Serenity.EntityDialog));
+        RegionDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RegionDialog);
         Northwind.RegionDialog = RegionDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7900,18 +7981,18 @@ var Geshotel;
         var RegionGrid = (function (_super) {
             __extends(RegionGrid, _super);
             function RegionGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             RegionGrid.prototype.getColumnsKey = function () { return "Northwind.Region"; };
             RegionGrid.prototype.getDialogType = function () { return Northwind.RegionDialog; };
             RegionGrid.prototype.getIdProperty = function () { return Northwind.RegionRow.idProperty; };
             RegionGrid.prototype.getLocalTextPrefix = function () { return Northwind.RegionRow.localTextPrefix; };
             RegionGrid.prototype.getService = function () { return Northwind.RegionService.baseUrl; };
-            RegionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RegionGrid);
             return RegionGrid;
         }(Serenity.EntityGrid));
+        RegionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RegionGrid);
         Northwind.RegionGrid = RegionGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7919,17 +8000,16 @@ var Geshotel;
 (function (Geshotel) {
     var Northwind;
     (function (Northwind) {
-        var PhoneEditor = (function (_super) {
+        var PhoneEditor = PhoneEditor_1 = (function (_super) {
             __extends(PhoneEditor, _super);
             function PhoneEditor(input) {
-                var _this = this;
-                _super.call(this, input);
-                this.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, input) || this;
+                _this.addValidationRule(_this.uniqueName, function (e) {
                     var value = Q.trimToNull(_this.get_value());
                     if (value == null) {
                         return null;
                     }
-                    return PhoneEditor.validate(value, _this.multiple);
+                    return PhoneEditor_1.validate(value, _this.multiple);
                 });
                 input.bind('change', function (e) {
                     if (!Serenity.WX.hasOriginalEvent(e)) {
@@ -7942,6 +8022,7 @@ var Geshotel;
                         _this.formatValue();
                     }
                 });
+                return _this;
             }
             PhoneEditor.prototype.formatValue = function () {
                 this.element.val(this.getFormattedValue());
@@ -7949,9 +8030,9 @@ var Geshotel;
             PhoneEditor.prototype.getFormattedValue = function () {
                 var value = this.element.val();
                 if (this.multiple) {
-                    return PhoneEditor.formatMulti(value, PhoneEditor.formatPhone);
+                    return PhoneEditor_1.formatMulti(value, PhoneEditor_1.formatPhone);
                 }
-                return PhoneEditor.formatPhone(value);
+                return PhoneEditor_1.formatPhone(value);
             };
             PhoneEditor.prototype.get_value = function () {
                 return this.getFormattedValue();
@@ -7960,7 +8041,7 @@ var Geshotel;
                 this.element.val(value);
             };
             PhoneEditor.validate = function (phone, isMultiple) {
-                var valid = (isMultiple ? PhoneEditor.isValidMulti(phone, PhoneEditor.isValidPhone) : PhoneEditor.isValidPhone(phone));
+                var valid = (isMultiple ? PhoneEditor_1.isValidMulti(phone, PhoneEditor_1.isValidPhone) : PhoneEditor_1.isValidPhone(phone));
                 if (valid) {
                     return null;
                 }
@@ -7995,7 +8076,7 @@ var Geshotel;
                 return true;
             };
             PhoneEditor.formatPhone = function (phone) {
-                if (!PhoneEditor.isValidPhone(phone)) {
+                if (!PhoneEditor_1.isValidPhone(phone)) {
                     return phone;
                 }
                 phone = Q.replaceAll(Q.replaceAll(Q.replaceAll(Q.replaceAll(phone, ' ', ''), '-', ''), '(', ''), ')', '');
@@ -8043,15 +8124,16 @@ var Geshotel;
                 }
                 return true;
             };
-            __decorate([
-                Serenity.Decorators.option()
-            ], PhoneEditor.prototype, "multiple", void 0);
-            PhoneEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], PhoneEditor);
             return PhoneEditor;
         }(Serenity.StringEditor));
+        __decorate([
+            Serenity.Decorators.option()
+        ], PhoneEditor.prototype, "multiple", void 0);
+        PhoneEditor = PhoneEditor_1 = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], PhoneEditor);
         Northwind.PhoneEditor = PhoneEditor;
+        var PhoneEditor_1;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -8061,8 +8143,9 @@ var Geshotel;
         var ShipperDialog = (function (_super) {
             __extends(ShipperDialog, _super);
             function ShipperDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.ShipperForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.ShipperForm(_this.idPrefix);
+                return _this;
             }
             ShipperDialog.prototype.getFormKey = function () { return Northwind.ShipperForm.formKey; };
             ShipperDialog.prototype.getIdProperty = function () { return Northwind.ShipperRow.idProperty; };
@@ -8072,11 +8155,11 @@ var Geshotel;
             ShipperDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            ShipperDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ShipperDialog);
             return ShipperDialog;
         }(Serenity.EntityDialog));
+        ShipperDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ShipperDialog);
         Northwind.ShipperDialog = ShipperDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8092,11 +8175,11 @@ var Geshotel;
                     Q.replaceAll((ctx.value || '').toString(), ' ', '') +
                     "'>" + Q.htmlEncode(ctx.value) + '</span>';
             };
-            ShipperFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], ShipperFormatter);
             return ShipperFormatter;
         }());
+        ShipperFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], ShipperFormatter);
         Northwind.ShipperFormatter = ShipperFormatter;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8107,18 +8190,18 @@ var Geshotel;
         var ShipperGrid = (function (_super) {
             __extends(ShipperGrid, _super);
             function ShipperGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ShipperGrid.prototype.getColumnsKey = function () { return "Northwind.Shipper"; };
             ShipperGrid.prototype.getDialogType = function () { return Northwind.ShipperDialog; };
             ShipperGrid.prototype.getIdProperty = function () { return Northwind.ShipperRow.idProperty; };
             ShipperGrid.prototype.getLocalTextPrefix = function () { return Northwind.ShipperRow.localTextPrefix; };
             ShipperGrid.prototype.getService = function () { return Northwind.ShipperService.baseUrl; };
-            ShipperGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ShipperGrid);
             return ShipperGrid;
         }(Serenity.EntityGrid));
+        ShipperGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ShipperGrid);
         Northwind.ShipperGrid = ShipperGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8129,8 +8212,9 @@ var Geshotel;
         var SupplierDialog = (function (_super) {
             __extends(SupplierDialog, _super);
             function SupplierDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.SupplierForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.SupplierForm(_this.idPrefix);
+                return _this;
             }
             SupplierDialog.prototype.getFormKey = function () { return Northwind.SupplierForm.formKey; };
             SupplierDialog.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
@@ -8140,11 +8224,11 @@ var Geshotel;
             SupplierDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            SupplierDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SupplierDialog);
             return SupplierDialog;
         }(Serenity.EntityDialog));
+        SupplierDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SupplierDialog);
         Northwind.SupplierDialog = SupplierDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8155,18 +8239,18 @@ var Geshotel;
         var SupplierGrid = (function (_super) {
             __extends(SupplierGrid, _super);
             function SupplierGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             SupplierGrid.prototype.getColumnsKey = function () { return "Northwind.Supplier"; };
             SupplierGrid.prototype.getDialogType = function () { return Northwind.SupplierDialog; };
             SupplierGrid.prototype.getIdProperty = function () { return Northwind.SupplierRow.idProperty; };
             SupplierGrid.prototype.getLocalTextPrefix = function () { return Northwind.SupplierRow.localTextPrefix; };
             SupplierGrid.prototype.getService = function () { return Northwind.SupplierService.baseUrl; };
-            SupplierGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SupplierGrid);
             return SupplierGrid;
         }(Serenity.EntityGrid));
+        SupplierGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SupplierGrid);
         Northwind.SupplierGrid = SupplierGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8177,8 +8261,9 @@ var Geshotel;
         var TerritoryDialog = (function (_super) {
             __extends(TerritoryDialog, _super);
             function TerritoryDialog() {
-                _super.apply(this, arguments);
-                this.form = new Northwind.TerritoryForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Northwind.TerritoryForm(_this.idPrefix);
+                return _this;
             }
             TerritoryDialog.prototype.getFormKey = function () { return Northwind.TerritoryForm.formKey; };
             TerritoryDialog.prototype.getIdProperty = function () { return Northwind.TerritoryRow.idProperty; };
@@ -8188,11 +8273,11 @@ var Geshotel;
             TerritoryDialog.prototype.getLanguages = function () {
                 return Geshotel.LanguageList.getValue();
             };
-            TerritoryDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TerritoryDialog);
             return TerritoryDialog;
         }(Serenity.EntityDialog));
+        TerritoryDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TerritoryDialog);
         Northwind.TerritoryDialog = TerritoryDialog;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8203,18 +8288,18 @@ var Geshotel;
         var TerritoryGrid = (function (_super) {
             __extends(TerritoryGrid, _super);
             function TerritoryGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TerritoryGrid.prototype.getColumnsKey = function () { return "Northwind.Territory"; };
             TerritoryGrid.prototype.getDialogType = function () { return Northwind.TerritoryDialog; };
             TerritoryGrid.prototype.getIdProperty = function () { return Northwind.TerritoryRow.idProperty; };
             TerritoryGrid.prototype.getLocalTextPrefix = function () { return Northwind.TerritoryRow.localTextPrefix; };
             TerritoryGrid.prototype.getService = function () { return Northwind.TerritoryService.baseUrl; };
-            TerritoryGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TerritoryGrid);
             return TerritoryGrid;
         }(Serenity.EntityGrid));
+        TerritoryGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TerritoryGrid);
         Northwind.TerritoryGrid = TerritoryGrid;
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8225,20 +8310,21 @@ var Geshotel;
         var BusinessUnitDialog = (function (_super) {
             __extends(BusinessUnitDialog, _super);
             function BusinessUnitDialog() {
-                _super.apply(this, arguments);
-                this.form = new Organization.BusinessUnitForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Organization.BusinessUnitForm(_this.idPrefix);
+                return _this;
             }
             BusinessUnitDialog.prototype.getFormKey = function () { return Organization.BusinessUnitForm.formKey; };
             BusinessUnitDialog.prototype.getIdProperty = function () { return Organization.BusinessUnitRow.idProperty; };
             BusinessUnitDialog.prototype.getLocalTextPrefix = function () { return Organization.BusinessUnitRow.localTextPrefix; };
             BusinessUnitDialog.prototype.getNameProperty = function () { return Organization.BusinessUnitRow.nameProperty; };
             BusinessUnitDialog.prototype.getService = function () { return Organization.BusinessUnitService.baseUrl; };
-            BusinessUnitDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], BusinessUnitDialog);
             return BusinessUnitDialog;
         }(Serenity.EntityDialog));
+        BusinessUnitDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], BusinessUnitDialog);
         Organization.BusinessUnitDialog = BusinessUnitDialog;
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8249,7 +8335,7 @@ var Geshotel;
         var BusinessUnitEditor = (function (_super) {
             __extends(BusinessUnitEditor, _super);
             function BusinessUnitEditor(hidden) {
-                _super.call(this, hidden);
+                return _super.call(this, hidden) || this;
             }
             BusinessUnitEditor.prototype.getLookupKey = function () {
                 return Organization.BusinessUnitRow.lookupKey;
@@ -8266,11 +8352,11 @@ var Geshotel;
                 }
                 return text;
             };
-            BusinessUnitEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], BusinessUnitEditor);
             return BusinessUnitEditor;
         }(Serenity.LookupEditorBase));
+        BusinessUnitEditor = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], BusinessUnitEditor);
         Organization.BusinessUnitEditor = BusinessUnitEditor;
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8281,13 +8367,14 @@ var Geshotel;
         var BusinessUnitGrid = (function (_super) {
             __extends(BusinessUnitGrid, _super);
             function BusinessUnitGrid(container) {
-                _super.call(this, container);
+                var _this = _super.call(this, container) || this;
                 new Serenity.TreeGridMixin({
-                    grid: this,
+                    grid: _this,
                     getParentId: function (x) { return x.ParentUnitId; },
                     toggleField: Organization.BusinessUnitRow.Fields.Name,
                     initialCollapse: function () { return false; }
                 });
+                return _this;
             }
             BusinessUnitGrid.prototype.getColumnsKey = function () { return 'Organization.BusinessUnit'; };
             BusinessUnitGrid.prototype.getDialogType = function () { return Organization.BusinessUnitDialog; };
@@ -8332,11 +8419,11 @@ var Geshotel;
                     }
                 }
             };
-            BusinessUnitGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], BusinessUnitGrid);
             return BusinessUnitGrid;
         }(Serenity.EntityGrid));
+        BusinessUnitGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], BusinessUnitGrid);
         Organization.BusinessUnitGrid = BusinessUnitGrid;
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8347,20 +8434,21 @@ var Geshotel;
         var ContactDialog = (function (_super) {
             __extends(ContactDialog, _super);
             function ContactDialog() {
-                _super.apply(this, arguments);
-                this.form = new Organization.ContactForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Organization.ContactForm(_this.idPrefix);
+                return _this;
             }
             ContactDialog.prototype.getFormKey = function () { return Organization.ContactForm.formKey; };
             ContactDialog.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
             ContactDialog.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
             ContactDialog.prototype.getNameProperty = function () { return Organization.ContactRow.nameProperty; };
             ContactDialog.prototype.getService = function () { return Organization.ContactService.baseUrl; };
-            ContactDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ContactDialog);
             return ContactDialog;
         }(Serenity.EntityDialog));
+        ContactDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ContactDialog);
         Organization.ContactDialog = ContactDialog;
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8371,18 +8459,18 @@ var Geshotel;
         var ContactGrid = (function (_super) {
             __extends(ContactGrid, _super);
             function ContactGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ContactGrid.prototype.getColumnsKey = function () { return 'Organization.Contact'; };
             ContactGrid.prototype.getDialogType = function () { return Organization.ContactDialog; };
             ContactGrid.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
             ContactGrid.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
             ContactGrid.prototype.getService = function () { return Organization.ContactService.baseUrl; };
-            ContactGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ContactGrid);
             return ContactGrid;
         }(Serenity.EntityGrid));
+        ContactGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContactGrid);
         Organization.ContactGrid = ContactGrid;
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8393,20 +8481,21 @@ var Geshotel;
         var CategoriaHotelesDialog = (function (_super) {
             __extends(CategoriaHotelesDialog, _super);
             function CategoriaHotelesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.CategoriaHotelesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.CategoriaHotelesForm(_this.idPrefix);
+                return _this;
             }
             CategoriaHotelesDialog.prototype.getFormKey = function () { return Portal.CategoriaHotelesForm.formKey; };
             CategoriaHotelesDialog.prototype.getIdProperty = function () { return Portal.CategoriaHotelesRow.idProperty; };
             CategoriaHotelesDialog.prototype.getLocalTextPrefix = function () { return Portal.CategoriaHotelesRow.localTextPrefix; };
             CategoriaHotelesDialog.prototype.getNameProperty = function () { return Portal.CategoriaHotelesRow.nameProperty; };
             CategoriaHotelesDialog.prototype.getService = function () { return Portal.CategoriaHotelesService.baseUrl; };
-            CategoriaHotelesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], CategoriaHotelesDialog);
             return CategoriaHotelesDialog;
         }(Serenity.EntityDialog));
+        CategoriaHotelesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], CategoriaHotelesDialog);
         Portal.CategoriaHotelesDialog = CategoriaHotelesDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8417,18 +8506,18 @@ var Geshotel;
         var CategoriaHotelesGrid = (function (_super) {
             __extends(CategoriaHotelesGrid, _super);
             function CategoriaHotelesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             CategoriaHotelesGrid.prototype.getColumnsKey = function () { return 'Portal.CategoriaHoteles'; };
             CategoriaHotelesGrid.prototype.getDialogType = function () { return Portal.CategoriaHotelesDialog; };
             CategoriaHotelesGrid.prototype.getIdProperty = function () { return Portal.CategoriaHotelesRow.idProperty; };
             CategoriaHotelesGrid.prototype.getLocalTextPrefix = function () { return Portal.CategoriaHotelesRow.localTextPrefix; };
             CategoriaHotelesGrid.prototype.getService = function () { return Portal.CategoriaHotelesService.baseUrl; };
-            CategoriaHotelesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CategoriaHotelesGrid);
             return CategoriaHotelesGrid;
         }(Serenity.EntityGrid));
+        CategoriaHotelesGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], CategoriaHotelesGrid);
         Portal.CategoriaHotelesGrid = CategoriaHotelesGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8439,20 +8528,21 @@ var Geshotel;
         var ComunidadesAutonomasDialog = (function (_super) {
             __extends(ComunidadesAutonomasDialog, _super);
             function ComunidadesAutonomasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.ComunidadesAutonomasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.ComunidadesAutonomasForm(_this.idPrefix);
+                return _this;
             }
             ComunidadesAutonomasDialog.prototype.getFormKey = function () { return Portal.ComunidadesAutonomasForm.formKey; };
             ComunidadesAutonomasDialog.prototype.getIdProperty = function () { return Portal.ComunidadesAutonomasRow.idProperty; };
             ComunidadesAutonomasDialog.prototype.getLocalTextPrefix = function () { return Portal.ComunidadesAutonomasRow.localTextPrefix; };
             ComunidadesAutonomasDialog.prototype.getNameProperty = function () { return Portal.ComunidadesAutonomasRow.nameProperty; };
             ComunidadesAutonomasDialog.prototype.getService = function () { return Portal.ComunidadesAutonomasService.baseUrl; };
-            ComunidadesAutonomasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ComunidadesAutonomasDialog);
             return ComunidadesAutonomasDialog;
         }(Serenity.EntityDialog));
+        ComunidadesAutonomasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ComunidadesAutonomasDialog);
         Portal.ComunidadesAutonomasDialog = ComunidadesAutonomasDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8463,7 +8553,7 @@ var Geshotel;
         var ComunidadesAutonomasGrid = (function (_super) {
             __extends(ComunidadesAutonomasGrid, _super);
             function ComunidadesAutonomasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ComunidadesAutonomasGrid.prototype.getColumnsKey = function () { return 'Portal.ComunidadesAutonomas'; };
             ComunidadesAutonomasGrid.prototype.getDialogType = function () { return Portal.ComunidadesAutonomasDialog; };
@@ -8488,12 +8578,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            ComunidadesAutonomasGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ComunidadesAutonomasGrid);
             return ComunidadesAutonomasGrid;
         }(Serenity.EntityGrid));
+        ComunidadesAutonomasGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ComunidadesAutonomasGrid);
         Portal.ComunidadesAutonomasGrid = ComunidadesAutonomasGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8504,20 +8594,21 @@ var Geshotel;
         var EmpresasDialog = (function (_super) {
             __extends(EmpresasDialog, _super);
             function EmpresasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.EmpresasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.EmpresasForm(_this.idPrefix);
+                return _this;
             }
             EmpresasDialog.prototype.getFormKey = function () { return Portal.EmpresasForm.formKey; };
             EmpresasDialog.prototype.getIdProperty = function () { return Portal.EmpresasRow.idProperty; };
             EmpresasDialog.prototype.getLocalTextPrefix = function () { return Portal.EmpresasRow.localTextPrefix; };
             EmpresasDialog.prototype.getNameProperty = function () { return Portal.EmpresasRow.nameProperty; };
             EmpresasDialog.prototype.getService = function () { return Portal.EmpresasService.baseUrl; };
-            EmpresasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], EmpresasDialog);
             return EmpresasDialog;
         }(Serenity.EntityDialog));
+        EmpresasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], EmpresasDialog);
         Portal.EmpresasDialog = EmpresasDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8528,7 +8619,7 @@ var Geshotel;
         var EmpresasGrid = (function (_super) {
             __extends(EmpresasGrid, _super);
             function EmpresasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             EmpresasGrid.prototype.getColumnsKey = function () { return 'Portal.Empresas'; };
             EmpresasGrid.prototype.getDialogType = function () { return Portal.EmpresasDialog; };
@@ -8553,12 +8644,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            EmpresasGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], EmpresasGrid);
             return EmpresasGrid;
         }(Serenity.EntityGrid));
+        EmpresasGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], EmpresasGrid);
         Portal.EmpresasGrid = EmpresasGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8569,20 +8660,21 @@ var Geshotel;
         var FormasDePagoDialog = (function (_super) {
             __extends(FormasDePagoDialog, _super);
             function FormasDePagoDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.FormasDePagoForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.FormasDePagoForm(_this.idPrefix);
+                return _this;
             }
             FormasDePagoDialog.prototype.getFormKey = function () { return Portal.FormasDePagoForm.formKey; };
             FormasDePagoDialog.prototype.getIdProperty = function () { return Portal.FormasDePagoRow.idProperty; };
             FormasDePagoDialog.prototype.getLocalTextPrefix = function () { return Portal.FormasDePagoRow.localTextPrefix; };
             FormasDePagoDialog.prototype.getNameProperty = function () { return Portal.FormasDePagoRow.nameProperty; };
             FormasDePagoDialog.prototype.getService = function () { return Portal.FormasDePagoService.baseUrl; };
-            FormasDePagoDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], FormasDePagoDialog);
             return FormasDePagoDialog;
         }(Serenity.EntityDialog));
+        FormasDePagoDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], FormasDePagoDialog);
         Portal.FormasDePagoDialog = FormasDePagoDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8593,7 +8685,7 @@ var Geshotel;
         var FormasDePagoGrid = (function (_super) {
             __extends(FormasDePagoGrid, _super);
             function FormasDePagoGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             FormasDePagoGrid.prototype.getColumnsKey = function () { return 'Portal.FormasDePago'; };
             FormasDePagoGrid.prototype.getDialogType = function () { return Portal.FormasDePagoDialog; };
@@ -8615,12 +8707,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            FormasDePagoGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], FormasDePagoGrid);
             return FormasDePagoGrid;
         }(Serenity.EntityGrid));
+        FormasDePagoGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], FormasDePagoGrid);
         Portal.FormasDePagoGrid = FormasDePagoGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8631,20 +8723,21 @@ var Geshotel;
         var GruposDeClienteDialog = (function (_super) {
             __extends(GruposDeClienteDialog, _super);
             function GruposDeClienteDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.GruposDeClienteForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.GruposDeClienteForm(_this.idPrefix);
+                return _this;
             }
             GruposDeClienteDialog.prototype.getFormKey = function () { return Portal.GruposDeClienteForm.formKey; };
             GruposDeClienteDialog.prototype.getIdProperty = function () { return Portal.GruposDeClienteRow.idProperty; };
             GruposDeClienteDialog.prototype.getLocalTextPrefix = function () { return Portal.GruposDeClienteRow.localTextPrefix; };
             GruposDeClienteDialog.prototype.getNameProperty = function () { return Portal.GruposDeClienteRow.nameProperty; };
             GruposDeClienteDialog.prototype.getService = function () { return Portal.GruposDeClienteService.baseUrl; };
-            GruposDeClienteDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], GruposDeClienteDialog);
             return GruposDeClienteDialog;
         }(Serenity.EntityDialog));
+        GruposDeClienteDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], GruposDeClienteDialog);
         Portal.GruposDeClienteDialog = GruposDeClienteDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8655,18 +8748,18 @@ var Geshotel;
         var GruposDeClienteGrid = (function (_super) {
             __extends(GruposDeClienteGrid, _super);
             function GruposDeClienteGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             GruposDeClienteGrid.prototype.getColumnsKey = function () { return 'Portal.GruposDeCliente'; };
             GruposDeClienteGrid.prototype.getDialogType = function () { return Portal.GruposDeClienteDialog; };
             GruposDeClienteGrid.prototype.getIdProperty = function () { return Portal.GruposDeClienteRow.idProperty; };
             GruposDeClienteGrid.prototype.getLocalTextPrefix = function () { return Portal.GruposDeClienteRow.localTextPrefix; };
             GruposDeClienteGrid.prototype.getService = function () { return Portal.GruposDeClienteService.baseUrl; };
-            GruposDeClienteGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GruposDeClienteGrid);
             return GruposDeClienteGrid;
         }(Serenity.EntityGrid));
+        GruposDeClienteGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], GruposDeClienteGrid);
         Portal.GruposDeClienteGrid = GruposDeClienteGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8677,20 +8770,21 @@ var Geshotel;
         var GruposDeServiciosDialog = (function (_super) {
             __extends(GruposDeServiciosDialog, _super);
             function GruposDeServiciosDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.GruposDeServiciosForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.GruposDeServiciosForm(_this.idPrefix);
+                return _this;
             }
             GruposDeServiciosDialog.prototype.getFormKey = function () { return Portal.GruposDeServiciosForm.formKey; };
             GruposDeServiciosDialog.prototype.getIdProperty = function () { return Portal.GruposDeServiciosRow.idProperty; };
             GruposDeServiciosDialog.prototype.getLocalTextPrefix = function () { return Portal.GruposDeServiciosRow.localTextPrefix; };
             GruposDeServiciosDialog.prototype.getNameProperty = function () { return Portal.GruposDeServiciosRow.nameProperty; };
             GruposDeServiciosDialog.prototype.getService = function () { return Portal.GruposDeServiciosService.baseUrl; };
-            GruposDeServiciosDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], GruposDeServiciosDialog);
             return GruposDeServiciosDialog;
         }(Serenity.EntityDialog));
+        GruposDeServiciosDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], GruposDeServiciosDialog);
         Portal.GruposDeServiciosDialog = GruposDeServiciosDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8701,18 +8795,18 @@ var Geshotel;
         var GruposDeServiciosGrid = (function (_super) {
             __extends(GruposDeServiciosGrid, _super);
             function GruposDeServiciosGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             GruposDeServiciosGrid.prototype.getColumnsKey = function () { return 'Portal.GruposDeServicios'; };
             GruposDeServiciosGrid.prototype.getDialogType = function () { return Portal.GruposDeServiciosDialog; };
             GruposDeServiciosGrid.prototype.getIdProperty = function () { return Portal.GruposDeServiciosRow.idProperty; };
             GruposDeServiciosGrid.prototype.getLocalTextPrefix = function () { return Portal.GruposDeServiciosRow.localTextPrefix; };
             GruposDeServiciosGrid.prototype.getService = function () { return Portal.GruposDeServiciosService.baseUrl; };
-            GruposDeServiciosGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GruposDeServiciosGrid);
             return GruposDeServiciosGrid;
         }(Serenity.EntityGrid));
+        GruposDeServiciosGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], GruposDeServiciosGrid);
         Portal.GruposDeServiciosGrid = GruposDeServiciosGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8723,20 +8817,21 @@ var Geshotel;
         var GruposHabitacionDialog = (function (_super) {
             __extends(GruposHabitacionDialog, _super);
             function GruposHabitacionDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.GruposHabitacionForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.GruposHabitacionForm(_this.idPrefix);
+                return _this;
             }
             GruposHabitacionDialog.prototype.getFormKey = function () { return Portal.GruposHabitacionForm.formKey; };
             GruposHabitacionDialog.prototype.getIdProperty = function () { return Portal.GruposHabitacionRow.idProperty; };
             GruposHabitacionDialog.prototype.getLocalTextPrefix = function () { return Portal.GruposHabitacionRow.localTextPrefix; };
             GruposHabitacionDialog.prototype.getNameProperty = function () { return Portal.GruposHabitacionRow.nameProperty; };
             GruposHabitacionDialog.prototype.getService = function () { return Portal.GruposHabitacionService.baseUrl; };
-            GruposHabitacionDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], GruposHabitacionDialog);
             return GruposHabitacionDialog;
         }(Serenity.EntityDialog));
+        GruposHabitacionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], GruposHabitacionDialog);
         Portal.GruposHabitacionDialog = GruposHabitacionDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8747,18 +8842,18 @@ var Geshotel;
         var GruposHabitacionGrid = (function (_super) {
             __extends(GruposHabitacionGrid, _super);
             function GruposHabitacionGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             GruposHabitacionGrid.prototype.getColumnsKey = function () { return 'Portal.GruposHabitacion'; };
             GruposHabitacionGrid.prototype.getDialogType = function () { return Portal.GruposHabitacionDialog; };
             GruposHabitacionGrid.prototype.getIdProperty = function () { return Portal.GruposHabitacionRow.idProperty; };
             GruposHabitacionGrid.prototype.getLocalTextPrefix = function () { return Portal.GruposHabitacionRow.localTextPrefix; };
             GruposHabitacionGrid.prototype.getService = function () { return Portal.GruposHabitacionService.baseUrl; };
-            GruposHabitacionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GruposHabitacionGrid);
             return GruposHabitacionGrid;
         }(Serenity.EntityGrid));
+        GruposHabitacionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], GruposHabitacionGrid);
         Portal.GruposHabitacionGrid = GruposHabitacionGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8769,20 +8864,21 @@ var Geshotel;
         var HotelesDialog = (function (_super) {
             __extends(HotelesDialog, _super);
             function HotelesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.HotelesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.HotelesForm(_this.idPrefix);
+                return _this;
             }
             HotelesDialog.prototype.getFormKey = function () { return Portal.HotelesForm.formKey; };
             HotelesDialog.prototype.getIdProperty = function () { return Portal.HotelesRow.idProperty; };
             HotelesDialog.prototype.getLocalTextPrefix = function () { return Portal.HotelesRow.localTextPrefix; };
             HotelesDialog.prototype.getNameProperty = function () { return Portal.HotelesRow.nameProperty; };
             HotelesDialog.prototype.getService = function () { return Portal.HotelesService.baseUrl; };
-            HotelesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], HotelesDialog);
             return HotelesDialog;
         }(Serenity.EntityDialog));
+        HotelesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], HotelesDialog);
         Portal.HotelesDialog = HotelesDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8793,7 +8889,7 @@ var Geshotel;
         var HotelesGrid = (function (_super) {
             __extends(HotelesGrid, _super);
             function HotelesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             HotelesGrid.prototype.getColumnsKey = function () { return 'Portal.Hoteles'; };
             HotelesGrid.prototype.getDialogType = function () { return Portal.HotelesDialog; };
@@ -8818,12 +8914,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            HotelesGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], HotelesGrid);
             return HotelesGrid;
         }(Serenity.EntityGrid));
+        HotelesGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], HotelesGrid);
         Portal.HotelesGrid = HotelesGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8834,20 +8930,21 @@ var Geshotel;
         var MonedasDialog = (function (_super) {
             __extends(MonedasDialog, _super);
             function MonedasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.MonedasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.MonedasForm(_this.idPrefix);
+                return _this;
             }
             MonedasDialog.prototype.getFormKey = function () { return Portal.MonedasForm.formKey; };
             MonedasDialog.prototype.getIdProperty = function () { return Portal.MonedasRow.idProperty; };
             MonedasDialog.prototype.getLocalTextPrefix = function () { return Portal.MonedasRow.localTextPrefix; };
             MonedasDialog.prototype.getNameProperty = function () { return Portal.MonedasRow.nameProperty; };
             MonedasDialog.prototype.getService = function () { return Portal.MonedasService.baseUrl; };
-            MonedasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MonedasDialog);
             return MonedasDialog;
         }(Serenity.EntityDialog));
+        MonedasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], MonedasDialog);
         Portal.MonedasDialog = MonedasDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8858,7 +8955,7 @@ var Geshotel;
         var MonedasGrid = (function (_super) {
             __extends(MonedasGrid, _super);
             function MonedasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             MonedasGrid.prototype.getColumnsKey = function () { return 'Portal.Monedas'; };
             MonedasGrid.prototype.getDialogType = function () { return Portal.MonedasDialog; };
@@ -8883,12 +8980,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            MonedasGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], MonedasGrid);
             return MonedasGrid;
         }(Serenity.EntityGrid));
+        MonedasGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], MonedasGrid);
         Portal.MonedasGrid = MonedasGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8899,20 +8996,21 @@ var Geshotel;
         var NacionesDialog = (function (_super) {
             __extends(NacionesDialog, _super);
             function NacionesDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.NacionesForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.NacionesForm(_this.idPrefix);
+                return _this;
             }
             NacionesDialog.prototype.getFormKey = function () { return Portal.NacionesForm.formKey; };
             NacionesDialog.prototype.getIdProperty = function () { return Portal.NacionesRow.idProperty; };
             NacionesDialog.prototype.getLocalTextPrefix = function () { return Portal.NacionesRow.localTextPrefix; };
             NacionesDialog.prototype.getNameProperty = function () { return Portal.NacionesRow.nameProperty; };
             NacionesDialog.prototype.getService = function () { return Portal.NacionesService.baseUrl; };
-            NacionesDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], NacionesDialog);
             return NacionesDialog;
         }(Serenity.EntityDialog));
+        NacionesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], NacionesDialog);
         Portal.NacionesDialog = NacionesDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8923,7 +9021,7 @@ var Geshotel;
         var NacionesGrid = (function (_super) {
             __extends(NacionesGrid, _super);
             function NacionesGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             NacionesGrid.prototype.getColumnsKey = function () { return 'Portal.Naciones'; };
             NacionesGrid.prototype.getDialogType = function () { return Portal.NacionesDialog; };
@@ -8948,12 +9046,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            NacionesGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], NacionesGrid);
             return NacionesGrid;
         }(Serenity.EntityGrid));
+        NacionesGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], NacionesGrid);
         Portal.NacionesGrid = NacionesGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8964,20 +9062,21 @@ var Geshotel;
         var ProvinciasDialog = (function (_super) {
             __extends(ProvinciasDialog, _super);
             function ProvinciasDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.ProvinciasForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.ProvinciasForm(_this.idPrefix);
+                return _this;
             }
             ProvinciasDialog.prototype.getFormKey = function () { return Portal.ProvinciasForm.formKey; };
             ProvinciasDialog.prototype.getIdProperty = function () { return Portal.ProvinciasRow.idProperty; };
             ProvinciasDialog.prototype.getLocalTextPrefix = function () { return Portal.ProvinciasRow.localTextPrefix; };
             ProvinciasDialog.prototype.getNameProperty = function () { return Portal.ProvinciasRow.nameProperty; };
             ProvinciasDialog.prototype.getService = function () { return Portal.ProvinciasService.baseUrl; };
-            ProvinciasDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ProvinciasDialog);
             return ProvinciasDialog;
         }(Serenity.EntityDialog));
+        ProvinciasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ProvinciasDialog);
         Portal.ProvinciasDialog = ProvinciasDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8988,7 +9087,7 @@ var Geshotel;
         var ProvinciasGrid = (function (_super) {
             __extends(ProvinciasGrid, _super);
             function ProvinciasGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ProvinciasGrid.prototype.getColumnsKey = function () { return 'Portal.Provincias'; };
             ProvinciasGrid.prototype.getDialogType = function () { return Portal.ProvinciasDialog; };
@@ -9013,12 +9112,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            ProvinciasGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ProvinciasGrid);
             return ProvinciasGrid;
         }(Serenity.EntityGrid));
+        ProvinciasGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ProvinciasGrid);
         Portal.ProvinciasGrid = ProvinciasGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9029,20 +9128,21 @@ var Geshotel;
         var ServiciosDialog = (function (_super) {
             __extends(ServiciosDialog, _super);
             function ServiciosDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.ServiciosForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.ServiciosForm(_this.idPrefix);
+                return _this;
             }
             ServiciosDialog.prototype.getFormKey = function () { return Portal.ServiciosForm.formKey; };
             ServiciosDialog.prototype.getIdProperty = function () { return Portal.ServiciosRow.idProperty; };
             ServiciosDialog.prototype.getLocalTextPrefix = function () { return Portal.ServiciosRow.localTextPrefix; };
             ServiciosDialog.prototype.getNameProperty = function () { return Portal.ServiciosRow.nameProperty; };
             ServiciosDialog.prototype.getService = function () { return Portal.ServiciosService.baseUrl; };
-            ServiciosDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ServiciosDialog);
             return ServiciosDialog;
         }(Serenity.EntityDialog));
+        ServiciosDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ServiciosDialog);
         Portal.ServiciosDialog = ServiciosDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9053,7 +9153,7 @@ var Geshotel;
         var ServiciosGrid = (function (_super) {
             __extends(ServiciosGrid, _super);
             function ServiciosGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             ServiciosGrid.prototype.getColumnsKey = function () { return 'Portal.Servicios'; };
             ServiciosGrid.prototype.getDialogType = function () { return Portal.ServiciosDialog; };
@@ -9075,12 +9175,12 @@ var Geshotel;
                 }));
                 return buttons;
             };
-            ServiciosGrid = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.filterable()
-            ], ServiciosGrid);
             return ServiciosGrid;
         }(Serenity.EntityGrid));
+        ServiciosGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ServiciosGrid);
         Portal.ServiciosGrid = ServiciosGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9091,20 +9191,21 @@ var Geshotel;
         var TiposHabitacionDialog = (function (_super) {
             __extends(TiposHabitacionDialog, _super);
             function TiposHabitacionDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.TiposHabitacionForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposHabitacionForm(_this.idPrefix);
+                return _this;
             }
             TiposHabitacionDialog.prototype.getFormKey = function () { return Portal.TiposHabitacionForm.formKey; };
             TiposHabitacionDialog.prototype.getIdProperty = function () { return Portal.TiposHabitacionRow.idProperty; };
             TiposHabitacionDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposHabitacionRow.localTextPrefix; };
             TiposHabitacionDialog.prototype.getNameProperty = function () { return Portal.TiposHabitacionRow.nameProperty; };
             TiposHabitacionDialog.prototype.getService = function () { return Portal.TiposHabitacionService.baseUrl; };
-            TiposHabitacionDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TiposHabitacionDialog);
             return TiposHabitacionDialog;
         }(Serenity.EntityDialog));
+        TiposHabitacionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposHabitacionDialog);
         Portal.TiposHabitacionDialog = TiposHabitacionDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9115,18 +9216,18 @@ var Geshotel;
         var TiposHabitacionGrid = (function (_super) {
             __extends(TiposHabitacionGrid, _super);
             function TiposHabitacionGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TiposHabitacionGrid.prototype.getColumnsKey = function () { return 'Portal.TiposHabitacion'; };
             TiposHabitacionGrid.prototype.getDialogType = function () { return Portal.TiposHabitacionDialog; };
             TiposHabitacionGrid.prototype.getIdProperty = function () { return Portal.TiposHabitacionRow.idProperty; };
             TiposHabitacionGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposHabitacionRow.localTextPrefix; };
             TiposHabitacionGrid.prototype.getService = function () { return Portal.TiposHabitacionService.baseUrl; };
-            TiposHabitacionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TiposHabitacionGrid);
             return TiposHabitacionGrid;
         }(Serenity.EntityGrid));
+        TiposHabitacionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposHabitacionGrid);
         Portal.TiposHabitacionGrid = TiposHabitacionGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9137,20 +9238,21 @@ var Geshotel;
         var TiposHotelDialog = (function (_super) {
             __extends(TiposHotelDialog, _super);
             function TiposHotelDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.TiposHotelForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposHotelForm(_this.idPrefix);
+                return _this;
             }
             TiposHotelDialog.prototype.getFormKey = function () { return Portal.TiposHotelForm.formKey; };
             TiposHotelDialog.prototype.getIdProperty = function () { return Portal.TiposHotelRow.idProperty; };
             TiposHotelDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposHotelRow.localTextPrefix; };
             TiposHotelDialog.prototype.getNameProperty = function () { return Portal.TiposHotelRow.nameProperty; };
             TiposHotelDialog.prototype.getService = function () { return Portal.TiposHotelService.baseUrl; };
-            TiposHotelDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TiposHotelDialog);
             return TiposHotelDialog;
         }(Serenity.EntityDialog));
+        TiposHotelDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposHotelDialog);
         Portal.TiposHotelDialog = TiposHotelDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9161,18 +9263,18 @@ var Geshotel;
         var TiposHotelGrid = (function (_super) {
             __extends(TiposHotelGrid, _super);
             function TiposHotelGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TiposHotelGrid.prototype.getColumnsKey = function () { return 'Portal.TiposHotel'; };
             TiposHotelGrid.prototype.getDialogType = function () { return Portal.TiposHotelDialog; };
             TiposHotelGrid.prototype.getIdProperty = function () { return Portal.TiposHotelRow.idProperty; };
             TiposHotelGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposHotelRow.localTextPrefix; };
             TiposHotelGrid.prototype.getService = function () { return Portal.TiposHotelService.baseUrl; };
-            TiposHotelGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TiposHotelGrid);
             return TiposHotelGrid;
         }(Serenity.EntityGrid));
+        TiposHotelGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposHotelGrid);
         Portal.TiposHotelGrid = TiposHotelGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9183,20 +9285,21 @@ var Geshotel;
         var TiposHuespedDialog = (function (_super) {
             __extends(TiposHuespedDialog, _super);
             function TiposHuespedDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.TiposHuespedForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposHuespedForm(_this.idPrefix);
+                return _this;
             }
             TiposHuespedDialog.prototype.getFormKey = function () { return Portal.TiposHuespedForm.formKey; };
             TiposHuespedDialog.prototype.getIdProperty = function () { return Portal.TiposHuespedRow.idProperty; };
             TiposHuespedDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposHuespedRow.localTextPrefix; };
             TiposHuespedDialog.prototype.getNameProperty = function () { return Portal.TiposHuespedRow.nameProperty; };
             TiposHuespedDialog.prototype.getService = function () { return Portal.TiposHuespedService.baseUrl; };
-            TiposHuespedDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TiposHuespedDialog);
             return TiposHuespedDialog;
         }(Serenity.EntityDialog));
+        TiposHuespedDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposHuespedDialog);
         Portal.TiposHuespedDialog = TiposHuespedDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9207,18 +9310,18 @@ var Geshotel;
         var TiposHuespedGrid = (function (_super) {
             __extends(TiposHuespedGrid, _super);
             function TiposHuespedGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TiposHuespedGrid.prototype.getColumnsKey = function () { return 'Portal.TiposHuesped'; };
             TiposHuespedGrid.prototype.getDialogType = function () { return Portal.TiposHuespedDialog; };
             TiposHuespedGrid.prototype.getIdProperty = function () { return Portal.TiposHuespedRow.idProperty; };
             TiposHuespedGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposHuespedRow.localTextPrefix; };
             TiposHuespedGrid.prototype.getService = function () { return Portal.TiposHuespedService.baseUrl; };
-            TiposHuespedGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TiposHuespedGrid);
             return TiposHuespedGrid;
         }(Serenity.EntityGrid));
+        TiposHuespedGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposHuespedGrid);
         Portal.TiposHuespedGrid = TiposHuespedGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9229,20 +9332,21 @@ var Geshotel;
         var TiposServicioDialog = (function (_super) {
             __extends(TiposServicioDialog, _super);
             function TiposServicioDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.TiposServicioForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposServicioForm(_this.idPrefix);
+                return _this;
             }
             TiposServicioDialog.prototype.getFormKey = function () { return Portal.TiposServicioForm.formKey; };
             TiposServicioDialog.prototype.getIdProperty = function () { return Portal.TiposServicioRow.idProperty; };
             TiposServicioDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposServicioRow.localTextPrefix; };
             TiposServicioDialog.prototype.getNameProperty = function () { return Portal.TiposServicioRow.nameProperty; };
             TiposServicioDialog.prototype.getService = function () { return Portal.TiposServicioService.baseUrl; };
-            TiposServicioDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TiposServicioDialog);
             return TiposServicioDialog;
         }(Serenity.EntityDialog));
+        TiposServicioDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposServicioDialog);
         Portal.TiposServicioDialog = TiposServicioDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9253,18 +9357,18 @@ var Geshotel;
         var TiposServicioGrid = (function (_super) {
             __extends(TiposServicioGrid, _super);
             function TiposServicioGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TiposServicioGrid.prototype.getColumnsKey = function () { return 'Portal.TiposServicio'; };
             TiposServicioGrid.prototype.getDialogType = function () { return Portal.TiposServicioDialog; };
             TiposServicioGrid.prototype.getIdProperty = function () { return Portal.TiposServicioRow.idProperty; };
             TiposServicioGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposServicioRow.localTextPrefix; };
             TiposServicioGrid.prototype.getService = function () { return Portal.TiposServicioService.baseUrl; };
-            TiposServicioGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TiposServicioGrid);
             return TiposServicioGrid;
         }(Serenity.EntityGrid));
+        TiposServicioGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposServicioGrid);
         Portal.TiposServicioGrid = TiposServicioGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9275,20 +9379,21 @@ var Geshotel;
         var TiposUnidadCalculoDialog = (function (_super) {
             __extends(TiposUnidadCalculoDialog, _super);
             function TiposUnidadCalculoDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.TiposUnidadCalculoForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposUnidadCalculoForm(_this.idPrefix);
+                return _this;
             }
             TiposUnidadCalculoDialog.prototype.getFormKey = function () { return Portal.TiposUnidadCalculoForm.formKey; };
             TiposUnidadCalculoDialog.prototype.getIdProperty = function () { return Portal.TiposUnidadCalculoRow.idProperty; };
             TiposUnidadCalculoDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposUnidadCalculoRow.localTextPrefix; };
             TiposUnidadCalculoDialog.prototype.getNameProperty = function () { return Portal.TiposUnidadCalculoRow.nameProperty; };
             TiposUnidadCalculoDialog.prototype.getService = function () { return Portal.TiposUnidadCalculoService.baseUrl; };
-            TiposUnidadCalculoDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TiposUnidadCalculoDialog);
             return TiposUnidadCalculoDialog;
         }(Serenity.EntityDialog));
+        TiposUnidadCalculoDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposUnidadCalculoDialog);
         Portal.TiposUnidadCalculoDialog = TiposUnidadCalculoDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9299,18 +9404,18 @@ var Geshotel;
         var TiposUnidadCalculoGrid = (function (_super) {
             __extends(TiposUnidadCalculoGrid, _super);
             function TiposUnidadCalculoGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             TiposUnidadCalculoGrid.prototype.getColumnsKey = function () { return 'Portal.TiposUnidadCalculo'; };
             TiposUnidadCalculoGrid.prototype.getDialogType = function () { return Portal.TiposUnidadCalculoDialog; };
             TiposUnidadCalculoGrid.prototype.getIdProperty = function () { return Portal.TiposUnidadCalculoRow.idProperty; };
             TiposUnidadCalculoGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposUnidadCalculoRow.localTextPrefix; };
             TiposUnidadCalculoGrid.prototype.getService = function () { return Portal.TiposUnidadCalculoService.baseUrl; };
-            TiposUnidadCalculoGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TiposUnidadCalculoGrid);
             return TiposUnidadCalculoGrid;
         }(Serenity.EntityGrid));
+        TiposUnidadCalculoGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposUnidadCalculoGrid);
         Portal.TiposUnidadCalculoGrid = TiposUnidadCalculoGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9321,20 +9426,21 @@ var Geshotel;
         var UnidadesCalculoDialog = (function (_super) {
             __extends(UnidadesCalculoDialog, _super);
             function UnidadesCalculoDialog() {
-                _super.apply(this, arguments);
-                this.form = new Portal.UnidadesCalculoForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.UnidadesCalculoForm(_this.idPrefix);
+                return _this;
             }
             UnidadesCalculoDialog.prototype.getFormKey = function () { return Portal.UnidadesCalculoForm.formKey; };
             UnidadesCalculoDialog.prototype.getIdProperty = function () { return Portal.UnidadesCalculoRow.idProperty; };
             UnidadesCalculoDialog.prototype.getLocalTextPrefix = function () { return Portal.UnidadesCalculoRow.localTextPrefix; };
             UnidadesCalculoDialog.prototype.getNameProperty = function () { return Portal.UnidadesCalculoRow.nameProperty; };
             UnidadesCalculoDialog.prototype.getService = function () { return Portal.UnidadesCalculoService.baseUrl; };
-            UnidadesCalculoDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], UnidadesCalculoDialog);
             return UnidadesCalculoDialog;
         }(Serenity.EntityDialog));
+        UnidadesCalculoDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], UnidadesCalculoDialog);
         Portal.UnidadesCalculoDialog = UnidadesCalculoDialog;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -9345,18 +9451,18 @@ var Geshotel;
         var UnidadesCalculoGrid = (function (_super) {
             __extends(UnidadesCalculoGrid, _super);
             function UnidadesCalculoGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             UnidadesCalculoGrid.prototype.getColumnsKey = function () { return 'Portal.UnidadesCalculo'; };
             UnidadesCalculoGrid.prototype.getDialogType = function () { return Portal.UnidadesCalculoDialog; };
             UnidadesCalculoGrid.prototype.getIdProperty = function () { return Portal.UnidadesCalculoRow.idProperty; };
             UnidadesCalculoGrid.prototype.getLocalTextPrefix = function () { return Portal.UnidadesCalculoRow.localTextPrefix; };
             UnidadesCalculoGrid.prototype.getService = function () { return Portal.UnidadesCalculoService.baseUrl; };
-            UnidadesCalculoGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UnidadesCalculoGrid);
             return UnidadesCalculoGrid;
         }(Serenity.EntityGrid));
+        UnidadesCalculoGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UnidadesCalculoGrid);
         Portal.UnidadesCalculoGrid = UnidadesCalculoGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));

@@ -1,7 +1,5 @@
-﻿/// <reference types="jquery" />
-/// <reference types="jquery.validation" />
-/// <reference types="jqueryui" />
-/// <reference types="jquery.blockui" />
+﻿/// <reference types="jqueryui" />
+/// <reference types="jquery" />
 declare namespace Geshotel.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -318,10 +316,10 @@ declare namespace Geshotel.Administration {
         LanguageName?: string;
     }
     namespace LanguageRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "Id";
+        const nameProperty = "LanguageName";
+        const localTextPrefix = "Administration.Language";
+        const lookupKey = "Administration.Languaje";
         function getLookup(): Q.Lookup<LanguageRow>;
         namespace Fields {
             const Id: string;
@@ -332,7 +330,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace LanguageService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Language";
         function Create(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -376,9 +374,9 @@ declare namespace Geshotel.Administration {
         RoleRoleName?: string;
     }
     namespace RolePermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RolePermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.RolePermission";
         namespace Fields {
             const RolePermissionId: string;
             const RoleId: string;
@@ -389,7 +387,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace RolePermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/RolePermission";
         function Update(request: RolePermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: RolePermissionListRequest, onSuccess?: (response: RolePermissionListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -412,10 +410,10 @@ declare namespace Geshotel.Administration {
         RoleName?: string;
     }
     namespace RoleRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "RoleId";
+        const nameProperty = "RoleName";
+        const localTextPrefix = "Administration.Role";
+        const lookupKey = "Administration.Role";
         function getLookup(): Q.Lookup<RoleRow>;
         namespace Fields {
             const RoleId: string;
@@ -425,7 +423,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace RoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Role";
         function Create(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -456,7 +454,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace TranslationService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Translation";
         function List(request: TranslationListRequest, onSuccess?: (response: Serenity.ListResponse<TranslationItem>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: TranslationUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -508,9 +506,9 @@ declare namespace Geshotel.Administration {
         User?: string;
     }
     namespace UserPermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.UserPermission";
         namespace Fields {
             const UserPermissionId: string;
             const UserId: string;
@@ -523,7 +521,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace UserPermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserPermission";
         function Update(request: UserPermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<UserPermissionRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function ListRolePermissions(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<string>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -562,8 +560,8 @@ declare namespace Geshotel.Administration {
         User?: string;
     }
     namespace UserRoleRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserRoleId";
+        const localTextPrefix = "Administration.UserRole";
         namespace Fields {
             const UserRoleId: string;
             const UserId: string;
@@ -575,7 +573,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace UserRoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserRole";
         function Update(request: UserRoleUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserRoleListRequest, onSuccess?: (response: UserRoleListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -614,11 +612,11 @@ declare namespace Geshotel.Administration {
         UpdateDate?: string;
     }
     namespace UserRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "UserId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Username";
+        const localTextPrefix = "Administration.User";
+        const lookupKey = "Administration.User";
         function getLookup(): Q.Lookup<UserRow>;
         namespace Fields {
             const UserId: string;
@@ -646,7 +644,7 @@ declare namespace Geshotel.Administration {
 }
 declare namespace Geshotel.Administration {
     namespace UserService {
-        const baseUrl: string;
+        const baseUrl = "Administration/User";
         function Create(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -692,9 +690,9 @@ declare namespace Geshotel.Common {
         Value?: string;
     }
     namespace UserPreferenceRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPreferenceId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Common.UserPreference";
         namespace Fields {
             const UserPreferenceId: string;
             const UserId: string;
@@ -706,7 +704,7 @@ declare namespace Geshotel.Common {
 }
 declare namespace Geshotel.Common {
     namespace UserPreferenceService {
-        const baseUrl: string;
+        const baseUrl = "Common/UserPreference";
         function Update(request: UserPreferenceUpdateRequest, onSuccess?: (response: Serenity.ServiceResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: UserPreferenceRetrieveRequest, onSuccess?: (response: UserPreferenceRetrieveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -836,10 +834,10 @@ declare namespace Geshotel.Contratos {
         IdClubhd?: string;
     }
     namespace AgenciasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ClienteId";
+        const nameProperty = "Razon";
+        const localTextPrefix = "Contratos.Agencias";
+        const lookupKey = "Contratos.Agencias";
         function getLookup(): Q.Lookup<AgenciasRow>;
         namespace Fields {
             const ClienteId: string;
@@ -898,7 +896,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace AgenciasService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Agencias";
         function Create(request: Serenity.SaveRequest<AgenciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<AgenciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -919,10 +917,10 @@ declare namespace Geshotel.Contratos {
         Ambito?: string;
     }
     namespace AmbitoOfertaRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "AmbitoOfertaId";
+        const nameProperty = "Ambito";
+        const localTextPrefix = "Contratos.AmbitoOferta";
+        const lookupKey = "Contratos.AmbitoOferta";
         function getLookup(): Q.Lookup<AmbitoOfertaRow>;
         namespace Fields {
             const AmbitoOfertaId: string;
@@ -1029,10 +1027,10 @@ declare namespace Geshotel.Contratos {
         FacturaProvincia?: string;
     }
     namespace ClientesRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ClienteId";
+        const nameProperty = "Razon";
+        const localTextPrefix = "Contratos.Clientes";
+        const lookupKey = "Contratos.Clientes";
         function getLookup(): Q.Lookup<ClientesRow>;
         namespace Fields {
             const ClienteId: string;
@@ -1089,7 +1087,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace ClientesService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Clientes";
         function Create(request: Serenity.SaveRequest<ClientesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ClientesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1126,8 +1124,8 @@ declare namespace Geshotel.Contratos {
         UserId?: number;
     }
     namespace ContratosEdadesRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ContratoId";
+        const localTextPrefix = "Contratos.ContratosEdades";
         namespace Fields {
             const ContratoId: any;
             const TipoHuespedId: any;
@@ -1139,7 +1137,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace ContratosEdadesService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/ContratosEdades";
         function Create(request: Serenity.SaveRequest<ContratosEdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ContratosEdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
@@ -1190,9 +1188,9 @@ declare namespace Geshotel.Contratos {
         ClienteName?: string;
     }
     namespace ContratosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ContratoId";
+        const nameProperty = "NumeroContratoCliente";
+        const localTextPrefix = "Contratos.Contratos";
         namespace Fields {
             const ContratoId: string;
             const HotelId: string;
@@ -1213,7 +1211,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace ContratosService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Contratos";
         function Create(request: Serenity.SaveRequest<ContratosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ContratosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1359,8 +1357,8 @@ declare namespace Geshotel.Contratos {
         TipoHabitacionNoShow?: number;
     }
     namespace CuposRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "CupoId";
+        const localTextPrefix = "Contratos.Cupos";
         namespace Fields {
             const CupoId: string;
             const ClienteId: string;
@@ -1476,7 +1474,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace CuposService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Cupos";
         function Create(request: Serenity.SaveRequest<CuposRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CuposRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1513,8 +1511,8 @@ declare namespace Geshotel.Contratos {
         UserId?: number;
     }
     namespace EdadesRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ContratoId";
+        const localTextPrefix = "Contratos.Edades";
         namespace Fields {
             const ContratoId: string;
             const TipoHuespedId: string;
@@ -1526,7 +1524,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace EdadesService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Edades";
         function Create(request: Serenity.SaveRequest<EdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EdadesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1548,10 +1546,10 @@ declare namespace Geshotel.Contratos {
         Descripcion?: string;
     }
     namespace FrecuenciaFacturacionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "FrecuenciaId";
+        const nameProperty = "Descripcion";
+        const localTextPrefix = "Contratos.FrecuenciaFacturacion";
+        const lookupKey = "Contratos.FrecuenciaFacturacion";
         function getLookup(): Q.Lookup<FrecuenciaFacturacionRow>;
         namespace Fields {
             const FrecuenciaId: string;
@@ -1621,8 +1619,8 @@ declare namespace Geshotel.Contratos {
         Usuario?: string;
     }
     namespace LineasRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "LineaContratoId";
+        const localTextPrefix = "Contratos.Lineas";
         namespace Fields {
             const LineaContratoId: string;
             const ContratoId: string;
@@ -1654,7 +1652,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace LineasService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Lineas";
         function Create(request: Serenity.SaveRequest<LineasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<LineasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1697,10 +1695,10 @@ declare namespace Geshotel.Contratos {
         EmpresaRutaFicheros?: string;
     }
     namespace MercadosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "MercadoId";
+        const nameProperty = "Mercado";
+        const localTextPrefix = "Contratos.Mercados";
+        const lookupKey = "Contratos.Mercados";
         function getLookup(): Q.Lookup<MercadosRow>;
         namespace Fields {
             const MercadoId: string;
@@ -1721,7 +1719,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace MercadosService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Mercados";
         function Create(request: Serenity.SaveRequest<MercadosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MercadosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1795,8 +1793,8 @@ declare namespace Geshotel.Contratos {
         M?: number;
     }
     namespace OfertasRejillasRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RejillaId";
+        const localTextPrefix = "Contratos.OfertasRejillas";
         namespace Fields {
             const RejillaId: string;
             const OfertaId: string;
@@ -1809,7 +1807,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace OfertasRejillasService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/OfertasRejillas";
         function Create(request: Serenity.SaveRequest<OfertasRejillasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<OfertasRejillasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -1855,9 +1853,9 @@ declare namespace Geshotel.Contratos {
         OrdenAplicacion?: number;
     }
     namespace OfertasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "OfertaId";
+        const nameProperty = "Texto";
+        const localTextPrefix = "Contratos.Ofertas";
         namespace Fields {
             const OfertaId: string;
             const Texto: string;
@@ -1891,7 +1889,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace OfertasService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Ofertas";
         function Create(request: Serenity.SaveRequest<OfertasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<OfertasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2029,9 +2027,9 @@ declare namespace Geshotel.Contratos {
         HotelOverbookingLimit?: number;
     }
     namespace ReleasesRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ReleaseId";
+        const nameProperty = "Observaciones";
+        const localTextPrefix = "Contratos.Releases";
         namespace Fields {
             const ReleaseId: string;
             const ClienteId: string;
@@ -2140,7 +2138,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace ReleasesService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Releases";
         function Create(request: Serenity.SaveRequest<ReleasesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ReleasesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2189,9 +2187,9 @@ declare namespace Geshotel.Contratos {
         EmpresaRutaFicheros?: string;
     }
     namespace TemporadasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "TemporadaId";
+        const nameProperty = "Temporada";
+        const localTextPrefix = "Contratos.Temporadas";
         namespace Fields {
             const TemporadaId: string;
             const Temporada: string;
@@ -2214,7 +2212,7 @@ declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     namespace TemporadasService {
-        const baseUrl: string;
+        const baseUrl = "Contratos/Temporadas";
         function Create(request: Serenity.SaveRequest<TemporadasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TemporadasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2235,10 +2233,10 @@ declare namespace Geshotel.Contratos {
         AplicableSegunFechaDe?: string;
     }
     namespace TipoAplicacionOfertaRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoAplicacionOfertaId";
+        const nameProperty = "AplicableSegunFechaDe";
+        const localTextPrefix = "Contratos.TipoAplicacionOferta";
+        const lookupKey = "Contratos.TipoAplicacionOferta";
         function getLookup(): Q.Lookup<TipoAplicacionOfertaRow>;
         namespace Fields {
             const TipoAplicacionOfertaId: string;
@@ -2253,10 +2251,10 @@ declare namespace Geshotel.Contratos {
         Literal?: string;
     }
     namespace TiposCondicionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoCondicionId";
+        const nameProperty = "Literal";
+        const localTextPrefix = "Contratos.TiposCondicion";
+        const lookupKey = "Contratos.TiposCondicion";
         function getLookup(): Q.Lookup<TiposCondicionRow>;
         namespace Fields {
             const TipoCondicionId: string;
@@ -2271,10 +2269,10 @@ declare namespace Geshotel.Contratos {
         Imputacion?: string;
     }
     namespace TiposDeImputacionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoImputacionId";
+        const nameProperty = "Imputacion";
+        const localTextPrefix = "Contratos.TiposDeImputacion";
+        const lookupKey = "Contratos.TiposDeImputacion";
         function getLookup(): Q.Lookup<TiposDeImputacionRow>;
         namespace Fields {
             const TipoImputacionId: string;
@@ -2292,10 +2290,10 @@ declare namespace Geshotel.Contratos {
         OrdenAplicacion?: number;
     }
     namespace TiposDeOfertaRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoOfertaId";
+        const nameProperty = "Oferta";
+        const localTextPrefix = "Contratos.TiposDeOferta";
+        const lookupKey = "Contratos.TiposDeOferta";
         function getLookup(): Q.Lookup<TiposDeOfertaRow>;
         namespace Fields {
             const TipoOfertaId: string;
@@ -2380,8 +2378,8 @@ declare namespace Geshotel.Meeting {
         ContactUserId?: number;
     }
     namespace MeetingAgendaRelevantRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "AgendaRelevantId";
+        const localTextPrefix = "Meeting.MeetingAgendaRelevant";
         namespace Fields {
             const AgendaRelevantId: string;
             const AgendaId: string;
@@ -2405,7 +2403,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingAgendaRelevantService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingAgendaRelevant";
         function Create(request: Serenity.SaveRequest<MeetingAgendaRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2455,9 +2453,9 @@ declare namespace Geshotel.Meeting {
         RequestedByContactUserId?: number;
     }
     namespace MeetingAgendaRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "AgendaId";
+        const nameProperty = "Title";
+        const localTextPrefix = "Meeting.MeetingAgenda";
         namespace Fields {
             const AgendaId: string;
             const MeetingId: string;
@@ -2495,7 +2493,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingAgendaService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingAgenda";
         function Create(request: Serenity.SaveRequest<MeetingAgendaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2526,10 +2524,10 @@ declare namespace Geshotel.Meeting {
         Name?: string;
     }
     namespace MeetingAgendaTypeRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "AgendaTypeId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Meeting.MeetingAgendaType";
+        const lookupKey = "Meeting.MeetingAgendaType";
         function getLookup(): Q.Lookup<MeetingAgendaTypeRow>;
         namespace Fields {
             const AgendaTypeId: string;
@@ -2539,7 +2537,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingAgendaTypeService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingAgendaType";
         function Create(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2605,8 +2603,8 @@ declare namespace Geshotel.Meeting {
         ContactUserId?: number;
     }
     namespace MeetingAttendeeRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "AttendeeId";
+        const localTextPrefix = "Meeting.MeetingAttendee";
         namespace Fields {
             const AttendeeId: string;
             const MeetingId: string;
@@ -2696,8 +2694,8 @@ declare namespace Geshotel.Meeting {
         ContactUserId?: number;
     }
     namespace MeetingDecisionRelevantRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "DecisionRelevantId";
+        const localTextPrefix = "Meeting.MeetingDecisionRelevant";
         namespace Fields {
             const DecisionRelevantId: string;
             const DecisionId: string;
@@ -2722,7 +2720,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingDecisionRelevantService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingDecisionRelevant";
         function Create(request: Serenity.SaveRequest<MeetingDecisionRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingDecisionRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2781,9 +2779,9 @@ declare namespace Geshotel.Meeting {
         ResponsibleContactUserId?: number;
     }
     namespace MeetingDecisionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "DecisionId";
+        const nameProperty = "Description";
+        const localTextPrefix = "Meeting.MeetingDecision";
         namespace Fields {
             const DecisionId: string;
             const MeetingId: string;
@@ -2830,7 +2828,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingDecisionService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingDecision";
         function Create(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2884,10 +2882,10 @@ declare namespace Geshotel.Meeting {
         Longitude?: number;
     }
     namespace MeetingLocationRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "LocationId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Meeting.MeetingLocation";
+        const lookupKey = "Meeting.MeetingLocation";
         function getLookup(): Q.Lookup<MeetingLocationRow>;
         namespace Fields {
             const LocationId: string;
@@ -2900,7 +2898,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingLocationService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingLocation";
         function Create(request: Serenity.SaveRequest<MeetingLocationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingLocationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2953,9 +2951,9 @@ declare namespace Geshotel.Meeting {
         UpdateDate?: string;
     }
     namespace MeetingRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "MeetingId";
+        const nameProperty = "MeetingName";
+        const localTextPrefix = "Meeting.Meeting";
         namespace Fields {
             const MeetingId: string;
             const MeetingName: string;
@@ -2996,7 +2994,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/Meeting";
         function Create(request: Serenity.SaveRequest<MeetingRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3027,10 +3025,10 @@ declare namespace Geshotel.Meeting {
         Name?: string;
     }
     namespace MeetingTypeRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "MeetingTypeId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Meeting.MeetingType";
+        const lookupKey = "Meeting.MeetingType";
         function getLookup(): Q.Lookup<MeetingTypeRow>;
         namespace Fields {
             const MeetingTypeId: string;
@@ -3040,7 +3038,7 @@ declare namespace Geshotel.Meeting {
 }
 declare namespace Geshotel.Meeting {
     namespace MeetingTypeService {
-        const baseUrl: string;
+        const baseUrl = "Meeting/MeetingType";
         function Create(request: Serenity.SaveRequest<MeetingTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3155,9 +3153,9 @@ declare namespace Geshotel.Northwind {
         Description?: string;
     }
     namespace CategoryLangRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "Id";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.CategoryLang";
         namespace Fields {
             const Id: string;
             const CategoryId: string;
@@ -3169,7 +3167,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace CategoryLangService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/CategoryLang";
         function Create(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CategoryLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3192,10 +3190,10 @@ declare namespace Geshotel.Northwind {
         Picture?: number[];
     }
     namespace CategoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "CategoryID";
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.Category";
+        const lookupKey = "Northwind.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
         namespace Fields {
             const CategoryID: string;
@@ -3207,7 +3205,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace CategoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Category";
         function Create(request: Serenity.SaveWithLocalizationRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveWithLocalizationRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3244,9 +3242,9 @@ declare namespace Geshotel.Northwind {
         CustomerTypeCustomerDesc?: string;
     }
     namespace CustomerCustomerDemoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ID";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Northwind.CustomerCustomerDemo";
         namespace Fields {
             const ID: string;
             const CustomerID: string;
@@ -3272,9 +3270,9 @@ declare namespace Geshotel.Northwind {
         CustomerDesc?: string;
     }
     namespace CustomerDemographicRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ID";
+        const nameProperty = "CustomerTypeID";
+        const localTextPrefix = "Northwind.CustomerDemographic";
         namespace Fields {
             const ID: string;
             const CustomerTypeID: string;
@@ -3308,9 +3306,9 @@ declare namespace Geshotel.Northwind {
         LastContactedByPhotoPath?: string;
     }
     namespace CustomerDetailsRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "Id";
+        const nameProperty = "Email";
+        const localTextPrefix = "Northwind.CustomerDetails";
         namespace Fields {
             const Id: string;
             const LastContactDate: string;
@@ -3368,8 +3366,8 @@ declare namespace Geshotel.Northwind {
         EmployeeId?: number;
     }
     namespace CustomerRepresentativesRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RepresentativeId";
+        const localTextPrefix = "CustomerRepresentatives";
         namespace Fields {
             const RepresentativeId: string;
             const CustomerId: string;
@@ -3399,10 +3397,10 @@ declare namespace Geshotel.Northwind {
         SendBulletin?: boolean;
     }
     namespace CustomerRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Customer";
+        const lookupKey = "Northwind.Customer";
         function getLookup(): Q.Lookup<CustomerRow>;
         namespace Fields {
             const ID: string;
@@ -3428,7 +3426,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace CustomerService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Customer";
         function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3487,10 +3485,10 @@ declare namespace Geshotel.Northwind {
         Gender?: Gender;
     }
     namespace EmployeeRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmployeeID";
+        const nameProperty = "FullName";
+        const localTextPrefix = "Northwind.Employee";
+        const lookupKey = "Northwind.Employee";
         function getLookup(): Q.Lookup<EmployeeRow>;
         namespace Fields {
             const EmployeeID: string;
@@ -3559,9 +3557,9 @@ declare namespace Geshotel.Northwind {
         TerritoryRegionID?: number;
     }
     namespace EmployeeTerritoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "EmployeeID";
+        const nameProperty = "TerritoryID";
+        const localTextPrefix = "Northwind.EmployeeTerritory";
         namespace Fields {
             const EmployeeID: string;
             const TerritoryID: string;
@@ -3604,9 +3602,9 @@ declare namespace Geshotel.Northwind {
         InsertUserDisplayName?: string;
     }
     namespace NoteRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Northwind.Note";
         namespace Fields {
             const NoteId: string;
             const EntityType: string;
@@ -3656,8 +3654,8 @@ declare namespace Geshotel.Northwind {
         LineTotal?: number;
     }
     namespace OrderDetailRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "DetailID";
+        const localTextPrefix = "Northwind.OrderDetail";
         namespace Fields {
             const DetailID: string;
             const OrderID: string;
@@ -3683,7 +3681,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace OrderDetailService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/OrderDetail";
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -3750,10 +3748,10 @@ declare namespace Geshotel.Northwind {
         DetailList?: OrderDetailRow[];
     }
     namespace OrderRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "OrderID";
+        const nameProperty = "CustomerID";
+        const localTextPrefix = "Northwind.Order";
+        const lookupKey = "Northwind.OrderShipCity";
         function getLookup(): Q.Lookup<OrderRow>;
         namespace Fields {
             const OrderID: string;
@@ -3789,7 +3787,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace OrderService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Order";
         function Create(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3837,9 +3835,9 @@ declare namespace Geshotel.Northwind {
         ProductName?: string;
     }
     namespace ProductLangRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "Id";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Northwind.ProductLang";
         namespace Fields {
             const Id: string;
             const ProductId: string;
@@ -3850,7 +3848,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace ProductLangService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/ProductLang";
         function Create(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ProductLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3885,8 +3883,8 @@ declare namespace Geshotel.Northwind {
         ReorderLevel?: number;
     }
     namespace ProductLogRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "ProductLogID";
+        const localTextPrefix = "Northwind.ProductLog";
         namespace Fields {
             const ProductLogID: string;
             const OperationType: string;
@@ -3936,10 +3934,10 @@ declare namespace Geshotel.Northwind {
         CategoryPicture?: number[];
     }
     namespace ProductRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ProductID";
+        const nameProperty = "ProductName";
+        const localTextPrefix = "Northwind.Product";
+        const lookupKey = "Northwind.Product";
         function getLookup(): Q.Lookup<ProductRow>;
         namespace Fields {
             const ProductID: string;
@@ -3972,7 +3970,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace ProductService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Product";
         function Create(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveWithLocalizationRequest<ProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4006,10 +4004,10 @@ declare namespace Geshotel.Northwind {
         RegionDescription?: string;
     }
     namespace RegionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "RegionID";
+        const nameProperty = "RegionDescription";
+        const localTextPrefix = "Northwind.Region";
+        const lookupKey = "Northwind.Region";
         function getLookup(): Q.Lookup<RegionRow>;
         namespace Fields {
             const RegionID: string;
@@ -4019,7 +4017,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace RegionService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Region";
         function Create(request: Serenity.SaveRequest<RegionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<RegionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4044,8 +4042,8 @@ declare namespace Geshotel.Northwind {
         ProductSales?: number;
     }
     namespace SalesByCategoryRow {
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const nameProperty = "CategoryName";
+        const localTextPrefix = "Northwind.SalesByCategory";
         namespace Fields {
             const CategoryId: string;
             const CategoryName: string;
@@ -4056,7 +4054,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace SalesByCategoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/SalesByCategory";
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesByCategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const List: string;
@@ -4081,10 +4079,10 @@ declare namespace Geshotel.Northwind {
         Phone?: string;
     }
     namespace ShipperRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ShipperID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Shipper";
+        const lookupKey = "Northwind.Shipper";
         function getLookup(): Q.Lookup<ShipperRow>;
         namespace Fields {
             const ShipperID: string;
@@ -4095,7 +4093,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace ShipperService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Shipper";
         function Create(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ShipperRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4146,10 +4144,10 @@ declare namespace Geshotel.Northwind {
         HomePage?: string;
     }
     namespace SupplierRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "SupplierID";
+        const nameProperty = "CompanyName";
+        const localTextPrefix = "Northwind.Supplier";
+        const lookupKey = "Northwind.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
         namespace Fields {
             const SupplierID: string;
@@ -4169,7 +4167,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace SupplierService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Supplier";
         function Create(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<SupplierRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4205,10 +4203,10 @@ declare namespace Geshotel.Northwind {
         RegionDescription?: string;
     }
     namespace TerritoryRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ID";
+        const nameProperty = "TerritoryID";
+        const localTextPrefix = "Northwind.Territory";
+        const lookupKey = "Northwind.Territory";
         function getLookup(): Q.Lookup<TerritoryRow>;
         namespace Fields {
             const ID: string;
@@ -4221,7 +4219,7 @@ declare namespace Geshotel.Northwind {
 }
 declare namespace Geshotel.Northwind {
     namespace TerritoryService {
-        const baseUrl: string;
+        const baseUrl = "Northwind/Territory";
         function Create(request: Serenity.SaveRequest<TerritoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TerritoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4256,10 +4254,10 @@ declare namespace Geshotel.Organization {
         ParentUnitParentUnitId?: number;
     }
     namespace BusinessUnitRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "UnitId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Organization.BusinessUnit";
+        const lookupKey = "Organization.BusinessUnit";
         function getLookup(): Q.Lookup<BusinessUnitRow>;
         namespace Fields {
             const UnitId: string;
@@ -4272,7 +4270,7 @@ declare namespace Geshotel.Organization {
 }
 declare namespace Geshotel.Organization {
     namespace BusinessUnitService {
-        const baseUrl: string;
+        const baseUrl = "Organization/BusinessUnit";
         function Create(request: Serenity.SaveRequest<BusinessUnitRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<BusinessUnitRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4327,10 +4325,10 @@ declare namespace Geshotel.Organization {
         UserIsActive?: number;
     }
     namespace ContactRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ContactId";
+        const nameProperty = "FullName";
+        const localTextPrefix = "Organization.Contact";
+        const lookupKey = "Organization.Contact";
         function getLookup(): Q.Lookup<ContactRow>;
         namespace Fields {
             const ContactId: string;
@@ -4359,7 +4357,7 @@ declare namespace Geshotel.Organization {
 }
 declare namespace Geshotel.Organization {
     namespace ContactService {
-        const baseUrl: string;
+        const baseUrl = "Organization/Contact";
         function Create(request: Serenity.SaveRequest<ContactRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ContactRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4392,10 +4390,10 @@ declare namespace Geshotel.Portal {
         Categoria?: string;
     }
     namespace CategoriaHotelesRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "CategoriaId";
+        const nameProperty = "Categoria";
+        const localTextPrefix = "Portal.CategoriaHoteles";
+        const lookupKey = "Portal.CategoriaHoteles";
         function getLookup(): Q.Lookup<CategoriaHotelesRow>;
         namespace Fields {
             const CategoriaId: string;
@@ -4406,7 +4404,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace CategoriaHotelesService {
-        const baseUrl: string;
+        const baseUrl = "Portal/CategoriaHoteles";
         function Create(request: Serenity.SaveRequest<CategoriaHotelesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<CategoriaHotelesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4450,10 +4448,10 @@ declare namespace Geshotel.Portal {
         NacionIdiomaMails?: string;
     }
     namespace ComunidadesAutonomasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ComunidadId";
+        const nameProperty = "ComunidadAutonoma";
+        const localTextPrefix = "Portal.ComunidadesAutonomas";
+        const lookupKey = "Portal.ComunidadesAutonomas";
         function getLookup(): Q.Lookup<ComunidadesAutonomasRow>;
         namespace Fields {
             const ComunidadId: string;
@@ -4474,7 +4472,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace ComunidadesAutonomasService {
-        const baseUrl: string;
+        const baseUrl = "Portal/ComunidadesAutonomas";
         function Create(request: Serenity.SaveRequest<ComunidadesAutonomasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ComunidadesAutonomasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4495,10 +4493,10 @@ declare namespace Geshotel.Portal {
         Concepto?: string;
     }
     namespace ConceptosAceleradorReservasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ConceptoAceleradorId";
+        const nameProperty = "Concepto";
+        const localTextPrefix = "Portal.ConceptosAceleradorReservas";
+        const lookupKey = "Portal.ConceptosAceleradorReservas";
         function getLookup(): Q.Lookup<ConceptosAceleradorReservasRow>;
         namespace Fields {
             const ConceptoAceleradorId: string;
@@ -4545,10 +4543,10 @@ declare namespace Geshotel.Portal {
         ProvinciaDefectoIsta?: number;
     }
     namespace EmpresasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EmpresaId";
+        const nameProperty = "Empresa";
+        const localTextPrefix = "Portal.Empresas";
+        const lookupKey = "Portal.Empresas";
         function getLookup(): Q.Lookup<EmpresasRow>;
         namespace Fields {
             const EmpresaId: string;
@@ -4572,7 +4570,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace EmpresasService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Empresas";
         function Create(request: Serenity.SaveRequest<EmpresasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<EmpresasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4594,10 +4592,10 @@ declare namespace Geshotel.Portal {
         EsError?: number;
     }
     namespace EstadosFacturasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EstadoFacturaId";
+        const nameProperty = "Descripcion";
+        const localTextPrefix = "Portal.EstadosFacturas";
+        const lookupKey = "Portal.EstadosFactura";
         function getLookup(): Q.Lookup<EstadosFacturasRow>;
         namespace Fields {
             const EstadoFacturaId: string;
@@ -4638,10 +4636,10 @@ declare namespace Geshotel.Portal {
         ProduccionTpv?: boolean;
     }
     namespace FormasDePagoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "FormaPagoId";
+        const nameProperty = "FormaPago";
+        const localTextPrefix = "Portal.FormasDePago";
+        const lookupKey = "Portal.FromasDePago";
         function getLookup(): Q.Lookup<FormasDePagoRow>;
         namespace Fields {
             const FormaPagoId: string;
@@ -4659,7 +4657,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace FormasDePagoService {
-        const baseUrl: string;
+        const baseUrl = "Portal/FormasDePago";
         function Create(request: Serenity.SaveRequest<FormasDePagoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<FormasDePagoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4700,10 +4698,10 @@ declare namespace Geshotel.Portal {
         Perfil?: number;
     }
     namespace GruposDeClienteRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "GrupoClienteId";
+        const nameProperty = "NombreGrupo";
+        const localTextPrefix = "Portal.GruposDeCliente";
+        const lookupKey = "Portal.GruposDeCliente";
         function getLookup(): Q.Lookup<GruposDeClienteRow>;
         namespace Fields {
             const GrupoClienteId: string;
@@ -4718,7 +4716,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace GruposDeClienteService {
-        const baseUrl: string;
+        const baseUrl = "Portal/GruposDeCliente";
         function Create(request: Serenity.SaveRequest<GruposDeClienteRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<GruposDeClienteRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4752,10 +4750,10 @@ declare namespace Geshotel.Portal {
         CtaContable?: string;
     }
     namespace GruposDeServiciosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "GrupoServicioId";
+        const nameProperty = "NombreGrupo";
+        const localTextPrefix = "Portal.GruposDeServicios";
+        const lookupKey = "Portal.GruposDeServicio";
         function getLookup(): Q.Lookup<GruposDeServiciosRow>;
         namespace Fields {
             const GrupoServicioId: string;
@@ -4766,7 +4764,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace GruposDeServiciosService {
-        const baseUrl: string;
+        const baseUrl = "Portal/GruposDeServicios";
         function Create(request: Serenity.SaveRequest<GruposDeServiciosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<GruposDeServiciosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4797,10 +4795,10 @@ declare namespace Geshotel.Portal {
         Habitacion?: string;
     }
     namespace GruposHabitacionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "HabitacionId";
+        const nameProperty = "Habitacion";
+        const localTextPrefix = "Portal.GruposHabitacion";
+        const lookupKey = "Portal.GruposHabitacion";
         function getLookup(): Q.Lookup<GruposHabitacionRow>;
         namespace Fields {
             const HabitacionId: string;
@@ -4810,7 +4808,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace GruposHabitacionService {
-        const baseUrl: string;
+        const baseUrl = "Portal/GruposHabitacion";
         function Create(request: Serenity.SaveRequest<GruposHabitacionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<GruposHabitacionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4935,10 +4933,10 @@ declare namespace Geshotel.Portal {
         ProvinciaDefectoIsta?: number;
     }
     namespace HotelesRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "HotelId";
+        const nameProperty = "Hotel";
+        const localTextPrefix = "Portal.Hoteles";
+        const lookupKey = "Portal.Hoteles";
         function getLookup(): Q.Lookup<HotelesRow>;
         namespace Fields {
             const HotelId: string;
@@ -5000,7 +4998,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace HotelesService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Hoteles";
         function Create(request: Serenity.SaveRequest<HotelesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<HotelesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5035,10 +5033,10 @@ declare namespace Geshotel.Portal {
         Cambio?: number;
     }
     namespace MonedasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "MonedaId";
+        const nameProperty = "Descripcion";
+        const localTextPrefix = "Portal.Monedas";
+        const lookupKey = "Portal.Monedas";
         function getLookup(): Q.Lookup<MonedasRow>;
         namespace Fields {
             const MonedaId: string;
@@ -5050,7 +5048,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace MonedasService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Monedas";
         function Create(request: Serenity.SaveRequest<MonedasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MonedasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5102,10 +5100,10 @@ declare namespace Geshotel.Portal {
         IdiomaLanguageName?: string;
     }
     namespace NacionesRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "NacionId";
+        const nameProperty = "Nacion";
+        const localTextPrefix = "Portal.Naciones";
+        const lookupKey = "Portal.Naciones";
         function getLookup(): Q.Lookup<NacionesRow>;
         namespace Fields {
             const NacionId: string;
@@ -5128,7 +5126,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace NacionesService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Naciones";
         function Create(request: Serenity.SaveRequest<NacionesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<NacionesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5179,10 +5177,10 @@ declare namespace Geshotel.Portal {
         NacionIdiomaMails?: string;
     }
     namespace ProvinciasRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ProvinciaId";
+        const nameProperty = "Provincia";
+        const localTextPrefix = "Portal.Provincias";
+        const lookupKey = "Portal.Provincias";
         function getLookup(): Q.Lookup<ProvinciasRow>;
         namespace Fields {
             const ProvinciaId: string;
@@ -5208,7 +5206,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace ProvinciasService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Provincias";
         function Create(request: Serenity.SaveRequest<ProvinciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ProvinciasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5231,10 +5229,10 @@ declare namespace Geshotel.Portal {
         EsErrorFechafin?: number;
     }
     namespace ReservaEstadosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "EstadoReservaId";
+        const nameProperty = "Estado";
+        const localTextPrefix = "Portal.ReservaEstados";
+        const lookupKey = "Portal.ReservasEstados";
         function getLookup(): Q.Lookup<ReservaEstadosRow>;
         namespace Fields {
             const EstadoReservaId: string;
@@ -5298,10 +5296,10 @@ declare namespace Geshotel.Portal {
         NombreTipoPension?: string;
     }
     namespace ServiciosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "ServicioId";
+        const nameProperty = "NombreServicio";
+        const localTextPrefix = "Portal.Servicios";
+        const lookupKey = "Portal.Servicios";
         function getLookup(): Q.Lookup<ServiciosRow>;
         namespace Fields {
             const ServicioId: string;
@@ -5335,7 +5333,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace ServiciosService {
-        const baseUrl: string;
+        const baseUrl = "Portal/Servicios";
         function Create(request: Serenity.SaveRequest<ServiciosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<ServiciosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5356,10 +5354,10 @@ declare namespace Geshotel.Portal {
         Sexo?: string;
     }
     namespace SexosRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "SexoId";
+        const nameProperty = "SexoId";
+        const localTextPrefix = "Portal.Sexos";
+        const lookupKey = "Portal.Sexos";
         function getLookup(): Q.Lookup<SexosRow>;
         namespace Fields {
             const SexoId: string;
@@ -5373,10 +5371,10 @@ declare namespace Geshotel.Portal {
         Documento?: string;
     }
     namespace TiposDocumentoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "DocumentoId";
+        const nameProperty = "Documento";
+        const localTextPrefix = "Portal.TiposDocumento";
+        const lookupKey = "Portal.TiposDocumento";
         function getLookup(): Q.Lookup<TiposDocumentoRow>;
         namespace Fields {
             const DocumentoId: string;
@@ -5411,10 +5409,10 @@ declare namespace Geshotel.Portal {
         GrupoHabitacion?: string;
     }
     namespace TiposHabitacionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoHabitacionId";
+        const nameProperty = "DescCorta";
+        const localTextPrefix = "Portal.TiposHabitacion";
+        const lookupKey = "Portal.TiposHabitacion";
         function getLookup(): Q.Lookup<TiposHabitacionRow>;
         namespace Fields {
             const TipoHabitacionId: string;
@@ -5430,7 +5428,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace TiposHabitacionService {
-        const baseUrl: string;
+        const baseUrl = "Portal/TiposHabitacion";
         function Create(request: Serenity.SaveRequest<TiposHabitacionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TiposHabitacionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5463,10 +5461,10 @@ declare namespace Geshotel.Portal {
         Abreviatura?: string;
     }
     namespace TiposHotelRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoHotelId";
+        const nameProperty = "TipoHotel";
+        const localTextPrefix = "Portal.TiposHotel";
+        const lookupKey = "Portal.TiposHotel";
         function getLookup(): Q.Lookup<TiposHotelRow>;
         namespace Fields {
             const TipoHotelId: string;
@@ -5477,7 +5475,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace TiposHotelService {
-        const baseUrl: string;
+        const baseUrl = "Portal/TiposHotel";
         function Create(request: Serenity.SaveRequest<TiposHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TiposHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5513,10 +5511,10 @@ declare namespace Geshotel.Portal {
         UcDescripcionUnidadCalculo?: string;
     }
     namespace TiposHuespedRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoHuespedId";
+        const nameProperty = "Descripcion";
+        const localTextPrefix = "Portal.TiposHuesped";
+        const lookupKey = "Portal.TiposHuesped";
         function getLookup(): Q.Lookup<TiposHuespedRow>;
         namespace Fields {
             const TipoHuespedId: string;
@@ -5529,7 +5527,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace TiposHuespedService {
-        const baseUrl: string;
+        const baseUrl = "Portal/TiposHuesped";
         function Create(request: Serenity.SaveRequest<TiposHuespedRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TiposHuespedRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5550,10 +5548,10 @@ declare namespace Geshotel.Portal {
         TipoPension?: string;
     }
     namespace TiposPensionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoPensionId";
+        const nameProperty = "TipoPension";
+        const localTextPrefix = "Portal.TiposPension";
+        const lookupKey = "Portal.TiposPension";
         function getLookup(): Q.Lookup<TiposPensionRow>;
         namespace Fields {
             const TipoPensionId: string;
@@ -5577,10 +5575,10 @@ declare namespace Geshotel.Portal {
         NombreTipoServicio?: string;
     }
     namespace TiposServicioRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "TipoServicioId";
+        const nameProperty = "NombreTipoServicio";
+        const localTextPrefix = "Portal.TiposServicio";
+        const lookupKey = "Portal.TiposServicio";
         function getLookup(): Q.Lookup<TiposServicioRow>;
         namespace Fields {
             const TipoServicioId: string;
@@ -5590,7 +5588,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace TiposServicioService {
-        const baseUrl: string;
+        const baseUrl = "Portal/TiposServicio";
         function Create(request: Serenity.SaveRequest<TiposServicioRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TiposServicioRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5621,10 +5619,10 @@ declare namespace Geshotel.Portal {
         Uc?: string;
     }
     namespace TiposUnidadCalculoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "UnidadCalculoId";
+        const nameProperty = "Uc";
+        const localTextPrefix = "Portal.TiposUnidadCalculo";
+        const lookupKey = "Portal.TiposUnidadCalculo";
         function getLookup(): Q.Lookup<TiposUnidadCalculoRow>;
         namespace Fields {
             const UnidadCalculoId: string;
@@ -5634,7 +5632,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace TiposUnidadCalculoService {
-        const baseUrl: string;
+        const baseUrl = "Portal/TiposUnidadCalculo";
         function Create(request: Serenity.SaveRequest<TiposUnidadCalculoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<TiposUnidadCalculoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5675,10 +5673,10 @@ declare namespace Geshotel.Portal {
         ServicioNombreServicio?: string;
     }
     namespace UnidadesCalculoRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "UnidadCalculoId";
+        const nameProperty = "Uc";
+        const localTextPrefix = "Portal.UnidadesCalculo";
+        const lookupKey = "Portal.UnidadesCalculo";
         function getLookup(): Q.Lookup<UnidadesCalculoRow>;
         namespace Fields {
             const UnidadCalculoId: string;
@@ -5694,7 +5692,7 @@ declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     namespace UnidadesCalculoService {
-        const baseUrl: string;
+        const baseUrl = "Portal/UnidadesCalculo";
         function Create(request: Serenity.SaveRequest<UnidadesCalculoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<UnidadesCalculoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -5728,8 +5726,8 @@ declare namespace Geshotel.Portal {
         UserUserImage?: string;
     }
     namespace UsuariosEmpresaRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserId";
+        const localTextPrefix = "Portal.UsuariosEmpresa";
         namespace Fields {
             const UserId: string;
             const EmpresaId: string;
@@ -5919,6 +5917,8 @@ declare namespace Geshotel.Contratos {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: ContratosForm;
+        private LineasGrid;
+        constructor();
     }
 }
 declare namespace Geshotel.Contratos {
@@ -5929,6 +5929,20 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosLineasGrid extends Serenity.EntityGrid<LineasGrid, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _contratoID;
+        contratoID: string;
     }
 }
 declare namespace Geshotel.Contratos {

@@ -292,7 +292,7 @@ namespace Geshotel.Contratos.Entities
             public StringField TipoServicio;
 
             public RowFields()
-                : base("[dbo].[lineas_de_contrato]")
+                : base("[lineas_de_contrato]")
             {
                 LocalTextPrefix = "Contratos.Lineas";
             }

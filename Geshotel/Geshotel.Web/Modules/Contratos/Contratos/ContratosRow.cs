@@ -13,6 +13,7 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), DisplayName("Contratos"), InstanceName("Contratos"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
     [ModifyPermission("Contratos:General")]
+    [LookupScript("Contratos.Contratos]")]
     public sealed class ContratosRow : Row, IIdRow, INameRow
     {
         [DisplayName("Contrato Id"), Column("contrato_id"), Identity]
@@ -99,11 +100,18 @@ namespace Geshotel.Contratos.Entities
             set { Fields.NumeroContratoCliente[this] = value; }
         }
 
-        [DisplayName("Usuario"), Column("user_id")]
-        public Int16? UserId
+        [DisplayName("Usuario"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUsers")]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
+        public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
+        }
+        [DisplayName("Usuario"), Expression("jUsers.Username")]
+        public String UserName
+        {
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
         [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
@@ -174,7 +182,7 @@ namespace Geshotel.Contratos.Entities
             public DateTimeField FechaDesde;
             public DateTimeField FechaHasta;
             public StringField NumeroContratoCliente;
-            public Int16Field UserId;
+            public Int32Field UserId;
             public DateTimeField FechaModificacion;
             public Int16Field TemporadaId;
             public BooleanField ImpuestoIncluido;
@@ -186,9 +194,10 @@ namespace Geshotel.Contratos.Entities
             public StringField Empresa;
             public StringField Mercado;
             public StringField Temporada;
+            public StringField UserName;
 
             public RowFields()
-                : base("[dbo].[contratos]")
+                : base("[contratos]")
             {
                 LocalTextPrefix = "Contratos.Contratos";
             }
