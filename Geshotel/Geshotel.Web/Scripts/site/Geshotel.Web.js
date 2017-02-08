@@ -5783,7 +5783,6 @@ var Geshotel;
             ContratosLineasGrid.prototype.getGridCanLoad = function () {
                 return true;
                 //            return this.contratoID != null;
-                //return super.getGridCanLoad() && !!this.contratoID;
             };
             Object.defineProperty(ContratosLineasGrid.prototype, "contratoID", {
                 get: function () {
