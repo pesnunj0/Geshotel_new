@@ -5714,12 +5714,73 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var ContratosCuposGrid = (function (_super) {
+            __extends(ContratosCuposGrid, _super);
+            function ContratosCuposGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ContratosCuposGrid.prototype.getColumnsKey = function () { return 'Contratos.Cupos'; };
+            ContratosCuposGrid.prototype.getIdProperty = function () { return Contratos.CuposRow.idProperty; };
+            ContratosCuposGrid.prototype.getLocalTextPrefix = function () { return Contratos.CuposRow.localTextPrefix; };
+            ContratosCuposGrid.prototype.getService = function () { return Contratos.CuposService.baseUrl; };
+            ContratosCuposGrid.prototype.addButtonClick = function () {
+                this.editItem({ clienteID: this.clienteID });
+                this.editItem({ hotelID: this.hotelID });
+            };
+            ContratosCuposGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ContratosCuposGrid.prototype.getGridCanLoad = function () {
+                return true;
+                //            return this.contratoID != null;
+            };
+            Object.defineProperty(ContratosCuposGrid.prototype, "hotelID", {
+                get: function () {
+                    return this._hotelID;
+                },
+                set: function (value) {
+                    if (this._hotelID !== value) {
+                        this._hotelID = value;
+                        this.setEquality(Contratos.ContratosRow.Fields.HotelId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(ContratosCuposGrid.prototype, "clienteID", {
+                get: function () {
+                    return this._clienteID;
+                },
+                set: function (value) {
+                    if (this._clienteID !== value) {
+                        this._clienteID = value;
+                        this.setEquality(Contratos.ContratosRow.Fields.ClienteId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            return ContratosCuposGrid;
+        }(Serenity.EntityGrid));
+        ContratosCuposGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosCuposGrid);
+        Contratos.ContratosCuposGrid = ContratosCuposGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var ContratosDialog = (function (_super) {
             __extends(ContratosDialog, _super);
             function ContratosDialog() {
                 var _this = _super.call(this) || this;
                 _this.form = new Contratos.ContratosForm(_this.idPrefix);
                 _this.LineasGrid = new Contratos.ContratosLineasGrid(_this.byId("LineasGrid"));
+                _this.CuposGrid = new Contratos.ContratosCuposGrid(_this.byId("CuposGrid"));
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
                 });
