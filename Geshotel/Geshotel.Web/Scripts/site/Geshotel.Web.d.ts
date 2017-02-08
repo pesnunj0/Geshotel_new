@@ -5965,25 +5965,6 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
-    class EdadesDialog extends Serenity.EntityDialog<EdadesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: EdadesForm;
-    }
-}
-declare namespace Geshotel.Contratos {
-    class EdadesGrid extends Serenity.EntityGrid<EdadesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof EdadesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Contratos {
     class LineasDialog extends Serenity.EntityDialog<LineasRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;

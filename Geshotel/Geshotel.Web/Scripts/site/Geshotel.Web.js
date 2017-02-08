@@ -5856,52 +5856,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var EdadesDialog = (function (_super) {
-            __extends(EdadesDialog, _super);
-            function EdadesDialog() {
-                var _this = _super.apply(this, arguments) || this;
-                _this.form = new Contratos.EdadesForm(_this.idPrefix);
-                return _this;
-            }
-            EdadesDialog.prototype.getFormKey = function () { return Contratos.EdadesForm.formKey; };
-            EdadesDialog.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
-            EdadesDialog.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
-            EdadesDialog.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
-            return EdadesDialog;
-        }(Serenity.EntityDialog));
-        EdadesDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], EdadesDialog);
-        Contratos.EdadesDialog = EdadesDialog;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var EdadesGrid = (function (_super) {
-            __extends(EdadesGrid, _super);
-            function EdadesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            EdadesGrid.prototype.getColumnsKey = function () { return 'Contratos.Edades'; };
-            EdadesGrid.prototype.getDialogType = function () { return Contratos.EdadesDialog; };
-            EdadesGrid.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
-            EdadesGrid.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
-            EdadesGrid.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
-            return EdadesGrid;
-        }(Serenity.EntityGrid));
-        EdadesGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], EdadesGrid);
-        Contratos.EdadesGrid = EdadesGrid;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var LineasDialog = (function (_super) {
             __extends(LineasDialog, _super);
             function LineasDialog() {

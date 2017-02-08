@@ -85,10 +85,6 @@ CREATE TABLE lineas_de_contrato (
   [frecuencia_id] smallint DEFAULT '2',
   [tipo_imputacion_id] smallint DEFAULT '0',
   [importe] float NOT NULL,
-  [n] smallint DEFAULT NULL,
-  [tipo_oferta_id] smallint DEFAULT NULL,
-  [m] float DEFAULT NULL,
-  [ambito_oferta_id] smallint DEFAULT NULL,
   [lunes] bit NOT NULL DEFAULT '1',
   [martes] bit NOT NULL DEFAULT '1',
   [miercoles] bit NOT NULL DEFAULT '1',
@@ -139,12 +135,17 @@ CREATE INDEX [cliente_id] ON contratos ([cliente_id]);
 -- ----------------------------
 --DROP TABLE IF EXISTS [contratos_edades];
 CREATE TABLE contratos_edades (
-  [contrato_id] int NOT NULL,
+  [contratos_edades_id] int NOT NULL IDENTITY(1,1),
+  [hotel_id] smallint NOT NULL,
+  [cliente_id] int NOT NULL,
+  [fecha_desde] date NOT NULL,
+  [fecha_hasta] date NOT NULL,
   [tipo_huesped_id] smallint NOT NULL,
   [edad_minima] int NOT NULL,
   [edad_maxima] int NOT NULL,
-  [user_id] smallint DEFAULT NULL,
-  PRIMARY KEY ([contrato_id],[tipo_huesped_id])
+  [user_id] int DEFAULT NULL,
+  [fecha_modificacion] datetime2(0) DEFAULT NULL,
+  PRIMARY KEY ([contratos_edades_id])
 ) ;
 
 CREATE INDEX [tipo_huesped_id] ON contratos_edades ([tipo_huesped_id]);
@@ -176,7 +177,7 @@ CREATE TABLE ofertas (
   [tipo_oferta_id] smallint DEFAULT NULL,
   [m] decimal(15,3) DEFAULT '0.000',
   [ambito_oferta_id] smallint DEFAULT NULL,
-  [user_id] smallint DEFAULT NULL,
+  [user_id] int DEFAULT NULL,
   [fecha_modificacion] datetime2(0) DEFAULT NULL,
   [impuesto_incluido] bit DEFAULT '1',
   [tipo_imputacion_id] smallint NOT NULL DEFAULT '0',

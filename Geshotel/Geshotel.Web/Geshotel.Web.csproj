@@ -2257,9 +2257,6 @@
     <Content Include="Modules\Contratos\Releases\ReleasesIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Contratos\Releases\ReleasesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Releases\ReleasesDialog.ts" />
-    <Content Include="Modules\Contratos\Edades\EdadesIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesGrid.ts" />
-    <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesDialog.ts" />
     <Content Include="Modules\Contratos\Lineas\LineasIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Contratos\Lineas\LineasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Lineas\LineasDialog.ts" />
@@ -2787,12 +2784,6 @@
     <Compile Include="Modules\Contratos\Releases\ReleasesRepository.cs" />
     <Compile Include="Modules\Contratos\Releases\ReleasesEndpoint.cs" />
     <Compile Include="Modules\Contratos\Releases\ReleasesPage.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesRow.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesColumns.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesForm.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesRepository.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesEndpoint.cs" />
-    <Compile Include="Modules\Contratos\Edades\EdadesPage.cs" />
     <Compile Include="Modules\Contratos\Lineas\LineasRow.cs" />
     <Compile Include="Modules\Contratos\Lineas\LineasColumns.cs" />
     <Compile Include="Modules\Contratos\Lineas\LineasForm.cs" />

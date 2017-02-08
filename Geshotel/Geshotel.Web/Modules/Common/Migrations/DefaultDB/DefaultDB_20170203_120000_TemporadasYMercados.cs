@@ -31,6 +31,13 @@ namespace Geshotel.Migrations.DefaultDB
             Create.Index("IX_mercados_hotel_id")
                 .OnTable("mercados")
                 .OnColumn("hotel_id").Ascending();
+
+            Create.ForeignKey("FK_lineas_contrato_contrato")
+                .FromTable("lineas_de_contrato")
+                .ForeignColumn("contrato_id")
+                .ToTable("contratos")
+                .PrimaryColumn("contrato_id")
+                .OnDelete(System.Data.Rule.Cascade);
         }
         public override void Down()
         {

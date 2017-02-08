@@ -81,43 +81,6 @@ CREATE TABLE `clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for lineas_de_contrato
--- ----------------------------
-DROP TABLE IF EXISTS `lineas_de_contrato`;
-CREATE TABLE `lineas_de_contrato` (
-  `linea_contrato_id` int(11) NOT NULL AUTO_INCREMENT,
-  `contrato_id` int(11) NOT NULL,
-  `oferta` bit(1) DEFAULT NULL,
-  `desde` date NOT NULL,
-  `hasta` date NOT NULL,
-  `servicio_id` int(11) NOT NULL,
-  `unidad_calculo_id` smallint(2) NOT NULL,
-  `frecuencia_id` smallint(6) DEFAULT '2',
-  `tipo_imputacion_id` smallint(6) DEFAULT '0',
-  `importe` float(15,3) NOT NULL,
-  `n` smallint(6) DEFAULT NULL,
-  `tipo_oferta_id` smallint(6) DEFAULT NULL,
-  `m` float(12,2) DEFAULT NULL,
-  `ambito_oferta_id` smallint(6) DEFAULT NULL,
-  `lunes` bit(1) NOT NULL DEFAULT b'1',
-  `martes` bit(1) NOT NULL DEFAULT b'1',
-  `miercoles` bit(1) NOT NULL DEFAULT b'1',
-  `jueves` bit(1) NOT NULL DEFAULT b'1',
-  `viernes` bit(1) NOT NULL DEFAULT b'1',
-  `sabado` bit(1) NOT NULL DEFAULT b'1',
-  `domingo` bit(1) NOT NULL DEFAULT b'1',
-  `pag_factura` smallint(6) DEFAULT '1',
-  `user_id` int(6) DEFAULT NULL,
-  `fecha_modificacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`linea_contrato_id`),
-  KEY `tipo_oferta_id` (`tipo_oferta_id`),
-  KEY `unidad_calculo_id` (`unidad_calculo_id`),
-  KEY `servicio_id` (`servicio_id`),
-  KEY `lineas_de_contrato_1` (`contrato_id`),
-  KEY `contrato_id` (`contrato_id`,`servicio_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
--- ----------------------------
 -- Table structure for contratos
 -- ----------------------------
 DROP TABLE IF EXISTS `contratos`;
@@ -140,23 +103,61 @@ CREATE TABLE `contratos` (
   PRIMARY KEY (`contrato_id`),
   KEY `hotel_id` (`hotel_id`),
   KEY `cliente_id` (`cliente_id`),
-  CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `Geshotel_commonfiles_v1`.`hoteles` (`hotel_id`),
+  CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `hoteles` (`hotel_id`),
   CONSTRAINT `contratos_ibfk_2` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- -----------------------------------------
+-- Table structure for lineas_de_contrato
+-- -----------------------------------------
+DROP TABLE IF EXISTS `lineas_de_contrato`;
+CREATE TABLE `lineas_de_contrato` (
+  `linea_contrato_id` int(11) NOT NULL AUTO_INCREMENT,
+  `contrato_id` int(11) NOT NULL,
+  `oferta` bit(1) DEFAULT NULL,
+  `desde` date NOT NULL,
+  `hasta` date NOT NULL,
+  `servicio_id` int(11) NOT NULL,
+  `unidad_calculo_id` smallint(2) NOT NULL,
+  `frecuencia_id` smallint(6) DEFAULT '2',
+  `tipo_imputacion_id` smallint(6) DEFAULT '0',
+  `importe` float(15,3) NOT NULL,
+  `lunes` bit(1) NOT NULL DEFAULT b'1',
+  `martes` bit(1) NOT NULL DEFAULT b'1',
+  `miercoles` bit(1) NOT NULL DEFAULT b'1',
+  `jueves` bit(1) NOT NULL DEFAULT b'1',
+  `viernes` bit(1) NOT NULL DEFAULT b'1',
+  `sabado` bit(1) NOT NULL DEFAULT b'1',
+  `domingo` bit(1) NOT NULL DEFAULT b'1',
+  `pag_factura` smallint(6) DEFAULT '1',
+  `user_id` int(6) DEFAULT NULL,
+  `fecha_modificacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`linea_contrato_id`),
+  KEY `tipo_oferta_id` (`tipo_oferta_id`),
+  KEY `unidad_calculo_id` (`unidad_calculo_id`),
+  KEY `servicio_id` (`servicio_id`),
+  KEY `lineas_de_contrato_1` (`contrato_id`),
+  KEY `contrato_id` (`contrato_id`,`servicio_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
 
 -- ----------------------------
 -- Table structure for contratos_edades
 -- ----------------------------
 DROP TABLE IF EXISTS `contratos_edades`;
 CREATE TABLE `contratos_edades` (
-  `contrato_id` int(11) NOT NULL,
+  `contratos_edades_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` smallint(6) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  `fecha_desde` date NOT NULL,
+  `fecha_hasta` date NOT NULL,
   `tipo_huesped_id` smallint(6) NOT NULL,
   `edad_minima` int(11) NOT NULL,
   `edad_maxima` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`contrato_id`,`tipo_huesped_id`),
-  KEY `tipo_huesped_id` (`tipo_huesped_id`),
-  CONSTRAINT `contratos_edades_ibfk_1` FOREIGN KEY (`tipo_huesped_id`) REFERENCES `geshotel_commonfiles_v1`.`tipos_huesped` (`tipo_huesped_id`) ON DELETE CASCADE
+  `fecha_modificacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`contratos_edades_id`),
+  KEY `tipo_huesped_id` (`tipo_huesped_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -199,15 +200,7 @@ CREATE TABLE `ofertas` (
   KEY `ofertas_ibfk_11` (`tipo_oferta_id`),
   KEY `ofertas_ibfk_12` (`ambito_oferta_id`),
   KEY `ofertas_ibfk_7` (`tipo_servicio_id`),
-  KEY `ofertas_ibfk_9` (`unidad_calculo_id`),
-  CONSTRAINT `ofertas_ibfk_10` FOREIGN KEY (`servicio_ligado_id`) REFERENCES `geshotel_commonfiles_v1`.`servicios` (`servicio_id`),
-  CONSTRAINT `ofertas_ibfk_11` FOREIGN KEY (`tipo_oferta_id`) REFERENCES `geshotel_commonfiles_v1`.`tipos_de_oferta` (`tipo_oferta_id`),
-  CONSTRAINT `ofertas_ibfk_12` FOREIGN KEY (`ambito_oferta_id`) REFERENCES `geshotel_commonfiles_v1`.`ambito_oferta` (`ambito_oferta_id`),
-  CONSTRAINT `ofertas_ibfk_2` FOREIGN KEY (`tipo_aplicacion_oferta_id`) REFERENCES `geshotel_commonfiles_v1`.`tipo_aplicacion_oferta` (`tipo_aplicacion_oferta_id`),
-  CONSTRAINT `ofertas_ibfk_3` FOREIGN KEY (`contrato_id`) REFERENCES `contratos` (`contrato_id`) ON DELETE CASCADE,
-  CONSTRAINT `ofertas_ibfk_7` FOREIGN KEY (`tipo_servicio_id`) REFERENCES `geshotel_commonfiles_v1`.`tipos_servicio` (`tipo_servicio_id`),
-  CONSTRAINT `ofertas_ibfk_8` FOREIGN KEY (`servicio_id`) REFERENCES `servicios` (`servicio_id`),
-  CONSTRAINT `ofertas_ibfk_9` FOREIGN KEY (`unidad_calculo_id`) REFERENCES `geshotel_commonfiles_v1`.`unidades_calculo` (`unidad_calculo_id`)
+  KEY `ofertas_ibfk_9` (`unidad_calculo_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -226,16 +219,12 @@ CREATE TABLE `ofertas_servicios` (
   KEY `oferta_id` (`oferta_id`),
   KEY `unidad_calculo_id` (`unidad_calculo_id`),
   KEY `ofertas_servicios_ibfk_1` (`servicio_id`),
-  KEY `servico_id_existe` (`servico_id_existe`),
-  CONSTRAINT `ofertas_servicios_ibfk_1` FOREIGN KEY (`servicio_id`) REFERENCES `geshotel_commonfiles_v1`.`servicios` (`servicio_id`),
-  CONSTRAINT `ofertas_servicios_ibfk_2` FOREIGN KEY (`unidad_calculo_id`) REFERENCES `geshotel_commonfiles_v1`.`unidades_calculo` (`unidad_calculo_id`),
-  CONSTRAINT `ofertas_servicios_ibfk_3` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`oferta_id`),
-  CONSTRAINT `ofertas_servicios_ibfk_4` FOREIGN KEY (`servico_id_existe`) REFERENCES `geshotel_commonfiles_v1`.`servicios` (`servicio_id`)
+  KEY `servico_id_existe` (`servico_id_existe`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
--- ----------------------------
+-- -----------------------------------------
 -- Table structure for ofertas_rejillas
--- ----------------------------
+-- -----------------------------------------
 DROP TABLE IF EXISTS `ofertas_rejillas`;
 CREATE TABLE `ofertas_rejillas` (
   `rejilla_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -246,7 +235,5 @@ CREATE TABLE `ofertas_rejillas` (
   `m` float NOT NULL,
   PRIMARY KEY (`rejilla_id`),
   KEY `oferta_id` (`oferta_id`),
-  KEY `tipo_condicion_id` (`tipo_condicion_id`),
-  CONSTRAINT `ofertas_rejillas_ibfk_1` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`oferta_id`) ON DELETE CASCADE,
-  CONSTRAINT `ofertas_rejillas_ibfk_2` FOREIGN KEY (`tipo_condicion_id`) REFERENCES `geshotel_commonfiles_v1`.`tipos_condicion` (`tipo_condicion_id`)
+  KEY `tipo_condicion_id` (`tipo_condicion_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
