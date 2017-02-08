@@ -5942,7 +5942,7 @@ declare namespace Geshotel.Contratos {
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         private _contratoID;
-        contratoID: string;
+        contratoID: number;
     }
 }
 declare namespace Geshotel.Contratos {

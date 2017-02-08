@@ -8445,7 +8445,7 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Contratos-LineasDeContratoDialog > .size {
-  width: 650px;
+  width: 800px;
 }
 .s-Contratos-LineasDeContratoDialog .caption {
   width: 150px;
@@ -8469,7 +8469,8 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Contratos-ContratosDialog > .size {
-  width: 650px;
+  width: 1000px;
+  height: 600px;
 }
 .s-Contratos-ContratosDialog .caption {
   width: 150px;

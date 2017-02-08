@@ -188,13 +188,6 @@ namespace MVC
             }
 
 
-            public static class Edades
-            {
-
-                public const string EdadesIndex = "~/Modules/Contratos/Edades/EdadesIndex.cshtml";
-            }
-
-
             public static class Lineas
             {
 

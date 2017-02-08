@@ -44,10 +44,23 @@ namespace Geshotel.Migrations.DefaultDB
                 fecha_desde = DateTime.Today,
                 fecha_hasta = DateTime.Parse("2017-12-31"),
                 impuesto_incluido = 1,
-                numero_contrato_cliente = "123456-99",
+                numero_contrato_cliente = "2017-99",
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+            Insert.IntoTable("contratos").Row(new
+            {
+                hotel_id = 1,
+                fecha_contrato = DateTime.Today,
+                cliente_id = 2,
+                fecha_desde = DateTime.Parse("2018-01-01"),
+                fecha_hasta = DateTime.Parse("2020-12-31"),
+                impuesto_incluido = 1,
+                numero_contrato_cliente = "2018-1",
+                user_id = 1,
+                fecha_modificacion = DateTime.Now
+            });
+
 
             Insert.IntoTable("cupos").Row(new
             {

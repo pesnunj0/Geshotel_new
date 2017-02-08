@@ -15,7 +15,7 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 LineaContratoId { get; set; }
-        //        public Int32 ContratoId { get; set; }
+        public Int32 ContratoId { get; set; }
         //        public Boolean Oferta { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("multiple", true), Hidden]
         public String TipoServicio { get; set; }

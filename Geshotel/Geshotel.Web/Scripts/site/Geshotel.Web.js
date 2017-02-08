@@ -5775,13 +5775,14 @@ var Geshotel;
             ContratosLineasGrid.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
             ContratosLineasGrid.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
             ContratosLineasGrid.prototype.addButtonClick = function () {
-                this.editItem({ ContratoID: this.contratoID });
+                this.editItem({ contratoID: this.contratoID });
             };
             ContratosLineasGrid.prototype.getInitialTitle = function () {
                 return null;
             };
             ContratosLineasGrid.prototype.getGridCanLoad = function () {
-                return this.contratoID != null;
+                return true;
+                //            return this.contratoID != null;
                 //return super.getGridCanLoad() && !!this.contratoID;
             };
             Object.defineProperty(ContratosLineasGrid.prototype, "contratoID", {

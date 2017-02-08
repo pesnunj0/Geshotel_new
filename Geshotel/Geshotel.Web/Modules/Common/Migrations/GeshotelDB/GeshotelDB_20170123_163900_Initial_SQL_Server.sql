@@ -97,16 +97,14 @@ CREATE TABLE lineas_de_contrato (
   [fecha_modificacion] datetime2(0) DEFAULT NULL,
   PRIMARY KEY ([linea_contrato_id])
 )  ;
-
-CREATE INDEX [tipo_oferta_id] ON lineas_de_contrato ([tipo_oferta_id]);
 CREATE INDEX [unidad_calculo_id] ON lineas_de_contrato ([unidad_calculo_id]);
 CREATE INDEX [servicio_id] ON lineas_de_contrato ([servicio_id]);
 CREATE INDEX [lineas_de_contrato_1] ON lineas_de_contrato ([contrato_id]);
 CREATE INDEX [contrato_id] ON lineas_de_contrato ([contrato_id],[servicio_id]);
 
--- ----------------------------
+-- ----------------------------------
 -- Table structure for contratos
--- ----------------------------
+-- ----------------------------------
 --DROP TABLE IF EXISTS [contratos];
 CREATE TABLE contratos (
   [contrato_id] int NOT NULL IDENTITY (1,1),

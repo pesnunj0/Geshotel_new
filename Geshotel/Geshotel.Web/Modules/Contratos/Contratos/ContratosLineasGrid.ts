@@ -12,7 +12,7 @@
         }
 
         protected addButtonClick() {
-            this.editItem({ ContratoID: this.contratoID });
+            this.editItem({ contratoID: this.contratoID });
         }
 
         protected getInitialTitle() {
@@ -20,17 +20,18 @@
         }
 
         protected getGridCanLoad() {
-            return this.contratoID != null;
-            //return super.getGridCanLoad() && !!this.contratoID;
+            return true;
+//            return this.contratoID != null;
+            
         }
 
-        private _contratoID: string;
+        private _contratoID: number;
 
         get contratoID() {
             return this._contratoID;
         }
 
-        set contratoID(value: string) {
+        set contratoID(value: number) {
             if (this._contratoID !== value) {
                 this._contratoID = value;
                 this.setEquality(LineasRow.Fields.ContratoId, value);

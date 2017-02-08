@@ -2372,6 +2372,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170208_224500_Servicios_hotel.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170123_163900_Initial.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_120000_TemporadasYMercados.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170130_120000_Contratos.cs" />
