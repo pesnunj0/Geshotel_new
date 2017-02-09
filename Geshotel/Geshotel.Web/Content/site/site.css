@@ -8575,3 +8575,9 @@ section.content > .s-DataGrid {
 .s-Contratos-OfertasRejillasDialog .caption {
   width: 150px;
 }
+.s-Contratos-ContratosEdadesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-ContratosEdadesDialog .caption {
+  width: 150px;
+}
