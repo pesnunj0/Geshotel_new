@@ -15,8 +15,8 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ContratosEdadesId { get; set; }
-        public Int16 HotelId { get; set; }
-        public Int32 ClienteId { get; set; }
+        public String HotelName { get; set; }
+        public String Touroperador { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         public String TipoHuesped { get; set; }

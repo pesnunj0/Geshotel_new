@@ -181,6 +181,13 @@ namespace MVC
             }
 
 
+            public static class ContratosEdades
+            {
+
+                public const string ContratosEdadesIndex = "~/Modules/Contratos/ContratosEdades/ContratosEdadesIndex.cshtml";
+            }
+
+
             public static class Cupos
             {
 
