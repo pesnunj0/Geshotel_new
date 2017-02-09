@@ -829,6 +829,7 @@
     <Content Include="Scripts\SlickGrid\slick.remotemodel.js" />
     <Content Include="Scripts\sortable.js" />
     <Content Include="Scripts\sortable.min.js" />
+    <Content Include="Modules\Northwind\OrderDetail\OrderDetailIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1770,6 +1771,8 @@
     <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Employee\EmployeeFormatter.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Note\NoteDialog.ts" />
+    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailDialog.ts" />
+    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Order\OrderDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Order\FreightFormatter.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Region\RegionDialog.ts" />
@@ -2086,7 +2089,6 @@
     <Content Include="Modules\Administration\User\UserIndex.cshtml" />
     <Content Include="Modules\Northwind\Category\CategoryIndex.cshtml" />
     <Content Include="Modules\Northwind\Customer\CustomerIndex.cshtml" />
-    <Content Include="Modules\Northwind\OrderDetail\OrderDetailIndex.cshtml" />
     <Content Include="Modules\Northwind\Order\OrderIndex.cshtml" />
     <Content Include="Modules\Northwind\Product\ProductIndex.cshtml" />
     <Content Include="Modules\Northwind\Region\RegionIndex.cshtml" />
@@ -2104,8 +2106,6 @@
     <TypeScriptCompile Include="Modules\Common\Helpers\BulkServiceAction.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerOrdersGrid.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Note\NotesEditor.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailDialog.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailsEditor.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Order\OrderGrid.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Product\ProductDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Product\ProductGrid.ts" />
@@ -2276,6 +2276,12 @@
     <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Temporadas\TemporadasDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Contratos\ContratosEdades\ContratosEdadesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesRow.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesService.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ContratosEdadesForm.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\ContratosEdades\ContratosEdadesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\ContratosEdades\ContratosEdadesDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2516,8 +2522,13 @@
     <Compile Include="Modules\Northwind\Customer\CustomerCountryLookup.cs" />
     <Compile Include="Modules\Northwind\NorthwindNavigation.cs" />
     <Compile Include="Modules\Northwind\Note\NotesBehavior.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailColumns.cs" />
     <None Include="Modules\Northwind\Order\OrderDetailReport.cshtml" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailColumns.cs" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailEndpoint.cs" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailForm.cs" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailPage.cs" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRepository.cs" />
+    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRow.cs" />
     <Compile Include="Modules\Northwind\Order\OrderDetailReport.cs" />
     <Compile Include="Modules\Northwind\Order\OrderListRequest.cs" />
     <Compile Include="Modules\Northwind\Order\OrderShippingState.cs" />
@@ -2698,11 +2709,6 @@
     <Compile Include="Modules\Northwind\Customer\CustomerPage.cs" />
     <Compile Include="Modules\Northwind\Employee\EmployeeRow.cs" />
     <Compile Include="Modules\Northwind\EmployeeTerritory\EmployeeTerritoryRow.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRow.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailForm.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailRepository.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailEndpoint.cs" />
-    <Compile Include="Modules\Northwind\OrderDetail\OrderDetailPage.cs" />
     <Compile Include="Modules\Northwind\Order\OrderRow.cs" />
     <Compile Include="Modules\Northwind\Order\OrderForm.cs" />
     <Compile Include="Modules\Northwind\Order\OrderRepository.cs" />
@@ -2820,9 +2826,16 @@
     <Compile Include="Modules\Contratos\Temporadas\TemporadasRepository.cs" />
     <Compile Include="Modules\Contratos\Temporadas\TemporadasEndpoint.cs" />
     <Compile Include="Modules\Contratos\Temporadas\TemporadasPage.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesRow.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesColumns.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesForm.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesRepository.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesEndpoint.cs" />
+    <Compile Include="Modules\Contratos\ContratosEdades\ContratosEdadesPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Modules\Northwind\ProductLang\OrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

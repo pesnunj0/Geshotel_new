@@ -8,6 +8,7 @@ namespace Geshotel.Contratos.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Ofertas"), InstanceName("Ofertas"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
@@ -98,28 +99,32 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DiasDeAntelacion[this] = value; }
         }
 
-        [DisplayName("Tipo Servicio Id"), Column("tipo_servicio_id")]
+        [DisplayName("Tipo Servicio Id"), Column("tipo_servicio_id"), ForeignKey("tipos_servicio","tipo_servicio_id"), LeftJoin("jTiposServicio")]
+        [LookupEditor(typeof(TiposServicioRow))]
         public Int16? TipoServicioId
         {
             get { return Fields.TipoServicioId[this]; }
             set { Fields.TipoServicioId[this] = value; }
         }
 
-        [DisplayName("Servicio Id"), Column("servicio_id")]
+        [DisplayName("Servicio Id"), Column("servicio_id"), ForeignKey("servicios","servicio_id"),LeftJoin("jServicios")]
+        [LookupEditor(typeof(ServiciosRow))]
         public Int32? ServicioId
         {
             get { return Fields.ServicioId[this]; }
             set { Fields.ServicioId[this] = value; }
         }
 
-        [DisplayName("Unidad Calculo Id"), Column("unidad_calculo_id")]
+        [DisplayName("Unidad Calculo Id"), Column("unidad_calculo_id"),ForeignKey("unidades_calculo","unidad_calculo_id"),LeftJoin("jUC")]
+        [LookupEditor(typeof(UnidadesCalculoRow))]
         public Int16? UnidadCalculoId
         {
             get { return Fields.UnidadCalculoId[this]; }
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
-        [DisplayName("Servicio Ligado Id"), Column("servicio_ligado_id")]
+        [DisplayName("Servicio Ligado Id"), Column("servicio_ligado_id"),ForeignKey("servicios","servicio_id"),LeftJoin("jServicioLigado")]
+        [LookupEditor(typeof(ServiciosRow))]
         public Int32? ServicioLigadoId
         {
             get { return Fields.ServicioLigadoId[this]; }
@@ -147,7 +152,8 @@ namespace Geshotel.Contratos.Entities
             set { Fields.N[this] = value; }
         }
 
-        [DisplayName("Tipo Oferta Id"), Column("tipo_oferta_id")]
+        [DisplayName("Tipo Oferta Id"), Column("tipo_oferta_id"),ForeignKey("tipos_de_oferta","tipo_oferta_id"),LeftJoin("jTipoOferta")]
+        [LookupEditor(typeof(TiposDeOfertaRow))]
         public Int16? TipoOfertaId
         {
             get { return Fields.TipoOfertaId[this]; }
@@ -161,15 +167,17 @@ namespace Geshotel.Contratos.Entities
             set { Fields.M[this] = value; }
         }
 
-        [DisplayName("Ambito Oferta Id"), Column("ambito_oferta_id")]
+        [DisplayName("Ambito Oferta Id"), Column("ambito_oferta_id"),ForeignKey("ambito_oferta","ambito_oferta_id"),LeftJoin("jAmbito")]
+        [LookupEditor(typeof(AmbitoOfertaRow))]
         public Int16? AmbitoOfertaId
         {
             get { return Fields.AmbitoOfertaId[this]; }
             set { Fields.AmbitoOfertaId[this] = value; }
         }
 
-        [DisplayName("User Id"), Column("user_id")]
-        public Int16? UserId
+        [DisplayName("User Id"), Column("user_id"),ForeignKey("Users","UserID"),LeftJoin("jUsers")]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
+        public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
@@ -244,7 +252,7 @@ namespace Geshotel.Contratos.Entities
             public Int16Field TipoOfertaId;
             public DecimalField M;
             public Int16Field AmbitoOfertaId;
-            public Int16Field UserId;
+            public Int32Field UserId;
             public DateTimeField FechaModificacion;
             public BooleanField ImpuestoIncluido;
             public Int16Field TipoImputacionId;

@@ -5871,6 +5871,52 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var ContratosEdadesDialog = (function (_super) {
+            __extends(ContratosEdadesDialog, _super);
+            function ContratosEdadesDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.ContratosEdadesForm(_this.idPrefix);
+                return _this;
+            }
+            ContratosEdadesDialog.prototype.getFormKey = function () { return Contratos.ContratosEdadesForm.formKey; };
+            ContratosEdadesDialog.prototype.getIdProperty = function () { return Contratos.ContratosEdadesRow.idProperty; };
+            ContratosEdadesDialog.prototype.getLocalTextPrefix = function () { return Contratos.ContratosEdadesRow.localTextPrefix; };
+            ContratosEdadesDialog.prototype.getService = function () { return Contratos.ContratosEdadesService.baseUrl; };
+            return ContratosEdadesDialog;
+        }(Serenity.EntityDialog));
+        ContratosEdadesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ContratosEdadesDialog);
+        Contratos.ContratosEdadesDialog = ContratosEdadesDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ContratosEdadesGrid = (function (_super) {
+            __extends(ContratosEdadesGrid, _super);
+            function ContratosEdadesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ContratosEdadesGrid.prototype.getColumnsKey = function () { return 'Contratos.ContratosEdades'; };
+            ContratosEdadesGrid.prototype.getDialogType = function () { return Contratos.ContratosEdadesDialog; };
+            ContratosEdadesGrid.prototype.getIdProperty = function () { return Contratos.ContratosEdadesRow.idProperty; };
+            ContratosEdadesGrid.prototype.getLocalTextPrefix = function () { return Contratos.ContratosEdadesRow.localTextPrefix; };
+            ContratosEdadesGrid.prototype.getService = function () { return Contratos.ContratosEdadesService.baseUrl; };
+            return ContratosEdadesGrid;
+        }(Serenity.EntityGrid));
+        ContratosEdadesGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosEdadesGrid);
+        Contratos.ContratosEdadesGrid = ContratosEdadesGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var CuposDialog = (function (_super) {
             __extends(CuposDialog, _super);
             function CuposDialog() {

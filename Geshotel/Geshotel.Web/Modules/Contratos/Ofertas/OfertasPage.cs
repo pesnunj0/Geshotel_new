@@ -1,6 +1,4 @@
 ﻿
-
-
 namespace Geshotel.Contratos.Pages
 {
     using Serenity;

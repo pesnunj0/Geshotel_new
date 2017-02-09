@@ -8469,11 +8469,14 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Contratos-ContratosDialog > .size {
-  width: 1000px;
+  width: 900px;
   height: 600px;
 }
 .s-Contratos-ContratosDialog .caption {
   width: 150px;
+}
+.s-Contratos-ContratosDialog .s-ContratosLineasGrid > .grid-container {
+  height: 600px;
 }
 .s-Contratos-ContratosEdadesDialog > .size {
   width: 650px;
@@ -8558,5 +8561,17 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Contratos-TemporadasDialog .caption {
+  width: 150px;
+}
+.s-Contratos-OfertasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-OfertasDialog .caption {
+  width: 150px;
+}
+.s-Contratos-OfertasRejillasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-OfertasRejillasDialog .caption {
   width: 150px;
 }
