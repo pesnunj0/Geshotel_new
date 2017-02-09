@@ -50,11 +50,19 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaHasta[this] = value; }
         }
 
-        [DisplayName("Tipo Aplicacion Oferta Id"), Column("tipo_aplicacion_oferta_id"), Size(1), NotNull]
+        [DisplayName("Tipo Aplicacion"), Column("tipo_aplicacion_oferta_id"), ForeignKey("tipo_aplicacion_oferta", "tipo_aplicacion_oferta_id"),LeftJoin("jTipoAplicacionOferta"),Size(1), NotNull]
+        [LookupEditor(typeof(TipoAplicacionOfertaRow))]
         public String TipoAplicacionOfertaId
         {
             get { return Fields.TipoAplicacionOfertaId[this]; }
             set { Fields.TipoAplicacionOfertaId[this] = value; }
+        }
+
+        [DisplayName("Tipo Aplicacion"), Expression("jTipoAplicacionOferta.aplicable_segun_fecha_de")]
+        public String TipoAplicacionOfertaName
+        {
+            get { return Fields.TipoAplicacionOfertaName[this]; }
+            set { Fields.TipoAplicacionOfertaName[this] = value; }
         }
 
         [DisplayName("Aplicable Auto"), Column("aplicable_auto"), NotNull]
@@ -107,6 +115,13 @@ namespace Geshotel.Contratos.Entities
             set { Fields.TipoServicioId[this] = value; }
         }
 
+        [DisplayName("Tipo Servicio"), Expression("jTiposServicio.nombre_tipo_servicio")]
+        public String TipoServicioName
+        {
+            get { return Fields.TipoServicioName[this]; }
+            set { Fields.TipoServicioName[this] = value; }
+        }
+
         [DisplayName("Servicio Id"), Column("servicio_id"), ForeignKey("servicios","servicio_id"),LeftJoin("jServicios")]
         [LookupEditor(typeof(ServiciosRow))]
         public Int32? ServicioId
@@ -114,6 +129,14 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.ServicioId[this]; }
             set { Fields.ServicioId[this] = value; }
         }
+
+        [DisplayName("Servicio"), Expression("jServicios.servicio")]
+        public String ServicioName
+        {
+            get { return Fields.ServicioName[this]; }
+            set { Fields.ServicioName[this] = value; }
+        }
+
 
         [DisplayName("Unidad Calculo Id"), Column("unidad_calculo_id"),ForeignKey("unidades_calculo","unidad_calculo_id"),LeftJoin("jUC")]
         [LookupEditor(typeof(UnidadesCalculoRow))]
@@ -123,12 +146,26 @@ namespace Geshotel.Contratos.Entities
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
-        [DisplayName("Servicio Ligado Id"), Column("servicio_ligado_id"),ForeignKey("servicios","servicio_id"),LeftJoin("jServicioLigado")]
+        [DisplayName("Unidad Calculo"), Expression("jUC.uc")]
+        public String UnidadCalculoName
+        {
+            get { return Fields.UnidadCalculoName[this]; }
+            set { Fields.UnidadCalculoName[this] = value; }
+        }
+
+        [DisplayName("Servicio Ligado"), Column("servicio_ligado_id"),ForeignKey("servicios","servicio_id"),LeftJoin("jServicioLigado")]
         [LookupEditor(typeof(ServiciosRow))]
         public Int32? ServicioLigadoId
         {
             get { return Fields.ServicioLigadoId[this]; }
             set { Fields.ServicioLigadoId[this] = value; }
+        }
+
+        [DisplayName("Servicio Ligado"), Expression("jServicioLigado.servicio")]
+        public String ServicioLigadoName
+        {
+            get { return Fields.ServicioLigadoName[this]; }
+            set { Fields.ServicioLigadoName[this] = value; }
         }
 
         [DisplayName("Cupo Oferta"), Column("cupo_oferta")]
@@ -160,6 +197,13 @@ namespace Geshotel.Contratos.Entities
             set { Fields.TipoOfertaId[this] = value; }
         }
 
+        [DisplayName("Tipo"), Expression("jTipoOferta.Oferta")]
+        public String TipoOfertaName
+        {
+            get { return Fields.TipoOfertaName[this]; }
+            set { Fields.TipoOfertaName[this] = value; }
+        }
+
         [DisplayName("M"), Column("m"), Size(15), Scale(3)]
         public Decimal? M
         {
@@ -175,12 +219,26 @@ namespace Geshotel.Contratos.Entities
             set { Fields.AmbitoOfertaId[this] = value; }
         }
 
+        [DisplayName("Ambito"), Expression("jAmbito.nombre")]
+        public String AmbitoOfertaName
+        {
+            get { return Fields.AmbitoOfertaName[this]; }
+            set { Fields.AmbitoOfertaName[this] = value; }
+        }
+
         [DisplayName("User Id"), Column("user_id"),ForeignKey("Users","UserID"),LeftJoin("jUsers")]
         [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
+        }
+
+        [DisplayName("Usuario"), Expression("jUsers.Username")]
+        public String UserName
+        {
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
         [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
@@ -197,13 +255,20 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ImpuestoIncluido[this] = value; }
         }
 
-        [DisplayName("Tipo Imputacion Id"), Column("tipo_imputacion_id"), NotNull]
+        [DisplayName("Imputacion"), Column("tipo_imputacion_id"), ForeignKey("tipos_de_imputacion","tipo_imputacion_id"),LeftJoin("jTipoImputacion") NotNull]
+        [LookupEditor(typeof(TiposDeImputacionRow))]
         public Int16? TipoImputacionId
         {
             get { return Fields.TipoImputacionId[this]; }
             set { Fields.TipoImputacionId[this] = value; }
         }
 
+        [DisplayName("Imputacion"), Expression("jTipoImputacion.imputacion")]
+        public String TipoImputacionName
+        {
+            get { return Fields.TipoImputacionName[this]; }
+            set { Fields.TipoImputacionName[this] = value; }
+        }
         [DisplayName("Orden Aplicacion"), Column("orden_aplicacion")]
         public Int16? OrdenAplicacion
         {
@@ -257,6 +322,17 @@ namespace Geshotel.Contratos.Entities
             public BooleanField ImpuestoIncluido;
             public Int16Field TipoImputacionId;
             public Int16Field OrdenAplicacion;
+
+            public StringField AmbitoOfertaName;
+            public StringField TipoOfertaName;
+            public StringField TipoServicioName;
+            public StringField ServicioName;
+            public StringField ServicioLigadoName;
+            public StringField UnidadCalculoName;
+            public StringField UserName;
+            public StringField TipoAplicacionOfertaName;
+            public StringField TipoImputacionName;
+
 
             public RowFields()
                 : base("[ofertas]")

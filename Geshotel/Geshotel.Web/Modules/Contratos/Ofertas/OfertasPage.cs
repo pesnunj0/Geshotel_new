@@ -1,4 +1,6 @@
 ﻿
+[assembly: Serenity.Navigation.NavigationLink(int.MaxValue, "Contratos/Ofertas", typeof(Geshotel.Contratos.Pages.OfertasController))]
+
 namespace Geshotel.Contratos.Pages
 {
     using Serenity;

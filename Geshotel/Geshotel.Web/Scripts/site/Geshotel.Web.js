@@ -3898,6 +3898,55 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
+        var AmbitoOfertaForm = (function (_super) {
+            __extends(AmbitoOfertaForm, _super);
+            function AmbitoOfertaForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return AmbitoOfertaForm;
+        }(Serenity.PrefixedContext));
+        AmbitoOfertaForm.formKey = 'Portal.AmbitoOferta';
+        Portal.AmbitoOfertaForm = AmbitoOfertaForm;
+        [['AmbitoOfertaId', function () { return Serenity.IntegerEditor; }], ['Nombre', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(AmbitoOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var AmbitoOfertaRow;
+        (function (AmbitoOfertaRow) {
+            AmbitoOfertaRow.idProperty = 'AmbitoOfertaId';
+            AmbitoOfertaRow.nameProperty = 'Nombre';
+            AmbitoOfertaRow.localTextPrefix = 'Portal.AmbitoOferta';
+            var Fields;
+            (function (Fields) {
+            })(Fields = AmbitoOfertaRow.Fields || (AmbitoOfertaRow.Fields = {}));
+            ['AmbitoOfertaId', 'Nombre'].forEach(function (x) { return Fields[x] = x; });
+        })(AmbitoOfertaRow = Portal.AmbitoOfertaRow || (Portal.AmbitoOfertaRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var AmbitoOfertaService;
+        (function (AmbitoOfertaService) {
+            AmbitoOfertaService.baseUrl = 'Portal/AmbitoOferta';
+            var Methods;
+            (function (Methods) {
+            })(Methods = AmbitoOfertaService.Methods || (AmbitoOfertaService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                AmbitoOfertaService[x] = function (r, s, o) { return Q.serviceRequest(AmbitoOfertaService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = AmbitoOfertaService.baseUrl + '/' + x;
+            });
+        })(AmbitoOfertaService = Portal.AmbitoOfertaService || (Portal.AmbitoOfertaService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
         var CategoriaHotelesForm = (function (_super) {
             __extends(CategoriaHotelesForm, _super);
             function CategoriaHotelesForm() {
@@ -4150,6 +4199,55 @@ var Geshotel;
                 Methods[x] = FormasDePagoService.baseUrl + '/' + x;
             });
         })(FormasDePagoService = Portal.FormasDePagoService || (Portal.FormasDePagoService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var FrecuenciaFacturacionForm = (function (_super) {
+            __extends(FrecuenciaFacturacionForm, _super);
+            function FrecuenciaFacturacionForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return FrecuenciaFacturacionForm;
+        }(Serenity.PrefixedContext));
+        FrecuenciaFacturacionForm.formKey = 'Portal.FrecuenciaFacturacion';
+        Portal.FrecuenciaFacturacionForm = FrecuenciaFacturacionForm;
+        [['FrecuenciaId', function () { return Serenity.IntegerEditor; }], ['DescripcionCorta', function () { return Serenity.StringEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(FrecuenciaFacturacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var FrecuenciaFacturacionRow;
+        (function (FrecuenciaFacturacionRow) {
+            FrecuenciaFacturacionRow.idProperty = 'FrecuenciaId';
+            FrecuenciaFacturacionRow.nameProperty = 'DescripcionCorta';
+            FrecuenciaFacturacionRow.localTextPrefix = 'Portal.FrecuenciaFacturacion';
+            var Fields;
+            (function (Fields) {
+            })(Fields = FrecuenciaFacturacionRow.Fields || (FrecuenciaFacturacionRow.Fields = {}));
+            ['FrecuenciaId', 'DescripcionCorta', 'Descripcion'].forEach(function (x) { return Fields[x] = x; });
+        })(FrecuenciaFacturacionRow = Portal.FrecuenciaFacturacionRow || (Portal.FrecuenciaFacturacionRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var FrecuenciaFacturacionService;
+        (function (FrecuenciaFacturacionService) {
+            FrecuenciaFacturacionService.baseUrl = 'Portal/FrecuenciaFacturacion';
+            var Methods;
+            (function (Methods) {
+            })(Methods = FrecuenciaFacturacionService.Methods || (FrecuenciaFacturacionService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                FrecuenciaFacturacionService[x] = function (r, s, o) { return Q.serviceRequest(FrecuenciaFacturacionService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = FrecuenciaFacturacionService.baseUrl + '/' + x;
+            });
+        })(FrecuenciaFacturacionService = Portal.FrecuenciaFacturacionService || (Portal.FrecuenciaFacturacionService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -4630,6 +4728,202 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
+        var TipoAplicacionOfertaForm = (function (_super) {
+            __extends(TipoAplicacionOfertaForm, _super);
+            function TipoAplicacionOfertaForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return TipoAplicacionOfertaForm;
+        }(Serenity.PrefixedContext));
+        TipoAplicacionOfertaForm.formKey = 'Portal.TipoAplicacionOferta';
+        Portal.TipoAplicacionOfertaForm = TipoAplicacionOfertaForm;
+        [['TipoAplicacionOfertaId', function () { return Serenity.StringEditor; }], ['AplicableSegunFechaDe', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TipoAplicacionOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TipoAplicacionOfertaRow;
+        (function (TipoAplicacionOfertaRow) {
+            TipoAplicacionOfertaRow.idProperty = 'TipoAplicacionOfertaId';
+            TipoAplicacionOfertaRow.nameProperty = 'TipoAplicacionOfertaId';
+            TipoAplicacionOfertaRow.localTextPrefix = 'Portal.TipoAplicacionOferta';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TipoAplicacionOfertaRow.Fields || (TipoAplicacionOfertaRow.Fields = {}));
+            ['TipoAplicacionOfertaId', 'AplicableSegunFechaDe'].forEach(function (x) { return Fields[x] = x; });
+        })(TipoAplicacionOfertaRow = Portal.TipoAplicacionOfertaRow || (Portal.TipoAplicacionOfertaRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TipoAplicacionOfertaService;
+        (function (TipoAplicacionOfertaService) {
+            TipoAplicacionOfertaService.baseUrl = 'Portal/TipoAplicacionOferta';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TipoAplicacionOfertaService.Methods || (TipoAplicacionOfertaService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TipoAplicacionOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TipoAplicacionOfertaService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TipoAplicacionOfertaService.baseUrl + '/' + x;
+            });
+        })(TipoAplicacionOfertaService = Portal.TipoAplicacionOfertaService || (Portal.TipoAplicacionOfertaService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposCondicionForm = (function (_super) {
+            __extends(TiposCondicionForm, _super);
+            function TiposCondicionForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return TiposCondicionForm;
+        }(Serenity.PrefixedContext));
+        TiposCondicionForm.formKey = 'Portal.TiposCondicion';
+        Portal.TiposCondicionForm = TiposCondicionForm;
+        [['TipoCondicionId', function () { return Serenity.IntegerEditor; }], ['Condicion', function () { return Serenity.StringEditor; }], ['Literal', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposCondicionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposCondicionRow;
+        (function (TiposCondicionRow) {
+            TiposCondicionRow.idProperty = 'TipoCondicionId';
+            TiposCondicionRow.nameProperty = 'Condicion';
+            TiposCondicionRow.localTextPrefix = 'Portal.TiposCondicion';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TiposCondicionRow.Fields || (TiposCondicionRow.Fields = {}));
+            ['TipoCondicionId', 'Condicion', 'Literal'].forEach(function (x) { return Fields[x] = x; });
+        })(TiposCondicionRow = Portal.TiposCondicionRow || (Portal.TiposCondicionRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposCondicionService;
+        (function (TiposCondicionService) {
+            TiposCondicionService.baseUrl = 'Portal/TiposCondicion';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TiposCondicionService.Methods || (TiposCondicionService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TiposCondicionService[x] = function (r, s, o) { return Q.serviceRequest(TiposCondicionService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TiposCondicionService.baseUrl + '/' + x;
+            });
+        })(TiposCondicionService = Portal.TiposCondicionService || (Portal.TiposCondicionService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeImputacionForm = (function (_super) {
+            __extends(TiposDeImputacionForm, _super);
+            function TiposDeImputacionForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return TiposDeImputacionForm;
+        }(Serenity.PrefixedContext));
+        TiposDeImputacionForm.formKey = 'Portal.TiposDeImputacion';
+        Portal.TiposDeImputacionForm = TiposDeImputacionForm;
+        [['TipoImputacionId', function () { return Serenity.IntegerEditor; }], ['Imputacion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TiposDeImputacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeImputacionRow;
+        (function (TiposDeImputacionRow) {
+            TiposDeImputacionRow.idProperty = 'TipoImputacionId';
+            TiposDeImputacionRow.nameProperty = 'Imputacion';
+            TiposDeImputacionRow.localTextPrefix = 'Portal.TiposDeImputacion';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TiposDeImputacionRow.Fields || (TiposDeImputacionRow.Fields = {}));
+            ['TipoImputacionId', 'Imputacion'].forEach(function (x) { return Fields[x] = x; });
+        })(TiposDeImputacionRow = Portal.TiposDeImputacionRow || (Portal.TiposDeImputacionRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeImputacionService;
+        (function (TiposDeImputacionService) {
+            TiposDeImputacionService.baseUrl = 'Portal/TiposDeImputacion';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TiposDeImputacionService.Methods || (TiposDeImputacionService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TiposDeImputacionService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeImputacionService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TiposDeImputacionService.baseUrl + '/' + x;
+            });
+        })(TiposDeImputacionService = Portal.TiposDeImputacionService || (Portal.TiposDeImputacionService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeOfertaForm = (function (_super) {
+            __extends(TiposDeOfertaForm, _super);
+            function TiposDeOfertaForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return TiposDeOfertaForm;
+        }(Serenity.PrefixedContext));
+        TiposDeOfertaForm.formKey = 'Portal.TiposDeOferta';
+        Portal.TiposDeOfertaForm = TiposDeOfertaForm;
+        [['TipoOfertaId', function () { return Serenity.IntegerEditor; }], ['Oferta', function () { return Serenity.StringEditor; }], ['PermitirMMayorQueN', function () { return Serenity.IntegerEditor; }], ['Rejilla', function () { return Serenity.IntegerEditor; }], ['Observaciones', function () { return Serenity.StringEditor; }], ['OrdenAplicacion', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(TiposDeOfertaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeOfertaRow;
+        (function (TiposDeOfertaRow) {
+            TiposDeOfertaRow.idProperty = 'TipoOfertaId';
+            TiposDeOfertaRow.nameProperty = 'Oferta';
+            TiposDeOfertaRow.localTextPrefix = 'Portal.TiposDeOferta';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TiposDeOfertaRow.Fields || (TiposDeOfertaRow.Fields = {}));
+            ['TipoOfertaId', 'Oferta', 'PermitirMMayorQueN', 'Rejilla', 'Observaciones', 'OrdenAplicacion'].forEach(function (x) { return Fields[x] = x; });
+        })(TiposDeOfertaRow = Portal.TiposDeOfertaRow || (Portal.TiposDeOfertaRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeOfertaService;
+        (function (TiposDeOfertaService) {
+            TiposDeOfertaService.baseUrl = 'Portal/TiposDeOferta';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TiposDeOfertaService.Methods || (TiposDeOfertaService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TiposDeOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeOfertaService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TiposDeOfertaService.baseUrl + '/' + x;
+            });
+        })(TiposDeOfertaService = Portal.TiposDeOfertaService || (Portal.TiposDeOfertaService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
         var TiposDocumentoRow;
         (function (TiposDocumentoRow) {
             TiposDocumentoRow.idProperty = 'DocumentoId';
@@ -5006,6 +5300,55 @@ var Geshotel;
             ['UserId', 'EmpresaId', 'UserUsername', 'UserDisplayName', 'UserEmail', 'UserSource', 'UserPasswordHash', 'UserPasswordSalt', 'UserInsertDate', 'UserInsertUserId', 'UserUpdateDate', 'UserUpdateUserId', 'UserIsActive', 'UserLastDirectoryUpdate', 'UserUserImage'].forEach(function (x) { return Fields[x] = x; });
         })(UsuariosEmpresaRow = Portal.UsuariosEmpresaRow || (Portal.UsuariosEmpresaRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Prtal;
+    (function (Prtal) {
+        var FrecuenciaFacturacionForm = (function (_super) {
+            __extends(FrecuenciaFacturacionForm, _super);
+            function FrecuenciaFacturacionForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return FrecuenciaFacturacionForm;
+        }(Serenity.PrefixedContext));
+        FrecuenciaFacturacionForm.formKey = 'Prtal.FrecuenciaFacturacion';
+        Prtal.FrecuenciaFacturacionForm = FrecuenciaFacturacionForm;
+        [['FrecuenciaId', function () { return Serenity.IntegerEditor; }], ['DescripcionCorta', function () { return Serenity.StringEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(FrecuenciaFacturacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Prtal = Geshotel.Prtal || (Geshotel.Prtal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Prtal;
+    (function (Prtal) {
+        var FrecuenciaFacturacionRow;
+        (function (FrecuenciaFacturacionRow) {
+            FrecuenciaFacturacionRow.idProperty = 'FrecuenciaId';
+            FrecuenciaFacturacionRow.nameProperty = 'DescripcionCorta';
+            FrecuenciaFacturacionRow.localTextPrefix = 'Prtal.FrecuenciaFacturacion';
+            var Fields;
+            (function (Fields) {
+            })(Fields = FrecuenciaFacturacionRow.Fields || (FrecuenciaFacturacionRow.Fields = {}));
+            ['FrecuenciaId', 'DescripcionCorta', 'Descripcion'].forEach(function (x) { return Fields[x] = x; });
+        })(FrecuenciaFacturacionRow = Prtal.FrecuenciaFacturacionRow || (Prtal.FrecuenciaFacturacionRow = {}));
+    })(Prtal = Geshotel.Prtal || (Geshotel.Prtal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Prtal;
+    (function (Prtal) {
+        var FrecuenciaFacturacionService;
+        (function (FrecuenciaFacturacionService) {
+            FrecuenciaFacturacionService.baseUrl = 'Prtal/FrecuenciaFacturacion';
+            var Methods;
+            (function (Methods) {
+            })(Methods = FrecuenciaFacturacionService.Methods || (FrecuenciaFacturacionService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                FrecuenciaFacturacionService[x] = function (r, s, o) { return Q.serviceRequest(FrecuenciaFacturacionService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = FrecuenciaFacturacionService.baseUrl + '/' + x;
+            });
+        })(FrecuenciaFacturacionService = Prtal.FrecuenciaFacturacionService || (Prtal.FrecuenciaFacturacionService = {}));
+    })(Prtal = Geshotel.Prtal || (Geshotel.Prtal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
@@ -5871,52 +6214,6 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
-        var ContratosEdadesDialog = (function (_super) {
-            __extends(ContratosEdadesDialog, _super);
-            function ContratosEdadesDialog() {
-                var _this = _super.apply(this, arguments) || this;
-                _this.form = new Contratos.ContratosEdadesForm(_this.idPrefix);
-                return _this;
-            }
-            ContratosEdadesDialog.prototype.getFormKey = function () { return Contratos.ContratosEdadesForm.formKey; };
-            ContratosEdadesDialog.prototype.getIdProperty = function () { return Contratos.ContratosEdadesRow.idProperty; };
-            ContratosEdadesDialog.prototype.getLocalTextPrefix = function () { return Contratos.ContratosEdadesRow.localTextPrefix; };
-            ContratosEdadesDialog.prototype.getService = function () { return Contratos.ContratosEdadesService.baseUrl; };
-            return ContratosEdadesDialog;
-        }(Serenity.EntityDialog));
-        ContratosEdadesDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], ContratosEdadesDialog);
-        Contratos.ContratosEdadesDialog = ContratosEdadesDialog;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var ContratosEdadesGrid = (function (_super) {
-            __extends(ContratosEdadesGrid, _super);
-            function ContratosEdadesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ContratosEdadesGrid.prototype.getColumnsKey = function () { return 'Contratos.ContratosEdades'; };
-            ContratosEdadesGrid.prototype.getDialogType = function () { return Contratos.ContratosEdadesDialog; };
-            ContratosEdadesGrid.prototype.getIdProperty = function () { return Contratos.ContratosEdadesRow.idProperty; };
-            ContratosEdadesGrid.prototype.getLocalTextPrefix = function () { return Contratos.ContratosEdadesRow.localTextPrefix; };
-            ContratosEdadesGrid.prototype.getService = function () { return Contratos.ContratosEdadesService.baseUrl; };
-            return ContratosEdadesGrid;
-        }(Serenity.EntityGrid));
-        ContratosEdadesGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ContratosEdadesGrid);
-        Contratos.ContratosEdadesGrid = ContratosEdadesGrid;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
         var CuposDialog = (function (_super) {
             __extends(CuposDialog, _super);
             function CuposDialog() {
@@ -5957,6 +6254,52 @@ var Geshotel;
             Serenity.Decorators.registerClass()
         ], CuposGrid);
         Contratos.CuposGrid = CuposGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var EdadesDialog = (function (_super) {
+            __extends(EdadesDialog, _super);
+            function EdadesDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.EdadesForm(_this.idPrefix);
+                return _this;
+            }
+            EdadesDialog.prototype.getFormKey = function () { return Contratos.EdadesForm.formKey; };
+            EdadesDialog.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
+            EdadesDialog.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
+            EdadesDialog.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
+            return EdadesDialog;
+        }(Serenity.EntityDialog));
+        EdadesDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], EdadesDialog);
+        Contratos.EdadesDialog = EdadesDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var EdadesGrid = (function (_super) {
+            __extends(EdadesGrid, _super);
+            function EdadesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            EdadesGrid.prototype.getColumnsKey = function () { return 'Contratos.Edades'; };
+            EdadesGrid.prototype.getDialogType = function () { return Contratos.EdadesDialog; };
+            EdadesGrid.prototype.getIdProperty = function () { return Contratos.EdadesRow.idProperty; };
+            EdadesGrid.prototype.getLocalTextPrefix = function () { return Contratos.EdadesRow.localTextPrefix; };
+            EdadesGrid.prototype.getService = function () { return Contratos.EdadesService.baseUrl; };
+            return EdadesGrid;
+        }(Serenity.EntityGrid));
+        EdadesGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], EdadesGrid);
+        Contratos.EdadesGrid = EdadesGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -8539,6 +8882,53 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
+        var AmbitoOfertaDialog = (function (_super) {
+            __extends(AmbitoOfertaDialog, _super);
+            function AmbitoOfertaDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.AmbitoOfertaForm(_this.idPrefix);
+                return _this;
+            }
+            AmbitoOfertaDialog.prototype.getFormKey = function () { return Portal.AmbitoOfertaForm.formKey; };
+            AmbitoOfertaDialog.prototype.getIdProperty = function () { return Portal.AmbitoOfertaRow.idProperty; };
+            AmbitoOfertaDialog.prototype.getLocalTextPrefix = function () { return Portal.AmbitoOfertaRow.localTextPrefix; };
+            AmbitoOfertaDialog.prototype.getNameProperty = function () { return Portal.AmbitoOfertaRow.nameProperty; };
+            AmbitoOfertaDialog.prototype.getService = function () { return Portal.AmbitoOfertaService.baseUrl; };
+            return AmbitoOfertaDialog;
+        }(Serenity.EntityDialog));
+        AmbitoOfertaDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], AmbitoOfertaDialog);
+        Portal.AmbitoOfertaDialog = AmbitoOfertaDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var AmbitoOfertaGrid = (function (_super) {
+            __extends(AmbitoOfertaGrid, _super);
+            function AmbitoOfertaGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            AmbitoOfertaGrid.prototype.getColumnsKey = function () { return 'Portal.AmbitoOferta'; };
+            AmbitoOfertaGrid.prototype.getDialogType = function () { return Portal.AmbitoOfertaDialog; };
+            AmbitoOfertaGrid.prototype.getIdProperty = function () { return Portal.AmbitoOfertaRow.idProperty; };
+            AmbitoOfertaGrid.prototype.getLocalTextPrefix = function () { return Portal.AmbitoOfertaRow.localTextPrefix; };
+            AmbitoOfertaGrid.prototype.getService = function () { return Portal.AmbitoOfertaService.baseUrl; };
+            return AmbitoOfertaGrid;
+        }(Serenity.EntityGrid));
+        AmbitoOfertaGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], AmbitoOfertaGrid);
+        Portal.AmbitoOfertaGrid = AmbitoOfertaGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
         var CategoriaHotelesDialog = (function (_super) {
             __extends(CategoriaHotelesDialog, _super);
             function CategoriaHotelesDialog() {
@@ -8775,6 +9165,53 @@ var Geshotel;
             Serenity.Decorators.filterable()
         ], FormasDePagoGrid);
         Portal.FormasDePagoGrid = FormasDePagoGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var FrecuenciaFacturacionDialog = (function (_super) {
+            __extends(FrecuenciaFacturacionDialog, _super);
+            function FrecuenciaFacturacionDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.FrecuenciaFacturacionForm(_this.idPrefix);
+                return _this;
+            }
+            FrecuenciaFacturacionDialog.prototype.getFormKey = function () { return Portal.FrecuenciaFacturacionForm.formKey; };
+            FrecuenciaFacturacionDialog.prototype.getIdProperty = function () { return Portal.FrecuenciaFacturacionRow.idProperty; };
+            FrecuenciaFacturacionDialog.prototype.getLocalTextPrefix = function () { return Portal.FrecuenciaFacturacionRow.localTextPrefix; };
+            FrecuenciaFacturacionDialog.prototype.getNameProperty = function () { return Portal.FrecuenciaFacturacionRow.nameProperty; };
+            FrecuenciaFacturacionDialog.prototype.getService = function () { return Portal.FrecuenciaFacturacionService.baseUrl; };
+            return FrecuenciaFacturacionDialog;
+        }(Serenity.EntityDialog));
+        FrecuenciaFacturacionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], FrecuenciaFacturacionDialog);
+        Portal.FrecuenciaFacturacionDialog = FrecuenciaFacturacionDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var FrecuenciaFacturacionGrid = (function (_super) {
+            __extends(FrecuenciaFacturacionGrid, _super);
+            function FrecuenciaFacturacionGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            FrecuenciaFacturacionGrid.prototype.getColumnsKey = function () { return 'Portal.FrecuenciaFacturacion'; };
+            FrecuenciaFacturacionGrid.prototype.getDialogType = function () { return Portal.FrecuenciaFacturacionDialog; };
+            FrecuenciaFacturacionGrid.prototype.getIdProperty = function () { return Portal.FrecuenciaFacturacionRow.idProperty; };
+            FrecuenciaFacturacionGrid.prototype.getLocalTextPrefix = function () { return Portal.FrecuenciaFacturacionRow.localTextPrefix; };
+            FrecuenciaFacturacionGrid.prototype.getService = function () { return Portal.FrecuenciaFacturacionService.baseUrl; };
+            return FrecuenciaFacturacionGrid;
+        }(Serenity.EntityGrid));
+        FrecuenciaFacturacionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], FrecuenciaFacturacionGrid);
+        Portal.FrecuenciaFacturacionGrid = FrecuenciaFacturacionGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -9243,6 +9680,194 @@ var Geshotel;
             Serenity.Decorators.filterable()
         ], ServiciosGrid);
         Portal.ServiciosGrid = ServiciosGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TipoAplicacionOfertaDialog = (function (_super) {
+            __extends(TipoAplicacionOfertaDialog, _super);
+            function TipoAplicacionOfertaDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TipoAplicacionOfertaForm(_this.idPrefix);
+                return _this;
+            }
+            TipoAplicacionOfertaDialog.prototype.getFormKey = function () { return Portal.TipoAplicacionOfertaForm.formKey; };
+            TipoAplicacionOfertaDialog.prototype.getIdProperty = function () { return Portal.TipoAplicacionOfertaRow.idProperty; };
+            TipoAplicacionOfertaDialog.prototype.getLocalTextPrefix = function () { return Portal.TipoAplicacionOfertaRow.localTextPrefix; };
+            TipoAplicacionOfertaDialog.prototype.getNameProperty = function () { return Portal.TipoAplicacionOfertaRow.nameProperty; };
+            TipoAplicacionOfertaDialog.prototype.getService = function () { return Portal.TipoAplicacionOfertaService.baseUrl; };
+            return TipoAplicacionOfertaDialog;
+        }(Serenity.EntityDialog));
+        TipoAplicacionOfertaDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TipoAplicacionOfertaDialog);
+        Portal.TipoAplicacionOfertaDialog = TipoAplicacionOfertaDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TipoAplicacionOfertaGrid = (function (_super) {
+            __extends(TipoAplicacionOfertaGrid, _super);
+            function TipoAplicacionOfertaGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TipoAplicacionOfertaGrid.prototype.getColumnsKey = function () { return 'Portal.TipoAplicacionOferta'; };
+            TipoAplicacionOfertaGrid.prototype.getDialogType = function () { return Portal.TipoAplicacionOfertaDialog; };
+            TipoAplicacionOfertaGrid.prototype.getIdProperty = function () { return Portal.TipoAplicacionOfertaRow.idProperty; };
+            TipoAplicacionOfertaGrid.prototype.getLocalTextPrefix = function () { return Portal.TipoAplicacionOfertaRow.localTextPrefix; };
+            TipoAplicacionOfertaGrid.prototype.getService = function () { return Portal.TipoAplicacionOfertaService.baseUrl; };
+            return TipoAplicacionOfertaGrid;
+        }(Serenity.EntityGrid));
+        TipoAplicacionOfertaGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TipoAplicacionOfertaGrid);
+        Portal.TipoAplicacionOfertaGrid = TipoAplicacionOfertaGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposCondicionDialog = (function (_super) {
+            __extends(TiposCondicionDialog, _super);
+            function TiposCondicionDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposCondicionForm(_this.idPrefix);
+                return _this;
+            }
+            TiposCondicionDialog.prototype.getFormKey = function () { return Portal.TiposCondicionForm.formKey; };
+            TiposCondicionDialog.prototype.getIdProperty = function () { return Portal.TiposCondicionRow.idProperty; };
+            TiposCondicionDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposCondicionRow.localTextPrefix; };
+            TiposCondicionDialog.prototype.getNameProperty = function () { return Portal.TiposCondicionRow.nameProperty; };
+            TiposCondicionDialog.prototype.getService = function () { return Portal.TiposCondicionService.baseUrl; };
+            return TiposCondicionDialog;
+        }(Serenity.EntityDialog));
+        TiposCondicionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposCondicionDialog);
+        Portal.TiposCondicionDialog = TiposCondicionDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposCondicionGrid = (function (_super) {
+            __extends(TiposCondicionGrid, _super);
+            function TiposCondicionGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TiposCondicionGrid.prototype.getColumnsKey = function () { return 'Portal.TiposCondicion'; };
+            TiposCondicionGrid.prototype.getDialogType = function () { return Portal.TiposCondicionDialog; };
+            TiposCondicionGrid.prototype.getIdProperty = function () { return Portal.TiposCondicionRow.idProperty; };
+            TiposCondicionGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposCondicionRow.localTextPrefix; };
+            TiposCondicionGrid.prototype.getService = function () { return Portal.TiposCondicionService.baseUrl; };
+            return TiposCondicionGrid;
+        }(Serenity.EntityGrid));
+        TiposCondicionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposCondicionGrid);
+        Portal.TiposCondicionGrid = TiposCondicionGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeImputacionDialog = (function (_super) {
+            __extends(TiposDeImputacionDialog, _super);
+            function TiposDeImputacionDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposDeImputacionForm(_this.idPrefix);
+                return _this;
+            }
+            TiposDeImputacionDialog.prototype.getFormKey = function () { return Portal.TiposDeImputacionForm.formKey; };
+            TiposDeImputacionDialog.prototype.getIdProperty = function () { return Portal.TiposDeImputacionRow.idProperty; };
+            TiposDeImputacionDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposDeImputacionRow.localTextPrefix; };
+            TiposDeImputacionDialog.prototype.getNameProperty = function () { return Portal.TiposDeImputacionRow.nameProperty; };
+            TiposDeImputacionDialog.prototype.getService = function () { return Portal.TiposDeImputacionService.baseUrl; };
+            return TiposDeImputacionDialog;
+        }(Serenity.EntityDialog));
+        TiposDeImputacionDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposDeImputacionDialog);
+        Portal.TiposDeImputacionDialog = TiposDeImputacionDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeImputacionGrid = (function (_super) {
+            __extends(TiposDeImputacionGrid, _super);
+            function TiposDeImputacionGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TiposDeImputacionGrid.prototype.getColumnsKey = function () { return 'Portal.TiposDeImputacion'; };
+            TiposDeImputacionGrid.prototype.getDialogType = function () { return Portal.TiposDeImputacionDialog; };
+            TiposDeImputacionGrid.prototype.getIdProperty = function () { return Portal.TiposDeImputacionRow.idProperty; };
+            TiposDeImputacionGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposDeImputacionRow.localTextPrefix; };
+            TiposDeImputacionGrid.prototype.getService = function () { return Portal.TiposDeImputacionService.baseUrl; };
+            return TiposDeImputacionGrid;
+        }(Serenity.EntityGrid));
+        TiposDeImputacionGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposDeImputacionGrid);
+        Portal.TiposDeImputacionGrid = TiposDeImputacionGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeOfertaDialog = (function (_super) {
+            __extends(TiposDeOfertaDialog, _super);
+            function TiposDeOfertaDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.TiposDeOfertaForm(_this.idPrefix);
+                return _this;
+            }
+            TiposDeOfertaDialog.prototype.getFormKey = function () { return Portal.TiposDeOfertaForm.formKey; };
+            TiposDeOfertaDialog.prototype.getIdProperty = function () { return Portal.TiposDeOfertaRow.idProperty; };
+            TiposDeOfertaDialog.prototype.getLocalTextPrefix = function () { return Portal.TiposDeOfertaRow.localTextPrefix; };
+            TiposDeOfertaDialog.prototype.getNameProperty = function () { return Portal.TiposDeOfertaRow.nameProperty; };
+            TiposDeOfertaDialog.prototype.getService = function () { return Portal.TiposDeOfertaService.baseUrl; };
+            return TiposDeOfertaDialog;
+        }(Serenity.EntityDialog));
+        TiposDeOfertaDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TiposDeOfertaDialog);
+        Portal.TiposDeOfertaDialog = TiposDeOfertaDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var TiposDeOfertaGrid = (function (_super) {
+            __extends(TiposDeOfertaGrid, _super);
+            function TiposDeOfertaGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TiposDeOfertaGrid.prototype.getColumnsKey = function () { return 'Portal.TiposDeOferta'; };
+            TiposDeOfertaGrid.prototype.getDialogType = function () { return Portal.TiposDeOfertaDialog; };
+            TiposDeOfertaGrid.prototype.getIdProperty = function () { return Portal.TiposDeOfertaRow.idProperty; };
+            TiposDeOfertaGrid.prototype.getLocalTextPrefix = function () { return Portal.TiposDeOfertaRow.localTextPrefix; };
+            TiposDeOfertaGrid.prototype.getService = function () { return Portal.TiposDeOfertaService.baseUrl; };
+            return TiposDeOfertaGrid;
+        }(Serenity.EntityGrid));
+        TiposDeOfertaGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TiposDeOfertaGrid);
+        Portal.TiposDeOfertaGrid = TiposDeOfertaGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

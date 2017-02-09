@@ -8581,3 +8581,51 @@ section.content > .s-DataGrid {
 .s-Contratos-ContratosEdadesDialog .caption {
   width: 150px;
 }
+.s-Contratos-EdadesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-EdadesDialog .caption {
+  width: 150px;
+}
+.s-Portal-AmbitoOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-AmbitoOfertaDialog .caption {
+  width: 150px;
+}
+.s-Prtal-FrecuenciaFacturacionDialog > .size {
+  width: 650px;
+}
+.s-Prtal-FrecuenciaFacturacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposCondicionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposCondicionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDeImputacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDeImputacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDeOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDeOfertaDialog .caption {
+  width: 150px;
+}
+.s-Portal-TipoAplicacionOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-TipoAplicacionOfertaDialog .caption {
+  width: 150px;
+}
+.s-Portal-FrecuenciaFacturacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-FrecuenciaFacturacionDialog .caption {
+  width: 150px;
+}
