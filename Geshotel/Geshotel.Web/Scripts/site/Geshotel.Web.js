@@ -16,7 +16,7 @@ var Geshotel;
         var LanguageDialog = (function (_super) {
             __extends(LanguageDialog, _super);
             function LanguageDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Administration.LanguageForm(_this.idPrefix);
                 return _this;
             }
@@ -65,7 +65,7 @@ var Geshotel;
         var RoleDialog = (function (_super) {
             __extends(RoleDialog, _super);
             function RoleDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Administration.RoleForm(_this.idPrefix);
                 return _this;
             }
@@ -1430,7 +1430,7 @@ var Geshotel;
         var GridEditorDialog = (function (_super) {
             __extends(GridEditorDialog, _super);
             function GridEditorDialog() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
             GridEditorDialog.prototype.destroy = function () {
@@ -1483,7 +1483,7 @@ var Geshotel;
         var LanguageForm = (function (_super) {
             __extends(LanguageForm, _super);
             function LanguageForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return LanguageForm;
         }(Serenity.PrefixedContext));
@@ -1537,7 +1537,7 @@ var Geshotel;
         var RoleForm = (function (_super) {
             __extends(RoleForm, _super);
             function RoleForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return RoleForm;
         }(Serenity.PrefixedContext));
@@ -1641,7 +1641,7 @@ var Geshotel;
         var UserForm = (function (_super) {
             __extends(UserForm, _super);
             function UserForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return UserForm;
         }(Serenity.PrefixedContext));
@@ -1794,7 +1794,7 @@ var Geshotel;
         var AgenciasForm = (function (_super) {
             __extends(AgenciasForm, _super);
             function AgenciasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return AgenciasForm;
         }(Serenity.PrefixedContext));
@@ -1869,7 +1869,7 @@ var Geshotel;
         var ClientesForm = (function (_super) {
             __extends(ClientesForm, _super);
             function ClientesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ClientesForm;
         }(Serenity.PrefixedContext));
@@ -1923,7 +1923,7 @@ var Geshotel;
         var ContratosEdadesForm = (function (_super) {
             __extends(ContratosEdadesForm, _super);
             function ContratosEdadesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ContratosEdadesForm;
         }(Serenity.PrefixedContext));
@@ -1971,7 +1971,7 @@ var Geshotel;
         var ContratosForm = (function (_super) {
             __extends(ContratosForm, _super);
             function ContratosForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ContratosForm;
         }(Serenity.PrefixedContext));
@@ -2020,7 +2020,7 @@ var Geshotel;
         var CuposForm = (function (_super) {
             __extends(CuposForm, _super);
             function CuposForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return CuposForm;
         }(Serenity.PrefixedContext));
@@ -2068,7 +2068,7 @@ var Geshotel;
         var EdadesForm = (function (_super) {
             __extends(EdadesForm, _super);
             function EdadesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return EdadesForm;
         }(Serenity.PrefixedContext));
@@ -2137,7 +2137,7 @@ var Geshotel;
         var LineasForm = (function (_super) {
             __extends(LineasForm, _super);
             function LineasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return LineasForm;
         }(Serenity.PrefixedContext));
@@ -2185,7 +2185,7 @@ var Geshotel;
         var MercadosForm = (function (_super) {
             __extends(MercadosForm, _super);
             function MercadosForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MercadosForm;
         }(Serenity.PrefixedContext));
@@ -2239,7 +2239,7 @@ var Geshotel;
         var OfertasForm = (function (_super) {
             __extends(OfertasForm, _super);
             function OfertasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return OfertasForm;
         }(Serenity.PrefixedContext));
@@ -2255,7 +2255,7 @@ var Geshotel;
         var OfertasRejillasForm = (function (_super) {
             __extends(OfertasRejillasForm, _super);
             function OfertasRejillasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return OfertasRejillasForm;
         }(Serenity.PrefixedContext));
@@ -2336,7 +2336,7 @@ var Geshotel;
         var ReleasesForm = (function (_super) {
             __extends(ReleasesForm, _super);
             function ReleasesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ReleasesForm;
         }(Serenity.PrefixedContext));
@@ -2385,7 +2385,7 @@ var Geshotel;
         var TemporadasForm = (function (_super) {
             __extends(TemporadasForm, _super);
             function TemporadasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TemporadasForm;
         }(Serenity.PrefixedContext));
@@ -2518,7 +2518,7 @@ var Geshotel;
         var MeetingAgendaForm = (function (_super) {
             __extends(MeetingAgendaForm, _super);
             function MeetingAgendaForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingAgendaForm;
         }(Serenity.PrefixedContext));
@@ -2534,7 +2534,7 @@ var Geshotel;
         var MeetingAgendaRelevantForm = (function (_super) {
             __extends(MeetingAgendaRelevantForm, _super);
             function MeetingAgendaRelevantForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingAgendaRelevantForm;
         }(Serenity.PrefixedContext));
@@ -2615,7 +2615,7 @@ var Geshotel;
         var MeetingAgendaTypeForm = (function (_super) {
             __extends(MeetingAgendaTypeForm, _super);
             function MeetingAgendaTypeForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingAgendaTypeForm;
         }(Serenity.PrefixedContext));
@@ -2683,7 +2683,7 @@ var Geshotel;
         var MeetingAttendeeForm = (function (_super) {
             __extends(MeetingAttendeeForm, _super);
             function MeetingAttendeeForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingAttendeeForm;
         }(Serenity.PrefixedContext));
@@ -2726,7 +2726,7 @@ var Geshotel;
         var MeetingDecisionForm = (function (_super) {
             __extends(MeetingDecisionForm, _super);
             function MeetingDecisionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingDecisionForm;
         }(Serenity.PrefixedContext));
@@ -2742,7 +2742,7 @@ var Geshotel;
         var MeetingDecisionRelevantForm = (function (_super) {
             __extends(MeetingDecisionRelevantForm, _super);
             function MeetingDecisionRelevantForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingDecisionRelevantForm;
         }(Serenity.PrefixedContext));
@@ -2823,7 +2823,7 @@ var Geshotel;
         var MeetingForm = (function (_super) {
             __extends(MeetingForm, _super);
             function MeetingForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingForm;
         }(Serenity.PrefixedContext));
@@ -2839,7 +2839,7 @@ var Geshotel;
         var MeetingLocationForm = (function (_super) {
             __extends(MeetingLocationForm, _super);
             function MeetingLocationForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingLocationForm;
         }(Serenity.PrefixedContext));
@@ -2926,7 +2926,7 @@ var Geshotel;
         var MeetingTypeForm = (function (_super) {
             __extends(MeetingTypeForm, _super);
             function MeetingTypeForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MeetingTypeForm;
         }(Serenity.PrefixedContext));
@@ -2980,7 +2980,7 @@ var Geshotel;
         var ChangePasswordForm = (function (_super) {
             __extends(ChangePasswordForm, _super);
             function ChangePasswordForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ChangePasswordForm;
         }(Serenity.PrefixedContext));
@@ -2996,7 +2996,7 @@ var Geshotel;
         var ForgotPasswordForm = (function (_super) {
             __extends(ForgotPasswordForm, _super);
             function ForgotPasswordForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ForgotPasswordForm;
         }(Serenity.PrefixedContext));
@@ -3012,7 +3012,7 @@ var Geshotel;
         var LoginForm = (function (_super) {
             __extends(LoginForm, _super);
             function LoginForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return LoginForm;
         }(Serenity.PrefixedContext));
@@ -3028,7 +3028,7 @@ var Geshotel;
         var ResetPasswordForm = (function (_super) {
             __extends(ResetPasswordForm, _super);
             function ResetPasswordForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ResetPasswordForm;
         }(Serenity.PrefixedContext));
@@ -3044,7 +3044,7 @@ var Geshotel;
         var SignUpForm = (function (_super) {
             __extends(SignUpForm, _super);
             function SignUpForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return SignUpForm;
         }(Serenity.PrefixedContext));
@@ -3060,7 +3060,7 @@ var Geshotel;
         var CategoryForm = (function (_super) {
             __extends(CategoryForm, _super);
             function CategoryForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return CategoryForm;
         }(Serenity.PrefixedContext));
@@ -3195,7 +3195,7 @@ var Geshotel;
         var CustomerForm = (function (_super) {
             __extends(CustomerForm, _super);
             function CustomerForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return CustomerForm;
         }(Serenity.PrefixedContext));
@@ -3329,7 +3329,7 @@ var Geshotel;
         var OrderDetailForm = (function (_super) {
             __extends(OrderDetailForm, _super);
             function OrderDetailForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return OrderDetailForm;
         }(Serenity.PrefixedContext));
@@ -3377,7 +3377,7 @@ var Geshotel;
         var OrderForm = (function (_super) {
             __extends(OrderForm, _super);
             function OrderForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return OrderForm;
         }(Serenity.PrefixedContext));
@@ -3443,7 +3443,7 @@ var Geshotel;
         var ProductForm = (function (_super) {
             __extends(ProductForm, _super);
             function ProductForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ProductForm;
         }(Serenity.PrefixedContext));
@@ -3545,7 +3545,7 @@ var Geshotel;
         var RegionForm = (function (_super) {
             __extends(RegionForm, _super);
             function RegionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return RegionForm;
         }(Serenity.PrefixedContext));
@@ -3631,7 +3631,7 @@ var Geshotel;
         var ShipperForm = (function (_super) {
             __extends(ShipperForm, _super);
             function ShipperForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ShipperForm;
         }(Serenity.PrefixedContext));
@@ -3685,7 +3685,7 @@ var Geshotel;
         var SupplierForm = (function (_super) {
             __extends(SupplierForm, _super);
             function SupplierForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return SupplierForm;
         }(Serenity.PrefixedContext));
@@ -3739,7 +3739,7 @@ var Geshotel;
         var TerritoryForm = (function (_super) {
             __extends(TerritoryForm, _super);
             function TerritoryForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TerritoryForm;
         }(Serenity.PrefixedContext));
@@ -3793,7 +3793,7 @@ var Geshotel;
         var BusinessUnitForm = (function (_super) {
             __extends(BusinessUnitForm, _super);
             function BusinessUnitForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return BusinessUnitForm;
         }(Serenity.PrefixedContext));
@@ -3847,7 +3847,7 @@ var Geshotel;
         var ContactForm = (function (_super) {
             __extends(ContactForm, _super);
             function ContactForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ContactForm;
         }(Serenity.PrefixedContext));
@@ -3901,7 +3901,7 @@ var Geshotel;
         var AmbitoOfertaForm = (function (_super) {
             __extends(AmbitoOfertaForm, _super);
             function AmbitoOfertaForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return AmbitoOfertaForm;
         }(Serenity.PrefixedContext));
@@ -3950,7 +3950,7 @@ var Geshotel;
         var CategoriaHotelesForm = (function (_super) {
             __extends(CategoriaHotelesForm, _super);
             function CategoriaHotelesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return CategoriaHotelesForm;
         }(Serenity.PrefixedContext));
@@ -4004,7 +4004,7 @@ var Geshotel;
         var ComunidadesAutonomasForm = (function (_super) {
             __extends(ComunidadesAutonomasForm, _super);
             function ComunidadesAutonomasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ComunidadesAutonomasForm;
         }(Serenity.PrefixedContext));
@@ -4079,7 +4079,7 @@ var Geshotel;
         var EmpresasForm = (function (_super) {
             __extends(EmpresasForm, _super);
             function EmpresasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return EmpresasForm;
         }(Serenity.PrefixedContext));
@@ -4154,7 +4154,7 @@ var Geshotel;
         var FormasDePagoForm = (function (_super) {
             __extends(FormasDePagoForm, _super);
             function FormasDePagoForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return FormasDePagoForm;
         }(Serenity.PrefixedContext));
@@ -4208,7 +4208,7 @@ var Geshotel;
         var FrecuenciaFacturacionForm = (function (_super) {
             __extends(FrecuenciaFacturacionForm, _super);
             function FrecuenciaFacturacionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return FrecuenciaFacturacionForm;
         }(Serenity.PrefixedContext));
@@ -4257,7 +4257,7 @@ var Geshotel;
         var GruposDeClienteForm = (function (_super) {
             __extends(GruposDeClienteForm, _super);
             function GruposDeClienteForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return GruposDeClienteForm;
         }(Serenity.PrefixedContext));
@@ -4311,7 +4311,7 @@ var Geshotel;
         var GruposDeServiciosForm = (function (_super) {
             __extends(GruposDeServiciosForm, _super);
             function GruposDeServiciosForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return GruposDeServiciosForm;
         }(Serenity.PrefixedContext));
@@ -4365,7 +4365,7 @@ var Geshotel;
         var GruposHabitacionForm = (function (_super) {
             __extends(GruposHabitacionForm, _super);
             function GruposHabitacionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return GruposHabitacionForm;
         }(Serenity.PrefixedContext));
@@ -4419,7 +4419,7 @@ var Geshotel;
         var HotelesForm = (function (_super) {
             __extends(HotelesForm, _super);
             function HotelesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return HotelesForm;
         }(Serenity.PrefixedContext));
@@ -4473,7 +4473,7 @@ var Geshotel;
         var MonedasForm = (function (_super) {
             __extends(MonedasForm, _super);
             function MonedasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return MonedasForm;
         }(Serenity.PrefixedContext));
@@ -4527,7 +4527,7 @@ var Geshotel;
         var NacionesForm = (function (_super) {
             __extends(NacionesForm, _super);
             function NacionesForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return NacionesForm;
         }(Serenity.PrefixedContext));
@@ -4581,7 +4581,7 @@ var Geshotel;
         var ProvinciasForm = (function (_super) {
             __extends(ProvinciasForm, _super);
             function ProvinciasForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ProvinciasForm;
         }(Serenity.PrefixedContext));
@@ -4656,7 +4656,7 @@ var Geshotel;
         var ServiciosForm = (function (_super) {
             __extends(ServiciosForm, _super);
             function ServiciosForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return ServiciosForm;
         }(Serenity.PrefixedContext));
@@ -4731,7 +4731,7 @@ var Geshotel;
         var TipoAplicacionOfertaForm = (function (_super) {
             __extends(TipoAplicacionOfertaForm, _super);
             function TipoAplicacionOfertaForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TipoAplicacionOfertaForm;
         }(Serenity.PrefixedContext));
@@ -4780,7 +4780,7 @@ var Geshotel;
         var TiposCondicionForm = (function (_super) {
             __extends(TiposCondicionForm, _super);
             function TiposCondicionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposCondicionForm;
         }(Serenity.PrefixedContext));
@@ -4829,7 +4829,7 @@ var Geshotel;
         var TiposDeImputacionForm = (function (_super) {
             __extends(TiposDeImputacionForm, _super);
             function TiposDeImputacionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposDeImputacionForm;
         }(Serenity.PrefixedContext));
@@ -4878,7 +4878,7 @@ var Geshotel;
         var TiposDeOfertaForm = (function (_super) {
             __extends(TiposDeOfertaForm, _super);
             function TiposDeOfertaForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposDeOfertaForm;
         }(Serenity.PrefixedContext));
@@ -4948,7 +4948,7 @@ var Geshotel;
         var TiposHabitacionForm = (function (_super) {
             __extends(TiposHabitacionForm, _super);
             function TiposHabitacionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposHabitacionForm;
         }(Serenity.PrefixedContext));
@@ -5002,7 +5002,7 @@ var Geshotel;
         var TiposHotelForm = (function (_super) {
             __extends(TiposHotelForm, _super);
             function TiposHotelForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposHotelForm;
         }(Serenity.PrefixedContext));
@@ -5056,7 +5056,7 @@ var Geshotel;
         var TiposHuespedForm = (function (_super) {
             __extends(TiposHuespedForm, _super);
             function TiposHuespedForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposHuespedForm;
         }(Serenity.PrefixedContext));
@@ -5131,7 +5131,7 @@ var Geshotel;
         var TiposServicioForm = (function (_super) {
             __extends(TiposServicioForm, _super);
             function TiposServicioForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposServicioForm;
         }(Serenity.PrefixedContext));
@@ -5185,7 +5185,7 @@ var Geshotel;
         var TiposUnidadCalculoForm = (function (_super) {
             __extends(TiposUnidadCalculoForm, _super);
             function TiposUnidadCalculoForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return TiposUnidadCalculoForm;
         }(Serenity.PrefixedContext));
@@ -5239,7 +5239,7 @@ var Geshotel;
         var UnidadesCalculoForm = (function (_super) {
             __extends(UnidadesCalculoForm, _super);
             function UnidadesCalculoForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return UnidadesCalculoForm;
         }(Serenity.PrefixedContext));
@@ -5308,7 +5308,7 @@ var Geshotel;
         var FrecuenciaFacturacionForm = (function (_super) {
             __extends(FrecuenciaFacturacionForm, _super);
             function FrecuenciaFacturacionForm() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
             return FrecuenciaFacturacionForm;
         }(Serenity.PrefixedContext));
@@ -5950,7 +5950,7 @@ var Geshotel;
         var AgenciasDialog = (function (_super) {
             __extends(AgenciasDialog, _super);
             function AgenciasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.AgenciasForm(_this.idPrefix);
                 return _this;
             }
@@ -5997,7 +5997,7 @@ var Geshotel;
         var ClientesDialog = (function (_super) {
             __extends(ClientesDialog, _super);
             function ClientesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.ClientesForm(_this.idPrefix);
                 return _this;
             }
@@ -6176,7 +6176,7 @@ var Geshotel;
         var LineasDialog = (function (_super) {
             __extends(LineasDialog, _super);
             function LineasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.LineasForm(_this.idPrefix);
                 return _this;
             }
@@ -6234,7 +6234,11 @@ var Geshotel;
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
             };
             ContratosLineasGrid.prototype.addButtonClick = function () {
-                this.editItem({ contratoID: this.contratoID });
+                // Javascript is case sensitive, so contratoID didn't work here.
+                // To get intellisense, use a TS cast like below <LineasRow>
+                this.editItem({
+                    ContratoId: this.contratoID
+                });
             };
             ContratosLineasGrid.prototype.getInitialTitle = function () {
                 return null;
@@ -6271,7 +6275,7 @@ var Geshotel;
         var CuposDialog = (function (_super) {
             __extends(CuposDialog, _super);
             function CuposDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.CuposForm(_this.idPrefix);
                 return _this;
             }
@@ -6317,7 +6321,7 @@ var Geshotel;
         var EdadesDialog = (function (_super) {
             __extends(EdadesDialog, _super);
             function EdadesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.EdadesForm(_this.idPrefix);
                 return _this;
             }
@@ -6385,7 +6389,7 @@ var Geshotel;
         var MercadosDialog = (function (_super) {
             __extends(MercadosDialog, _super);
             function MercadosDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.MercadosForm(_this.idPrefix);
                 return _this;
             }
@@ -6432,7 +6436,7 @@ var Geshotel;
         var OfertasDialog = (function (_super) {
             __extends(OfertasDialog, _super);
             function OfertasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.OfertasForm(_this.idPrefix);
                 return _this;
             }
@@ -6479,7 +6483,7 @@ var Geshotel;
         var OfertasRejillasDialog = (function (_super) {
             __extends(OfertasRejillasDialog, _super);
             function OfertasRejillasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.OfertasRejillasForm(_this.idPrefix);
                 return _this;
             }
@@ -6525,7 +6529,7 @@ var Geshotel;
         var ReleasesDialog = (function (_super) {
             __extends(ReleasesDialog, _super);
             function ReleasesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.ReleasesForm(_this.idPrefix);
                 return _this;
             }
@@ -6572,7 +6576,7 @@ var Geshotel;
         var TemporadasDialog = (function (_super) {
             __extends(TemporadasDialog, _super);
             function TemporadasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Contratos.TemporadasForm(_this.idPrefix);
                 return _this;
             }
@@ -6690,7 +6694,7 @@ var Geshotel;
         var MeetingAgendaDialog = (function (_super) {
             __extends(MeetingAgendaDialog, _super);
             function MeetingAgendaDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingAgendaForm(_this.idPrefix);
                 return _this;
             }
@@ -6760,7 +6764,7 @@ var Geshotel;
         var MeetingAgendaRelevantDialog = (function (_super) {
             __extends(MeetingAgendaRelevantDialog, _super);
             function MeetingAgendaRelevantDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingAgendaRelevantForm(_this.idPrefix);
                 return _this;
             }
@@ -6806,7 +6810,7 @@ var Geshotel;
         var MeetingAgendaTypeDialog = (function (_super) {
             __extends(MeetingAgendaTypeDialog, _super);
             function MeetingAgendaTypeDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingAgendaTypeForm(_this.idPrefix);
                 return _this;
             }
@@ -6853,7 +6857,7 @@ var Geshotel;
         var MeetingAttendeeDialog = (function (_super) {
             __extends(MeetingAttendeeDialog, _super);
             function MeetingAttendeeDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingAttendeeForm(_this.idPrefix);
                 return _this;
             }
@@ -6974,7 +6978,7 @@ var Geshotel;
         var MeetingDecisionDialog = (function (_super) {
             __extends(MeetingDecisionDialog, _super);
             function MeetingDecisionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingDecisionForm(_this.idPrefix);
                 return _this;
             }
@@ -7044,7 +7048,7 @@ var Geshotel;
         var MeetingDecisionRelevantDialog = (function (_super) {
             __extends(MeetingDecisionRelevantDialog, _super);
             function MeetingDecisionRelevantDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingDecisionRelevantForm(_this.idPrefix);
                 return _this;
             }
@@ -7090,7 +7094,7 @@ var Geshotel;
         var MeetingLocationDialog = (function (_super) {
             __extends(MeetingLocationDialog, _super);
             function MeetingLocationDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingLocationForm(_this.idPrefix);
                 return _this;
             }
@@ -7137,7 +7141,7 @@ var Geshotel;
         var MeetingTypeDialog = (function (_super) {
             __extends(MeetingTypeDialog, _super);
             function MeetingTypeDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Meeting.MeetingTypeForm(_this.idPrefix);
                 return _this;
             }
@@ -7422,7 +7426,7 @@ var Geshotel;
         var CategoryDialog = (function (_super) {
             __extends(CategoryDialog, _super);
             function CategoryDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.CategoryForm(_this.idPrefix);
                 return _this;
             }
@@ -8117,7 +8121,7 @@ var Geshotel;
         var ProductDialog = (function (_super) {
             __extends(ProductDialog, _super);
             function ProductDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.ProductForm(_this.idPrefix);
                 return _this;
             }
@@ -8388,7 +8392,7 @@ var Geshotel;
         var RegionDialog = (function (_super) {
             __extends(RegionDialog, _super);
             function RegionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.RegionForm(_this.idPrefix);
                 return _this;
             }
@@ -8577,7 +8581,7 @@ var Geshotel;
         var ShipperDialog = (function (_super) {
             __extends(ShipperDialog, _super);
             function ShipperDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.ShipperForm(_this.idPrefix);
                 return _this;
             }
@@ -8646,7 +8650,7 @@ var Geshotel;
         var SupplierDialog = (function (_super) {
             __extends(SupplierDialog, _super);
             function SupplierDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.SupplierForm(_this.idPrefix);
                 return _this;
             }
@@ -8695,7 +8699,7 @@ var Geshotel;
         var TerritoryDialog = (function (_super) {
             __extends(TerritoryDialog, _super);
             function TerritoryDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Northwind.TerritoryForm(_this.idPrefix);
                 return _this;
             }
@@ -8744,7 +8748,7 @@ var Geshotel;
         var BusinessUnitDialog = (function (_super) {
             __extends(BusinessUnitDialog, _super);
             function BusinessUnitDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Organization.BusinessUnitForm(_this.idPrefix);
                 return _this;
             }
@@ -8868,7 +8872,7 @@ var Geshotel;
         var ContactDialog = (function (_super) {
             __extends(ContactDialog, _super);
             function ContactDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Organization.ContactForm(_this.idPrefix);
                 return _this;
             }
@@ -8915,7 +8919,7 @@ var Geshotel;
         var AmbitoOfertaDialog = (function (_super) {
             __extends(AmbitoOfertaDialog, _super);
             function AmbitoOfertaDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.AmbitoOfertaForm(_this.idPrefix);
                 return _this;
             }
@@ -8962,7 +8966,7 @@ var Geshotel;
         var CategoriaHotelesDialog = (function (_super) {
             __extends(CategoriaHotelesDialog, _super);
             function CategoriaHotelesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.CategoriaHotelesForm(_this.idPrefix);
                 return _this;
             }
@@ -9009,7 +9013,7 @@ var Geshotel;
         var ComunidadesAutonomasDialog = (function (_super) {
             __extends(ComunidadesAutonomasDialog, _super);
             function ComunidadesAutonomasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.ComunidadesAutonomasForm(_this.idPrefix);
                 return _this;
             }
@@ -9075,7 +9079,7 @@ var Geshotel;
         var EmpresasDialog = (function (_super) {
             __extends(EmpresasDialog, _super);
             function EmpresasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.EmpresasForm(_this.idPrefix);
                 return _this;
             }
@@ -9141,7 +9145,7 @@ var Geshotel;
         var FormasDePagoDialog = (function (_super) {
             __extends(FormasDePagoDialog, _super);
             function FormasDePagoDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.FormasDePagoForm(_this.idPrefix);
                 return _this;
             }
@@ -9204,7 +9208,7 @@ var Geshotel;
         var FrecuenciaFacturacionDialog = (function (_super) {
             __extends(FrecuenciaFacturacionDialog, _super);
             function FrecuenciaFacturacionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.FrecuenciaFacturacionForm(_this.idPrefix);
                 return _this;
             }
@@ -9251,7 +9255,7 @@ var Geshotel;
         var GruposDeClienteDialog = (function (_super) {
             __extends(GruposDeClienteDialog, _super);
             function GruposDeClienteDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.GruposDeClienteForm(_this.idPrefix);
                 return _this;
             }
@@ -9298,7 +9302,7 @@ var Geshotel;
         var GruposDeServiciosDialog = (function (_super) {
             __extends(GruposDeServiciosDialog, _super);
             function GruposDeServiciosDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.GruposDeServiciosForm(_this.idPrefix);
                 return _this;
             }
@@ -9345,7 +9349,7 @@ var Geshotel;
         var GruposHabitacionDialog = (function (_super) {
             __extends(GruposHabitacionDialog, _super);
             function GruposHabitacionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.GruposHabitacionForm(_this.idPrefix);
                 return _this;
             }
@@ -9392,7 +9396,7 @@ var Geshotel;
         var HotelesDialog = (function (_super) {
             __extends(HotelesDialog, _super);
             function HotelesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.HotelesForm(_this.idPrefix);
                 return _this;
             }
@@ -9458,7 +9462,7 @@ var Geshotel;
         var MonedasDialog = (function (_super) {
             __extends(MonedasDialog, _super);
             function MonedasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.MonedasForm(_this.idPrefix);
                 return _this;
             }
@@ -9524,7 +9528,7 @@ var Geshotel;
         var NacionesDialog = (function (_super) {
             __extends(NacionesDialog, _super);
             function NacionesDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.NacionesForm(_this.idPrefix);
                 return _this;
             }
@@ -9590,7 +9594,7 @@ var Geshotel;
         var ProvinciasDialog = (function (_super) {
             __extends(ProvinciasDialog, _super);
             function ProvinciasDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.ProvinciasForm(_this.idPrefix);
                 return _this;
             }
@@ -9656,7 +9660,7 @@ var Geshotel;
         var ServiciosDialog = (function (_super) {
             __extends(ServiciosDialog, _super);
             function ServiciosDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.ServiciosForm(_this.idPrefix);
                 return _this;
             }
@@ -9719,7 +9723,7 @@ var Geshotel;
         var TipoAplicacionOfertaDialog = (function (_super) {
             __extends(TipoAplicacionOfertaDialog, _super);
             function TipoAplicacionOfertaDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TipoAplicacionOfertaForm(_this.idPrefix);
                 return _this;
             }
@@ -9766,7 +9770,7 @@ var Geshotel;
         var TiposCondicionDialog = (function (_super) {
             __extends(TiposCondicionDialog, _super);
             function TiposCondicionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposCondicionForm(_this.idPrefix);
                 return _this;
             }
@@ -9813,7 +9817,7 @@ var Geshotel;
         var TiposDeImputacionDialog = (function (_super) {
             __extends(TiposDeImputacionDialog, _super);
             function TiposDeImputacionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposDeImputacionForm(_this.idPrefix);
                 return _this;
             }
@@ -9860,7 +9864,7 @@ var Geshotel;
         var TiposDeOfertaDialog = (function (_super) {
             __extends(TiposDeOfertaDialog, _super);
             function TiposDeOfertaDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposDeOfertaForm(_this.idPrefix);
                 return _this;
             }
@@ -9907,7 +9911,7 @@ var Geshotel;
         var TiposHabitacionDialog = (function (_super) {
             __extends(TiposHabitacionDialog, _super);
             function TiposHabitacionDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposHabitacionForm(_this.idPrefix);
                 return _this;
             }
@@ -9954,7 +9958,7 @@ var Geshotel;
         var TiposHotelDialog = (function (_super) {
             __extends(TiposHotelDialog, _super);
             function TiposHotelDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposHotelForm(_this.idPrefix);
                 return _this;
             }
@@ -10001,7 +10005,7 @@ var Geshotel;
         var TiposHuespedDialog = (function (_super) {
             __extends(TiposHuespedDialog, _super);
             function TiposHuespedDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposHuespedForm(_this.idPrefix);
                 return _this;
             }
@@ -10048,7 +10052,7 @@ var Geshotel;
         var TiposServicioDialog = (function (_super) {
             __extends(TiposServicioDialog, _super);
             function TiposServicioDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposServicioForm(_this.idPrefix);
                 return _this;
             }
@@ -10095,7 +10099,7 @@ var Geshotel;
         var TiposUnidadCalculoDialog = (function (_super) {
             __extends(TiposUnidadCalculoDialog, _super);
             function TiposUnidadCalculoDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.TiposUnidadCalculoForm(_this.idPrefix);
                 return _this;
             }
@@ -10142,7 +10146,7 @@ var Geshotel;
         var UnidadesCalculoDialog = (function (_super) {
             __extends(UnidadesCalculoDialog, _super);
             function UnidadesCalculoDialog() {
-                var _this = _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.form = new Portal.UnidadesCalculoForm(_this.idPrefix);
                 return _this;
             }

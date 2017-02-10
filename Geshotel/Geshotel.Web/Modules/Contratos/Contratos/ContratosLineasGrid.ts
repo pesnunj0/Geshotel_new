@@ -19,7 +19,11 @@
         }
 
         protected addButtonClick() {
-            this.editItem({ contratoID: this.contratoID });
+            // Javascript is case sensitive, so contratoID didn't work here.
+            // To get intellisense, use a TS cast like below <LineasRow>
+            this.editItem(<LineasRow>{
+                ContratoId: this.contratoID
+            });
         }
 
         protected getInitialTitle() {
