@@ -5,17 +5,16 @@
     }
 
     export interface CuposForm {
-        ClienteId: Serenity.IntegerEditor;
-        HotelId: Serenity.IntegerEditor;
+        ClienteId: Serenity.LookupEditor;
+        HotelId: Serenity.LookupEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
-        TipoHabitacionId: Serenity.IntegerEditor;
+        TipoHabitacionId: Serenity.LookupEditor;
+        Cupo: Serenity.IntegerEditor;
         Garantia: Serenity.DecimalEditor;
-        ReservaAutomatica: Serenity.StringEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
+        ReservaAutomatica: Serenity.BooleanEditor;
     }
 
-    [['ClienteId', () => Serenity.IntegerEditor], ['HotelId', () => Serenity.IntegerEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['TipoHabitacionId', () => Serenity.IntegerEditor], ['Garantia', () => Serenity.DecimalEditor], ['ReservaAutomatica', () => Serenity.StringEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor]].forEach(x => Object.defineProperty(CuposForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['ClienteId', () => Serenity.LookupEditor], ['HotelId', () => Serenity.LookupEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['TipoHabitacionId', () => Serenity.LookupEditor], ['Cupo', () => Serenity.IntegerEditor], ['Garantia', () => Serenity.DecimalEditor], ['ReservaAutomatica', () => Serenity.BooleanEditor]].forEach(x => Object.defineProperty(CuposForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

@@ -14,13 +14,18 @@ namespace Geshotel.Contratos {
 
         // Adding the following to instantiate ContratosLineasGrid.ts
 
-        private LineasGrid: ContratosLineasGrid;
-        private CuposGrid: ContratosCuposGrid;
+        private lineasGrid: ContratosLineasGrid;
+        private cuposGrid: ContratosCuposGrid;
 
         constructor() {
             super();
-            this.LineasGrid = new ContratosLineasGrid(this.byId("LineasGrid"));
-            this.CuposGrid = new ContratosCuposGrid(this.byId("CuposGrid"));
+
+            this.lineasGrid = new ContratosLineasGrid(this.byId("LineasGrid"));
+            this.cuposGrid = new ContratosCuposGrid(this.byId("CuposGrid"));
+
+            this.form.ClienteId.change(e => this.cuposGrid.clienteID = Q.toId(this.form.ClienteId));
+            this.form.HotelId.change(e => this.cuposGrid.hotelID = Q.toId(this.form.HotelId));
+
             this.tabs.on('tabsactivate', (e, i) => {
                 this.arrange();
             });
@@ -28,8 +33,10 @@ namespace Geshotel.Contratos {
 
         protected afterLoadEntity() {
             super.afterLoadEntity();
-            this.LineasGrid.contratoID = this.entityId;
 
+            this.lineasGrid.contratoID = this.entityId;
+            this.cuposGrid.clienteID = this.entity.ClienteId;
+            this.cuposGrid.hotelID = this.entity.HotelId;
         }
     }
 }

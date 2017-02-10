@@ -27,6 +27,15 @@
         ImpuestoIncluido?: boolean;
         TipoImputacionId?: number;
         OrdenAplicacion?: number;
+        AmbitoOfertaName?: string;
+        TipoOfertaName?: string;
+        TipoServicioName?: string;
+        ServicioName?: string;
+        ServicioLigadoName?: string;
+        UnidadCalculoName?: string;
+        UserName?: string;
+        TipoAplicacionOfertaName?: string;
+        TipoImputacionName?: string;
     }
 
     export namespace OfertasRow {
@@ -62,9 +71,18 @@
             export declare const ImpuestoIncluido: string;
             export declare const TipoImputacionId: string;
             export declare const OrdenAplicacion: string;
+            export declare const AmbitoOfertaName: string;
+            export declare const TipoOfertaName: string;
+            export declare const TipoServicioName: string;
+            export declare const ServicioName: string;
+            export declare const ServicioLigadoName: string;
+            export declare const UnidadCalculoName: string;
+            export declare const UserName: string;
+            export declare const TipoAplicacionOfertaName: string;
+            export declare const TipoImputacionName: string;
         }
 
-        ['OfertaId', 'Texto', 'ContratoId', 'FechaDesde', 'FechaHasta', 'TipoAplicacionOfertaId', 'AplicableAuto', 'FechaReservaDesde', 'FechaReservaHasta', 'EstanciaMinimaDias', 'EstanciaMaximaDias', 'DiasDeAntelacion', 'TipoServicioId', 'ServicioId', 'UnidadCalculoId', 'ServicioLigadoId', 'CupoOferta', 'Precio', 'N', 'TipoOfertaId', 'M', 'AmbitoOfertaId', 'UserId', 'FechaModificacion', 'ImpuestoIncluido', 'TipoImputacionId', 'OrdenAplicacion'].forEach(x => (<any>Fields)[x] = x);
+        ['OfertaId', 'Texto', 'ContratoId', 'FechaDesde', 'FechaHasta', 'TipoAplicacionOfertaId', 'AplicableAuto', 'FechaReservaDesde', 'FechaReservaHasta', 'EstanciaMinimaDias', 'EstanciaMaximaDias', 'DiasDeAntelacion', 'TipoServicioId', 'ServicioId', 'UnidadCalculoId', 'ServicioLigadoId', 'CupoOferta', 'Precio', 'N', 'TipoOfertaId', 'M', 'AmbitoOfertaId', 'UserId', 'FechaModificacion', 'ImpuestoIncluido', 'TipoImputacionId', 'OrdenAplicacion', 'AmbitoOfertaName', 'TipoOfertaName', 'TipoServicioName', 'ServicioName', 'ServicioLigadoName', 'UnidadCalculoName', 'UserName', 'TipoAplicacionOfertaName', 'TipoImputacionName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 
