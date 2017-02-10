@@ -435,6 +435,13 @@ namespace MVC
         public static class Portal
         {
 
+            public static class AmbitoOferta
+            {
+
+                public const string AmbitoOfertaIndex = "~/Modules/Portal/AmbitoOferta/AmbitoOfertaIndex.cshtml";
+            }
+
+
             public static class CategoriaHoteles
             {
 
@@ -460,6 +467,13 @@ namespace MVC
             {
 
                 public const string FormasDePagoIndex = "~/Modules/Portal/FormasDePago/FormasDePagoIndex.cshtml";
+            }
+
+
+            public static class FrecuenciaFacturacion
+            {
+
+                public const string FrecuenciaFacturacionIndex = "~/Modules/Portal/FrecuenciaFacturacion/FrecuenciaFacturacionIndex.cshtml";
             }
 
 
@@ -516,6 +530,34 @@ namespace MVC
             {
 
                 public const string ServiciosIndex = "~/Modules/Portal/Servicios/ServiciosIndex.cshtml";
+            }
+
+
+            public static class TipoAplicacionOferta
+            {
+
+                public const string TipoAplicacionOfertaIndex = "~/Modules/Portal/TipoAplicacionOferta/TipoAplicacionOfertaIndex.cshtml";
+            }
+
+
+            public static class TiposCondicion
+            {
+
+                public const string TiposCondicionIndex = "~/Modules/Portal/TiposCondicion/TiposCondicionIndex.cshtml";
+            }
+
+
+            public static class TiposDeImputacion
+            {
+
+                public const string TiposDeImputacionIndex = "~/Modules/Portal/TiposDeImputacion/TiposDeImputacionIndex.cshtml";
+            }
+
+
+            public static class TiposDeOferta
+            {
+
+                public const string TiposDeOfertaIndex = "~/Modules/Portal/TiposDeOferta/TiposDeOfertaIndex.cshtml";
             }
 
 

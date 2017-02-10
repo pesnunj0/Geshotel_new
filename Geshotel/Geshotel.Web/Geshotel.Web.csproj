@@ -1739,6 +1739,7 @@
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosCuposGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasDialog.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantDialog.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeDialog.ts" />

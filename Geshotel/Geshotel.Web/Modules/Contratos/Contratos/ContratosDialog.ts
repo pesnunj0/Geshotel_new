@@ -26,5 +26,10 @@ namespace Geshotel.Contratos {
             });
         }
 
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
+            this.LineasGrid.contratoID = this.entityId;
+
+        }
     }
 }

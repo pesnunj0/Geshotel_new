@@ -6237,6 +6237,7 @@ declare namespace Geshotel.Contratos {
         private LineasGrid;
         private CuposGrid;
         constructor();
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -6250,12 +6251,29 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+    class LineasDialog extends Serenity.EntityDialog<LineasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: LineasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosLineasDialog extends LineasDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
     class ContratosLineasGrid extends Serenity.EntityGrid<LineasGrid, any> {
+        protected getDialogType(): typeof ContratosLineasDialog;
         protected getColumnsKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected initEntityDialog(itemType: any, dialog: any): void;
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
@@ -6299,15 +6317,6 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Contratos {
-    class LineasDialog extends Serenity.EntityDialog<LineasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: LineasForm;
     }
 }
 declare namespace Geshotel.Contratos {

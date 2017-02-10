@@ -6134,6 +6134,10 @@ var Geshotel;
             ContratosDialog.prototype.getLocalTextPrefix = function () { return Contratos.ContratosRow.localTextPrefix; };
             ContratosDialog.prototype.getNameProperty = function () { return Contratos.ContratosRow.nameProperty; };
             ContratosDialog.prototype.getService = function () { return Contratos.ContratosService.baseUrl; };
+            ContratosDialog.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
+                this.LineasGrid.contratoID = this.entityId;
+            };
             return ContratosDialog;
         }(Serenity.EntityDialog));
         ContratosDialog = __decorate([
@@ -6169,15 +6173,66 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var LineasDialog = (function (_super) {
+            __extends(LineasDialog, _super);
+            function LineasDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.LineasForm(_this.idPrefix);
+                return _this;
+            }
+            LineasDialog.prototype.getFormKey = function () { return Contratos.LineasForm.formKey; };
+            LineasDialog.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
+            LineasDialog.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
+            LineasDialog.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
+            return LineasDialog;
+        }(Serenity.EntityDialog));
+        LineasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], LineasDialog);
+        Contratos.LineasDialog = LineasDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="../Lineas/LineasDialog.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ContratosLineasDialog = (function (_super) {
+            __extends(ContratosLineasDialog, _super);
+            function ContratosLineasDialog() {
+                return _super.call(this) || this;
+            }
+            ContratosLineasDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.ContratoId, true);
+            };
+            return ContratosLineasDialog;
+        }(Contratos.LineasDialog));
+        ContratosLineasDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosLineasDialog);
+        Contratos.ContratosLineasDialog = ContratosLineasDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var ContratosLineasGrid = (function (_super) {
             __extends(ContratosLineasGrid, _super);
             function ContratosLineasGrid(container) {
                 return _super.call(this, container) || this;
             }
+            ContratosLineasGrid.prototype.getDialogType = function () { return Contratos.ContratosLineasDialog; };
             ContratosLineasGrid.prototype.getColumnsKey = function () { return 'Contratos.Lineas'; };
             ContratosLineasGrid.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
             ContratosLineasGrid.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
             ContratosLineasGrid.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
+            ContratosLineasGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
             ContratosLineasGrid.prototype.addButtonClick = function () {
                 this.editItem({ contratoID: this.contratoID });
             };
@@ -6185,8 +6240,7 @@ var Geshotel;
                 return null;
             };
             ContratosLineasGrid.prototype.getGridCanLoad = function () {
-                return true;
-                //            return this.contratoID != null;
+                return this.contratoID != null;
             };
             Object.defineProperty(ContratosLineasGrid.prototype, "contratoID", {
                 get: function () {
@@ -6300,30 +6354,6 @@ var Geshotel;
             Serenity.Decorators.registerClass()
         ], EdadesGrid);
         Contratos.EdadesGrid = EdadesGrid;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var LineasDialog = (function (_super) {
-            __extends(LineasDialog, _super);
-            function LineasDialog() {
-                var _this = _super.apply(this, arguments) || this;
-                _this.form = new Contratos.LineasForm(_this.idPrefix);
-                return _this;
-            }
-            LineasDialog.prototype.getFormKey = function () { return Contratos.LineasForm.formKey; };
-            LineasDialog.prototype.getIdProperty = function () { return Contratos.LineasRow.idProperty; };
-            LineasDialog.prototype.getLocalTextPrefix = function () { return Contratos.LineasRow.localTextPrefix; };
-            LineasDialog.prototype.getService = function () { return Contratos.LineasService.baseUrl; };
-            return LineasDialog;
-        }(Serenity.EntityDialog));
-        LineasDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], LineasDialog);
-        Contratos.LineasDialog = LineasDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
