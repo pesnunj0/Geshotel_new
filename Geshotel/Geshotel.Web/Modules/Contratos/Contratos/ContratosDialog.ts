@@ -25,6 +25,8 @@ namespace Geshotel.Contratos {
 
             this.form.ClienteId.change(e => this.cuposGrid.clienteID = Q.toId(this.form.ClienteId));
             this.form.HotelId.change(e => this.cuposGrid.hotelID = Q.toId(this.form.HotelId));
+            this.form.FechaDesde.change(e => this.cuposGrid.fechaDesde = this.form.FechaDesde.value);
+            this.form.FechaHasta.change(e => this.cuposGrid.fechaHasta = this.form.FechaHasta.value);
 
             this.tabs.on('tabsactivate', (e, i) => {
                 this.arrange();
@@ -35,8 +37,11 @@ namespace Geshotel.Contratos {
             super.afterLoadEntity();
 
             this.lineasGrid.contratoID = this.entityId;
+            this.cuposGrid.fechaDesde = this.entity.FechaDesde;
+            this.cuposGrid.fechaHasta = this.entity.FechaHasta;
             this.cuposGrid.clienteID = this.entity.ClienteId;
             this.cuposGrid.hotelID = this.entity.HotelId;
+            
         }
     }
 }
