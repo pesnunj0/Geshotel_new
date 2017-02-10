@@ -5992,10 +5992,15 @@ declare namespace Geshotel.Contratos {
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
+        protected onViewSubmit(): boolean;
         private _hotelID;
         hotelID: number;
         private _clienteID;
         clienteID: number;
+        private _fechaDesde;
+        fechaDesde: string;
+        private _fechaHasta;
+        fechaHasta: string;
     }
 }
 declare namespace Geshotel.Contratos {

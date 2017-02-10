@@ -6067,6 +6067,14 @@ var Geshotel;
             ContratosCuposGrid.prototype.getGridCanLoad = function () {
                 return this.clienteID != null && this.hotelID != null;
             };
+            ContratosCuposGrid.prototype.onViewSubmit = function () {
+                if (!_super.prototype.onViewSubmit.call(this))
+                    return false;
+                var fld = Contratos.CuposRow.Fields;
+                var request = this.view.params;
+                request.Criteria = Serenity.Criteria.and(request.Criteria, Serenity.Criteria.or(Serenity.Criteria.and([[fld.FechaDesde], '>=', this.fechaDesde], [[fld.FechaDesde], '<=', this.fechaHasta]), Serenity.Criteria.and([[fld.FechaHasta], '>=', this.fechaDesde], [[fld.FechaHasta], '<=', this.fechaHasta]), Serenity.Criteria.and([[fld.FechaDesde], '<=', this.fechaDesde], [[fld.FechaHasta], '>', this.fechaHasta])));
+                return true;
+            };
             Object.defineProperty(ContratosCuposGrid.prototype, "hotelID", {
                 get: function () {
                     return this._hotelID;
@@ -6095,6 +6103,32 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
+            Object.defineProperty(ContratosCuposGrid.prototype, "fechaDesde", {
+                get: function () {
+                    return this._fechaDesde;
+                },
+                set: function (value) {
+                    if (this._fechaDesde !== value) {
+                        this._fechaDesde = value;
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(ContratosCuposGrid.prototype, "fechaHasta", {
+                get: function () {
+                    return this._fechaHasta;
+                },
+                set: function (value) {
+                    if (this._fechaHasta !== value) {
+                        this._fechaHasta = value;
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             return ContratosCuposGrid;
         }(Serenity.EntityGrid));
         ContratosCuposGrid = __decorate([
@@ -6116,6 +6150,8 @@ var Geshotel;
                 _this.cuposGrid = new Contratos.ContratosCuposGrid(_this.byId("CuposGrid"));
                 _this.form.ClienteId.change(function (e) { return _this.cuposGrid.clienteID = Q.toId(_this.form.ClienteId); });
                 _this.form.HotelId.change(function (e) { return _this.cuposGrid.hotelID = Q.toId(_this.form.HotelId); });
+                _this.form.FechaDesde.change(function (e) { return _this.cuposGrid.fechaDesde = _this.form.FechaDesde.value; });
+                _this.form.FechaHasta.change(function (e) { return _this.cuposGrid.fechaHasta = _this.form.FechaHasta.value; });
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
                 });
@@ -6129,6 +6165,8 @@ var Geshotel;
             ContratosDialog.prototype.afterLoadEntity = function () {
                 _super.prototype.afterLoadEntity.call(this);
                 this.lineasGrid.contratoID = this.entityId;
+                this.cuposGrid.fechaDesde = this.entity.FechaDesde;
+                this.cuposGrid.fechaHasta = this.entity.FechaHasta;
                 this.cuposGrid.clienteID = this.entity.ClienteId;
                 this.cuposGrid.hotelID = this.entity.HotelId;
             };
