@@ -161,7 +161,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioLigadoId[this] = value; }
         }
 
-        [DisplayName("Servicio Ligado"), Expression("jServicioLigado.servicio")]
+        [DisplayName("Servicio Ligado"), Expression("jServicioLigado.nombre_servicio")]
         public String ServicioLigadoName
         {
             get { return Fields.ServicioLigadoName[this]; }

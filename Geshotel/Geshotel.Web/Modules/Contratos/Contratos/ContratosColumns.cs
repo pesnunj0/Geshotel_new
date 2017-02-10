@@ -40,6 +40,7 @@ namespace Geshotel.Contratos.Columns
         public String Mercado { get; set; }
         [Width(100)]
         public String UserName { get; set; }
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaModificacion { get; set; }
     }
 }

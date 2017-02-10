@@ -55,7 +55,8 @@ namespace Geshotel.Contratos.Columns
         [DisplayName("D")]
         public Boolean Domingo { get; set; }
         public Int16 PagFactura { get; set; }
-//        public Int16 UserId { get; set; }
-//        public DateTime FechaModificacion { get; set; }
+        public String UserName { get; set; }
+        [Width(110), DisplayFormat("g")]
+        public DateTime FechaModificacion { get; set; }
     }
 }

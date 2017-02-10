@@ -230,10 +230,10 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Usuario"), Expression("jUser.[Username]")]
-        public String Usuario
+        public String UserName
         {
-            get { return Fields.Usuario[this]; }
-            set { Fields.Usuario[this] = value; }
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
 
@@ -288,7 +288,7 @@ namespace Geshotel.Contratos.Entities
             public StringField UnidadCalculo;
             public StringField Frecuencia;
             public StringField Imputacion;
-            public StringField Usuario;
+            public StringField UserName;
             public StringField TipoServicio;
 
             public RowFields()

@@ -24,6 +24,7 @@ namespace Geshotel.Contratos.Columns
         public Decimal Garantia { get; set; }
         public Boolean ReservaAutomatica { get; set; }
         public String UserName { get; set; }
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaModificacion { get; set; }
     }
 }

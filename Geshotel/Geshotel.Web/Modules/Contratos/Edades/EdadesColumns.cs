@@ -23,6 +23,7 @@ namespace Geshotel.Contratos.Columns
         public Int32 EdadMinima { get; set; }
         public Int32 EdadMaxima { get; set; }
         public String UserName { get; set; }
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaModificacion { get; set; }
     }
 }
