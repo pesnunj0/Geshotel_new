@@ -29,7 +29,9 @@ namespace Geshotel.Contratos {
         protected afterLoadEntity() {
             super.afterLoadEntity();
             this.LineasGrid.contratoID = this.entityId;
-
+            // I don´t know how to set clienteID and hotelID values with the corresponding value. I force them to 1 and 2 for testing
+            this.CuposGrid.hotelID = 1
+            this.CuposGrid.clienteID = 2
         }
     }
 }

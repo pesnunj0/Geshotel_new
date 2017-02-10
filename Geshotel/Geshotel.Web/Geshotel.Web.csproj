@@ -1737,6 +1737,7 @@
     <TypeScriptCompile Include="Modules\Contratos\Agencias\AgenciasDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosCuposDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosCuposGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasDialog.ts" />

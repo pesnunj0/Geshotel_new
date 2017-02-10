@@ -21,8 +21,8 @@
         }
 
         protected getGridCanLoad() {
-            return true;
-//            return this.contratoID != null;
+            
+           return this.contratoID != null;
             
         }
         private _hotelID: number;

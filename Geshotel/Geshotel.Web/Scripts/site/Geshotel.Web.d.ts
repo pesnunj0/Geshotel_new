@@ -6211,6 +6211,21 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+    class CuposDialog extends Serenity.EntityDialog<CuposRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: CuposForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosCuposDialog extends CuposDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
     class ContratosCuposGrid extends Serenity.EntityGrid<CuposGrid, any> {
         protected getColumnsKey(): string;
         protected getIdProperty(): string;
@@ -6279,15 +6294,6 @@ declare namespace Geshotel.Contratos {
         protected getGridCanLoad(): boolean;
         private _contratoID;
         contratoID: number;
-    }
-}
-declare namespace Geshotel.Contratos {
-    class CuposDialog extends Serenity.EntityDialog<CuposRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: CuposForm;
     }
 }
 declare namespace Geshotel.Contratos {

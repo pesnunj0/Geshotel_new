@@ -6057,6 +6057,53 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var CuposDialog = (function (_super) {
+            __extends(CuposDialog, _super);
+            function CuposDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.CuposForm(_this.idPrefix);
+                return _this;
+            }
+            CuposDialog.prototype.getFormKey = function () { return Contratos.CuposForm.formKey; };
+            CuposDialog.prototype.getIdProperty = function () { return Contratos.CuposRow.idProperty; };
+            CuposDialog.prototype.getLocalTextPrefix = function () { return Contratos.CuposRow.localTextPrefix; };
+            CuposDialog.prototype.getService = function () { return Contratos.CuposService.baseUrl; };
+            return CuposDialog;
+        }(Serenity.EntityDialog));
+        CuposDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], CuposDialog);
+        Contratos.CuposDialog = CuposDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="../Cupos/CuposDialog.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ContratosCuposDialog = (function (_super) {
+            __extends(ContratosCuposDialog, _super);
+            function ContratosCuposDialog() {
+                return _super.call(this) || this;
+            }
+            ContratosCuposDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.ClienteId, true);
+                Serenity.EditorUtils.setReadOnly(this.form.HotelId, true);
+            };
+            return ContratosCuposDialog;
+        }(Contratos.CuposDialog));
+        ContratosCuposDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ContratosCuposDialog);
+        Contratos.ContratosCuposDialog = ContratosCuposDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var ContratosCuposGrid = (function (_super) {
             __extends(ContratosCuposGrid, _super);
             function ContratosCuposGrid(container) {
@@ -6074,8 +6121,7 @@ var Geshotel;
                 return null;
             };
             ContratosCuposGrid.prototype.getGridCanLoad = function () {
-                return true;
-                //            return this.contratoID != null;
+                return this.contratoID != null;
             };
             Object.defineProperty(ContratosCuposGrid.prototype, "hotelID", {
                 get: function () {
@@ -6137,6 +6183,9 @@ var Geshotel;
             ContratosDialog.prototype.afterLoadEntity = function () {
                 _super.prototype.afterLoadEntity.call(this);
                 this.LineasGrid.contratoID = this.entityId;
+                // I don´t know how to set clienteID and hotelID values with the corresponding value. I force them to 1 and 2 for testing
+                this.CuposGrid.hotelID = 1;
+                this.CuposGrid.clienteID = 2;
             };
             return ContratosDialog;
         }(Serenity.EntityDialog));
@@ -6262,30 +6311,6 @@ var Geshotel;
             Serenity.Decorators.registerClass()
         ], ContratosLineasGrid);
         Contratos.ContratosLineasGrid = ContratosLineasGrid;
-    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Contratos;
-    (function (Contratos) {
-        var CuposDialog = (function (_super) {
-            __extends(CuposDialog, _super);
-            function CuposDialog() {
-                var _this = _super.apply(this, arguments) || this;
-                _this.form = new Contratos.CuposForm(_this.idPrefix);
-                return _this;
-            }
-            CuposDialog.prototype.getFormKey = function () { return Contratos.CuposForm.formKey; };
-            CuposDialog.prototype.getIdProperty = function () { return Contratos.CuposRow.idProperty; };
-            CuposDialog.prototype.getLocalTextPrefix = function () { return Contratos.CuposRow.localTextPrefix; };
-            CuposDialog.prototype.getService = function () { return Contratos.CuposService.baseUrl; };
-            return CuposDialog;
-        }(Serenity.EntityDialog));
-        CuposDialog = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
-        ], CuposDialog);
-        Contratos.CuposDialog = CuposDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

@@ -130,7 +130,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioId[this] = value; }
         }
 
-        [DisplayName("Servicio"), Expression("jServicios.servicio")]
+        [DisplayName("Servicio"), Expression("jServicios.nombre_servicio")]
         public String ServicioName
         {
             get { return Fields.ServicioName[this]; }
