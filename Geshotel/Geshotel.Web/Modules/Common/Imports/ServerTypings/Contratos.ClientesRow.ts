@@ -49,6 +49,7 @@
         Provincia?: string;
         FacturaNacion?: string;
         FacturaProvincia?: string;
+        UserName?: string;
     }
 
     export namespace ClientesRow {
@@ -111,9 +112,10 @@
             export declare const Provincia: string;
             export declare const FacturaNacion: string;
             export declare const FacturaProvincia: string;
+            export declare const UserName: string;
         }
 
-        ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'AgenciaId', 'ClienteDefecto', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'Agencia', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia'].forEach(x => (<any>Fields)[x] = x);
+        ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'AgenciaId', 'ClienteDefecto', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'Agencia', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia', 'UserName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

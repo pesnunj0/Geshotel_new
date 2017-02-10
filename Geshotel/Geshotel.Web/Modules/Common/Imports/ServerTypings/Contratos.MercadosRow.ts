@@ -3,16 +3,9 @@
         MercadoId?: number;
         Mercado?: string;
         EmpresaId?: number;
+        HotelId?: number;
         Empresa?: string;
-        EmpresaEmpresaContable?: string;
-        EmpresaDireccion?: string;
-        EmpresaPoblacion?: string;
-        EmpresaZip?: string;
-        EmpresaProvinciaId?: number;
-        EmpresaTelefono?: string;
-        EmpresaFax?: string;
-        EmpresaCif?: string;
-        EmpresaRutaFicheros?: string;
+        HotelName?: string;
     }
 
     export namespace MercadosRow {
@@ -29,19 +22,12 @@
             export declare const MercadoId: string;
             export declare const Mercado: string;
             export declare const EmpresaId: string;
+            export declare const HotelId: string;
             export declare const Empresa: string;
-            export declare const EmpresaEmpresaContable: string;
-            export declare const EmpresaDireccion: string;
-            export declare const EmpresaPoblacion: string;
-            export declare const EmpresaZip: string;
-            export declare const EmpresaProvinciaId: string;
-            export declare const EmpresaTelefono: string;
-            export declare const EmpresaFax: string;
-            export declare const EmpresaCif: string;
-            export declare const EmpresaRutaFicheros: string;
+            export declare const HotelName: string;
         }
 
-        ['MercadoId', 'Mercado', 'EmpresaId', 'Empresa', 'EmpresaEmpresaContable', 'EmpresaDireccion', 'EmpresaPoblacion', 'EmpresaZip', 'EmpresaProvinciaId', 'EmpresaTelefono', 'EmpresaFax', 'EmpresaCif', 'EmpresaRutaFicheros'].forEach(x => (<any>Fields)[x] = x);
+        ['MercadoId', 'Mercado', 'EmpresaId', 'HotelId', 'Empresa', 'HotelName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

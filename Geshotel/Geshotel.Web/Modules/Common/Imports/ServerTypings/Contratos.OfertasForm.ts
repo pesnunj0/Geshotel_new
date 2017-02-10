@@ -9,30 +9,28 @@
         ContratoId: Serenity.IntegerEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
-        TipoAplicacionOfertaId: Serenity.StringEditor;
+        TipoAplicacionOfertaId: Serenity.LookupEditor;
         AplicableAuto: Serenity.BooleanEditor;
         FechaReservaDesde: Serenity.DateEditor;
         FechaReservaHasta: Serenity.DateEditor;
         EstanciaMinimaDias: Serenity.IntegerEditor;
         EstanciaMaximaDias: Serenity.IntegerEditor;
         DiasDeAntelacion: Serenity.IntegerEditor;
-        TipoServicioId: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
-        UnidadCalculoId: Serenity.IntegerEditor;
-        ServicioLigadoId: Serenity.IntegerEditor;
+        TipoServicioId: Serenity.LookupEditor;
+        ServicioId: Serenity.LookupEditor;
+        UnidadCalculoId: Serenity.LookupEditor;
+        ServicioLigadoId: Serenity.LookupEditor;
         CupoOferta: Serenity.IntegerEditor;
         Precio: Serenity.DecimalEditor;
         N: Serenity.DecimalEditor;
-        TipoOfertaId: Serenity.IntegerEditor;
+        TipoOfertaId: Serenity.LookupEditor;
         M: Serenity.DecimalEditor;
-        AmbitoOfertaId: Serenity.IntegerEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
+        AmbitoOfertaId: Serenity.LookupEditor;
         ImpuestoIncluido: Serenity.BooleanEditor;
-        TipoImputacionId: Serenity.IntegerEditor;
+        TipoImputacionId: Serenity.LookupEditor;
         OrdenAplicacion: Serenity.IntegerEditor;
     }
 
-    [['Texto', () => Serenity.StringEditor], ['ContratoId', () => Serenity.IntegerEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['TipoAplicacionOfertaId', () => Serenity.StringEditor], ['AplicableAuto', () => Serenity.BooleanEditor], ['FechaReservaDesde', () => Serenity.DateEditor], ['FechaReservaHasta', () => Serenity.DateEditor], ['EstanciaMinimaDias', () => Serenity.IntegerEditor], ['EstanciaMaximaDias', () => Serenity.IntegerEditor], ['DiasDeAntelacion', () => Serenity.IntegerEditor], ['TipoServicioId', () => Serenity.IntegerEditor], ['ServicioId', () => Serenity.IntegerEditor], ['UnidadCalculoId', () => Serenity.IntegerEditor], ['ServicioLigadoId', () => Serenity.IntegerEditor], ['CupoOferta', () => Serenity.IntegerEditor], ['Precio', () => Serenity.DecimalEditor], ['N', () => Serenity.DecimalEditor], ['TipoOfertaId', () => Serenity.IntegerEditor], ['M', () => Serenity.DecimalEditor], ['AmbitoOfertaId', () => Serenity.IntegerEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor], ['ImpuestoIncluido', () => Serenity.BooleanEditor], ['TipoImputacionId', () => Serenity.IntegerEditor], ['OrdenAplicacion', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(OfertasForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['Texto', () => Serenity.StringEditor], ['ContratoId', () => Serenity.IntegerEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['TipoAplicacionOfertaId', () => Serenity.LookupEditor], ['AplicableAuto', () => Serenity.BooleanEditor], ['FechaReservaDesde', () => Serenity.DateEditor], ['FechaReservaHasta', () => Serenity.DateEditor], ['EstanciaMinimaDias', () => Serenity.IntegerEditor], ['EstanciaMaximaDias', () => Serenity.IntegerEditor], ['DiasDeAntelacion', () => Serenity.IntegerEditor], ['TipoServicioId', () => Serenity.LookupEditor], ['ServicioId', () => Serenity.LookupEditor], ['UnidadCalculoId', () => Serenity.LookupEditor], ['ServicioLigadoId', () => Serenity.LookupEditor], ['CupoOferta', () => Serenity.IntegerEditor], ['Precio', () => Serenity.DecimalEditor], ['N', () => Serenity.DecimalEditor], ['TipoOfertaId', () => Serenity.LookupEditor], ['M', () => Serenity.DecimalEditor], ['AmbitoOfertaId', () => Serenity.LookupEditor], ['ImpuestoIncluido', () => Serenity.BooleanEditor], ['TipoImputacionId', () => Serenity.LookupEditor], ['OrdenAplicacion', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(OfertasForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

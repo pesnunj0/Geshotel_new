@@ -10,6 +10,7 @@
         FrecuenciaId?: number;
         TipoImputacionId?: number;
         Importe?: number;
+        TipoServicioId?: number;
         Lunes?: boolean;
         Martes?: boolean;
         Miercoles?: boolean;
@@ -25,6 +26,7 @@
         Frecuencia?: string;
         Imputacion?: string;
         Usuario?: string;
+        TipoServicio?: string;
     }
 
     export namespace LineasRow {
@@ -42,6 +44,7 @@
             export declare const FrecuenciaId: string;
             export declare const TipoImputacionId: string;
             export declare const Importe: string;
+            export declare const TipoServicioId: string;
             export declare const Lunes: string;
             export declare const Martes: string;
             export declare const Miercoles: string;
@@ -57,9 +60,10 @@
             export declare const Frecuencia: string;
             export declare const Imputacion: string;
             export declare const Usuario: string;
+            export declare const TipoServicio: string;
         }
 
-        ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'UnidadCalculo', 'Frecuencia', 'Imputacion', 'Usuario'].forEach(x => (<any>Fields)[x] = x);
+        ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'UnidadCalculo', 'Frecuencia', 'Imputacion', 'Usuario', 'TipoServicio'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

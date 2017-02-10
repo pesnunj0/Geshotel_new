@@ -6,14 +6,17 @@
         protected getIdProperty() { return CuposRow.idProperty; }
         protected getLocalTextPrefix() { return CuposRow.localTextPrefix; }
         protected getService() { return CuposService.baseUrl; }
+        protected getDialogType() { return ContratosCuposDialog; }
 
         constructor(container: JQuery) {
             super(container);
         }
 
         protected addButtonClick() {
-            this.editItem({ clienteID: this.clienteID });
-            this.editItem({ hotelID: this.hotelID });
+            this.editItem(<CuposRow>{
+                ClienteId: this.clienteID,
+                HotelId: this.hotelID
+            });
         }
 
         protected getInitialTitle() {
@@ -21,16 +24,14 @@
         }
 
         protected getGridCanLoad() {
-            
-           return this.contratoID != null;
-            
+            return this.clienteID != null && this.hotelID != null;
         }
+
         private _hotelID: number;
         
         get hotelID() {
             return this._hotelID;
         }
-
 
         set hotelID(value: number) {
             if (this._hotelID !== value) {
@@ -41,6 +42,7 @@
         }
 
         private _clienteID: number;
+
         get clienteID() {
             return this._clienteID;
         }
@@ -51,7 +53,6 @@
                 this.setEquality(ContratosRow.Fields.ClienteId, value);
                 this.refresh();
             }
-
         }
     }
 }

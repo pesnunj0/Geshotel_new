@@ -11,13 +11,13 @@
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         NumeroContratoCliente: Serenity.StringEditor;
-        UserId: Serenity.IntegerEditor;
+        UserId: Serenity.LookupEditor;
         FechaModificacion: Serenity.DateEditor;
-        TemporadaId: Serenity.IntegerEditor;
+        TemporadaId: Serenity.LookupEditor;
         ImpuestoIncluido: Serenity.BooleanEditor;
-        MercadoId: Serenity.IntegerEditor;
+        MercadoId: Serenity.LookupEditor;
     }
 
-    [['HotelId', () => Serenity.LookupEditor], ['ClienteId', () => Serenity.LookupEditor], ['FechaContrato', () => Serenity.DateEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['NumeroContratoCliente', () => Serenity.StringEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor], ['TemporadaId', () => Serenity.IntegerEditor], ['ImpuestoIncluido', () => Serenity.BooleanEditor], ['MercadoId', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(ContratosForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['HotelId', () => Serenity.LookupEditor], ['ClienteId', () => Serenity.LookupEditor], ['FechaContrato', () => Serenity.DateEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['NumeroContratoCliente', () => Serenity.StringEditor], ['UserId', () => Serenity.LookupEditor], ['FechaModificacion', () => Serenity.DateEditor], ['TemporadaId', () => Serenity.LookupEditor], ['ImpuestoIncluido', () => Serenity.BooleanEditor], ['MercadoId', () => Serenity.LookupEditor]].forEach(x => Object.defineProperty(ContratosForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 
