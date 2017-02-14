@@ -1,3 +1,4 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
 }
 

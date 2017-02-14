@@ -1127,8 +1127,6 @@ declare namespace Geshotel.Contratos {
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         NumeroContratoCliente: Serenity.StringEditor;
-        UserId: Serenity.LookupEditor;
-        FechaModificacion: Serenity.DateEditor;
         TemporadaId: Serenity.LookupEditor;
         ImpuestoIncluido: Serenity.BooleanEditor;
         MercadoId: Serenity.LookupEditor;
@@ -1385,8 +1383,6 @@ declare namespace Geshotel.Contratos {
         Sabado: Serenity.BooleanEditor;
         Domingo: Serenity.BooleanEditor;
         PagFactura: Serenity.IntegerEditor;
-        UserId: Serenity.LookupEditor;
-        FechaModificacion: Serenity.DateEditor;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -1413,10 +1409,10 @@ declare namespace Geshotel.Contratos {
         UserId?: number;
         FechaModificacion?: string;
         Servicio?: string;
-        UnidadCalculo?: string;
+        DescripcionUnidadCalculo?: string;
         Frecuencia?: string;
         Imputacion?: string;
-        Usuario?: string;
+        UserName?: string;
         TipoServicio?: string;
     }
     namespace LineasRow {
@@ -1445,10 +1441,10 @@ declare namespace Geshotel.Contratos {
             const UserId: string;
             const FechaModificacion: string;
             const Servicio: string;
-            const UnidadCalculo: string;
+            const DescripcionUnidadCalculo: string;
             const Frecuencia: string;
             const Imputacion: string;
-            const Usuario: string;
+            const UserName: string;
             const TipoServicio: string;
         }
     }
@@ -1530,30 +1526,29 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface OfertasForm {
-        Texto: Serenity.StringEditor;
         ContratoId: Serenity.IntegerEditor;
+        Texto: Serenity.StringEditor;
+        AplicableAuto: Serenity.BooleanEditor;
+        ImpuestoIncluido: Serenity.BooleanEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         TipoAplicacionOfertaId: Serenity.LookupEditor;
-        AplicableAuto: Serenity.BooleanEditor;
+        OrdenAplicacion: Serenity.IntegerEditor;
         FechaReservaDesde: Serenity.DateEditor;
         FechaReservaHasta: Serenity.DateEditor;
         EstanciaMinimaDias: Serenity.IntegerEditor;
         EstanciaMaximaDias: Serenity.IntegerEditor;
         DiasDeAntelacion: Serenity.IntegerEditor;
+        CupoOferta: Serenity.IntegerEditor;
         TipoServicioId: Serenity.LookupEditor;
         ServicioId: Serenity.LookupEditor;
         UnidadCalculoId: Serenity.LookupEditor;
         ServicioLigadoId: Serenity.LookupEditor;
-        CupoOferta: Serenity.IntegerEditor;
-        Precio: Serenity.DecimalEditor;
-        N: Serenity.DecimalEditor;
-        TipoOfertaId: Serenity.LookupEditor;
-        M: Serenity.DecimalEditor;
-        AmbitoOfertaId: Serenity.LookupEditor;
-        ImpuestoIncluido: Serenity.BooleanEditor;
         TipoImputacionId: Serenity.LookupEditor;
-        OrdenAplicacion: Serenity.IntegerEditor;
+        AmbitoOfertaId: Serenity.LookupEditor;
+        TipoOfertaId: Serenity.LookupEditor;
+        N: Serenity.IntegerEditor;
+        M: Serenity.DecimalEditor;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -2017,23 +2012,6 @@ declare namespace Geshotel.Contratos {
             const Delete: string;
             const Retrieve: string;
             const List: string;
-        }
-    }
-}
-declare namespace Geshotel.Contratos {
-    interface TipoAplicacionOfertaRow {
-        TipoAplicacionOfertaId?: string;
-        AplicableSegunFechaDe?: string;
-    }
-    namespace TipoAplicacionOfertaRow {
-        const idProperty = "TipoAplicacionOfertaId";
-        const nameProperty = "AplicableSegunFechaDe";
-        const localTextPrefix = "Contratos.TipoAplicacionOferta";
-        const lookupKey = "Contratos.TipoAplicacionOferta";
-        function getLookup(): Q.Lookup<TipoAplicacionOfertaRow>;
-        namespace Fields {
-            const TipoAplicacionOfertaId: string;
-            const AplicableSegunFechaDe: string;
         }
     }
 }
@@ -4467,7 +4445,7 @@ declare namespace Geshotel.Portal {
     }
     namespace FrecuenciaFacturacionRow {
         const idProperty = "FrecuenciaId";
-        const nameProperty = "DescripcionCorta";
+        const nameProperty = "Descripcion";
         const localTextPrefix = "Portal.FrecuenciaFacturacion";
         const lookupKey = "Portal.FrecuenciaFacturacion";
         function getLookup(): Q.Lookup<FrecuenciaFacturacionRow>;
@@ -5424,7 +5402,7 @@ declare namespace Geshotel.Portal {
     }
     namespace TiposHabitacionRow {
         const idProperty = "TipoHabitacionId";
-        const nameProperty = "DescCorta";
+        const nameProperty = "Descripcion";
         const localTextPrefix = "Portal.TiposHabitacion";
         const lookupKey = "Portal.TiposHabitacion";
         function getLookup(): Q.Lookup<TiposHabitacionRow>;
@@ -5688,7 +5666,7 @@ declare namespace Geshotel.Portal {
     }
     namespace UnidadesCalculoRow {
         const idProperty = "UnidadCalculoId";
-        const nameProperty = "Uc";
+        const nameProperty = "DescripcionUnidadCalculo";
         const localTextPrefix = "Portal.UnidadesCalculo";
         const lookupKey = "Portal.UnidadesCalculo";
         function getLookup(): Q.Lookup<UnidadesCalculoRow>;
@@ -5718,46 +5696,6 @@ declare namespace Geshotel.Portal {
             const Delete: string;
             const Retrieve: string;
             const List: string;
-        }
-    }
-}
-declare namespace Geshotel.Portal {
-    interface UsuariosEmpresaRow {
-        UserId?: number;
-        EmpresaId?: number;
-        UserUsername?: string;
-        UserDisplayName?: string;
-        UserEmail?: string;
-        UserSource?: string;
-        UserPasswordHash?: string;
-        UserPasswordSalt?: string;
-        UserInsertDate?: string;
-        UserInsertUserId?: number;
-        UserUpdateDate?: string;
-        UserUpdateUserId?: number;
-        UserIsActive?: number;
-        UserLastDirectoryUpdate?: string;
-        UserUserImage?: string;
-    }
-    namespace UsuariosEmpresaRow {
-        const idProperty = "UserId";
-        const localTextPrefix = "Portal.UsuariosEmpresa";
-        namespace Fields {
-            const UserId: string;
-            const EmpresaId: string;
-            const UserUsername: string;
-            const UserDisplayName: string;
-            const UserEmail: string;
-            const UserSource: string;
-            const UserPasswordHash: string;
-            const UserPasswordSalt: string;
-            const UserInsertDate: string;
-            const UserInsertUserId: string;
-            const UserUpdateDate: string;
-            const UserUpdateUserId: string;
-            const UserIsActive: string;
-            const UserLastDirectoryUpdate: string;
-            const UserUserImage: string;
         }
     }
 }

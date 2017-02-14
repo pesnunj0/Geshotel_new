@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export class SupplierForm extends Serenity.PrefixedContext {
         static formKey = 'Northwind.Supplier';
 

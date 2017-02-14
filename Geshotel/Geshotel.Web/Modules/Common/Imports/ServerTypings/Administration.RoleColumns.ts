@@ -1,3 +1,4 @@
-﻿namespace Geshotel.Administration {
+﻿
+namespace Geshotel.Administration {
 }
 

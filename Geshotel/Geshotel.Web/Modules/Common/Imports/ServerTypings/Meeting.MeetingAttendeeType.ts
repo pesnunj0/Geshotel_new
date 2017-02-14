@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Meeting {
+﻿
+namespace Geshotel.Meeting {
     export enum MeetingAttendeeType {
         Attendee = 1,
         Guest = 2

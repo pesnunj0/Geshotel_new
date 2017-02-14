@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export enum Gender {
         Male = 1,
         Female = 2

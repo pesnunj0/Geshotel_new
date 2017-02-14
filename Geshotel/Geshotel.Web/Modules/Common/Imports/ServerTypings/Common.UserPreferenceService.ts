@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Common {
+﻿
+namespace Geshotel.Common {
     export namespace UserPreferenceService {
         export const baseUrl = 'Common/UserPreference';
 

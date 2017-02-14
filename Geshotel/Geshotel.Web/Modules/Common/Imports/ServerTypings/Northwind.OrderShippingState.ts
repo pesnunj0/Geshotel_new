@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export enum OrderShippingState {
         NotShipped = 0,
         Shipped = 1

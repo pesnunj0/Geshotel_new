@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export namespace GruposDeServiciosService {
         export const baseUrl = 'Portal/GruposDeServicios';
 

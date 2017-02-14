@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Meeting {
+﻿
+namespace Geshotel.Meeting {
     export interface MeetingLocationRow {
         LocationId?: number;
         Name?: string;

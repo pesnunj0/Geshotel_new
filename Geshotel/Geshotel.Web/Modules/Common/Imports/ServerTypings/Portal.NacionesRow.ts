@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export interface NacionesRow {
         NacionId?: number;
         Nacion?: string;

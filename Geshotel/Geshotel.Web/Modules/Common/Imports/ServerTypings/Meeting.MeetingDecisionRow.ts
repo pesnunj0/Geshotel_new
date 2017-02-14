@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Meeting {
+﻿
+namespace Geshotel.Meeting {
     export interface MeetingDecisionRow {
         DecisionId?: number;
         MeetingId?: number;
