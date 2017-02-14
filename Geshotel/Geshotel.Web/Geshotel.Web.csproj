@@ -1299,9 +1299,6 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AmbitoOfertaRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ClientesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1348,9 +1345,6 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FrecuenciaFacturacionRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasColumns.ts">
@@ -1428,15 +1422,6 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TipoAplicacionOfertaRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposCondicionRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposDeImputacionRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposDeOfertaRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\ExcelImportRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1491,6 +1476,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Organization.ContactColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.CategoriaHotelesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1543,6 +1531,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FormasDePagoService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.GruposDeClienteColumns.ts">
@@ -1645,6 +1636,18 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.SexosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDocumentoRow.ts">
@@ -2293,42 +2296,78 @@
     <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Edades\EdadesDialog.ts" />
     <Content Include="Modules\Portal\AmbitoOferta\AmbitoOfertaIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.AmbitoOfertaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\AmbitoOferta\AmbitoOfertaGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\AmbitoOferta\AmbitoOfertaDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Prtal.FrecuenciaFacturacionRow.ts" />
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Prtal.FrecuenciaFacturacionService.ts" />
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Prtal.FrecuenciaFacturacionForm.ts" />
     <Content Include="Modules\Portal\TiposCondicion\TiposCondicionIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\TiposCondicion\TiposCondicionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposCondicion\TiposCondicionDialog.ts" />
     <Content Include="Modules\Portal\TiposDeImputacion\TiposDeImputacionIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeImputacionForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\TiposDeImputacion\TiposDeImputacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposDeImputacion\TiposDeImputacionDialog.ts" />
     <Content Include="Modules\Portal\TiposDeOferta\TiposDeOfertaIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\TiposDeOferta\TiposDeOfertaGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposDeOferta\TiposDeOfertaDialog.ts" />
     <Content Include="Modules\Portal\TipoAplicacionOferta\TipoAplicacionOfertaIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\TipoAplicacionOferta\TipoAplicacionOfertaGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TipoAplicacionOferta\TipoAplicacionOfertaDialog.ts" />
     <Content Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.FrecuenciaFacturacionForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionDialog.ts" />
   </ItemGroup>
