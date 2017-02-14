@@ -14,6 +14,7 @@ namespace Geshotel.Behaviors
 
         public bool ActivateFor(Row row)
         {
+            
             LastModification = (row.FindFieldByPropertyName("FechaModificacion") ??
                 row.FindField("fecha_modificacion")) as DateTimeField;
 
