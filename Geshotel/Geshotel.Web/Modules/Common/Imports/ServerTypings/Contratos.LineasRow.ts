@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Contratos {
+﻿
+namespace Geshotel.Contratos {
     export interface LineasRow {
         LineaContratoId?: number;
         ContratoId?: number;
@@ -22,10 +23,10 @@
         UserId?: number;
         FechaModificacion?: string;
         Servicio?: string;
-        UnidadCalculo?: string;
+        DescripcionUnidadCalculo?: string;
         Frecuencia?: string;
         Imputacion?: string;
-        Usuario?: string;
+        UserName?: string;
         TipoServicio?: string;
     }
 
@@ -56,14 +57,14 @@
             export declare const UserId: string;
             export declare const FechaModificacion: string;
             export declare const Servicio: string;
-            export declare const UnidadCalculo: string;
+            export declare const DescripcionUnidadCalculo: string;
             export declare const Frecuencia: string;
             export declare const Imputacion: string;
-            export declare const Usuario: string;
+            export declare const UserName: string;
             export declare const TipoServicio: string;
         }
 
-        ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'UnidadCalculo', 'Frecuencia', 'Imputacion', 'Usuario', 'TipoServicio'].forEach(x => (<any>Fields)[x] = x);
+        ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'DescripcionUnidadCalculo', 'Frecuencia', 'Imputacion', 'UserName', 'TipoServicio'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

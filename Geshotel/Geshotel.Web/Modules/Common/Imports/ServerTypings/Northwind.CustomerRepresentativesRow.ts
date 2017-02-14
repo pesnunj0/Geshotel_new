@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export interface CustomerRepresentativesRow {
         RepresentativeId?: number;
         CustomerId?: number;

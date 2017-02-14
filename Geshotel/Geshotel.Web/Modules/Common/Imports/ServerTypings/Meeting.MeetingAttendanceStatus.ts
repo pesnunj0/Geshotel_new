@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Meeting {
+﻿
+namespace Geshotel.Meeting {
     export enum MeetingAttendanceStatus {
         NotSet = 0,
         Attended = 1,

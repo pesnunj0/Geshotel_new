@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export interface UnidadesCalculoRow {
         UnidadCalculoId?: number;
         Uc?: string;
@@ -12,7 +13,7 @@
 
     export namespace UnidadesCalculoRow {
         export const idProperty = 'UnidadCalculoId';
-        export const nameProperty = 'Uc';
+        export const nameProperty = 'DescripcionUnidadCalculo';
         export const localTextPrefix = 'Portal.UnidadesCalculo';
         export const lookupKey = 'Portal.UnidadesCalculo';
 

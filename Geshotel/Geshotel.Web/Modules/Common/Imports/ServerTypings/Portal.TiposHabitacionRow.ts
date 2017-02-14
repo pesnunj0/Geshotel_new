@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export interface TiposHabitacionRow {
         TipoHabitacionId?: number;
         DescCorta?: string;
@@ -12,7 +13,7 @@
 
     export namespace TiposHabitacionRow {
         export const idProperty = 'TipoHabitacionId';
-        export const nameProperty = 'DescCorta';
+        export const nameProperty = 'Descripcion';
         export const localTextPrefix = 'Portal.TiposHabitacion';
         export const lookupKey = 'Portal.TiposHabitacion';
 

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Membership {
+﻿
+namespace Geshotel.Membership {
     export interface SignUpRequest extends Serenity.ServiceRequest {
         DisplayName?: string;
         Email?: string;

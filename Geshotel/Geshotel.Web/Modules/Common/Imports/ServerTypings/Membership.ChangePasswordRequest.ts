@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Membership {
+﻿
+namespace Geshotel.Membership {
     export interface ChangePasswordRequest extends Serenity.ServiceRequest {
         OldPassword?: string;
         NewPassword?: string;

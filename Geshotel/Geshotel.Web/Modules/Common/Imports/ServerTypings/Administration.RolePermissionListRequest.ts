@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Administration {
+﻿
+namespace Geshotel.Administration {
     export interface RolePermissionListRequest extends Serenity.ServiceRequest {
         RoleID?: number;
         Module?: string;

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export interface FrecuenciaFacturacionRow {
         FrecuenciaId?: number;
         DescripcionCorta?: string;
@@ -7,7 +8,7 @@
 
     export namespace FrecuenciaFacturacionRow {
         export const idProperty = 'FrecuenciaId';
-        export const nameProperty = 'DescripcionCorta';
+        export const nameProperty = 'Descripcion';
         export const localTextPrefix = 'Portal.FrecuenciaFacturacion';
         export const lookupKey = 'Portal.FrecuenciaFacturacion';
 
