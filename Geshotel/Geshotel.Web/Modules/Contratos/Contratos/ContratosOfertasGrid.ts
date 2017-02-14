@@ -2,12 +2,12 @@
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class ContratosLineasGrid extends Serenity.EntityGrid<LineasGrid, any> {
-        protected getDialogType() { return ContratosLineasDialog; }
-        protected getColumnsKey() { return 'Contratos.Lineas'; }
-        protected getIdProperty() { return LineasRow.idProperty; }
-        protected getLocalTextPrefix() { return LineasRow.localTextPrefix; }
-        protected getService() { return LineasService.baseUrl; }
+    export class ContratosOfertasGrid extends Serenity.EntityGrid<OfertasGrid, any> {
+        protected getDialogType() { return ContratosOfertasDialog; }
+        protected getColumnsKey() { return 'Contratos.Ofertas'; }
+        protected getIdProperty() { return OfertasRow.idProperty; }
+        protected getLocalTextPrefix() { return OfertasRow.localTextPrefix; }
+        protected getService() { return OfertasService.baseUrl; }
 
         constructor(container: JQuery) {
             super(container);
@@ -20,8 +20,8 @@
 
         protected addButtonClick() {
             // Javascript is case sensitive, so contratoID didn't work here.
-            // To get intellisense, use a TS cast like below <LineasRow>
-            this.editItem(<LineasRow>{
+            // To get intellisense, use a TS cast like below <OfertasRow>
+            this.editItem(<OfertasRow>{
                 ContratoId: this.contratoID
             });
         }
@@ -32,7 +32,7 @@
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),
-                service: 'Contratos/Lineas/ListExcel',
+                service: 'Contratos/Ofertas/ListExcel',
                 separator: true
             }));
 
@@ -62,7 +62,7 @@
         set contratoID(value: number) {
             if (this._contratoID !== value) {
                 this._contratoID = value;
-                this.setEquality(LineasRow.Fields.ContratoId, value);
+                this.setEquality(OfertasRow.Fields.ContratoId, value);
                 this.refresh();
             }
         }

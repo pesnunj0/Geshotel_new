@@ -1,41 +1,22 @@
 ﻿namespace Geshotel.Contratos {
 
     @Serenity.Decorators.registerClass()
-    @Serenity.Decorators.filterable()
-    export class ContratosCuposGrid extends Serenity.EntityGrid<CuposGrid, any> {
-        protected getColumnsKey() { return 'Contratos.Cupos'; }
-        protected getIdProperty() { return CuposRow.idProperty; }
-        protected getLocalTextPrefix() { return CuposRow.localTextPrefix; }
-        protected getService() { return CuposService.baseUrl; }
-        protected getDialogType() { return ContratosCuposDialog; }
+    export class ContratosEdadesGrid extends Serenity.EntityGrid<EdadesGrid, any> {
+        protected getColumnsKey() { return 'Contratos.Edades'; }
+        protected getIdProperty() { return EdadesRow.idProperty; }
+        protected getLocalTextPrefix() { return EdadesRow.localTextPrefix; }
+        protected getService() { return EdadesService.baseUrl; }
+        protected getDialogType() { return ContratosEdadesDialog; }
 
         constructor(container: JQuery) {
             super(container);
         }
 
         protected addButtonClick() {
-            this.editItem(<CuposRow>{
+            this.editItem(<EdadesRow>{
                 ClienteId: this.clienteID,
                 HotelId: this.hotelID
             });
-        }
-
-        getButtons() {
-            var buttons = super.getButtons();
-
-            buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                grid: this,
-                onViewSubmit: () => this.onViewSubmit(),
-                service: 'Contratos/Cupos/ListExcel',
-                separator: true
-            }));
-
-            buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                grid: this,
-                onViewSubmit: () => this.onViewSubmit()
-            }));
-
-            return buttons;
         }
 
         protected getInitialTitle() {
@@ -50,7 +31,7 @@
             if (!super.onViewSubmit())
                 return false;
 
-            var fld = CuposRow.Fields;
+            var fld = EdadesRow.Fields;
             var request = this.view.params as Serenity.ListRequest;
             request.Criteria = Serenity.Criteria.and(request.Criteria,
                 Serenity.Criteria.or(

@@ -20,8 +20,6 @@ namespace Geshotel.Contratos.Forms
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         public String NumeroContratoCliente { get; set; }
-        public Int16 UserId { get; set; }
-        public DateTime FechaModificacion { get; set; }
         public Int16 TemporadaId { get; set; }
         [DefaultValue(1)]
         public Boolean ImpuestoIncluido { get; set; }

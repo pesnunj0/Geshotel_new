@@ -1,0 +1,87 @@
+@import "site.mixins.less";
+
+.s-Contratos-AgenciasDialog {
+    > .size { width: 650px; height: 550px;}
+    .caption { width: 150px; }
+}
+
+.s-Contratos-ClientesDialog {
+    > .size { width: 650px; height: 550px; }
+    .caption { width: 150px; }
+    .s-PropertyGrid .categories { height: 400px; }
+}
+
+.s-Contratos-ContratosDialog {
+    > .size {min-width: 950px; height: 600px; }
+    .caption { width: 150px; }
+    .s-ContratosLineasGrid > .grid-container {height:600px;}
+}
+
+.s-Contratos-ContratosLineasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+
+    @media (min-width: 600px) {
+         .field.Lunes , .field.Martes, .field.Miercoles, 
+         .field.Jueves , .field.Viernes , .field.Sabado , 
+         .field.Domingo , .field.PagFactura {
+            max-width: 50%;
+         } 
+    }
+}
+.s-Contratos-CuposDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Contratos-EdadesDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Contratos-LineasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+
+    @media (min-width: 600px) {
+         .field.Lunes , .field.Martes, .field.Miercoles, 
+         .field.Jueves , .field.Viernes , .field.Sabado , 
+         .field.Domingo , .field.PagFactura {
+            max-width: 50%;
+        } 
+    }
+}
+
+.s-Contratos-MercadosDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Contratos-OfertasDialog {
+       > .size { width: 850px; height: 550px; }
+    .caption { width: 120px; }
+
+    @media (min-width: 768px) {
+          .field.AplicableAuto , .field.FechaDesde, .field.FechaHasta, .field.TipoAplicacionOfertaId,
+          .field.FechaReservaDesde , .field.FechaReservaHasta , .field.EstanciaMinimaDias , .field.EstanciaMaximaDias ,
+         .field.DiasDeAntelacion , .field.TipoServicioId , .field.ServicioId , .field.UnidadCalculoId , .field.ServicioLigadoId , .field.CupoOferta ,
+         .field.AmbitoOfertaId , .field.ImpuestoIncluido , .field.TipoImputacionId , .field.OrdenAplicacion, .field.N, .field.M {
+            max-width: 50%;
+        } 
+    }
+}
+
+.s-Contratos-OfertasRejillasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Contratos-ReleasesDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Contratos-TemporadasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}

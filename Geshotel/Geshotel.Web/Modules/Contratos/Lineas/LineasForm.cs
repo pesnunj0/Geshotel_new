@@ -22,10 +22,6 @@ namespace Geshotel.Contratos.Forms
         public Int16 FrecuenciaId { get; set; }
         public Int16 TipoImputacionId { get; set; }
         public Double Importe { get; set; }
-        //public Int16 N { get; set; }
-        //public Int16 TipoOfertaId { get; set; }
-        //public Double M { get; set; }
-        //public Int16 AmbitoOfertaId { get; set; }
         [DefaultValue(1)]
         public Boolean Lunes { get; set; }
         [DefaultValue(1)]
@@ -42,7 +38,5 @@ namespace Geshotel.Contratos.Forms
         public Boolean Domingo { get; set; }
         [DefaultValue(1)]
         public Int16 PagFactura { get; set; }
-        public Int16 UserId { get; set; }
-        public DateTime FechaModificacion { get; set; }
     }
 }

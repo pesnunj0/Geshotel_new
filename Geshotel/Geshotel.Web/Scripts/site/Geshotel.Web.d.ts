@@ -5990,6 +5990,7 @@ declare namespace Geshotel.Contratos {
         protected getDialogType(): typeof ContratosCuposDialog;
         constructor(container: JQuery);
         protected addButtonClick(): void;
+        getButtons(): Serenity.ToolButton[];
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         protected onViewSubmit(): boolean;
@@ -6013,8 +6014,48 @@ declare namespace Geshotel.Contratos {
         protected form: ContratosForm;
         private lineasGrid;
         private cuposGrid;
+        private ofertasGrid;
+        private releasesGrid;
+        private edadesGrid;
         constructor();
         protected afterLoadEntity(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class EdadesDialog extends Serenity.EntityDialog<EdadesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: EdadesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosEdadesDialog extends EdadesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosEdadesGrid extends Serenity.EntityGrid<EdadesGrid, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDialogType(): typeof ContratosEdadesDialog;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        protected onViewSubmit(): boolean;
+        private _hotelID;
+        hotelID: number;
+        private _clienteID;
+        clienteID: number;
+        private _fechaDesde;
+        fechaDesde: string;
+        private _fechaHasta;
+        fechaHasta: string;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -6025,6 +6066,7 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -6052,10 +6094,83 @@ declare namespace Geshotel.Contratos {
         constructor(container: JQuery);
         protected initEntityDialog(itemType: any, dialog: any): void;
         protected addButtonClick(): void;
+        getButtons(): Serenity.ToolButton[];
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         private _contratoID;
         contratoID: number;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class OfertasDialog extends Serenity.EntityDialog<OfertasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OfertasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosOfertasDialog extends OfertasDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosOfertasGrid extends Serenity.EntityGrid<OfertasGrid, any> {
+        protected getDialogType(): typeof ContratosOfertasDialog;
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        getButtons(): Serenity.ToolButton[];
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _contratoID;
+        contratoID: number;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ReleasesDialog extends Serenity.EntityDialog<ReleasesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ReleasesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosReleasesDialog extends ReleasesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ContratosReleasesGrid extends Serenity.EntityGrid<ReleasesGrid, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDialogType(): typeof ContratosReleasesDialog;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        getButtons(): Serenity.ToolButton[];
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        protected onViewSubmit(): boolean;
+        private _hotelID;
+        hotelID: number;
+        private _clienteID;
+        clienteID: number;
+        private _fechaDesde;
+        fechaDesde: string;
+        private _fechaHasta;
+        fechaHasta: string;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -6066,15 +6181,7 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Contratos {
-    class EdadesDialog extends Serenity.EntityDialog<EdadesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: EdadesForm;
+        getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -6118,16 +6225,6 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
-    class OfertasDialog extends Serenity.EntityDialog<OfertasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OfertasForm;
-    }
-}
-declare namespace Geshotel.Contratos {
     class OfertasGrid extends Serenity.EntityGrid<OfertasRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OfertasDialog;
@@ -6154,16 +6251,6 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace Geshotel.Contratos {
-    class ReleasesDialog extends Serenity.EntityDialog<ReleasesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ReleasesForm;
     }
 }
 declare namespace Geshotel.Contratos {

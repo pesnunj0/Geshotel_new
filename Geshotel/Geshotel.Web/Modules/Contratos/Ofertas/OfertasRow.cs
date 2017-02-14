@@ -86,21 +86,21 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaReservaHasta[this] = value; }
         }
 
-        [DisplayName("Estancia Minima Dias"), Column("estancia_minima_dias")]
+        [DisplayName("Estancia Minima Dias"), Column("estancia_minima_dias"),Size(2)]
         public Int16? EstanciaMinimaDias
         {
             get { return Fields.EstanciaMinimaDias[this]; }
             set { Fields.EstanciaMinimaDias[this] = value; }
         }
 
-        [DisplayName("Estancia Maxima Dias"), Column("estancia_maxima_dias")]
+        [DisplayName("Estancia Maxima Dias"), Column("estancia_maxima_dias"),Size(3)]
         public Int16? EstanciaMaximaDias
         {
             get { return Fields.EstanciaMaximaDias[this]; }
             set { Fields.EstanciaMaximaDias[this] = value; }
         }
 
-        [DisplayName("Dias De Antelacion"), Column("dias_de_antelacion")]
+        [DisplayName("Dias De Antelacion"), Column("dias_de_antelacion"),Size(3)]
         public Int16? DiasDeAntelacion
         {
             get { return Fields.DiasDeAntelacion[this]; }
@@ -146,7 +146,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
-        [DisplayName("Unidad Calculo"), Expression("jUC.uc")]
+        [DisplayName("Unidad Calculo"), Expression("jUC.descripcion_unidad_calculo")]
         public String UnidadCalculoName
         {
             get { return Fields.UnidadCalculoName[this]; }
@@ -182,8 +182,8 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Precio[this] = value; }
         }
 
-        [DisplayName("N"), Column("n"), Size(7), Scale(2)]
-        public Decimal? N
+        [DisplayName("N"), Column("n"), Size(3)]
+        public Int16? N
         {
             get { return Fields.N[this]; }
             set { Fields.N[this] = value; }
@@ -269,7 +269,7 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.TipoImputacionName[this]; }
             set { Fields.TipoImputacionName[this] = value; }
         }
-        [DisplayName("Orden Aplicacion"), Column("orden_aplicacion")]
+        [DisplayName("Orden Aplicacion"), Column("orden_aplicacion"),Size(2)]
         public Int16? OrdenAplicacion
         {
             get { return Fields.OrdenAplicacion[this]; }
@@ -313,7 +313,7 @@ namespace Geshotel.Contratos.Entities
             public Int32Field ServicioLigadoId;
             public Int16Field CupoOferta;
             public DecimalField Precio;
-            public DecimalField N;
+            public Int16Field N;
             public Int16Field TipoOfertaId;
             public DecimalField M;
             public Int16Field AmbitoOfertaId;

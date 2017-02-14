@@ -22,18 +22,18 @@ namespace Geshotel.Portal.Entities
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
+        [DisplayName("Descripcion Unidad Calculo"), Column("descripcion_unidad_calculo"), Size(30), NotNull, QuickSearch, LookupInclude]
+        public String DescripcionUnidadCalculo
+        {
+            get { return Fields.DescripcionUnidadCalculo[this]; }
+            set { Fields.DescripcionUnidadCalculo[this] = value; }
+        }
+
         [DisplayName("Uc"), Column("UC"), Size(4), NotNull, QuickSearch]
         public String Uc
         {
             get { return Fields.Uc[this]; }
             set { Fields.Uc[this] = value; }
-        }
-
-        [DisplayName("Descripcion Unidad Calculo"), Column("descripcion_unidad_calculo"), Size(30), NotNull]
-        public String DescripcionUnidadCalculo
-        {
-            get { return Fields.DescripcionUnidadCalculo[this]; }
-            set { Fields.DescripcionUnidadCalculo[this] = value; }
         }
 
         [DisplayName("Tipo Unidad Calculo"), Column("tipo_unidad_calculo_id"), ForeignKey("tipos_unidad_calculo", "tipo_unidad_calculo_id"), LeftJoin("jTipoUnidadCalculo"), TextualField("TipoUnidadCalculoUc")]
@@ -82,7 +82,7 @@ namespace Geshotel.Portal.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Uc; }
+            get { return Fields.DescripcionUnidadCalculo; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

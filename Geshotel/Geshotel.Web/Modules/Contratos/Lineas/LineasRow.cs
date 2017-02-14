@@ -81,18 +81,18 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("U. Calculo"), Column("unidad_calculo_id"), NotNull, ForeignKey("unidades_calculo", "unidad_calculo_id"), LeftJoin("jUc"), TextualField("UC")]
-        [LookupEditor(typeof(UnidadesCalculoRow))]
+        [LookupEditor(typeof(Geshotel.Portal.Entities.UnidadesCalculoRow))]
         public Int16? UnidadCalculoId
         {
             get { return Fields.UnidadCalculoId[this]; }
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
-        [DisplayName("U. Calculo"), Expression("jUc.[descripcion_unidad_calculo]")]
-        public String UnidadCalculo
+        [DisplayName("U. Calculo"), Expression("jUc.descripcion_unidad_calculo")]
+        public String DescripcionUnidadCalculo
         {
-            get { return Fields.UnidadCalculo[this]; }
-            set { Fields.UnidadCalculo[this] = value; }
+            get { return Fields.DescripcionUnidadCalculo[this]; }
+            set { Fields.DescripcionUnidadCalculo[this] = value; }
         }
 
 
@@ -213,7 +213,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Domingo[this] = value; }
         }
 
-        [DisplayName("Pag Factura"), Column("pag_factura")]
+        [DisplayName("Pag Factura"), Column("pag_factura"),Size(1)]
         public Int16? PagFactura
         {
             get { return Fields.PagFactura[this]; }
@@ -285,7 +285,7 @@ namespace Geshotel.Contratos.Entities
             public DateTimeField FechaModificacion;
 
             public StringField Servicio;
-            public StringField UnidadCalculo;
+            public StringField DescripcionUnidadCalculo;
             public StringField Frecuencia;
             public StringField Imputacion;
             public StringField UserName;

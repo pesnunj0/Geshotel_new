@@ -28,6 +28,9 @@
                     PasswordSalt = user.PasswordSalt,
                     UpdateDate = user.UpdateDate,
                     LastDirectoryUpdate = user.LastDirectoryUpdate,
+                    // -----------------------------
+                    // Added By Javier For Tenancy
+                    // -----------------------------
                     EmpresaId = user.EmpresaId.Value,
                     HotelId = user.HotelId.Value
                 };

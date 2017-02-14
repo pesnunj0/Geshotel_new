@@ -20,7 +20,7 @@
         public DateTime? LastDirectoryUpdate { get; set; }
 
         // ***********************************
-        // Añadido por Javier 23/01/2017
+        // Added By Javier 23/01/2017
         // ***********************************
         public Int16 EmpresaId { get; set; }
         public Int16 HotelId { get; set; }

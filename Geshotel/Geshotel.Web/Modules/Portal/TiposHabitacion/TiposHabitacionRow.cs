@@ -79,7 +79,7 @@ namespace Geshotel.Portal.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.DescCorta; }
+            get { return Fields.Descripcion; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -17,10 +17,11 @@ namespace Geshotel.Contratos.Columns
         public Int32 OfertaId { get; set; }
         [EditLink]
         public String Texto { get; set; }
-        public Int32 ContratoId { get; set; }
+        //public Int32 ContratoId { get; set; }
+        public Int16 OrdenAplicacion { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
-        public String TipoAplicacionOfertaId { get; set; }
+        public String TipoAplicacionOfertaName { get; set; }
         //public Boolean AplicableAuto { get; set; }
         //public DateTime FechaReservaDesde { get; set; }
         //public DateTime FechaReservaHasta { get; set; }
@@ -32,15 +33,17 @@ namespace Geshotel.Contratos.Columns
         public String UnidadCalculoName { get; set; }
         //public Int32 ServicioLigadoId { get; set; }
         //public Int16 CupoOferta { get; set; }
-        public Decimal Precio { get; set; }
-        public Decimal N { get; set; }
-        public Int16 TipoOfertaId { get; set; }
+        //public Decimal Precio { get; set; }
+        public Int16 N { get; set; }
+        public String TipoOfertaName { get; set; }
         public Decimal M { get; set; }
         public String AmbitoOfertaName { get; set; }
+        [Width(80)]
         public String Username { get; set; }
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaModificacion { get; set; }
         //public Boolean ImpuestoIncluido { get; set; }
         //public Int16 TipoImputacionId { get; set; }
-        public Int16 OrdenAplicacion { get; set; }
+        
     }
 }

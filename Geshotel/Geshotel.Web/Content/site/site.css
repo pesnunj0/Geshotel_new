@@ -8208,6 +8208,319 @@ section.content > .s-DataGrid {
 .inline-action.add-child-unit {
   background-image: url(../serenity/images/node-insert-next.png);
 }
+.s-Portal-AmbitoOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-AmbitoOfertaDialog .caption {
+  width: 150px;
+}
+.s-Portal-CategoriaHotelesDialog > .size {
+  width: 650px;
+}
+.s-Portal-CategoriaHotelesDialog .caption {
+  width: 150px;
+}
+.s-Portal-ComunidadesAutonomasDialog > .size {
+  width: 650px;
+}
+.s-Portal-ComunidadesAutonomasDialog .caption {
+  width: 150px;
+}
+.s-Portal-EmpresasDialog > .size {
+  width: 650px;
+}
+.s-Portal-EmpresasDialog .caption {
+  width: 150px;
+}
+.s-Portal-EstadosFacturasDialog > .size {
+  width: 650px;
+}
+.s-Portal-EstadosFacturasDialog .caption {
+  width: 150px;
+}
+.s-Portal-FormasDePagoDialog > .size {
+  width: 650px;
+}
+.s-Portal-FormasDePagoDialog .caption {
+  width: 150px;
+}
+.s-Portal-FrecuenciaFacturacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-FrecuenciaFacturacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-GruposDeClienteDialog > .size {
+  width: 650px;
+}
+.s-Portal-GruposDeClienteDialog .caption {
+  width: 150px;
+}
+.s-Portal-GruposDeServiciosDialog > .size {
+  width: 650px;
+}
+.s-Portal-GruposDeServiciosDialog .caption {
+  width: 150px;
+}
+.s-Portal-GruposHabitacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-GruposHabitacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-HotelesDialog > .size {
+  width: 650px;
+  height: 550px;
+}
+.s-Portal-HotelesDialog .caption {
+  width: 150px;
+}
+.s-Portal-HotelesDialog .s-PropertyGrid .categories {
+  height: 500px;
+}
+.s-Portal-MonedasDialog > .size {
+  width: 650px;
+}
+.s-Portal-MonedasDialog .caption {
+  width: 150px;
+}
+.s-Portal-NacionesDialog > .size {
+  width: 650px;
+}
+.s-Portal-NacionesDialog .caption {
+  width: 150px;
+}
+.s-Portal-ProvinciasDialog > .size {
+  width: 650px;
+}
+.s-Portal-ProvinciasDialog .caption {
+  width: 150px;
+}
+.s-Portal-ReservaEstadosDialog > .size {
+  width: 650px;
+}
+.s-Portal-ReservaEstadosDialog .caption {
+  width: 150px;
+}
+.s-Portal-ServiciosDialog > .size {
+  width: 650px;
+}
+.s-Portal-ServiciosDialog .caption {
+  width: 150px;
+}
+@media (min-width: 600px) {
+  .s-Portal-ServiciosDialog .field.SwProduccion,
+  .s-Portal-ServiciosDialog .field.SwDescuento,
+  .s-Portal-ServiciosDialog .field.SwAjustes,
+  .s-Portal-ServiciosDialog .field.SwGastos,
+  .s-Portal-ServiciosDialog .field.SwPension,
+  .s-Portal-ServiciosDialog .field.SwRectificativa {
+    max-width: 50%;
+  }
+}
+.s-Portal-TipoAplicacionOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-TipoAplicacionOfertaDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposCondicionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposCondicionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDeImputacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDeImputacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDeOfertaDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDeOfertaDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDocumentoDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDocumentoDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposHabitacionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposHabitacionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposHotelDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposHotelDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposHuespedDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposHuespedDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposPensionDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposPensionDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposServicioDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposServicioDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposUnidadCalculoDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposUnidadCalculoDialog .caption {
+  width: 150px;
+}
+.s-Portal-UnidadesCalculoDialog > .size {
+  width: 650px;
+}
+.s-Portal-UnidadesCalculoDialog .caption {
+  width: 150px;
+}
+/*--------------------------------------*/
+.s-Contratos-AgenciasDialog > .size {
+  width: 650px;
+  height: 550px;
+}
+.s-Contratos-AgenciasDialog .caption {
+  width: 150px;
+}
+.s-Contratos-ClientesDialog > .size {
+  width: 650px;
+  height: 550px;
+}
+.s-Contratos-ClientesDialog .caption {
+  width: 150px;
+}
+.s-Contratos-ClientesDialog .s-PropertyGrid .categories {
+  height: 400px;
+}
+.s-Contratos-ContratosDialog > .size {
+  min-width: 950px;
+  height: 600px;
+}
+.s-Contratos-ContratosDialog .caption {
+  width: 150px;
+}
+.s-Contratos-ContratosDialog .s-ContratosLineasGrid > .grid-container {
+  height: 600px;
+}
+.s-Contratos-ContratosLineasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-ContratosLineasDialog .caption {
+  width: 150px;
+}
+@media (min-width: 600px) {
+  .s-Contratos-ContratosLineasDialog .field.Lunes,
+  .s-Contratos-ContratosLineasDialog .field.Martes,
+  .s-Contratos-ContratosLineasDialog .field.Miercoles,
+  .s-Contratos-ContratosLineasDialog .field.Jueves,
+  .s-Contratos-ContratosLineasDialog .field.Viernes,
+  .s-Contratos-ContratosLineasDialog .field.Sabado,
+  .s-Contratos-ContratosLineasDialog .field.Domingo,
+  .s-Contratos-ContratosLineasDialog .field.PagFactura {
+    max-width: 50%;
+  }
+}
+.s-Contratos-CuposDialog > .size {
+  width: 650px;
+}
+.s-Contratos-CuposDialog .caption {
+  width: 150px;
+}
+.s-Contratos-EdadesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-EdadesDialog .caption {
+  width: 150px;
+}
+.s-Contratos-LineasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-LineasDialog .caption {
+  width: 150px;
+}
+@media (min-width: 600px) {
+  .s-Contratos-LineasDialog .field.Lunes,
+  .s-Contratos-LineasDialog .field.Martes,
+  .s-Contratos-LineasDialog .field.Miercoles,
+  .s-Contratos-LineasDialog .field.Jueves,
+  .s-Contratos-LineasDialog .field.Viernes,
+  .s-Contratos-LineasDialog .field.Sabado,
+  .s-Contratos-LineasDialog .field.Domingo,
+  .s-Contratos-LineasDialog .field.PagFactura {
+    max-width: 50%;
+  }
+}
+.s-Contratos-MercadosDialog > .size {
+  width: 650px;
+}
+.s-Contratos-MercadosDialog .caption {
+  width: 150px;
+}
+.s-Contratos-OfertasDialog > .size {
+  width: 850px;
+  height: 550px;
+}
+.s-Contratos-OfertasDialog .caption {
+  width: 120px;
+}
+@media (min-width: 768px) {
+  .s-Contratos-OfertasDialog .field.AplicableAuto,
+  .s-Contratos-OfertasDialog .field.FechaDesde,
+  .s-Contratos-OfertasDialog .field.FechaHasta,
+  .s-Contratos-OfertasDialog .field.TipoAplicacionOfertaId,
+  .s-Contratos-OfertasDialog .field.FechaReservaDesde,
+  .s-Contratos-OfertasDialog .field.FechaReservaHasta,
+  .s-Contratos-OfertasDialog .field.EstanciaMinimaDias,
+  .s-Contratos-OfertasDialog .field.EstanciaMaximaDias,
+  .s-Contratos-OfertasDialog .field.DiasDeAntelacion,
+  .s-Contratos-OfertasDialog .field.TipoServicioId,
+  .s-Contratos-OfertasDialog .field.ServicioId,
+  .s-Contratos-OfertasDialog .field.UnidadCalculoId,
+  .s-Contratos-OfertasDialog .field.ServicioLigadoId,
+  .s-Contratos-OfertasDialog .field.CupoOferta,
+  .s-Contratos-OfertasDialog .field.AmbitoOfertaId,
+  .s-Contratos-OfertasDialog .field.ImpuestoIncluido,
+  .s-Contratos-OfertasDialog .field.TipoImputacionId,
+  .s-Contratos-OfertasDialog .field.OrdenAplicacion,
+  .s-Contratos-OfertasDialog .field.N,
+  .s-Contratos-OfertasDialog .field.M {
+    max-width: 50%;
+  }
+}
+.s-Contratos-OfertasRejillasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-OfertasRejillasDialog .caption {
+  width: 150px;
+}
+.s-Contratos-ReleasesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-ReleasesDialog .caption {
+  width: 150px;
+}
+.s-Contratos-TemporadasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-TemporadasDialog .caption {
+  width: 150px;
+}
 .s-Portal-FormasDePagoDialog > .size {
   width: 650px;
 }
@@ -8378,213 +8691,6 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Portal-TiposPensionDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TipoAplicacionOfertaDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TipoAplicacionOfertaDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TiposDeImputacionDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TiposDeImputacionDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TiposDeOfertaDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TiposDeOfertaDialog .caption {
-  width: 150px;
-}
-.s-Contratos-AmbitoOfertaDialog > .size {
-  width: 650px;
-}
-.s-Contratos-AmbitoOfertaDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ClientesDialog > .size {
-  width: 650px;
-  height: 550px;
-}
-.s-Contratos-ClientesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ClientesDialog .s-PropertyGrid .categories {
-  height: 400px;
-}
-.s-Contratos-GruposDeClienteDialog > .size {
-  width: 650px;
-}
-.s-Contratos-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Contratos-GruposDeClienteDialog > .size {
-  width: 650px;
-}
-.s-Contratos-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Contratos-FrecuenciaFacturacionDialog > .size {
-  width: 650px;
-}
-.s-Contratos-FrecuenciaFacturacionDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TiposCondicionDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TiposCondicionDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TiposDeImputacionDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TiposDeImputacionDialog .caption {
-  width: 150px;
-}
-.s-Contratos-LineasDeContratoDialog > .size {
-  width: 800px;
-}
-.s-Contratos-LineasDeContratoDialog .caption {
-  width: 150px;
-}
-.s-Portal-GruposDeClienteDialog > .size {
-  width: 650px;
-}
-.s-Portal-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Portal-GruposDeClienteDialog > .size {
-  width: 650px;
-}
-.s-Portal-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Portal-GruposDeClienteDialog > .size {
-  width: 650px;
-}
-.s-Portal-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ContratosDialog > .size {
-  width: 900px;
-  height: 600px;
-}
-.s-Contratos-ContratosDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ContratosDialog .s-ContratosLineasGrid > .grid-container {
-  height: 600px;
-}
-.s-Contratos-ContratosEdadesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ContratosEdadesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-CuposDialog > .size {
-  width: 650px;
-}
-.s-Contratos-CuposDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ReleasesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ReleasesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ContratosDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ContratosDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ContratosEdadesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ContratosEdadesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-CuposDialog > .size {
-  width: 650px;
-}
-.s-Contratos-CuposDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ReleasesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ReleasesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-EdadesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-EdadesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-LineasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-LineasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-OfertasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-OfertasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-OfertasRejillasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-OfertasRejillasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-AgenciasDialog > .size {
-  width: 650px;
-  height: 550px;
-}
-.s-Contratos-AgenciasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-MercadosDialog > .size {
-  width: 650px;
-}
-.s-Contratos-MercadosDialog .caption {
-  width: 150px;
-}
-.s-Contratos-TemporadasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-TemporadasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-OfertasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-OfertasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-OfertasRejillasDialog > .size {
-  width: 650px;
-}
-.s-Contratos-OfertasRejillasDialog .caption {
-  width: 150px;
-}
-.s-Contratos-ContratosEdadesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-ContratosEdadesDialog .caption {
-  width: 150px;
-}
-.s-Contratos-EdadesDialog > .size {
-  width: 650px;
-}
-.s-Contratos-EdadesDialog .caption {
   width: 150px;
 }
 .s-Portal-AmbitoOfertaDialog > .size {

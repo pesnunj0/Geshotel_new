@@ -22,6 +22,21 @@ namespace Geshotel.Contratos.Entities
             set { Fields.EdadesId[this] = value; }
         }
 
+        [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
+        [LookupEditor(typeof(ClientesRow))]
+        public Int32? ClienteId
+        {
+            get { return Fields.ClienteId[this]; }
+            set { Fields.ClienteId[this] = value; }
+        }
+
+        [DisplayName("Touroperador"), Expression("jCliente.razon")]
+        public String Touroperador
+        {
+            get { return Fields.Touroperador[this]; }
+            set { Fields.Touroperador[this] = value; }
+        }
+
         [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
         [LookupEditor(typeof(HotelesRow))]
         public Int16? HotelId
@@ -56,20 +71,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.HotelName[this] = value; }
         }
 
-        [DisplayName("Touroperador"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
-        [LookupEditor(typeof(ClientesRow))]
-        public Int32? ClienteId
-        {
-            get { return Fields.ClienteId[this]; }
-            set { Fields.ClienteId[this] = value; }
-        }
 
-        [DisplayName("Touroperador"), Expression("jCliente.razon")]
-        public String Touroperador
-        {
-            get { return Fields.Touroperador[this]; }
-            set { Fields.Touroperador[this] = value; }
-        }
 
         [DisplayName("Fecha Desde"), Column("fecha_desde"), NotNull]
         public DateTime? FechaDesde

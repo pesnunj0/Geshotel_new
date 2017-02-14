@@ -2,19 +2,19 @@
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class ContratosCuposGrid extends Serenity.EntityGrid<CuposGrid, any> {
-        protected getColumnsKey() { return 'Contratos.Cupos'; }
-        protected getIdProperty() { return CuposRow.idProperty; }
-        protected getLocalTextPrefix() { return CuposRow.localTextPrefix; }
-        protected getService() { return CuposService.baseUrl; }
-        protected getDialogType() { return ContratosCuposDialog; }
+    export class ContratosReleasesGrid extends Serenity.EntityGrid<ReleasesGrid, any> {
+        protected getColumnsKey() { return 'Contratos.Releases'; }
+        protected getIdProperty() { return ReleasesRow.idProperty; }
+        protected getLocalTextPrefix() { return ReleasesRow.localTextPrefix; }
+        protected getService() { return ReleasesService.baseUrl; }
+        protected getDialogType() { return ContratosReleasesDialog; }
 
         constructor(container: JQuery) {
             super(container);
         }
 
         protected addButtonClick() {
-            this.editItem(<CuposRow>{
+            this.editItem(<ReleasesRow>{
                 ClienteId: this.clienteID,
                 HotelId: this.hotelID
             });
@@ -26,7 +26,7 @@
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),
-                service: 'Contratos/Cupos/ListExcel',
+                service: 'Contratos/Releases/ListExcel',
                 separator: true
             }));
 
@@ -50,7 +50,7 @@
             if (!super.onViewSubmit())
                 return false;
 
-            var fld = CuposRow.Fields;
+            var fld = ReleasesRow.Fields;
             var request = this.view.params as Serenity.ListRequest;
             request.Criteria = Serenity.Criteria.and(request.Criteria,
                 Serenity.Criteria.or(

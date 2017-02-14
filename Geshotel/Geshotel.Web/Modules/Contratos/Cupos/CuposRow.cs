@@ -60,19 +60,18 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.TipoHabitacionId[this]; }
             set { Fields.TipoHabitacionId[this] = value; }
         }
+        [DisplayName("Tipo Habitacion"), Expression("jTipoHabitacion.[descripcion]")]
+        public String TipoHabitacionDescripcion
+        {
+            get { return Fields.TipoHabitacionDescripcion[this]; }
+            set { Fields.TipoHabitacionDescripcion[this] = value; }
+        }
 
         [DisplayName("Tipo Habitacion"), Expression("jTipoHabitacion.[desc_corta]")]
         public String TipoHabitacionDescCorta
         {
             get { return Fields.TipoHabitacionDescCorta[this]; }
             set { Fields.TipoHabitacionDescCorta[this] = value; }
-        }
-
-        [DisplayName("Tipo Habitacion"), Expression("jTipoHabitacion.[descripcion]")]
-        public String TipoHabitacionDescripcion
-        {
-            get { return Fields.TipoHabitacionDescripcion[this]; }
-            set { Fields.TipoHabitacionDescripcion[this] = value; }
         }
 
         [DisplayName("Garantia"), Column("garantia"), Size(5), Scale(2), NotNull]

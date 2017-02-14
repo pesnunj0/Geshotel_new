@@ -16,9 +16,8 @@ namespace Geshotel.Portal.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int16 UnidadCalculoId { get; set; }
         [EditLink]
-        public String Uc { get; set; }
         public String DescripcionUnidadCalculo { get; set; }
-        //        public Int16 TipoUnidadCalculoId { get; set; }
+        public String Uc { get; set; }
         public String TipoUc { get; set; }
         public Boolean Pax { get; set; }
 //        public Int32 ServicioId { get; set; }

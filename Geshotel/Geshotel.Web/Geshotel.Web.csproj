@@ -830,6 +830,8 @@
     <Content Include="Scripts\sortable.js" />
     <Content Include="Scripts\sortable.min.js" />
     <Content Include="Modules\Northwind\OrderDetail\OrderDetailIndex.cshtml" />
+    <Content Include="Content\site\site.contratos.less" />
+    <Content Include="Content\site\site.portal.less" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1737,7 +1739,13 @@
     <TypeScriptCompile Include="Modules\Contratos\Agencias\AgenciasDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosEdadesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosEdadesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosReleasesDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosCuposDialog.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosReleasesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosOfertasDialog.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosOfertasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosCuposGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosLineasDialog.ts" />
@@ -2471,8 +2479,6 @@
     <Compile Include="Modules\Contratos\Clientes\ClientesPage.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesRepository.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesRow.cs" />
-    <Compile Include="Modules\Contratos\TipoAplicacionOferta\TipoAplicacionOfertaRepository.cs" />
-    <Compile Include="Modules\Contratos\TipoAplicacionOferta\TipoAplicacionOfertaRow.cs" />
     <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantColumns.cs" />
     <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantEndpoint.cs" />
     <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantForm.cs" />
@@ -2711,8 +2717,6 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
-    <Compile Include="Modules\Portal\UsuariosEmpresa\UsuariosEmpresaRepository.cs" />
-    <Compile Include="Modules\Portal\UsuariosEmpresa\UsuariosEmpresaRow.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
