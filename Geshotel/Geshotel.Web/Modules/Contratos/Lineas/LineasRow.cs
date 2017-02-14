@@ -80,7 +80,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.TipoServicio[this] = value; }
         }
 
-        [DisplayName("U. Calculo"), Column("unidad_calculo_id"), NotNull, ForeignKey("unidades_calculo", "unidad_calculo_id"), LeftJoin("jUc"), TextualField("UC")]
+        [DisplayName("U. Calculo"), Column("unidad_calculo_id"), NotNull, ForeignKey("unidades_calculo", "unidad_calculo_id"), LeftJoin("jUc"), TextualField("DescripcionUnidadCalculo")]
         [LookupEditor(typeof(Geshotel.Portal.Entities.UnidadesCalculoRow))]
         public Int16? UnidadCalculoId
         {
@@ -94,7 +94,6 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.DescripcionUnidadCalculo[this]; }
             set { Fields.DescripcionUnidadCalculo[this] = value; }
         }
-
 
         [DisplayName("Frecuencia"), Column("frecuencia_id"), NotNull, DefaultValue(2),ForeignKey("frecuencia_facturacion", "frecuencia_id"), LeftJoin("jFrecuencia"), TextualField("Frecuencia")]
         [LookupEditor(typeof(FrecuenciaFacturacionRow))]
