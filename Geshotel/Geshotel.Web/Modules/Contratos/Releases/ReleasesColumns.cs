@@ -15,14 +15,17 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ReleaseId { get; set; }
-        public Int32 ClienteId { get; set; }
-        public Int16 HotelId { get; set; }
+        [EditLink, Width(130)]
+        public String ClienteRazon { get; set; }
+        //public String HotelName { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         [EditLink]
         public String Observaciones { get; set; }
         public Int16 Dias { get; set; }
-        public Int16 UserId { get; set; }
+        [Width(80)]
+        public String UserName { get; set; }
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaModificacion { get; set; }
     }
 }

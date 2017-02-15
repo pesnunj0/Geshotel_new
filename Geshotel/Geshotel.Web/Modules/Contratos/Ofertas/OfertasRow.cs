@@ -50,7 +50,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaHasta[this] = value; }
         }
 
-        [DisplayName("Tipo Aplicacion"), Column("tipo_aplicacion_oferta_id"), ForeignKey("tipo_aplicacion_oferta", "tipo_aplicacion_oferta_id"),LeftJoin("jTipoAplicacionOferta"),Size(1), NotNull]
+        [DisplayName("Tipo Aplicacion"), Column("tipo_aplicacion_oferta_id"), ForeignKey("tipo_aplicacion_oferta", "tipo_aplicacion_oferta_id"),LeftJoin("jTipoAplicacionOferta"),Size(1), NotNull, TextualField("TipoAplicacionOfertaName")]
         [LookupEditor(typeof(TipoAplicacionOfertaRow))]
         public String TipoAplicacionOfertaId
         {

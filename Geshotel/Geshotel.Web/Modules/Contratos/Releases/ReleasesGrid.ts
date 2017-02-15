@@ -2,6 +2,7 @@
 namespace Geshotel.Contratos {
     
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.filterable()
     export class ReleasesGrid extends Serenity.EntityGrid<ReleasesRow, any> {
         protected getColumnsKey() { return 'Contratos.Releases'; }
         protected getDialogType() { return ReleasesDialog; }

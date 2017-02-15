@@ -36,7 +36,7 @@ namespace Geshotel.Portal.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.TipoAplicacionOfertaId; }
+            get { return Fields.AplicableSegunFechaDe; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

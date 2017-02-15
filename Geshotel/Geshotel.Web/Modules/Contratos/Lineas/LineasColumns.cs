@@ -31,6 +31,7 @@ namespace Geshotel.Contratos.Columns
         public String Frecuencia { get; set; }
         [Width(80), QuickFilter]
         public String Imputacion { get; set; }
+        [AlignRight]
         public Double Importe { get; set; }
         [DisplayName("L")]
         public Boolean Lunes { get; set; }

@@ -1656,6 +1656,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -2364,6 +2367,18 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionDialog.ts" />
+    <Content Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelGrid.ts" />
+    <TypeScriptCompile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2938,6 +2953,12 @@
     <Compile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionRepository.cs" />
     <Compile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionEndpoint.cs" />
     <Compile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionPage.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelRow.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelColumns.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelForm.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelRepository.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelEndpoint.cs" />
+    <Compile Include="Modules\Portal\TiposHabitacionHotel\TiposHabitacionHotelPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5390,6 +5390,184 @@ declare namespace Geshotel.Portal {
     }
 }
 declare namespace Geshotel.Portal {
+}
+declare namespace Geshotel.Portal {
+    class TiposHabitacionHotelForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TiposHabitacionHotelForm {
+        TipoHabitacionId: Serenity.IntegerEditor;
+        ServicioId: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Portal {
+    interface TiposHabitacionHotelRow {
+        HotelId?: number;
+        TipoHabitacionId?: number;
+        ServicioId?: number;
+        Hotel?: string;
+        HotelEmpresaId?: number;
+        HotelTipoHotelId?: number;
+        HotelCategoriaId?: number;
+        HotelNombreCorto?: string;
+        HotelDireccion?: string;
+        HotelPoblacion?: string;
+        HotelZip?: string;
+        HotelProvinciaId?: number;
+        HotelNacionId?: number;
+        HotelTelefono?: string;
+        HotelFax?: string;
+        HotelCtaManocorriente?: string;
+        HotelDptoContable?: string;
+        HotelCtaContableCajas?: string;
+        HotelCtaContableBanco?: string;
+        HotelFechaInicioPrograma?: string;
+        HotelRutaFicheroPolicia?: string;
+        HotelContadorFicheroPolicia?: number;
+        HotelIdentificadorFicheroPolicia?: string;
+        HotelEmailReservas?: string;
+        HotelEmailVentas?: string;
+        HotelEmailSmtp?: string;
+        HotelTextoCancelacion?: string;
+        HotelUsuarioIsta?: string;
+        HotelPasswordIsta?: string;
+        HotelUrlIsta?: string;
+        HotelMunicipioIsta?: string;
+        HotelNumeroRegistroIsta?: number;
+        HotelRutaBavel?: string;
+        HotelDingusUsuario?: string;
+        HotelDingusPassword?: string;
+        HotelDingusHotelCode?: string;
+        HotelDingusTraductor?: string;
+        HotelDingusUrl?: string;
+        HotelCheckinOnLine?: number;
+        HotelMinimoDiasCheckinOnline?: number;
+        HotelZoomMapa?: number;
+        HotelLat?: number;
+        HotelLng?: number;
+        HotelAncho?: number;
+        HotelAlto?: number;
+        HotelOverbookingLimit?: number;
+        TipoHabitacionDescCorta?: string;
+        TipoHabitacionDescripcion?: string;
+        TipoHabitacionGrupoHabitacionId?: number;
+        TipoHabitacionNumeroPersonas?: number;
+        TipoHabitacionDesvios?: number;
+        TipoHabitacionNoShow?: number;
+        ServicioNombreServicio?: string;
+        ServicioAbreviatura?: string;
+        ServicioTipoServicioId?: number;
+        ServicioSwProduccion?: boolean;
+        ServicioSwDescuento?: boolean;
+        ServicioSwAjustes?: boolean;
+        ServicioSwGastos?: boolean;
+        ServicioSwPension?: boolean;
+        ServicioSwRectificativa?: boolean;
+        ServicioTipoUnidadCalculoId?: number;
+        ServicioConceptoAceleradorReservasId?: number;
+        ServicioCosto?: number;
+        ServicioSumaServicioId?: number;
+        ServicioRestaServicioId?: number;
+        ServicioUserId?: number;
+        ServicioFechaModificacion?: string;
+        ServicioTipoHab?: number;
+        ServicioTipoPension?: number;
+    }
+    namespace TiposHabitacionHotelRow {
+        const idProperty = "HotelId";
+        const localTextPrefix = "Portal.TiposHabitacionHotel";
+        namespace Fields {
+            const HotelId: string;
+            const TipoHabitacionId: string;
+            const ServicioId: string;
+            const Hotel: string;
+            const HotelEmpresaId: string;
+            const HotelTipoHotelId: string;
+            const HotelCategoriaId: string;
+            const HotelNombreCorto: string;
+            const HotelDireccion: string;
+            const HotelPoblacion: string;
+            const HotelZip: string;
+            const HotelProvinciaId: string;
+            const HotelNacionId: string;
+            const HotelTelefono: string;
+            const HotelFax: string;
+            const HotelCtaManocorriente: string;
+            const HotelDptoContable: string;
+            const HotelCtaContableCajas: string;
+            const HotelCtaContableBanco: string;
+            const HotelFechaInicioPrograma: string;
+            const HotelRutaFicheroPolicia: string;
+            const HotelContadorFicheroPolicia: string;
+            const HotelIdentificadorFicheroPolicia: string;
+            const HotelEmailReservas: string;
+            const HotelEmailVentas: string;
+            const HotelEmailSmtp: string;
+            const HotelTextoCancelacion: string;
+            const HotelUsuarioIsta: string;
+            const HotelPasswordIsta: string;
+            const HotelUrlIsta: string;
+            const HotelMunicipioIsta: string;
+            const HotelNumeroRegistroIsta: string;
+            const HotelRutaBavel: string;
+            const HotelDingusUsuario: string;
+            const HotelDingusPassword: string;
+            const HotelDingusHotelCode: string;
+            const HotelDingusTraductor: string;
+            const HotelDingusUrl: string;
+            const HotelCheckinOnLine: string;
+            const HotelMinimoDiasCheckinOnline: string;
+            const HotelZoomMapa: string;
+            const HotelLat: string;
+            const HotelLng: string;
+            const HotelAncho: string;
+            const HotelAlto: string;
+            const HotelOverbookingLimit: string;
+            const TipoHabitacionDescCorta: string;
+            const TipoHabitacionDescripcion: string;
+            const TipoHabitacionGrupoHabitacionId: string;
+            const TipoHabitacionNumeroPersonas: string;
+            const TipoHabitacionDesvios: string;
+            const TipoHabitacionNoShow: string;
+            const ServicioNombreServicio: string;
+            const ServicioAbreviatura: string;
+            const ServicioTipoServicioId: string;
+            const ServicioSwProduccion: string;
+            const ServicioSwDescuento: string;
+            const ServicioSwAjustes: string;
+            const ServicioSwGastos: string;
+            const ServicioSwPension: string;
+            const ServicioSwRectificativa: string;
+            const ServicioTipoUnidadCalculoId: string;
+            const ServicioConceptoAceleradorReservasId: string;
+            const ServicioCosto: string;
+            const ServicioSumaServicioId: string;
+            const ServicioRestaServicioId: string;
+            const ServicioUserId: string;
+            const ServicioFechaModificacion: string;
+            const ServicioTipoHab: string;
+            const ServicioTipoPension: string;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
+    namespace TiposHabitacionHotelService {
+        const baseUrl = "Portal/TiposHabitacionHotel";
+        function Create(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
     interface TiposHabitacionRow {
         TipoHabitacionId?: number;
         DescCorta?: string;
@@ -7200,6 +7378,25 @@ declare namespace Geshotel.Portal {
     class TiposHabitacionGrid extends Serenity.EntityGrid<TiposHabitacionRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof TiposHabitacionDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHabitacionHotelDialog extends Serenity.EntityDialog<TiposHabitacionHotelRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: TiposHabitacionHotelForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposHabitacionHotelGrid extends Serenity.EntityGrid<TiposHabitacionHotelRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposHabitacionHotelDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

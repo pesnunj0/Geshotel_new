@@ -23,8 +23,9 @@ namespace Geshotel.Contratos.Columns
         public DateTime FechaDesde { get; set; }
         [QuickFilter]
         public DateTime FechaHasta { get; set; }
-        
+        [Width(50), AlignRight]
         public Int16 Cupo { get; set; }
+        [Width(50), AlignRight]
         public Decimal Garantia { get; set; }
         [Width(80),AlignCenter]
         public Boolean ReservaAutomatica { get; set; }

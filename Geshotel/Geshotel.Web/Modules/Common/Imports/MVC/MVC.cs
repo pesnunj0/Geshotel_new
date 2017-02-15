@@ -568,6 +568,13 @@ namespace MVC
             }
 
 
+            public static class TiposHabitacionHotel
+            {
+
+                public const string TiposHabitacionHotelIndex = "~/Modules/Portal/TiposHabitacionHotel/TiposHabitacionHotelIndex.cshtml";
+            }
+
+
             public static class TiposHotel
             {
 

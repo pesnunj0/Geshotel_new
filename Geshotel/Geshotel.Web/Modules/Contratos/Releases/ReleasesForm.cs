@@ -19,7 +19,5 @@ namespace Geshotel.Contratos.Forms
         public DateTime FechaHasta { get; set; }
         public String Observaciones { get; set; }
         public Int16 Dias { get; set; }
-        public Int16 UserId { get; set; }
-        public DateTime FechaModificacion { get; set; }
     }
 }
