@@ -13,7 +13,7 @@ namespace Geshotel.Portal.Entities
     [ReadPermission("Administration:Hotel")]
     [ModifyPermission("Administration:Hotel")]
     [LookupScript("Portal.Hoteles")]
-    public sealed class HotelesRow : Row, IIdRow, INameRow
+    public sealed class HotelesRow : Row, IIdRow, INameRow, ITenantRow
     {
         [DisplayName("Hotel Id"), Column("hotel_id"), Identity]
         public Int16? HotelId
@@ -462,6 +462,22 @@ namespace Geshotel.Portal.Entities
         StringField INameRow.NameField
         {
             get { return Fields.Hotel; }
+        }
+
+        public Int16Field HotelIdField
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Int16Field EmpresaIdField
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
