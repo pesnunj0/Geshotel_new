@@ -1,156 +1,37 @@
 ﻿
 namespace Geshotel.Portal {
     export interface TiposHabitacionHotelRow {
+        TipoHabitacionHotelId?: number;
         HotelId?: number;
         TipoHabitacionId?: number;
         ServicioId?: number;
-        Hotel?: string;
+        HotelName?: string;
         HotelEmpresaId?: number;
-        HotelTipoHotelId?: number;
-        HotelCategoriaId?: number;
-        HotelNombreCorto?: string;
-        HotelDireccion?: string;
-        HotelPoblacion?: string;
-        HotelZip?: string;
-        HotelProvinciaId?: number;
-        HotelNacionId?: number;
-        HotelTelefono?: string;
-        HotelFax?: string;
-        HotelCtaManocorriente?: string;
-        HotelDptoContable?: string;
-        HotelCtaContableCajas?: string;
-        HotelCtaContableBanco?: string;
-        HotelFechaInicioPrograma?: string;
-        HotelRutaFicheroPolicia?: string;
-        HotelContadorFicheroPolicia?: number;
-        HotelIdentificadorFicheroPolicia?: string;
-        HotelEmailReservas?: string;
-        HotelEmailVentas?: string;
-        HotelEmailSmtp?: string;
-        HotelTextoCancelacion?: string;
-        HotelUsuarioIsta?: string;
-        HotelPasswordIsta?: string;
-        HotelUrlIsta?: string;
-        HotelMunicipioIsta?: string;
-        HotelNumeroRegistroIsta?: number;
-        HotelRutaBavel?: string;
-        HotelDingusUsuario?: string;
-        HotelDingusPassword?: string;
-        HotelDingusHotelCode?: string;
-        HotelDingusTraductor?: string;
-        HotelDingusUrl?: string;
-        HotelCheckinOnLine?: number;
-        HotelMinimoDiasCheckinOnline?: number;
-        HotelZoomMapa?: number;
-        HotelLat?: number;
-        HotelLng?: number;
-        HotelAncho?: number;
-        HotelAlto?: number;
-        HotelOverbookingLimit?: number;
-        TipoHabitacionDescCorta?: string;
-        TipoHabitacionDescripcion?: string;
-        TipoHabitacionGrupoHabitacionId?: number;
-        TipoHabitacionNumeroPersonas?: number;
-        TipoHabitacionDesvios?: number;
-        TipoHabitacionNoShow?: number;
-        ServicioNombreServicio?: string;
-        ServicioAbreviatura?: string;
-        ServicioTipoServicioId?: number;
-        ServicioSwProduccion?: boolean;
-        ServicioSwDescuento?: boolean;
-        ServicioSwAjustes?: boolean;
-        ServicioSwGastos?: boolean;
-        ServicioSwPension?: boolean;
-        ServicioSwRectificativa?: boolean;
-        ServicioTipoUnidadCalculoId?: number;
-        ServicioConceptoAceleradorReservasId?: number;
-        ServicioCosto?: number;
-        ServicioSumaServicioId?: number;
-        ServicioRestaServicioId?: number;
-        ServicioUserId?: number;
-        ServicioFechaModificacion?: string;
-        ServicioTipoHab?: number;
-        ServicioTipoPension?: number;
+        TipoHabitacionName?: string;
+        ServicioName?: string;
     }
 
     export namespace TiposHabitacionHotelRow {
-        export const idProperty = 'HotelId';
+        export const idProperty = 'TipoHabitacionHotelId';
         export const localTextPrefix = 'Portal.TiposHabitacionHotel';
+        export const lookupKey = 'Portal.TiposHabitacionHotel';
+
+        export function getLookup(): Q.Lookup<TiposHabitacionHotelRow> {
+            return Q.getLookup<TiposHabitacionHotelRow>('Portal.TiposHabitacionHotel');
+        }
 
         export namespace Fields {
+            export declare const TipoHabitacionHotelId: string;
             export declare const HotelId: string;
             export declare const TipoHabitacionId: string;
             export declare const ServicioId: string;
-            export declare const Hotel: string;
+            export declare const HotelName: string;
             export declare const HotelEmpresaId: string;
-            export declare const HotelTipoHotelId: string;
-            export declare const HotelCategoriaId: string;
-            export declare const HotelNombreCorto: string;
-            export declare const HotelDireccion: string;
-            export declare const HotelPoblacion: string;
-            export declare const HotelZip: string;
-            export declare const HotelProvinciaId: string;
-            export declare const HotelNacionId: string;
-            export declare const HotelTelefono: string;
-            export declare const HotelFax: string;
-            export declare const HotelCtaManocorriente: string;
-            export declare const HotelDptoContable: string;
-            export declare const HotelCtaContableCajas: string;
-            export declare const HotelCtaContableBanco: string;
-            export declare const HotelFechaInicioPrograma: string;
-            export declare const HotelRutaFicheroPolicia: string;
-            export declare const HotelContadorFicheroPolicia: string;
-            export declare const HotelIdentificadorFicheroPolicia: string;
-            export declare const HotelEmailReservas: string;
-            export declare const HotelEmailVentas: string;
-            export declare const HotelEmailSmtp: string;
-            export declare const HotelTextoCancelacion: string;
-            export declare const HotelUsuarioIsta: string;
-            export declare const HotelPasswordIsta: string;
-            export declare const HotelUrlIsta: string;
-            export declare const HotelMunicipioIsta: string;
-            export declare const HotelNumeroRegistroIsta: string;
-            export declare const HotelRutaBavel: string;
-            export declare const HotelDingusUsuario: string;
-            export declare const HotelDingusPassword: string;
-            export declare const HotelDingusHotelCode: string;
-            export declare const HotelDingusTraductor: string;
-            export declare const HotelDingusUrl: string;
-            export declare const HotelCheckinOnLine: string;
-            export declare const HotelMinimoDiasCheckinOnline: string;
-            export declare const HotelZoomMapa: string;
-            export declare const HotelLat: string;
-            export declare const HotelLng: string;
-            export declare const HotelAncho: string;
-            export declare const HotelAlto: string;
-            export declare const HotelOverbookingLimit: string;
-            export declare const TipoHabitacionDescCorta: string;
-            export declare const TipoHabitacionDescripcion: string;
-            export declare const TipoHabitacionGrupoHabitacionId: string;
-            export declare const TipoHabitacionNumeroPersonas: string;
-            export declare const TipoHabitacionDesvios: string;
-            export declare const TipoHabitacionNoShow: string;
-            export declare const ServicioNombreServicio: string;
-            export declare const ServicioAbreviatura: string;
-            export declare const ServicioTipoServicioId: string;
-            export declare const ServicioSwProduccion: string;
-            export declare const ServicioSwDescuento: string;
-            export declare const ServicioSwAjustes: string;
-            export declare const ServicioSwGastos: string;
-            export declare const ServicioSwPension: string;
-            export declare const ServicioSwRectificativa: string;
-            export declare const ServicioTipoUnidadCalculoId: string;
-            export declare const ServicioConceptoAceleradorReservasId: string;
-            export declare const ServicioCosto: string;
-            export declare const ServicioSumaServicioId: string;
-            export declare const ServicioRestaServicioId: string;
-            export declare const ServicioUserId: string;
-            export declare const ServicioFechaModificacion: string;
-            export declare const ServicioTipoHab: string;
-            export declare const ServicioTipoPension: string;
+            export declare const TipoHabitacionName: string;
+            export declare const ServicioName: string;
         }
 
-        ['HotelId', 'TipoHabitacionId', 'ServicioId', 'Hotel', 'HotelEmpresaId', 'HotelTipoHotelId', 'HotelCategoriaId', 'HotelNombreCorto', 'HotelDireccion', 'HotelPoblacion', 'HotelZip', 'HotelProvinciaId', 'HotelNacionId', 'HotelTelefono', 'HotelFax', 'HotelCtaManocorriente', 'HotelDptoContable', 'HotelCtaContableCajas', 'HotelCtaContableBanco', 'HotelFechaInicioPrograma', 'HotelRutaFicheroPolicia', 'HotelContadorFicheroPolicia', 'HotelIdentificadorFicheroPolicia', 'HotelEmailReservas', 'HotelEmailVentas', 'HotelEmailSmtp', 'HotelTextoCancelacion', 'HotelUsuarioIsta', 'HotelPasswordIsta', 'HotelUrlIsta', 'HotelMunicipioIsta', 'HotelNumeroRegistroIsta', 'HotelRutaBavel', 'HotelDingusUsuario', 'HotelDingusPassword', 'HotelDingusHotelCode', 'HotelDingusTraductor', 'HotelDingusUrl', 'HotelCheckinOnLine', 'HotelMinimoDiasCheckinOnline', 'HotelZoomMapa', 'HotelLat', 'HotelLng', 'HotelAncho', 'HotelAlto', 'HotelOverbookingLimit', 'TipoHabitacionDescCorta', 'TipoHabitacionDescripcion', 'TipoHabitacionGrupoHabitacionId', 'TipoHabitacionNumeroPersonas', 'TipoHabitacionDesvios', 'TipoHabitacionNoShow', 'ServicioNombreServicio', 'ServicioAbreviatura', 'ServicioTipoServicioId', 'ServicioSwProduccion', 'ServicioSwDescuento', 'ServicioSwAjustes', 'ServicioSwGastos', 'ServicioSwPension', 'ServicioSwRectificativa', 'ServicioTipoUnidadCalculoId', 'ServicioConceptoAceleradorReservasId', 'ServicioCosto', 'ServicioSumaServicioId', 'ServicioRestaServicioId', 'ServicioUserId', 'ServicioFechaModificacion', 'ServicioTipoHab', 'ServicioTipoPension'].forEach(x => (<any>Fields)[x] = x);
+        ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'HotelName', 'HotelEmpresaId', 'TipoHabitacionName', 'ServicioName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

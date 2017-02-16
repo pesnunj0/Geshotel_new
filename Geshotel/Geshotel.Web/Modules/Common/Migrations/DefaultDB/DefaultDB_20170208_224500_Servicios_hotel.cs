@@ -9,6 +9,7 @@ namespace Geshotel.Migrations.DefaultDB
         public override void Up()
         {
             Create.Table("servicios_hotel")
+                .WithColumn("servicio_hotel_id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("servicio_id").AsInt32().NotNullable()
                 .ForeignKey("", "servicios", "servicio_id")
                 .WithColumn("hotel_id").AsInt16().PrimaryKey().NotNullable()
@@ -19,6 +20,13 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("cta_contable").AsString(16)
                 .WithColumn("dpto_contable").AsString(10)
                 .WithColumn("permite_credito").AsBoolean();
+
+            Create.Index("IX_servicio_hotel")
+                .OnTable("servicios_hotel")
+                .OnColumn("servicio_id").Ascending()
+                .OnColumn("hotel_id").Ascending()
+                .WithOptions().Unique();
+                
         }
 
         public override void Down()

@@ -1,5 +1,5 @@
 ﻿
-namespace Geshotel.Portal {
+namespace Geshotel.Contratos {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()

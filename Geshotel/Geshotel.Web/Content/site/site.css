@@ -8576,6 +8576,12 @@ section.content > .s-DataGrid {
 .s-Contratos-TemporadasDialog .caption {
   width: 150px;
 }
+.s-Contratos-TiposHabitacionHotelDialog > .size {
+  width: 650px;
+}
+.s-Contratos-TiposHabitacionHotelDialog .caption {
+  width: 150px;
+}
 .s-Portal-FormasDePagoDialog > .size {
   width: 650px;
 }

@@ -6,10 +6,11 @@ namespace Geshotel.Portal {
     }
 
     export interface TiposHabitacionHotelForm {
-        TipoHabitacionId: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
+        HotelId: Serenity.LookupEditor;
+        TipoHabitacionId: Serenity.LookupEditor;
+        ServicioId: Serenity.LookupEditor;
     }
 
-    [['TipoHabitacionId', () => Serenity.IntegerEditor], ['ServicioId', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(TiposHabitacionHotelForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['HotelId', () => Serenity.LookupEditor], ['TipoHabitacionId', () => Serenity.LookupEditor], ['ServicioId', () => Serenity.LookupEditor]].forEach(x => Object.defineProperty(TiposHabitacionHotelForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

@@ -1,5 +1,5 @@
 ﻿
-namespace Geshotel.Portal.Endpoints
+namespace Geshotel.Contratos.Endpoints
 {
     using Serenity;
     using Serenity.Data;
@@ -9,7 +9,7 @@ namespace Geshotel.Portal.Endpoints
     using MyRepository = Repositories.TiposHabitacionHotelRepository;
     using MyRow = Entities.TiposHabitacionHotelRow;
 
-    [RoutePrefix("Services/Portal/TiposHabitacionHotel"), Route("{action}")]
+    [RoutePrefix("Services/Contratos/TiposHabitacionHotel"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class TiposHabitacionHotelController : ServiceEndpoint
     {

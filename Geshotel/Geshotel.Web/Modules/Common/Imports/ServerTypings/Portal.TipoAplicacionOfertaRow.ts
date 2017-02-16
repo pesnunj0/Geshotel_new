@@ -7,7 +7,7 @@ namespace Geshotel.Portal {
 
     export namespace TipoAplicacionOfertaRow {
         export const idProperty = 'TipoAplicacionOfertaId';
-        export const nameProperty = 'TipoAplicacionOfertaId';
+        export const nameProperty = 'AplicableSegunFechaDe';
         export const localTextPrefix = 'Portal.TipoAplicacionOferta';
         export const lookupKey = 'Portal.TipoAplicacionOferta';
 

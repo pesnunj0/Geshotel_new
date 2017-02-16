@@ -6,16 +6,14 @@ namespace Geshotel.Contratos {
     }
 
     export interface ReleasesForm {
-        ClienteId: Serenity.IntegerEditor;
-        HotelId: Serenity.IntegerEditor;
+        ClienteId: Serenity.LookupEditor;
+        HotelId: Serenity.LookupEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         Observaciones: Serenity.StringEditor;
         Dias: Serenity.IntegerEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
     }
 
-    [['ClienteId', () => Serenity.IntegerEditor], ['HotelId', () => Serenity.IntegerEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['Observaciones', () => Serenity.StringEditor], ['Dias', () => Serenity.IntegerEditor], ['UserId', () => Serenity.IntegerEditor], ['FechaModificacion', () => Serenity.DateEditor]].forEach(x => Object.defineProperty(ReleasesForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['ClienteId', () => Serenity.LookupEditor], ['HotelId', () => Serenity.LookupEditor], ['FechaDesde', () => Serenity.DateEditor], ['FechaHasta', () => Serenity.DateEditor], ['Observaciones', () => Serenity.StringEditor], ['Dias', () => Serenity.IntegerEditor]].forEach(x => Object.defineProperty(ReleasesForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

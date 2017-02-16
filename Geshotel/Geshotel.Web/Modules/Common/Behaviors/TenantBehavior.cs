@@ -95,8 +95,11 @@ namespace Geshotel.Behaviors
         {
             if (handler.IsCreate & !isSpecialRow)
             {
-                fldHotelId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).HotelId;
-                fldEmpresaId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).EmpresaId;
+                if (!ReferenceEquals(null, fldHotelId))
+                    fldHotelId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).HotelId;
+                else
+                     if (!ReferenceEquals(null, fldEmpresaId))       
+                        fldEmpresaId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).EmpresaId;
             }
         }
 

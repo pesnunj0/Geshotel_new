@@ -1,5 +1,5 @@
 ﻿
-namespace Geshotel.Portal.Columns
+namespace Geshotel.Contratos.Columns
 {
     using Serenity;
     using Serenity.ComponentModel;
@@ -9,13 +9,16 @@ namespace Geshotel.Portal.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("Portal.TiposHabitacionHotel")]
+    [ColumnsScript("Contratos.TiposHabitacionHotel")]
     [BasedOnRow(typeof(Entities.TiposHabitacionHotelRow))]
     public class TiposHabitacionHotelColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int16 HotelId { get; set; }
-        public Int16 TipoHabitacionId { get; set; }
-        public Int32 ServicioId { get; set; }
+        public Int32 TipoHabitacionHotelId { get; set; }
+        [EditLink]
+        public String HotelName { get; set; }
+        [EditLink]
+        public String TipoHabitacionName { get; set; }
+        public String ServicioName { get; set; }
     }
 }

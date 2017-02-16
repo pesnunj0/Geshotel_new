@@ -1,6 +1,6 @@
 ﻿
 
-namespace Geshotel.Portal.Repositories
+namespace Geshotel.Contratos.Repositories
 {
     using Serenity;
     using Serenity.Data;
