@@ -12,10 +12,10 @@
     {
         public String Username { get; set; }
         public String DisplayName { get; set; }
-        [LookupEditor(typeof(EmpresasRow))]
+        [LookupEditor("Portal.Empresas")]
         public Int16 EmpresaId { get; set; }
 
-        [LookupEditor(typeof(HotelesRow),CascadeFrom ="EmpresaId",CascadeField ="EmpresaId")]
+        [LookupEditor(("Portal.Hoteles"),CascadeFrom ="EmpresaId",CascadeField ="EmpresaId")]
         public Int16 HotelId { get; set; }
         [EmailEditor]
         public String Email { get; set; }

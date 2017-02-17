@@ -2351,6 +2351,55 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var ServiciosHotelForm = (function (_super) {
+            __extends(ServiciosHotelForm, _super);
+            function ServiciosHotelForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return ServiciosHotelForm;
+        }(Serenity.PrefixedContext));
+        ServiciosHotelForm.formKey = 'Contratos.ServiciosHotel';
+        Contratos.ServiciosHotelForm = ServiciosHotelForm;
+        [['ServicioId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['ImpuestoId', function () { return Serenity.LookupEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['PermiteCredito', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ServiciosHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ServiciosHotelRow;
+        (function (ServiciosHotelRow) {
+            ServiciosHotelRow.idProperty = 'ServicioHotelId';
+            ServiciosHotelRow.nameProperty = 'CtaContable';
+            ServiciosHotelRow.localTextPrefix = 'Contratos.ServiciosHotel';
+            var Fields;
+            (function (Fields) {
+            })(Fields = ServiciosHotelRow.Fields || (ServiciosHotelRow.Fields = {}));
+            ['ServicioHotelId', 'ServicioId', 'HotelId', 'ImpuestoId', 'Costo', 'CtaContable', 'DptoContable', 'PermiteCredito', 'HotelName', 'EmpresaId', 'Empresa', 'NombreServicio', 'ServicioTipoServicioId', 'Impuesto'].forEach(function (x) { return Fields[x] = x; });
+        })(ServiciosHotelRow = Contratos.ServiciosHotelRow || (Contratos.ServiciosHotelRow = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ServiciosHotelService;
+        (function (ServiciosHotelService) {
+            ServiciosHotelService.baseUrl = 'Contratos/ServiciosHotel';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ServiciosHotelService.Methods || (ServiciosHotelService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                ServiciosHotelService[x] = function (r, s, o) { return Q.serviceRequest(ServiciosHotelService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = ServiciosHotelService.baseUrl + '/' + x;
+            });
+        })(ServiciosHotelService = Contratos.ServiciosHotelService || (Contratos.ServiciosHotelService = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var TemporadasForm = (function (_super) {
             __extends(TemporadasForm, _super);
             function TemporadasForm() {
@@ -2414,7 +2463,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         TiposHabitacionHotelForm.formKey = 'Contratos.TiposHabitacionHotel';
         Contratos.TiposHabitacionHotelForm = TiposHabitacionHotelForm;
-        [['TipoHabitacionHotelId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['TipoHabitacionId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['HotelId', function () { return Serenity.LookupEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -2428,7 +2477,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposHabitacionHotelRow.Fields || (TiposHabitacionHotelRow.Fields = {}));
-            ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'ServicioNombreServicio', 'ServicioAbreviatura', 'ServicioTipoServicioId', 'ServicioSwProduccion', 'ServicioSwDescuento', 'ServicioSwAjustes', 'ServicioSwGastos', 'ServicioSwPension', 'ServicioSwRectificativa', 'ServicioTipoUnidadCalculoId', 'ServicioConceptoAceleradorReservasId', 'ServicioCosto', 'ServicioSumaServicioId', 'ServicioRestaServicioId', 'ServicioUserId', 'ServicioFechaModificacion', 'ServicioTipoHab', 'ServicioTipoPension'].forEach(function (x) { return Fields[x] = x; });
+            ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'HotelName', 'EmpresaId', 'Empresa', 'TipoHabitacionName', 'ServicioName'].forEach(function (x) { return Fields[x] = x; });
         })(TiposHabitacionHotelRow = Contratos.TiposHabitacionHotelRow || (Contratos.TiposHabitacionHotelRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4418,6 +4467,60 @@ var Geshotel;
 (function (Geshotel) {
     var Portal;
     (function (Portal) {
+        var ImpuestosForm = (function (_super) {
+            __extends(ImpuestosForm, _super);
+            function ImpuestosForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return ImpuestosForm;
+        }(Serenity.PrefixedContext));
+        ImpuestosForm.formKey = 'Portal.Impuestos';
+        Portal.ImpuestosForm = ImpuestosForm;
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['Impuesto', function () { return Serenity.StringEditor; }], ['Porcentaje', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['ActivoGeshotel', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['FechaActualizacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(ImpuestosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var ImpuestosRow;
+        (function (ImpuestosRow) {
+            ImpuestosRow.idProperty = 'ImpuestoId';
+            ImpuestosRow.nameProperty = 'Impuesto';
+            ImpuestosRow.localTextPrefix = 'Portal.Impuestos';
+            ImpuestosRow.lookupKey = 'Portal.Impuestos';
+            function getLookup() {
+                return Q.getLookup('Portal.Impuestos');
+            }
+            ImpuestosRow.getLookup = getLookup;
+            var Fields;
+            (function (Fields) {
+            })(Fields = ImpuestosRow.Fields || (ImpuestosRow.Fields = {}));
+            ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaActualizacion', 'UserName', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+        })(ImpuestosRow = Portal.ImpuestosRow || (Portal.ImpuestosRow = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var ImpuestosService;
+        (function (ImpuestosService) {
+            ImpuestosService.baseUrl = 'Portal/Impuestos';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ImpuestosService.Methods || (ImpuestosService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                ImpuestosService[x] = function (r, s, o) { return Q.serviceRequest(ImpuestosService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = ImpuestosService.baseUrl + '/' + x;
+            });
+        })(ImpuestosService = Portal.ImpuestosService || (Portal.ImpuestosService = {}));
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
         var MonedasForm = (function (_super) {
             __extends(MonedasForm, _super);
             function MonedasForm() {
@@ -4923,59 +5026,6 @@ var Geshotel;
         TiposHabitacionForm.formKey = 'Portal.TiposHabitacion';
         Portal.TiposHabitacionForm = TiposHabitacionForm;
         [['DescCorta', function () { return Serenity.StringEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['GrupoHabitacionId', function () { return Serenity.LookupEditor; }], ['NumeroPersonas', function () { return Serenity.IntegerEditor; }], ['Desvios', function () { return Serenity.IntegerEditor; }], ['NoShow', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var TiposHabitacionHotelForm = (function (_super) {
-            __extends(TiposHabitacionHotelForm, _super);
-            function TiposHabitacionHotelForm() {
-                return _super.apply(this, arguments) || this;
-            }
-            return TiposHabitacionHotelForm;
-        }(Serenity.PrefixedContext));
-        TiposHabitacionHotelForm.formKey = 'Portal.TiposHabitacionHotel';
-        Portal.TiposHabitacionHotelForm = TiposHabitacionHotelForm;
-        [['HotelId', function () { return Serenity.LookupEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var TiposHabitacionHotelRow;
-        (function (TiposHabitacionHotelRow) {
-            TiposHabitacionHotelRow.idProperty = 'TipoHabitacionHotelId';
-            TiposHabitacionHotelRow.localTextPrefix = 'Portal.TiposHabitacionHotel';
-            TiposHabitacionHotelRow.lookupKey = 'Portal.TiposHabitacionHotel';
-            function getLookup() {
-                return Q.getLookup('Portal.TiposHabitacionHotel');
-            }
-            TiposHabitacionHotelRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = TiposHabitacionHotelRow.Fields || (TiposHabitacionHotelRow.Fields = {}));
-            ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'HotelName', 'HotelEmpresaId', 'TipoHabitacionName', 'ServicioName'].forEach(function (x) { return Fields[x] = x; });
-        })(TiposHabitacionHotelRow = Portal.TiposHabitacionHotelRow || (Portal.TiposHabitacionHotelRow = {}));
-    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Portal;
-    (function (Portal) {
-        var TiposHabitacionHotelService;
-        (function (TiposHabitacionHotelService) {
-            TiposHabitacionHotelService.baseUrl = 'Portal/TiposHabitacionHotel';
-            var Methods;
-            (function (Methods) {
-            })(Methods = TiposHabitacionHotelService.Methods || (TiposHabitacionHotelService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposHabitacionHotelService[x] = function (r, s, o) { return Q.serviceRequest(TiposHabitacionHotelService.baseUrl + '/' + x, r, s, o); };
-                Methods[x] = TiposHabitacionHotelService.baseUrl + '/' + x;
-            });
-        })(TiposHabitacionHotelService = Portal.TiposHabitacionHotelService || (Portal.TiposHabitacionHotelService = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -7070,6 +7120,53 @@ var Geshotel;
             Serenity.Decorators.filterable()
         ], ReleasesGrid);
         Contratos.ReleasesGrid = ReleasesGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ServiciosHotelDialog = (function (_super) {
+            __extends(ServiciosHotelDialog, _super);
+            function ServiciosHotelDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.ServiciosHotelForm(_this.idPrefix);
+                return _this;
+            }
+            ServiciosHotelDialog.prototype.getFormKey = function () { return Contratos.ServiciosHotelForm.formKey; };
+            ServiciosHotelDialog.prototype.getIdProperty = function () { return Contratos.ServiciosHotelRow.idProperty; };
+            ServiciosHotelDialog.prototype.getLocalTextPrefix = function () { return Contratos.ServiciosHotelRow.localTextPrefix; };
+            ServiciosHotelDialog.prototype.getNameProperty = function () { return Contratos.ServiciosHotelRow.nameProperty; };
+            ServiciosHotelDialog.prototype.getService = function () { return Contratos.ServiciosHotelService.baseUrl; };
+            return ServiciosHotelDialog;
+        }(Serenity.EntityDialog));
+        ServiciosHotelDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ServiciosHotelDialog);
+        Contratos.ServiciosHotelDialog = ServiciosHotelDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var ServiciosHotelGrid = (function (_super) {
+            __extends(ServiciosHotelGrid, _super);
+            function ServiciosHotelGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ServiciosHotelGrid.prototype.getColumnsKey = function () { return 'Contratos.ServiciosHotel'; };
+            ServiciosHotelGrid.prototype.getDialogType = function () { return Contratos.ServiciosHotelDialog; };
+            ServiciosHotelGrid.prototype.getIdProperty = function () { return Contratos.ServiciosHotelRow.idProperty; };
+            ServiciosHotelGrid.prototype.getLocalTextPrefix = function () { return Contratos.ServiciosHotelRow.localTextPrefix; };
+            ServiciosHotelGrid.prototype.getService = function () { return Contratos.ServiciosHotelService.baseUrl; };
+            return ServiciosHotelGrid;
+        }(Serenity.EntityGrid));
+        ServiciosHotelGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ServiciosHotelGrid);
+        Contratos.ServiciosHotelGrid = ServiciosHotelGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -10002,6 +10099,53 @@ var Geshotel;
             Serenity.Decorators.filterable()
         ], HotelesGrid);
         Portal.HotelesGrid = HotelesGrid;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var ImpuestosDialog = (function (_super) {
+            __extends(ImpuestosDialog, _super);
+            function ImpuestosDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Portal.ImpuestosForm(_this.idPrefix);
+                return _this;
+            }
+            ImpuestosDialog.prototype.getFormKey = function () { return Portal.ImpuestosForm.formKey; };
+            ImpuestosDialog.prototype.getIdProperty = function () { return Portal.ImpuestosRow.idProperty; };
+            ImpuestosDialog.prototype.getLocalTextPrefix = function () { return Portal.ImpuestosRow.localTextPrefix; };
+            ImpuestosDialog.prototype.getNameProperty = function () { return Portal.ImpuestosRow.nameProperty; };
+            ImpuestosDialog.prototype.getService = function () { return Portal.ImpuestosService.baseUrl; };
+            return ImpuestosDialog;
+        }(Serenity.EntityDialog));
+        ImpuestosDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ImpuestosDialog);
+        Portal.ImpuestosDialog = ImpuestosDialog;
+    })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Portal;
+    (function (Portal) {
+        var ImpuestosGrid = (function (_super) {
+            __extends(ImpuestosGrid, _super);
+            function ImpuestosGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ImpuestosGrid.prototype.getColumnsKey = function () { return 'Portal.Impuestos'; };
+            ImpuestosGrid.prototype.getDialogType = function () { return Portal.ImpuestosDialog; };
+            ImpuestosGrid.prototype.getIdProperty = function () { return Portal.ImpuestosRow.idProperty; };
+            ImpuestosGrid.prototype.getLocalTextPrefix = function () { return Portal.ImpuestosRow.localTextPrefix; };
+            ImpuestosGrid.prototype.getService = function () { return Portal.ImpuestosService.baseUrl; };
+            return ImpuestosGrid;
+        }(Serenity.EntityGrid));
+        ImpuestosGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ImpuestosGrid);
+        Portal.ImpuestosGrid = ImpuestosGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

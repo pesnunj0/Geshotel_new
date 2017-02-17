@@ -1407,6 +1407,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ReleasesService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ServiciosHotelColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1417,6 +1420,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TemporadasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\ExcelImportRequest.ts">
@@ -1581,6 +1587,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HotelesService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.ImpuestosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.MonedasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1654,9 +1663,6 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionRow.ts">
@@ -2367,21 +2373,42 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\FrecuenciaFacturacion\FrecuenciaFacturacionDialog.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposHabitacionHotelForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <Content Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.TiposHabitacionHotelForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelDialog.ts" />
+    <Content Include="Modules\Contratos\ServiciosHotel\ServiciosHotelIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ServiciosHotelRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ServiciosHotelService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ServiciosHotelForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelDialog.ts" />
+    <Content Include="Modules\Portal\Impuestos\ImpuestosIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.ImpuestosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.ImpuestosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.ImpuestosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2699,6 +2726,7 @@
     <Compile Include="Modules\Portal\Hoteles\HotelesColumns.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesEndpoint.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesForm.cs" />
+    <Compile Include="Modules\Portal\Hoteles\HotelesLookup.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesPage.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesRepository.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesRow.cs" />
@@ -2722,6 +2750,7 @@
     <Compile Include="Modules\Portal\Provincias\ProvinciasRow.cs" />
     <Compile Include="Modules\Portal\ReservaEstados\ReservaEstadosRepository.cs" />
     <Compile Include="Modules\Portal\ReservaEstados\ReservaEstadosRow.cs" />
+    <Compile Include="Modules\Portal\Scripts\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Portal\Servicios\ServiciosColumns.cs" />
     <Compile Include="Modules\Portal\Servicios\ServiciosEndpoint.cs" />
     <Compile Include="Modules\Portal\Servicios\ServiciosForm.cs" />
@@ -2962,6 +2991,18 @@
     <Compile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelRepository.cs" />
     <Compile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelEndpoint.cs" />
     <Compile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelPage.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelRow.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelColumns.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelForm.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelRepository.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelEndpoint.cs" />
+    <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelPage.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosRow.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosColumns.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosForm.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosRepository.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosEndpoint.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

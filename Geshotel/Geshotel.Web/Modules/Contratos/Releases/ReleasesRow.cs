@@ -31,7 +31,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
-        [LookupEditor(typeof(HotelesRow))]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }

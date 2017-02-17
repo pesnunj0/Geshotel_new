@@ -38,7 +38,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
-        [LookupEditor(typeof(HotelesRow))]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -47,7 +47,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
-        [LookupEditor(typeof(EmpresasRow))]
+        [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }

@@ -26,7 +26,13 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnColumn("servicio_id").Ascending()
                 .OnColumn("hotel_id").Ascending()
                 .WithOptions().Unique();
-                
+
+            Create.Index("IX_servicio_id")
+                .OnTable("servicios_hotel")
+                .OnColumn("servicio_id").Ascending();
+            Create.Index("IX_hotel_id")
+                .OnTable("servicios_hotel")
+                .OnColumn("hotel_id").Ascending();
         }
 
         public override void Down()

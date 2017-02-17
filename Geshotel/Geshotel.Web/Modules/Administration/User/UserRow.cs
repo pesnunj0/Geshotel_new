@@ -13,7 +13,7 @@ namespace Geshotel.Administration.Entities
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript("Administration.User", Permission = PermissionKeys.Security)]
-    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, ITenantRow
     {
         [DisplayName("User Id"), Identity]
         public Int32? UserId
@@ -58,7 +58,7 @@ namespace Geshotel.Administration.Entities
         }
 
         [DisplayName("Empresa"), Column("EmpresaId"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
-        [LookupEditor(typeof(EmpresasRow))]
+        [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
@@ -74,7 +74,7 @@ namespace Geshotel.Administration.Entities
         }
 
         [DisplayName("Hotel"), Column("HotelId"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
-        [LookupEditor(typeof(HotelesRow))]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -145,6 +145,14 @@ namespace Geshotel.Administration.Entities
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
+        }
+        public Int16Field HotelIdField
+        {
+            get { return Fields.HotelId; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

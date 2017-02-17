@@ -385,7 +385,7 @@ CREATE TABLE `impuestos` (
   `impuesto` varchar(30) NOT NULL,
   `porcentaje` float NOT NULL,
   `cta_contable` varchar(15) DEFAULT NULL,
-  `activo_geshotel` tinyint(4) DEFAULT '0',
+  `activo_geshotel` bit(1) DEFAULT '0',
   `user_id` smallint(6) DEFAULT NULL,
   `fecha_actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`impuesto_id`)

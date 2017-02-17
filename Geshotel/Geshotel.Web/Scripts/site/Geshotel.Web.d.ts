@@ -1774,6 +1774,78 @@ declare namespace Geshotel.Contratos {
 declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
+    class ServiciosHotelForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ServiciosHotelForm {
+        ServicioId: Serenity.LookupEditor;
+        HotelId: Serenity.LookupEditor;
+        ImpuestoId: Serenity.LookupEditor;
+        Costo: Serenity.DecimalEditor;
+        CtaContable: Serenity.StringEditor;
+        DptoContable: Serenity.StringEditor;
+        PermiteCredito: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface ServiciosHotelRow {
+        ServicioHotelId?: number;
+        ServicioId?: number;
+        HotelId?: number;
+        ImpuestoId?: number;
+        Costo?: number;
+        CtaContable?: string;
+        DptoContable?: string;
+        PermiteCredito?: number;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        NombreServicio?: string;
+        ServicioTipoServicioId?: number;
+        Impuesto?: string;
+    }
+    namespace ServiciosHotelRow {
+        const idProperty = "ServicioHotelId";
+        const nameProperty = "CtaContable";
+        const localTextPrefix = "Contratos.ServiciosHotel";
+        namespace Fields {
+            const ServicioHotelId: string;
+            const ServicioId: string;
+            const HotelId: string;
+            const ImpuestoId: string;
+            const Costo: string;
+            const CtaContable: string;
+            const DptoContable: string;
+            const PermiteCredito: string;
+            const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
+            const NombreServicio: string;
+            const ServicioTipoServicioId: string;
+            const Impuesto: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace ServiciosHotelService {
+        const baseUrl = "Contratos/ServiciosHotel";
+        function Create(request: Serenity.SaveRequest<ServiciosHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ServiciosHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ServiciosHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ServiciosHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+}
+declare namespace Geshotel.Contratos {
     class TemporadasForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -1834,13 +1906,15 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+}
+declare namespace Geshotel.Contratos {
     class TiposHabitacionHotelForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
     interface TiposHabitacionHotelForm {
-        HotelId: Serenity.IntegerEditor;
-        TipoHabitacionId: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
+        HotelId: Serenity.LookupEditor;
+        TipoHabitacionId: Serenity.LookupEditor;
+        ServicioId: Serenity.LookupEditor;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -1849,62 +1923,36 @@ declare namespace Geshotel.Contratos {
         HotelId?: number;
         TipoHabitacionId?: number;
         ServicioId?: number;
-        ServicioNombreServicio?: string;
-        ServicioAbreviatura?: string;
-        ServicioTipoServicioId?: number;
-        ServicioSwProduccion?: boolean;
-        ServicioSwDescuento?: boolean;
-        ServicioSwAjustes?: boolean;
-        ServicioSwGastos?: boolean;
-        ServicioSwPension?: boolean;
-        ServicioSwRectificativa?: boolean;
-        ServicioTipoUnidadCalculoId?: number;
-        ServicioConceptoAceleradorReservasId?: number;
-        ServicioCosto?: number;
-        ServicioSumaServicioId?: number;
-        ServicioRestaServicioId?: number;
-        ServicioUserId?: number;
-        ServicioFechaModificacion?: string;
-        ServicioTipoHab?: number;
-        ServicioTipoPension?: number;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        TipoHabitacionName?: string;
+        ServicioName?: string;
     }
     namespace TiposHabitacionHotelRow {
         const idProperty = "TipoHabitacionHotelId";
         const localTextPrefix = "Contratos.TiposHabitacionHotel";
         namespace Fields {
-            const TipoHabitacionHotelId: any;
-            const HotelId: any;
-            const TipoHabitacionId: any;
-            const ServicioId: any;
-            const ServicioNombreServicio: string;
-            const ServicioAbreviatura: string;
-            const ServicioTipoServicioId: string;
-            const ServicioSwProduccion: string;
-            const ServicioSwDescuento: string;
-            const ServicioSwAjustes: string;
-            const ServicioSwGastos: string;
-            const ServicioSwPension: string;
-            const ServicioSwRectificativa: string;
-            const ServicioTipoUnidadCalculoId: string;
-            const ServicioConceptoAceleradorReservasId: string;
-            const ServicioCosto: string;
-            const ServicioSumaServicioId: string;
-            const ServicioRestaServicioId: string;
-            const ServicioUserId: string;
-            const ServicioFechaModificacion: string;
-            const ServicioTipoHab: string;
-            const ServicioTipoPension: string;
+            const TipoHabitacionHotelId: string;
+            const HotelId: string;
+            const TipoHabitacionId: string;
+            const ServicioId: string;
+            const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
+            const TipoHabitacionName: string;
+            const ServicioName: string;
         }
     }
 }
 declare namespace Geshotel.Contratos {
     namespace TiposHabitacionHotelService {
         const baseUrl = "Contratos/TiposHabitacionHotel";
-        function Create(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TiposHabitacionHotelRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TiposHabitacionHotelRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -4716,6 +4764,72 @@ declare namespace Geshotel.Portal {
 declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
+    class ImpuestosForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ImpuestosForm {
+        EmpresaId: Serenity.LookupEditor;
+        Impuesto: Serenity.StringEditor;
+        Porcentaje: Serenity.DecimalEditor;
+        CtaContable: Serenity.StringEditor;
+        ActivoGeshotel: Serenity.IntegerEditor;
+        UserId: Serenity.LookupEditor;
+        FechaActualizacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Portal {
+    interface ImpuestosRow {
+        ImpuestoId?: number;
+        EmpresaId?: number;
+        Impuesto?: string;
+        Porcentaje?: number;
+        CtaContable?: string;
+        ActivoGeshotel?: number;
+        UserId?: number;
+        FechaActualizacion?: string;
+        UserName?: string;
+        Empresa?: string;
+    }
+    namespace ImpuestosRow {
+        const idProperty = "ImpuestoId";
+        const nameProperty = "Impuesto";
+        const localTextPrefix = "Portal.Impuestos";
+        const lookupKey = "Portal.Impuestos";
+        function getLookup(): Q.Lookup<ImpuestosRow>;
+        namespace Fields {
+            const ImpuestoId: string;
+            const EmpresaId: string;
+            const Impuesto: string;
+            const Porcentaje: string;
+            const CtaContable: string;
+            const ActivoGeshotel: string;
+            const UserId: string;
+            const FechaActualizacion: string;
+            const UserName: string;
+            const Empresa: string;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
+    namespace ImpuestosService {
+        const baseUrl = "Portal/Impuestos";
+        function Create(request: Serenity.SaveRequest<ImpuestosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ImpuestosRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ImpuestosRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ImpuestosRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
+}
+declare namespace Geshotel.Portal {
     class MonedasForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -5286,63 +5400,6 @@ declare namespace Geshotel.Portal {
         NumeroPersonas: Serenity.IntegerEditor;
         Desvios: Serenity.IntegerEditor;
         NoShow: Serenity.IntegerEditor;
-    }
-}
-declare namespace Geshotel.Portal {
-}
-declare namespace Geshotel.Portal {
-    class TiposHabitacionHotelForm extends Serenity.PrefixedContext {
-        static formKey: string;
-    }
-    interface TiposHabitacionHotelForm {
-        HotelId: Serenity.LookupEditor;
-        TipoHabitacionId: Serenity.LookupEditor;
-        ServicioId: Serenity.LookupEditor;
-    }
-}
-declare namespace Geshotel.Portal {
-    interface TiposHabitacionHotelRow {
-        TipoHabitacionHotelId?: number;
-        HotelId?: number;
-        TipoHabitacionId?: number;
-        ServicioId?: number;
-        HotelName?: string;
-        HotelEmpresaId?: number;
-        TipoHabitacionName?: string;
-        ServicioName?: string;
-    }
-    namespace TiposHabitacionHotelRow {
-        const idProperty = "TipoHabitacionHotelId";
-        const localTextPrefix = "Portal.TiposHabitacionHotel";
-        const lookupKey = "Portal.TiposHabitacionHotel";
-        function getLookup(): Q.Lookup<TiposHabitacionHotelRow>;
-        namespace Fields {
-            const TipoHabitacionHotelId: string;
-            const HotelId: string;
-            const TipoHabitacionId: string;
-            const ServicioId: string;
-            const HotelName: string;
-            const HotelEmpresaId: string;
-            const TipoHabitacionName: string;
-            const ServicioName: string;
-        }
-    }
-}
-declare namespace Geshotel.Portal {
-    namespace TiposHabitacionHotelService {
-        const baseUrl = "Portal/TiposHabitacionHotel";
-        function Create(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<TiposHabitacionHotelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TiposHabitacionHotelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
-        }
     }
 }
 declare namespace Geshotel.Portal {
@@ -6151,6 +6208,26 @@ declare namespace Geshotel.Contratos {
     class ReleasesGrid extends Serenity.EntityGrid<ReleasesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ReleasesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ServiciosHotelDialog extends Serenity.EntityDialog<ServiciosHotelRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ServiciosHotelForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class ServiciosHotelGrid extends Serenity.EntityGrid<ServiciosHotelRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ServiciosHotelDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -6992,6 +7069,26 @@ declare namespace Geshotel.Portal {
         constructor(container: JQuery);
         protected getDefaultSortBy(): string[];
         getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Portal {
+    class ImpuestosDialog extends Serenity.EntityDialog<ImpuestosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ImpuestosForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class ImpuestosGrid extends Serenity.EntityGrid<ImpuestosRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ImpuestosDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Geshotel.Portal {

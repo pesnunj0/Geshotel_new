@@ -230,6 +230,13 @@ namespace MVC
             }
 
 
+            public static class ServiciosHotel
+            {
+
+                public const string ServiciosHotelIndex = "~/Modules/Contratos/ServiciosHotel/ServiciosHotelIndex.cshtml";
+            }
+
+
             public static class Temporadas
             {
 
@@ -509,6 +516,13 @@ namespace MVC
             {
 
                 public const string HotelesIndex = "~/Modules/Portal/Hoteles/HotelesIndex.cshtml";
+            }
+
+
+            public static class Impuestos
+            {
+
+                public const string ImpuestosIndex = "~/Modules/Portal/Impuestos/ImpuestosIndex.cshtml";
             }
 
 

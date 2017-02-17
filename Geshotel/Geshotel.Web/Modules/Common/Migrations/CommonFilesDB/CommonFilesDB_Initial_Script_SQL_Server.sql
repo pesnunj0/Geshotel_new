@@ -744,7 +744,7 @@ CREATE TABLE impuestos (
   [impuesto] varchar(30) NOT NULL,
   [porcentaje] float NOT NULL,
   [cta_contable] varchar(15) ,
-  [activo_geshotel] smallint,
+  [activo_geshotel] bit(1),
   [user_id] smallint ,
   [fecha_actualizacion] datetime2(0) ,
   PRIMARY KEY ([impuesto_id])

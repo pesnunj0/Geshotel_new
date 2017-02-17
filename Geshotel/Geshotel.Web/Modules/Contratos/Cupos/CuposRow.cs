@@ -24,7 +24,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("ClienteRazon")]
-        [LookupEditor(typeof(ClientesRow), FilterField = "GrupoClienteId", FilterValue = 2)]
+        [LookupEditor(("Portal.Clientes"), FilterField = "GrupoClienteId", FilterValue = 2)]
         public Int32? ClienteId
         {
             get { return Fields.ClienteId[this]; }
@@ -32,7 +32,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
-        [LookupEditor(typeof(HotelesRow))]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -54,7 +54,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Tipo Habitacion"), Column("tipo_habitacion_id"), NotNull, ForeignKey("tipos_habitacion", "tipo_habitacion_id"), LeftJoin("jTipoHabitacion"), TextualField("TipoHabitacionDescripcion")]
-        [LookupEditor(typeof(TiposHabitacionRow))]
+        [LookupEditor("Portal.TiposHabitacion")]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
