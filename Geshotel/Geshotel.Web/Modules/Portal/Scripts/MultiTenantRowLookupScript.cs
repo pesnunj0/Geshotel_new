@@ -54,6 +54,18 @@ namespace Geshotel.Portal.Scripts
 
         public override string GetScript()
         {
+            if (Authorization.HasPermission(PermissionKeys.Security))
+                return base.GetScript();
+            if (Authorization.HasPermission(PermissionKeys.Empresa))
+                return TwoLevelCache.GetLocalStoreOnly("MultiTenantLookup:" +
+                    this.ScriptName + ":" +
+                    ((UserDefinition)Authorization.UserDefinition).EmpresaId,
+                    TimeSpan.FromHours(1),
+                new TRow().GetFields().GenerationKey, () =>
+                {
+                    return base.GetScript();
+                });
+
             return TwoLevelCache.GetLocalStoreOnly("MultiTenantLookup:" +
                     this.ScriptName + ":" +
                     ((UserDefinition)Authorization.UserDefinition).HotelId,

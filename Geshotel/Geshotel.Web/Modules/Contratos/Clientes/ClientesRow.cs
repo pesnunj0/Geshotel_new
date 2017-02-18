@@ -39,7 +39,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DescCorta[this] = value; }
         }
 
-        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
+        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa"),LookupInclude]
         [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
@@ -55,7 +55,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
-        [LookupEditor(typeof(AgenciasRow), FilterField = "GrupoClienteId", FilterValue = 1)]
+        [LookupEditor(typeof(AgenciasRow), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId", FilterField = "GrupoClienteId", FilterValue = 1)]
         public Int32? AgenciaId
         {
             get { return Fields.AgenciaId[this]; }

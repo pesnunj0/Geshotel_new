@@ -37,7 +37,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.DescCorta[this] = value; }
         }
 
-        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa")]
+        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa"),LookupInclude]
         [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {

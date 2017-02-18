@@ -24,24 +24,31 @@ namespace Geshotel.Behaviors
 
         public bool ActivateFor(Row row)
         {
-            // ********************************************************************************************************
-            // Only special Rows like UsersRow, EmpresasRow or HotelesRow will have defined ITenantRow interface
-            // these rows are special and only administrators can insert, or update. 
-            // I don´t know yet if others can read o no, so I prefer to leave this door open.
+            // **************************************************************************************************************************
+            // I'm gonna change my first scope so  Authorization.HasPermission(PermissionKeys.Security) won´t have any restriction 
+            // so nothing to do
+            // If they have  Authorization.HasPermission(PermissionKeys.Empresa) then query will be filtered only by EmpresaID 
+            // otherwise query will be filtered by hotelId
             // 
-            // Rest of 
-            // Then I will check if fields hotel_id or empresa_id exists in Row
+            // 
+            //  will check if fields hotel_id or empresa_id exists in Row
             // If exists then return true else return false
+            //
+            // Note: We do not look for iTenant row at all
             // Javier on February 2017
-            // *********************************************************************************************************
+            // ***************************************************************************************************************************
 
-            isSpecialRow = false;
-            var mt =row as Portal.Entities.ITenantRow;
-            if (mt != null)
-            {
-                isSpecialRow = true;
-            }
-                
+            //isSpecialRow = false;
+            //var mt =row as Portal.Entities.ITenantRow;
+            //if (mt != null)
+            //{
+            //    isSpecialRow = true;
+            //}
+
+            // If administrator nothing to do doesn´t matter fields
+            if (Authorization.HasPermission(PermissionKeys.Security))
+                return false;
+
             fldHotelId = (row.FindFieldByPropertyName("HotelId") ??
                row.FindField("hotel_id")) as Int16Field;
 
@@ -57,19 +64,21 @@ namespace Geshotel.Behaviors
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             // -----------------------------------------------------------------------------------------------------
-            // If isSpecialRow and is Administrator then can see all records
+            // If is Administrator then can see all records
             // otherwise filter by hotel if hotel_id field is in row or filter by empresa_if empresa_id is in row
             // Javier Feb 2017
             // -----------------------------------------------------------------------------------------------------
 
-            if (isSpecialRow & Authorization.HasPermission(PermissionKeys.Security))
+            if (Authorization.HasPermission(PermissionKeys.Security))
                 return;
+            // ******************************************************************************************
+            // We always filter by empresa_id becouse all rows with field hotel_id has also empresa_id
+            // ******************************************************************************************
+            query.Where(fldEmpresaId == user.EmpresaId);
+            // if has no empresa permission and exist HotelId field we filter by HotelId
+            if (!Authorization.HasPermission(PermissionKeys.Empresa) & !ReferenceEquals(null, fldHotelId))
+                query.Where(fldHotelId == user.HotelId);
 
-            if (!ReferenceEquals(null, fldHotelId))        
-                query.Where(fldHotelId == user.HotelId);           
-            else
-                if (!ReferenceEquals(null, fldEmpresaId))
-                    query.Where(fldEmpresaId == user.EmpresaId);
         }
 
         public void OnPrepareQuery(IListRequestHandler handler,
@@ -77,29 +86,32 @@ namespace Geshotel.Behaviors
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             // -----------------------------------------------------------------------------------------------------
-            // If isSpecialRow and is Administrator then can see all records
+            // If is Administrator then can see all records
             // otherwise filter by hotel if hotel_id field is in row or filter by empresa_if empresa_id is in row
             // Javier Feb 2017
             // -----------------------------------------------------------------------------------------------------
 
-            if (isSpecialRow & Authorization.HasPermission(PermissionKeys.Security))
+            if (Authorization.HasPermission(PermissionKeys.Security))
                 return;
-
-            if (!ReferenceEquals(null, fldHotelId))
+            // ******************************************************************************************
+            // We always filter by empresa_id becouse all rows with field hotel_id has also empresa_id
+            // ******************************************************************************************
+            query.Where(fldEmpresaId == user.EmpresaId);
+            // if has no empresa permission and exist HotelId field we filter by HotelId
+            if (!Authorization.HasPermission(PermissionKeys.Empresa) & !ReferenceEquals(null, fldHotelId))
                 query.Where(fldHotelId == user.HotelId);
-            if (!ReferenceEquals(null, fldEmpresaId))
-                query.Where(fldEmpresaId == user.EmpresaId);
+
         }
 
         public void OnSetInternalFields(ISaveRequestHandler handler)
         {
-            if (handler.IsCreate & !isSpecialRow)
+            if (handler.IsCreate)
             {
-                if (!ReferenceEquals(null, fldHotelId))
+                if (!ReferenceEquals(null, fldEmpresaId))
+                    fldEmpresaId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).EmpresaId;
+
+                if (!Authorization.HasPermission(PermissionKeys.Empresa) & !ReferenceEquals(null, fldHotelId))
                     fldHotelId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).HotelId;
-                else
-                     if (!ReferenceEquals(null, fldEmpresaId))       
-                        fldEmpresaId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).EmpresaId;
             }
         }
 
@@ -108,10 +120,10 @@ namespace Geshotel.Behaviors
             var user = (UserDefinition)Authorization.UserDefinition;
             if (fldEmpresaId[handler.Row] != user.EmpresaId)
                 Authorization.ValidatePermission(
-                    PermissionKeys.Empresa);
+                    PermissionKeys.Security);
             if (fldHotelId[handler.Row] != user.HotelId)
                 Authorization.ValidatePermission(
-                    PermissionKeys.Hotel);
+                    PermissionKeys.Empresa);
         }
 
         public void OnAfterDelete(IDeleteRequestHandler handler) { }

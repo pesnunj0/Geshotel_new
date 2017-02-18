@@ -20,7 +20,7 @@
     "Db.Contratos.Agencias.Contacto": "Contact Name",
     "Db.Contratos.Agencias.DescCorta": "Short Name",
     "Db.Contratos.Agencias.DireccionFra": "Invoice Address",
-    "Db.Contratos.Agencias.EmpresaId": "Agency Id",
+    "Db.Contratos.Agencias.EmpresaId": "Company",
     "Db.Contratos.Agencias.EntityPlural": "Agencies",
     "Db.Contratos.Agencias.EntitySingular": "Agencies",
     "Db.Contratos.Agencias.FacturaAnticipada": "Arrival Invoice",
