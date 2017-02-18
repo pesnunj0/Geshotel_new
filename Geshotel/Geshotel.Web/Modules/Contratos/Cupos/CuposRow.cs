@@ -12,7 +12,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("Cupos"), InstanceName("Cupos"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Contratos.Cupos")]
     public sealed class CuposRow : Row, IIdRow
     {

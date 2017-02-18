@@ -20,7 +20,7 @@ namespace Geshotel.Behaviors
     {
         private Int16Field fldHotelId;
         private Int16Field fldEmpresaId;
-        private Boolean isSpecialRow;
+        //private Boolean isSpecialRow;
 
         public bool ActivateFor(Row row)
         {

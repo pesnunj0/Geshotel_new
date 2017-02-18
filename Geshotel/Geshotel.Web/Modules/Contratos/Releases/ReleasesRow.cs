@@ -12,7 +12,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("Releases"), InstanceName("Releases"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     public sealed class ReleasesRow : Row, IIdRow, INameRow
     {
         [DisplayName("Release Id"), Column("release_id"), Identity]

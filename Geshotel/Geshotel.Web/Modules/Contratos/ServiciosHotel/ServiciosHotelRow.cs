@@ -12,7 +12,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), TableName("servicios_hotel"), DisplayName("Servicios Hotel"), InstanceName("Servicios Hotel"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     public sealed class ServiciosHotelRow : Row, IIdRow, INameRow
     {
         [DisplayName("Servicio Hotel Id"), Column("servicio_hotel_id"), Identity]

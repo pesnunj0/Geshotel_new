@@ -4,8 +4,8 @@
     var hideNav = Request["hideNav"] == "1";
     var logged = Serenity.Authorization.Username;
     var themeCookie = Request.Cookies["ThemePreference"];
-    var hotelCookie = Request.Cookies["hotelPreference"];
-    var empresaCookie = Request.Cookies["empresaPreference"];
+    //var hotelCookie = Request.Cookies["hotelPreference"];
+    //var empresaCookie = Request.Cookies["empresaPreference"];
     var theme = themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
     var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
     var user = (UserDefinition)Serenity.Authorization.UserDefinition;
@@ -129,7 +129,7 @@ else
                 <form method="post">
                     <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
 
-                    <div class="form-group" style="margin-top: 15px;">
+                    @*<div class="form-group" style="margin-top: 15px;">
                         <label class="control-sidebar-subheading">@Texts.Site.Layout.Empresa</label>
                         <select id="EmpresaSelect" class="form-control"></select>
                     </div>
@@ -137,7 +137,7 @@ else
                     <div class="form-group" style="margin-top: 15px;">
                         <label class="control-sidebar-subheading">@Texts.Site.Layout.Hotel</label>
                         <select id="EmpresaSelect" class="form-control"></select>
-                    </div>
+                    </div>*@
 
                     <div class="form-group">
                         <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
@@ -161,7 +161,7 @@ else
         new Geshotel.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
         new Geshotel.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
         new Geshotel.Common.ThemeSelection($('#ThemeSelect'));
-        new Geshotel.Common.EmpresaSelection($('#EmpresaSelect'));
+        //new Geshotel.Common.EmpresaSelection($('#EmpresaSelect'));
         @RenderSection("PageInitScript", false);
 
         var doLayout = function () {

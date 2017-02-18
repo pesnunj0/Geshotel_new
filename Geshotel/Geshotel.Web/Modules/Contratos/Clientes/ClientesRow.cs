@@ -14,7 +14,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("clientes"), InstanceName("clientes"), TwoLevelCached]
     [ReadPermission("Todos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Contratos.Clientes")]
     public sealed class ClientesRow : Row, IIdRow, INameRow
     {

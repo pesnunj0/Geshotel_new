@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("Ofertas Rejillas"), InstanceName("Ofertas Rejillas"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     public sealed class OfertasRejillasRow : Row, IIdRow
     {
         [DisplayName("Rejilla Id"), Column("rejilla_id"), Identity]

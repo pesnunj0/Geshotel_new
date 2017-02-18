@@ -11,8 +11,8 @@ namespace Geshotel.Contratos.Entities
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Contratos"), InstanceName("Contratos"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ReadPermission("Contratos:Empresa")]
+    [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Contratos.Contratos]")]
     public sealed class ContratosRow : Row, IIdRow, INameRow
     {

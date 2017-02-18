@@ -12,7 +12,7 @@ namespace Geshotel.Contratos.Entities
 
     [ConnectionKey("Default"), DisplayName("Mercados"), InstanceName("Mercados"), TwoLevelCached]
     [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Contratos.Mercados")]
     public sealed class MercadosRow : Row, IIdRow, INameRow
     {
