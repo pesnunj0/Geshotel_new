@@ -73,6 +73,7 @@ namespace Geshotel.Behaviors
                 return;
             // ******************************************************************************************
             // We always filter by empresa_id becouse all rows with field hotel_id has also empresa_id
+            // But not all rows that have empresa_id have also hotel_id
             // ******************************************************************************************
             query.Where(fldEmpresaId == user.EmpresaId);
             // if has no empresa permission and exist HotelId field we filter by HotelId

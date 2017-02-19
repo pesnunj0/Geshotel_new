@@ -12,8 +12,8 @@ namespace Geshotel.Portal.Entities
     [ConnectionKey("Default"), DisplayName("empresas"), InstanceName("empresas"), TwoLevelCached]
     [ReadPermission("Administration:Empresa")]
     [ModifyPermission("Administration:Empresa")]
-    [LookupScript("Portal.Empresas")]
-    public sealed class EmpresasRow : Row, IIdRow, INameRow
+    
+    public sealed class EmpresasRow : Row, IIdRow, INameRow, IEmpresaRow
     {
         [DisplayName("Empresa Id"), Column("empresa_id"), Identity]
         public Int16? EmpresaId
@@ -126,6 +126,11 @@ namespace Geshotel.Portal.Entities
         {
             get { return Fields.ProvinciaDefectoIsta[this]; }
             set { Fields.ProvinciaDefectoIsta[this] = value; }
+        }
+
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
         }
 
         IIdField IIdRow.IdField
