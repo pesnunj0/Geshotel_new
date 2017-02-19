@@ -42,7 +42,7 @@ namespace Geshotel.Portal.Scripts
         {
             var r = new TRow();
 
-            query.Where(r.EmpresaIdField == ((UserDefinition)Authorization.UserDefinition).EmpresaId);
+            query.Where(r.EmpresaIdField == (((UserDefinition)Authorization.UserDefinition).EmpresaId ?? -1));
         }
 
         public override string GetScript()

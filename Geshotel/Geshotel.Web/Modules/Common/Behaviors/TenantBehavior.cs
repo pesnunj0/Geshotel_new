@@ -75,10 +75,10 @@ namespace Geshotel.Behaviors
             // We always filter by empresa_id becouse all rows with field hotel_id has also empresa_id
             // But not all rows that have empresa_id have also hotel_id
             // ******************************************************************************************
-            query.Where(fldEmpresaId == user.EmpresaId);
+            query.Where(fldEmpresaId == (user.EmpresaId ?? -1));
             // if has no empresa permission and exist HotelId field we filter by HotelId
             if (!Authorization.HasPermission(PermissionKeys.Empresa) & !ReferenceEquals(null, fldHotelId))
-                query.Where(fldHotelId == user.HotelId);
+                query.Where(fldHotelId == (user.HotelId ?? -1));
 
         }
 
@@ -97,10 +97,10 @@ namespace Geshotel.Behaviors
             // ******************************************************************************************
             // We always filter by empresa_id becouse all rows with field hotel_id has also empresa_id
             // ******************************************************************************************
-            query.Where(fldEmpresaId == user.EmpresaId);
+            query.Where(fldEmpresaId == (user.EmpresaId ?? -1));
             // if has no empresa permission and exist HotelId field we filter by HotelId
             if (!Authorization.HasPermission(PermissionKeys.Empresa) & !ReferenceEquals(null, fldHotelId))
-                query.Where(fldHotelId == user.HotelId);
+                query.Where(fldHotelId == (user.HotelId ?? -1));
 
         }
 

@@ -44,11 +44,11 @@ namespace Geshotel.Portal.Scripts
 
                 if (Authorization.HasPermission(PermissionKeys.Empresa))
                 {
-                    query.Where(r.EmpresaIdField == ((UserDefinition)Authorization.UserDefinition).EmpresaId);
+                    query.Where(r.EmpresaIdField == (((UserDefinition)Authorization.UserDefinition).EmpresaId ?? -1));
                 }
                 else
                 {
-                    query.Where(r.HotelIdField == ((UserDefinition)Authorization.UserDefinition).HotelId);
+                    query.Where(r.HotelIdField == (((UserDefinition)Authorization.UserDefinition).HotelId ?? -1));
                 }
         }
 

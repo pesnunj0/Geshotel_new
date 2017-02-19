@@ -31,8 +31,8 @@
                     // -----------------------------
                     // Added By Javier For Tenancy
                     // -----------------------------
-                    EmpresaId = user.EmpresaId.Value,
-                    HotelId = user.HotelId.Value
+                    EmpresaId = user.EmpresaId,
+                    HotelId = user.HotelId
                 };
 
             return null;

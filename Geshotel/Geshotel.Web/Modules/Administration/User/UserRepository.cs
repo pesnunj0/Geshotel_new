@@ -261,9 +261,9 @@ namespace Geshotel.Administration.Repositories
 
                 var user = (UserDefinition)Authorization.UserDefinition;
                 if (!Authorization.HasPermission(PermissionKeys.Empresa))
-                    query.Where(fld.EmpresaId == user.EmpresaId);
+                    query.Where(fld.EmpresaId == (user.EmpresaId ?? -1));
                 if (!Authorization.HasPermission(PermissionKeys.Hotel))
-                    query.Where(fld.HotelId == user.HotelId);
+                    query.Where(fld.HotelId == (user.HotelId ?? -1));
             }
         }
     }
