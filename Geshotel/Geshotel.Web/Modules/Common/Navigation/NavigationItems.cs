@@ -12,7 +12,8 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(8000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
 [assembly: NavigationLink(8000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]
 [assembly: NavigationLink(8000, "Contratos/TiposHabitacionHotel", typeof(Geshotel.Contratos.Pages.TiposHabitacionHotelController), icon: "fa-bed")]
-[assembly: NavigationLink(9300, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
+[assembly: NavigationLink(8000, "Contratos/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
+[assembly: NavigationLink(8000, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
 
 //[assembly: NavigationLink(8000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
 //[assembly: NavigationLink(8000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]
@@ -46,7 +47,6 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHabitacion", typeof(Geshotel.Portal.Pages.TiposHabitacionController), icon: "fa-bed")]
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHotel", typeof(Geshotel.Portal.Pages.TiposHotelController), icon: "fa-home")]
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHuesped", typeof(Geshotel.Portal.Pages.TiposHuespedController), icon: "icon-people")]
-[assembly: NavigationLink(9200, "Settings/Hotels/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
 
 [assembly: NavigationMenu(9300, "Settings/Accounting", icon: "fa-money")]
 

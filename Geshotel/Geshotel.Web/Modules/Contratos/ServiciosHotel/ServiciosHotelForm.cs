@@ -19,6 +19,6 @@ namespace Geshotel.Contratos.Forms
         public Double Costo { get; set; }
         public String CtaContable { get; set; }
         public String DptoContable { get; set; }
-        public Int16 PermiteCredito { get; set; }
+        public Boolean PermiteCredito { get; set; }
     }
 }

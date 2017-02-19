@@ -97,7 +97,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Permite Credito"), Column("permite_credito"), NotNull]
-        public Int16? PermiteCredito
+        public Boolean? PermiteCredito
         {
             get { return Fields.PermiteCredito[this]; }
             set { Fields.PermiteCredito[this] = value; }
@@ -155,7 +155,7 @@ namespace Geshotel.Contratos.Entities
             public DoubleField Costo;
             public StringField CtaContable;
             public StringField DptoContable;
-            public Int16Field PermiteCredito;
+            public BooleanField PermiteCredito;
 
             public StringField HotelName;
             public Int16Field EmpresaId;
