@@ -6,7 +6,7 @@ namespace Geshotel.Portal {
         Impuesto?: string;
         Porcentaje?: number;
         CtaContable?: string;
-        ActivoGeshotel?: number;
+        ActivoGeshotel?: boolean;
         UserId?: number;
         FechaActualizacion?: string;
         UserName?: string;

@@ -2372,6 +2372,11 @@ var Geshotel;
             ServiciosHotelRow.idProperty = 'ServicioHotelId';
             ServiciosHotelRow.nameProperty = 'CtaContable';
             ServiciosHotelRow.localTextPrefix = 'Contratos.ServiciosHotel';
+            ServiciosHotelRow.lookupKey = 'Contratos.ServiciosHotel';
+            function getLookup() {
+                return Q.getLookup('Contratos.ServiciosHotel');
+            }
+            ServiciosHotelRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = ServiciosHotelRow.Fields || (ServiciosHotelRow.Fields = {}));
@@ -4476,7 +4481,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ImpuestosForm.formKey = 'Portal.Impuestos';
         Portal.ImpuestosForm = ImpuestosForm;
-        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['Impuesto', function () { return Serenity.StringEditor; }], ['Porcentaje', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['ActivoGeshotel', function () { return Serenity.IntegerEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['FechaActualizacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(ImpuestosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['Impuesto', function () { return Serenity.StringEditor; }], ['Porcentaje', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['ActivoGeshotel', function () { return Serenity.BooleanEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['FechaActualizacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(ImpuestosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

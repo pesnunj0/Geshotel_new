@@ -1808,6 +1808,8 @@ declare namespace Geshotel.Contratos {
         const idProperty = "ServicioHotelId";
         const nameProperty = "CtaContable";
         const localTextPrefix = "Contratos.ServiciosHotel";
+        const lookupKey = "Contratos.ServiciosHotel";
+        function getLookup(): Q.Lookup<ServiciosHotelRow>;
         namespace Fields {
             const ServicioHotelId: string;
             const ServicioId: string;
@@ -4772,7 +4774,7 @@ declare namespace Geshotel.Portal {
         Impuesto: Serenity.StringEditor;
         Porcentaje: Serenity.DecimalEditor;
         CtaContable: Serenity.StringEditor;
-        ActivoGeshotel: Serenity.IntegerEditor;
+        ActivoGeshotel: Serenity.BooleanEditor;
         UserId: Serenity.LookupEditor;
         FechaActualizacion: Serenity.DateEditor;
     }
@@ -4784,7 +4786,7 @@ declare namespace Geshotel.Portal {
         Impuesto?: string;
         Porcentaje?: number;
         CtaContable?: string;
-        ActivoGeshotel?: number;
+        ActivoGeshotel?: boolean;
         UserId?: number;
         FechaActualizacion?: string;
         UserName?: string;

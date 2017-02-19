@@ -21,6 +21,11 @@ namespace Geshotel.Contratos {
         export const idProperty = 'ServicioHotelId';
         export const nameProperty = 'CtaContable';
         export const localTextPrefix = 'Contratos.ServiciosHotel';
+        export const lookupKey = 'Contratos.ServiciosHotel';
+
+        export function getLookup(): Q.Lookup<ServiciosHotelRow> {
+            return Q.getLookup<ServiciosHotelRow>('Contratos.ServiciosHotel');
+        }
 
         export namespace Fields {
             export declare const ServicioHotelId: string;
