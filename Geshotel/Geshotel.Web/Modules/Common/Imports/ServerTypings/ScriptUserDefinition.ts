@@ -5,6 +5,8 @@ namespace Geshotel {
         DisplayName?: string;
         IsAdmin?: boolean;
         Permissions?: { [key: string]: boolean };
+        EmpresaId?: number;
+        HotelId?: number;
     }
 }
 

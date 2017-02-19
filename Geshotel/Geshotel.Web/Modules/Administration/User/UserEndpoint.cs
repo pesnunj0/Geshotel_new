@@ -61,7 +61,7 @@ namespace Geshotel.Administration.Endpoints
         /// We don't cache it at dynamic script manager, because dynamic scripts are cached globally,
         /// similar to static variables, not per user.
         /// </summary>
-        [NonAction, DataScript("UserData", CacheDuration = -1)]
+        [NonAction, DataScript("UserData", CacheDuration = -1), ServiceAuthorize("?")]
         public ScriptUserDefinition GetUserData()
         {
             var result = new ScriptUserDefinition();
@@ -76,6 +76,8 @@ namespace Geshotel.Administration.Endpoints
             result.Username = user.Username;
             result.DisplayName = user.DisplayName;
             result.IsAdmin = user.Username == "admin";
+            result.EmpresaId = user.EmpresaId;
+            result.HotelId = user.HotelId;
 
             result.Permissions = TwoLevelCache.GetLocalStoreOnly("ScriptUserPermissions:" + user.Id, TimeSpan.Zero,
                 UserPermissionRow.Fields.GenerationKey, () =>

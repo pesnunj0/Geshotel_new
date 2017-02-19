@@ -2360,7 +2360,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ServiciosHotelForm.formKey = 'Contratos.ServiciosHotel';
         Contratos.ServiciosHotelForm = ServiciosHotelForm;
-        [['ServicioId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['ImpuestoId', function () { return Serenity.LookupEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['PermiteCredito', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ServiciosHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['ServicioId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['ImpuestoId', function () { return Serenity.LookupEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['CtaContable', function () { return Serenity.StringEditor; }], ['DptoContable', function () { return Serenity.StringEditor; }], ['PermiteCredito', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(ServiciosHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -2468,7 +2468,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         TiposHabitacionHotelForm.formKey = 'Contratos.TiposHabitacionHotel';
         Contratos.TiposHabitacionHotelForm = TiposHabitacionHotelForm;
-        [['HotelId', function () { return Serenity.LookupEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(TiposHabitacionHotelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -7236,6 +7236,14 @@ var Geshotel;
             TiposHabitacionHotelDialog.prototype.getIdProperty = function () { return Contratos.TiposHabitacionHotelRow.idProperty; };
             TiposHabitacionHotelDialog.prototype.getLocalTextPrefix = function () { return Contratos.TiposHabitacionHotelRow.localTextPrefix; };
             TiposHabitacionHotelDialog.prototype.getService = function () { return Contratos.TiposHabitacionHotelService.baseUrl; };
+            TiposHabitacionHotelDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+            };
+            TiposHabitacionHotelDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                if (!Q.Authorization.hasPermission("Administration:Security"))
+                    this.form.EmpresaId.value = (Geshotel.Authorization.userDefinition.EmpresaId || -1).toString();
+            };
             return TiposHabitacionHotelDialog;
         }(Serenity.EntityDialog));
         TiposHabitacionHotelDialog = __decorate([
