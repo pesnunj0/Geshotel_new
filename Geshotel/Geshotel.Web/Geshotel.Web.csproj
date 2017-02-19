@@ -2753,7 +2753,6 @@
     <Compile Include="Modules\Portal\Provincias\ProvinciasRow.cs" />
     <Compile Include="Modules\Portal\ReservaEstados\ReservaEstadosRepository.cs" />
     <Compile Include="Modules\Portal\ReservaEstados\ReservaEstadosRow.cs" />
-    <Compile Include="Modules\Portal\Scripts\MultiEmpresaRowLookupScript .cs" />
     <Compile Include="Modules\Portal\Scripts\MultiTenantRowLookupScript.cs" />
     <Compile Include="Modules\Portal\Servicios\ServiciosColumns.cs" />
     <Compile Include="Modules\Portal\Servicios\ServiciosEndpoint.cs" />
