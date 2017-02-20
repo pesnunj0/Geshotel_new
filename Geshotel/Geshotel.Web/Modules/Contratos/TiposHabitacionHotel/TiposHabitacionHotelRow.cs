@@ -26,7 +26,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
-        [LookupEditor("Portal.Hoteles")]
+        [LookupEditor("Portal.Hoteles", CascadeFrom = "EmpresaId", CascadeField = "EmpresaId")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -35,7 +35,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
-        [LookupEditor("Portal.Empresas")]
+        [LookupEditor("Portal.Empresas"), ReadPermission(Administration.PermissionKeys.Security)]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }

@@ -13,7 +13,7 @@ namespace Geshotel.Portal.Entities
     [ReadPermission("Administration:Empresa")]
     [ModifyPermission("Administration:Empresa")]
     
-    public sealed class EmpresasRow : Row, IIdRow, INameRow, IEmpresaRow
+    public sealed class EmpresasRow : Row, IIdRow, INameRow, ITenantRow
     {
         [DisplayName("Empresa Id"), Column("empresa_id"), Identity]
         public Int16? EmpresaId
@@ -141,6 +141,11 @@ namespace Geshotel.Portal.Entities
         StringField INameRow.NameField
         {
             get { return Fields.Empresa; }
+        }
+
+        public Int16Field HotelIdField
+        {
+            get { return null; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -11,5 +11,15 @@ namespace Geshotel.Contratos {
 
         protected form = new TiposHabitacionHotelForm(this.idPrefix);
 
+        protected updateInterface() {
+            super.updateInterface();
+        }
+
+        public loadEntity(entity: TiposHabitacionHotelRow) {
+            super.loadEntity(entity);
+
+            if (!Q.Authorization.hasPermission("Administration:Security"))
+                this.form.EmpresaId.value = (Authorization.userDefinition.EmpresaId || -1).toString();
+        }
     }
 }

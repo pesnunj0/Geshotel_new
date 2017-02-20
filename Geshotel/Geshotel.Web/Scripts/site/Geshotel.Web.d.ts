@@ -1784,7 +1784,7 @@ declare namespace Geshotel.Contratos {
         Costo: Serenity.DecimalEditor;
         CtaContable: Serenity.StringEditor;
         DptoContable: Serenity.StringEditor;
-        PermiteCredito: Serenity.IntegerEditor;
+        PermiteCredito: Serenity.BooleanEditor;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -1796,7 +1796,7 @@ declare namespace Geshotel.Contratos {
         Costo?: number;
         CtaContable?: string;
         DptoContable?: string;
-        PermiteCredito?: number;
+        PermiteCredito?: boolean;
         HotelName?: string;
         EmpresaId?: number;
         Empresa?: string;
@@ -1914,6 +1914,7 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface TiposHabitacionHotelForm {
+        EmpresaId: Serenity.LookupEditor;
         HotelId: Serenity.LookupEditor;
         TipoHabitacionId: Serenity.LookupEditor;
         ServicioId: Serenity.LookupEditor;
@@ -5808,6 +5809,8 @@ declare namespace Geshotel {
         Permissions?: {
             [key: string]: boolean;
         };
+        EmpresaId?: number;
+        HotelId?: number;
     }
 }
 declare namespace Geshotel.Common {
@@ -6306,6 +6309,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         protected form: TiposHabitacionHotelForm;
+        protected updateInterface(): void;
+        loadEntity(entity: TiposHabitacionHotelRow): void;
     }
 }
 declare namespace Geshotel.Contratos {

@@ -42,14 +42,15 @@ namespace Geshotel.Portal.Scripts
         {
             var r = new TRow();
 
-                if (Authorization.HasPermission(PermissionKeys.Empresa))
-                {
-                    query.Where(r.EmpresaIdField == (((UserDefinition)Authorization.UserDefinition).EmpresaId ?? -1));
-                }
-                else
-                {
-                    query.Where(r.HotelIdField == (((UserDefinition)Authorization.UserDefinition).HotelId ?? -1));
-                }
+            if (Authorization.HasPermission(PermissionKeys.Empresa) ||
+                ReferenceEquals(null, r.HotelIdField))
+            {
+                query.Where(r.EmpresaIdField == (((UserDefinition)Authorization.UserDefinition).EmpresaId ?? -1));
+            }
+            else
+            {
+                query.Where(r.HotelIdField == (((UserDefinition)Authorization.UserDefinition).HotelId ?? -1));
+            }
         }
 
         public override string GetScript()
