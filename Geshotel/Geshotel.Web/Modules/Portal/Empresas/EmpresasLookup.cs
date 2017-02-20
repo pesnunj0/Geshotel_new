@@ -6,7 +6,7 @@ namespace Geshotel.Portal.Scripts
     using Serenity.ComponentModel;
     using Serenity.Web;
     [LookupScript("Portal.Empresas")]
-    public class EmpresasLookup : MultiEmpresaRowLookupScript<EmpresasRow>
+    public class EmpresasLookup : MultiTenantRowLookupScript<EmpresasRow>
     {
 
     }

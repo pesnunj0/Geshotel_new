@@ -2729,7 +2729,6 @@
     <Compile Include="Modules\Portal\Empresas\EmpresasRepository.cs" />
     <Compile Include="Modules\Portal\Empresas\EmpresasRow.cs" />
     <Compile Include="Modules\Portal\Empresas\EmpresasLookup.cs" />
-    <Compile Include="Modules\Portal\Empresas\IEmpresaRow .cs" />
     <Compile Include="Modules\Portal\Hoteles\ITenantRow.cs" />
     <Compile Include="Modules\Portal\EstadosFacturas\EstadosFacturasRepository.cs" />
     <Compile Include="Modules\Portal\EstadosFacturas\EstadosFacturasRow.cs" />
