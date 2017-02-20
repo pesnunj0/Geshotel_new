@@ -832,6 +832,8 @@
     <Content Include="Modules\Northwind\OrderDetail\OrderDetailIndex.cshtml" />
     <Content Include="Content\site\site.contratos.less" />
     <Content Include="Content\site\site.portal.less" />
+    <Content Include="Modules\Portal\TiposBloqueo\TiposBloqueoIndex.cshtml" />
+    <Content Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1575,6 +1577,18 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.GruposHabitacionService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HabitacionesSituacionColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HabitacionesSituacionForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HabitacionesSituacionRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HabitacionesSituacionService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.HotelesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1645,6 +1659,18 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TipoAplicacionOfertaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposBloqueoColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposBloqueoForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposBloqueoRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposBloqueoService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposCondicionColumns.ts">
@@ -2253,6 +2279,10 @@
     <TypeScriptCompile Include="Modules\Portal\Provincias\ProvinciasGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\Servicios\ServiciosDialog.ts" />
     <TypeScriptCompile Include="Modules\Portal\Servicios\ServiciosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionDialog.ts" />
+    <TypeScriptCompile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionGrid.ts" />
+    <TypeScriptCompile Include="Modules\Portal\TiposBloqueo\TiposBloqueoDialog.ts" />
+    <TypeScriptCompile Include="Modules\Portal\TiposBloqueo\TiposBloqueoGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHabitacion\TiposHabitacionDialog.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHabitacion\TiposHabitacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHotel\TiposHotelDialog.ts" />
@@ -2507,6 +2537,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170219_224500_Habitaciones.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170208_224500_Servicios_hotel.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170123_163900_Initial.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_120000_TemporadasYMercados.cs" />
@@ -2763,6 +2794,18 @@
     <Compile Include="Modules\Portal\Servicios\ServiciosRow.cs" />
     <Compile Include="Modules\Portal\Sexos\SexosRepository.cs" />
     <Compile Include="Modules\Portal\Sexos\SexosRow.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionColumns.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionEndpoint.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionForm.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionPage.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionRepository.cs" />
+    <Compile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionRow.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoColumns.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoEndpoint.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoForm.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoPage.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoRepository.cs" />
+    <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoRow.cs" />
     <Compile Include="Modules\Portal\TiposDocumento\TiposDocumentoRepository.cs" />
     <Compile Include="Modules\Portal\TiposDocumento\TiposDocumentoRow.cs" />
     <Compile Include="Modules\Portal\TiposHabitacion\TiposHabitacionColumns.cs" />

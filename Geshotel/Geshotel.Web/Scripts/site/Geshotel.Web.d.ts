@@ -5226,6 +5226,49 @@ declare namespace Geshotel.Portal {
     }
 }
 declare namespace Geshotel.Portal {
+    class TiposBloqueoForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TiposBloqueoForm {
+        Descriptivo: Serenity.StringEditor;
+        Editable: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Portal {
+    interface TiposBloqueoRow {
+        TipoBloqueoId?: number;
+        Descriptivo?: string;
+        Editable?: number;
+    }
+    namespace TiposBloqueoRow {
+        const idProperty = "TipoBloqueoId";
+        const nameProperty = "Descriptivo";
+        const localTextPrefix = "Portal.TiposBloqueo";
+        namespace Fields {
+            const TipoBloqueoId: any;
+            const Descriptivo: any;
+            const Editable: any;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
+    namespace TiposBloqueoService {
+        const baseUrl = "Portal/TiposBloqueo";
+        function Create(request: Serenity.SaveRequest<TiposBloqueoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TiposBloqueoRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TiposBloqueoRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TiposBloqueoRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Portal {
 }
 declare namespace Geshotel.Portal {
     class TiposCondicionForm extends Serenity.PrefixedContext {
@@ -7194,6 +7237,26 @@ declare namespace Geshotel.Portal {
     class TipoAplicacionOfertaGrid extends Serenity.EntityGrid<TipoAplicacionOfertaRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof TipoAplicacionOfertaDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposBloqueoDialog extends Serenity.EntityDialog<TiposBloqueoRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TiposBloqueoForm;
+    }
+}
+declare namespace Geshotel.Portal {
+    class TiposBloqueoGrid extends Serenity.EntityGrid<TiposBloqueoRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TiposBloqueoDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

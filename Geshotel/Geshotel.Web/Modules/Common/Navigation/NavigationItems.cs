@@ -47,6 +47,10 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHabitacion", typeof(Geshotel.Portal.Pages.TiposHabitacionController), icon: "fa-bed")]
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHotel", typeof(Geshotel.Portal.Pages.TiposHotelController), icon: "fa-home")]
 [assembly: NavigationLink(9200, "Settings/Hotels/TiposHuesped", typeof(Geshotel.Portal.Pages.TiposHuespedController), icon: "icon-people")]
+[assembly: NavigationLink(9200, "Settings/Hotels/TiposBloqueoHabitacion", typeof(Geshotel.Portal.Pages.TiposBloqueoController),icon: "fa-hand-stop-o")]
+[assembly: NavigationLink(9200, "Settings/Hotels/EstadoHabitaciones", typeof(Geshotel.Portal.Pages.HabitacionesSituacionController))]
+
+
 
 [assembly: NavigationMenu(9300, "Settings/Accounting", icon: "fa-money")]
 

@@ -8,7 +8,7 @@ namespace Geshotel.Contratos {
         Costo?: number;
         CtaContable?: string;
         DptoContable?: string;
-        PermiteCredito?: number;
+        PermiteCredito?: boolean;
         HotelName?: string;
         EmpresaId?: number;
         Empresa?: string;

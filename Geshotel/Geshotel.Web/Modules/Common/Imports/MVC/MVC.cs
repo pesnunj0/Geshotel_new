@@ -512,6 +512,13 @@ namespace MVC
             }
 
 
+            public static class HabitacionesSituacion
+            {
+
+                public const string HabitacionesSituacionIndex = "~/Modules/Portal/HabitacionesSituacion/HabitacionesSituacionIndex.cshtml";
+            }
+
+
             public static class Hoteles
             {
 
@@ -558,6 +565,13 @@ namespace MVC
             {
 
                 public const string TipoAplicacionOfertaIndex = "~/Modules/Portal/TipoAplicacionOferta/TipoAplicacionOfertaIndex.cshtml";
+            }
+
+
+            public static class TiposBloqueo
+            {
+
+                public const string TiposBloqueoIndex = "~/Modules/Portal/TiposBloqueo/TiposBloqueoIndex.cshtml";
             }
 
 
