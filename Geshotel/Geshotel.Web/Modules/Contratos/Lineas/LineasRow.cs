@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Lineas"), InstanceName("Lineas"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
  //   [ForeignKey("servicios","servicio_id")]
     public sealed class LineasRow : Row, IIdRow

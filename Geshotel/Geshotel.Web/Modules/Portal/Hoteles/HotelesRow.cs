@@ -10,8 +10,8 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
-    [ReadPermission("Administration:Hotel")]
-    [ModifyPermission("Administration:Hotel")]
+    [ReadPermission("Todos:General")]
+    [ModifyPermission("Administration:General")]
 
     public sealed class HotelesRow : Row, IIdRow, INameRow, ITenantRow
     {

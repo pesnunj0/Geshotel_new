@@ -18,7 +18,7 @@ namespace Geshotel.Contratos.Entities
     [LookupScript("Contratos.Clientes")]
     public sealed class ClientesRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Cliente Id"), Column("cliente_id"), Identity]
+        [DisplayName("Cliente Id"), Column("cliente_id"), Identity,LookupInclude]
         public Int32? ClienteId
         {
             get { return Fields.ClienteId[this]; }

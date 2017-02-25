@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("habitaciones_situacion"), DisplayName("Habitaciones Situacion"), InstanceName("Habitaciones Situacion"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.HabitacionesSituacion")]
     public sealed class HabitacionesSituacionRow : Row, IIdRow, INameRow

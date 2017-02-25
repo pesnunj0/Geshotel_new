@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("frecuencia_facturacion"), DisplayName("Frecuencia Facturacion"), InstanceName("Frecuencia Facturacion"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.FrecuenciaFacturacion")]
     public sealed class FrecuenciaFacturacionRow : Row, IIdRow, INameRow

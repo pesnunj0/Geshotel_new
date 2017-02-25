@@ -8390,13 +8390,6 @@ section.content > .s-DataGrid {
 .s-Portal-UnidadesCalculoDialog .caption {
   width: 150px;
 }
-/*--------------------------------------*/
-.s-Portal-TiposHabitacionHotelDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposHabitacionHotelDialog .caption {
-  width: 150px;
-}
 .s-Portal-ImpuestosDialog > .size {
   width: 650px;
 }
@@ -8409,10 +8402,16 @@ section.content > .s-DataGrid {
 .s-Portal-TiposBloqueoDialog .caption {
   width: 150px;
 }
-.s-Portal-TiposBloqueoDialog > .size {
+.s-Portal-TiposDeTarjetaDialog > .size {
   width: 650px;
 }
-.s-Portal-TiposBloqueoDialog .caption {
+.s-Portal-TiposDeTarjetaDialog .caption {
+  width: 150px;
+}
+.s-Portal-TiposDeTarjetaDialog > .size {
+  width: 650px;
+}
+.s-Portal-TiposDeTarjetaDialog .caption {
   width: 150px;
 }
 .s-Contratos-AgenciasDialog > .size {
@@ -8612,217 +8611,104 @@ section.content > .s-DataGrid {
 .s-Contratos-ServiciosHotelDialog .caption {
   width: 150px;
 }
-.s-Portal-FormasDePagoDialog > .size {
+.s-Contratos-CanalesReservaDialog > .size {
   width: 650px;
 }
-.s-Portal-FormasDePagoDialog .caption {
+.s-Contratos-CanalesReservaDialog .caption {
   width: 150px;
 }
-.s-Portal-MonedasDialog > .size {
-  width: 650px;
+.s-Recepcion-ReservasDialog > .size {
+  min-width: 950px;
+  height: 650px;
 }
-.s-Portal-MonedasDialog .caption {
+.s-Recepcion-ReservasDialog .caption {
   width: 150px;
 }
-.s-Portal-NacionesDialog > .size {
+@media (min-width: 900px) {
+  .s-Recepcion-ReservasDialog .field.HotelId,
+  .s-Recepcion-ReservasDialog .field.EstadoReservaId,
+  .s-Recepcion-ReservasDialog .field.ClienteId,
+  .s-Recepcion-ReservasDialog .field.ClienteIdFactura,
+  .s-Recepcion-ReservasDialog .field.BonoReferencia,
+  .s-Recepcion-ReservasDialog .field.CanalReservaId,
+  .s-Recepcion-ReservasDialog .field.Valor,
+  .s-Recepcion-ReservasDialog .field.CodigoOferta,
+  .s-Recepcion-ReservasDialog .field.BloquearTarifa,
+  .s-Recepcion-ReservasDialog .field.PermiteDevolucion,
+  .s-Recepcion-ReservasDialog .field.FechaReserva,
+  .s-Recepcion-ReservasDialog .field.FechaCreacion,
+  .s-Recepcion-ReservasDialog .field.FechaPrevistaLlegada,
+  .s-Recepcion-ReservasDialog .field.FechaPrevistaSalida,
+  .s-Recepcion-ReservasDialog .field.FechaLlegada,
+  .s-Recepcion-ReservasDialog .field.FechaSalida,
+  .s-Recepcion-ReservasDialog .field.ObservacionesLlegada,
+  .s-Recepcion-ReservasDialog .field.ObservacionesSalida,
+  .s-Recepcion-ReservasDialog .field.Observaciones,
+  .s-Recepcion-ReservasDialog .field.ObservacionesCliente,
+  .s-Recepcion-ReservasDialog .field.TipoTarjetaId,
+  .s-Recepcion-ReservasDialog .field.TarjetaCredito,
+  .s-Recepcion-ReservasDialog .field.Caducidad,
+  .s-Recepcion-ReservasDialog .field.CodSeguridad {
+    max-width: 50%;
+  }
+}
+.s-Recepcion-ReservasContratosDialog > .size {
   width: 650px;
 }
-.s-Portal-NacionesDialog .caption {
+.s-Recepcion-ReservasContratosDialog .caption {
   width: 150px;
 }
-.s-Portal-ComunidadesAutonomasDialog > .size {
+.s-Recepcion-ReservasDescuentosDialog > .size {
   width: 650px;
 }
-.s-Portal-ComunidadesAutonomasDialog .caption {
+.s-Recepcion-ReservasDescuentosDialog .caption {
   width: 150px;
 }
-.s-Portal-ProvinciasDialog > .size {
+.s-Recepcion-ReservasHuespedesDialog > .size {
   width: 650px;
 }
-.s-Portal-ProvinciasDialog .caption {
+.s-Recepcion-ReservasHuespedesDialog .caption {
   width: 150px;
 }
-.s-Portal-EmpresasDialog > .size {
+.s-Recepcion-ReservasOfertasDialog > .size {
   width: 650px;
 }
-.s-Portal-EmpresasDialog .caption {
+.s-Recepcion-ReservasOfertasDialog .caption {
   width: 150px;
 }
-.s-Portal-CategoriaHotelesDialog > .size {
+.s-Recepcion-ReservasServiciosDialog > .size {
   width: 650px;
 }
-.s-Portal-CategoriaHotelesDialog .caption {
+.s-Recepcion-ReservasServiciosDialog .caption {
   width: 150px;
 }
-.s-Portal-TiposHabitacionDialog > .size {
+.s-Reservas-ReservasContratosDialog > .size {
   width: 650px;
 }
-.s-Portal-TiposHabitacionDialog .caption {
+.s-Reservas-ReservasContratosDialog .caption {
   width: 150px;
 }
-.s-Portal-TiposHotelDialog > .size {
+.s-Reservas-ReservasDescuentosDialog > .size {
   width: 650px;
 }
-.s-Portal-TiposHotelDialog .caption {
+.s-Reservas-ReservasDescuentosDialog .caption {
   width: 150px;
 }
-.s-Portal-NacionesDialog > .size {
+.s-Reservas-ReservasHuespedesDialog > .size {
   width: 650px;
 }
-.s-Portal-NacionesDialog .caption {
+.s-Reservas-ReservasHuespedesDialog .caption {
   width: 150px;
 }
-.s-Portal-HotelesDialog > .size {
+.s-Reservas-ReservasOfertasDialog > .size {
   width: 650px;
-  height: 550px;
 }
-.s-Portal-HotelesDialog .caption {
+.s-Reservas-ReservasOfertasDialog .caption {
   width: 150px;
 }
-.s-Portal-HotelesDialog .s-PropertyGrid .categories {
-  height: 500px;
-}
-.s-Portal-GruposDeClienteDialog > .size {
+.s-reservas-ReservasServiciosDialog > .size {
   width: 650px;
 }
-.s-Portal-GruposDeClienteDialog .caption {
-  width: 150px;
-}
-.s-Portal-GruposDeServiciosDialog > .size {
-  width: 650px;
-}
-.s-Portal-GruposDeServiciosDialog .caption {
-  width: 150px;
-}
-.s-Portal-GruposHabitacionDialog > .size {
-  width: 650px;
-}
-.s-Portal-GruposHabitacionDialog .caption {
-  width: 150px;
-}
-.s-Portal-UsuariosEmpresaDialog > .size {
-  width: 650px;
-}
-.s-Portal-UsuariosEmpresaDialog .caption {
-  width: 150px;
-}
-.s-Portal-UsuariosEmpresaDialog > .size {
-  width: 650px;
-}
-.s-Portal-UsuariosEmpresaDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposHuespedDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposHuespedDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposServicioDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposServicioDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposUnidadCalculoDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposUnidadCalculoDialog .caption {
-  width: 150px;
-}
-.s-Portal-ServiciosDialog > .size {
-  width: 650px;
-}
-.s-Portal-ServiciosDialog .caption {
-  width: 150px;
-}
-.s-Portal-UnidadesCalculoDialog > .size {
-  width: 650px;
-}
-.s-Portal-UnidadesCalculoDialog .caption {
-  width: 150px;
-}
-.s-Portal-ServiciosDialog > .size {
-  width: 650px;
-}
-.s-Portal-ServiciosDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposHuespedDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposHuespedDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposPensionDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposPensionDialog .caption {
-  width: 150px;
-}
-.s-Portal-EstadosFacturasDialog > .size {
-  width: 650px;
-}
-.s-Portal-EstadosFacturasDialog .caption {
-  width: 150px;
-}
-.s-Portal-ReservaEstadosDialog > .size {
-  width: 650px;
-}
-.s-Portal-ReservaEstadosDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposDocumentoDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposDocumentoDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposPensionDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposPensionDialog .caption {
-  width: 150px;
-}
-.s-Portal-AmbitoOfertaDialog > .size {
-  width: 650px;
-}
-.s-Portal-AmbitoOfertaDialog .caption {
-  width: 150px;
-}
-.s-Prtal-FrecuenciaFacturacionDialog > .size {
-  width: 650px;
-}
-.s-Prtal-FrecuenciaFacturacionDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposCondicionDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposCondicionDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposDeImputacionDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposDeImputacionDialog .caption {
-  width: 150px;
-}
-.s-Portal-TiposDeOfertaDialog > .size {
-  width: 650px;
-}
-.s-Portal-TiposDeOfertaDialog .caption {
-  width: 150px;
-}
-.s-Portal-TipoAplicacionOfertaDialog > .size {
-  width: 650px;
-}
-.s-Portal-TipoAplicacionOfertaDialog .caption {
-  width: 150px;
-}
-.s-Portal-FrecuenciaFacturacionDialog > .size {
-  width: 650px;
-}
-.s-Portal-FrecuenciaFacturacionDialog .caption {
+.s-reservas-ReservasServiciosDialog .caption {
   width: 150px;
 }

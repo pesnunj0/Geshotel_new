@@ -167,6 +167,13 @@ namespace MVC
             }
 
 
+            public static class CanalesReserva
+            {
+
+                public const string CanalesReservaIndex = "~/Modules/Contratos/CanalesReserva/CanalesReservaIndex.cshtml";
+            }
+
+
             public static class Clientes
             {
 
@@ -596,6 +603,13 @@ namespace MVC
             }
 
 
+            public static class TiposDeTarjeta
+            {
+
+                public const string TiposDeTarjetaIndex = "~/Modules/Portal/TiposDeTarjeta/TiposDeTarjetaIndex.cshtml";
+            }
+
+
             public static class TiposHabitacion
             {
 
@@ -635,6 +649,53 @@ namespace MVC
             {
 
                 public const string UnidadesCalculoIndex = "~/Modules/Portal/UnidadesCalculo/UnidadesCalculoIndex.cshtml";
+            }
+
+        }
+
+
+        public static class Recepcion
+        {
+
+            public static class Reservas
+            {
+
+                public const string ReservasIndex = "~/Modules/Recepcion/Reservas/ReservasIndex.cshtml";
+            }
+
+
+            public static class ReservasContratos
+            {
+
+                public const string ReservasContratosIndex = "~/Modules/Recepcion/ReservasContratos/ReservasContratosIndex.cshtml";
+            }
+
+
+            public static class ReservasDescuentos
+            {
+
+                public const string ReservasDescuentosIndex = "~/Modules/Recepcion/ReservasDescuentos/ReservasDescuentosIndex.cshtml";
+            }
+
+
+            public static class ReservasHuespedes
+            {
+
+                public const string ReservasHuespedesIndex = "~/Modules/Recepcion/ReservasHuespedes/ReservasHuespedesIndex.cshtml";
+            }
+
+
+            public static class ReservasOfertas
+            {
+
+                public const string ReservasOfertasIndex = "~/Modules/Recepcion/ReservasOfertas/ReservasOfertasIndex.cshtml";
+            }
+
+
+            public static class ReservasServicios
+            {
+
+                public const string ReservasServiciosIndex = "~/Modules/Recepcion/ReservasServicios/ReservasServiciosIndex.cshtml";
             }
         }
 

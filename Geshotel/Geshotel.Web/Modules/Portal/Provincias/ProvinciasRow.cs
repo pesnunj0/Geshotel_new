@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("provincias"), InstanceName("provincias"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.Provincias")]
     public sealed class ProvinciasRow : Row, IIdRow, INameRow

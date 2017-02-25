@@ -1,0 +1,42 @@
+@import "site.mixins.less";
+
+.s-Recepcion-ReservasDialog {
+    > .size { min-width: 950px; height: 650px; }
+    .caption { width: 150px; }
+    @media (min-width: 900px) {
+    .field.HotelId, .field.EstadoReservaId, .field.ClienteId, .field.ClienteIdFactura,
+    .field.BonoReferencia, .field.CanalReservaId, 
+    .field.Valor, .field.CodigoOferta, .field.BloquearTarifa, .field.PermiteDevolucion,
+    .field.FechaReserva, .field.FechaCreacion, .field.FechaPrevistaLlegada, .field.FechaPrevistaSalida,
+    .field.FechaLlegada, .field.FechaSalida, .field.ObservacionesLlegada, .field.ObservacionesSalida,
+    .field.Observaciones, .field.ObservacionesCliente,
+    .field.TipoTarjetaId, .field.TarjetaCredito, .field.Caducidad, .field.CodSeguridad  {
+            max-width: 50%;
+        }
+    } 
+}
+
+.s-Recepcion-ReservasContratosDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Recepcion-ReservasDescuentosDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Recepcion-ReservasHuespedesDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Recepcion-ReservasOfertasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Recepcion-ReservasServiciosDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}

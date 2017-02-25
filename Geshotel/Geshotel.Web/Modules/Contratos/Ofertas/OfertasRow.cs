@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Ofertas"), InstanceName("Ofertas"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     public sealed class OfertasRow : Row, IIdRow, INameRow
     {

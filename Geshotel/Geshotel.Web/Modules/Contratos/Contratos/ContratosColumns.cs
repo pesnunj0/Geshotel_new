@@ -34,13 +34,13 @@ namespace Geshotel.Contratos.Columns
         public String NumeroContratoCliente { get; set; }
         [Width(120),AlignCenter]
         public Boolean ImpuestoIncluido { get; set; }
-        [Width(100),QuickFilter, QuickFilterOption("multiple", true)]
+        [Width(100),QuickFilter, QuickFilterOption("multiple", true),Hidden]
         public String Temporada { get; set; }
-        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
+        [Width(100), QuickFilter, QuickFilterOption("multiple", true),Hidden]
         public String Mercado { get; set; }
-        [Width(100)]
+        [Width(100),Hidden]
         public String UserName { get; set; }
-        [Width(110), DisplayFormat("g")]
+        [Width(110), DisplayFormat("g"),Hidden]
         public DateTime FechaModificacion { get; set; }
     }
 }

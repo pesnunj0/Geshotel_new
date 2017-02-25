@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("categoria_hoteles"), InstanceName("categoria_hoteles"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.CategoriaHoteles")]
     public sealed class CategoriaHotelesRow : Row, IIdRow, INameRow

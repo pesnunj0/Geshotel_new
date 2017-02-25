@@ -14,7 +14,7 @@ using System;
 
 namespace Geshotel.Behaviors
 {
-    public class TenantBehavior : IImplicitBehavior,
+    public class TenantBehavior :  IImplicitBehavior,
         ISaveBehavior, IDeleteBehavior,
         IListBehavior, IRetrieveBehavior
     {

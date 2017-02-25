@@ -11,7 +11,7 @@ namespace Geshotel.Portal.Entities
     using Geshotel.Administration.Entities;
 
     [ConnectionKey("Default"), DisplayName("naciones"), InstanceName("naciones"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.Naciones")]
     public sealed class NacionesRow : Row, IIdRow, INameRow

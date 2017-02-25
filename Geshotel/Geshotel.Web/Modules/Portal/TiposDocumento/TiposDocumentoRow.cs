@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("tipos_documento"), InstanceName("tipos_documento"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposDocumento")]
     public sealed class TiposDocumentoRow : Row, IIdRow, INameRow

@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     using Portal.Entities;
 
     [ConnectionKey("Default"), TableName("servicios_hotel"), DisplayName("Servicios Hotel"), InstanceName("Servicios Hotel"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     public sealed class ServiciosHotelRow : Row, IIdRow, INameRow
     {

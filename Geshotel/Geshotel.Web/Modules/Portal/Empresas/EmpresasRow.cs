@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("empresas"), InstanceName("empresas"), TwoLevelCached]
-    [ReadPermission("Administration:Empresa")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:Empresa")]
     
     public sealed class EmpresasRow : Row, IIdRow, INameRow, ITenantRow

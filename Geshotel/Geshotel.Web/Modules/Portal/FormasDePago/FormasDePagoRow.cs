@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("formas_de_pago"), InstanceName("formas_de_pago"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.FromasDePago")]
     public sealed class FormasDePagoRow : Row, IIdRow, INameRow

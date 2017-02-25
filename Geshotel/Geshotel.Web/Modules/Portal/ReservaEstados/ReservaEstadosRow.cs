@@ -10,12 +10,12 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("reserva_estados"), InstanceName("reserva_estados"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
-    [LookupScript("Portal.ReservasEstados")]
+    [LookupScript("Portal.ReservaEstados")]
     public sealed class ReservaEstadosRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Estado Reserva Id"), Column("estado_reserva_id"), PrimaryKey]
+        [DisplayName("Estado Reserva Id"), Column("estado_reserva_id"), PrimaryKey,LookupInclude]
         public Int16? EstadoReservaId
         {
             get { return Fields.EstadoReservaId[this]; }

@@ -4,23 +4,29 @@ using Portal = Geshotel.Portal.Pages;
 
 [assembly: NavigationLink(1000, "Dashboard", url: "~/", permission: "", icon: "icon-speedometer")]
 
-[assembly: NavigationMenu(8000, "Contratos", icon:"icon-layers")]
-
-[assembly: NavigationLink(8000, "Contratos/Agencias", typeof(Geshotel.Contratos.Pages.AgenciasController), icon: "icon-people")]
-[assembly: NavigationLink(8000, "Contratos/Touroperadores", typeof(Geshotel.Contratos.Pages.ClientesController),icon: "icon-user")]
-[assembly: NavigationLink(8000, "Contratos/Contratos", typeof(Geshotel.Contratos.Pages.ContratosController), icon:"icon-note")]
-[assembly: NavigationLink(8000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
-[assembly: NavigationLink(8000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]
-[assembly: NavigationLink(8000, "Contratos/TiposHabitacionHotel", typeof(Geshotel.Contratos.Pages.TiposHabitacionHotelController), icon: "fa-bed")]
-[assembly: NavigationLink(8000, "Contratos/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
-[assembly: NavigationLink(8000, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
-
-//[assembly: NavigationLink(8000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
-//[assembly: NavigationLink(8000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]
-//[assembly: NavigationLink(8000, "Contratos/Ofertas", typeof(Geshotel.Contratos.Pages.OfertasController))]
-//[assembly: NavigationLink(8000, "Contratos/Edades", typeof(Geshotel.Contratos.Pages.EdadesController))]
+[assembly: NavigationMenu(4000, "Recepcion", icon: "icon-people")]
+[assembly: NavigationLink(4000, "Recepcion/Reservas", typeof(Geshotel.Recepcion.Pages.ReservasController),icon:"icon-plane")]
 
 
+[assembly: NavigationMenu(6000, "Contratos", icon:"icon-layers")]
+
+[assembly: NavigationLink(6000, "Contratos/Agencias", typeof(Geshotel.Contratos.Pages.AgenciasController), icon: "icon-people")]
+[assembly: NavigationLink(6000, "Contratos/Touroperadores", typeof(Geshotel.Contratos.Pages.ClientesController),icon: "icon-user")]
+[assembly: NavigationLink(6000, "Contratos/Contratos", typeof(Geshotel.Contratos.Pages.ContratosController), icon:"icon-note")]
+[assembly: NavigationLink(6000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
+[assembly: NavigationLink(6000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]
+[assembly: NavigationLink(6000, "Contratos/TiposHabitacionHotel", typeof(Geshotel.Contratos.Pages.TiposHabitacionHotelController), icon: "fa-bed")]
+[assembly: NavigationLink(6000, "Contratos/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
+[assembly: NavigationLink(6000, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
+[assembly: NavigationLink(6000, "Contratos/CanalesReserva", typeof(Geshotel.Contratos.Pages.CanalesReservaController))]
+
+
+//[assembly: NavigationLink(6000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
+//[assembly: NavigationLink(6000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]
+//[assembly: NavigationLink(6000, "Contratos/Ofertas", typeof(Geshotel.Contratos.Pages.OfertasController))]
+//[assembly: NavigationLink(6000, "Contratos/Edades", typeof(Geshotel.Contratos.Pages.EdadesController))]
+
+[assembly: NavigationMenu(8000, "Informes", icon: "icon-printer")]
 
 [assembly: NavigationMenu(9000, "Settings", icon: "icon-settings")]
 
@@ -65,4 +71,5 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(9300, "Settings/Accounting/TiposDeImputacion", typeof(Geshotel.Portal.Pages.TiposDeImputacionController))]
 [assembly: NavigationLink(9300, "Settings/Accounting/TiposDeOferta", typeof(Geshotel.Portal.Pages.TiposDeOfertaController),icon:"fa-usd")]
 [assembly: NavigationLink(9300, "Settings/Accounting/FrecuenciaFacturacion", typeof(Geshotel.Portal.Pages.FrecuenciaFacturacionController),icon:"fa-calendar")]
+[assembly: NavigationLink(9300, "Settings/Accounting/TiposDeTarjeta", typeof(Geshotel.Portal.Pages.TiposDeTarjetaController),icon:"fa-credit-card")]
 

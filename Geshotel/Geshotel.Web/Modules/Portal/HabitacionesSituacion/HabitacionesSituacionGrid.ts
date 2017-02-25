@@ -2,7 +2,7 @@
 namespace Geshotel.Portal {
     
     @Serenity.Decorators.registerClass()
-    export class HabitacionesSituacionGrid extends Serenity.EntityGrid<Ha, any> {
+    export class HabitacionesSituacionGrid extends Serenity.EntityGrid<HabitacionesSituacionRow, any> {
         protected getColumnsKey() { return 'Portal.HabitacionesSituacion'; }
         protected getDialogType() { return HabitacionesSituacionDialog; }
         protected getIdProperty() { return HabitacionesSituacionRow.idProperty; }

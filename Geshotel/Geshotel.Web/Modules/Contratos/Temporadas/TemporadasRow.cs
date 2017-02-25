@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Temporadas"), InstanceName("Temporadas"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:General")]
     [LookupScript("Contratos.Temporadas")]
     public sealed class TemporadasRow : Row, IIdRow, INameRow

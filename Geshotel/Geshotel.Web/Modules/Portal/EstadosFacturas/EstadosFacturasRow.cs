@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("estados_facturas"), InstanceName("estados_facturas"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.EstadosFactura")]
     public sealed class EstadosFacturasRow : Row, IIdRow, INameRow

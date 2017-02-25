@@ -11,10 +11,10 @@ namespace Geshotel.Portal {
         export const idProperty = 'EstadoReservaId';
         export const nameProperty = 'Estado';
         export const localTextPrefix = 'Portal.ReservaEstados';
-        export const lookupKey = 'Portal.ReservasEstados';
+        export const lookupKey = 'Portal.ReservaEstados';
 
         export function getLookup(): Q.Lookup<ReservaEstadosRow> {
-            return Q.getLookup<ReservaEstadosRow>('Portal.ReservasEstados');
+            return Q.getLookup<ReservaEstadosRow>('Portal.ReservaEstados');
         }
 
         export namespace Fields {

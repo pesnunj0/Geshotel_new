@@ -26,7 +26,7 @@ namespace Geshotel.Administration
     {
         public const string Security = "Administration:Security";
         public const string Translation = "Administration:Translation";
-        public const string Empresa = "Administration:Empresa";
-        public const string Hotel = "Administration:Hotel";
+        public const string Empresa = "Contratos:Empresa";
+        public const string Hotel = "Recepcion:Hotel";
     }
 }

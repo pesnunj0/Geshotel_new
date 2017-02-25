@@ -584,6 +584,7 @@
     <Content Include="Modules\Membership\Account\SignUp\AccountSignUp.AdminLTE.cshtml" />
     <Content Include="Modules\Organization\BusinessUnit\BusinessUnitIndex.cshtml" />
     <Content Include="Modules\Organization\Contact\ContactIndex.cshtml" />
+    <Content Include="Modules\Recepcion\Reservas\Recepcion.ReservasDialog.Template.html" />
     <Content Include="Readme.CodeGenerator.txt" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -834,6 +835,15 @@
     <Content Include="Content\site\site.portal.less" />
     <Content Include="Modules\Portal\TiposBloqueo\TiposBloqueoIndex.cshtml" />
     <Content Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionIndex.cshtml" />
+    <Content Include="Modules\Contratos\CanalesReserva\CanalesReservaIndex.cshtml" />
+    <Content Include="Modules\Recepcion\Reservas\ReservasIndex.cshtml" />
+    <Content Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaIndex.cshtml" />
+    <Content Include="Content\site\site.recepcion.less" />
+    <Content Include="Modules\Recepcion\ReservasContratos\ReservasContratosIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ReservasServicios\ReservasServiciosIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1301,6 +1311,18 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.AgenciasService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CanalesReservaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CanalesReservaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CanalesReservaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.CanalesReservaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.ClientesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1682,6 +1704,18 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeOfertaColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeTarjetaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeTarjetaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeTarjetaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDeTarjetaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.TiposDocumentoRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1760,6 +1794,78 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.UnidadesCalculoService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasContratosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasContratosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasContratosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasContratosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasDescuentosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasDescuentosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasDescuentosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasDescuentosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHuespedesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHuespedesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHuespedesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHuespedesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasServiciosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasServiciosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasServiciosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasServiciosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Navigation\EmpresaSelection.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\ThemeSelection.ts" />
     <TypeScriptCompile Include="Modules\Common\Navigation\SidebarSearch.ts" />
@@ -1769,6 +1875,8 @@
     <TypeScriptCompile Include="Modules\Common\ScriptInitialization.ts" />
     <TypeScriptCompile Include="Modules\Common\UserPreference\UserPreferenceStorage.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Agencias\AgenciasDialog.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\CanalesReserva\CanalesReservaDialog.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\CanalesReserva\CanalesReservaGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesDialog.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Clientes\ClientesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Contratos\ContratosEdadesDialog.ts" />
@@ -2283,6 +2391,8 @@
     <TypeScriptCompile Include="Modules\Portal\HabitacionesSituacion\HabitacionesSituacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposBloqueo\TiposBloqueoDialog.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposBloqueo\TiposBloqueoGrid.ts" />
+    <TypeScriptCompile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaDialog.ts" />
+    <TypeScriptCompile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHabitacion\TiposHabitacionDialog.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHabitacion\TiposHabitacionGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\TiposHotel\TiposHotelDialog.ts" />
@@ -2438,6 +2548,18 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasGrid.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -2537,6 +2659,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170220_224500_Reservas.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170219_224500_Habitaciones.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170208_224500_Servicios_hotel.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170123_163900_Initial.cs" />
@@ -2581,6 +2704,12 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
     <Compile Include="Modules\Contratos\Agencias\AgenciasRow.cs" />
     <Compile Include="Modules\Contratos\Agencias\AgenciasColumns.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaColumns.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaEndpoint.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaForm.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaPage.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaRepository.cs" />
+    <Compile Include="Modules\Contratos\CanalesReserva\CanalesReservaRow.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesGrupoTTOOLookup.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesAgenciaLookup.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesColumns.cs" />
@@ -2804,6 +2933,12 @@
     <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoPage.cs" />
     <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoRepository.cs" />
     <Compile Include="Modules\Portal\TiposBloqueo\TiposBloqueoRow.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaColumns.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaEndpoint.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaForm.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaPage.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaRepository.cs" />
+    <Compile Include="Modules\Portal\TiposDeTarjeta\TiposDeTarjetaRow.cs" />
     <Compile Include="Modules\Portal\TiposDocumento\TiposDocumentoRepository.cs" />
     <Compile Include="Modules\Portal\TiposDocumento\TiposDocumentoRow.cs" />
     <Compile Include="Modules\Portal\TiposHabitacion\TiposHabitacionColumns.cs" />
@@ -2844,6 +2979,42 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosRow.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasColumns.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasForm.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasPage.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasRepository.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasRow.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />

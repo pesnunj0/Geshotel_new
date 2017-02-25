@@ -947,7 +947,7 @@ INSERT INTO servicios VALUES ('244', 'Muñeco Be Chachi grande', 'CHACH', '1', '
 -- ----------------------------
 DROP TABLE IF EXISTS sexos;
 CREATE TABLE sexos (
-  sexo_id char(1) NOT NULL,
+  sexo_id varchar(1) NOT NULL,
   sexo varchar(20) NOT NULL,
   PRIMARY KEY (sexo_id)
 ) ;
@@ -1070,7 +1070,7 @@ INSERT INTO tipos_de_tarjeta VALUES ('2', 'Maestro', '12,13,14,15,16,18,19', '50
 -- ----------------------------
 DROP TABLE IF EXISTS tipos_documento;
 CREATE TABLE tipos_documento (
-  tipo_documento_id char(1) NOT NULL,
+  tipo_documento_id varchar(1) NOT NULL,
   tipo_documento varchar(15) DEFAULT NULL,
   PRIMARY KEY (tipo_documento_id)
 ) ;

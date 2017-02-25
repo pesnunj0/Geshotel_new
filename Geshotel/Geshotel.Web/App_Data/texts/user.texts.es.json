@@ -211,6 +211,7 @@
     "Navigation.Settings.CommonData/TiposServicio": "Tipos de Servicio",
     "Navigation.Settings.CommonData/TiposUnidadCalculo": "Tipos de Unidad de Cálculo",
     "Navigation.Settings.CommonData/UnidadesCalculo": "Unidades Cálculo",
+    "Navigation.Settings/Accounting": "Config. Financiera",
     "Navigation.Settings/Accounting/AmbitoOferta": "Ambito Oferta",
     "Navigation.Settings/Accounting/FormasDePago": "Formas De Pago",
     "Navigation.Settings/Accounting/FrecuenciaFacturacion": "Frecuencia Facturacion",

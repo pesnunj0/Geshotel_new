@@ -11,7 +11,7 @@ namespace Geshotel.Contratos.Entities
     using Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Releases"), InstanceName("Releases"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     public sealed class ReleasesRow : Row, IIdRow, INameRow
     {

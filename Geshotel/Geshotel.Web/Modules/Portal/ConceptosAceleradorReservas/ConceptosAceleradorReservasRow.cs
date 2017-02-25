@@ -9,7 +9,7 @@
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("categoria_hoteles"), InstanceName("conceptos_acelerador_reservas"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.ConceptosAceleradorReservas")]
     public sealed class ConceptosAceleradorReservasRow : Row, IIdRow, INameRow

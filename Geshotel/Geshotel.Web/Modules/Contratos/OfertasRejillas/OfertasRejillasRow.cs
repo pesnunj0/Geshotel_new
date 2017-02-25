@@ -10,7 +10,7 @@ namespace Geshotel.Contratos.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("Ofertas Rejillas"), InstanceName("Ofertas Rejillas"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     public sealed class OfertasRejillasRow : Row, IIdRow
     {

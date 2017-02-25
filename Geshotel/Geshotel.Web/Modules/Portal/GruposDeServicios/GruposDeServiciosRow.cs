@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("grupos_de_servicios"), InstanceName("grupos_de_servicios"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.GruposDeServicio")]
     public sealed class GruposDeServiciosRow : Row, IIdRow, INameRow

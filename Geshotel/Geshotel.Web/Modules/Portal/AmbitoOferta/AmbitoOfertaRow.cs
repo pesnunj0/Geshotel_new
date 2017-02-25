@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("ambito_oferta"), DisplayName("Ambito Oferta"), InstanceName("Ambito Oferta"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.AmbitoOferta")]
     public sealed class AmbitoOfertaRow : Row, IIdRow, INameRow

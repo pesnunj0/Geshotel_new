@@ -132,10 +132,10 @@ namespace Geshotel.Migrations.DefaultDB
 
             Create.Index("IX_habitacion_id")
                 .OnTable("habitaciones_bloqueo")
-                .OnColumn("habitacion_id");
+                .OnColumn("habitacion_id").Ascending();
             Create.Index("IX_tipo_bloqueo")
                 .OnTable("habitaciones_bloqueo")
-                .OnColumn("tipo_bloqueo_id");
+                .OnColumn("tipo_bloqueo_id").Ascending();
         }
 
         public override void Down()

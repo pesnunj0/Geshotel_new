@@ -10,8 +10,8 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("impuestos"), DisplayName("Impuestos"), InstanceName("Impuestos"), TwoLevelCached]
-    [ReadPermission("Contratos:General")]
-    [ModifyPermission("Contratos:General")]
+    [ReadPermission("Todos:General")]
+    [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Portal.Impuestos")]
     public sealed class ImpuestosRow : Row, IIdRow, INameRow
     {

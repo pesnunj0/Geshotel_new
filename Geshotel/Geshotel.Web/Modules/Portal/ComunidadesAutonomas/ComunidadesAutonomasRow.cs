@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("comunidades_autonomas"), InstanceName("comunidades_autonomas"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.ComunidadesAutonomas")]
     public sealed class ComunidadesAutonomasRow : Row, IIdRow, INameRow
