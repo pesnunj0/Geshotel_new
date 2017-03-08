@@ -10,6 +10,12 @@ namespace Geshotel.Recepcion {
         ClienteIdFactura?: number;
         FechaReserva?: string;
         NombreReserva?: string;
+        TipoHabitacionId?: number;
+        PensionId?: number;
+        Adultos?: number;
+        Child50?: number;
+        Childfree?: number;
+        Bebes?: number;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
         ObservacionesLlegada?: string;
@@ -49,6 +55,8 @@ namespace Geshotel.Recepcion {
         ClienteRazon?: string;
         CanalReserva?: string;
         ClienteIdFacturaRazon?: string;
+        TipoHabitacion?: string;
+        Pension?: string;
         Username?: string;
         ValidationUsername?: string;
     }
@@ -68,6 +76,12 @@ namespace Geshotel.Recepcion {
             export declare const ClienteIdFactura: string;
             export declare const FechaReserva: string;
             export declare const NombreReserva: string;
+            export declare const TipoHabitacionId: string;
+            export declare const PensionId: string;
+            export declare const Adultos: string;
+            export declare const Child50: string;
+            export declare const Childfree: string;
+            export declare const Bebes: string;
             export declare const FechaPrevistaLlegada: string;
             export declare const FechaPrevistaSalida: string;
             export declare const ObservacionesLlegada: string;
@@ -107,11 +121,13 @@ namespace Geshotel.Recepcion {
             export declare const ClienteRazon: string;
             export declare const CanalReserva: string;
             export declare const ClienteIdFacturaRazon: string;
+            export declare const TipoHabitacion: string;
+            export declare const Pension: string;
             export declare const Username: string;
             export declare const ValidationUsername: string;
         }
 
-        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'Username', 'ValidationUsername'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'Childfree', 'Bebes', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

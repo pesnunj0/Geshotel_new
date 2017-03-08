@@ -1042,7 +1042,7 @@ declare namespace Geshotel.Contratos {
         const idProperty = "ClienteId";
         const nameProperty = "Razon";
         const localTextPrefix = "Contratos.Clientes";
-        const lookupKey = "Contratos.Clientes";
+        const lookupKey = "Contratos.ClientesAgencia";
         function getLookup(): Q.Lookup<ClientesRow>;
         namespace Fields {
             const ClienteId: string;
@@ -1851,6 +1851,8 @@ declare namespace Geshotel.Contratos {
         Empresa?: string;
         NombreServicio?: string;
         ServicioTipoServicioId?: number;
+        ConceptoAceleradorReservasId?: number;
+        SwPension?: boolean;
         Impuesto?: string;
     }
     namespace ServiciosHotelRow {
@@ -1873,6 +1875,8 @@ declare namespace Geshotel.Contratos {
             const Empresa: string;
             const NombreServicio: string;
             const ServicioTipoServicioId: string;
+            const ConceptoAceleradorReservasId: string;
+            const SwPension: string;
             const Impuesto: string;
         }
     }
@@ -6195,6 +6199,12 @@ declare namespace Geshotel.Recepcion {
         ClienteId: Serenity.LookupEditor;
         ClienteIdFactura: Serenity.LookupEditor;
         NombreReserva: Serenity.StringEditor;
+        TipoHabitacionId: Serenity.LookupEditor;
+        PensionId: Serenity.LookupEditor;
+        Adultos: Serenity.IntegerEditor;
+        Child50: Serenity.IntegerEditor;
+        ChildFree: Serenity.IntegerEditor;
+        Bebes: Serenity.IntegerEditor;
         BonoReferencia: Serenity.StringEditor;
         CanalReservaId: Serenity.LookupEditor;
         Valor: Serenity.DecimalEditor;
@@ -6425,6 +6435,12 @@ declare namespace Geshotel.Recepcion {
         ClienteIdFactura?: number;
         FechaReserva?: string;
         NombreReserva?: string;
+        TipoHabitacionId?: number;
+        PensionId?: number;
+        Adultos?: number;
+        Child50?: number;
+        Childfree?: number;
+        Bebes?: number;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
         ObservacionesLlegada?: string;
@@ -6464,6 +6480,8 @@ declare namespace Geshotel.Recepcion {
         ClienteRazon?: string;
         CanalReserva?: string;
         ClienteIdFacturaRazon?: string;
+        TipoHabitacion?: string;
+        Pension?: string;
         Username?: string;
         ValidationUsername?: string;
     }
@@ -6481,6 +6499,12 @@ declare namespace Geshotel.Recepcion {
             const ClienteIdFactura: string;
             const FechaReserva: string;
             const NombreReserva: string;
+            const TipoHabitacionId: string;
+            const PensionId: string;
+            const Adultos: string;
+            const Child50: string;
+            const Childfree: string;
+            const Bebes: string;
             const FechaPrevistaLlegada: string;
             const FechaPrevistaSalida: string;
             const ObservacionesLlegada: string;
@@ -6520,6 +6544,8 @@ declare namespace Geshotel.Recepcion {
             const ClienteRazon: string;
             const CanalReserva: string;
             const ClienteIdFacturaRazon: string;
+            const TipoHabitacion: string;
+            const Pension: string;
             const Username: string;
             const ValidationUsername: string;
         }

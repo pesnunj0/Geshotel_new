@@ -13,8 +13,18 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), TableName("servicios_hotel"), DisplayName("Servicios Hotel"), InstanceName("Servicios Hotel"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    public sealed class ServiciosHotelRow : Row, IIdRow, INameRow
+    [LookupScript("Contratos.ServiciosHotel")]
+    public sealed class ServiciosHotelRow : Row, IIdRow, INameRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+
         [DisplayName("Servicio Hotel Id"), Column("servicio_hotel_id"), Identity]
         public Int32? ServicioHotelId
         {
@@ -22,7 +32,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioHotelId[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles"), LookupInclude]
         [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
@@ -119,7 +129,19 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioTipoServicioId[this] = value; }
         }
 
- 
+        [DisplayName("Concepto Acelerador Reservas Id"), Expression("jServicio.[concepto_acelerador_reservas_id]")]
+        public Int16? ConceptoAceleradorReservasId
+        {
+            get { return Fields.ConceptoAceleradorReservasId[this]; }
+            set { Fields.ConceptoAceleradorReservasId[this] = value; }
+        }
+
+        [DisplayName("SwPension"), Expression("jServicio.[sw_pension]")]
+        public Boolean? SwPension
+        {
+            get { return Fields.SwPension[this]; }
+            set { Fields.SwPension[this] = value; }
+        }
 
         [DisplayName("Impuesto"), Expression("jImpuesto.[impuesto]")]
         public String Impuesto
@@ -164,6 +186,8 @@ namespace Geshotel.Contratos.Entities
 
             public StringField NombreServicio;
             public Int16Field ServicioTipoServicioId;
+            public Int16Field ConceptoAceleradorReservasId;
+            public BooleanField SwPension;
 
 
             public StringField Impuesto;

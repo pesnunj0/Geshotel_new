@@ -17,9 +17,21 @@ namespace Geshotel.Recepcion.Forms
         public Int16 HotelId { get; set; }
         [ReadOnly(true),DefaultValue(0)]
         public Int16 EstadoReservaId { get; set; }
+        [LookupEditor(("Contratos.Clientes"), FilterField = "GrupoClienteId", FilterValue = 2)]
         public Int32 ClienteId { get; set; }
+        [LookupEditor(("Contratos.Clientes"), FilterField = "GrupoClienteId", FilterValue = 2)]
         public Int32 ClienteIdFactura { get; set; }
+       
         public String NombreReserva { get; set; }
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
+        public Int16 TipoHabitacionId { get; set; }
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom ="HotelId", CascadeField ="HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 2)]
+        public Int16 PensionId { get; set; }
+        
+        public Int16 Adultos { get; set; }      
+        public Int16 Child50 { get; set; }
+        public Int16 ChildFree { get; set; }
+        public Int16 Bebes { get; set; }
 
         public String BonoReferencia { get; set; }
         public Int16 CanalReservaId { get; set; }

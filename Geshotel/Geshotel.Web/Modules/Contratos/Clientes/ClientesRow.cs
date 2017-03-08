@@ -15,9 +15,18 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), DisplayName("clientes"), InstanceName("clientes"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    [LookupScript("Contratos.Clientes")]
-    public sealed class ClientesRow : Row, IIdRow, INameRow
+
+    public sealed class ClientesRow : Row, IIdRow, INameRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+
         [DisplayName("Cliente Id"), Column("cliente_id"), Identity,LookupInclude]
         public Int32? ClienteId
         {
@@ -55,7 +64,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Agencia"), Column("agencia_id"), ForeignKey("clientes", "cliente_id"), LeftJoin("jAgencia"), TextualField("AgenciaRazon")]
-        [LookupEditor(typeof(AgenciasRow), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId", FilterField = "GrupoClienteId", FilterValue = 1)]
+        [LookupEditor(("Contratos.Agencias"), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId", FilterField = "GrupoClienteId", FilterValue = 1)]
         public Int32? AgenciaId
         {
             get { return Fields.AgenciaId[this]; }

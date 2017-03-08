@@ -13,9 +13,18 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), DisplayName("Agencias"), InstanceName("Agencias"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    [LookupScript("Contratos.Agencias")]
-    public sealed class AgenciasRow : Row, IIdRow, INameRow
+   
+    public sealed class AgenciasRow : Row, IIdRow, INameRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+
         [DisplayName("Cliente Id"), Column("cliente_id"), Identity]
         public Int32? ClienteId
         {

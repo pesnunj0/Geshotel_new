@@ -57,10 +57,10 @@ namespace Geshotel.Contratos {
         export const idProperty = 'ClienteId';
         export const nameProperty = 'Razon';
         export const localTextPrefix = 'Contratos.Clientes';
-        export const lookupKey = 'Contratos.Clientes';
+        export const lookupKey = 'Contratos.ClientesAgencia';
 
         export function getLookup(): Q.Lookup<ClientesRow> {
-            return Q.getLookup<ClientesRow>('Contratos.Clientes');
+            return Q.getLookup<ClientesRow>('Contratos.ClientesAgencia');
         }
 
         export namespace Fields {

@@ -17,7 +17,7 @@ namespace Geshotel.Contratos.Columns
         public Int32 ServicioHotelId { get; set; }
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true)]
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true), Hidden]
         public String HotelName { get; set; }
         [EditLink]
         public String NombreServicio { get; set; }
@@ -27,5 +27,7 @@ namespace Geshotel.Contratos.Columns
         public String CtaContable { get; set; }
         public String DptoContable { get; set; }
         public Boolean PermiteCredito { get; set; }
+        [Width(120),Hidden]
+        public Int16 ConceptoAceleradorReservasId { get; set; }
     }
 }

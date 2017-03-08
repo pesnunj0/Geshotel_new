@@ -17,11 +17,8 @@ namespace Geshotel.Contratos.Forms
         public String Razon { get; set; }
         public String DescCorta { get; set; }
         [LookupEditor("Portal.Empresas")]
-        public Int16 EmpresaId { get; set; }
-               
-
-        [LookupEditor(("Contratos.Agencias"), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId", FilterField = "GrupoClienteId", FilterValue = 1)]
-        //[LookupEditor(typeof(Entities.AgenciasRow), CascadeFrom ="EmpresaId", CascadeField = "EmpresaId")]
+        public Int16 EmpresaId { get; set; }             
+        [LookupEditor(("Contratos.Agencias"), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId", FilterField = "GrupoClienteId", FilterValue = 1)]       
         public Int32 AgenciaId { get; set; }
         public Boolean ClienteDefecto { get; set; }
 

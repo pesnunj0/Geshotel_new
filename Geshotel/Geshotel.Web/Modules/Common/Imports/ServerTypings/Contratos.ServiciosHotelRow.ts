@@ -14,6 +14,8 @@ namespace Geshotel.Contratos {
         Empresa?: string;
         NombreServicio?: string;
         ServicioTipoServicioId?: number;
+        ConceptoAceleradorReservasId?: number;
+        SwPension?: boolean;
         Impuesto?: string;
     }
 
@@ -41,10 +43,12 @@ namespace Geshotel.Contratos {
             export declare const Empresa: string;
             export declare const NombreServicio: string;
             export declare const ServicioTipoServicioId: string;
+            export declare const ConceptoAceleradorReservasId: string;
+            export declare const SwPension: string;
             export declare const Impuesto: string;
         }
 
-        ['ServicioHotelId', 'ServicioId', 'HotelId', 'ImpuestoId', 'Costo', 'CtaContable', 'DptoContable', 'PermiteCredito', 'HotelName', 'EmpresaId', 'Empresa', 'NombreServicio', 'ServicioTipoServicioId', 'Impuesto'].forEach(x => (<any>Fields)[x] = x);
+        ['ServicioHotelId', 'ServicioId', 'HotelId', 'ImpuestoId', 'Costo', 'CtaContable', 'DptoContable', 'PermiteCredito', 'HotelName', 'EmpresaId', 'Empresa', 'NombreServicio', 'ServicioTipoServicioId', 'ConceptoAceleradorReservasId', 'SwPension', 'Impuesto'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

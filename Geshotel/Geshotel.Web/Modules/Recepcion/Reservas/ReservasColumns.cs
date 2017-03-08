@@ -13,16 +13,28 @@ namespace Geshotel.Recepcion.Columns
     [BasedOnRow(typeof(Entities.ReservasRow))]
     public class ReservasColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [Width(65),EditLink, DisplayName("Db.Recepcion.Reservas.ReservaId"), AlignRight]
         public Int32 ReservaId { get; set; }
         [EditLink]
         public String NombreReserva { get; set; }
-        [Hidden]
+        [Hidden,QuickFilter,Width(100)]
         public String HotelName { get; set; }
         [QuickFilter,QuickFilterOption("Multiple",true),Width(90)]
         public String EstadoReserva { get; set; }
         [DisplayName("Contrato"),Width(150),QuickFilter]
         public String ClienteRazon { get; set; }
+        [Width(110),QuickFilter]
+        public String TipoHabitacion { get; set; }
+        [Width(100), QuickFilter]
+        public String Pension { get; set; }
+        [Width(55),AlignCenter]
+        public Int16 Adultos { get; set; }
+        [Width(65), AlignCenter]
+        public Int16 Child50 { get; set; }
+        [Width(65), AlignCenter]
+        public Int16 ChildFree { get; set; }
+        [Width(55), AlignCenter]
+        public Int16 Bebes { get; set; }
         [Hidden]
         public String CanalReserva { get; set; }
         [DisplayName("Cliente Factura"),Width(150),QuickFilter]

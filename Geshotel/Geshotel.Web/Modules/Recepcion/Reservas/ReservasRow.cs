@@ -16,6 +16,60 @@ namespace Geshotel.Recepcion.Entities
     
     public sealed class ReservasRow : Row, IIdRow, INameRow, ITenantRow
     {
+        [DisplayName("Tipo Habitacion"),Column("tipo_habitacion_id"),NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jTipoHabitacion"),TextualField("TipoHabitacion")]
+        [LookupEditor("Contratos.ServiciosHotel")]
+        public Int16? TipoHabitacionId
+        {
+            get { return Fields.TipoHabitacionId[this]; }
+            set { Fields.TipoHabitacionId[this]= value; }
+        }
+
+        [DisplayName("TipoHabitacion"),Expression("jTipoHabitacion.nombre_servicio")]
+        public String TipoHabitacion
+        {
+            get { return Fields.TipoHabitacion[this]; }
+            set { Fields.TipoHabitacion[this] = value; }
+        }
+
+        [DisplayName("Pension"), Column("pension_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jPension"), TextualField("Pension")]
+        [LookupEditor("Contratos.ServiciosHotel")]
+        public Int16? PensionId
+        {
+            get { return Fields.PensionId[this]; }
+            set { Fields.PensionId[this] = value; }
+        }
+
+        [DisplayName("Pension"), Expression("jPension.nombre_servicio")]
+        public String Pension
+        {
+            get { return Fields.Pension[this]; }
+            set { Fields.Pension[this] = value; }
+        }
+        [DisplayName("Adultos"), Column("adultos"),NotNull]
+        public Int16? Adultos
+        {
+            get { return Fields.Adultos[this]; }
+            set { Fields.Adultos[this] = value; }
+        }
+        [DisplayName("Child_50"), Column("child_50"),NotNull, DefaultValue(0)]
+        public Int16? Child50
+        {
+            get { return Fields.Child50[this]; }
+            set { Fields.Child50[this] = value; }
+        }
+        [DisplayName("ChildFree"), Column("child_free"), NotNull, DefaultValue(0)]
+        public Int16? Childfree
+        {
+            get { return Fields.ChildFree[this]; }
+            set { Fields.ChildFree[this] = value; }
+        }
+        [DisplayName("Bebes"), Column("bebes"), NotNull, DefaultValue(0)]
+        public Int16? Bebes
+        {
+            get { return Fields.Bebes[this]; }
+            set { Fields.Bebes[this] = value; }
+        }
+
         [DisplayName("Reserva Id"), Column("reserva_id"), Identity]
         public Int32? ReservaId
         {
@@ -65,7 +119,7 @@ namespace Geshotel.Recepcion.Entities
         //[DisplayName("Cliente Id Factura"), Column("cliente_id_factura"), ForeignKey("clientes", "cliente_id"), LeftJoin("jClienteIdFactura"), LookupInclude, TextualField("ClienteIdFacturaRazon")]
         //[LookupEditor("Contratos.Clientes")]
         [DisplayName("Cliente Id Factura"), Column("cliente_id_factura"), ForeignKey("clientes", "cliente_id"), LeftJoin("jClienteIdFactura"), LookupInclude, TextualField("ClienteIdFacturaRazon")]
-        
+        [LookupEditor("Contratos.Clientes")]
         public Int32? ClienteIdFactura
         {
             get { return Fields.ClienteIdFactura[this]; }
@@ -418,6 +472,12 @@ namespace Geshotel.Recepcion.Entities
             public Int32Field ClienteIdFactura;
             public DateTimeField FechaReserva;
             public StringField NombreReserva;
+            public Int16Field TipoHabitacionId;
+            public Int16Field PensionId;
+            public Int16Field Adultos;
+            public Int16Field Child50;
+            public Int16Field ChildFree;
+            public Int16Field Bebes;
             public DateTimeField FechaPrevistaLlegada;
             public DateTimeField FechaPrevistaSalida;
             public StringField ObservacionesLlegada;
@@ -462,6 +522,9 @@ namespace Geshotel.Recepcion.Entities
             public StringField CanalReserva;
 
             public StringField ClienteIdFacturaRazon;
+
+            public StringField TipoHabitacion;
+            public StringField Pension;
 
             public StringField Username;
             public StringField ValidationUsername;

@@ -772,7 +772,7 @@ INSERT INTO impuestos VALUES ( '2', '3%', '3', null, '0', '2', '2012-07-26 00:00
 -- ----------------------------
 --DROP TABLE IF EXISTS [reserva_estados];
 CREATE TABLE reserva_estados (
-  [estado_reserva_id] smallint IDENTITY (1,1) NOT NULL,
+  [estado_reserva_id] smallint NOT NULL,
   [estado] varchar(20) NOT NULL,
   [es_error_fechaini] smallint NOT NULL,
   [es_error_fechafin] smallint NOT NULL,
@@ -782,13 +782,13 @@ CREATE TABLE reserva_estados (
 -- ----------------------------
 -- Records of reserva_estados
 -- ----------------------------
-INSERT INTO reserva_estados VALUES ( 'Pen.Fin', '1', '1');
-INSERT INTO reserva_estados VALUES ( 'Pen.Entrar', '1', '1');
-INSERT INTO reserva_estados VALUES ( 'Anulada', '0', '0');
-INSERT INTO reserva_estados VALUES ( 'Check-in', '0', '1');
-INSERT INTO reserva_estados VALUES ( 'Check-out', '1', '1');
-INSERT INTO reserva_estados VALUES ( 'Facturado', '0', '0');
-INSERT INTO reserva_estados VALUES ( 'No Show', '0', '0');
+INSERT INTO reserva_estados VALUES ('0', 'Pen.Fin', '1', '1');
+INSERT INTO reserva_estados VALUES ('1','Pen.Entrar', '1', '1');
+INSERT INTO reserva_estados VALUES ('2', 'Anulada', '0', '0');
+INSERT INTO reserva_estados VALUES ('3', 'Check-in', '0', '1');
+INSERT INTO reserva_estados VALUES ('4', 'Check-out', '1', '1');
+INSERT INTO reserva_estados VALUES ('5', 'Facturado', '0', '0');
+INSERT INTO reserva_estados VALUES ('6', 'No Show', '0', '0');
 
 -- ----------------------------
 -- Table structure for series

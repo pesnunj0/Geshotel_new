@@ -23,7 +23,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Cliente"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("ClienteRazon")]
-        [LookupEditor(typeof(ClientesRow), FilterField = "GrupoClienteId", FilterValue = 2)]
+        [LookupEditor(("Contratos.Clientes"), FilterField = "GrupoClienteId", FilterValue = 2)]
         public Int32? ClienteId
         {
             get { return Fields.ClienteId[this]; }
