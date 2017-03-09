@@ -2982,6 +2982,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
+    <Compile Include="Modules\Recepcion\Scheduler\SchedulerPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosColumns.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosEndpoint.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosForm.cs" />
