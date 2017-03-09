@@ -6,7 +6,7 @@ using Portal = Geshotel.Portal.Pages;
 
 [assembly: NavigationMenu(4000, "Recepcion", icon: "icon-people")]
 [assembly: NavigationLink(4000, "Recepcion/Reservas", typeof(Geshotel.Recepcion.Pages.ReservasController),icon:"icon-plane")]
-
+[assembly: NavigationLink(4000, "Recepcion/Scheduler", typeof(Geshotel.Recepcion.Pages.SchedulerController), icon: "icon-calendar")]
 
 [assembly: NavigationMenu(6000, "Contratos", icon:"icon-layers")]
 
