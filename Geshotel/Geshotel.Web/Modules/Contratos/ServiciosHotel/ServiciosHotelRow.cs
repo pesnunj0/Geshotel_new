@@ -129,7 +129,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ServicioTipoServicioId[this] = value; }
         }
 
-        [DisplayName("Concepto Acelerador Reservas Id"), Expression("jServicio.[concepto_acelerador_reservas_id]")]
+        [DisplayName("Concepto Acelerador Reservas Id"), Expression("jServicio.[concepto_acelerador_reservas_id]"), LookupInclude]
         public Int16? ConceptoAceleradorReservasId
         {
             get { return Fields.ConceptoAceleradorReservasId[this]; }
