@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("tipos_condicion"), DisplayName("Tipos Condicion"), InstanceName("Tipos Condicion"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposCondicion")]
     public sealed class TiposCondicionRow : Row, IIdRow, INameRow

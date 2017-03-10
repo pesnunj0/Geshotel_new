@@ -52,14 +52,14 @@ CREATE TABLE monedas (
 -- Records of monedas
 -- ----------------------------
 INSERT INTO monedas VALUES ('EURO', '€', '1');
-INSERT INTO monedas VALUES ( 'US DOLAR', '$', '1.06');
-INSERT INTO monedas VALUES ( 'LIBRA ESTERLINA', '£', '0.88');
-INSERT INTO monedas VALUES ( 'CORONA SUECA', 'Kr', null);
-INSERT INTO monedas VALUES ( 'FRANCO SUIZO', 'CHK', null);
-INSERT INTO monedas VALUES ( 'CORONA CHECA', 'CZK', null);
-INSERT INTO monedas VALUES ( 'RUBLO', 'RU', null);
-INSERT INTO monedas VALUES ( 'YEN', 'YEN', null);
-INSERT INTO monedas VALUES ( 'YUAN', 'YU', null);
+INSERT INTO monedas VALUES ('US DOLAR', '$', '1.06');
+INSERT INTO monedas VALUES ('LIBRA ESTERLINA', '£', '0.88');
+INSERT INTO monedas VALUES ('CORONA SUECA', 'Kr', null);
+INSERT INTO monedas VALUES ('FRANCO SUIZO', 'CHK', null);
+INSERT INTO monedas VALUES ('CORONA CHECA', 'CZK', null);
+INSERT INTO monedas VALUES ('RUBLO', 'RU', null);
+INSERT INTO monedas VALUES ('YEN', 'YEN', null);
+INSERT INTO monedas VALUES ('YUAN', 'YU', null);
 
 -- ----------------------------
 -- Table structure for naciones

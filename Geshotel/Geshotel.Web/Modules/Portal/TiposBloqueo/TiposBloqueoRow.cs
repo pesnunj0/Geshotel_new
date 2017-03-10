@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("tipos_bloqueo"), DisplayName("Tipos Bloqueo"), InstanceName("Tipos Bloqueo"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposBloqueo")]
     public sealed class TiposBloqueoRow : Row, IIdRow, INameRow

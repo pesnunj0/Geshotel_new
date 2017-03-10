@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("tipos_de_imputacion"), DisplayName("Tipos De Imputacion"), InstanceName("Tipos De Imputacion"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposDeImputacion")]
     public sealed class TiposDeImputacionRow : Row, IIdRow, INameRow

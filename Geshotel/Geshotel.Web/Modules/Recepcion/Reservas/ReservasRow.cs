@@ -17,7 +17,7 @@ namespace Geshotel.Recepcion.Entities
     public sealed class ReservasRow : Row, IIdRow, INameRow, ITenantRow
     {
         [DisplayName("Tipo Habitacion"),Column("tipo_habitacion_id"),NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jTipoHabitacion"),TextualField("TipoHabitacion")]
-        [LookupEditor("Contratos.ServiciosHotel")]
+        [LookupEditor("Portal.Servicios")]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
@@ -32,7 +32,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Pension"), Column("pension_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jPension"), TextualField("Pension")]
-        [LookupEditor("Contratos.ServiciosHotel")]
+        [LookupEditor("Portal.Servicios")]
         public Int16? PensionId
         {
             get { return Fields.PensionId[this]; }

@@ -61,6 +61,9 @@
       <HintPath>..\..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DayPilot.Web.Mvc">
+      <HintPath>..\..\..\..\..\..\ccruz\Downloads\Binary\Mvc5\DayPilot.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
       <Private>True</Private>
@@ -757,6 +760,7 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\spinner.gif" />
     <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\daypilot-all.min.js" />
     <Content Include="Scripts\jquery-ui-i18n.js" />
     <Content Include="Scripts\jquery-ui-i18n.min.js" />
     <Content Include="Scripts\jquery.autoNumeric.js" />
@@ -844,6 +848,7 @@
     <Content Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesIndex.cshtml" />
     <Content Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasIndex.cshtml" />
     <Content Include="Modules\Recepcion\ReservasServicios\ReservasServiciosIndex.cshtml" />
+    <Content Include="Modules\Recepcion\Scheduler\SchedulerIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1959,11 +1964,6 @@
     <Content Include="Modules\Portal\TiposHabitacion\TiposHabitacionIndex.cshtml" />
     <Content Include="Modules\Portal\TiposHotel\TiposHotelIndex.cshtml" />
     <Content Include="Modules\Portal\TiposHuesped\TiposHuespedIndex.cshtml" />
-    <Content Include="Modules\Portal\TiposHuesped\TiposHuespedRow.cs.20170107_204123.bak" />
-    <Content Include="Modules\Portal\TiposHuesped\TiposHuespedRow.cs.gen.bak" />
-    <Content Include="Modules\Portal\TiposHuesped\TiposHuespedRow.cs.orig" />
-    <Content Include="Modules\Portal\TiposPension\TiposPensionRow.cs.20170110_175708.bak" />
-    <Content Include="Modules\Portal\TiposPension\TiposPensionRow.cs.gen.bak" />
     <Content Include="Modules\Portal\TiposServicio\TiposServicioIndex.cshtml" />
     <Content Include="Modules\Portal\TiposUnidadCalculo\TiposUnidadCalculoIndex.cshtml" />
     <Content Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoIndex.cshtml" />
@@ -2652,7 +2652,6 @@
     <Compile Include="Modules\Common\Imports\ClientTypes\Organization.BusinessUnitEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Common\Migrations\CommonFilesDB\CommonFilesDB20170120_160400_initial.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161126_200000_Organization.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting.cs" />
@@ -2982,6 +2981,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
+    <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\SchedulerPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosColumns.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosEndpoint.cs" />

@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("tipos_unidad_calculo"), InstanceName("tipos_unidad_calculo"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposUnidadCalculo")]
     public sealed class TiposUnidadCalculoRow : Row, IIdRow, INameRow

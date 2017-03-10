@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), TableName("tipos_de_oferta"), DisplayName("Tipos De Oferta"), InstanceName("Tipos De Oferta"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposDeOferta")]
     public sealed class TiposDeOfertaRow : Row, IIdRow, INameRow

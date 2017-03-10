@@ -697,6 +697,13 @@ namespace MVC
 
                 public const string ReservasServiciosIndex = "~/Modules/Recepcion/ReservasServicios/ReservasServiciosIndex.cshtml";
             }
+
+
+            public static class Scheduler
+            {
+
+                public const string SchedulerIndex = "~/Modules/Recepcion/Scheduler/SchedulerIndex.cshtml";
+            }
         }
 
 

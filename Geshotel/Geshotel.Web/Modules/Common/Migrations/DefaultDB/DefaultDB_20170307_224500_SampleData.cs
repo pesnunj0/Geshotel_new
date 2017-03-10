@@ -185,6 +185,73 @@ namespace Geshotel.Migrations.DefaultDB
                 dpto_contable = 100,
                 permite_credito = 0
             });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 38,
+                hotel_id = 1,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 39,
+                hotel_id = 1,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 40,
+                hotel_id = 1,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 41,
+                hotel_id = 1,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+
+
+
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 2,
+                hotel_id = 1,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 6,
+                hotel_id = 2,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+            Insert.IntoTable("servicios_hotel").Row(new
+            {
+                servicio_id = 11,
+                hotel_id = 2,
+                impuesto_id = 3,
+                cta_contable = 7051000,
+                dpto_contable = 100,
+                permite_credito = 0
+            });
+
             Insert.IntoTable("tipos_habitacion_hotel").Row(new
             {
                 servicio_id = 11,
@@ -199,17 +266,23 @@ namespace Geshotel.Migrations.DefaultDB
             });
             Insert.IntoTable("tipos_habitacion_hotel").Row(new
             {
-                servicio_id = 153,
+                servicio_id = 40,
                 hotel_id = 1,
-                tipo_habitacion_id = 16
+                tipo_habitacion_id = 4
+            });
+            Insert.IntoTable("tipos_habitacion_hotel").Row(new
+            {
+                servicio_id = 41,
+                hotel_id = 1,
+                tipo_habitacion_id = 5
             });
             Insert.IntoTable("reservas").Row(new
             {
                 fecha_creacion = DateTime.Now,
                 hotel_id = 1,
                 estado_reserva_id = 0,
-                tipo_habitacion_id = 153,
-                pension_id = 91,
+                tipo_habitacion_id = 40,
+                pension_id = 4,
                 cliente_id = 2,
                 adultos = 2,
                 child_50 = 1,
