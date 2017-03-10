@@ -17,9 +17,9 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("impuesto_id").AsInt16()
                 .ForeignKey("", "impuestos", "impuesto_id")
                 .WithColumn("costo").AsFloat().Nullable()
-                .WithColumn("cta_contable").AsString(16)
-                .WithColumn("dpto_contable").AsString(10)
-                .WithColumn("permite_credito").AsBoolean();
+                .WithColumn("cta_contable").AsString(16).Nullable()
+                .WithColumn("dpto_contable").AsString(10).Nullable()
+                .WithColumn("permite_credito").AsBoolean().WithDefaultValue(0);
 
             Create.Index("IX_servicio_hotel")
                 .OnTable("servicios_hotel")

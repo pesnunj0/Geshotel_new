@@ -20,7 +20,7 @@ namespace Geshotel.Migrations.DefaultDB
                    .ForeignKey("FK_tipos_habitacion_hotel_hotel_id", "hoteles", "hotel_id")
                    .WithColumn("tipo_habitacion_id").AsInt16().NotNullable()
                    .ForeignKey("FK_tipos_habitacion_tipo_habitacion_id", "tipos_habitacion", "tipo_habitacion_id")
-                   .WithColumn("servicio_id").AsInt32().NotNullable()
+                   .WithColumn("servicio_id").AsInt32().Nullable()   // Nullable por el tema de desvios y No show
                     .ForeignKey("FK_tipos_habitacion_servicio_id", "servicios", "servicio_id");
             Create.Index("IX_tipo_habitacion_hotel")
                     .OnTable("tipos_habitacion_hotel")
