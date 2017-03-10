@@ -21,7 +21,7 @@ namespace Geshotel.Contratos.Columns
         public String HotelName { get; set; }
         [EditLink]
         public String NombreServicio { get; set; }
-        public Int16 ImpuestoId { get; set; }
+        public String Impuesto { get; set; }
         public Double Costo { get; set; }
         [EditLink]
         public String CtaContable { get; set; }

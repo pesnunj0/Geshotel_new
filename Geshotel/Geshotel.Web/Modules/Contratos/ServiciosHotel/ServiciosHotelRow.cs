@@ -158,7 +158,7 @@ namespace Geshotel.Contratos.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.CtaContable; }
+            get { return Fields.NombreServicio; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
