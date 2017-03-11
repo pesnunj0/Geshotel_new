@@ -13,7 +13,6 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), TableName("servicios_hotel"), DisplayName("Servicios Hotel"), InstanceName("Servicios Hotel"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    [LookupScript("Contratos.ServiciosHotel")]
     public sealed class ServiciosHotelRow : Row, IIdRow, INameRow, ITenantRow
     {
         public Int16Field HotelIdField
