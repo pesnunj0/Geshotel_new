@@ -8689,33 +8689,3 @@ section.content > .s-DataGrid {
 .s-Recepcion-ReservasServiciosDialog .caption {
   width: 150px;
 }
-.s-Reservas-ReservasContratosDialog > .size {
-  width: 650px;
-}
-.s-Reservas-ReservasContratosDialog .caption {
-  width: 150px;
-}
-.s-Reservas-ReservasDescuentosDialog > .size {
-  width: 650px;
-}
-.s-Reservas-ReservasDescuentosDialog .caption {
-  width: 150px;
-}
-.s-Reservas-ReservasHuespedesDialog > .size {
-  width: 650px;
-}
-.s-Reservas-ReservasHuespedesDialog .caption {
-  width: 150px;
-}
-.s-Reservas-ReservasOfertasDialog > .size {
-  width: 650px;
-}
-.s-Reservas-ReservasOfertasDialog .caption {
-  width: 150px;
-}
-.s-reservas-ReservasServiciosDialog > .size {
-  width: 650px;
-}
-.s-reservas-ReservasServiciosDialog .caption {
-  width: 150px;
-}

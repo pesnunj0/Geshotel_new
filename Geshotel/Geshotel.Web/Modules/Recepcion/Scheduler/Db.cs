@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FluentMigrator.Builders;
 
 namespace Data
 {
@@ -14,10 +15,13 @@ namespace Data
     /// </summary>
     public static class Db
     {
+        
 
         public static DataTable GetRooms()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM [Room] order by [RoomName]", ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            String sql = "SELECT * FROM [Room] order by [RoomName]";
+            SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -36,7 +40,9 @@ namespace Data
 
         public static DataRow GetReservation(string id)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM [Reservation] WHERE [ReservationId] = @id", ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            string sql = "SELECT * FROM [Reservation] WHERE [ReservationId] = @id";
+            SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
             da.SelectCommand.Parameters.AddWithValue("id", id);
 
             DataTable dt = new DataTable();
@@ -51,7 +57,8 @@ namespace Data
 
         public static DataTable GetReservations()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT *,1 as ReservationStatus,1 as ReservationPaid, 11 As RoomId FROM [reservas]", ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            SqlDataAdapter da = new SqlDataAdapter("SELECT *,1 as ReservationStatus,1 as ReservationPaid, 11 As RoomId FROM [reservas]",conexion);
 
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -64,7 +71,8 @@ namespace Data
 
         public static void MoveReservation(string id, DateTime start, DateTime end, string resource)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(conexion))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE [Reservation] SET [ReservationStart] = @start, [ReservationEnd] = @end, [RoomId] = @resource WHERE [ReservationId] = @id", con);
@@ -78,7 +86,8 @@ namespace Data
 
         public static void CreateReservation(DateTime start, DateTime end, string resource, string name)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(conexion))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO [Reservation] ([ReservationStart], [ReservationEnd], [RoomId], [ReservationName], [ReservationStatus]) VALUES (@start, @end, @resource, @name, 0)", con);
@@ -92,7 +101,8 @@ namespace Data
 
         public static void UpdateReservation(string id, string name, DateTime start, DateTime end, string resource, int status, int paid)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(conexion))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE [Reservation] SET [ReservationStart] = @start, [ReservationEnd] = @end, [RoomId] = @resource, [ReservationName] = @name, [ReservationStatus] = @status, [ReservationPaid] = @paid WHERE [ReservationId] = @id", con);
@@ -110,7 +120,23 @@ namespace Data
 
         public static DataTable GetRoomsFiltered(string roomFilter)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT [habitacion_id] as RoomId, [numero_habitacion] as RoomName, 'Bien' as RoomStatus,3  as RoomSize FROM [habitaciones]", ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
+            string sql = "SELECT " +
+            "habitaciones.habitacion_id AS RoomId," +
+            "habitaciones.numero_habitacion AS RoomName, " +
+            "COALESCE(habitaciones_situacion.situacion, 'Libre') AS RoomStatus, " +
+            "tipos_habitacion.numero_personas AS RoomSize, " +
+            "tipos_habitacion.desc_corta AS RoomType " +
+            "FROM habitaciones " +
+            "LEFT JOIN habitaciones_situacion ON habitaciones.situacion_id = habitaciones_situacion.situacion_id " +
+            "INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id ";
+
+            if (provider == "Mysql.Data.MySqlClient")  // En Mysql sustituyo ISNULL por IFNULL. Deprecado porque uso COALESCE en ambos casos            
+                sql.Replace("ISNULL","IFNULL");
+            
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
            // da.SelectCommand.Parameters.AddWithValue("beds", roomFilter);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -121,8 +147,11 @@ namespace Data
         public static bool IsFree(string id, DateTime start, DateTime end, string resource)
         {
             // event with the specified id will be ignored
-
-            SqlDataAdapter da = new SqlDataAdapter("SELECT count(ReservationId) as count FROM [Reservation] WHERE NOT (([ReservationEnd] <= @start) OR ([ReservationStart] >= @end)) AND RoomId = @resource AND ReservationId <> @id", ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
+            string sql = "SELECT count(ReservationId) as count FROM [Reservation] " + 
+            "WHERE NOT (([ReservationEnd] <= @start) OR ([ReservationStart] >= @end)) AND RoomId = @resource AND ReservationId <> @id";
+            SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
             da.SelectCommand.Parameters.AddWithValue("id", id);
             da.SelectCommand.Parameters.AddWithValue("start", start);
             da.SelectCommand.Parameters.AddWithValue("end", end);

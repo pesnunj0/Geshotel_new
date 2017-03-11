@@ -54,7 +54,10 @@
     BackendUrl = Url.Action("Backend", "Scheduler"),
     Scale = TimeScale.Manual,
 
-    EventHeight = 60,
+    EventHeight = 30,
+    Height = 800,
+    HeightSpec = DayPilot.Web.Mvc.Enums.Scheduler.HeightSpec.Max,
+
 
     TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.JavaScript,
     TimeRangeSelectedJavaScript = "create(start, end, resource);",

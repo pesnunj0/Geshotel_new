@@ -24,7 +24,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.TipoHabitacionId[this]= value; }
         }
 
-        [DisplayName("TipoHabitacion"),Expression("jTipoHabitacion.nombre_servicio")]
+        [DisplayName("TipoHabitacion"),Expression("jTipoHabitacion.abreviatura")]
         public String TipoHabitacion
         {
             get { return Fields.TipoHabitacion[this]; }
@@ -39,7 +39,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.PensionId[this] = value; }
         }
 
-        [DisplayName("Pension"), Expression("jPension.nombre_servicio")]
+        [DisplayName("Pension"), Expression("jPension.abreviatura")]
         public String Pension
         {
             get { return Fields.Pension[this]; }
