@@ -21,7 +21,7 @@ namespace Geshotel.Contratos {
 
     export namespace ServiciosHotelRow {
         export const idProperty = 'ServicioHotelId';
-        export const nameProperty = 'CtaContable';
+        export const nameProperty = 'NombreServicio';
         export const localTextPrefix = 'Contratos.ServiciosHotel';
         export const lookupKey = 'Contratos.ServiciosHotel';
 

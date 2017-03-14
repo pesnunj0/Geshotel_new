@@ -53,11 +53,15 @@
 {
     BackendUrl = Url.Action("Backend", "Scheduler"),
     Scale = TimeScale.Manual,
-
+    // *****************************************************************
+    // Added by Javier On 10/03/2017
+    // Scroll vertical y horizontal
+    // Pendiente de ver un tema bootstrap para que funcione en tabletas
+    // *****************************************************************
     EventHeight = 30,
     Height = 800,
     HeightSpec = DayPilot.Web.Mvc.Enums.Scheduler.HeightSpec.Max,
-
+    // *****************************************************************
 
     TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.JavaScript,
     TimeRangeSelectedJavaScript = "create(start, end, resource);",
@@ -76,8 +80,9 @@
     },
 
     HeaderColumns = new RowHeaderColumnCollection()
-    {
+    {   
         new RowHeaderColumn("Room", 80),
+        new RowHeaderColumn("Type",80),
         new RowHeaderColumn("Size", 80),
         new RowHeaderColumn("Status", 80)
     }

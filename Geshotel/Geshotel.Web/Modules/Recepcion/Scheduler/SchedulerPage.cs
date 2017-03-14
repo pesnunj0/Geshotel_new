@@ -85,6 +85,7 @@ namespace Geshotel.Recepcion.Pages
 
                 foreach (DataRow r in dt.Rows)
                 {
+                    string tipo = (string)r["RoomType"];
                     string name = (string)r["RoomName"];
                     string id = Convert.ToString(r["RoomId"]);
                     string status = (string)r["RoomStatus"];
@@ -93,6 +94,7 @@ namespace Geshotel.Recepcion.Pages
 
                     Resource res = new Resource(name, id);
                     res.DataItem = r;
+                    res.Columns.Add(new ResourceColumn(tipo));
                     res.Columns.Add(new ResourceColumn(bedsFormatted));
                     res.Columns.Add(new ResourceColumn(status));
 

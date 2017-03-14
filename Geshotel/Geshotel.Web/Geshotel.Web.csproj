@@ -61,8 +61,9 @@
       <HintPath>..\..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DayPilot.Web.Mvc">
-      <HintPath>..\..\..\..\..\..\ccruz\Downloads\Binary\Mvc5\DayPilot.Web.Mvc.dll</HintPath>
+    <Reference Include="DayPilot.Web.Mvc, Version=8.3.5862.1, Culture=neutral, PublicKeyToken=b8d928e6588028e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\DayPilot.8.3.5862\DayPilot.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>

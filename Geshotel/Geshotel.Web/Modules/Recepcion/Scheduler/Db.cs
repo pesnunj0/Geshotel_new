@@ -124,13 +124,15 @@ namespace Data
             string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
             string sql = "SELECT " +
             "habitaciones.habitacion_id AS RoomId," +
+            "tipos_habitacion.desc_corta AS RoomType, " +
             "habitaciones.numero_habitacion AS RoomName, " +
             "COALESCE(habitaciones_situacion.situacion, 'Libre') AS RoomStatus, " +
-            "tipos_habitacion.numero_personas AS RoomSize, " +
-            "tipos_habitacion.desc_corta AS RoomType " +
+            "tipos_habitacion.numero_personas AS RoomSize " +           
             "FROM habitaciones " +
             "LEFT JOIN habitaciones_situacion ON habitaciones.situacion_id = habitaciones_situacion.situacion_id " +
-            "INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id ";
+            "INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id " +
+            "WHERE habitaciones.hotel_id = 1 " +
+            "ORDER BY RoomType, RoomName" ;
 
             if (provider == "Mysql.Data.MySqlClient")  // En Mysql sustituyo ISNULL por IFNULL. Deprecado porque uso COALESCE en ambos casos            
                 sql.Replace("ISNULL","IFNULL");

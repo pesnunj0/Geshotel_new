@@ -2424,7 +2424,7 @@ var Geshotel;
         var ServiciosHotelRow;
         (function (ServiciosHotelRow) {
             ServiciosHotelRow.idProperty = 'ServicioHotelId';
-            ServiciosHotelRow.nameProperty = 'CtaContable';
+            ServiciosHotelRow.nameProperty = 'NombreServicio';
             ServiciosHotelRow.localTextPrefix = 'Contratos.ServiciosHotel';
             ServiciosHotelRow.lookupKey = 'Contratos.ServiciosHotel';
             function getLookup() {

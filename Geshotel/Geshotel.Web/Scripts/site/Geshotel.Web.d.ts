@@ -1857,7 +1857,7 @@ declare namespace Geshotel.Contratos {
     }
     namespace ServiciosHotelRow {
         const idProperty = "ServicioHotelId";
-        const nameProperty = "CtaContable";
+        const nameProperty = "NombreServicio";
         const localTextPrefix = "Contratos.ServiciosHotel";
         const lookupKey = "Contratos.ServiciosHotel";
         function getLookup(): Q.Lookup<ServiciosHotelRow>;
