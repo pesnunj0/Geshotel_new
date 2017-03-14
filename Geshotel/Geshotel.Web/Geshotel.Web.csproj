@@ -1102,10 +1102,10 @@
     <Content Include="Scripts\adminlte\demo.js" />
     <Content Include="Scripts\adminlte\pages\dashboard.js" />
     <Content Include="Scripts\adminlte\pages\dashboard2.js" />
-    <Content Include="Scripts\bootstrap-slider\bootstrap-slider.css" />
-    <Content Include="Scripts\bootstrap-slider\bootstrap-slider.js" />
-    <Content Include="Scripts\bootstrap-slider\bootstrap-slider.min.css" />
-    <Content Include="Scripts\bootstrap-slider\bootstrap-slider.min.js" />
+    <Content Include="Scripts\chartjs\bootstrap-slider\bootstrap-slider.css" />
+    <Content Include="Scripts\chartjs\bootstrap-slider\bootstrap-slider.js" />
+    <Content Include="Scripts\chartjs\bootstrap-slider\bootstrap-slider.min.css" />
+    <Content Include="Scripts\chartjs\bootstrap-slider\bootstrap-slider.min.js" />
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Scripts\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
@@ -2983,6 +2983,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
+    <Compile Include="Modules\Recepcion\Scheduler\ReservationController.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\SchedulerPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosColumns.cs" />
     <Compile Include="Modules\Recepcion\ReservasContratos\ReservasContratosEndpoint.cs" />

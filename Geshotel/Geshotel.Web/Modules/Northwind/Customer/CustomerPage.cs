@@ -10,6 +10,7 @@ namespace Geshotel.Northwind.Pages
     {
         public ActionResult Index()
         {
+            
             return View(MVC.Views.Northwind.Customer.CustomerIndex);
         }
     }

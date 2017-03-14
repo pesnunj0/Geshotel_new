@@ -2,9 +2,10 @@
 @using DayPilot.Web.Mvc;
 @using DayPilot.Web.Mvc.Enums
 @using DayPilot.Web.Mvc.Events.Scheduler
-
+@using Data;
+@using System.Data;
 @{
-    ViewBag.Title = "ASP.NET MVC Hotel Room Booking";
+    ViewBag.Title = "Scheduler";
 }
 <script src="@Url.Content("~/Scripts/daypilot-all.min.js")" type="text/javascript"></script>
 <style type="text/css">
@@ -32,10 +33,18 @@
     .status_cleanup.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
         border-left: 5px solid #f9ba25; /* orange */
     }
+    .status_none.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
+        background: Yellow;
+        border-left: 5px solid #FFFF00;
+    }
 </style>
 
 <div style="margin-bottom: 20px;">
-    Show rooms:
+    Hoteles:
+    @Html.DropDownList("hotel_id", 
+    new SelectList(Db.SelectHoteles().AsDataView(), "hotel_id", "hotel"), 
+    new { @onchange = "filter('hotel_id', this.value)" });  
+    Show rooms:  
     @Html.DropDownList("Filter", new SelectListItem[]
         {
             new SelectListItem() { Text = "All", Value = "0" },
@@ -58,7 +67,7 @@
     // Scroll vertical y horizontal
     // Pendiente de ver un tema bootstrap para que funcione en tabletas
     // *****************************************************************
-    EventHeight = 30,
+    EventHeight = 35,
     Height = 800,
     HeightSpec = DayPilot.Web.Mvc.Enums.Scheduler.HeightSpec.Max,
     // *****************************************************************
@@ -103,10 +112,10 @@
     }
 
     function create(start, end, resource) {
-        modal().showUrl('@Url.Action("Create", "Reservation")?start=' + start + "&end=" + end + "&resource=" + resource);
+        //modal().showUrl('@Url.Action("Create", "Reservation")?start=' + start + "&end=" + end + "&resource=" + resource);
     }
     function edit(e) {
-        modal().showUrl('@Url.Action("Edit", "Reservation")?id=' + e.id());
+        //modal().showUrl('@Url.Action("Edit", "Reservation")?id=' + e.id());
     }
 
     function filter(property, value) {

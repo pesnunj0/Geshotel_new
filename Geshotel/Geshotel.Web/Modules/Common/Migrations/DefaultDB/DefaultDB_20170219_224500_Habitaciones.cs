@@ -118,23 +118,23 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnTable("habitaciones")
                 .OnColumn("zona_limpieza_id").Ascending();
 
-            Create.Table("habitaciones_bloqueo")
+            Create.Table("habitaciones_bloqueos")
                 .WithColumn("habitacion_bloqueo_id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("habitacion_id").AsInt16().NotNullable()
                 .ForeignKey("","habitaciones","habitacion_id").OnDeleteOrUpdate(System.Data.Rule.Cascade)
                 .WithColumn("tipo_bloqueo_id").AsInt16().NotNullable()
                 .WithColumn("fecha_desde").AsDate().NotNullable()
                 .WithColumn("fecha_hasta").AsDate().NotNullable()
-                .WithColumn("Observaciones").AsString(1000)
-                .WithColumn("reserva_id").AsInt32()
-                .WithColumn("user_id").AsInt32()
+                .WithColumn("Observaciones").AsString(1000).Nullable()
+                .WithColumn("reserva_id").AsInt32().Nullable()
+                .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime();
 
             Create.Index("IX_habitacion_id")
-                .OnTable("habitaciones_bloqueo")
+                .OnTable("habitaciones_bloqueos")
                 .OnColumn("habitacion_id").Ascending();
             Create.Index("IX_tipo_bloqueo")
-                .OnTable("habitaciones_bloqueo")
+                .OnTable("habitaciones_bloqueos")
                 .OnColumn("tipo_bloqueo_id").Ascending();
         }
 

@@ -265,9 +265,19 @@ namespace Geshotel.Migrations.DefaultDB
             });
             Insert.IntoTable("tipos_habitacion_hotel").Row(new
             {
+                hotel_id = 2,           // H2
+                tipo_habitacion_id = 20 // No Show
+            });
+            Insert.IntoTable("tipos_habitacion_hotel").Row(new
+            {
                 servicio_id = 10,  // B1
                 hotel_id = 2,
                 tipo_habitacion_id = 1  //B1
+            });
+            Insert.IntoTable("tipos_habitacion_hotel").Row(new
+            {
+                hotel_id = 1,               // H1
+                tipo_habitacion_id = 20    // No Show
             });
             Insert.IntoTable("tipos_habitacion_hotel").Row(new
             {
@@ -298,6 +308,7 @@ namespace Geshotel.Migrations.DefaultDB
                 hotel_id = 1,
                 tipo_habitacion_id = 6     // SUITE 2
             });
+
 
             Insert.IntoTable("reservas").Row(new
             {
@@ -443,7 +454,30 @@ namespace Geshotel.Migrations.DefaultDB
                 tipo_habitacion_id = 5,
                 numero_habitacion = "018"
             });
-
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 7,
+                numero_habitacion = "999"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 20,
+                numero_habitacion = "888"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 7,
+                numero_habitacion = "999"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 20,
+                numero_habitacion = "888"
+            });
             Insert.IntoTable("habitaciones").Row(new
             {
                 hotel_id = 2,
