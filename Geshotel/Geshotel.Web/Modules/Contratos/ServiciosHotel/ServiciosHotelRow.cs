@@ -67,14 +67,12 @@ namespace Geshotel.Contratos.Entities
 
 
         [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jServicio"), TextualField("NombreServicio")]
-        [LookupEditor(typeof(ServiciosRow))]
+        [LookupEditor(typeof(ServiciosRow)), LookupInclude]
         public Int32? ServicioId
         {
             get { return Fields.ServicioId[this]; }
             set { Fields.ServicioId[this] = value; }
         }
-
-
 
         [DisplayName("Impuesto"), Column("impuesto_id"), NotNull, ForeignKey("impuestos", "impuesto_id"), LeftJoin("jImpuesto"), TextualField("Impuesto")]
         [LookupEditor(typeof(ImpuestosRow))]
