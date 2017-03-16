@@ -33,28 +33,57 @@
     .status_cleanup.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
         border-left: 5px solid #f9ba25; /* orange */
     }
-    .status_none.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
-        background: Yellow;
-        border-left: 5px solid #FFFF00;
+    .status_none.scheduler_default_rowheader .scheduler_default_rowheader_inner {
+        background: Yellow;  
+        border-left: 0px solid Yellow; /* red */ 
+        font-weight: bold; 
     }
 </style>
 
 <div style="margin-bottom: 20px;">
-    Hoteles:
+    @{
+        var LanguageCookie = Request.Cookies["LanguagePreference"];
+        var titulo = "Tipo Habitación:";
+        var sel0 = "Todas";
+        var sel1 = "Sencilla";
+        var sel2 = "Doble";
+        var sel3 = "Triple";
+        var sel4 = "Familiar";
+        var head1 = "Habitacion";
+        var head2 = "Tipo";
+        var head3 = "Tamaño";
+        var head4 = "Estado";
+        if (LanguageCookie.Value != "es")
+        {
+            titulo = "Room Type";
+            sel0 = "All";
+            sel1 = "Single";
+            sel2 = "Double";
+            sel3 = "Triple";
+            sel4 = "Familiar";
+            head1 = "Room";
+            head2 = "Type";
+            head3 = "Size";
+            head4 = "Status";
+        }
+    }
+    
+   
+    Hotel:
     @Html.DropDownList("hotel_id", 
     new SelectList(Db.SelectHoteles().AsDataView(), "hotel_id", "hotel"), 
-    new { @onchange = "filter('hotel_id', this.value)" });  
-    Show rooms:  
+    new { @onchange = "filter('hotel_id', this.value)" }) 
+    
+    @titulo
     @Html.DropDownList("Filter", new SelectListItem[]
         {
-            new SelectListItem() { Text = "All", Value = "0" },
-            new SelectListItem() { Text = "Single", Value = "1" },
-            new SelectListItem() { Text = "Double", Value = "2" },
-            new SelectListItem() { Text = "Triple", Value = "3" },
-            new SelectListItem() { Text = "Family", Value = "4" },
+            new SelectListItem() { Text = @sel0, Value = "0" },
+            new SelectListItem() { Text = @sel1, Value = "1" },
+            new SelectListItem() { Text = @sel2, Value = "2" },
+            new SelectListItem() { Text = @sel3, Value = "3" },
+            new SelectListItem() { Text = @sel4, Value = "4" },
         },
-        new { @onchange = "filter('room', this.value)" }
-    )
+        new { @onchange = "filter('room', this.value)" })
 </div>
 
 
@@ -71,7 +100,7 @@
     Height = 800,
     HeightSpec = DayPilot.Web.Mvc.Enums.Scheduler.HeightSpec.Max,
     // *****************************************************************
-
+    
     TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.JavaScript,
     TimeRangeSelectedJavaScript = "create(start, end, resource);",
     TimeRangeSelectingJavaScript = "selecting(args)",
@@ -90,10 +119,10 @@
 
     HeaderColumns = new RowHeaderColumnCollection()
     {   
-        new RowHeaderColumn("Room", 80),
-        new RowHeaderColumn("Type",80),
-        new RowHeaderColumn("Size", 80),
-        new RowHeaderColumn("Status", 80)
+        new RowHeaderColumn(@head1, 80),
+        new RowHeaderColumn(@head2,80),
+        new RowHeaderColumn(@head3, 80),
+        new RowHeaderColumn(@head4, 80)
     }
 })
 
@@ -115,6 +144,9 @@
         //modal().showUrl('@Url.Action("Create", "Reservation")?start=' + start + "&end=" + end + "&resource=" + resource);
     }
     function edit(e) {
+        x = new Geshotel.Recepcion.ReservasDialog().loadByIdAndOpenDialog(e.id());
+        //dp.commandCallBack("refresh"); Por ahora lo comento.......
+        //x.loadByIdAndOpenDialog(e.id());
         //modal().showUrl('@Url.Action("Edit", "Reservation")?id=' + e.id());
     }
 

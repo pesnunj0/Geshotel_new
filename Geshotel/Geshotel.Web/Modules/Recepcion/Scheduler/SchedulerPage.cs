@@ -14,6 +14,7 @@ namespace Geshotel.Recepcion.Pages
     using Serenity.Web;
     using Serenity.Data;
     using System.Web.Mvc;
+    using System.Web;
 
     [RoutePrefix("Recepcion/Scheduler/Backend"), Route("{action=Backend}")]
     //[ReadPermission("Recepcion:Hotel")]
@@ -22,7 +23,6 @@ namespace Geshotel.Recepcion.Pages
     public class SchedulerController : Controller
     {
         
-
         public ActionResult Index()
         {
             
@@ -42,7 +42,9 @@ namespace Geshotel.Recepcion.Pages
                 string HotelId = Convert.ToString(user.HotelId);
                 if (ClientState["filter"] != null)
                 {
-                    HotelId = (string)ClientState["filter"]["hotel_id"];
+                    string aux = (string)ClientState["filter"]["hotel_id"];
+                    if (!string.IsNullOrEmpty(aux))
+                        HotelId = aux;
                 }
                 return HotelId;
             }
@@ -53,8 +55,8 @@ namespace Geshotel.Recepcion.Pages
                 // *********************************
                 string hotelId = LoadHotelId();
                 // *********************************
-                DateTime fini = DateTime.Today.AddDays(-90);
-                DateTime ffin = DateTime.Today.AddDays(180);
+                DateTime fini = DateTime.Today.AddDays(-30);
+                DateTime ffin = DateTime.Today.AddDays(90);
 
                 DateTime start = new DateTime(fini.Year, fini.Month, 1, 12, 0, 0);
                 DateTime end = new DateTime(ffin.Year, ffin.Month, 1, 12, 0, 0);
@@ -76,6 +78,8 @@ namespace Geshotel.Recepcion.Pages
 
             private void LoadRoomsAndReservations(string hotelId)
             {
+                if (String.IsNullOrEmpty(hotelId))
+                    hotelId = LoadHotelId();
                 LoadRooms(hotelId);
                 LoadReservations(hotelId);
             }
@@ -104,8 +108,11 @@ namespace Geshotel.Recepcion.Pages
                 {
                     roomFilter = (string)ClientState["filter"]["room"];
                 }
-                
-                DataTable dt = Db.GetRoomsFiltered(roomFilter,hotelId);
+
+                if (String.IsNullOrEmpty(hotelId))
+                    hotelId = LoadHotelId();
+
+                    DataTable dt = Db.GetRoomsFiltered(roomFilter,hotelId);
 
                 foreach (DataRow r in dt.Rows)
                 {
@@ -114,11 +121,13 @@ namespace Geshotel.Recepcion.Pages
                     string id = Convert.ToString(r["RoomId"]);
                     string status = (string)r["RoomStatus"];
                     int beds = Convert.ToInt32(r["RoomSize"]);
-                    string bedsFormatted = (beds == 1) ? "1 bed" : String.Format("{0} beds", beds);
+                    string bedsFormatted = (beds == 1) ? "1 pax" : String.Format("{0} paxs", beds);
                     if (status=="")
                     {
-                        bedsFormatted = "";
+                        bedsFormatted = "Reservas";
 
+                        name = "";
+                        status = "Sin Asignar";
                     }
 
                     Resource res = new Resource(name, id);
@@ -133,7 +142,7 @@ namespace Geshotel.Recepcion.Pages
 
             protected override void OnEventMove(EventMoveArgs e)
             {
-
+                 
                 string id = e.Id;
                 DateTime start = e.NewStart;
                 DateTime end = e.NewEnd;
@@ -146,11 +155,11 @@ namespace Geshotel.Recepcion.Pages
                 // *********************************
 
                 string message = null;
-                if (!Db.IsFree(id, start, end, resource))
+                if (e.OldEnd != e.NewEnd | e.OldStart != e.NewStart)   // No permito cambio de fechas. Debe hacerse por editor
                 {
-                    message = "The reservation cannot overlap with an existing reservation.";
+                    message = "No se pueden cambiar las fechas directamente. Por favor, edite la reserva.";
                 }
-                else if (e.OldEnd <= DateTime.Today)
+                else if (e.OldEnd != e.NewEnd)
                 {
                     message = "This reservation cannot be changed anymore.";
                 }
@@ -165,6 +174,9 @@ namespace Geshotel.Recepcion.Pages
                         Db.DeleteHabitacionesBloqueo(e.Id, e.OldStart, e.OldEnd, e.OldResource);
                     if (!e.NewResource.EndsWith("000")) // Si asigno una habitacion válida, entonces
                         Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.NewResource);
+                    Boolean match = Db.TipoHabitacionMatch(e.Id, e.NewResource);
+                    if (!match)
+                        message = "Reserva Asignada a una habitacion de tipo distinto a la Reserva.";
                 }
 
                 LoadReservations(hotelId);
@@ -178,9 +190,10 @@ namespace Geshotel.Recepcion.Pages
                 // *********************************
                 string hotelId = Db.DimeHotel(e.Id);
                 // *********************************
-                Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.Resource);
+                //Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.Resource);
                 LoadReservations(hotelId);
-                Update();
+                string message = "No se permite modificar las fechas directamente. Por favor, edite la reserva.";
+                UpdateWithMessage(message);
             }
 
             protected override void OnBeforeEventRender(BeforeEventRenderArgs e)
@@ -188,49 +201,53 @@ namespace Geshotel.Recepcion.Pages
                 e.Html = String.Format("{0} ({1:d} - {2:d})", e.Text, e.Start, e.End);
                 int status = Convert.ToInt32(e.Tag["estado_reserva_id"]);
                 string ttoo = (String)e.DataItem["ttoo"];
-                e.ToolTip = String.Format("Id={0}-{1}-{2}pax", e.Id, e.DataItem["ttoo"], e.DataItem["pax"]);
-//                e.ToolTip = "ID=" + (String)e.Id + "-" + ttoo + " " + (String)e.DataItem["pax"]+"pax";
+                e.ToolTip = String.Format("Id={0}-{1}-{2}pax-{3}-", e.Id, e.DataItem["ttoo"], e.DataItem["pax"], e.DataItem["desc_corta"]);
+                Boolean match = Db.TipoHabitacionMatch(e.Id, e.Resource);
+                if (!match)
+                    e.ToolTip += "Tipo de Habitación no corresponde-";
                 switch (status)
                 {
                     case 0: // Pendiente de Finalizar. Reserva con errores
-                        if (e.Start < DateTime.Today.AddDays(2)) // must be confirmed two day in advance
-                        {
-                            e.DurationBarColor = "red";
-                            e.ToolTip += "Expired (not confirmed in time)";
-                        }
-                        else
-                        {
-                            e.DurationBarColor = "orange";
-                            e.ToolTip += " Errors";
-                        }
+                        e.DurationBarColor = "red";
+                        e.ToolTip += "Reserva con Errores";
                         break;
                     case 1:  // confirmed
-                        if (e.Start < DateTime.Today || (e.Start == DateTime.Today && DateTime.Now.TimeOfDay.Hours > 18))  // must arrive before 6 pm
-                        {
-                            e.DurationBarColor = "#f41616";  // red
-                            e.ToolTip += "Late arrival";
-                        }
+                        if (e.Start == DateTime.Today)    // En espera de entrada
+                            e.DurationBarColor = "Orange";
                         else
-                        {
-                            e.DurationBarColor = "green";
-                            e.ToolTip += "Confirmed";
-                        }
+                            e.DurationBarColor = "#58D3F7"; ; // Azul celeste
+                        e.ToolTip += "Confirmada";
                         break;
-                    case 2: // arrived
-                        if (e.End < DateTime.Today || (e.End == DateTime.Today && DateTime.Now.TimeOfDay.Hours > 13))  // must checkout before 12 am
-                        {
-                            e.DurationBarColor = "#f41616"; // red
+                    case 2:
+                        e.DurationBarColor = "black";
+                        e.ToolTip += "Cancelada";
+                        break;
+                    case 3: // Check-in
+                        if (e.End <= DateTime.Today ) { // Tenía que haber salido. Caso totalmente anómalo
+                            e.DurationBarColor = "black";
                             e.ToolTip += "Late checkout";
                         }
                         else
                         {
-                            e.DurationBarColor = "#1691f4";  // blue
-                            e.ToolTip += "Arrived";
+                            e.DurationBarColor = "Green";  // blue
+                            e.ToolTip += "Check-In";
                         }
                         break;
-                    case 3: // checked out
+                    case 4: // Check-Out
+                        if (e.End < DateTime.Today || (e.End == DateTime.Today && DateTime.Now.TimeOfDay.Hours > 13))  // must checkout before 12 am
+                        {
+                            e.DurationBarColor = "black"; 
+                            e.ToolTip += "Late checkout";
+                        }
+                        else
+                        {
+                            e.DurationBarColor = "#1691f4";  // azul oscuro
+                            e.ToolTip += "Check-Out";
+                        }
+                        break;
+                    case 5: // Finalizada gris
                         e.DurationBarColor = "gray";
-                        e.ToolTip += "Checked out";
+                        e.ToolTip += "Cerrada";
                         break;
                     default:
                         throw new ArgumentException("Unexpected status.");
