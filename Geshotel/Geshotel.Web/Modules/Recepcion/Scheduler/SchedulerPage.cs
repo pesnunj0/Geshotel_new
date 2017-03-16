@@ -213,10 +213,15 @@ namespace Geshotel.Recepcion.Pages
                         break;
                     case 1:  // confirmed
                         if (e.Start == DateTime.Today)    // En espera de entrada
+                        {
                             e.DurationBarColor = "Orange";
+                            e.ToolTip += "Entrada";
+                        }
                         else
-                            e.DurationBarColor = "#58D3F7"; ; // Azul celeste
-                        e.ToolTip += "Confirmada";
+                        {
+                            e.DurationBarColor = "lightskyblue"; ; // Azul celeste
+                            e.ToolTip += "Pendiente";
+                        }
                         break;
                     case 2:
                         e.DurationBarColor = "black";
@@ -224,30 +229,30 @@ namespace Geshotel.Recepcion.Pages
                         break;
                     case 3: // Check-in
                         if (e.End <= DateTime.Today ) { // Tenía que haber salido. Caso totalmente anómalo
-                            e.DurationBarColor = "black";
+                            e.DurationBarColor = "blueviolet";
                             e.ToolTip += "Late checkout";
                         }
                         else
                         {
-                            e.DurationBarColor = "Green";  // blue
+                            e.DurationBarColor = "limegreen";  // blue
                             e.ToolTip += "Check-In";
                         }
                         break;
                     case 4: // Check-Out
                         if (e.End < DateTime.Today || (e.End == DateTime.Today && DateTime.Now.TimeOfDay.Hours > 13))  // must checkout before 12 am
                         {
-                            e.DurationBarColor = "black"; 
-                            e.ToolTip += "Late checkout";
+                            e.DurationBarColor = "blueviolet"; 
+                            e.ToolTip += "Late Checkout";
                         }
                         else
                         {
-                            e.DurationBarColor = "#1691f4";  // azul oscuro
-                            e.ToolTip += "Check-Out";
+                            e.DurationBarColor = "blue";  // azul oscuro
+                            e.ToolTip += "Salida";
                         }
                         break;
                     case 5: // Finalizada gris
                         e.DurationBarColor = "gray";
-                        e.ToolTip += "Cerrada";
+                        e.ToolTip += "Checked Out";
                         break;
                     default:
                         throw new ArgumentException("Unexpected status.");

@@ -280,7 +280,7 @@ namespace Data
 
         public static bool IsFree(string id, DateTime start, DateTime end, string resource)
         {
-            return true;
+            
             // event with the specified id will be ignored
             string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
