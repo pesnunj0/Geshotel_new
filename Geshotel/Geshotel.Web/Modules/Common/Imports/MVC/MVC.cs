@@ -202,6 +202,13 @@ namespace MVC
             }
 
 
+            public static class Habitaciones
+            {
+
+                public const string HabitacionesIndex = "~/Modules/Contratos/Habitaciones/HabitacionesIndex.cshtml";
+            }
+
+
             public static class Lineas
             {
 

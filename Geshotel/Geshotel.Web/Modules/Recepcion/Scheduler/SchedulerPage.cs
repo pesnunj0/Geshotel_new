@@ -24,8 +24,7 @@ namespace Geshotel.Recepcion.Pages
     {
         
         public ActionResult Index()
-        {
-            
+        {                      
             return View("~/Modules/Recepcion/Scheduler/SchedulerIndex.cshtml");
         }
 
@@ -33,6 +32,8 @@ namespace Geshotel.Recepcion.Pages
         {
             return new Scheduler().CallBack(this);
         }
+
+
 
         class Scheduler : DayPilotScheduler
         {
@@ -141,8 +142,7 @@ namespace Geshotel.Recepcion.Pages
             }
 
             protected override void OnEventMove(EventMoveArgs e)
-            {
-                 
+            {              
                 string id = e.Id;
                 DateTime start = e.NewStart;
                 DateTime end = e.NewEnd;
@@ -191,6 +191,7 @@ namespace Geshotel.Recepcion.Pages
                 string hotelId = Db.DimeHotel(e.Id);
                 // *********************************
                 //Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.Resource);
+                
                 LoadReservations(hotelId);
                 string message = "No se permite modificar las fechas directamente. Por favor, edite la reserva.";
                 UpdateWithMessage(message);

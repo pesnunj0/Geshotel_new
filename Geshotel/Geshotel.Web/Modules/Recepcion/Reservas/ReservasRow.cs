@@ -58,7 +58,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Child50[this] = value; }
         }
         [DisplayName("ChildFree"), Column("child_free"), NotNull, DefaultValue(0)]
-        public Int16? Childfree
+        public Int16? ChildFree
         {
             get { return Fields.ChildFree[this]; }
             set { Fields.ChildFree[this] = value; }
@@ -75,6 +75,12 @@ namespace Geshotel.Recepcion.Entities
         {
             get { return Fields.ReservaId[this]; }
             set { Fields.ReservaId[this] = value; }
+        }
+        [DisplayName("Reserva"),Expression("(t0.bono_referencia + '-' + t0.nombre_reserva)")]
+        public String ReservaName
+        {
+            get { return Fields.ReservaName[this]; }
+            set { Fields.ReservaName[this] = value; }
         }
 
         [DisplayName("Fecha Creacion"), Column("fecha_creacion"), DisplayFormat("g"), NotNull]
@@ -451,7 +457,7 @@ namespace Geshotel.Recepcion.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.NombreReserva; }
+            get { return Fields.ReservaName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -528,6 +534,8 @@ namespace Geshotel.Recepcion.Entities
 
             public StringField Username;
             public StringField ValidationUsername;
+
+            public StringField ReservaName;
 
             public RowFields()
                 : base()

@@ -1410,6 +1410,201 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+    class HabitacionesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface HabitacionesForm {
+        HotelId: Serenity.IntegerEditor;
+        NumeroHabitacion: Serenity.StringEditor;
+        TipoHabitacionId: Serenity.IntegerEditor;
+        Extension: Serenity.IntegerEditor;
+        Observaciones: Serenity.StringEditor;
+        SituacionId: Serenity.IntegerEditor;
+        FechaInicio: Serenity.DateEditor;
+        EstadoTelefono: Serenity.IntegerEditor;
+        EstadoProcesado: Serenity.IntegerEditor;
+        HabitacionIsta: Serenity.StringEditor;
+        ZonaLimpiezaId: Serenity.IntegerEditor;
+        Lat: Serenity.DecimalEditor;
+        Lng: Serenity.DecimalEditor;
+        PrimaryImage: Serenity.StringEditor;
+        Galleryimages: Serenity.StringEditor;
+        Planta: Serenity.IntegerEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface HabitacionesRow {
+        HabitacionId?: number;
+        HotelId?: number;
+        NumeroHabitacion?: string;
+        TipoHabitacionId?: number;
+        Extension?: number;
+        Observaciones?: string;
+        SituacionId?: number;
+        FechaInicio?: string;
+        EstadoTelefono?: number;
+        EstadoProcesado?: number;
+        HabitacionIsta?: string;
+        ZonaLimpiezaId?: number;
+        Lat?: number;
+        Lng?: number;
+        PrimaryImage?: string;
+        Galleryimages?: string;
+        Planta?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+        Hotel?: string;
+        HotelEmpresaId?: number;
+        HotelTipoHotelId?: number;
+        HotelCategoriaId?: number;
+        HotelNombreCorto?: string;
+        HotelDireccion?: string;
+        HotelPoblacion?: string;
+        HotelZip?: string;
+        HotelProvinciaId?: number;
+        HotelNacionId?: number;
+        HotelTelefono?: string;
+        HotelFax?: string;
+        HotelCtaManocorriente?: string;
+        HotelDptoContable?: string;
+        HotelCtaContableCajas?: string;
+        HotelCtaContableBanco?: string;
+        HotelFechaInicioPrograma?: string;
+        HotelRutaFicheroPolicia?: string;
+        HotelContadorFicheroPolicia?: number;
+        HotelIdentificadorFicheroPolicia?: string;
+        HotelEmailReservas?: string;
+        HotelEmailVentas?: string;
+        HotelEmailSmtp?: string;
+        HotelTextoCancelacion?: string;
+        HotelUsuarioIsta?: string;
+        HotelPasswordIsta?: string;
+        HotelUrlIsta?: string;
+        HotelMunicipioIsta?: string;
+        HotelNumeroRegistroIsta?: number;
+        HotelRutaBavel?: string;
+        HotelDingusUsuario?: string;
+        HotelDingusPassword?: string;
+        HotelDingusHotelCode?: string;
+        HotelDingusTraductor?: string;
+        HotelDingusUrl?: string;
+        HotelCheckinOnLine?: number;
+        HotelMinimoDiasCheckinOnline?: number;
+        HotelZoomMapa?: number;
+        HotelLat?: number;
+        HotelLng?: number;
+        HotelAncho?: number;
+        HotelAlto?: number;
+        HotelOverbookingLimit?: number;
+        TipoHabitacionDescCorta?: string;
+        TipoHabitacionDescripcion?: string;
+        TipoHabitacionGrupoHabitacionId?: number;
+        TipoHabitacionNumeroPersonas?: number;
+        TipoHabitacionDesvios?: number;
+        TipoHabitacionNoShow?: number;
+        Situacion?: string;
+        ZonaLimpiezaHotelId?: number;
+        ZonaLimpiezaNombreZona?: string;
+    }
+    namespace HabitacionesRow {
+        const idProperty = "HabitacionId";
+        const nameProperty = "NumeroHabitacion";
+        const localTextPrefix = "Contratos.Habitaciones";
+        namespace Fields {
+            const HabitacionId: any;
+            const HotelId: any;
+            const NumeroHabitacion: any;
+            const TipoHabitacionId: any;
+            const Extension: any;
+            const Observaciones: any;
+            const SituacionId: any;
+            const FechaInicio: any;
+            const EstadoTelefono: any;
+            const EstadoProcesado: any;
+            const HabitacionIsta: any;
+            const ZonaLimpiezaId: any;
+            const Lat: any;
+            const Lng: any;
+            const PrimaryImage: any;
+            const Galleryimages: any;
+            const Planta: any;
+            const UserId: any;
+            const FechaModificacion: any;
+            const Hotel: string;
+            const HotelEmpresaId: string;
+            const HotelTipoHotelId: string;
+            const HotelCategoriaId: string;
+            const HotelNombreCorto: string;
+            const HotelDireccion: string;
+            const HotelPoblacion: string;
+            const HotelZip: string;
+            const HotelProvinciaId: string;
+            const HotelNacionId: string;
+            const HotelTelefono: string;
+            const HotelFax: string;
+            const HotelCtaManocorriente: string;
+            const HotelDptoContable: string;
+            const HotelCtaContableCajas: string;
+            const HotelCtaContableBanco: string;
+            const HotelFechaInicioPrograma: string;
+            const HotelRutaFicheroPolicia: string;
+            const HotelContadorFicheroPolicia: string;
+            const HotelIdentificadorFicheroPolicia: string;
+            const HotelEmailReservas: string;
+            const HotelEmailVentas: string;
+            const HotelEmailSmtp: string;
+            const HotelTextoCancelacion: string;
+            const HotelUsuarioIsta: string;
+            const HotelPasswordIsta: string;
+            const HotelUrlIsta: string;
+            const HotelMunicipioIsta: string;
+            const HotelNumeroRegistroIsta: string;
+            const HotelRutaBavel: string;
+            const HotelDingusUsuario: string;
+            const HotelDingusPassword: string;
+            const HotelDingusHotelCode: string;
+            const HotelDingusTraductor: string;
+            const HotelDingusUrl: string;
+            const HotelCheckinOnLine: string;
+            const HotelMinimoDiasCheckinOnline: string;
+            const HotelZoomMapa: string;
+            const HotelLat: string;
+            const HotelLng: string;
+            const HotelAncho: string;
+            const HotelAlto: string;
+            const HotelOverbookingLimit: string;
+            const TipoHabitacionDescCorta: string;
+            const TipoHabitacionDescripcion: string;
+            const TipoHabitacionGrupoHabitacionId: string;
+            const TipoHabitacionNumeroPersonas: string;
+            const TipoHabitacionDesvios: string;
+            const TipoHabitacionNoShow: string;
+            const Situacion: string;
+            const ZonaLimpiezaHotelId: string;
+            const ZonaLimpiezaNombreZona: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace HabitacionesService {
+        const baseUrl = "Contratos/Habitaciones";
+        function Create(request: Serenity.SaveRequest<HabitacionesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<HabitacionesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<HabitacionesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<HabitacionesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
     class LineasForm extends Serenity.PrefixedContext {
@@ -7862,6 +8057,26 @@ declare namespace Geshotel.Contratos {
     class EdadesGrid extends Serenity.EntityGrid<EdadesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof EdadesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class HabitacionesDialog extends Serenity.EntityDialog<HabitacionesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: HabitacionesForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class HabitacionesGrid extends Serenity.EntityGrid<HabitacionesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof HabitacionesDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

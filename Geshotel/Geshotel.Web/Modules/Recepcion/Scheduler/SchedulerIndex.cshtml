@@ -141,13 +141,17 @@
     }
 
     function create(start, end, resource) {
-        //modal().showUrl('@Url.Action("Create", "Reservation")?start=' + start + "&end=" + end + "&resource=" + resource);
+////        x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Recepcion.ReservasRow>{
+//            FechaPrevistaLlegada: start,
+//            FechaPrevistaSalida: end
+        //        });
+        x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog();
+        dp.commandCallBack("refresh");
     }
     function edit(e) {
         x = new Geshotel.Recepcion.ReservasDialog().loadByIdAndOpenDialog(e.id());
-        //dp.commandCallBack("refresh"); Por ahora lo comento.......
-        //x.loadByIdAndOpenDialog(e.id());
-        //modal().showUrl('@Url.Action("Edit", "Reservation")?id=' + e.id());
+        dp.commandCallBack("refresh"); 
+        
     }
 
     function filter(property, value) {

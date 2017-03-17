@@ -16,6 +16,7 @@ namespace Geshotel.Contratos.Forms
         public Int16 EmpresaId { get; set; }
         public Int16 HotelId { get; set; }
         public Int16 TipoHabitacionId { get; set; }
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
         public Int32 ServicioId { get; set; }
     }
 }

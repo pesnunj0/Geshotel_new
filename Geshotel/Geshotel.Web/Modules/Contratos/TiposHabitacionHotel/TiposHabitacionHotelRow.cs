@@ -14,9 +14,17 @@ namespace Geshotel.Contratos.Entities
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:General")]
 
-    public sealed class TiposHabitacionHotelRow : Row, IIdRow
+    public sealed class TiposHabitacionHotelRow : Row, IIdRow, ITenantRow
     {
-       
+
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
 
         [DisplayName("Tipo Habitacion Hotel Id"), Column("tipo_habitacion_hotel_id"), Identity]
         public Int32? TipoHabitacionHotelId
@@ -61,14 +69,14 @@ namespace Geshotel.Contratos.Entities
 
 
         [DisplayName("Tipo Habitacion"), Column("tipo_habitacion_id"), PrimaryKey, ForeignKey("tipos_habitacion", "tipo_habitacion_id"), LeftJoin("jTipoHabitacion"), TextualField("TipoHabitacionName"),NotNull]
-        [LookupEditor(typeof(TiposHabitacionRow))]
+        [LookupEditor(typeof(TiposHabitacionRow)),LookupInclude]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
             set { Fields.TipoHabitacionId[this] = value; }
         }
 
-        [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jServicio"), TextualField("ServicioName")]
+        [DisplayName("Servicio"), Column("servicio_id"), ForeignKey("servicios", "servicio_id"), LeftJoin("jServicio"), TextualField("ServicioName")]
         [LookupEditor(typeof(ServiciosRow),FilterField = "TipoServicioId", FilterValue = 1)]
         public Int32? ServicioId
         {

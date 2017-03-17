@@ -12,6 +12,7 @@ using Portal = Geshotel.Portal.Pages;
 
 [assembly: NavigationLink(6000, "Contratos/Agencias", typeof(Geshotel.Contratos.Pages.AgenciasController), icon: "icon-people")]
 [assembly: NavigationLink(6000, "Contratos/Touroperadores", typeof(Geshotel.Contratos.Pages.ClientesController),icon: "icon-user")]
+[assembly: NavigationLink(6000, "Contratos/Habitaciones", typeof(Geshotel.Contratos.Pages.HabitacionesController),icon:"fa-bed")]
 [assembly: NavigationLink(6000, "Contratos/Contratos", typeof(Geshotel.Contratos.Pages.ContratosController), icon:"icon-note")]
 [assembly: NavigationLink(6000, "Contratos/Mercados", typeof(Geshotel.Contratos.Pages.MercadosController), icon: "icon-chart")]
 [assembly: NavigationLink(6000, "Contratos/Temporadas", typeof(Geshotel.Contratos.Pages.TemporadasController), icon: "icon-calendar")]

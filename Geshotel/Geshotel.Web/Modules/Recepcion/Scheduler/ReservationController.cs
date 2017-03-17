@@ -75,7 +75,7 @@ public class ReservationController : Controller
     public ActionResult Create()
     {
         return View(new 
-        {
+        {            
             Start = Convert.ToDateTime(Request.QueryString["start"]).ToShortDateString(),
             End = Convert.ToDateTime(Request.QueryString["end"]).ToShortDateString(),
             Resource = new SelectList(Db.GetRoomSelectList(), "Value", "Text", Request.QueryString["resource"])

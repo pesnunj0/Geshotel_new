@@ -782,8 +782,8 @@ CREATE TABLE reserva_estados (
 -- ----------------------------
 -- Records of reserva_estados
 -- ----------------------------
-INSERT INTO reserva_estados VALUES ('0', 'Pen.Fin', '1', '1');
-INSERT INTO reserva_estados VALUES ('1','Pen.Entrar', '1', '1');
+INSERT INTO reserva_estados VALUES ('0', 'Con Errores', '1', '1');
+INSERT INTO reserva_estados VALUES ('1', 'Pendiente', '1', '1');
 INSERT INTO reserva_estados VALUES ('2', 'Anulada', '0', '0');
 INSERT INTO reserva_estados VALUES ('3', 'Check-in', '0', '1');
 INSERT INTO reserva_estados VALUES ('4', 'Check-out', '1', '1');

@@ -309,283 +309,333 @@ namespace Geshotel.Migrations.DefaultDB
                 tipo_habitacion_id = 6     // SUITE 2
             });
 
+            for (int i = 1; i < 10; i++)
+            {
+                Insert.IntoTable("reservas").Row(new
+                {
+                    fecha_creacion = DateTime.Now,
+                    hotel_id = 1,
+                    estado_reserva_id = 0,
+                    tipo_habitacion_id = 40,
+                    pension_id = 4,
+                    cliente_id = 2,
+                    adultos = 2,
+                    child_50 = 1,
+                    child_free = 0,
+                    bebes = 0,
+                    fecha_reserva = new DateTime(2017, 2, 1),
+                    nombre_reserva = " Prueba " + i + " Hotel 1",
+                    fecha_prevista_llegada = new DateTime(2017, 3, 25, 14, 0, 0),
+                    fecha_prevista_salida = new DateTime(2017, 4, 1, 14, 0, 0),
+                    bono_referencia = "123456789"
+                });
+            }
+            for (int i = 1; i < 10; i++)
+            {
+                Insert.IntoTable("reservas").Row(new
+                {
+                    fecha_creacion = DateTime.Now,
+                    hotel_id = 2,
+                    estado_reserva_id = 0,
+                    tipo_habitacion_id = 11,
+                    pension_id = 91,
+                    cliente_id = 2,
+                    adultos = 2,
+                    child_50 = 1,
+                    child_free = 1,
+                    bebes = 1,
+                    fecha_reserva = new DateTime(2017, 2, 1),
+                    nombre_reserva = " Prueba " + i + " Hotel 2",
+                    fecha_prevista_llegada = new DateTime(2017, 4, 1, 14, 0, 0),
+                    fecha_prevista_salida = new DateTime(2017, 4, 10, 14, 0, 0),
+                    bono_referencia = "123456789"
+                });
+            }
+            for (int i = 11; i < 19; i++)
+            {
+                Insert.IntoTable("reservas").Row(new
+                {
+                    fecha_creacion = DateTime.Now,
+                    hotel_id = 2,
+                    estado_reserva_id = 0,
+                    tipo_habitacion_id = 10,
+                    pension_id = 91,
+                    cliente_id = 2,
+                    adultos = 2,
+                    child_50 = 1,
+                    child_free = 1,
+                    bebes = 1,
+                    fecha_reserva = new DateTime(2017, 2, 1),
+                    nombre_reserva = " Prueba " + i +" Hotel 2",
+                    fecha_prevista_llegada = new DateTime(2017, 4, 1, 14, 0, 0),
+                    fecha_prevista_salida = new DateTime(2017, 4, 10, 14, 0, 0),
+                    bono_referencia = "123456789"
+                });
+            }
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "001"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "002"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "003"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "004"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "005"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "006"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "007"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "008"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "009"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 4,
+                numero_habitacion = "010"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "011"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "012"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "013"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "014"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "015"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "016"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "017"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 5,
+                numero_habitacion = "018"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 7,
+                numero_habitacion = "999"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 1,
+                tipo_habitacion_id = 20,
+                numero_habitacion = "888"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 7,
+                numero_habitacion = "999"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 20,
+                numero_habitacion = "888"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "001"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "002"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "003"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "004"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "005"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "006"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "007"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "008"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "009"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 1,
+                numero_habitacion = "010"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "011"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "012"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "013"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "014"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "015"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "016"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "017"
+            });
+            Insert.IntoTable("habitaciones").Row(new
+            {
+                hotel_id = 2,
+                tipo_habitacion_id = 2,
+                numero_habitacion = "018"
+            });
+            for (int i = 19; i < 40; i++)
+            {
+                string habitacion = Convert.ToString(i);
+                habitacion = habitacion.PadLeft(3, '0');
 
-            Insert.IntoTable("reservas").Row(new
+                Insert.IntoTable("habitaciones").Row(new
+                {
+                    hotel_id = 2,
+                    tipo_habitacion_id = 2,
+                    numero_habitacion = habitacion
+                });
+            };
+            for (int i = 41; i < 90; i++)
             {
-                fecha_creacion = DateTime.Now,
-                hotel_id = 1,
-                estado_reserva_id = 0,
-                tipo_habitacion_id = 40,
-                pension_id = 4,
-                cliente_id = 2,
-                adultos = 2,
-                child_50 = 1,
-                child_free = 0,
-                bebes = 0,
-                fecha_reserva = new DateTime(2017, 2, 1),
-                nombre_reserva = "Javier Nuñez",
-                fecha_prevista_llegada = new DateTime(2017,5,1,14,0,0),
-                fecha_prevista_salida = new DateTime(2017, 5, 10, 14, 0, 0),
-                bono_referencia = "123456789"
-            });
-            Insert.IntoTable("reservas").Row(new
-            {
-                fecha_creacion = DateTime.Now,
-                hotel_id = 2,
-                estado_reserva_id = 0,
-                tipo_habitacion_id = 11,
-                pension_id = 91,
-                cliente_id = 2,
-                adultos = 2,
-                child_50 = 1,
-                child_free = 1,
-                bebes = 1,
-                fecha_reserva = new DateTime(2017, 2, 1),
-                nombre_reserva = "Javier Nuñez",
-                fecha_prevista_llegada = new DateTime(2017, 5, 1, 14, 0, 0),
-                fecha_prevista_salida = new DateTime(2017, 5, 10, 14, 0, 0),
-                bono_referencia = "123456789"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "001"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "002"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "003"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "004"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "005"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "006"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "007"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "008"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "009"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 4,
-                numero_habitacion = "010"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "011"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "012"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "013"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "014"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "015"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "016"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "017"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 5,
-                numero_habitacion = "018"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 7,
-                numero_habitacion = "999"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 1,
-                tipo_habitacion_id = 20,
-                numero_habitacion = "888"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 7,
-                numero_habitacion = "999"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 20,
-                numero_habitacion = "888"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "001"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "002"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "003"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "004"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "005"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "006"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "007"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "008"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "009"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 1,
-                numero_habitacion = "010"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "011"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "012"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "013"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "014"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "015"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "016"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "017"
-            });
-            Insert.IntoTable("habitaciones").Row(new
-            {
-                hotel_id = 2,
-                tipo_habitacion_id = 2,
-                numero_habitacion = "018"
-            });
+                string habitacion = Convert.ToString(i);
+                habitacion = habitacion.PadLeft(3, '0');
+
+                Insert.IntoTable("habitaciones").Row(new
+                {
+                    hotel_id = 2,
+                    tipo_habitacion_id = 1,
+                    numero_habitacion = habitacion
+                });
+            }
         }
 
         public override void Down()

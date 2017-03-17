@@ -8617,6 +8617,12 @@ section.content > .s-DataGrid {
 .s-Contratos-CanalesReservaDialog .caption {
   width: 150px;
 }
+.s-Contratos-HabitacionesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-HabitacionesDialog .caption {
+  width: 150px;
+}
 .s-Recepcion-ReservasDialog > .size {
   min-width: 950px;
   height: 650px;
