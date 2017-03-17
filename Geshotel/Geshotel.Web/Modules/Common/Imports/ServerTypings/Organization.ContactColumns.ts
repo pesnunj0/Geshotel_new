@@ -1,4 +1,3 @@
-﻿
-namespace Geshotel.Organization {
+﻿namespace Geshotel.Organization {
 }
 

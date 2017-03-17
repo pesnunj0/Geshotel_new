@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel {
+﻿namespace Geshotel {
     export interface ExcelImportResponse extends Serenity.ServiceResponse {
         Inserted?: number;
         Updated?: number;

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export namespace ProductLangService {
         export const baseUrl = 'Northwind/ProductLang';
 

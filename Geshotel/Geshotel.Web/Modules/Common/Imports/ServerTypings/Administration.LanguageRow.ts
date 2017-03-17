@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export interface LanguageRow {
         Id?: number;
         LanguageId?: string;

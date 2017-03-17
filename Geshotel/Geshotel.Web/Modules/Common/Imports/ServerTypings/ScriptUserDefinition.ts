@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel {
+﻿namespace Geshotel {
     export interface ScriptUserDefinition {
         Username?: string;
         DisplayName?: string;

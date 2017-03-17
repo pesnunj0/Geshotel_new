@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Meeting {
+﻿namespace Geshotel.Meeting {
     export interface MeetingAgendaRelevantRow {
         AgendaRelevantId?: number;
         AgendaId?: number;

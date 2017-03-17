@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export interface RegionRow {
         RegionID?: number;
         RegionDescription?: string;

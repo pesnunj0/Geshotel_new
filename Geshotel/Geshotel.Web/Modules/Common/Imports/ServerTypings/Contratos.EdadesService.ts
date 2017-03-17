@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export namespace EdadesService {
         export const baseUrl = 'Contratos/Edades';
 

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export class FormasDePagoForm extends Serenity.PrefixedContext {
         static formKey = 'Portal.FormasDePago';
 

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface OfertasRejillasRow {
         RejillaId?: number;
         OfertaId?: number;

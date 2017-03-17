@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Meeting {
+﻿namespace Geshotel.Meeting {
     export namespace MeetingAgendaTypeService {
         export const baseUrl = 'Meeting/MeetingAgendaType';
 

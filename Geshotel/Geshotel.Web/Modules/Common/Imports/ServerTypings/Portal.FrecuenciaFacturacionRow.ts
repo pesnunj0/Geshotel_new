@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface FrecuenciaFacturacionRow {
         FrecuenciaId?: number;
         DescripcionCorta?: string;

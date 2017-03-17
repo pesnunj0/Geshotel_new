@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export namespace SalesByCategoryService {
         export const baseUrl = 'Northwind/SalesByCategory';
 

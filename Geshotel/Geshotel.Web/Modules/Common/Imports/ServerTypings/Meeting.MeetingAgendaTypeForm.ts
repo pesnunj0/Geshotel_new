@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Meeting {
+﻿namespace Geshotel.Meeting {
     export class MeetingAgendaTypeForm extends Serenity.PrefixedContext {
         static formKey = 'Meeting.MeetingAgendaType';
 

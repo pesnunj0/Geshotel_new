@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export class ProductForm extends Serenity.PrefixedContext {
         static formKey = 'Northwind.Product';
 

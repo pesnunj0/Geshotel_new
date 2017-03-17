@@ -1,5 +1,4 @@
-﻿
-using Serenity;
+﻿using Serenity;
 using Serenity.ComponentModel;
 using System;
 using System.Collections;

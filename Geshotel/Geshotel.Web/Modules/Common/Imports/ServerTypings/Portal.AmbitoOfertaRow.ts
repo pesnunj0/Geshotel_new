@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface AmbitoOfertaRow {
         AmbitoOfertaId?: number;
         Nombre?: string;

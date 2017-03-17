@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface MonedasRow {
         MonedaId?: number;
         DescCorta?: string;
