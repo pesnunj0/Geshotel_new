@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Organization {
+﻿namespace Geshotel.Organization {
     export namespace ContactService {
         export const baseUrl = 'Organization/Contact';
 

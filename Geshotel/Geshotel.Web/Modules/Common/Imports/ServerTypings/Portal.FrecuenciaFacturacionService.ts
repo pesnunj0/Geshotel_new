@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export namespace FrecuenciaFacturacionService {
         export const baseUrl = 'Portal/FrecuenciaFacturacion';
 

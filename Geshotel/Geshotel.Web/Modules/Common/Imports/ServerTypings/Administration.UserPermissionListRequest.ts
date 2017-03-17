@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export interface UserPermissionListRequest extends Serenity.ServiceRequest {
         UserID?: number;
         Module?: string;

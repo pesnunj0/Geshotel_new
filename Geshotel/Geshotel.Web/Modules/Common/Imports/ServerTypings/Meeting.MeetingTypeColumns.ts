@@ -1,4 +1,3 @@
-﻿
-namespace Geshotel.Meeting {
+﻿namespace Geshotel.Meeting {
 }
 

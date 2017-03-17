@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export namespace TranslationService {
         export const baseUrl = 'Administration/Translation';
 

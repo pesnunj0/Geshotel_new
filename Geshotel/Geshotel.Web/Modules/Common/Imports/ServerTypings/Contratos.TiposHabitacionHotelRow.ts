@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface TiposHabitacionHotelRow {
         TipoHabitacionHotelId?: number;
         HotelId?: number;

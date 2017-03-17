@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export namespace AmbitoOfertaService {
         export const baseUrl = 'Portal/AmbitoOferta';
 

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export interface CustomerDetailsRow {
         Id?: number;
         LastContactDate?: string;

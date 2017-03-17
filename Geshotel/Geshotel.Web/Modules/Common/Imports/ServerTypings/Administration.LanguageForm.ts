@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export class LanguageForm extends Serenity.PrefixedContext {
         static formKey = 'Administration.Language';
 

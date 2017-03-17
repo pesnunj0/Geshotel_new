@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface TiposUnidadCalculoRow {
         UnidadCalculoId?: number;
         Uc?: string;

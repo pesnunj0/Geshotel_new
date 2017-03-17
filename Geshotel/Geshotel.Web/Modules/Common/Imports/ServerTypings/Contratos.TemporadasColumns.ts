@@ -1,4 +1,3 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
 }
 
