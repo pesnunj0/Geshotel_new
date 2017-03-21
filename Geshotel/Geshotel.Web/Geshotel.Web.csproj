@@ -1377,6 +1377,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1800,6 +1803,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Portal.UnidadesCalculoService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1828,6 +1834,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHabitacionesBloqueosColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasHuespedesColumns.ts">
@@ -2559,15 +2568,38 @@
     <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasGrid.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <Content Include="Modules\Contratos\Habitaciones\HabitacionesIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\Habitaciones\HabitacionesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Habitaciones\HabitacionesDialog.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Default.ReservasHabitacionesRow.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Default.ReservasHabitacionesService.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Default.ReservasHabitacionesForm.ts" />
+    <Content Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2727,6 +2759,7 @@
     <Compile Include="Modules\Contratos\Clientes\ClientesPage.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesRepository.cs" />
     <Compile Include="Modules\Contratos\Clientes\ClientesRow.cs" />
+    <Compile Include="Modules\Contratos\Habitaciones\HabitacionesLookup.cs" />
     <Compile Include="Modules\Contratos\ServiciosHotel\ServiciosHotelLookup.cs" />
     <Compile Include="Modules\Contratos\TiposHabitacionHotel\TiposHabitacionHotelLookup.cs" />
     <Compile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantColumns.cs" />
@@ -2989,6 +3022,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosColumns.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\ReservationController.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\SchedulerPage.cs" />
@@ -3238,6 +3272,12 @@
     <Compile Include="Modules\Contratos\Habitaciones\HabitacionesRepository.cs" />
     <Compile Include="Modules\Contratos\Habitaciones\HabitacionesEndpoint.cs" />
     <Compile Include="Modules\Contratos\Habitaciones\HabitacionesPage.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosRow.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosColumns.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosForm.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosRepository.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -266,8 +266,11 @@ namespace Data
 
             if (provider == "Mysql.Data.MySqlClient")  // En Mysql sustituyo ISNULL por IFNULL. Deprecado porque uso COALESCE en ambos casos            
                 sql.Replace("ISNULL","IFNULL");
-            
 
+            int test;
+            if (!int.TryParse(roomFilter, out test)) // Por si acaso roomFilter viene vacío
+                roomFilter = "0";
+            
             SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
             da.SelectCommand.Parameters.AddWithValue("beds", roomFilter);
             da.SelectCommand.Parameters.AddWithValue("hotel", hotelId);

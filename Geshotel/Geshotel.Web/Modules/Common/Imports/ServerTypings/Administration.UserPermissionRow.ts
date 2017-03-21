@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Administration {
+﻿
+namespace Geshotel.Administration {
     export interface UserPermissionRow {
         UserPermissionId?: number;
         UserId?: number;

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export namespace OrderDetailService {
         export const baseUrl = 'Northwind/OrderDetail';
 

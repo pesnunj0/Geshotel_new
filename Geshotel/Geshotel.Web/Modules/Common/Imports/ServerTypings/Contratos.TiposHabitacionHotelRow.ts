@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Contratos {
+﻿
+namespace Geshotel.Contratos {
     export interface TiposHabitacionHotelRow {
         TipoHabitacionHotelId?: number;
         HotelId?: number;
@@ -14,6 +15,11 @@
     export namespace TiposHabitacionHotelRow {
         export const idProperty = 'TipoHabitacionHotelId';
         export const localTextPrefix = 'Contratos.TiposHabitacionHotel';
+        export const lookupKey = 'Contratos.TiposHabitacionHotel';
+
+        export function getLookup(): Q.Lookup<TiposHabitacionHotelRow> {
+            return Q.getLookup<TiposHabitacionHotelRow>('Contratos.TiposHabitacionHotel');
+        }
 
         export namespace Fields {
             export declare const TipoHabitacionHotelId: string;

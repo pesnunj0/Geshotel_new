@@ -17,15 +17,16 @@ namespace Geshotel.Recepcion.Columns
         public Int32 ReservaId { get; set; }
         [EditLink]
         public String NombreReserva { get; set; }
-        [Hidden,QuickFilter,Width(100)]
+        [Width(150), QuickFilter, Hidden]
+        public String Empresa { get; set; }
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
         public String HotelName { get; set; }
-        [QuickFilter,QuickFilterOption("Multiple",true),Width(90)]
         public String EstadoReserva { get; set; }
-        [DisplayName("Contrato"),Width(150),QuickFilter]
+        [DisplayName("Contrato"),Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
         public String ClienteRazon { get; set; }
-        [Width(110),QuickFilter]
+        [Width(110),QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"), QuickFilterOption("FilterValue", 1)]
         public String TipoHabitacion { get; set; }
-        [Width(100), QuickFilter]
+        [Width(100), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
         public String Pension { get; set; }
         [Width(55),AlignCenter]
         public Int16 Adultos { get; set; }
@@ -37,7 +38,8 @@ namespace Geshotel.Recepcion.Columns
         public Int16 Bebes { get; set; }
         [Hidden]
         public String CanalReserva { get; set; }
-        [DisplayName("Cliente Factura"),Width(150),QuickFilter]
+        [DisplayName("Cliente Factura"),Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
+
         public String ClienteIdFacturaRazon { get; set; }
         [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaReserva { get; set; }

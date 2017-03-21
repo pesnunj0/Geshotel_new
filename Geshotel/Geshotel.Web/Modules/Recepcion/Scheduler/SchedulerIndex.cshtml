@@ -4,6 +4,7 @@
 @using DayPilot.Web.Mvc.Events.Scheduler
 @using Data;
 @using System.Data;
+@using Serenity;
 @{
     ViewBag.Title = "Scheduler";
 }
@@ -141,17 +142,23 @@
     }
 
     function create(start, end, resource) {
-////        x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Recepcion.ReservasRow>{
-//            FechaPrevistaLlegada: start,
-//            FechaPrevistaSalida: end
+        //x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.ReservasRow>{
+        //    FechaPrevistaLlegada: start,
+        //    FechaPrevistaSalida: end
         //        });
-        x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog();
-        dp.commandCallBack("refresh");
+        x = new Geshotel.Recepcion.ReservasDialog();
+        x.loadEntityAndOpenDialog();
+         dp.commandCallBack("refresh");
     }
     function edit(e) {
-        x = new Geshotel.Recepcion.ReservasDialog().loadByIdAndOpenDialog(e.id());
-        dp.commandCallBack("refresh"); 
-        
+        Q.Alert("Test");
+        x = new Geshotel.Recepcion.ReservasDialog(),
+        x.loadById(e.id(), dp.commnadCallBack("refresh"));
+        //x.loadByIdAndOpenDialog(e.id());
+
+        //dp.clearSelection();
+        //dp.commandCallBack("refresh");
+
     }
 
     function filter(property, value) {

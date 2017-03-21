@@ -8695,3 +8695,27 @@ section.content > .s-DataGrid {
 .s-Recepcion-ReservasServiciosDialog .caption {
   width: 150px;
 }
+.s-Recepcion-ReservasHabitacionesDialog > .size {
+  width: 650px;
+}
+.s-Recepcion-ReservasHabitacionesDialog .caption {
+  width: 150px;
+}
+.s-Recepcion-HabitacionesRDialog > .size {
+  width: 650px;
+}
+.s-Recepcion-HabitacionesRDialog .caption {
+  width: 150px;
+}
+.s-Recepcion-HabitacionesBloqueosDialog > .size {
+  width: 650px;
+}
+.s-Recepcion-HabitacionesBloqueosDialog .caption {
+  width: 150px;
+}
+.s-Default-ReservasHabitacionesDialog > .size {
+  width: 650px;
+}
+.s-Default-ReservasHabitacionesDialog .caption {
+  width: 150px;
+}

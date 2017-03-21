@@ -18,10 +18,10 @@ namespace Geshotel.Contratos.Columns
 
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true)]
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
         public String HotelName { get; set; }
 
-        [EditLink, Width(120), QuickFilter, QuickFilterOption("multiple", true)]
+        [EditLink, Width(120), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId")]
         public String Touroperador { get; set; }
  
         [Width(120),DisplayName("Fecha Contrato") , QuickFilter]

@@ -15,7 +15,7 @@ namespace Geshotel.Portal.Entities
     [LookupScript("Portal.Servicios")]
     public sealed class ServiciosRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Servicio Id"), Column("servicio_id"), Identity]
+        [DisplayName("Servicio Id"), Column("servicio_id"), Identity,LookupInclude]
         public Int32? ServicioId
         {
             get { return Fields.ServicioId[this]; }
@@ -112,7 +112,7 @@ namespace Geshotel.Portal.Entities
         }
 
         [DisplayName("Concepto Acelerador Reservas Id"), Column("concepto_acelerador_reservas_id"),ForeignKey("conceptos_acelerador_reservas", "concepto_acelerador_id"), LeftJoin("jacel"), TextualField("concepto_acelerador")]
-        [LookupEditor(typeof(ConceptosAceleradorReservasRow))]
+        [LookupEditor(typeof(ConceptosAceleradorReservasRow)),LookupInclude]
         public Int16? ConceptoAceleradorReservasId
         {
             get { return Fields.ConceptoAceleradorReservasId[this]; }

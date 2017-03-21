@@ -12,5 +12,28 @@ namespace Geshotel.Recepcion {
 
         protected form = new ReservasForm(this.idPrefix);
 
+        private HabitacionesBloqueosGrid: ReservasHabitacionesBloqueosGrid;
+        private ReservasServiciosGrid: ReservasServiciosGrid;
+
+
+        constructor() {
+            super();
+
+            this.HabitacionesBloqueosGrid = new ReservasHabitacionesBloqueosGrid(this.byId("HabitacionesBloqueosGrid"));
+            this.ReservasServiciosGrid = new ReservasServiciosGrid(this.byId("ReservasServiciosGrid"));
+            this.tabs.on('tabsactivate', (e, i) => {
+                this.arrange();
+            });
+        }
+
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
+
+            this.HabitacionesBloqueosGrid.reservaID = this.entityId;
+            this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+          
+
+        }
+
     }
 }

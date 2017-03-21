@@ -49,7 +49,7 @@ namespace Geshotel.Portal.Endpoints
         public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
         {
             var data = List(connection, request).Entities;
-            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.NacionesColumns));
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ServiciosColumns));
             var bytes = new ReportRepository().Render(report);
             return ExcelContentResult.Create(bytes, "ServiciosList_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");

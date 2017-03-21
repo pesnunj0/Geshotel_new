@@ -17,7 +17,7 @@ namespace Geshotel.Recepcion.Entities
     public sealed class ReservasRow : Row, IIdRow, INameRow, ITenantRow
     {
         [DisplayName("Tipo Habitacion"),Column("tipo_habitacion_id"),NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jTipoHabitacion"),TextualField("TipoHabitacion")]
-        [LookupEditor("Portal.Servicios")]
+        [LookupEditor(("Contratos.ServiciosHotel"), FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
@@ -32,7 +32,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Pension"), Column("pension_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jPension"), TextualField("Pension")]
-        [LookupEditor("Portal.Servicios")]
+        [LookupEditor(("Contratos.ServiciosHotel"), FilterField = "ConceptoAceleradorReservasId", FilterValue = 2)]
         public Int16? PensionId
         {
             get { return Fields.PensionId[this]; }
@@ -76,7 +76,7 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.ReservaId[this]; }
             set { Fields.ReservaId[this] = value; }
         }
-        [DisplayName("Reserva"),Expression("(t0.bono_referencia + '-' + t0.nombre_reserva)")]
+        [DisplayName("Reserva"),Expression("CONCAT(t0.reserva_id,'-',t0.bono_referencia,'-',t0.nombre_reserva)")]
         public String ReservaName
         {
             get { return Fields.ReservaName[this]; }
@@ -389,13 +389,26 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.HotelName[this]; }
             set { Fields.HotelName[this] = value; }
         }
-
-        [DisplayName("Hotel Empresa Id"), Expression("jHotel.[empresa_id]")]
+        //*********
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
             set { Fields.EmpresaId[this] = value; }
+
         }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+        //*******
+
 
         [DisplayName("Estado Reserva Estado"), Expression("jEstadoReserva.[estado]")]
         public String EstadoReserva
@@ -519,6 +532,7 @@ namespace Geshotel.Recepcion.Entities
 
             public StringField HotelName;
             public Int16Field EmpresaId;
+            public StringField Empresa;
 
             public StringField EstadoReserva;
             public StringField TipoTarjeta;

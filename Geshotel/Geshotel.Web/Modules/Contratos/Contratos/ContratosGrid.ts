@@ -20,7 +20,7 @@ namespace Geshotel.Contratos {
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),
-                service: 'Contratos/Cupos/ListExcel',
+                service: 'Contratos/Contratos/ListExcel',
                 separator: true
             }));
 

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export class UnidadesCalculoForm extends Serenity.PrefixedContext {
         static formKey = 'Portal.UnidadesCalculo';
 

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Recepcion {
+﻿
+namespace Geshotel.Recepcion {
     export interface ReservasRow {
         ReservaId?: number;
         FechaCreacion?: string;
@@ -13,7 +14,7 @@
         PensionId?: number;
         Adultos?: number;
         Child50?: number;
-        Childfree?: number;
+        ChildFree?: number;
         Bebes?: number;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
@@ -49,6 +50,7 @@
         FechaModificacion?: string;
         HotelName?: string;
         EmpresaId?: number;
+        Empresa?: string;
         EstadoReserva?: string;
         TipoTarjeta?: string;
         ClienteRazon?: string;
@@ -58,11 +60,12 @@
         Pension?: string;
         Username?: string;
         ValidationUsername?: string;
+        ReservaName?: string;
     }
 
     export namespace ReservasRow {
         export const idProperty = 'ReservaId';
-        export const nameProperty = 'NombreReserva';
+        export const nameProperty = 'ReservaName';
         export const localTextPrefix = 'Recepcion.Reservas';
 
         export namespace Fields {
@@ -79,7 +82,7 @@
             export declare const PensionId: string;
             export declare const Adultos: string;
             export declare const Child50: string;
-            export declare const Childfree: string;
+            export declare const ChildFree: string;
             export declare const Bebes: string;
             export declare const FechaPrevistaLlegada: string;
             export declare const FechaPrevistaSalida: string;
@@ -115,6 +118,7 @@
             export declare const FechaModificacion: string;
             export declare const HotelName: string;
             export declare const EmpresaId: string;
+            export declare const Empresa: string;
             export declare const EstadoReserva: string;
             export declare const TipoTarjeta: string;
             export declare const ClienteRazon: string;
@@ -124,9 +128,10 @@
             export declare const Pension: string;
             export declare const Username: string;
             export declare const ValidationUsername: string;
+            export declare const ReservaName: string;
         }
 
-        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'Childfree', 'Bebes', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

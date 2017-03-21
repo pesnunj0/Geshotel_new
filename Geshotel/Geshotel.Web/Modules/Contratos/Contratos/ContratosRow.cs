@@ -11,11 +11,20 @@ namespace Geshotel.Contratos.Entities
     using Geshotel.Portal.Entities;
 
     [ConnectionKey("Default"), DisplayName("Contratos"), InstanceName("Contratos"), TwoLevelCached]
-    [ReadPermission("Contratos:Empresa")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     [LookupScript("Contratos.Contratos]")]
-    public sealed class ContratosRow : Row, IIdRow, INameRow
+    public sealed class ContratosRow : Row, IIdRow, INameRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return Fields.HotelId; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+
         [DisplayName("Contrato Id"), Column("contrato_id"), Identity]
         public Int32? ContratoId
         {
@@ -24,7 +33,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
-        [LookupEditor("Portal.Hoteles")]
+        [LookupEditor("Portal.Hoteles"),LookupInclude]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
@@ -33,7 +42,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas","empresa_id"), LeftJoin("jEmpresas")]
-        [LookupEditor("Portal.Empresas")]
+        [LookupEditor("Portal.Empresas"),LookupInclude]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
@@ -57,7 +66,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.HotelName[this] = value; }
         }
 
-        [DisplayName("Touroperador"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Cliente")]
+        [DisplayName("Touroperador"), Column("cliente_id"), NotNull, ForeignKey("clientes", "cliente_id"), LeftJoin("jCliente"), TextualField("Touroperador")]
         [LookupEditor("Contratos.Clientes")]
         public Int32? ClienteId
         {

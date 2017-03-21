@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Membership {
+﻿
+namespace Geshotel.Membership {
     export class ResetPasswordForm extends Serenity.PrefixedContext {
         static formKey = 'Membership.ResetPassword';
 

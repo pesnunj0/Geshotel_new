@@ -15,7 +15,7 @@ namespace Geshotel.Portal.Entities
     [LookupScript("Portal.TiposHabitacion")]
     public sealed class TiposHabitacionRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Tipo Habitacion Id"), Column("tipo_habitacion_id"), Identity]
+        [DisplayName("Tipo Habitacion Id"), Column("tipo_habitacion_id"), Identity,LookupInclude]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
