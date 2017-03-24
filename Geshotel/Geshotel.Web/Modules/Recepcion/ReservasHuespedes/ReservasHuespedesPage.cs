@@ -1,6 +1,5 @@
 ﻿
 
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Recepcion/ReservasHuespedes", typeof(Geshotel.Recepcion.Pages.ReservasHuespedesController))]
 
 namespace Geshotel.Recepcion.Pages
 {

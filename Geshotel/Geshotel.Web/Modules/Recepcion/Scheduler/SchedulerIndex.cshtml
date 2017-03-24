@@ -146,19 +146,22 @@
         //    FechaPrevistaLlegada: start,
         //    FechaPrevistaSalida: end
         //        });
-        x = new Geshotel.Recepcion.ReservasDialog();
+        var x = new Geshotel.Recepcion.ReservasDialog();
+        x.onSaveSuccess = function () {
+            dp.commandCallBack("refresh");
+        }
         x.loadEntityAndOpenDialog();
-         dp.commandCallBack("refresh");
     }
     function edit(e) {
-        Q.Alert("Test");
-        x = new Geshotel.Recepcion.ReservasDialog(),
-        x.loadById(e.id(), dp.commnadCallBack("refresh"));
-        //x.loadByIdAndOpenDialog(e.id());
+        var x = new Geshotel.Recepcion.ReservasDialog();
+        x.onSaveSuccess = x.onDeleteSuccess = function ()
+        {
+            dp.commandCallBack("refresh");
+        }
+        x.loadByIdAndOpenDialog(e.id());
 
         //dp.clearSelection();
         //dp.commandCallBack("refresh");
-
     }
 
     function filter(property, value) {
@@ -200,7 +203,7 @@
 
         <li style="flex-grow: 1;display:block;padding:1em;background-color:blue;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Checked Out</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:black;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">No Show</li>
+        <li style="flex-grow: 1;display:block;padding:1em;background-color:black;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Cancelada</li>
 
     </ul>
 </div>

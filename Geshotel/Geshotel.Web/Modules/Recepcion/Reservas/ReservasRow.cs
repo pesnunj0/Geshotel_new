@@ -14,7 +14,7 @@ namespace Geshotel.Recepcion.Entities
     [ReadPermission("Recepcion:Hotel")]
     [ModifyPermission("Recepcion:Hotel")]
     
-    public sealed class ReservasRow : Row, IIdRow, INameRow, ITenantRow
+    public sealed class ReservasRow : Row, IIdRow, INameRow
     {
         [DisplayName("Tipo Habitacion"),Column("tipo_habitacion_id"),NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jTipoHabitacion"),TextualField("TipoHabitacion")]
         [LookupEditor(("Contratos.ServiciosHotel"), FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
@@ -452,15 +452,6 @@ namespace Geshotel.Recepcion.Entities
         {
             get { return Fields.ValidationUsername[this]; }
             set { Fields.ValidationUsername[this] = value; }
-        }
-
-        public Int16Field HotelIdField
-        {
-            get { return Fields.HotelId; }
-        }
-        public Int16Field EmpresaIdField
-        {
-            get { return Fields.EmpresaId; }
         }
 
         IIdField IIdRow.IdField

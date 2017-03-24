@@ -133,7 +133,6 @@ CREATE TABLE `lineas_de_contrato` (
   `user_id` int(6) DEFAULT NULL,
   `fecha_modificacion` datetime DEFAULT NULL,
   PRIMARY KEY (`linea_contrato_id`),
-  KEY `tipo_oferta_id` (`tipo_oferta_id`),
   KEY `unidad_calculo_id` (`unidad_calculo_id`),
   KEY `servicio_id` (`servicio_id`),
   KEY `lineas_de_contrato_1` (`contrato_id`),
@@ -197,7 +196,6 @@ CREATE TABLE `ofertas` (
   KEY `tipo_aplicacion_oferta_id` (`tipo_aplicacion_oferta_id`),
   KEY `servicio_id` (`servicio_id`),
   KEY `ofertas_ibfk_10` (`servicio_ligado_id`),
-  KEY `ofertas_ibfk_11` (`tipo_oferta_id`),
   KEY `ofertas_ibfk_12` (`ambito_oferta_id`),
   KEY `ofertas_ibfk_7` (`tipo_servicio_id`),
   KEY `ofertas_ibfk_9` (`unidad_calculo_id`)

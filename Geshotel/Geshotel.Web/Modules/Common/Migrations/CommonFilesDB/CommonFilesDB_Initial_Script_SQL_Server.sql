@@ -761,10 +761,7 @@ INSERT INTO impuestos VALUES ( '1', 'Tabaco Negro', '20', null, '0', '2', '2008-
 INSERT INTO impuestos VALUES ( '1', 'Tabaco Rubio', '35', null, '0', '2', '2008-03-03 00:00:00');
 INSERT INTO impuestos VALUES ( '2', 'Exento', '0', null, '0', '1', '2010-05-18 00:00:00');
 INSERT INTO impuestos VALUES ( '2', '7%', '7', null, '0', '2', '2012-07-24 00:00:00');
-INSERT INTO impuestos VALUES ( '4', 'EXENTO', '0', '1111111', '0', '2', '2011-12-05 00:00:00');
-INSERT INTO impuestos VALUES ( '4', 'IGIC 7%', '7', '1111111', '1', '2', '2012-07-24 00:00:00');
-INSERT INTO impuestos VALUES ( '4', 'IGIC 2%', '2', '1111111', '0', '2', '2011-12-05 00:00:00');
-INSERT INTO impuestos VALUES ( '2', '3%', '3', null, '0', '2', '2012-07-26 00:00:00');
+
 
 
 -- ----------------------------

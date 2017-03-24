@@ -10,14 +10,14 @@ namespace Geshotel.Contratos.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[dbo].[habitaciones]"), DisplayName("Habitaciones"), InstanceName("Habitaciones"), TwoLevelCached]
+    [ConnectionKey("Default"), TableName("[habitaciones]"), DisplayName("Habitaciones"), InstanceName("Habitaciones"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
     public sealed class HabitacionesRow : Row, IIdRow, INameRow,  ITenantRow
     {
         public Int16Field HotelIdField
         {
-            get { return null; }
+            get { return Fields.HotelId; }
         }
         public Int16Field EmpresaIdField
         {

@@ -121,7 +121,7 @@ namespace Geshotel.Migrations.DefaultDB
             Create.Table("habitaciones_bloqueos")
                 .WithColumn("habitacion_bloqueo_id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("habitacion_id").AsInt16().NotNullable()
-                .ForeignKey("","habitaciones","habitacion_id").OnDeleteOrUpdate(System.Data.Rule.Cascade)
+                .ForeignKey("FK_habitacion_id","habitaciones","habitacion_id").OnDeleteOrUpdate(System.Data.Rule.Cascade)
                 .WithColumn("tipo_bloqueo_id").AsInt16().NotNullable()
                 .WithColumn("fecha_desde").AsDate().NotNullable()
                 .WithColumn("fecha_hasta").AsDate().NotNullable()

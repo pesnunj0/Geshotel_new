@@ -15,6 +15,8 @@ namespace Geshotel.Recepcion.Pages
     using Serenity.Data;
     using System.Web.Mvc;
     using System.Web;
+    
+    using System.Configuration;
 
     [RoutePrefix("Recepcion/Scheduler/Backend"), Route("{action=Backend}")]
     //[ReadPermission("Recepcion:Hotel")]
@@ -51,6 +53,8 @@ namespace Geshotel.Recepcion.Pages
             }
             protected override void OnInit(InitArgs e)
             {
+                string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+              //  ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(1, conexion).regenerarLineasFacturasReserva(24);
                 // *********************************
                 // JN 2017
                 // *********************************
@@ -96,7 +100,7 @@ namespace Geshotel.Recepcion.Pages
                 DataTextField = "nombre_reserva";
                 DataResourceField = "Roomid";
 
-                DataTagFields = "estado_reserva_id";
+                DataTagFields = "ReservationStatus";
 
             }
 
@@ -121,7 +125,11 @@ namespace Geshotel.Recepcion.Pages
                     string name = (string)r["RoomName"];
                     string id = Convert.ToString(r["RoomId"]);
                     string status = (string)r["RoomStatus"];
-                    int beds = Convert.ToInt32(r["RoomSize"]);
+                    string aux = Convert.ToString(r["RoomSize"]);
+                    int test;
+                    if (!int.TryParse(aux, out test)) // Por si acaso roomSize viene vacío
+                        aux = "0";
+                    int beds = Convert.ToInt32(aux);
                     string bedsFormatted = (beds == 1) ? "1 pax" : String.Format("{0} paxs", beds);
                     if (status=="")
                     {
@@ -200,7 +208,7 @@ namespace Geshotel.Recepcion.Pages
             protected override void OnBeforeEventRender(BeforeEventRenderArgs e)
             {
                 e.Html = String.Format("{0} ({1:d} - {2:d})", e.Text, e.Start, e.End);
-                int status = Convert.ToInt32(e.Tag["estado_reserva_id"]);
+                int status = Convert.ToInt32(e.Tag["ReservationStatus"]);
                 string ttoo = (String)e.DataItem["ttoo"];
                 e.ToolTip = String.Format("Id={0}-{1}-{2}pax-{3}-", e.Id, e.DataItem["ttoo"], e.DataItem["pax"], e.DataItem["desc_corta"]);
                 Boolean match = Db.TipoHabitacionMatch(e.Id, e.Resource);
@@ -213,7 +221,7 @@ namespace Geshotel.Recepcion.Pages
                         e.ToolTip += "Reserva con Errores";
                         break;
                     case 1:  // confirmed
-                        if (e.Start == DateTime.Today)    // En espera de entrada
+                        if (e.Start.Date == DateTime.Today.Date)    // En espera de entrada
                         {
                             e.DurationBarColor = "Orange";
                             e.ToolTip += "Entrada";

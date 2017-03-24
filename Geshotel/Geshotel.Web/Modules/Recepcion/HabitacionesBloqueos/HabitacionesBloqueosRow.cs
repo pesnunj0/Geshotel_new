@@ -9,7 +9,7 @@ namespace Geshotel.Recepcion.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[dbo].[habitaciones_bloqueos]"), DisplayName("Habitaciones Bloqueos"), InstanceName("Habitaciones Bloqueos"), TwoLevelCached]
+    [ConnectionKey("Default"), TableName("[habitaciones_bloqueos]"), DisplayName("Habitaciones Bloqueos"), InstanceName("Habitaciones Bloqueos"), TwoLevelCached]
     [ReadPermission("Recepcion:Hotel")]
     [ModifyPermission("Recepcion:Hotel")]
     public sealed class HabitacionesBloqueosRow : Row, IIdRow, INameRow

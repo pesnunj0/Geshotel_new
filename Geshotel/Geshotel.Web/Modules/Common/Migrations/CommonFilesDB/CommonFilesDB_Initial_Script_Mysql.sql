@@ -273,7 +273,7 @@ INSERT INTO `grupos_de_servicios` VALUES ('3', 'Extras F&B', '7052');
 -- ----------------------------
 DROP TABLE IF EXISTS `grupos_habitacion`;
 CREATE TABLE `grupos_habitacion` (
-  `grupo_habitacion_id` smallint(6) NOT NULL,
+  `grupo_habitacion_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `grupo_habitacion` varchar(15) NOT NULL,
   PRIMARY KEY (`grupo_habitacion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -382,30 +382,21 @@ DROP TABLE IF EXISTS `impuestos`;
 CREATE TABLE `impuestos` (
   `impuesto_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `empresa_id` smallint(6) NOT NULL,
-  `impuesto` varchar(30) NOT NULL,
+  `impuesto` varchar(15) NOT NULL,
   `porcentaje` float NOT NULL,
-  `cta_contable` varchar(15) DEFAULT NULL,
-  `activo_geshotel` bit(1) DEFAULT '0',
-  `user_id` smallint(6) DEFAULT NULL,
-  `fecha_actualizacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`impuesto_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `activo` bit(1) NOT NULL DEFAULT b'0',
+  `cta_contable` varchar(16) NOT NULL,
+  `dpto_contable` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`impuesto_id`),
+  KEY `empresa_id` (`empresa_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of impuestos
 -- ----------------------------
-INSERT INTO `impuestos` VALUES ('1', '1', 'Exento', '0', null, '0', '2', '2008-03-03 00:00:00');
-INSERT INTO `impuestos` VALUES ('2', '1', 'Alimentos', '3', null, '0', '2', '2015-04-17 00:00:00');
-INSERT INTO `impuestos` VALUES ('3', '1', 'General', '7', null, '0', '2', '2015-04-17 00:00:00');
-INSERT INTO `impuestos` VALUES ('4', '1', 'Bebidas Alcohólicas', '13.5', null, '0', '2', '2015-04-17 00:00:00');
-INSERT INTO `impuestos` VALUES ('5', '1', 'Tabaco Negro', '20', null, '0', '2', '2008-03-03 00:00:00');
-INSERT INTO `impuestos` VALUES ('6', '1', 'Tabaco Rubio', '35', null, '0', '2', '2008-03-03 00:00:00');
-INSERT INTO `impuestos` VALUES ('8', '2', 'Exento', '0', null, '0', '1', '2010-05-18 00:00:00');
-INSERT INTO `impuestos` VALUES ('9', '2', '7%', '7', null, '0', '2', '2012-07-24 00:00:00');
-INSERT INTO `impuestos` VALUES ('10', '4', 'EXENTO', '0', '1111111', '0', '2', '2011-12-05 00:00:00');
-INSERT INTO `impuestos` VALUES ('11', '4', 'IGIC 7%', '7', '1111111', '1', '2', '2012-07-24 00:00:00');
-INSERT INTO `impuestos` VALUES ('12', '4', 'IGIC 2%', '2', '1111111', '0', '2', '2011-12-05 00:00:00');
-INSERT INTO `impuestos` VALUES ('13', '2', '3%', '3', null, '0', '2', '2012-07-26 00:00:00');
+INSERT INTO `impuestos` VALUES ('1', '1', 'Exento', '0', '\0', '4777000', '000');
+INSERT INTO `impuestos` VALUES ('2', '1', 'IGIC 7%', '7', '\0', '4777000', '000');
+INSERT INTO `impuestos` VALUES ('3', '2', 'IGIC 7%', '7', '\0', '4777000', '000');
 
 -- ----------------------------
 -- Table structure for monedas
@@ -930,37 +921,37 @@ INSERT INTO `tipos_de_imputacion` VALUES ('4', 'Diario');
 -- ----------------------------
 DROP TABLE IF EXISTS `tipos_de_oferta`;
 CREATE TABLE `tipos_de_oferta` (
-  `tipo_oferta_id` smallint(6) NOT NULL,
+  `tipo_oferta_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `Oferta` varchar(25) NOT NULL,
   `permitir_m_mayor_que_n` tinyint(4) NOT NULL DEFAULT '1',
-  `rejilla` tinyint(4) NOT NULL DEFAULT '0',
+  `rejilla` bit(1) NOT NULL DEFAULT b'0',
   `Observaciones` varchar(100) DEFAULT NULL,
   `orden_aplicacion` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`tipo_oferta_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tipos_de_oferta
 -- ----------------------------
-INSERT INTO `tipos_de_oferta` VALUES ('1', 'n X m', '0', '0', 'Oferta tipo 2x1 implica que cada “n” unidades cobramos “m” de forma repetitiva', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('2', 'La ud. n y +,  m% dto', '1', '0', 'Las primeras “n-1” udes a precio normal. Despues aplicar “m%” descuento', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('3', 'La ud. n y +, m% inc.', '1', '0', 'Las primeras “n” udes a precio normal. Despues aplicar “m%” recargo', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('4', 'La ud. n y +, a m €', '1', '0', 'Las primeras “n” udes a precio normal. Despues aplicar el precio “m”', '0');
-INSERT INTO `tipos_de_oferta` VALUES ('5', 'Menos de n, m% inc.', '1', '0', 'Hacer un “m%” de incremento a todas las unidades si hay menos unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('6', 'Menos de n, m% dto.', '1', '0', 'Hacer un “m%” de descuento a todas las unidades Si hay menos unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('7', 'Mas de n, m% dto', '1', '0', 'Hacer un “m”% de descuento a todo Si hay más unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('8', 'Mas de n, m% inc.', '1', '0', 'Hacer un “m”% de incremento a todo Si hay más unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('9', 'Mas de n, a m €', '1', '0', 'Aplicar el precio “m” a todas las unidades Si hay más unidades que lo que indica “n”', '0');
-INSERT INTO `tipos_de_oferta` VALUES ('10', 'n uds m a % dto.', '1', '0', 'Si hay n  unidades tienen un m% de descuento.', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('11', 'n uds a m% inc.', '1', '0', 'Si hay n unidades tienen un m% de incremento.', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('12', 'n uds a m €', '1', '0', 'Las n primeras unidades se facturan a m €, el resto al precio normal.', '0');
-INSERT INTO `tipos_de_oferta` VALUES ('13', 'Rejilla unidades', '1', '1', 'Tabla de Unidades a precios o porcentajes que se aplican', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('14', 'mas de n ,a m € inc/dec', '1', '0', 'Hacer un m de desc/inc euros a todo Si hay más unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('15', 'mas de n ,a n*m € inc/dec', '1', '0', 'Hacer un n*m de desc/inc euros a todo Si hay más unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('16', 'menos de n ,a m € inc/dec', '1', '0', 'Hacer un m de desc/inc euros a todo Si hay menos unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('17', 'menos de n ,a n*m € inc/d', '1', '0', 'Hacer un n*m de desc/inc euros a todo Si hay menos unidades que lo que indica “n”', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('18', 'La ud. n y -,  m% dto', '1', '0', 'Las primeras “n\" unidades aplica un % descuento', '1');
-INSERT INTO `tipos_de_oferta` VALUES ('19', 'La ud. n y -, a m €', '1', '0', 'Las primeras “n\" unidades aplica un precio', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('1', 'n X m', '0', '\0', 'Oferta tipo 2x1 implica que cada “n” unidades cobramos “m” de forma repetitiva', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('2', 'La ud. n y +,  m% dto', '1', '\0', 'Las primeras “n-1” udes a precio normal. Despues aplicar “m%” descuento', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('3', 'La ud. n y +, m% inc.', '1', '\0', 'Las primeras “n” udes a precio normal. Despues aplicar “m%” recargo', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('4', 'La ud. n y +, a m €', '1', '\0', 'Las primeras “n” udes a precio normal. Despues aplicar el precio “m”', '0');
+INSERT INTO `tipos_de_oferta` VALUES ('5', 'Menos de n, m% inc.', '1', '\0', 'Hacer un “m%” de incremento a todas las unidades si hay menos unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('6', 'Menos de n, m% dto.', '1', '\0', 'Hacer un “m%” de descuento a todas las unidades Si hay menos unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('7', 'Mas de n, m% dto', '1', '\0', 'Hacer un “m”% de descuento a todo Si hay más unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('8', 'Mas de n, m% inc.', '1', '\0', 'Hacer un “m”% de incremento a todo Si hay más unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('9', 'Mas de n, a m €', '1', '\0', 'Aplicar el precio “m” a todas las unidades Si hay más unidades que lo que indica “n”', '0');
+INSERT INTO `tipos_de_oferta` VALUES ('10', 'n uds m a % dto.', '1', '\0', 'Si hay n  unidades tienen un m% de descuento.', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('11', 'n uds a m% inc.', '1', '\0', 'Si hay n unidades tienen un m% de incremento.', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('12', 'n uds a m €', '1', '\0', 'Las n primeras unidades se facturan a m €, el resto al precio normal.', '0');
+INSERT INTO `tipos_de_oferta` VALUES ('13', 'Rejilla unidades', '1', '', 'Tabla de Unidades a precios o porcentajes que se aplican', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('14', 'mas de n ,a m € inc/dec', '1', '\0', 'Hacer un m de desc/inc euros a todo Si hay más unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('15', 'mas de n ,a n*m € inc/dec', '1', '\0', 'Hacer un n*m de desc/inc euros a todo Si hay más unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('16', 'menos de n ,a m € inc/dec', '1', '\0', 'Hacer un m de desc/inc euros a todo Si hay menos unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('17', 'menos de n ,a n*m € inc/d', '1', '\0', 'Hacer un n*m de desc/inc euros a todo Si hay menos unidades que lo que indica “n”', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('18', 'La ud. n y -,  m% dto', '1', '\0', 'Las primeras “n\" unidades aplica un % descuento', '1');
+INSERT INTO `tipos_de_oferta` VALUES ('19', 'La ud. n y -, a m €', '1', '\0', 'Las primeras “n\" unidades aplica un precio', '1');
 
 -- ----------------------------
 -- Table structure for tipos_de_tarjeta
