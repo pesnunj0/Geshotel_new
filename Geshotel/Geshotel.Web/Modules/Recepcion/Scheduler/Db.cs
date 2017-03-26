@@ -470,16 +470,28 @@ namespace Data
             // event with the specified id will be ignored
             string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
+            DataTable dt = new DataTable();
             string sql = "SELECT count(ReservationId) as count FROM [Reservation] " + 
             "WHERE NOT (([ReservationEnd] <= @start) OR ([ReservationStart] >= @end)) AND RoomId = @resource AND ReservationId <> @id";
-            MySqlDataAdapter da = new MySqlDataAdapter(sql, conexion);
-            da.SelectCommand.Parameters.AddWithValue("id", id);
-            da.SelectCommand.Parameters.AddWithValue("start", start);
-            da.SelectCommand.Parameters.AddWithValue("end", end);
-            da.SelectCommand.Parameters.AddWithValue("resource", resource);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            if (provider == "Mysql.Data.MySqlClient")
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conexion);
+                da.SelectCommand.Parameters.AddWithValue("id", id);
+                da.SelectCommand.Parameters.AddWithValue("start", start);
+                da.SelectCommand.Parameters.AddWithValue("end", end);
+                da.SelectCommand.Parameters.AddWithValue("resource", resource);
+                
+                da.Fill(dt);
+            } else
+            {
+                SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
+                da.SelectCommand.Parameters.AddWithValue("id", id);
+                da.SelectCommand.Parameters.AddWithValue("start", start);
+                da.SelectCommand.Parameters.AddWithValue("end", end);
+                da.SelectCommand.Parameters.AddWithValue("resource", resource);
 
+                da.Fill(dt);
+            }
             int count = Convert.ToInt32(dt.Rows[0]["count"]);
             return count == 0;
         }
@@ -495,12 +507,24 @@ namespace Data
             else
             {
                 sql = "SELECT tipo_habitacion_id FROM habitaciones WHERE habitacion_id =@resource";
-                using (MySqlConnection con = new MySqlConnection(conexion))
+                if (provider == "Mysql.Data.MySqlClient")
                 {
-                    con.Open();
-                    MySqlCommand cmd = new MySqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("resource", resource);
-                    tipoHabitacionId = Convert.ToString(cmd.ExecuteScalar());
+                    using (MySqlConnection con = new MySqlConnection(conexion))
+                    {
+                        con.Open();
+                        MySqlCommand cmd = new MySqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("resource", resource);
+                        tipoHabitacionId = Convert.ToString(cmd.ExecuteScalar());
+                    }
+                } else
+                {
+                    using (SqlConnection con = new SqlConnection(conexion))
+                    {
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("resource", resource);
+                        tipoHabitacionId = Convert.ToString(cmd.ExecuteScalar());
+                    }
                 }
             }
             sql = "SELECT " +
@@ -508,14 +532,26 @@ namespace Data
             "FROM reservas " +
             "LEFT JOIN tipos_habitacion_hotel ON tipos_habitacion_hotel.servicio_id = reservas.tipo_habitacion_id " +
             "WHERE reservas.reserva_id=@id";
-            using (MySqlConnection con = new MySqlConnection(conexion))
+            if (provider == "Mysql.Data.MySqlClient")
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                tipoHabitacionReserva = Convert.ToString(cmd.ExecuteScalar());                
+                using (MySqlConnection con = new MySqlConnection(conexion))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    tipoHabitacionReserva = Convert.ToString(cmd.ExecuteScalar());
+                }
+            } else
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    tipoHabitacionReserva = Convert.ToString(cmd.ExecuteScalar());
+                }
             }
-            
+
             return tipoHabitacionId==tipoHabitacionReserva;
         }
     }
