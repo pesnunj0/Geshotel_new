@@ -35,6 +35,7 @@ namespace Data
             // hotelId se usará para llamar LoadRooms y LoadReservations
             // El ideal sería hacer un Listbox que seleccionara los hoteles a los
             // que tiene permiso. Ver TenantBhavior
+            // Chapu para funcione en Mysql y SqlServer
             // ******************************************************************
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
@@ -47,18 +48,24 @@ namespace Data
             };
             string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
-
-            //SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
-            MySqlDataAdapter da = new MySqlDataAdapter(sql,conexion);
-
-            da.SelectCommand.Parameters.AddWithValue("empresa_id", empresa_id);
-            da.SelectCommand.Parameters.AddWithValue("hotelId", hotelId);
             DataTable dt = new DataTable();
-            da.Fill(dt);
-            
-                return dt;
+            if (provider == "Mysql.Data.MySqlClient")
+            {
+ 
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conexion);
 
-            
+                da.SelectCommand.Parameters.AddWithValue("empresa_id", empresa_id);
+                da.SelectCommand.Parameters.AddWithValue("hotelId", hotelId);
+                
+                da.Fill(dt);
+            }else
+            {
+                SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
+                da.SelectCommand.Parameters.AddWithValue("empresa_id", empresa_id);
+                da.SelectCommand.Parameters.AddWithValue("hotelId", hotelId);
+                da.Fill(dt);
+            }
+            return dt;     
             // ******************************************************************
         }
         public static DataTable GetRooms()

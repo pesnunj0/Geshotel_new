@@ -2,6 +2,8 @@
 @using DayPilot.Web.Mvc;
 @using DayPilot.Web.Mvc.Enums
 @using DayPilot.Web.Mvc.Events.Scheduler
+@using DayPilot.Web.Mvc.Enums.Navigator
+@using DayPilot.Web.Mvc.Enums.Scheduler
 @using Data;
 @using System.Data;
 @using Serenity;
@@ -43,34 +45,42 @@
 
 <div style="margin-bottom: 20px;">
     @{
-        var LanguageCookie = Request.Cookies["LanguagePreference"];
-        var titulo = "Tipo Habitación:";
-        var sel0 = "Todas";
-        var sel1 = "Sencilla";
-        var sel2 = "Doble";
-        var sel3 = "Triple";
-        var sel4 = "Familiar";
-        var head1 = "Habitacion";
-        var head2 = "Tipo";
-        var head3 = "Tamaño";
-        var head4 = "Estado";
-        if (LanguageCookie.Value != "es")
-        {
-            titulo = "Room Type";
-            sel0 = "All";
-            sel1 = "Single";
-            sel2 = "Double";
-            sel3 = "Triple";
-            sel4 = "Familiar";
-            head1 = "Room";
-            head2 = "Type";
-            head3 = "Size";
-            head4 = "Status";
+            var idioma = "";
+            if (Request.Cookies["LanguagePreference"] == null)
+            {
+                idioma = "es";
+            }
+            else
+            {
+                idioma = Request.Cookies["LanguagePreference"].Value;
+            }
+            var titulo = "Tipo Habitación:";
+            var sel0 = "Todas";
+            var sel1 = "Sencilla";
+            var sel2 = "Doble";
+            var sel3 = "Triple";
+            var sel4 = "Familiar";
+            var head1 = "Habitacion";
+            var head2 = "Tipo";
+            var head3 = "Tamaño";
+            var head4 = "Estado";
+            if (idioma != "es")
+            {
+                titulo = "Room Type";
+                sel0 = "All";
+                sel1 = "Single";
+                sel2 = "Double";
+                sel3 = "Triple";
+                sel4 = "Familiar";
+                head1 = "Room";
+                head2 = "Type";
+                head3 = "Size";
+                head4 = "Status";
+            }
         }
-    }
-    
-   
-    Hotel:
+
+
+        Hotel:
     @Html.DropDownList("hotel_id", 
     new SelectList(Db.SelectHoteles().AsDataView(), "hotel_id", "hotel"), 
     new { @onchange = "filter('hotel_id', this.value)" }) 
@@ -87,8 +97,23 @@
         new { @onchange = "filter('room', this.value)" })
 </div>
 
+@* Ojo con los using que se han añadido al principio para que todo rule
+       Probando el Navigator para el scheduler
+       Como no le veo utilidad y no funciona bien, abandono por el momento
 
-@Html.DayPilotScheduler("dp", new DayPilotSchedulerConfig
+    <div style="float: left; width: 150px">
+        @Html.DayPilotNavigator("dpn", new DayPilotNavigatorConfig
+    {
+        BoundDayPilot = "dp",
+        SelectMode = NavigatorSelectMode.Month,
+        ShowMonths = 3
+    })
+    </div>
+
+    <div style="margin-left: 150px; min-height: 500px">
+*@
+
+    @Html.DayPilotScheduler("dp", new DayPilotSchedulerConfig
 {
     BackendUrl = Url.Action("Backend", "Scheduler"),
     Scale = TimeScale.Manual,
@@ -99,9 +124,9 @@
     // *****************************************************************
     EventHeight = 35,
     Height = 800,
-    HeightSpec = DayPilot.Web.Mvc.Enums.Scheduler.HeightSpec.Max,
+    HeightSpec = HeightSpec.Max,
     // *****************************************************************
-    
+
     TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.JavaScript,
     TimeRangeSelectedJavaScript = "create(start, end, resource);",
     TimeRangeSelectingJavaScript = "selecting(args)",
@@ -119,7 +144,7 @@
     },
 
     HeaderColumns = new RowHeaderColumnCollection()
-    {   
+    {
         new RowHeaderColumn(@head1, 80),
         new RowHeaderColumn(@head2,80),
         new RowHeaderColumn(@head3, 80),
@@ -127,83 +152,83 @@
     }
 })
 
-<script>
-    function modal() {
-        var m = new DayPilot.Modal();
-        m.closed = function () {
-            dp.clearSelection();
-            var data = this.result;
-            if (data == "OK") {
+    <script>
+        function modal() {
+            var m = new DayPilot.Modal();
+            m.closed = function () {
+                dp.clearSelection();
+                var data = this.result;
+                if (data == "OK") {
+                    dp.commandCallBack("refresh");
+                }
+
+            };
+            return m;
+        }
+
+        function create(start, end, resource) {
+            //x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.ReservasRow>{
+            //    FechaPrevistaLlegada: start,
+            //    FechaPrevistaSalida: end
+            //        });
+            var x = new Geshotel.Recepcion.ReservasDialog();
+            x.onSaveSuccess = function () {
                 dp.commandCallBack("refresh");
             }
-
-        };
-        return m;
-    }
-
-    function create(start, end, resource) {
-        //x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.ReservasRow>{
-        //    FechaPrevistaLlegada: start,
-        //    FechaPrevistaSalida: end
-        //        });
-        var x = new Geshotel.Recepcion.ReservasDialog();
-        x.onSaveSuccess = function () {
-            dp.commandCallBack("refresh");
+            x.loadEntityAndOpenDialog();
         }
-        x.loadEntityAndOpenDialog();
-    }
-    function edit(e) {
-        var x = new Geshotel.Recepcion.ReservasDialog();
-        x.onSaveSuccess = x.onDeleteSuccess = function ()
-        {
-            dp.commandCallBack("refresh");
+        function edit(e) {
+            var x = new Geshotel.Recepcion.ReservasDialog();
+            x.onSaveSuccess = x.onDeleteSuccess = function () {
+                dp.commandCallBack("refresh");
+            }
+            x.loadByIdAndOpenDialog(e.id());
+
+            //dp.clearSelection();
+            //dp.commandCallBack("refresh");
         }
-        x.loadByIdAndOpenDialog(e.id());
 
-        //dp.clearSelection();
-        //dp.commandCallBack("refresh");
-    }
-
-    function filter(property, value) {
-        if (!dp.clientState.filter) {
-            dp.clientState.filter = {};
+        function filter(property, value) {
+            if (!dp.clientState.filter) {
+                dp.clientState.filter = {};
+            }
+            if (dp.clientState.filter[property] != value) { // only refresh when the value has changed
+                dp.clientState.filter[property] = value;
+                dp.commandCallBack('filter');
+            }
         }
-        if (dp.clientState.filter[property] != value) { // only refresh when the value has changed
-            dp.clientState.filter[property] = value;
-            dp.commandCallBack('filter');
+
+        function selecting(args) {
+            var duration = Math.floor(new DayPilot.TimeSpan(args.end.getTime() - args.start.getTime()).totalDays());
+            var s = duration > 1 ? "s" : "";
+
+            args.left.enabled = true;
+            args.left.html = "Start:<br/>" + args.start.toString("M/d/yyyy");
+            args.right.enabled = true;
+            args.right.html = "End:<br/>" + args.end.toString("M/d/yyyy") + "<br/>" + duration + " night" + s;
         }
-    }
 
-    function selecting(args) {
-        var duration = Math.floor(new DayPilot.TimeSpan(args.end.getTime() - args.start.getTime()).totalDays());
-        var s = duration > 1 ? "s" : "";
+    </script>
 
-        args.left.enabled = true;
-        args.left.html = "Start:<br/>" + args.start.toString("M/d/yyyy");
-        args.right.enabled = true;
-        args.right.html = "End:<br/>" + args.end.toString("M/d/yyyy") + "<br/>" + duration + " night" + s;
-    }
+    <div>
+        <p><strong>Códigos de colores en Reservas:</strong></p>
+        <ul style="list-style-type:none;margin:0;padding:0;display:flex;flex-direction:row;">
 
-</script>
-<div>
-    <p><strong>Códigos de colores en Reservas:</strong></p>
-    <ul style="list-style-type:none;margin:0;padding:0;display:flex;flex-direction:row;">
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:Red;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Con Errores</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:Red;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Con Errores</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:lightskyblue;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Pendiente Entrar</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:lightskyblue;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Pendiente Entrar</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:orange;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Entrada Hoy</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:orange;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Entrada Hoy</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:limegreen;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Check In</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:limegreen;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Check In</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:yellow;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Salida Hoy</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:yellow;text-align:center;margin-right:0.2em;text-decoration:none;color:black;">Salida Hoy</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:blueviolet;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Late Check Out</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:blueviolet;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Late Check Out</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:blue;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Checked Out</a></li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:blue;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Checked Out</a></li>
+            <li style="flex-grow: 1;display:block;padding:1em;background-color:black;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Cancelada</li>
 
-        <li style="flex-grow: 1;display:block;padding:1em;background-color:black;text-align:center;margin-right:0.2em;text-decoration:none;color:white;">Cancelada</li>
-
-    </ul>
-</div>
+        </ul>
+    </div>

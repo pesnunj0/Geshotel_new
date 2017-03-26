@@ -54,6 +54,10 @@ namespace Geshotel.Recepcion.Pages
             protected override void OnInit(InitArgs e)
             {
                 string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+                var user = (UserDefinition)Authorization.UserDefinition;
+                //var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId, conexion);
+                //DateTime HotelDate = x.FechaHotel(hotel_id);
+                //var ErrorCode = x.CambiarEstadoReserva(24, 3,true);
               //  ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(1, conexion).regenerarLineasFacturasReserva(24);
                 // *********************************
                 // JN 2017
@@ -78,7 +82,7 @@ namespace Geshotel.Recepcion.Pages
                 LoadRoomsAndReservations(hotelId);
                 ScrollTo(DateTime.Today.AddDays(-1));
                 Separators.Add(DateTime.Now, Color.Red);
-                UpdateWithMessage("Welcome!", CallBackUpdateType.Full);
+                UpdateWithMessage("Bienvenidos a Geshotel Scheduler!", CallBackUpdateType.Full);
             }
 
             private void LoadRoomsAndReservations(string hotelId)
@@ -163,25 +167,18 @@ namespace Geshotel.Recepcion.Pages
                 // *********************************
 
                 string message = null;
-                if (e.OldEnd != e.NewEnd | e.OldStart != e.NewStart)   // No permito cambio de fechas. Debe hacerse por editor
+ 
+                if (e.OldResource == e.NewResource & (e.OldEnd != e.NewEnd | e.OldStart != e.NewStart))   // No permito cambio de fechas. Debe hacerse por editor
                 {
                     message = "No se pueden cambiar las fechas directamente. Por favor, edite la reserva.";
-                }
-                else if (e.OldEnd != e.NewEnd)
-                {
-                    message = "This reservation cannot be changed anymore.";
-                }
-                else if (e.NewStart < DateTime.Today)
-                {
-                    message = "The reservation cannot be moved to the past.";
                 }
                 else
                 {
                     // Primero intentamos borrar el anterior habitaciones_bloqueo
                     if (!e.OldResource.EndsWith("000")) // Si tenía habitacion asignada entonces la borro 
                         Db.DeleteHabitacionesBloqueo(e.Id, e.OldStart, e.OldEnd, e.OldResource);
-                    if (!e.NewResource.EndsWith("000")) // Si asigno una habitacion válida, entonces
-                        Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.NewResource);
+                    if (!e.NewResource.EndsWith("000")) // Si asigno una habitacion válida, entonces OJO Que pongo OldStart y OldEnd porque no permito mover fechas
+                        Db.MoveReservation(e.Id, e.OldStart, e.OldEnd, e.NewResource);
                     Boolean match = Db.TipoHabitacionMatch(e.Id, e.NewResource);
                     if (!match)
                         message = "Reserva Asignada a una habitacion de tipo distinto a la Reserva.";
@@ -279,18 +276,21 @@ namespace Geshotel.Recepcion.Pages
 
             protected override void OnBeforeResHeaderRender(BeforeResHeaderRenderArgs e)
             {
-                string status = (string)e.DataItem["RoomStatus"];
-                switch (status)
+                if (e.DataItem["RoomStatus"] != System.DBNull.Value)
                 {
-                    case "Dirty":
-                        e.CssClass = "status_dirty";
-                        break;
-                    case "Cleanup":
-                        e.CssClass = "status_cleanup";
-                        break;
-                    case "":
-                        e.CssClass = "status_none";
-                        break;
+                    string status = Convert.ToString(e.DataItem["RoomStatus"]);
+                    switch (status)
+                    {
+                        case "Dirty":
+                            e.CssClass = "status_dirty";
+                            break;
+                        case "Cleanup":
+                            e.CssClass = "status_cleanup";
+                            break;
+                        case "":
+                            e.CssClass = "status_none";
+                            break;
+                    }
                 }
             }
 
@@ -304,13 +304,17 @@ namespace Geshotel.Recepcion.Pages
                 // *********************************
                 switch (e.Command)
                 {
+                    case "navigate":
+                        StartDate = (DateTime)e.Data["start"];
+                        Update(CallBackUpdateType.Full);
+                        break;
                     case "refresh":
                         LoadReservations(hotelId);
-                        UpdateWithMessage("Refreshed");
+                        UpdateWithMessage("Refrescado");
                         break;
                     case "filter":
                         LoadRoomsAndReservations(hotelId);
-                        UpdateWithMessage("Updated", CallBackUpdateType.Full);
+                        UpdateWithMessage("Refrescado", CallBackUpdateType.Full);
                         break;
                 }
             }

@@ -434,11 +434,13 @@ var Geshotel;
                 _this.form = new Administration.UserForm(_this.idPrefix);
                 _this.form.Password.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value.length < 7)
-                        return "Password must be at least 7 characters!";
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    //return "Password must be at least 7 characters!";
                 });
                 _this.form.PasswordConfirm.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value != _this.form.PasswordConfirm.value)
-                        return "The passwords entered doesn't match!";
+                        return Q.text('Validation.PasswordConfirm');
+                    //return "The passwords entered doesn't match!";
                 });
                 return _this;
             }
@@ -8986,15 +8988,10 @@ var Geshotel;
                         overlay: Q.resolveUrl("~/scripts/vegas/overlays/01.png"),
                         slides: [
                             { src: Q.resolveUrl('~/content/site/slides/slide1.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide2.jpg'), transition: 'fade' },
+                            { src: Q.resolveUrl('~/content/site/slides/slide2.jpg'), transition: 'swirlLeft' },
                             { src: Q.resolveUrl('~/content/site/slides/slide3.jpg'), transition: 'zoomOut' },
                             { src: Q.resolveUrl('~/content/site/slides/slide4.jpg'), transition: 'blur' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide5.jpg'), transition: 'swirlLeft' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide6.jpg'), transition: 'zoomOut' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide7.jpg'), transition: 'swirlLeft' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide8.jpg'), transition: 'swirlLeft' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide9.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/content/site/slides/slide10.jpg'), transition: 'blur' }
+                            { src: Q.resolveUrl('~/content/site/slides/slide5.jpg'), transition: 'swirlLeft' }
                         ]
                     });
                 });

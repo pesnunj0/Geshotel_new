@@ -16,12 +16,14 @@
 
             this.form.Password.addValidationRule(this.uniqueName, e => {
                 if (this.form.Password.value.length < 7)
-                    return "Password must be at least 7 characters!";
+                    return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    //return "Password must be at least 7 characters!";
             });
 
             this.form.PasswordConfirm.addValidationRule(this.uniqueName, e => {
                 if (this.form.Password.value != this.form.PasswordConfirm.value)
-                    return "The passwords entered doesn't match!";
+                    return Q.text('Validation.PasswordConfirm');
+                    //return "The passwords entered doesn't match!";
             });
         }
 

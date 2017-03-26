@@ -14,6 +14,7 @@ Geshotel/Geshotel.Web/App_Data/GeshotelDB.ldf
 Geshotel/Geshotel.Web/App_Data/GeshotelDB.mdf
 Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind.ldf
 Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind.mdf
+/ClasesGeshotel/
 /ClasesGeshotel/Gesthote2.vb
 /ClasesGeshotel/postcierre.vb
 /ClasesGeshotel/tablaServicios.vb
@@ -30,3 +31,4 @@ Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind.mdf
 /ClasesGeshotel/duplicarTablas.vb
 /ClasesGeshotel/Centralita.vb
 /ClasesGeshotel/BatchTasks.vb
+/ClasesGeshotel/Web.config
