@@ -14,7 +14,7 @@ namespace Geshotel.Contratos.Entities
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:General")]
 
-    public sealed class TiposHabitacionHotelRow : Row, IIdRow, ITenantRow
+    public sealed class TiposHabitacionHotelRow : Row, IIdRow, INameRow, ITenantRow
     {
 
         public Int16Field HotelIdField
@@ -33,7 +33,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.TipoHabitacionHotelId[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles"),LookupInclude]
         [LookupEditor("Portal.Hoteles", CascadeFrom = "EmpresaId", CascadeField = "EmpresaId")]
         public Int16? HotelId
         {
@@ -103,6 +103,10 @@ namespace Geshotel.Contratos.Entities
         IIdField IIdRow.IdField
         {
             get { return Fields.TipoHabitacionHotelId; }
+        }
+        StringField INameRow.NameField
+        {
+            get { return Fields.TipoHabitacionName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

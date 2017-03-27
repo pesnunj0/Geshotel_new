@@ -2,7 +2,6 @@ C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Release\
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Release\ClasesGeshotel.dll
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Release\ClasesGeshotel.pdb
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Release\ClasesGeshotel.xml
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Release\ClasesGeshotel.vbprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Release\ClasesGeshotel.Resources.resources
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Release\ClasesGeshotel.vbproj.GenerateResource.Cache
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Release\ClasesGeshotel.dll

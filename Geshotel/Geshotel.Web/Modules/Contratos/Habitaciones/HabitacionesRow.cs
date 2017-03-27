@@ -13,7 +13,7 @@ namespace Geshotel.Contratos.Entities
     [ConnectionKey("Default"), TableName("[habitaciones]"), DisplayName("Habitaciones"), InstanceName("Habitaciones"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    public sealed class HabitacionesRow : Row, IIdRow, INameRow,  ITenantRow
+    public sealed class HabitacionesRow : Row, IIdRow, INameRow, ITenantRow 
     {
         public Int16Field HotelIdField
         {
@@ -31,7 +31,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.HabitacionId[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("[hoteles]", "hotel_id"), LeftJoin("jHotel"), TextualField("Hotel")]
+        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("[hoteles]", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"),LookupInclude]
         [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
@@ -46,7 +46,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.NumeroHabitacion[this] = value; }
         }
 
-        [DisplayName("Tipo Habitacion"), Column("tipo_habitacion_id"), NotNull, ForeignKey("[tipos_habitacion]", "tipo_habitacion_id"), LeftJoin("jTipoHabitacion"), TextualField("TipoHabitacionDescCorta")]
+        [DisplayName("Tipo Habitacion"), Column("tipo_habitacion_id"), NotNull, ForeignKey("[tipos_habitacion]", "tipo_habitacion_id"), LeftJoin("jTipoHabitacion"), TextualField("TipoHabitacionName")]
         [LookupEditor("Contratos.TiposHabitacionHotel")]
         public Int16? TipoHabitacionId
         {
@@ -146,11 +146,18 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Planta[this] = value; }
         }
 
-        [DisplayName("User Id"), Column("user_id")]
+        [DisplayName("Usuario"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUsers")]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
+        }
+        [DisplayName("Usuario"), Expression("jUsers.Username")]
+        public String UserName
+        {
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
         [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
@@ -161,20 +168,30 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Hotel"), Expression("jHotel.[hotel]")]
-        public String Hotel
+        public String HotelName
         {
-            get { return Fields.Hotel[this]; }
-            set { Fields.Hotel[this] = value; }
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
         }
 
-        [DisplayName("Hotel Empresa Id"), Expression("jHotel.[empresa_id]")]
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas"), LookupInclude]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
             set { Fields.EmpresaId[this] = value; }
+
         }
 
-  
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+
 
         [DisplayName("Tipo Habitacion Desc Corta"), Expression("jTipoHabitacion.[desc_corta]")]
         public String TipoHabitacionDescCorta
@@ -183,11 +200,11 @@ namespace Geshotel.Contratos.Entities
             set { Fields.TipoHabitacionDescCorta[this] = value; }
         }
 
-        [DisplayName("Tipo Habitacion Descripcion"), Expression("jTipoHabitacion.[descripcion]")]
-        public String TipoHabitacionDescripcion
+        [DisplayName("Tipo Habitacion"), Expression("jTipoHabitacion.[descripcion]")]
+        public String TipoHabitacionName
         {
-            get { return Fields.TipoHabitacionDescripcion[this]; }
-            set { Fields.TipoHabitacionDescripcion[this] = value; }
+            get { return Fields.TipoHabitacionName[this]; }
+            set { Fields.TipoHabitacionName[this] = value; }
         }
 
  
@@ -245,11 +262,13 @@ namespace Geshotel.Contratos.Entities
             public Int32Field UserId;
             public DateTimeField FechaModificacion;
 
-            public StringField Hotel;
+            public StringField HotelName;
             public Int16Field EmpresaId;
+            public StringField Empresa;
+            public StringField UserName;
  
             public StringField TipoHabitacionDescCorta;
-            public StringField TipoHabitacionDescripcion;
+            public StringField TipoHabitacionName;
 
             public StringField Situacion;
 

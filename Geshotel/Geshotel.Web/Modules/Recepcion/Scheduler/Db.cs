@@ -447,7 +447,7 @@ namespace Data
                 roomFilter = "0";
 
             DataTable dt = new DataTable();
-            if (provider == "Mysql.Data.MySqlClient")  // En Mysql sustituyo ISNULL por IFNULL. Deprecado porque uso COALESCE en ambos casos            
+            if (provider == "Mysql.Data.MySqlClient")           
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(sql, conexion);
                 da.SelectCommand.Parameters.AddWithValue("beds", roomFilter);
