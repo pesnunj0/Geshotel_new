@@ -26,7 +26,7 @@
 }
 
 @section ContentHeader {
-    <h1>@LocalText.Get("Navigation.Dashboard")<small>@Html.Raw(Texts.Site.Dashboard.ContentDescription)</small></h1>
+    <h1>@LocalText.Get("Navigation.Dashboard")&nbsp;@Model.HotelName</h1>
 }
 
 <!-- Small boxes (Stat box) -->
@@ -35,21 +35,34 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>@Model.OpenOrders</h3>
-                <p>Open Orders</p>
+                <h3>@Model.Llegadas</h3>
+                <p>Llegadas Del Día</p>
             </div>
             <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-person-add"></i>
             </div>
             <a href="~/Northwind/Order?shippingState=0" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>@Model.Salidas</h3>
+                <p>Salidas del Día</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="~/Northwind/Customer" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>@Model.ClosedOrderPercent<sup style="font-size: 20px">%</sup></h3>
-                <p>Closed Orders</p>
+                <h3>@Model.PorcentajeOcupacion<sup style="font-size: 20px">%</sup></h3>
+                <p>Porcentaje Ocupación</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -57,25 +70,13 @@
             <a href="~/Northwind/Order?shippingState=1" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-            <div class="inner">
-                <h3>@Model.CustomerCount</h3>
-                <p>Total Customers</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-person-add"></i>
-            </div>
-            <a href="~/Northwind/Customer" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-    </div><!-- ./col -->
+ 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>@Model.ProductCount</h3>
-                <p>Different Products</p>
+                <h3>@Model.PaxAlojados</h3>
+                <p>Pax Alojados</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>

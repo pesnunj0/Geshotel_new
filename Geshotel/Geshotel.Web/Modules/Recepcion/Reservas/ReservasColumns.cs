@@ -28,6 +28,8 @@ namespace Geshotel.Recepcion.Columns
         public String TipoHabitacion { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
         public String Pension { get; set; }
+        [Width(45), AlignCenter]
+        public Int16 Pax { get; set; }
         [Width(55),AlignCenter]
         public Int16 Adultos { get; set; }
         [Width(65), AlignCenter]

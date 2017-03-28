@@ -14,6 +14,7 @@ namespace Geshotel.Recepcion {
 
         private HabitacionesBloqueosGrid: ReservasHabitacionesBloqueosGrid;
         private ReservasServiciosGrid: ReservasServiciosGrid;
+        private ReservasHuespedesGrid: ReservasHuespedesGrid;
 
 
         constructor() {
@@ -21,6 +22,7 @@ namespace Geshotel.Recepcion {
 
             this.HabitacionesBloqueosGrid = new ReservasHabitacionesBloqueosGrid(this.byId("HabitacionesBloqueosGrid"));
             this.ReservasServiciosGrid = new ReservasServiciosGrid(this.byId("ReservasServiciosGrid"));
+            this.ReservasHuespedesGrid = new ReservasHuespedesGrid(this.byId("ReservasHuespedesGrid"));
             this.tabs.on('tabsactivate', (e, i) => {
                 this.arrange();
             });
@@ -31,6 +33,7 @@ namespace Geshotel.Recepcion {
 
             this.HabitacionesBloqueosGrid.reservaID = this.entityId;
             this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+            this.ReservasHuespedesGrid.rese
           
 
         }

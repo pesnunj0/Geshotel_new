@@ -95,6 +95,8 @@ namespace Geshotel.Administration.Repositories
                         fld.DisplayName,
                         fld.PasswordHash,
                         fld.PasswordSalt,
+                        fld.HotelId,
+                        fld.EmpresaId,
                         fld.IsActive)
                     .Where(filter)
                     .GetFirst(connection))

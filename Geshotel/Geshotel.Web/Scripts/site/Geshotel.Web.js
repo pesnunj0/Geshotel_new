@@ -12137,6 +12137,7 @@ var Geshotel;
                 _this.form = new Recepcion.ReservasForm(_this.idPrefix);
                 _this.HabitacionesBloqueosGrid = new Recepcion.ReservasHabitacionesBloqueosGrid(_this.byId("HabitacionesBloqueosGrid"));
                 _this.ReservasServiciosGrid = new Recepcion.ReservasServiciosGrid(_this.byId("ReservasServiciosGrid"));
+                _this.ReservasHuespedesGrid = new Recepcion.ReservasHuespedesGrid(_this.byId("ReservasHuespedesGrid"));
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
                 });
@@ -12151,6 +12152,7 @@ var Geshotel;
                 _super.prototype.afterLoadEntity.call(this);
                 this.HabitacionesBloqueosGrid.reservaID = this.entityId;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+                this.ReservasHuespedesGrid.rese;
             };
             return ReservasDialog;
         }(Serenity.EntityDialog));
@@ -12435,6 +12437,52 @@ var Geshotel;
             ReservasHuespedesGrid.prototype.getIdProperty = function () { return Recepcion.ReservasHuespedesRow.idProperty; };
             ReservasHuespedesGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasHuespedesRow.localTextPrefix; };
             ReservasHuespedesGrid.prototype.getService = function () { return Recepcion.ReservasHuespedesService.baseUrl; };
+            ReservasHuespedesGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            ReservasHuespedesGrid.prototype.addButtonClick = function () {
+                // Javascript is case sensitive, so contratoID didn't work here.
+                // To get intellisense, use a TS cast like below <LineasRow>
+                this.editItem({
+                    ReservaId: this.reservaID
+                });
+            };
+            ReservasHuespedesGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Recepcion/ReservasHuespedes/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            ReservasHuespedesGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasHuespedesGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasHuespedesGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.HabitacionesBloqueosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             return ReservasHuespedesGrid;
         }(Serenity.EntityGrid));
         ReservasHuespedesGrid = __decorate([

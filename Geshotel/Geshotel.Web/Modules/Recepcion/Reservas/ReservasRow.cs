@@ -76,6 +76,12 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.ReservaId[this]; }
             set { Fields.ReservaId[this] = value; }
         }
+        [DisplayName("Pax"), Expression("T0.adultos+T0.child_50+t0.child_free")]
+        public Int16? Pax
+        {
+            get { return Fields.Pax[this]; }
+            set { Fields.Pax[this] = value; }
+        }
         [DisplayName("Reserva"),Expression("CONCAT(t0.reserva_id,'-',t0.bono_referencia,'-',t0.nombre_reserva)")]
         public String ReservaName
         {
@@ -488,6 +494,7 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field Child50;
             public Int16Field ChildFree;
             public Int16Field Bebes;
+            public Int16Field Pax;
             public DateTimeField FechaPrevistaLlegada;
             public DateTimeField FechaPrevistaSalida;
             public StringField ObservacionesLlegada;

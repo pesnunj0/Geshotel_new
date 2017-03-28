@@ -9595,6 +9595,7 @@ declare namespace Geshotel.Recepcion {
         protected form: ReservasForm;
         private HabitacionesBloqueosGrid;
         private ReservasServiciosGrid;
+        private ReservasHuespedesGrid;
         constructor();
         protected afterLoadEntity(): void;
     }
@@ -9691,6 +9692,13 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        getButtons(): Serenity.ToolButton[];
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
     }
 }
 declare namespace Geshotel.Recepcion {
