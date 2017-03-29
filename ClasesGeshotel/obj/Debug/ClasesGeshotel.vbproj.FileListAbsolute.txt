@@ -7,4 +7,3 @@ C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\Cl
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.dll
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.xml
 C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.pdb
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.vbprojResolveAssemblyReference.cache

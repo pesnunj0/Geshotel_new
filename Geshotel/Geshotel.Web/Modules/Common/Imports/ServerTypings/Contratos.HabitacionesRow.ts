@@ -20,10 +20,12 @@ namespace Geshotel.Contratos {
         Planta?: number;
         UserId?: number;
         FechaModificacion?: string;
-        Hotel?: string;
+        HotelName?: string;
         EmpresaId?: number;
+        Empresa?: string;
+        UserName?: string;
         TipoHabitacionDescCorta?: string;
-        TipoHabitacionDescripcion?: string;
+        TipoHabitacionName?: string;
         Situacion?: string;
         ZonaLimpiezaNombreZona?: string;
     }
@@ -58,15 +60,17 @@ namespace Geshotel.Contratos {
             export declare const Planta: string;
             export declare const UserId: string;
             export declare const FechaModificacion: string;
-            export declare const Hotel: string;
+            export declare const HotelName: string;
             export declare const EmpresaId: string;
+            export declare const Empresa: string;
+            export declare const UserName: string;
             export declare const TipoHabitacionDescCorta: string;
-            export declare const TipoHabitacionDescripcion: string;
+            export declare const TipoHabitacionName: string;
             export declare const Situacion: string;
             export declare const ZonaLimpiezaNombreZona: string;
         }
 
-        ['HabitacionId', 'HotelId', 'NumeroHabitacion', 'TipoHabitacionId', 'Extension', 'Observaciones', 'SituacionId', 'FechaInicio', 'EstadoTelefono', 'EstadoProcesado', 'HabitacionIsta', 'ZonaLimpiezaId', 'Lat', 'Lng', 'PrimaryImage', 'Galleryimages', 'Planta', 'UserId', 'FechaModificacion', 'Hotel', 'EmpresaId', 'TipoHabitacionDescCorta', 'TipoHabitacionDescripcion', 'Situacion', 'ZonaLimpiezaNombreZona'].forEach(x => (<any>Fields)[x] = x);
+        ['HabitacionId', 'HotelId', 'NumeroHabitacion', 'TipoHabitacionId', 'Extension', 'Observaciones', 'SituacionId', 'FechaInicio', 'EstadoTelefono', 'EstadoProcesado', 'HabitacionIsta', 'ZonaLimpiezaId', 'Lat', 'Lng', 'PrimaryImage', 'Galleryimages', 'Planta', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName', 'TipoHabitacionDescCorta', 'TipoHabitacionName', 'Situacion', 'ZonaLimpiezaNombreZona'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

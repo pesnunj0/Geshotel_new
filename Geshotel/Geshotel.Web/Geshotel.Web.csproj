@@ -2601,6 +2601,12 @@
     <TypeScriptCompile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Recepcion\Huespedes\HuespedesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesRow.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesService.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesForm.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Huespedes\HuespedesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Huespedes\HuespedesDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -3280,6 +3286,12 @@
     <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosRepository.cs" />
     <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosEndpoint.cs" />
     <Compile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosPage.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesRow.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesColumns.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesForm.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesRepository.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\Huespedes\HuespedesPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,7 +15,7 @@ namespace Geshotel.Portal.Entities
     [LookupScript("Portal.TiposDocumento")]
     public sealed class TiposDocumentoRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Documento Id"), Column("tipo_documento_id"), Size(1), PrimaryKey, QuickSearch]
+        [DisplayName("Documento Id"), Column("tipo_documento_id"), Size(1), PrimaryKey]
         public String DocumentoId
         {
             get { return Fields.DocumentoId[this]; }

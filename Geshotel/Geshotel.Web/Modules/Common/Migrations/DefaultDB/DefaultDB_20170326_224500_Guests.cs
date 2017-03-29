@@ -11,7 +11,8 @@ namespace Geshotel.Migrations.DefaultDB
             Alter.Table("huespedes")
                 .AddColumn("user_id").AsInt32().Nullable()
                 .ForeignKey("FK_guest_users", "users", "UserId")
-                .AddColumn("fecha_modificacion").AsDateTime().Nullable();
+                .AddColumn("fecha_modificacion").AsDateTime().Nullable()
+                .AddColumn("fecha_nacimiento").AsDate().Nullable();
 
 
             Alter.Table("reservas_huespedes")

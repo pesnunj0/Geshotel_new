@@ -14,6 +14,7 @@ namespace Geshotel.Contratos {
 
     export namespace TiposHabitacionHotelRow {
         export const idProperty = 'TipoHabitacionHotelId';
+        export const nameProperty = 'TipoHabitacionName';
         export const localTextPrefix = 'Contratos.TiposHabitacionHotel';
         export const lookupKey = 'Contratos.TiposHabitacionHotel';
 

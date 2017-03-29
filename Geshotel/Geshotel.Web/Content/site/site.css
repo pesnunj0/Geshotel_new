@@ -8713,6 +8713,12 @@ section.content > .s-DataGrid {
 .s-Recepcion-HabitacionesBloqueosDialog .caption {
   width: 150px;
 }
+.s-Recepcion-HuespedesDialog > .size {
+  width: 650px;
+}
+.s-Recepcion-HuespedesDialog .caption {
+  width: 150px;
+}
 .s-Default-ReservasHabitacionesDialog > .size {
   width: 650px;
 }

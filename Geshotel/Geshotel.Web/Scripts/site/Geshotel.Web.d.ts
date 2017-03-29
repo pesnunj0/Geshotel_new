@@ -1432,7 +1432,7 @@ declare namespace Geshotel.Contratos {
         PrimaryImage: Serenity.StringEditor;
         Galleryimages: Serenity.StringEditor;
         Planta: Serenity.IntegerEditor;
-        UserId: Serenity.IntegerEditor;
+        UserId: Serenity.LookupEditor;
         FechaModificacion: Serenity.DateEditor;
     }
 }
@@ -1457,10 +1457,12 @@ declare namespace Geshotel.Contratos {
         Planta?: number;
         UserId?: number;
         FechaModificacion?: string;
-        Hotel?: string;
+        HotelName?: string;
         EmpresaId?: number;
+        Empresa?: string;
+        UserName?: string;
         TipoHabitacionDescCorta?: string;
-        TipoHabitacionDescripcion?: string;
+        TipoHabitacionName?: string;
         Situacion?: string;
         ZonaLimpiezaNombreZona?: string;
     }
@@ -1490,10 +1492,12 @@ declare namespace Geshotel.Contratos {
             const Planta: string;
             const UserId: string;
             const FechaModificacion: string;
-            const Hotel: string;
+            const HotelName: string;
             const EmpresaId: string;
+            const Empresa: string;
+            const UserName: string;
             const TipoHabitacionDescCorta: string;
-            const TipoHabitacionDescripcion: string;
+            const TipoHabitacionName: string;
             const Situacion: string;
             const ZonaLimpiezaNombreZona: string;
         }
@@ -2094,6 +2098,7 @@ declare namespace Geshotel.Contratos {
     }
     namespace TiposHabitacionHotelRow {
         const idProperty = "TipoHabitacionHotelId";
+        const nameProperty = "TipoHabitacionName";
         const localTextPrefix = "Contratos.TiposHabitacionHotel";
         const lookupKey = "Contratos.TiposHabitacionHotel";
         function getLookup(): Q.Lookup<TiposHabitacionHotelRow>;
@@ -6333,6 +6338,144 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+    class HuespedesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface HuespedesForm {
+        EmpresaId: Serenity.IntegerEditor;
+        Nombre: Serenity.StringEditor;
+        Apellidos: Serenity.StringEditor;
+        TipoDocumentoId: Serenity.StringEditor;
+        Nif: Serenity.StringEditor;
+        FechaDocumento: Serenity.DateEditor;
+        SexoId: Serenity.StringEditor;
+        Direccion: Serenity.StringEditor;
+        Poblacion: Serenity.StringEditor;
+        Zip: Serenity.StringEditor;
+        NacionId: Serenity.IntegerEditor;
+        ProvinciaId: Serenity.IntegerEditor;
+        Telefono: Serenity.StringEditor;
+        Email: Serenity.StringEditor;
+        Foto1: Serenity.StringEditor;
+        Foto2: Serenity.StringEditor;
+        TarjetaFidelizacion: Serenity.StringEditor;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    interface HuespedesRow {
+        HuespedId?: number;
+        EmpresaId?: number;
+        Nombre?: string;
+        Apellidos?: string;
+        TipoDocumentoId?: string;
+        Nif?: string;
+        FechaDocumento?: string;
+        SexoId?: string;
+        Direccion?: string;
+        Poblacion?: string;
+        Zip?: string;
+        NacionId?: number;
+        ProvinciaId?: number;
+        Telefono?: string;
+        Email?: string;
+        Foto1?: string;
+        Foto2?: string;
+        TarjetaFidelizacion?: string;
+        Empresa?: string;
+        EmpresaEmpresaContable?: string;
+        EmpresaDireccion?: string;
+        EmpresaPoblacion?: string;
+        EmpresaZip?: string;
+        EmpresaProvinciaId?: number;
+        EmpresaTelefono?: string;
+        EmpresaFax?: string;
+        EmpresaCif?: string;
+        EmpresaRutaFicheros?: string;
+        TipoDocumentoDocumento?: string;
+        Nacion?: string;
+        NacionDescCorta?: string;
+        NacionMonedaId?: number;
+        NacionIdiomaId?: number;
+        NacionNumeroIne?: number;
+        NacionPaisIsta?: string;
+        NacionDefecto?: number;
+        NacionNombreReal?: string;
+        NacionIdiomaMails?: string;
+        Provincia?: string;
+        ProvinciaComunidadAutonomaId?: number;
+        ProvinciaNacionId?: number;
+        ProvinciaProvinciaIsta?: string;
+        ProvinciaDefectoIsta?: number;
+    }
+    namespace HuespedesRow {
+        const idProperty = "HuespedId";
+        const nameProperty = "Nombre";
+        const localTextPrefix = "Recepcion.Huespedes";
+        namespace Fields {
+            const HuespedId: any;
+            const EmpresaId: any;
+            const Nombre: any;
+            const Apellidos: any;
+            const TipoDocumentoId: any;
+            const Nif: any;
+            const FechaDocumento: any;
+            const SexoId: any;
+            const Direccion: any;
+            const Poblacion: any;
+            const Zip: any;
+            const NacionId: any;
+            const ProvinciaId: any;
+            const Telefono: any;
+            const Email: any;
+            const Foto1: any;
+            const Foto2: any;
+            const TarjetaFidelizacion: any;
+            const Empresa: string;
+            const EmpresaEmpresaContable: string;
+            const EmpresaDireccion: string;
+            const EmpresaPoblacion: string;
+            const EmpresaZip: string;
+            const EmpresaProvinciaId: string;
+            const EmpresaTelefono: string;
+            const EmpresaFax: string;
+            const EmpresaCif: string;
+            const EmpresaRutaFicheros: string;
+            const TipoDocumentoDocumento: string;
+            const Nacion: string;
+            const NacionDescCorta: string;
+            const NacionMonedaId: string;
+            const NacionIdiomaId: string;
+            const NacionNumeroIne: string;
+            const NacionPaisIsta: string;
+            const NacionDefecto: string;
+            const NacionNombreReal: string;
+            const NacionIdiomaMails: string;
+            const Provincia: string;
+            const ProvinciaComunidadAutonomaId: string;
+            const ProvinciaNacionId: string;
+            const ProvinciaProvinciaIsta: string;
+            const ProvinciaDefectoIsta: string;
+        }
+    }
+}
+declare namespace Geshotel.Recepcion {
+    namespace HuespedesService {
+        const baseUrl = "Recepcion/Huespedes";
+        function Create(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<HuespedesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<HuespedesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
 }
@@ -6613,11 +6756,10 @@ declare namespace Geshotel.Recepcion {
     }
     interface ReservasHuespedesForm {
         ReservaId: Serenity.IntegerEditor;
-        ClienteId: Serenity.IntegerEditor;
+        HuespedId: Serenity.IntegerEditor;
         FechaLlegada: Serenity.DateEditor;
         FechaSalida: Serenity.DateEditor;
-        HabitacionId: Serenity.IntegerEditor;
-        TipoHuespedId: Serenity.IntegerEditor;
+        HabitacionId: Serenity.LookupEditor;
         Edad: Serenity.IntegerEditor;
     }
 }
@@ -6625,54 +6767,31 @@ declare namespace Geshotel.Recepcion {
     interface ReservasHuespedesRow {
         ReservasHuespedesId?: number;
         ReservaId?: number;
-        ClienteId?: number;
+        HuespedId?: number;
         FechaLlegada?: string;
         FechaSalida?: string;
         HabitacionId?: number;
-        TipoHuespedId?: number;
         Edad?: number;
-        ReservaFechaCreacion?: string;
         ReservaHotelId?: number;
         ReservaEstadoReservaId?: number;
-        ReservaClienteId?: number;
-        ReservaCanalReservaId?: number;
-        ReservaClienteIdFactura?: number;
-        ReservaFechaReserva?: string;
-        ReservaNombreReserva?: string;
         ReservaFechaPrevistaLlegada?: string;
         ReservaFechaPrevistaSalida?: string;
-        ReservaHoraPrevistaLlegada?: string;
-        ReservaHoraPrevistaSalida?: string;
-        ReservaObservacionesLlegada?: string;
-        ReservaObservacionesSalida?: string;
-        ReservaObservacionesCliente?: string;
-        ReservaObservaciones?: string;
-        ReservaFechaLlegada?: string;
-        ReservaFechaSalida?: string;
-        ReservaBonoReferencia?: string;
-        ReservaBonoOnline?: string;
-        ReservaBloquearTarifa?: number;
-        ReservaPermiteDevolucion?: number;
-        ReservaTipoTarjetaId?: number;
-        ReservaTarjetaCredito?: string;
-        ReservaCaducidad?: string;
-        ReservaCodSeguridad?: string;
-        ReservaContratoTtoo?: string;
-        ReservaCodigoOferta?: string;
-        ReservaValor?: number;
-        ReservaValorValidado?: number;
-        ReservaFechaValidacion?: string;
-        ReservaUsuarioValidacion?: number;
-        ReservaParoventasCheck?: number;
-        ReservaCuposCheck?: number;
-        ReservaReleaseCheck?: number;
-        ReservaReservaDingus?: number[];
-        ReservaDingusImpuestosIncluidos?: number;
-        ReservaDingusComision?: number;
-        ReservaReservaDingusTipo?: number;
-        ReservaFechaAnulacion?: string;
-        ReservaUserId?: number;
-        ReservaFechaModificacion?: string;
+        Nombre?: string;
+        Apellidos?: string;
+        NombreCompleto?: string;
+        TipoDocumentoId?: string;
+        TipoDocumento?: string;
+        Nif?: string;
+        FechaNacimiento?: string;
+        Direccion?: string;
+        Poblacion?: string;
+        ProvinciaId?: number;
+        Provincia?: string;
+        NacionId?: number;
+        Nacion?: string;
+        Telefono?: string;
+        Email?: string;
+        TarjetaFidelizacion?: string;
     }
     namespace ReservasHuespedesRow {
         const idProperty = "ReservasHuespedesId";
@@ -6680,54 +6799,31 @@ declare namespace Geshotel.Recepcion {
         namespace Fields {
             const ReservasHuespedesId: string;
             const ReservaId: string;
-            const ClienteId: string;
+            const HuespedId: string;
             const FechaLlegada: string;
             const FechaSalida: string;
             const HabitacionId: string;
-            const TipoHuespedId: string;
             const Edad: string;
-            const ReservaFechaCreacion: string;
             const ReservaHotelId: string;
             const ReservaEstadoReservaId: string;
-            const ReservaClienteId: string;
-            const ReservaCanalReservaId: string;
-            const ReservaClienteIdFactura: string;
-            const ReservaFechaReserva: string;
-            const ReservaNombreReserva: string;
             const ReservaFechaPrevistaLlegada: string;
             const ReservaFechaPrevistaSalida: string;
-            const ReservaHoraPrevistaLlegada: string;
-            const ReservaHoraPrevistaSalida: string;
-            const ReservaObservacionesLlegada: string;
-            const ReservaObservacionesSalida: string;
-            const ReservaObservacionesCliente: string;
-            const ReservaObservaciones: string;
-            const ReservaFechaLlegada: string;
-            const ReservaFechaSalida: string;
-            const ReservaBonoReferencia: string;
-            const ReservaBonoOnline: string;
-            const ReservaBloquearTarifa: string;
-            const ReservaPermiteDevolucion: string;
-            const ReservaTipoTarjetaId: string;
-            const ReservaTarjetaCredito: string;
-            const ReservaCaducidad: string;
-            const ReservaCodSeguridad: string;
-            const ReservaContratoTtoo: string;
-            const ReservaCodigoOferta: string;
-            const ReservaValor: string;
-            const ReservaValorValidado: string;
-            const ReservaFechaValidacion: string;
-            const ReservaUsuarioValidacion: string;
-            const ReservaParoventasCheck: string;
-            const ReservaCuposCheck: string;
-            const ReservaReleaseCheck: string;
-            const ReservaReservaDingus: string;
-            const ReservaDingusImpuestosIncluidos: string;
-            const ReservaDingusComision: string;
-            const ReservaReservaDingusTipo: string;
-            const ReservaFechaAnulacion: string;
-            const ReservaUserId: string;
-            const ReservaFechaModificacion: string;
+            const Nombre: string;
+            const Apellidos: string;
+            const NombreCompleto: string;
+            const TipoDocumentoId: string;
+            const TipoDocumento: string;
+            const Nif: string;
+            const FechaNacimiento: string;
+            const Direccion: string;
+            const Poblacion: string;
+            const ProvinciaId: string;
+            const Provincia: string;
+            const NacionId: string;
+            const Nacion: string;
+            const Telefono: string;
+            const Email: string;
+            const TarjetaFidelizacion: string;
         }
     }
 }
@@ -6819,6 +6915,7 @@ declare namespace Geshotel.Recepcion {
         Child50?: number;
         ChildFree?: number;
         Bebes?: number;
+        Pax?: number;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
         ObservacionesLlegada?: string;
@@ -6885,6 +6982,7 @@ declare namespace Geshotel.Recepcion {
             const Child50: string;
             const ChildFree: string;
             const Bebes: string;
+            const Pax: string;
             const FechaPrevistaLlegada: string;
             const FechaPrevistaSalida: string;
             const ObservacionesLlegada: string;
@@ -9579,6 +9677,26 @@ declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosGrid extends Serenity.EntityGrid<HabitacionesBloqueosRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof HabitacionesBloqueosDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class HuespedesDialog extends Serenity.EntityDialog<HuespedesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: HuespedesForm;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class HuespedesGrid extends Serenity.EntityGrid<HuespedesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof HuespedesDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

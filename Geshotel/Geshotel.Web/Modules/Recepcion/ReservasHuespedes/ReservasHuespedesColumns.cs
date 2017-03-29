@@ -15,12 +15,15 @@ namespace Geshotel.Recepcion.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ReservasHuespedesId { get; set; }
+        [Hidden,DisplayName("Reserva"),Width(45)]
         public Int32 ReservaId { get; set; }
-        public Int32 ClienteId { get; set; }
+        [Width(130),QuickFilter]
+        public String NombreCompleto { get; set; }
+        public String Nif { get; set; }
+
         public DateTime FechaLlegada { get; set; }
         public DateTime FechaSalida { get; set; }
         public Int32 HabitacionId { get; set; }
-        public Int16 TipoHuespedId { get; set; }
         public Int16 Edad { get; set; }
     }
 }
