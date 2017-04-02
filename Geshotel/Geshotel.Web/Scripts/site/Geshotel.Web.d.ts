@@ -6338,22 +6338,24 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+}
+declare namespace Geshotel.Recepcion {
     class HuespedesForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
     interface HuespedesForm {
-        EmpresaId: Serenity.IntegerEditor;
+        EmpresaId: Serenity.LookupEditor;
         Nombre: Serenity.StringEditor;
         Apellidos: Serenity.StringEditor;
-        TipoDocumentoId: Serenity.StringEditor;
+        TipoDocumentoId: Serenity.LookupEditor;
         Nif: Serenity.StringEditor;
         FechaDocumento: Serenity.DateEditor;
-        SexoId: Serenity.StringEditor;
+        SexoId: Serenity.LookupEditor;
         Direccion: Serenity.StringEditor;
         Poblacion: Serenity.StringEditor;
         Zip: Serenity.StringEditor;
-        NacionId: Serenity.IntegerEditor;
-        ProvinciaId: Serenity.IntegerEditor;
+        NacionId: Serenity.LookupEditor;
+        ProvinciaId: Serenity.LookupEditor;
         Telefono: Serenity.StringEditor;
         Email: Serenity.StringEditor;
         Foto1: Serenity.StringEditor;
@@ -6367,9 +6369,11 @@ declare namespace Geshotel.Recepcion {
         EmpresaId?: number;
         Nombre?: string;
         Apellidos?: string;
+        NombreCompleto?: string;
         TipoDocumentoId?: string;
         Nif?: string;
         FechaDocumento?: string;
+        FechaNacimiento?: string;
         SexoId?: string;
         Direccion?: string;
         Poblacion?: string;
@@ -6382,90 +6386,52 @@ declare namespace Geshotel.Recepcion {
         Foto2?: string;
         TarjetaFidelizacion?: string;
         Empresa?: string;
-        EmpresaEmpresaContable?: string;
-        EmpresaDireccion?: string;
-        EmpresaPoblacion?: string;
-        EmpresaZip?: string;
-        EmpresaProvinciaId?: number;
-        EmpresaTelefono?: string;
-        EmpresaFax?: string;
-        EmpresaCif?: string;
-        EmpresaRutaFicheros?: string;
-        TipoDocumentoDocumento?: string;
+        TipoDocumento?: string;
         Nacion?: string;
         NacionDescCorta?: string;
-        NacionMonedaId?: number;
-        NacionIdiomaId?: number;
-        NacionNumeroIne?: number;
-        NacionPaisIsta?: string;
-        NacionDefecto?: number;
-        NacionNombreReal?: string;
-        NacionIdiomaMails?: string;
         Provincia?: string;
-        ProvinciaComunidadAutonomaId?: number;
-        ProvinciaNacionId?: number;
-        ProvinciaProvinciaIsta?: string;
-        ProvinciaDefectoIsta?: number;
     }
     namespace HuespedesRow {
         const idProperty = "HuespedId";
         const nameProperty = "Nombre";
         const localTextPrefix = "Recepcion.Huespedes";
         namespace Fields {
-            const HuespedId: any;
-            const EmpresaId: any;
-            const Nombre: any;
-            const Apellidos: any;
-            const TipoDocumentoId: any;
-            const Nif: any;
-            const FechaDocumento: any;
-            const SexoId: any;
-            const Direccion: any;
-            const Poblacion: any;
-            const Zip: any;
-            const NacionId: any;
-            const ProvinciaId: any;
-            const Telefono: any;
-            const Email: any;
-            const Foto1: any;
-            const Foto2: any;
-            const TarjetaFidelizacion: any;
+            const HuespedId: string;
+            const EmpresaId: string;
+            const Nombre: string;
+            const Apellidos: string;
+            const NombreCompleto: string;
+            const TipoDocumentoId: string;
+            const Nif: string;
+            const FechaDocumento: string;
+            const FechaNacimiento: string;
+            const SexoId: string;
+            const Direccion: string;
+            const Poblacion: string;
+            const Zip: string;
+            const NacionId: string;
+            const ProvinciaId: string;
+            const Telefono: string;
+            const Email: string;
+            const Foto1: string;
+            const Foto2: string;
+            const TarjetaFidelizacion: string;
             const Empresa: string;
-            const EmpresaEmpresaContable: string;
-            const EmpresaDireccion: string;
-            const EmpresaPoblacion: string;
-            const EmpresaZip: string;
-            const EmpresaProvinciaId: string;
-            const EmpresaTelefono: string;
-            const EmpresaFax: string;
-            const EmpresaCif: string;
-            const EmpresaRutaFicheros: string;
-            const TipoDocumentoDocumento: string;
+            const TipoDocumento: string;
             const Nacion: string;
             const NacionDescCorta: string;
-            const NacionMonedaId: string;
-            const NacionIdiomaId: string;
-            const NacionNumeroIne: string;
-            const NacionPaisIsta: string;
-            const NacionDefecto: string;
-            const NacionNombreReal: string;
-            const NacionIdiomaMails: string;
             const Provincia: string;
-            const ProvinciaComunidadAutonomaId: string;
-            const ProvinciaNacionId: string;
-            const ProvinciaProvinciaIsta: string;
-            const ProvinciaDefectoIsta: string;
         }
     }
 }
 declare namespace Geshotel.Recepcion {
     namespace HuespedesService {
         const baseUrl = "Recepcion/Huespedes";
-        function Create(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<HuespedesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<HuespedesRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<HuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<HuespedesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<HuespedesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;

@@ -5,9 +5,11 @@ namespace Geshotel.Recepcion {
         EmpresaId?: number;
         Nombre?: string;
         Apellidos?: string;
+        NombreCompleto?: string;
         TipoDocumentoId?: string;
         Nif?: string;
         FechaDocumento?: string;
+        FechaNacimiento?: string;
         SexoId?: string;
         Direccion?: string;
         Poblacion?: string;
@@ -20,30 +22,10 @@ namespace Geshotel.Recepcion {
         Foto2?: string;
         TarjetaFidelizacion?: string;
         Empresa?: string;
-        EmpresaEmpresaContable?: string;
-        EmpresaDireccion?: string;
-        EmpresaPoblacion?: string;
-        EmpresaZip?: string;
-        EmpresaProvinciaId?: number;
-        EmpresaTelefono?: string;
-        EmpresaFax?: string;
-        EmpresaCif?: string;
-        EmpresaRutaFicheros?: string;
-        TipoDocumentoDocumento?: string;
+        TipoDocumento?: string;
         Nacion?: string;
         NacionDescCorta?: string;
-        NacionMonedaId?: number;
-        NacionIdiomaId?: number;
-        NacionNumeroIne?: number;
-        NacionPaisIsta?: string;
-        NacionDefecto?: number;
-        NacionNombreReal?: string;
-        NacionIdiomaMails?: string;
         Provincia?: string;
-        ProvinciaComunidadAutonomaId?: number;
-        ProvinciaNacionId?: number;
-        ProvinciaProvinciaIsta?: string;
-        ProvinciaDefectoIsta?: number;
     }
 
     export namespace HuespedesRow {
@@ -52,52 +34,34 @@ namespace Geshotel.Recepcion {
         export const localTextPrefix = 'Recepcion.Huespedes';
 
         export namespace Fields {
-            export declare const HuespedId;
-            export declare const EmpresaId;
-            export declare const Nombre;
-            export declare const Apellidos;
-            export declare const TipoDocumentoId;
-            export declare const Nif;
-            export declare const FechaDocumento;
-            export declare const SexoId;
-            export declare const Direccion;
-            export declare const Poblacion;
-            export declare const Zip;
-            export declare const NacionId;
-            export declare const ProvinciaId;
-            export declare const Telefono;
-            export declare const Email;
-            export declare const Foto1;
-            export declare const Foto2;
-            export declare const TarjetaFidelizacion;
+            export declare const HuespedId: string;
+            export declare const EmpresaId: string;
+            export declare const Nombre: string;
+            export declare const Apellidos: string;
+            export declare const NombreCompleto: string;
+            export declare const TipoDocumentoId: string;
+            export declare const Nif: string;
+            export declare const FechaDocumento: string;
+            export declare const FechaNacimiento: string;
+            export declare const SexoId: string;
+            export declare const Direccion: string;
+            export declare const Poblacion: string;
+            export declare const Zip: string;
+            export declare const NacionId: string;
+            export declare const ProvinciaId: string;
+            export declare const Telefono: string;
+            export declare const Email: string;
+            export declare const Foto1: string;
+            export declare const Foto2: string;
+            export declare const TarjetaFidelizacion: string;
             export declare const Empresa: string;
-            export declare const EmpresaEmpresaContable: string;
-            export declare const EmpresaDireccion: string;
-            export declare const EmpresaPoblacion: string;
-            export declare const EmpresaZip: string;
-            export declare const EmpresaProvinciaId: string;
-            export declare const EmpresaTelefono: string;
-            export declare const EmpresaFax: string;
-            export declare const EmpresaCif: string;
-            export declare const EmpresaRutaFicheros: string;
-            export declare const TipoDocumentoDocumento: string;
+            export declare const TipoDocumento: string;
             export declare const Nacion: string;
             export declare const NacionDescCorta: string;
-            export declare const NacionMonedaId: string;
-            export declare const NacionIdiomaId: string;
-            export declare const NacionNumeroIne: string;
-            export declare const NacionPaisIsta: string;
-            export declare const NacionDefecto: string;
-            export declare const NacionNombreReal: string;
-            export declare const NacionIdiomaMails: string;
             export declare const Provincia: string;
-            export declare const ProvinciaComunidadAutonomaId: string;
-            export declare const ProvinciaNacionId: string;
-            export declare const ProvinciaProvinciaIsta: string;
-            export declare const ProvinciaDefectoIsta: string;
         }
 
-        ['HuespedId', 'EmpresaId', 'Nombre', 'Apellidos', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'SexoId', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'Telefono', 'Email', 'Foto1', 'Foto2', 'TarjetaFidelizacion', 'Empresa', 'EmpresaEmpresaContable', 'EmpresaDireccion', 'EmpresaPoblacion', 'EmpresaZip', 'EmpresaProvinciaId', 'EmpresaTelefono', 'EmpresaFax', 'EmpresaCif', 'EmpresaRutaFicheros', 'TipoDocumentoDocumento', 'Nacion', 'NacionDescCorta', 'NacionMonedaId', 'NacionIdiomaId', 'NacionNumeroIne', 'NacionPaisIsta', 'NacionDefecto', 'NacionNombreReal', 'NacionIdiomaMails', 'Provincia', 'ProvinciaComunidadAutonomaId', 'ProvinciaNacionId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(x => (<any>Fields)[x] = x);
+        ['HuespedId', 'EmpresaId', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'FechaNacimiento', 'SexoId', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'Telefono', 'Email', 'Foto1', 'Foto2', 'TarjetaFidelizacion', 'Empresa', 'TipoDocumento', 'Nacion', 'NacionDescCorta', 'Provincia'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

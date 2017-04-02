@@ -1806,6 +1806,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -2602,9 +2605,15 @@
     <TypeScriptCompile Include="Modules\Recepcion\HabitacionesBloqueos\HabitacionesBloqueosDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
     <Content Include="Modules\Recepcion\Huespedes\HuespedesIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HuespedesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Recepcion\Huespedes\HuespedesGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Huespedes\HuespedesDialog.ts" />
   </ItemGroup>

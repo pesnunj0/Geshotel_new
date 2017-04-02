@@ -671,6 +671,13 @@ namespace MVC
             }
 
 
+            public static class Huespedes
+            {
+
+                public const string HuespedesIndex = "~/Modules/Recepcion/Huespedes/HuespedesIndex.cshtml";
+            }
+
+
             public static class Reservas
             {
 
