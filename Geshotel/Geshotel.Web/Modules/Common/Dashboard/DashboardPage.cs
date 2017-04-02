@@ -30,7 +30,7 @@ namespace Geshotel.Common.Pages
                     var hbRow = HabitacionesBloqueosRow.Fields;
                     var o = HotelesRow.Fields;
                     string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-                    var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId,conexion);
+ //                   var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId,conexion);
                     //  DateTime hoy = x.FechaHotel((int)user.HotelId); Por ahora lo comento ya que todavía no hay cierres
                     DateTime hoy = DateTime.Today;
                     DateTime tomorrow = hoy.AddDays(1);
