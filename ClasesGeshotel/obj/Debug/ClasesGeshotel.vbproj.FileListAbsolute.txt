@@ -1,9 +1,0 @@
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Debug\ClasesGeshotel.dll.config
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Debug\ClasesGeshotel.dll
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Debug\ClasesGeshotel.pdb
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\bin\Debug\ClasesGeshotel.xml
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.Resources.resources
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.vbproj.GenerateResource.Cache
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.dll
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.xml
-C:\Users\Administrator\Documents\GitHub\Geshotel_new\ClasesGeshotel\obj\Debug\ClasesGeshotel.pdb

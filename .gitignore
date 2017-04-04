@@ -15,3 +15,6 @@ Geshotel/Geshotel.Web/App_Data/GeshotelDB.mdf
 Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind.ldf
 Geshotel/Geshotel.Web/App_Data/Geshotel_Northwind.mdf
 
+ClasesGeshotel/bin/Debug/
+ClasesGeshotel/bin/Release/
+ClasesGeshotel/obj/
