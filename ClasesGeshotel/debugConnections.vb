@@ -2,14 +2,15 @@
 Imports System.Data.SqlClient
 Imports System.Data.OleDb
 Imports System.Data
+Imports MySql.Data.MySqlClient
 Namespace geshotelk
     Partial Public Class GesHotelClase
 
         Sub fuerzaError()
             'Dim dt As Date = Now
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
-            Dim cmd2 As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd2 As MysqlCommand = prepareConection()
             errorCode = 1
 
         End Sub

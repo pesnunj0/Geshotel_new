@@ -2713,6 +2713,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170404_224500_Events_movimientos_caja.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170326_224500_Guests.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170307_224500_SampleData.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170220_224500_Reservas.cs" />
@@ -3305,6 +3306,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Modules\Northwind\ProductLang\OrderDetail\" />
+    <Folder Include="Modules\Recepcion\Calendario\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -2,6 +2,7 @@ Imports System.Data.OleDb
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Collections.Generic
+Imports MySql.Data.MySqlClient
 Namespace geshotelk
 
 

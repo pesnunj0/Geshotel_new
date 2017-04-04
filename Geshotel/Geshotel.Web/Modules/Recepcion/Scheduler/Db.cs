@@ -277,15 +277,31 @@ namespace Data
             "VALUES(@id,'@start','@end',@resource,@user,1,@now)";
             sql = sql.Replace("@start", start.ToString("yyyy-MM-dd"));
             sql = sql.Replace("@end", end.ToString("yyyy-MM-dd"));
-            using (MySqlConnection con = new MySqlConnection(conexion))
+            string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
+            if (provider == "Mysql.Data.MySqlClient")
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.Parameters.AddWithValue("resource", resource);
-                cmd.Parameters.AddWithValue("user", user.UserId);
-                cmd.Parameters.AddWithValue("now", DateTime.Now);
-                var result = cmd.ExecuteNonQuery();
+                using (MySqlConnection con = new MySqlConnection(conexion))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("resource", resource);
+                    cmd.Parameters.AddWithValue("user", user.UserId);
+                    cmd.Parameters.AddWithValue("now", DateTime.Now);
+                    var result = cmd.ExecuteNonQuery();
+                }
+            } else
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("resource", resource);
+                    cmd.Parameters.AddWithValue("user", user.UserId);
+                    cmd.Parameters.AddWithValue("now", DateTime.Now);
+                    var result = cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -295,13 +311,27 @@ namespace Data
             string sql = "DELETE FROM habitaciones_bloqueos WHERE reserva_id = @id AND fecha_desde = '@start' AND fecha_hasta = '@end' AND habitacion_id =@resource";
             sql = sql.Replace("@start", oldStart.ToString("yyyy-MM-dd"));
             sql = sql.Replace("@end", oldEnd.ToString("yyyy-MM-dd"));
-            using (MySqlConnection con = new MySqlConnection(conexion))
+            string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
+            if (provider == "Mysql.Data.MySqlClient")
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.Parameters.AddWithValue("resource", oldResource);              
-                var result = cmd.ExecuteNonQuery();
+                using (MySqlConnection con = new MySqlConnection(conexion))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("resource", oldResource);
+                    var result = cmd.ExecuteNonQuery();
+                }
+            } else
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("resource", oldResource);
+                    var result = cmd.ExecuteNonQuery();
+                }
             }
         }
         internal static IDataAdapter DameDataAdapter(string sql)
