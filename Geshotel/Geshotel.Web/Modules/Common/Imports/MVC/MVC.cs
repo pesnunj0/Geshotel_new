@@ -167,6 +167,13 @@ namespace MVC
             }
 
 
+            public static class Cajas
+            {
+
+                public const string CajasIndex = "~/Modules/Contratos/Cajas/CajasIndex.cshtml";
+            }
+
+
             public static class CanalesReserva
             {
 
@@ -178,6 +185,13 @@ namespace MVC
             {
 
                 public const string ClientesIndex = "~/Modules/Contratos/Clientes/ClientesIndex.cshtml";
+            }
+
+
+            public static class Contadores
+            {
+
+                public const string ContadoresIndex = "~/Modules/Contratos/Contadores/ContadoresIndex.cshtml";
             }
 
 
@@ -241,6 +255,13 @@ namespace MVC
             {
 
                 public const string ReleasesIndex = "~/Modules/Contratos/Releases/ReleasesIndex.cshtml";
+            }
+
+
+            public static class Series
+            {
+
+                public const string SeriesIndex = "~/Modules/Contratos/Series/SeriesIndex.cshtml";
             }
 
 

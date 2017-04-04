@@ -8623,6 +8623,24 @@ section.content > .s-DataGrid {
 .s-Contratos-HabitacionesDialog .caption {
   width: 150px;
 }
+.s-Contratos-CajasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-CajasDialog .caption {
+  width: 150px;
+}
+.s-Contratos-ContadoresDialog > .size {
+  width: 650px;
+}
+.s-Contratos-ContadoresDialog .caption {
+  width: 150px;
+}
+.s-Contratos-SeriesDialog > .size {
+  width: 650px;
+}
+.s-Contratos-SeriesDialog .caption {
+  width: 150px;
+}
 .s-Recepcion-ReservasDialog > .size {
   min-width: 950px;
   height: 650px;

@@ -9,8 +9,8 @@ Namespace geshotelk
         Sub fuerzaError()
             'Dim dt As Date = Now
             Dim errorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
-            Dim cmd2 As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd2 As SqlCommand = prepareConection()
             errorCode = 1
 
         End Sub

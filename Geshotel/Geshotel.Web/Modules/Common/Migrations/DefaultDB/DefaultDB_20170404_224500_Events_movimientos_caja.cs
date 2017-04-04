@@ -305,12 +305,10 @@ namespace Geshotel.Migrations.DefaultDB
                 cobro = 1
             });
 
- 
-
-
-
-
-
+            Alter.Table("series")
+                .AddColumn("empresa_id").AsInt16().Nullable()
+                .AddColumn("user_id").AsInt32().Nullable()
+                .AddColumn("fecha_modificacion").AsDateTime().Nullable();
 
         }
 

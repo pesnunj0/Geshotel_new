@@ -99,16 +99,16 @@ Namespace geshotelk
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
 
-            Dim Transaccion As MySqlTransaction
-            Dim Conn = New MySqlConnection(ConnectionString)
-            Dim cmd = New MySqlCommand
+            Dim Transaccion As SqlTransaction
+            Dim Conn = New SqlConnection(ConnectionString)
+            Dim cmd = New SqlCommand
 
-            If Not conn.State = ConnectionState.Open Then
-                conn.Open()
+            If Not Conn.State = ConnectionState.Open Then
+                Conn.Open()
             End If
-            Transaccion = conn.BeginTransaction(IsolationLevel.Serializable)
+            Transaccion = Conn.BeginTransaction(IsolationLevel.Serializable)
             cmd.CommandType = CommandType.Text
-            cmd.Connection = conn
+            cmd.Connection = Conn
             cmd.Transaction = Transaccion
             Dim resultado As New Text.StringBuilder
             Dim resultadoTabla As New DataSet()
@@ -118,8 +118,8 @@ Namespace geshotelk
 
                 cmd.CommandText = sqlVolcadoErrores
 
-                Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-                Dim myDataRowsCommandBuilder = New MySqlCommandBuilder(da)
+                Dim da As SqlDataAdapter = New SqlDataAdapter(cmd)
+                Dim myDataRowsCommandBuilder = New SqlCommandBuilder(da)
                 da.Fill(resultadoTabla)
 
                 'resultadoTabla = getDataSet(cmd, sqlVolcadoErrores)
@@ -155,7 +155,7 @@ Namespace geshotelk
                     Transaccion.Commit()
                     ' Transaccion.Rollback()
                 End If
-                conn.Close()
+                Conn.Close()
             End If
 
             If formato = 1 Then
@@ -175,9 +175,9 @@ Namespace geshotelk
         'Public Shared stacksofConnections As Hashtable = Nothing
         Public stacksofConnections As Hashtable = New Hashtable
         'Shared cachedConections As New Queue()
-        Private Function ObtainConnection(ByVal x As IsolationLevel) As MySqlConnection
+        Private Function ObtainConnection(ByVal x As IsolationLevel) As SqlConnection
             'thread safe?
-            Dim conn As MySqlConnection
+            Dim conn As SqlConnection
             Dim xx = IsolationLevel.Serializable
             SyncLock typeCachedConnections
                 If Not typeCachedConnections.ContainsKey(xx) Then
@@ -186,7 +186,7 @@ Namespace geshotelk
 
 
                 If typeCachedConnections(xx).Count = 0 Then
-                    conn = New MySqlConnection(ConnectionString)
+                    conn = New SqlConnection(ConnectionString)
                     'Console.WriteLine("creo con")
 
                 Else
@@ -199,7 +199,7 @@ Namespace geshotelk
             End SyncLock
             Return conn
         End Function
-        Private Sub ReleaseConnection(ByVal conn As MySqlConnection)
+        Private Sub ReleaseConnection(ByVal conn As SqlConnection)
             SyncLock typeCachedConnections
                 If Not IsNothing(stacksofConnections) Then
                     stacksofConnections.Remove(conn.GetHashCode().ToString)
@@ -208,7 +208,7 @@ Namespace geshotelk
                 typeCachedConnections(IsolationLevel.Serializable).Enqueue(conn)
             End SyncLock
         End Sub
-        Private Function prepareConectionOnlyRead() As MySqlCommand
+        Private Function prepareConectionOnlyRead() As SqlCommand
             Return prepareConection(IsolationLevel.RepeatableRead)
         End Function
         'Shared contimers As New LinkedList(Of Date)
@@ -225,15 +225,15 @@ Namespace geshotelk
         '    End Try
         '
         '       End Sub
-        Private Function prepareConection(Optional ByVal x As IsolationLevel = IsolationLevel.RepeatableRead) As MySqlCommand
+        Private Function prepareConection(Optional ByVal x As IsolationLevel = IsolationLevel.RepeatableRead) As SqlCommand
             'LogConnection()
-            Dim conn As MySqlConnection = ObtainConnection(x)
-            Dim cmd As New MySqlCommand
+            Dim conn As SqlConnection = ObtainConnection(x)
+            Dim cmd As New SqlCommand
 
             If Not conn.State = ConnectionState.Open Then
                 conn.Open()
             End If
-            'Dim Transaccion As MysqlTransaction
+            'Dim Transaccion As SqlTransaction
             'Transaccion = conn.BeginTransaction(x)
             cmd.CommandType = CommandType.Text
             cmd.Connection = conn
@@ -251,7 +251,7 @@ Namespace geshotelk
             End If
             Return ExecuteScalar(cmd, sql_last_insert_id)
         End Function
-        Private Function flushConection(ByVal cmd As MySqlCommand, ByVal errorCode As Integer) As Boolean
+        Private Function flushConection(ByVal cmd As SqlCommand, ByVal errorCode As Integer) As Boolean
             'unLogConnection()
             Dim retval As Boolean
             If Not IsNothing(cmd.Transaction) Then
@@ -275,7 +275,7 @@ Namespace geshotelk
         ''' <returns>Numero de filas afectadas por la sentencia o 0 si no la pudo hacer</returns>
         ''' <remarks></remarks>
         '''     
-        Private Function ExecuteNonQuery(ByVal cmd As MySqlCommand, ByVal sql As String)
+        Private Function ExecuteNonQuery(ByVal cmd As SqlCommand, ByVal sql As String)
 
             LogTime("ExecuteNonQuery", sql)
             cmd.CommandText = sql
@@ -305,7 +305,7 @@ Namespace geshotelk
         ''' <param name="sql">Sentencia sql a ejecutar</param>
         ''' <returns>Deveuelve la primera columna de la primera fila. Objeto Nothing en caso de error</returns>
         ''' <remarks></remarks>
-        Private Function ExecuteScalar(ByVal cmd As MySqlCommand, ByVal sql As String)
+        Private Function ExecuteScalar(ByVal cmd As SqlCommand, ByVal sql As String)
 
             LogTime("ExecuteScalar", sql)
             Dim tmp = cmd.CommandText
@@ -347,8 +347,8 @@ Namespace geshotelk
             borrarHits = 0
             'contimers = New LinkedList(Of Date)
         End Sub
-        Private Function findInCache(ByVal cmd As MySqlCommand, ByVal sql As String, Optional ByVal sufix As String = "")
-            'Dim newarray(3) As System.Data.MysqlParameter
+        Private Function findInCache(ByVal cmd As SqlCommand, ByVal sql As String, Optional ByVal sufix As String = "")
+            'Dim newarray(3) As System.Data.SqlParameter
             'cmd.Parameters.CopyTo(newarray, 0)
             Dim x As Integer = cmd.Parameters.Count - 1
             Dim y As Integer
@@ -368,7 +368,7 @@ Namespace geshotelk
             'crear clonaciones si es tipo tables
             Return datos
         End Function
-        Private Function ExecuteScalar(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal cached As Boolean)
+        Private Function ExecuteScalar(ByVal cmd As SqlCommand, ByVal sql As String, ByVal cached As Boolean)
             If cached And Not permitirCache() Then
                 cached = False
             End If
@@ -385,7 +385,7 @@ Namespace geshotelk
                 Return obj
             End If
         End Function
-        Private Function readerToTable(ByVal reader As MySqlDataReader) As DataTable
+        Private Function readerToTable(ByVal reader As SqlDataReader) As DataTable
             Dim orders As DataTable = New DataTable("dt_tmp")
             'orders.BeginLoadData()
             orders.Load(reader)
@@ -399,20 +399,20 @@ Namespace geshotelk
             'orders.EndLoadData()
             Return orders
         End Function
-        Private Function readerToDataTable(ByVal reader As MySqlDataReader) As DataTableReader
+        Private Function readerToDataTable(ByVal reader As SqlDataReader) As DataTableReader
             Return readerToTable(reader).CreateDataReader()
         End Function
-        Private Function getDataSet(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal ds As DataSet, ByVal name As String)
+        Private Function getDataSet(ByVal cmd As SqlCommand, ByVal sql As String, ByVal ds As DataSet, ByVal name As String)
             LogTime("getDataSet", sql)
             cmd.CommandText = sql
-            Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-            Dim myDataRowsCommandBuilder = New MySqlCommandBuilder(da) 'esto pa ke sirve
+            Dim da As SqlDataAdapter = New SqlDataAdapter(cmd)
+            Dim myDataRowsCommandBuilder = New SqlCommandBuilder(da) 'esto pa ke sirve
             Dim dt As Date = Now
             da.Fill(ds, name)
             queryMicrosecs += (Now - dt).Ticks
             Return ds
         End Function
-        Private Function getDataView(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal cached As Boolean)
+        Private Function getDataView(ByVal cmd As SqlCommand, ByVal sql As String, ByVal cached As Boolean)
             If cached And Not permitirCache() Then
                 cached = False
             End If
@@ -428,7 +428,7 @@ Namespace geshotelk
             End If
             Return dtv
         End Function
-        Private Function getDataSet(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal cached As Boolean)
+        Private Function getDataSet(ByVal cmd As SqlCommand, ByVal sql As String, ByVal cached As Boolean)
             If cached And Not permitirCache() Then
                 cached = False
             End If
@@ -444,30 +444,30 @@ Namespace geshotelk
             End If
             Return dtr.Copy
         End Function
-        Private Function getDataSet(ByVal cmd As MySqlCommand, ByVal sql As String) As DataSet
+        Private Function getDataSet(ByVal cmd As SqlCommand, ByVal sql As String) As DataSet
             'Return getDataSet(cmd, sql, New DataSet(), "tmp")
             LogTime("getDataSet", sql)
             cmd.CommandText = sql
             Dim ds As New DataSet()
-            Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-            Dim myDataRowsCommandBuilder = New MySqlCommandBuilder(da)
+            Dim da As SqlDataAdapter = New SqlDataAdapter(cmd)
+            Dim myDataRowsCommandBuilder = New SqlCommandBuilder(da)
             Dim dt As Date = Now
             da.Fill(ds)
             queryMicrosecs += (Now - dt).Ticks
 
             Return ds
         End Function
-        Private Function getDataAdapter(ByVal cmd As MySqlCommand, ByVal sql As String) As MySqlDataAdapter
+        Private Function getDataAdapter(ByVal cmd As SqlCommand, ByVal sql As String) As SqlDataAdapter
             LogTime("getDataAdapter", sql)
             cmd.CommandText = sql
             Dim ds As New DataSet()
-            Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-            Dim myDataRowsCommandBuilder As MySqlCommandBuilder = New MySqlCommandBuilder(da)
+            Dim da As SqlDataAdapter = New SqlDataAdapter(cmd)
+            Dim myDataRowsCommandBuilder As SqlCommandBuilder = New SqlCommandBuilder(da)
             myDataRowsCommandBuilder.ConflictOption = ConflictOption.OverwriteChanges
             'da.Fill(ds, "tmp")
             Return da
         End Function
-        Private Function getTable(ByVal cmd As MySqlCommand, ByVal sql As String) As DataTable
+        Private Function getTable(ByVal cmd As SqlCommand, ByVal sql As String) As DataTable
             LogTime("getTable", sql)
             Dim reader As DataTable = Nothing
             cmd.CommandText = sql
@@ -492,7 +492,7 @@ Namespace geshotelk
 
             Return reader
         End Function
-        Private Function getTable(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal cached As Boolean) As DataTable
+        Private Function getTable(ByVal cmd As SqlCommand, ByVal sql As String, ByVal cached As Boolean) As DataTable
             If cached And Not permitirCache() Then
                 cached = False
             End If
@@ -510,7 +510,7 @@ Namespace geshotelk
                 Return dtr.Copy()
             End If
         End Function
-        Private Function getDataTable(ByVal cmd As MySqlCommand, ByVal sql As String) As DataTableReader
+        Private Function getDataTable(ByVal cmd As SqlCommand, ByVal sql As String) As DataTableReader
             'Console.WriteLine(sql)
             LogTime("getDataTableSinCache", sql)
             Dim reader As DataTableReader = Nothing
@@ -532,7 +532,7 @@ Namespace geshotelk
             End Try
             Return reader
         End Function
-        Private Function getDataTable(ByVal cmd As MySqlCommand, ByVal sql As String, ByVal cached As Boolean) As DataTableReader
+        Private Function getDataTable(ByVal cmd As SqlCommand, ByVal sql As String, ByVal cached As Boolean) As DataTableReader
             If cached And Not permitirCache() Then
                 cached = False
             End If
@@ -610,23 +610,23 @@ Namespace geshotelk
         Public Function importaFicheroScanner(ByVal tabla As String, ByVal valor As Integer, ByVal titulo As String, ByVal file As String)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
-                Dim tituloParam As New MySqlParameter("@titulo", titulo)
-                Dim url_ficheroParam As New MySqlParameter("@url_fichero", file)
-                Dim user_idParam As New MySqlParameter("@user_id", userId)
+                Dim tituloParam As New SqlParameter("@titulo", titulo)
+                Dim url_ficheroParam As New SqlParameter("@url_fichero", file)
+                Dim user_idParam As New SqlParameter("@user_id", userId)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(tituloParam)
                 cmd.Parameters.Add(url_ficheroParam)
                 cmd.Parameters.Add(user_idParam)
                 Dim sqlquery As String = ""
                 If tabla = "reserva" Then
-                    Dim reserva_idParam As New MySqlParameter("@reserva_id", valor)
+                    Dim reserva_idParam As New SqlParameter("@reserva_id", valor)
                     cmd.Parameters.Add(reserva_idParam)
                     sqlquery = sqlInsertaFicheroReserva
                 End If
                 If tabla = "contrato" Then
-                    Dim contrato_idParam As New MySqlParameter("@contrato_id", valor)
+                    Dim contrato_idParam As New SqlParameter("@contrato_id", valor)
                     cmd.Parameters.Add(contrato_idParam)
                     sqlquery = sqlInsertaFicheroContrato
                 End If
@@ -736,7 +736,7 @@ Namespace geshotelk
         Public Function ObtieneDataSetMetaHuespedes(ByVal huespedes() As MetaHuesped) As DataSet
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = Me.getDataSet(cmd, sqlBaseDatasetMetaHuesped)
             datos.Tables(0).Rows(0).Delete()
             datos.Tables(0).AcceptChanges()
@@ -811,7 +811,7 @@ Namespace geshotelk
         Public Function actualizaHuespedesReserva(ByVal reserva_id As Integer, ByVal huespedes() As MetaHuesped)
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = False
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = actualizaHuespedesReserva(cmd, reserva_id, huespedes)
             If retVal = False Then
                 errorCode = 1
@@ -820,7 +820,7 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function actualizaHuespedesReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal huespedes() As MetaHuesped) As Boolean
+        Private Function actualizaHuespedesReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal huespedes() As MetaHuesped) As Boolean
             'AgregaInfo("actualizaHuespedesReserva", "entre", -1)
 
             Dim retVal As Boolean = True
@@ -828,14 +828,14 @@ Namespace geshotelk
 
             Dim grupos_clientes As DataSet = Me.getDataSet(cmd, sqlObtieneGrupoHuespedPorEmpresa)
 
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", 0)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 0)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(cliente_idParam)
             Dim clientes As DataSet = getDataSet(cmd, sqlCabCliente)
             getDataSet(cmd, sqlCabCliente, clientes, "clientesold")
             Try
                 Dim x As Integer
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 For x = 0 To huespedes.Length - 1
                     Dim row As DataRow
                     If errorCode = 0 And Not IsNothing(huespedes(x).razon) Then
@@ -966,18 +966,18 @@ Namespace geshotelk
                                     'obtener el ultimo registro insertado
                                     Dim cliente_id As Integer = Obtiene_ultima_id(cmd)
                                     If cliente_id <> 0 Then
-                                            row.Item("cliente_id") = cliente_id
-                                            huespedes(x).cliente_id = cliente_id
-                                            'row.SetModified()
-                                            'cambiar el estado a updated
-                                        Else
-                                            errorCode = 4
-                                            AgregaInfo("actualizaHuespedesReserva", "No puedo crear cliente:", -errorCode)
-
-                                        End If
+                                        row.Item("cliente_id") = cliente_id
+                                        huespedes(x).cliente_id = cliente_id
+                                        'row.SetModified()
+                                        'cambiar el estado a updated
+                                    Else
+                                        errorCode = 4
+                                        AgregaInfo("actualizaHuespedesReserva", "No puedo crear cliente:", -errorCode)
 
                                     End If
-                                Else
+
+                                End If
+                            Else
                                 errorCode = 2
                                 AgregaInfo("actualizaHuespedesReserva", "Empresa no tiene al menos un grupo de cliente Huesped:" & huespedes(x).empresa_id, -errorCode)
                             End If
@@ -994,7 +994,7 @@ Namespace geshotelk
 
                     'actualiza campos reservas_huespedes
                     'crea lineas nuevas de clientes creados
-                    Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                    Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                     cmd.Parameters.Clear()
                     cmd.Parameters.Add(reserva_idParam)
                     'obtiene hotel de la reserva
@@ -1096,9 +1096,9 @@ Namespace geshotelk
         Function ObtieneClienteFacturaReserva(ByVal reserva_id As Integer) As Integer
             Dim retVal As Integer = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 retVal = ExecuteScalar(cmd, sqlObtieneClienteFacturaReserva)
@@ -1130,7 +1130,7 @@ Namespace geshotelk
         Public Function ObtienePendienteAnticipoReserva(ByVal reserva_id As String) As Single
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 retVal = ObtienePendienteAnticipoReserva(cmd, reserva_id)
             Catch ex As Exception
@@ -1140,10 +1140,10 @@ Namespace geshotelk
             flushConection(cmd, errorCode)
             Return retVal
         End Function
-        Private Function ObtienePendienteAnticipoReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As String) As Single
+        Private Function ObtienePendienteAnticipoReserva(ByVal cmd As SqlCommand, ByVal reserva_id As String) As Single
             Dim retVal As Single = 0
             Dim res As Integer = reserva_id
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", res)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", res)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Try
@@ -1213,16 +1213,16 @@ Namespace geshotelk
         Public Function CrearAnticipoReserva(ByVal reserva_id As Integer, ByVal importe As Decimal)
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             errorCode = CrearAnticipoReserva(cmd, reserva_id, importe)
             flushConection(cmd, errorCode)
             Return retVal
         End Function
-        Public Function CrearAnticipoReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal importe As Decimal)
+        Public Function CrearAnticipoReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal importe As Decimal)
             'sacar de la reserva..hotel_id,cliente_id,caja_id
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
             Dim total As Object = ExecuteScalar(cmd, sqlObtieneAnticiposReservaDingus) 'obtener la suma de todos los anticipos
             If IsNothing(total) Or IsDBNull(total) Then
@@ -1237,7 +1237,7 @@ Namespace geshotelk
 
                         'obtiene forma pago dingus
                         cmd.Parameters.Clear()
-                        Dim hotel_idParam As New MySqlParameter("@hotel_id", reader("hotel_id"))
+                        Dim hotel_idParam As New SqlParameter("@hotel_id", reader("hotel_id"))
                         cmd.Parameters.Add(hotel_idParam)
                         Dim forma_pago_id = ExecuteScalar(cmd, sqlFormasDePagoDingus, True)
                         If Not (IsNothing(forma_pago_id) Or IsDBNull(forma_pago_id)) Then
@@ -1263,7 +1263,7 @@ Namespace geshotelk
                             'acelerar
                             row("fecha") = fecha
 
-                            Dim writer As MySqlDataAdapter
+                            Dim writer As SqlDataAdapter
                             writer = getDataAdapter(cmd, sqlAnticipos)
                             writer.Fill(ds.Tables(0))
                             writer.Update(ds.Tables(0))
@@ -1294,7 +1294,7 @@ Namespace geshotelk
         Public Function ActualizarAnticipo(ByVal anticipo_id As Integer)
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             errorCode = ActualizarAnticipo(cmd, anticipo_id)
             flushConection(cmd, errorCode)
             Return retVal
@@ -1314,7 +1314,7 @@ Namespace geshotelk
         Public Function CrearFacturaSencilla(ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal serie_id As Integer, ByVal referencia2 As String, ByVal cantidad As Integer, ByVal precio As Single, Optional ByVal fecha As Object = Nothing, Optional ByVal referencia1 As Object = Nothing) As Factura
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim fac As Factura = CrearFacturaSencilla(cmd, hotel_id, cliente_id, serie_id, referencia2, cantidad, precio, fecha, referencia1)
             If IsNothing(fac) Then
                 errorCode = 1
@@ -1325,9 +1325,9 @@ Namespace geshotelk
         '***************************************
         ' Garra Javier 27/02/2012  Referencia1
         ' **************************************
-        Private Function CrearFacturaSencilla(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal serie_id As Integer, ByVal reserva_id As Object, ByVal referencia2 As Object, ByVal cantidad As Integer, ByVal precio As Single, Optional ByVal fecha As Object = Nothing, Optional ByVal referencia1 As Object = Nothing) As Factura
+        Private Function CrearFacturaSencilla(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal serie_id As Integer, ByVal reserva_id As Object, ByVal referencia2 As Object, ByVal cantidad As Integer, ByVal precio As Single, Optional ByVal fecha As Object = Nothing, Optional ByVal referencia1 As Object = Nothing) As Factura
             cmd.Parameters.Clear()
-            Dim serie_idParam As New MySqlParameter("@serie_id", serie_id)
+            Dim serie_idParam As New SqlParameter("@serie_id", serie_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(serie_idParam)
             Dim reader As DataTableReader = getDataTable(cmd, sqlDatosLineasSeries)
@@ -1374,12 +1374,12 @@ Namespace geshotelk
             End Try
             Return fac
         End Function
-        Private Function cambia_ref1_facturas(ByVal cmd As MySqlCommand, ByVal ref1 As String, ByVal serie_id As Integer, ByVal fecha As Date, ByVal reserva_id As Integer, ByVal importe As Double) As Integer
-            Dim serie_idParam As New MySqlParameter("@serie_id", serie_id)
-            Dim ref1_Param As New MySqlParameter("@ref_fra1", ref1)
-            Dim fechaParam As New MySqlParameter("@fecha_factura", fecha)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            Dim importeParam As New MySqlParameter("@importe_total", importe)
+        Private Function cambia_ref1_facturas(ByVal cmd As SqlCommand, ByVal ref1 As String, ByVal serie_id As Integer, ByVal fecha As Date, ByVal reserva_id As Integer, ByVal importe As Double) As Integer
+            Dim serie_idParam As New SqlParameter("@serie_id", serie_id)
+            Dim ref1_Param As New SqlParameter("@ref_fra1", ref1)
+            Dim fechaParam As New SqlParameter("@fecha_factura", fecha)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim importeParam As New SqlParameter("@importe_total", importe)
             Dim sql_update = "UPDATE facturas SET ref_fra1 = ? WHERE serie_id = ? AND reserva_id = ? And importe_total= ? And fecha_factura = ?"
             cmd.Parameters.Clear()
             cmd.Parameters.Add(ref1_Param)
@@ -1402,20 +1402,20 @@ Namespace geshotelk
             Return 0
         End Function
         Public Function cambia_ref1_facturas(ByVal ref1 As String, ByVal serie_id As Integer, ByVal fecha As Date, ByVal reserva_id As Integer, ByVal importe As Double) As Integer
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             'Throw New Exception("Parametros=" & ref1 & " " & serie_id & " " & fecha & " " & reserva_id & " " & " " & importe)
             Dim errorcode As Integer = cambia_ref1_facturas(cmd, ref1, serie_id, fecha, reserva_id, importe)
             flushConection(cmd, errorcode)
             Return errorcode
         End Function
-        Private Function ActualizarAnticipo(ByVal cmd As MySqlCommand, ByVal anticipo_id As Integer)
+        Private Function ActualizarAnticipo(ByVal cmd As SqlCommand, ByVal anticipo_id As Integer)
             '***********************************************
             ' Garra Javier 27/02 ref1 en depositos         *
             ' **********************************************
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
 
-            Dim anticipo_idParam As New MySqlParameter("@anticipo_id", anticipo_id)
+            Dim anticipo_idParam As New SqlParameter("@anticipo_id", anticipo_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(anticipo_idParam)
 
@@ -1448,7 +1448,7 @@ Namespace geshotelk
                                     fact.ds.Tables(0).Rows(0)("ref_fra1") = reader("descripcion")
                                 End If
 
-                                Dim writer As MySqlDataAdapter
+                                Dim writer As SqlDataAdapter
                                 writer = getDataAdapter(fact.cmd, sqlCabAbreFactura)
                                 writer.Fill(fact.ds.Tables(0))
                                 writer.Update(fact.ds.Tables(0))
@@ -1525,11 +1525,11 @@ Namespace geshotelk
 
             Return errorCode
         End Function
-        Private Function ActualizarAnticipoOld(ByVal cmd As MySqlCommand, ByVal anticipo_id As Integer)
+        Private Function ActualizarAnticipoOld(ByVal cmd As SqlCommand, ByVal anticipo_id As Integer)
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
 
-            Dim anticipo_idParam As New MySqlParameter("@anticipo_id", anticipo_id)
+            Dim anticipo_idParam As New SqlParameter("@anticipo_id", anticipo_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(anticipo_idParam)
 
@@ -1560,12 +1560,12 @@ Namespace geshotelk
         Public Function ActualizarLineasAnticipo(ByVal anticipo_id As Integer)
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = ActualizarLineasAnticipo(cmd, anticipo_id)
             flushConection(cmd, errorCode)
             Return retVal
         End Function
-        Private Function ActualizarLineasAnticipo(ByVal cmd As MySqlCommand, ByVal anticipo_id As Integer) As Integer
+        Private Function ActualizarLineasAnticipo(ByVal cmd As SqlCommand, ByVal anticipo_id As Integer) As Integer
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
             Dim cobro_id As Integer = CrearCobro(cmd, anticipo_id)
@@ -1617,10 +1617,10 @@ Namespace geshotelk
         Function DevolverAnticiposReserva(ByVal reserva_id As Integer)
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             'retVal = ObtienePendienteAnticipoReserva(cmd, reserva_id)
             'If retVal > 0 Then
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Dim readerAnticipos As DataTableReader = getDataTable(cmd, sqlObtieneAnticiposReserva)
@@ -1652,7 +1652,7 @@ Namespace geshotelk
                     'acelerar
                     row("fecha") = fecha
 
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlAnticipos)
                     writer.Fill(ds.Tables(0))
                     writer.Update(ds.Tables(0))
@@ -1674,10 +1674,10 @@ Namespace geshotelk
             Return retVal
 
         End Function
-        Private Function AsignarFacturaAnticipo(ByVal cmd As MySqlCommand, ByVal anticipo_id As Integer, ByVal factura_id As Integer, ByVal importe As Single) As Boolean
+        Private Function AsignarFacturaAnticipo(ByVal cmd As SqlCommand, ByVal anticipo_id As Integer, ByVal factura_id As Integer, ByVal importe As Single) As Boolean
             Dim retval As Boolean = False
             Try
-                Dim anticipo_idParam As New MySqlParameter("@anticipo_id", anticipo_id)
+                Dim anticipo_idParam As New SqlParameter("@anticipo_id", anticipo_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(anticipo_idParam)
                 Dim ds As DataSet = getDataSet(cmd, sqlLineaAnticipos)
@@ -1688,7 +1688,7 @@ Namespace geshotelk
                 row.Item("estado") = 0
                 row.Item("user_id") = userId
                 row.Item("fecha_actualizacion") = Now
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlLineaAnticipos)
                 writer.Fill(ds.Tables(0))
                 writer.Update(ds.Tables(0))
@@ -1698,12 +1698,12 @@ Namespace geshotelk
             End Try
             Return retval
         End Function
-        Private Function ObtieneFacturasPendientesReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, Optional ByVal contado As Boolean = False) As String
+        Private Function ObtieneFacturasPendientesReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, Optional ByVal contado As Boolean = False) As String
             Dim retVal As String = ""
             Dim errorCode As Integer = 0
 
             Try
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneFacturasReserva)
@@ -1733,7 +1733,7 @@ Namespace geshotelk
         Public Function ObtieneFacturasPendientesReserva(ByVal reserva_id As Integer, Optional ByVal contado As Boolean = False) As String
             Dim retVal As String = ""
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = ObtieneFacturasPendientesReserva(cmd, reserva_id, contado)
             If IsNothing(retVal) Then
                 errorCode = 1
@@ -1745,18 +1745,18 @@ Namespace geshotelk
         Public Sub ValidarReserva(ByVal reserva_id As Integer)
             Dim errorCode As Integer = 0
             Dim importe_reserva As Double
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             importe_reserva = obtieneImporteTotalReserva(reserva_id)
             errorCode = ValidarReserva(cmd, reserva_id, importe_reserva)
             flushConection(cmd, errorCode)
         End Sub
-        Public Function ValidarReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal importe_reserva As Double) As Integer
+        Public Function ValidarReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal importe_reserva As Double) As Integer
             Dim RowCount As Integer = -1
             Dim errorCode As Integer = 0
             Dim sqlupdate As String = "UPDATE reservas SET valor_validado = ? , fecha_validacion = now(), usuario_validacion = ? WHERE reserva_id = ? "
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            Dim importe_Param As New MySqlParameter("@importe", importe_reserva)
-            Dim usuario_idParam As New MySqlParameter("@usuario", userId)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim importe_Param As New SqlParameter("@importe", importe_reserva)
+            Dim usuario_idParam As New SqlParameter("@usuario", userId)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(importe_Param)
             cmd.Parameters.Add(usuario_idParam)
@@ -1770,16 +1770,16 @@ Namespace geshotelk
         Public Sub AsignarAnticiposReserva(ByVal reserva_id As Integer)
             Dim retVal As Integer = -1
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
 
 
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Dim readerAnticipos As DataTableReader = getDataTable(cmd, sqlObtieneAnticiposReserva)
             Dim dsreader As DataSet = getDataSet(cmd, sqlObtieneFacturasReserva)
 
-            Dim anticipo_idParam As New MySqlParameter("@anticipo_id", 0)
+            Dim anticipo_idParam As New SqlParameter("@anticipo_id", 0)
             Dim totalasignado As Single = 0
             While readerAnticipos.Read
                 Dim pend As Single = readerAnticipos.Item("pendiente")
@@ -1809,7 +1809,7 @@ Namespace geshotelk
                             End If
                         End If
                     End While
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlLineaAnticipos)
                     writer.Fill(ds.Tables(0))
                     writer.Update(ds.Tables(0))
@@ -1949,19 +1949,19 @@ Namespace geshotelk
             Dim cacheDR As New Hashtable
             Dim errorCode As Integer = 0
             Dim ds As DataSet
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
 
 
                 Dim cliente_defecto_id As Integer = 16 'obtener el cliente extra contado?
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                Dim fecha1Param As New MySqlParameter("@fecha1", fecha)
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", 1)
-                Dim item_limpieza_idParam As New MySqlParameter("@item_limpieza_id", item_limpieza_id)
-                Dim cliente_defecto_idParam As New MySqlParameter("@cliente_defecto_id", cliente_defecto_id)
-                'Dim item_limpieza_idParam1 As New MysqlParameter("@item_limpieza_id1", item_limpieza_id)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
+                Dim fecha1Param As New SqlParameter("@fecha1", fecha)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", 1)
+                Dim item_limpieza_idParam As New SqlParameter("@item_limpieza_id", item_limpieza_id)
+                Dim cliente_defecto_idParam As New SqlParameter("@cliente_defecto_id", cliente_defecto_id)
+                'Dim item_limpieza_idParam1 As New SqlParameter("@item_limpieza_id1", item_limpieza_id)
 
                 cmd.Parameters.Clear()
                 'cmd.Parameters.Add(fecha1Param)
@@ -2244,9 +2244,9 @@ Namespace geshotelk
 
         End Function
         Public Sub carga_paro_ventas_tipo_habitacion_id()
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim paro_ventas_idParam As New MySqlParameter("paro_ventas_id", 0)
-            Dim tipo_habitacion_idParam As New MySqlParameter("tipo_habitacion_id", 0)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim paro_ventas_idParam As New SqlParameter("paro_ventas_id", 0)
+            Dim tipo_habitacion_idParam As New SqlParameter("tipo_habitacion_id", 0)
             Dim hotel_id As Integer = 0
             Dim sql As String = "SELECT * FROM paro_ventas"
             Dim sql_insert As String = "INSERT INTO paro_ventas_tipo_habitacion_id (paro_ventas_id,tipo_habitacion_id) VALUES (?,?)"
@@ -2281,18 +2281,18 @@ Namespace geshotelk
             flushConection(cmd, 0)
         End Sub
         Public Sub Obtiene_paro_ventas(ByVal hotel_id As Integer, ByRef Ds As DataSet)
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Obtiene_paro_ventas(cmd, hotel_id, Ds)
             flushConection(cmd, 0)
         End Sub
-        Private Sub Obtiene_paro_ventas(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByRef Ds As DataSet)
+        Private Sub Obtiene_paro_ventas(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByRef Ds As DataSet)
             ' Esta Rutina recibe el dataset de codecharge y rellena los campos cliente_id y tipo_habitacion_id según sea
             ' Si son todos los tipos de habitación pondrá "todas" si es una sola, pondrá esa y en el resto de casos, pondrá "Varias"
             ' Lo mismo para los clientes
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim paro_ventas_idParam As New MySqlParameter("paro_ventas_id", 0)
-            Dim desdeParam As New MySqlParameter("desde", Now())
-            Dim HastaParam As New MySqlParameter("hasta", Now())
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim paro_ventas_idParam As New SqlParameter("paro_ventas_id", 0)
+            Dim desdeParam As New SqlParameter("desde", Now())
+            Dim HastaParam As New SqlParameter("hasta", Now())
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim sql As String = ""
@@ -2373,20 +2373,20 @@ Namespace geshotelk
             i = i + 1
         End Sub
         ' Funcion que sustituye a la de Tano que afortuandamente se llama ObtienenLimpiezas
-        Public Function ObtieneLimpiezas(ByVal cmd As MySqlCommand, hotel_id As Integer, ByVal fecha As Date, Optional ByVal zona As Integer = 0, Optional ByVal Desde As Integer = 0, Optional ByVal Hasta As Integer = 0) As DataSet
+        Public Function ObtieneLimpiezas(ByVal cmd As SqlCommand, hotel_id As Integer, ByVal fecha As Date, Optional ByVal zona As Integer = 0, Optional ByVal Desde As Integer = 0, Optional ByVal Hasta As Integer = 0) As DataSet
 
             Dim Fecha_Hotel As Date = FechaHotel(cmd, hotel_id)
             Dim errorcode As Integer = 0
             Dim cliente_defecto_id As Integer = 16 'obtener el cliente extra contado?
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
-            Dim fecha1Param As New MySqlParameter("@fecha1", fecha)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim hotel_idParam1 As New MySqlParameter("@hotel_id", hotel_id)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
-            Dim situacion_idParam As New MySqlParameter("@situacion_id", 0)
-            Dim habitacion_idParam As New MySqlParameter("@habitacion_id", 0)
-            Dim item_limpieza_idParam As New MySqlParameter("@item_limpieza_id", 0)
-            Dim zonaParam As New MySqlParameter("zona_limpieza_id", zona)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim fecha1Param As New SqlParameter("@fecha1", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam1 As New SqlParameter("@hotel_id", hotel_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
+            Dim situacion_idParam As New SqlParameter("@situacion_id", 0)
+            Dim habitacion_idParam As New SqlParameter("@habitacion_id", 0)
+            Dim item_limpieza_idParam As New SqlParameter("@item_limpieza_id", 0)
+            Dim zonaParam As New SqlParameter("zona_limpieza_id", zona)
             Dim zona_id As Integer = zona
             If zona = -1 Then  ' Las quiere todas pero separadas
                 zona_id = 0
@@ -2916,7 +2916,7 @@ Namespace geshotelk
         End Function
         ' Funcion que sustituye a la de Tano que afortuandamente se llama ObtienenLimpiezas
         Public Function ObtieneLimpiezas(ByVal hotel_id As Integer, ByVal fecha As Date, Optional ByVal zona As Integer = 0, Optional ByVal Desde As Integer = 0, Optional ByVal Hasta As Integer = 0) As DataSet
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim ds As DataSet = ObtieneLimpiezas(cmd, hotel_id, fecha, zona, Desde, Hasta)
             flushConection(cmd, 0)
             Return ds
@@ -2933,20 +2933,20 @@ Namespace geshotelk
 & " ( " _
 & " habitaciones.fecha_inicio <=  ? " _
 & " or habitaciones.fecha_inicio is null) and (habitaciones.tipo_habitacion_id=? or ?=0) and (tipos_habitacion.desvios=0 or 1=?) and habitaciones_bloqueos.tipo_bloqueo_id is null"
-        Private Function ObtieneHabitacionesDisponiblesHotelDia(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal tipo_habitacion_id As Integer = 0, Optional ByVal sindesvios As Boolean = False) As Integer()
+        Private Function ObtieneHabitacionesDisponiblesHotelDia(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal tipo_habitacion_id As Integer = 0, Optional ByVal sindesvios As Boolean = False) As Integer()
             Dim errorCode As Integer = 0
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
-            Dim fechaini1Param As New MySqlParameter("@fechaini1", convertFecha(fechaini))
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
-            Dim tipo_habitacion_id1Param As New MySqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
+            Dim fechaini1Param As New SqlParameter("@fechaini1", convertFecha(fechaini))
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim tipo_habitacion_id1Param As New SqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechainiParam)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(fechaini1Param)
             cmd.Parameters.Add(tipo_habitacion_idParam)
             cmd.Parameters.Add(tipo_habitacion_id1Param)
-            Dim todosParam As New MySqlParameter("@todos", 0)
+            Dim todosParam As New SqlParameter("@todos", 0)
             If sindesvios Then
                 todosParam.Value = 0
             Else
@@ -2970,7 +2970,7 @@ Namespace geshotelk
             Return dev
 
         End Function
-        Private Function ObtieneHabitacionesLibresHotel(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal fechafin As Date = Nothing, Optional ByVal reserva_id As Integer = 0, Optional ByVal todas As Boolean = False) As DataSet
+        Private Function ObtieneHabitacionesLibresHotel(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal fechafin As Date = Nothing, Optional ByVal reserva_id As Integer = 0, Optional ByVal todas As Boolean = False) As DataSet
             Dim errorCode As Integer = 0
 
             'todo falta reserva
@@ -2983,14 +2983,14 @@ Namespace geshotelk
                 fechaini = fechafin
                 fechafin = ft
             End If
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
-            Dim fechafinParam As New MySqlParameter("@fechafin", convertFecha(fechafin))
-            Dim fechaini1Param As New MySqlParameter("@fechaini1", convertFecha(fechaini))
-            Dim fechafin1Param As New MySqlParameter("@fechafin1", convertFecha(fechafin))
-            Dim fechaini2Param As New MySqlParameter("@fechaini2", convertFecha(fechaini))
-            Dim fechafin2Param As New MySqlParameter("@fechafin2", convertFecha(fechafin))
-            Dim todasParam As New MySqlParameter("@todas", todas)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
+            Dim fechafinParam As New SqlParameter("@fechafin", convertFecha(fechafin))
+            Dim fechaini1Param As New SqlParameter("@fechaini1", convertFecha(fechaini))
+            Dim fechafin1Param As New SqlParameter("@fechafin1", convertFecha(fechafin))
+            Dim fechaini2Param As New SqlParameter("@fechaini2", convertFecha(fechaini))
+            Dim fechafin2Param As New SqlParameter("@fechafin2", convertFecha(fechafin))
+            Dim todasParam As New SqlParameter("@todas", todas)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechainiParam)
             cmd.Parameters.Add(fechafinParam)
@@ -3020,13 +3020,13 @@ Namespace geshotelk
         End Function
         Public Function ObtieneHabitacionesLibresHotel(ByVal reserva_id As Integer, Optional ByVal todas As Boolean = False) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim ds As DataSet = Nothing
             Try
                 'todo falta reserva
                 'busca hotel de una reserva
                 'obtiene fecha inicial,final de una reserva
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 Dim row As DataRow = getDataSet(cmd, sqlCabReserva).Tables(0).Rows(0)
@@ -3039,7 +3039,7 @@ Namespace geshotelk
         End Function
         Public Function ObtieneHabitacionesLibresHotel(ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal fechafin As Date = Nothing, Optional ByVal reserva_id As Integer = Nothing) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             'todo falta reserva
             Dim ds As DataSet = ObtieneHabitacionesLibresHotel(cmd, hotel_id, fechaini, fechafin, reserva_id)
             flushConection(cmd, errorCode)
@@ -3137,11 +3137,11 @@ Namespace geshotelk
             Dim retVal As Boolean = False
             Dim retVal1 As Integer = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql_tipo_habitacion_id As String = "SELECT tipo_habitacion_id FROM habitaciones WHERE habitacion_id = " & habitacion_id
             Dim tipo_habitacion_id = 10 ' Por defecto desvio
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
             Try
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
@@ -3170,7 +3170,7 @@ Namespace geshotelk
                             For x = 0 To DShuespedes.Tables(0).Rows.Count - 1
                                 DShuespedes.Tables(0).Rows(x)("habitacion_id") = habitacion_id
                             Next
-                            Dim writer As MySqlDataAdapter
+                            Dim writer As SqlDataAdapter
                             writer = getDataAdapter(cmd, sqlCabHuespedes)
                             writer.Fill(DShuespedes.Tables(0))
                             writer.Update(DShuespedes.Tables(0))
@@ -3230,7 +3230,7 @@ Namespace geshotelk
         Public Function bloqueaHabitacion(ByVal habitacion_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date, ByVal validar As Boolean, Optional ByVal reserva_id As Integer = -1, Optional ByVal habitacion_bloqueo_id As Integer = -1, Optional ByVal observaciones As String = Nothing, Optional ByVal forzar As Boolean = False, Optional sinemail As Boolean = False) As Integer
             Dim retVal As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 retVal = bloqueaHabitacion(cmd, habitacion_id, fecha_desde, fecha_hasta, validar, reserva_id, habitacion_bloqueo_id, observaciones, forzar, sinemail)
                 If retVal = 0 Then
@@ -3244,21 +3244,21 @@ Namespace geshotelk
             EnviarEmailInternoCheckinonline(retVal, reserva_id)
             Return retVal
         End Function
-        Private Function bloqueaHabitacion(ByVal cmd As MySqlCommand, ByVal habitacion_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date, ByVal validar As Boolean, Optional ByVal reserva_id As Integer = -1, Optional ByVal habitacion_bloqueo_id As Integer = -1, Optional ByVal observaciones As String = Nothing, Optional ByVal forzar As Boolean = False, Optional sinemail As Boolean = False) As Integer
+        Private Function bloqueaHabitacion(ByVal cmd As SqlCommand, ByVal habitacion_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date, ByVal validar As Boolean, Optional ByVal reserva_id As Integer = -1, Optional ByVal habitacion_bloqueo_id As Integer = -1, Optional ByVal observaciones As String = Nothing, Optional ByVal forzar As Boolean = False, Optional sinemail As Boolean = False) As Integer
             Dim retVal As Integer
             Dim errorCode As Integer = 0
 
             Try
 
 
-                Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
-                Dim habitacion_bloqueo_idParam As New MySqlParameter("@habitacion_bloqueo_id", habitacion_bloqueo_id)
-                Dim fecha_desdeParam As New MySqlParameter("@fecha_desde", fecha_desde)
-                Dim fecha_hastaParam As New MySqlParameter("@fecha_hasta", fecha_hasta)
-                Dim fecha_desde1Param As New MySqlParameter("@fecha_desde1", fecha_desde)
-                Dim fecha_hasta1Param As New MySqlParameter("@fecha_hasta1", fecha_hasta)
-                Dim fecha_desde2Param As New MySqlParameter("@fecha_desde2", fecha_desde)
-                Dim fecha_hasta2Param As New MySqlParameter("@fecha_hasta2", fecha_hasta)
+                Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
+                Dim habitacion_bloqueo_idParam As New SqlParameter("@habitacion_bloqueo_id", habitacion_bloqueo_id)
+                Dim fecha_desdeParam As New SqlParameter("@fecha_desde", fecha_desde)
+                Dim fecha_hastaParam As New SqlParameter("@fecha_hasta", fecha_hasta)
+                Dim fecha_desde1Param As New SqlParameter("@fecha_desde1", fecha_desde)
+                Dim fecha_hasta1Param As New SqlParameter("@fecha_hasta1", fecha_hasta)
+                Dim fecha_desde2Param As New SqlParameter("@fecha_desde2", fecha_desde)
+                Dim fecha_hasta2Param As New SqlParameter("@fecha_hasta2", fecha_hasta)
                 Dim habitacion_id_old As Integer
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(habitacion_bloqueo_idParam)
@@ -3266,7 +3266,7 @@ Namespace geshotelk
                 If datosold.Tables(0).Rows.Count > 0 Then
                     habitacion_id_old = datosold.Tables(0).Rows(0).Item("habitacion_id")
                 End If
-                Dim habitacion_id_oldParam As New MySqlParameter("@habitacion_id_old", habitacion_id_old)
+                Dim habitacion_id_oldParam As New SqlParameter("@habitacion_id_old", habitacion_id_old)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(habitacion_idParam)
                 Dim hotel_id As Integer = ExecuteScalar(cmd, sqlObietneHotelPorHabitacion)
@@ -3373,7 +3373,7 @@ Namespace geshotelk
                     End While
                 End If
                 'actualiza/inserta datos
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 Dim changed As Integer = 0
                 Try
                     changed = datos.Tables(0).GetChanges().Rows.Count
@@ -3423,12 +3423,12 @@ Namespace geshotelk
             'Dim retVal As Integer
             Dim errorCode As Integer = 0
             Dim tmp As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
 
 
                 cmd.Parameters.Clear()
-                Dim habitacion_bloqueo_idParam As New MySqlParameter("@habitacion_bloqueo_id", habitacion_bloqueo_id)
+                Dim habitacion_bloqueo_idParam As New SqlParameter("@habitacion_bloqueo_id", habitacion_bloqueo_id)
                 cmd.Parameters.Add(habitacion_bloqueo_idParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneHabitacionBloqueada)
 
@@ -3449,7 +3449,7 @@ Namespace geshotelk
             Dim tmp As String = ""
             If habitacion_id <> 0 Then
                 Dim errorCode As Integer = 0
-                Dim cmd As MySqlCommand = prepareConection()
+                Dim cmd As SqlCommand = prepareConection()
                 Try
                     tmp = CompruebaEstadoHabitacion(cmd, habitacion_id, reserva_id, fecha_desde, fecha_hasta)
                 Catch ex As Exception
@@ -3473,19 +3473,19 @@ Namespace geshotelk
 & " reservas_tipo_habitacion.reserva_id =  ? AND " _
 & " habitaciones.habitacion_id =  ? "
 
-        Private Function CompruebaEstadoHabitacion(ByVal cmd As MySqlCommand, ByVal habitacion_id As Integer, ByVal reserva_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date) As String
+        Private Function CompruebaEstadoHabitacion(ByVal cmd As SqlCommand, ByVal habitacion_id As Integer, ByVal reserva_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date) As String
             Dim tmp As String = ""
             If habitacion_id <> 0 Then
 
                 Try
-                    Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
-                    Dim habitacion_id1Param As New MySqlParameter("@habitacion_id1", habitacion_id)
-                    Dim fecha_desdeParam As New MySqlParameter("@fecha_desde", fecha_desde)
-                    Dim fecha_hastaParam As New MySqlParameter("@fecha_hasta", fecha_hasta)
-                    Dim fecha_desde1Param As New MySqlParameter("@fecha_desde1", fecha_desde)
-                    Dim fecha_hasta1Param As New MySqlParameter("@fecha_hasta1", fecha_hasta)
-                    Dim fecha_desde2Param As New MySqlParameter("@fecha_desde2", fecha_desde)
-                    Dim fecha_hasta2Param As New MySqlParameter("@fecha_hasta2", fecha_hasta)
+                    Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
+                    Dim habitacion_id1Param As New SqlParameter("@habitacion_id1", habitacion_id)
+                    Dim fecha_desdeParam As New SqlParameter("@fecha_desde", fecha_desde)
+                    Dim fecha_hastaParam As New SqlParameter("@fecha_hasta", fecha_hasta)
+                    Dim fecha_desde1Param As New SqlParameter("@fecha_desde1", fecha_desde)
+                    Dim fecha_hasta1Param As New SqlParameter("@fecha_hasta1", fecha_hasta)
+                    Dim fecha_desde2Param As New SqlParameter("@fecha_desde2", fecha_desde)
+                    Dim fecha_hasta2Param As New SqlParameter("@fecha_hasta2", fecha_hasta)
                     cmd.Parameters.Clear()
                     cmd.Parameters.Add(habitacion_idParam)
                     cmd.Parameters.Add(habitacion_id1Param)
@@ -3512,7 +3512,7 @@ Namespace geshotelk
                     End If
                     'todo comprobar que la reserva pide un tipo de hab y se le asigna el mismo tipo hab sino warnin
                     cmd.Parameters.Clear()
-                    Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                    Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                     cmd.Parameters.Add(reserva_idParam)
                     cmd.Parameters.Add(habitacion_idParam)
                     datos = getDataSet(cmd, sqlTipoHabitacionesReserva)
@@ -3534,18 +3534,18 @@ Namespace geshotelk
             Return tmp
             'CompruebaEstadoHabitacion(habitacion_id, reserva_id, fecha_desde, fecha_hasta)
         End Function
-        Private Function ObtieneReservasHabitacion(ByVal cmd As MySqlCommand, ByVal habitacion_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date, Optional ByVal reserva_id As Integer = 0) As ArrayList
+        Private Function ObtieneReservasHabitacion(ByVal cmd As SqlCommand, ByVal habitacion_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date, Optional ByVal reserva_id As Integer = 0) As ArrayList
             Dim tmp As New ArrayList
             'If habitacion_id <> 0 Then
             Try
-                Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
-                Dim habitacion_id1Param As New MySqlParameter("@habitacion_id1", habitacion_id)
-                Dim fecha_desdeParam As New MySqlParameter("@fecha_desde", (fecha_desde))
-                Dim fecha_hastaParam As New MySqlParameter("@fecha_hasta", (fecha_hasta))
-                Dim fecha_desde1Param As New MySqlParameter("@fecha_desde1", (fecha_desde))
-                Dim fecha_hasta1Param As New MySqlParameter("@fecha_hasta1", (fecha_hasta))
-                Dim fecha_desde2Param As New MySqlParameter("@fecha_desde2", (fecha_desde))
-                Dim fecha_hasta2Param As New MySqlParameter("@fecha_hasta2", (fecha_hasta))
+                Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
+                Dim habitacion_id1Param As New SqlParameter("@habitacion_id1", habitacion_id)
+                Dim fecha_desdeParam As New SqlParameter("@fecha_desde", (fecha_desde))
+                Dim fecha_hastaParam As New SqlParameter("@fecha_hasta", (fecha_hasta))
+                Dim fecha_desde1Param As New SqlParameter("@fecha_desde1", (fecha_desde))
+                Dim fecha_hasta1Param As New SqlParameter("@fecha_hasta1", (fecha_hasta))
+                Dim fecha_desde2Param As New SqlParameter("@fecha_desde2", (fecha_desde))
+                Dim fecha_hasta2Param As New SqlParameter("@fecha_hasta2", (fecha_hasta))
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(habitacion_idParam)
                 cmd.Parameters.Add(habitacion_id1Param)
@@ -3592,11 +3592,11 @@ Namespace geshotelk
     & " cierres " _
     & " WHERE " _
     & " cierres.hotel_id =  ?"
-        Private Function ComparaFechaHotel(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Boolean
+        Private Function ComparaFechaHotel(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Try
                 cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Add(reserva_idParam)
                 Dim reserva As DataSet = getDataSet(cmd, sqlCabReserva)
                 If reserva.Tables(0).Rows.Count > 0 Then
@@ -3611,10 +3611,10 @@ Namespace geshotelk
             End Try
             Return retVal
         End Function
-        Private Function FechaHotel(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer) As Date
+        Private Function FechaHotel(ByVal cmd As SqlCommand, ByVal hotel_id As Integer) As Date
             Dim retVal As Date
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Add(hotel_idParam)
             Try
                 retVal = ExecuteScalar(cmd, sqlUlitmaFechaHotel, True)
@@ -3627,7 +3627,7 @@ Namespace geshotelk
         Function FechaHotel(ByVal hotel_id As Integer) As Date
             Dim retVal As Date
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = FechaHotel(cmd, hotel_id)
             flushConection(cmd, errorCode)
             Return retVal
@@ -3641,13 +3641,13 @@ Namespace geshotelk
     & " arqueos_caja.tipo_arqueo_id =  2 AND " _
     & " arqueos_caja.caja_id =  ? AND " _
     & " arqueos_caja.fecha =  ? "
-        Function EstaCajaAbierta(ByVal cmd As MySqlCommand, ByVal caja_id As Integer, ByVal fecha As Date) As Boolean
+        Function EstaCajaAbierta(ByVal cmd As SqlCommand, ByVal caja_id As Integer, ByVal fecha As Date) As Boolean
             'todo cache...
             Dim retVal As Boolean = False
             If caja_id <> 0 Then
                 cmd.Parameters.Clear()
-                Dim caja_idParam As New MySqlParameter("@caja_id", caja_id)
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
+                Dim caja_idParam As New SqlParameter("@caja_id", caja_id)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
                 cmd.Parameters.Add(caja_idParam)
                 cmd.Parameters.Add(fechaParam)
 
@@ -3663,7 +3663,7 @@ Namespace geshotelk
         Function EstaCajaAbierta(ByVal caja_id As Integer, ByVal fecha As Date) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = EstaCajaAbierta(cmd, caja_id, fecha)
             flushConection(cmd, errorCode)
             Return retVal
@@ -3686,12 +3686,12 @@ Namespace geshotelk
     & " arqueos_caja.caja_id =  ? and arqueos_caja.fecha<? " _
     & " order by fecha desc " _
     & " limit 0,1 "
-        Private Function ObtieneImporteTeoricoCaja(ByVal cmd As MySqlCommand, ByVal caja_id As Integer, ByVal fecha As Date) As Single
+        Private Function ObtieneImporteTeoricoCaja(ByVal cmd As SqlCommand, ByVal caja_id As Integer, ByVal fecha As Date) As Single
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim caja_idParam As New MySqlParameter("@caja_id", caja_id)
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
+            Dim caja_idParam As New SqlParameter("@caja_id", caja_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
             cmd.Parameters.Add(caja_idParam)
             cmd.Parameters.Add(fechaParam)
 
@@ -3711,14 +3711,14 @@ Namespace geshotelk
         Function ObtieneImporteTeoricoCaja(ByVal caja_id As Integer, ByVal fecha As Date) As Single
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim imp As Single = ObtieneImporteTeoricoCaja(cmd, caja_id, fecha)
             flushConection(cmd, errorCode)
             Return imp
         End Function
         Class Factura
             Public ds As DataSet
-            Public cmd As MySqlCommand
+            Public cmd As SqlCommand
             Public errorCode = 0
             Public factura_id As Integer
             Public excuteTrans As Boolean = True
@@ -3729,7 +3729,7 @@ Namespace geshotelk
         ' Garra Javier 27/2/2012
         ' Referencia1 para depositos
         ' ***********************************************
-        Function preparaFactura(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal cliente_id As Integer, ByVal forma_pago_id As Integer, ByVal fecha As Date, ByVal hotel_id As Integer, ByVal serie_id As Integer, Optional ByVal referencia2 As Object = Nothing, Optional ByVal referencia1 As Object = Nothing)
+        Function preparaFactura(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal cliente_id As Integer, ByVal forma_pago_id As Integer, ByVal fecha As Date, ByVal hotel_id As Integer, ByVal serie_id As Integer, Optional ByVal referencia2 As Object = Nothing, Optional ByVal referencia1 As Object = Nothing)
             Dim fac As Factura = abreFactura(cmd, -1, reserva_id)
             fac.errorCode = 0
             Dim ds As DataSet = fac.ds
@@ -3783,7 +3783,7 @@ Namespace geshotelk
                 row.Item("ZIP") = clires.Item("ZIP")
                 row.Item("Provincia_Id") = clires.Item("Provincia_Id")
 
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(fac.cmd, sqlCabAbreFactura)
                 writer.Fill(fac.ds.Tables(0))
                 writer.Update(fac.ds.Tables(0))
@@ -3797,7 +3797,7 @@ Namespace geshotelk
         Shared sqlCabReserva = "select * from reservas where reserva_id=?"
         Shared sqlPrimerHuesped = "SELECT cliente_id FROM reservas_huespedes WHERE reserva_id = ? LIMIT 0, 1"
 
-        Private Function preparaFactura(ByVal cmd As MySqlCommand, ByVal forma_pago_id As Integer, ByVal reserva_id As Integer, Optional ByVal primerHuesped As Boolean = False, Optional ByVal extCliente_id As Integer = 0)
+        Private Function preparaFactura(ByVal cmd As SqlCommand, ByVal forma_pago_id As Integer, ByVal reserva_id As Integer, Optional ByVal primerHuesped As Boolean = False, Optional ByVal extCliente_id As Integer = 0)
             Dim sw_ajuste As Boolean = False
 
             Dim fac As Factura = abreFactura(cmd, -1, -1)
@@ -3807,7 +3807,7 @@ Namespace geshotelk
             'Dim res As DataSet = getDataSet(fac.cmd, sqlCabReserva)
             'If res.Tables(0).Rows.Count > 0 Then
             'Dim cabres As DataRow = res.Tables(0).Rows(0)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", 0)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 0)
             Dim clientes As DataSet
             If cabres.Read Then
                 'fac.cmd.Transaction.Commit()
@@ -3896,7 +3896,7 @@ Namespace geshotelk
 
                     If forma_pago_id = 2 Then      ' Las de contado me la pelan
                         cmd.Parameters.Clear()
-                        Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                        Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                         cmd.Parameters.Add(reserva_idParam)
                         cmd.Parameters.Add(cliente_idParam)
                         'Dim SqlExisteFacturaReserva = "SELECT factura_id FROM facturas WHERE reserva_id = ? AND cliente_id = ? And serie_id =1 AND forma_pago_id=2 AND fecha_modificacion <DATE_SUB(now(),INTERVAL 10 SECOND) Limit 0,1"
@@ -3939,15 +3939,15 @@ Namespace geshotelk
         Shared sqlCabAbreFactura = "select * from facturas where factura_id=?"
         Shared sqlCabLineasFactura = "select * from lineas_factura where reserva_id=?"
 
-        Private Function abreFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer, ByVal reserva_id As Integer) As Factura
+        Private Function abreFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer, ByVal reserva_id As Integer) As Factura
             Dim errorCode As Integer = 0
 
             cmd.Parameters.Clear()
-            Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+            Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
             cmd.Parameters.Add(factura_idParam)
             Dim ds As DataSet = getDataSet(cmd, sqlCabAbreFactura)
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
             ds = getDataSet(cmd, sqlCabLineasFactura, ds, "lineas_factura")
 
@@ -3963,7 +3963,7 @@ Namespace geshotelk
 
         Function abreFactura(ByVal factura_id As Integer, ByVal reserva_id As Integer) As Factura
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Return abreFactura(cmd, factura_id, reserva_id)
         End Function
         Function agregaLineaFactura(ByVal fac As Factura) As DataRow
@@ -4072,7 +4072,7 @@ Namespace geshotelk
 
         'End Sub
         Private Function actualizarLineas(ByVal fac As Factura)
-            Dim writer As MySqlDataAdapter
+            Dim writer As SqlDataAdapter
             Try
                 'Console.WriteLine(fac.cmd.Parameters(0).Value)
                 'dumpDataTable(fac.ds.Tables(1))
@@ -4112,7 +4112,7 @@ Namespace geshotelk
                 If rows.Length > 0 Then
                     Dim row As DataRow = rows(0)
                     row.Delete()
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(fac.cmd, sqlCabAbreFactura)
                     writer.Fill(fac.ds.Tables(0))
                     writer.Update(fac.ds.Tables(0))
@@ -4154,7 +4154,7 @@ Namespace geshotelk
         Public Function ObtieneNumeroFactura(ByVal factura_id As Integer) As Integer
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 retVal = ObtieneNumeroFactura(cmd, factura_id)
             Catch ex As Exception
@@ -4164,10 +4164,10 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function ObtieneNumeroFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer) As Integer
+        Private Function ObtieneNumeroFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer) As Integer
             Dim contador As Integer = -1
             cmd.Parameters.Clear()
-            Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+            Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
             cmd.Parameters.Add(factura_idParam)
 
             Dim dtr As DataTableReader = getDataTable(cmd, sqlObtieneDatosContFacturas)
@@ -4196,12 +4196,12 @@ Namespace geshotelk
                 End If
 
                 cmd.Parameters.Clear()
-                Dim numero_facturaParam As New MySqlParameter("@numero_factura", contador)
+                Dim numero_facturaParam As New SqlParameter("@numero_factura", contador)
                 cmd.Parameters.Add(numero_facturaParam)
                 cmd.Parameters.Add(factura_idParam)
                 If (ExecuteNonQuery(cmd, sqlActualizaContadorFactura) = 1) Then
 
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlContadores)
                     writer.Fill(cont.Tables(0))
                     writer.Update(cont.Tables(0))
@@ -4218,10 +4218,10 @@ Namespace geshotelk
             Return contador
         End Function
         Shared sqlCrearMovimientoCaja = "select * from movimientos_caja where movimiento_id=-1"
-        Private Function CrearMovimientoCaja(ByVal cmd As MySqlCommand, ByVal tipo_mov As Integer, ByVal fecha As Date, ByVal caja_id As Integer, ByVal importe As Double, ByVal item As Integer, ByVal forma_pago_id As Integer)
+        Private Function CrearMovimientoCaja(ByVal cmd As SqlCommand, ByVal tipo_mov As Integer, ByVal fecha As Date, ByVal caja_id As Integer, ByVal importe As Double, ByVal item As Integer, ByVal forma_pago_id As Integer)
             Return CrearMovimientoCaja(cmd, tipo_mov, fecha, caja_id, importe, item, forma_pago_id, False)
         End Function
-        Private Function CrearMovimientoCaja(ByVal cmd As MySqlCommand, ByVal tipo_mov As Integer, ByVal fecha As Date, ByVal caja_id As Integer, ByVal importe As Double, ByVal item As Integer, ByVal forma_pago_id As Integer, ByVal saltaCierre As Boolean)
+        Private Function CrearMovimientoCaja(ByVal cmd As SqlCommand, ByVal tipo_mov As Integer, ByVal fecha As Date, ByVal caja_id As Integer, ByVal importe As Double, ByVal item As Integer, ByVal forma_pago_id As Integer, ByVal saltaCierre As Boolean)
             'cache estado cajas 
             Dim retVal = False
             If saltaCierre OrElse EstaCajaAbierta(cmd, caja_id, fecha) Then
@@ -4235,7 +4235,7 @@ Namespace geshotelk
                 Row.Item("user_id") = userId
                 Row.Item("fecha_modificacion") = Now
                 Row.Item("forma_pago_id") = forma_pago_id
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlCrearMovimientoCaja)
                 writer.Fill(datos.Tables(0))
                 writer.Update(datos.Tables(0))
@@ -4245,11 +4245,11 @@ Namespace geshotelk
         End Function
         Shared sqlEstadoGasto = "select forma_pago_id,10 as tipo_movimiento_id,fecha,estado_id,caja_id,importe as total from gastos where gasto_id=?"
         Shared sqlCambiaEstadoGasto = "update gastos set estado_id=? where gasto_id=? and estado_id=?"
-        Private Function CambiarEstadoGasto(ByVal cmd As MySqlCommand, ByVal gasto_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
+        Private Function CambiarEstadoGasto(ByVal cmd As SqlCommand, ByVal gasto_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim gasto_idParam As New MySqlParameter("@gasto_id", gasto_id)
+            Dim gasto_idParam As New SqlParameter("@gasto_id", gasto_id)
             cmd.Parameters.Add(gasto_idParam)
             Dim estado_anterior As Integer = Nothing
             Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoGasto)
@@ -4277,8 +4277,8 @@ Namespace geshotelk
                         If Not validar Then
                             'todo cambiar estado
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(gasto_idParam)
                             cmd.Parameters.Add(estado_anteriorParam)
@@ -4306,8 +4306,8 @@ Namespace geshotelk
                             retVal = True
                         Else
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(gasto_idParam)
                             cmd.Parameters.Add(estado_anteriorParam)
@@ -4331,11 +4331,11 @@ Namespace geshotelk
         End Function
         Shared sqlEstadoArqueo = "select estado_id from arqueos_caja where arqueo_id=?"
         Shared sqlCambiaEstadoArqueo = "update arqueos_caja set estado_id=? where arqueo_id=? and estado_id=?"
-        Private Function CambiarEstadoArqueo(ByVal cmd As MySqlCommand, ByVal arqueo_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
+        Private Function CambiarEstadoArqueo(ByVal cmd As SqlCommand, ByVal arqueo_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim arqueo_idParam As New MySqlParameter("@arqueo_id", arqueo_id)
+            Dim arqueo_idParam As New SqlParameter("@arqueo_id", arqueo_id)
             cmd.Parameters.Add(arqueo_idParam)
             Dim estado_anterior As Integer = Nothing
             Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoArqueo)
@@ -4356,8 +4356,8 @@ Namespace geshotelk
             If retVal And Not validar Then
                 'todo cambiar estado
                 cmd.Parameters.Clear()
-                Dim estadoParam As New MySqlParameter("@estado", estado)
-                Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                Dim estadoParam As New SqlParameter("@estado", estado)
+                Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                 cmd.Parameters.Add(estadoParam)
                 cmd.Parameters.Add(arqueo_idParam)
                 cmd.Parameters.Add(estado_anteriorParam)
@@ -4379,11 +4379,11 @@ Namespace geshotelk
         End Function
         Shared sqlEstadoAnticipo = "select estado_id from anticipos where anticipo_id=?"
         Shared sqlCambiaEstadoAnticipo = "update anticipos set estado_id=? where anticipo_id=? and estado_id=?"
-        Private Function CambiarEstadoAnticipo(ByVal cmd As MySqlCommand, ByVal anticipo_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
+        Private Function CambiarEstadoAnticipo(ByVal cmd As SqlCommand, ByVal anticipo_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim anticipo_idParam As New MySqlParameter("@anticipo_id", anticipo_id)
+            Dim anticipo_idParam As New SqlParameter("@anticipo_id", anticipo_id)
             cmd.Parameters.Add(anticipo_idParam)
             Dim estado_anterior As Integer = Nothing
             Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoAnticipo)
@@ -4404,8 +4404,8 @@ Namespace geshotelk
             If retVal And Not validar Then
                 'todo cambiar estado
                 cmd.Parameters.Clear()
-                Dim estadoParam As New MySqlParameter("@estado", estado)
-                Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                Dim estadoParam As New SqlParameter("@estado", estado)
+                Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                 cmd.Parameters.Add(estadoParam)
                 cmd.Parameters.Add(anticipo_idParam)
                 cmd.Parameters.Add(estado_anteriorParam)
@@ -4428,11 +4428,11 @@ Namespace geshotelk
         Shared sqlEstadoDotacion = "SELECT dotaciones.fecha,dotaciones.estado_id,dotaciones.caja_id,dotaciones.importe AS total,tipos_dotacion.tipo_moviemiento_id as tipo_movimiento_id FROM dotaciones Inner Join tipos_dotacion ON dotaciones.tipo_dotacion_id = tipos_dotacion.tipo_dotacion_id where dotaciones.dotacion_id=?"
         Shared sqlCambiaEstadoDotacion = "update dotaciones set estado_id=? where dotacion_id=? and estado_id=?"
 
-        Private Function CambiarEstadoDotacion(ByVal cmd As MySqlCommand, ByVal dotacion_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
+        Private Function CambiarEstadoDotacion(ByVal cmd As SqlCommand, ByVal dotacion_id As Integer, ByVal estado As Integer, ByVal validar As Boolean)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim dotacion_idParam As New MySqlParameter("@dotacion_id", dotacion_id)
+            Dim dotacion_idParam As New SqlParameter("@dotacion_id", dotacion_id)
             cmd.Parameters.Add(dotacion_idParam)
             Dim estado_anterior As Integer = Nothing
             Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoDotacion)
@@ -4460,8 +4460,8 @@ Namespace geshotelk
                         If Not validar Then
                             'todo cambiar estado
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(dotacion_idParam)
                             cmd.Parameters.Add(estado_anteriorParam)
@@ -4487,8 +4487,8 @@ Namespace geshotelk
                             retVal = True
                         Else
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(dotacion_idParam)
                             cmd.Parameters.Add(estado_anteriorParam)
@@ -4515,7 +4515,7 @@ Namespace geshotelk
         Function CambiarEstadoDotacion(ByVal dotacion_id, ByVal estado, ByVal validar)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CambiarEstadoDotacion(cmd, dotacion_id, estado, validar)
             If retVal = False Then
                 errorCode = 1   'no se podria hacer el cambio
@@ -4529,7 +4529,7 @@ Namespace geshotelk
         Function CambiarEstadoGasto(ByVal gasto_id, ByVal estado, ByVal validar)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CambiarEstadoGasto(cmd, gasto_id, estado, validar)
             If retVal = False Then
                 errorCode = 1   'no se podria hacer el cambio
@@ -4547,12 +4547,12 @@ Namespace geshotelk
         Shared sqlFacturasCambiarEstado = "SELECT distinct lineas_cobro.factura_id FROM lineas_cobro Inner Join facturas ON lineas_cobro.factura_id = facturas.factura_id" _
         & " WHERE lineas_cobro.cobro_id =  ? AND facturas.serie_id =  '5'"
         Shared sqlCambiarFechaEstadoFactura = "update facturas set fecha_factura=?,estado_factura_id=1 where factura_id =?"
-        Private Function CambiarEstadoCobro(ByVal cmd As MySqlCommand, ByVal cobro_id As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal fecha As Object = Nothing)
+        Private Function CambiarEstadoCobro(ByVal cmd As SqlCommand, ByVal cobro_id As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal fecha As Object = Nothing)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
 
             cmd.Parameters.Clear()
-            Dim cobro_idParam As New MySqlParameter("@cobro_id", cobro_id)
+            Dim cobro_idParam As New SqlParameter("@cobro_id", cobro_id)
             cmd.Parameters.Add(cobro_idParam)
             Dim estado_anterior As Integer = Nothing
             Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoCobro)
@@ -4574,7 +4574,7 @@ Namespace geshotelk
                 forma_pago_id = datos.Item("forma_pago_id")
                 tipo_movimiento_id = datos.Item("tipo_movimiento_id")
             End While
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
 
 
             Select Case estado_anterior
@@ -4586,8 +4586,8 @@ Namespace geshotelk
                         If Not validar Then
                             'todo cambiar estado
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(fechaParam)
                             cmd.Parameters.Add(cobro_idParam)
@@ -4607,7 +4607,7 @@ Namespace geshotelk
                                     If CrearMovimientoCaja(cmd, tipo_movimiento_id, fecha, caja_id, total, cobro_id, forma_pago_id) Then
                                         cmd.Parameters.Clear()
                                         cmd.Parameters.Add(cobro_idParam)
-                                        Dim factura_idParam As New MySqlParameter("@fecha", 0)
+                                        Dim factura_idParam As New SqlParameter("@fecha", 0)
                                         'pasar a estado 1 cualquier factura de serie 6 que estuviese en estado 2
                                         Dim reader As DataTableReader = getDataTable(cmd, sqlFacturasCambiarEstado)
                                         cmd.Parameters.Clear()
@@ -4639,8 +4639,8 @@ Namespace geshotelk
                             retVal = False
                         Else
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(fechaParam)
                             cmd.Parameters.Add(cobro_idParam)
@@ -4660,8 +4660,8 @@ Namespace geshotelk
                             retVal = True
                         Else
                             cmd.Parameters.Clear()
-                            Dim estadoParam As New MySqlParameter("@estado", estado)
-                            Dim estado_anteriorParam As New MySqlParameter("@estado_anterior", estado_anterior)
+                            Dim estadoParam As New SqlParameter("@estado", estado)
+                            Dim estado_anteriorParam As New SqlParameter("@estado_anterior", estado_anterior)
                             cmd.Parameters.Add(estadoParam)
                             cmd.Parameters.Add(fechaParam)
                             cmd.Parameters.Add(cobro_idParam)
@@ -4692,7 +4692,7 @@ Namespace geshotelk
         Function CambiarEstadoCobro(ByVal cobro_id As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal fecha As Object = Nothing)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CambiarEstadoCobro(cmd, cobro_id, estado, validar, fecha)
             If retVal = False Then
                 errorCode = 1   'no se podria hacer el cambio
@@ -4708,12 +4708,12 @@ Namespace geshotelk
         Function AnularCobro(ByVal cobro_id As Integer)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
 
 
                 cmd.Parameters.Clear()
-                Dim cobro_idParam As New MySqlParameter("@cobro_id", cobro_id)
+                Dim cobro_idParam As New SqlParameter("@cobro_id", cobro_id)
                 cmd.Parameters.Add(cobro_idParam)
                 Dim datos As DataTableReader = getDataTable(cmd, sqlEstadoCobro)
                 While datos.Read
@@ -4725,11 +4725,11 @@ Namespace geshotelk
                             'borrar el movimiento de caja
                             cmd.Parameters.Clear()
                             cmd.Parameters.Add(cobro_idParam)
-                            Dim tipo_movimiento_idParam As New MySqlParameter("@tipo_movimiento_id", datos("tipo_movimiento_id"))
+                            Dim tipo_movimiento_idParam As New SqlParameter("@tipo_movimiento_id", datos("tipo_movimiento_id"))
                             cmd.Parameters.Add(tipo_movimiento_idParam)
-                            Dim caja_idParam As New MySqlParameter("@caja_id", datos("caja_id"))
+                            Dim caja_idParam As New SqlParameter("@caja_id", datos("caja_id"))
                             cmd.Parameters.Add(caja_idParam)
-                            Dim fechaParam As New MySqlParameter("@fecha", fecha_hotel)
+                            Dim fechaParam As New SqlParameter("@fecha", fecha_hotel)
                             cmd.Parameters.Add(fechaParam)
                             If ExecuteNonQuery(cmd, sqlBorrarMovimientoCaja) = 1 Then
                                 'borrar las lineas del cobro
@@ -4787,14 +4787,14 @@ Namespace geshotelk
         Function Actualiza_gasto_en_cobros(ByVal hotel_id As Integer, ByVal cobro_id As Integer, ByVal factura_id As Integer, ByVal servicio_id As Integer, ByVal cantidad As Double, ByVal precio As Double) As String
             Dim ErrorMsg As String = ""
             Dim descripcion As Object = Nothing
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
-            Dim cobro_idParam As New MySqlParameter("@cobro_id", cobro_id)
-            Dim cantidadParam As New MySqlParameter("@cantidad", cantidad)
-            Dim precioParam As New MySqlParameter("@precio", precio)
-            Dim ImporteParam As New MySqlParameter("@importe", cantidad * precio)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
+            Dim cobro_idParam As New SqlParameter("@cobro_id", cobro_id)
+            Dim cantidadParam As New SqlParameter("@cantidad", cantidad)
+            Dim precioParam As New SqlParameter("@precio", precio)
+            Dim ImporteParam As New SqlParameter("@importe", cantidad * precio)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(servicio_idParam)
             Dim sql As String = "SELECT nombre_servicio FROM servicios WHERE servicio_id = ? "
@@ -4802,7 +4802,7 @@ Namespace geshotelk
             If IsNothing(descripcion) Then
                 ErrorMsg = "Error servicio no encontrado"
             End If
-            Dim ref2Param As New MySqlParameter("@descripcion", descripcion)
+            Dim ref2Param As New SqlParameter("@descripcion", descripcion)
             ' Ponemos Ref2 de la factura la descripcion del servicio en este caso el gasto
             sql = "UPDATE facturas SET " _
             & " ref_fra2 = ? " _
@@ -4831,8 +4831,8 @@ Namespace geshotelk
                 impuesto_id = reader.Item("impuesto_id")
                 porcentaje = reader.Item("porcentaje")
             End While
-            Dim impuesto_idParam As New MySqlParameter("@impuesto_id", impuesto_id)
-            Dim porcentajeParam As New MySqlParameter("@porcentaje", porcentaje)
+            Dim impuesto_idParam As New SqlParameter("@impuesto_id", impuesto_id)
+            Dim porcentajeParam As New SqlParameter("@porcentaje", porcentaje)
             sql = "INSERT INTO lineas_factura (hotel_id,factura_id,descripcion,cantidad,precio,impuesto_id,porc_impuesto,servicio_id,unidad_calculo_id,tipo_linea_factura,fecha) VALUES (?,?,?,?,?,'1','0',?,'1','A',now())"
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -4888,15 +4888,15 @@ Namespace geshotelk
         '*******************************************************************************************************************************
         Function Actualiza_descuento_en_cobros(ByVal hotel_id As Integer, ByVal cobro_id As Integer, ByVal factura_id As Integer, ByVal descuento_id As Integer, ByVal descripcion As String, ByVal cantidad As Double, ByVal precio As Double, ByVal serie_id As Integer) As String
             Dim ErrorMsg As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
-            Dim descuento_idParam As New MySqlParameter("@descuento_id", descuento_id)
-            Dim cobro_idParam As New MySqlParameter("@cobro_id", cobro_id)
-            Dim descripcionParam As New MySqlParameter("@descripcion", descripcion)
-            Dim cantidadParam As New MySqlParameter("@cantidad", cantidad)
-            Dim precioParam As New MySqlParameter("@precio", precio)
-            Dim ImporteParam As New MySqlParameter("@importe", cantidad * precio)
-            Dim serie_idParam As New MySqlParameter("@serie_id", serie_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
+            Dim descuento_idParam As New SqlParameter("@descuento_id", descuento_id)
+            Dim cobro_idParam As New SqlParameter("@cobro_id", cobro_id)
+            Dim descripcionParam As New SqlParameter("@descripcion", descripcion)
+            Dim cantidadParam As New SqlParameter("@cantidad", cantidad)
+            Dim precioParam As New SqlParameter("@precio", precio)
+            Dim ImporteParam As New SqlParameter("@importe", cantidad * precio)
+            Dim serie_idParam As New SqlParameter("@serie_id", serie_id)
             ' cambio a la serie 6 una de ellas como rectificativa de la anterior
             ' Esta será la que perdurará para otro cobro y a la que habrá que cambiar en la linea de factura el signo a la cantidad
             If serie_id = 7 Then
@@ -4935,10 +4935,10 @@ Namespace geshotelk
                 impuesto_id = reader.Item("impuesto_id")
                 porcentaje = reader.Item("porcentaje")
             End While
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
-            Dim impuesto_idParam As New MySqlParameter("@impuesto_id", impuesto_id)
-            Dim porcentajeParam As New MySqlParameter("@porcentaje", porcentaje)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
+            Dim impuesto_idParam As New SqlParameter("@impuesto_id", impuesto_id)
+            Dim porcentajeParam As New SqlParameter("@porcentaje", porcentaje)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             sql = "INSERT INTO lineas_factura (hotel_id,factura_id,descripcion,cantidad,precio,impuesto_id,porc_impuesto,servicio_id,unidad_calculo_id,tipo_linea_factura,fecha) VALUES (?,?,?,?,?,'1','0',?,'1','A',now())"
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -5018,7 +5018,7 @@ Namespace geshotelk
         Shared sqlEstadoFactura = "select estado_factura_id from facturas where factura_id=?"
         Shared sqlCuentaLineasFacturas = "select count(*) from lineas_factura where factura_id=?"
         Shared sqlCambiarEstadoFactura = "update facturas set estado_factura_id=2 where estado_factura_id=1 and factura_id=?"
-        Public Function CambiarEstadoFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer, ByVal estado As Integer, ByVal validar As Boolean) As Boolean
+        Public Function CambiarEstadoFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer, ByVal estado As Integer, ByVal validar As Boolean) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             If Not RecalculaFactura(cmd, factura_id) Then
@@ -5028,7 +5028,7 @@ Namespace geshotelk
             If errorCode = 0 Then
 
                 cmd.Parameters.Clear()
-                Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+                Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
                 Dim estado_anterior As Integer = Nothing
                 estado_anterior = ExecuteScalar(cmd, sqlEstadoFactura)
@@ -5079,7 +5079,7 @@ Namespace geshotelk
         Function CambiarEstadoFactura(ByVal factura_id, ByVal estado, ByVal validar)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CambiarEstadoFactura(cmd, factura_id, estado, validar)
             If retVal = False Then
                 errorCode = 1   'no se podria hacer el cambio
@@ -5116,7 +5116,7 @@ Namespace geshotelk
         Function CambiarEstadoReserva(ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean) As Boolean
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 errorCode = CambiarEstadoReserva(cmd, reserva, estado, validar)
             Catch ex As Exception
@@ -5145,7 +5145,7 @@ Namespace geshotelk
             End If
             Return datosReservaActual
         End Function
-        Private Function obtieneServiciosReservaCache(ByVal cmd As MySqlCommand, ByVal reserva As Integer)
+        Private Function obtieneServiciosReservaCache(ByVal cmd As SqlCommand, ByVal reserva As Integer)
             Dim datosReservaActual As tablaServicios = Nothing
             If Not IsNothing(olddatosReservaActual) Then
                 If olddatosReservaActual.reserva_id = reserva Then
@@ -5164,7 +5164,7 @@ Namespace geshotelk
         Public Function generarEfactura(ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = True
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
 
                 Dim cif_empresa As String = "44503094G"
@@ -5187,7 +5187,7 @@ Namespace geshotelk
                 Dim provincia_cliente As String = "Galdar"
 
                 cmd.Parameters.Clear()
-                Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+                Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
 
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneDatosFacturaParaApunte)
@@ -5424,13 +5424,13 @@ Namespace geshotelk
             'Return True
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Add(reserva_idParam)
                 Dim hotel_id As Integer = ExecuteScalar(cmd, sqlObtieneHotelReserva)
-                Dim reserva_idParam2 As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam2 As New SqlParameter("@reserva_id", reserva_id)
 
                 Dim fecha As Date = FechaHotel(cmd, hotel_id)
 
@@ -5509,7 +5509,7 @@ Namespace geshotelk
         Public Function ProcessarEmailBatch()
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 Dim reader As DataTableReader = getDataTable(cmd, sqlEnviarEmailReservas)
                 While reader.Read
@@ -5524,10 +5524,10 @@ Namespace geshotelk
             End If
             Return retVal
         End Function
-        Private Function enviarEmailReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal batch As Boolean)
+        Private Function enviarEmailReserva(ByVal cmd As SqlCommand, ByVal reserva As Integer, ByVal batch As Boolean)
             Try
                 cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
                 cmd.Parameters.Add(reserva_idParam)
                 If batch Then
                     ExecuteNonQuery(cmd, sqlEnviarEmailActivar)
@@ -5560,19 +5560,19 @@ Namespace geshotelk
         End Function
         Public Function cambia_situacion_habitacion(ByVal reserva_id As Integer, ByVal estado_reserva_id As Integer) As Integer
             Dim Errorcode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Errorcode = cambia_situacion_habitacion(cmd, reserva_id, estado_reserva_id)
             flushConection(cmd, 0)
             Return Errorcode
         End Function
-        Private Function cambia_situacion_habitacion(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal estado_reserva_id As Integer) As Integer
+        Private Function cambia_situacion_habitacion(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal estado_reserva_id As Integer) As Integer
             Dim update_situacion As String = "UPDATE habitaciones SET situacion_id =? WHERE habitacion_id =? "
-            Dim fechaParam As New MySqlParameter("@fecha", Today)
-            Dim fechaParam1 As New MySqlParameter("@fecha", Today)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", 0)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            Dim situacion_idParam As New MySqlParameter("@situacion_id", 0)
-            Dim habitacion_idParam As New MySqlParameter("@habitacion_id", 0)
+            Dim fechaParam As New SqlParameter("@fecha", Today)
+            Dim fechaParam1 As New SqlParameter("@fecha", Today)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim situacion_idParam As New SqlParameter("@situacion_id", 0)
+            Dim habitacion_idParam As New SqlParameter("@habitacion_id", 0)
             Dim retval As Integer = 0
 
             Try
@@ -5620,7 +5620,7 @@ Namespace geshotelk
             End Try
             Return retval
         End Function
-        Function CambiarEstadoReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal forzarprecheckout As Boolean = False) As Integer
+        Function CambiarEstadoReserva(ByVal cmd As SqlCommand, ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal forzarprecheckout As Boolean = False) As Integer
 
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = False
@@ -5629,8 +5629,8 @@ Namespace geshotelk
             If Not IsNothing(datosReservaActual) Then
                 Dim nerrores As Integer = datosReservaActual.sumaErrores()
                 cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
-                Dim reserva_idParam2 As New MySqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam2 As New SqlParameter("@reserva_id", reserva)
                 cmd.Parameters.Add(reserva_idParam)
                 Dim estado_anterior As Integer = Nothing
                 estado_anterior = ExecuteScalar(cmd, sqlEstadoReserva)
@@ -5928,10 +5928,10 @@ Namespace geshotelk
                 If Not validar And retVal Then
                     'procesar el cambio
                     cmd.Parameters.Clear()
-                    Dim estadoParam As New MySqlParameter("@estado_id", estado)
-                    Dim estadoParam1 As New MySqlParameter("@estado_id1", estado)
-                    Dim user_idParam As New MySqlParameter("@user_id", userId)
-                    Dim estado_reserva_idParam As New MySqlParameter("@estado_reserva_id", estado_anterior)
+                    Dim estadoParam As New SqlParameter("@estado_id", estado)
+                    Dim estadoParam1 As New SqlParameter("@estado_id1", estado)
+                    Dim user_idParam As New SqlParameter("@user_id", userId)
+                    Dim estado_reserva_idParam As New SqlParameter("@estado_reserva_id", estado_anterior)
                     cmd.Parameters.Add(estadoParam1)
                     cmd.Parameters.Add(estadoParam)
                     cmd.Parameters.Add(user_idParam)
@@ -5973,12 +5973,12 @@ Namespace geshotelk
             Return errorCode
         End Function
         Public Function GeneraFacturasReserva(ByVal reserva As Integer)
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim retval = GeneraFacturasReserva(cmd, reserva)
             flushConection(cmd, 0)
         End Function
-        Private Function GeneraFacturasReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
+        Private Function GeneraFacturasReserva(ByVal cmd As SqlCommand, ByVal reserva As Integer)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
             'obtener forma de pago
             'Me.preparaFactura(cmd, 1, reserva)
 
@@ -5990,7 +5990,7 @@ Namespace geshotelk
             Dim retVal2 As Boolean = True
             Dim retVal As Boolean = True
             'cuenta cuantas lineas tipo A existen
-            Dim tipoParam As New MySqlParameter("@tipo", 0)
+            Dim tipoParam As New SqlParameter("@tipo", 0)
             tipoParam.Value = "A"
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
@@ -6089,17 +6089,17 @@ Namespace geshotelk
         Shared sqlObiteneDevolucionReserva = "select permite_devolucion from reservas where reserva_id=?"
         Public Function NormalizaReserva(ByVal reserva_id As Integer) As Boolean
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             If Not NormalizaReserva(cmd, reserva_id) Then
                 errorCode = 1
             End If
             carga_valor_en_reserva(cmd, reserva_id)
             flushConection(cmd, errorCode)
         End Function
-        Private Function NormalizaReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Boolean
+        Private Function NormalizaReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As Boolean
             'Return True
             Try
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 Dim reserva As New DataSet
@@ -6242,7 +6242,7 @@ Namespace geshotelk
                             Next
                         End If
                         If reserva.HasChanges Then
-                            Dim writer As MySqlDataAdapter
+                            Dim writer As SqlDataAdapter
                             If Not IsNothing(reserva.Tables("habitaciones_bloqueos").GetChanges) Then
                                 writer = getDataAdapter(cmd, sqlReservasHabitaciones)
                                 writer.Fill(reserva.Tables("habitaciones_bloqueos"))
@@ -6263,10 +6263,10 @@ Namespace geshotelk
             Return True
         End Function
 
-        Private Function cambiarFechasLineasFacturas(ByVal cmd As MySqlCommand, ByVal reserva As Integer) As Boolean
+        Private Function cambiarFechasLineasFacturas(ByVal cmd As SqlCommand, ByVal reserva As Integer) As Boolean
             Dim retval As Boolean = False
             Try
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 Dim hotel_id As Integer = ExecuteScalar(cmd, sqlObtieneHotelReserva)
@@ -6281,7 +6281,7 @@ Namespace geshotelk
                         dt.Rows(x)("fecha") = fecha_hotel
                     End If
                 Next
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlCabLineasFactura)
                 writer.Fill(datos.Tables(0))
                 writer.Update(datos.Tables(0))
@@ -6293,17 +6293,17 @@ Namespace geshotelk
         End Function
         Public Function generaAjuste(ByVal reserva As Integer, ByVal datosnuevos As tablaServicios, Optional ByVal fechaini As String = Nothing, Optional ByVal alcheckin As Boolean = False, Optional ByVal soloAgregar As Boolean = False, Optional ByVal tipo_linea_fac As String = Nothing)
             Dim errorCode As Integer = 1
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado = generaAjuste(cmd, reserva, datosnuevos, fechaini, alcheckin, soloAgregar, tipo_linea_fac)
             If Not flushConection(cmd, errorCode) Then
                 resultado = Nothing
             End If
             Return resultado
         End Function
-        Private Function generaAjuste(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal datosnuevos As tablaServicios, Optional ByVal fechaini As String = Nothing, Optional ByVal alcheckin As Boolean = False, Optional ByVal soloAgregar As Boolean = False, Optional ByVal tipo_linea_fac As String = Nothing, Optional ByVal regenera As Boolean = False)
+        Private Function generaAjuste(ByVal cmd As SqlCommand, ByVal reserva As Integer, ByVal datosnuevos As tablaServicios, Optional ByVal fechaini As String = Nothing, Optional ByVal alcheckin As Boolean = False, Optional ByVal soloAgregar As Boolean = False, Optional ByVal tipo_linea_fac As String = Nothing, Optional ByVal regenera As Boolean = False)
             Try
                 Dim datos As DataSet = getDataSet(cmd, sqlLineasFacturasPorDiaYHotel)
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
                 Dim nerrores As Integer = datosnuevos.sumaErrores()
                 'cambiar fecha salida si se permite devoluciones o fecha prevista salida es igual a fecha hotel
                 cmd.Parameters.Clear()
@@ -6340,8 +6340,8 @@ Namespace geshotelk
                 'solo si es genera ajuste final
                 If IsNothing(fechaini) And Not regenera Then
                     'borrar lineas superiores a la fecha del hotel si soporta devolucion y no estan incluidas en facturas
-                    Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                    Dim fecha1Param As New MySqlParameter("@fecha1", fecha)
+                    Dim fechaParam As New SqlParameter("@fecha", fecha)
+                    Dim fecha1Param As New SqlParameter("@fecha1", fecha)
                     cmd.Parameters.Clear()
                     cmd.Parameters.Add(fechaParam)
                     cmd.Parameters.Add(fecha1Param)
@@ -6360,11 +6360,11 @@ Namespace geshotelk
                 'añadir columna virtual cantidad*precio_produccion
                 datosnuevos.servicios.Columns.Add("importe_produccion", System.Type.GetType("System.Double"), "cantidad*precio_produccion")
 
-                Dim fechaIniParam As New MySqlParameter("@fechaIni", Now)
+                Dim fechaIniParam As New SqlParameter("@fechaIni", Now)
                 If IsDate(fechaini) Then
                     fechaIniParam.Value = CDate(fechaini)
                 End If
-                Dim todosParam As New MySqlParameter("@todos", 0)
+                Dim todosParam As New SqlParameter("@todos", 0)
                 If IsNothing(fechaini) Then
                     todosParam.Value = 1
                 End If
@@ -6604,7 +6604,7 @@ Namespace geshotelk
                             Row.Item("pag_factura") = datosnuevos.servicios.Rows(y)("pag_factura")
                         End If
                     Next
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlLineasFacturasPorDiaYHotel)
                     writer.Fill(datos.Tables(0))
                     'AddHandler writer.RowUpdating, AddressOf OnRowUpdating
@@ -6626,8 +6626,8 @@ Namespace geshotelk
             'iniciar transaccion
             Dim errorCode As Integer = 0
             Dim retval As Boolean = False
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim ofertaParam As New MySqlParameter("@oferta_id", oferta)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim ofertaParam As New SqlParameter("@oferta_id", oferta)
             'todo comprobar que ese dia no haya sido generado
             cmd.Parameters.Clear()
             cmd.Parameters.Add(ofertaParam)
@@ -6688,7 +6688,7 @@ Namespace geshotelk
     & "        ON (reservas_contratos.reserva_id = reservas.reserva_id) " _
     & " WHERE reservas_contratos.contrato_id=? and " _
     & " (reservas.bloquear_tarifa =0 and reservas.estado_reserva_id <=3) "
-        Private Function CambiarContratosReserva(ByVal cmd As MySqlCommand, ByVal contrato_original As Integer, ByVal contrato_duplicado As Integer, ByVal conversionOfertas As DataTable)
+        Private Function CambiarContratosReserva(ByVal cmd As SqlCommand, ByVal contrato_original As Integer, ByVal contrato_duplicado As Integer, ByVal conversionOfertas As DataTable)
             'todo
             'por cada oferta duplicada..llevarse las sub tablas de oferta
             'ofertas_codigos,ofertas_rejillas,ofertas_servicios
@@ -6696,9 +6696,9 @@ Namespace geshotelk
             Try
 
 
-                Dim contratoParam As New MySqlParameter("@contrato_id", contrato_original)
-                Dim reservaParam As New MySqlParameter("@reserva_id", 0)
-                Dim ofertaParam As New MySqlParameter("@oferta_id", 0)
+                Dim contratoParam As New SqlParameter("@contrato_id", contrato_original)
+                Dim reservaParam As New SqlParameter("@reserva_id", 0)
+                Dim ofertaParam As New SqlParameter("@oferta_id", 0)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(contratoParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlReservasACambiarAlDuplicar)
@@ -6714,7 +6714,7 @@ Namespace geshotelk
                             datos.Tables(0).Rows(x)("contrato_id") = contrato_duplicado
                         End If
                     Next
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlObtieneReservasContratos)
                     writer.Fill(datos.Tables(0))
                     writer.Update(datos.Tables(0))
@@ -6791,8 +6791,8 @@ Namespace geshotelk
         Function preparaDuplicacionContrato(ByVal contrato As Integer) As duplicarTablas
             'iniciar transaccion
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim contratoParam As New MySqlParameter("@contrato_id", contrato)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim contratoParam As New SqlParameter("@contrato_id", contrato)
             'todo comprobar que ese dia no haya sido generado
             cmd.Parameters.Clear()
             cmd.Parameters.Add(contratoParam)
@@ -6876,9 +6876,9 @@ Namespace geshotelk
     & " reservas.estado_reserva_id =  3"
         Shared sqlLineasFacturasPorDiaYHotel = "select * from lineas_factura where 1=0"
         '   Dim sqlLineasFacturasPorDiaYHotel = "select * from lineas_factura where fecha=? and tipo_linea_factura='A'"
-        Private Function ExisteCierreContable(ByVal cmd As MySqlCommand, ByVal hotel As Integer, ByVal fecha As Date, Optional ByVal tpv As Boolean = False) As Boolean
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
-            Dim hotelParam As New MySqlParameter("@hotel", hotel)
+        Private Function ExisteCierreContable(ByVal cmd As SqlCommand, ByVal hotel As Integer, ByVal fecha As Date, Optional ByVal tpv As Boolean = False) As Boolean
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim hotelParam As New SqlParameter("@hotel", hotel)
             'todo comprobar que ese dia no haya sido generado
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechaParam)
@@ -6896,9 +6896,9 @@ Namespace geshotelk
                 Return True
             End If
         End Function
-        Private Function ExisteCierreContableTpv(ByVal cmd As MySqlCommand, ByVal hotel As Integer, ByVal fecha As Date) As Boolean
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
-            Dim hotelParam As New MySqlParameter("@hotel", hotel)
+        Private Function ExisteCierreContableTpv(ByVal cmd As SqlCommand, ByVal hotel As Integer, ByVal fecha As Date) As Boolean
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim hotelParam As New SqlParameter("@hotel", hotel)
             'todo comprobar que ese dia no haya sido generado
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechaParam)
@@ -6912,9 +6912,9 @@ Namespace geshotelk
         Function generaLineasFacturas(ByVal fecha As Date, ByVal hotel As Integer)
             'iniciar transaccion
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
-            'Dim fechaParam As New MysqlParameter("@fecha", fecha)
-            'Dim hotelParam As New MysqlParameter("@hotel", hotel)
+            Dim cmd As SqlCommand = prepareConection()
+            'Dim fechaParam As New SqlParameter("@fecha", fecha)
+            'Dim hotelParam As New SqlParameter("@hotel", hotel)
             'todo comprobar que ese dia no haya sido generado
             'cmd.Parameters.Clear()
             'cmd.Parameters.Add(fechaParam)
@@ -6930,8 +6930,8 @@ Namespace geshotelk
                 'cmd.Parameters.Add(fechaParam)
                 'cmd.Parameters.Add(hotelParam)
                 'ExecuteNonQuery(cmd, sqlBorrarLineasFacturasAutomaticasPorDia)
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                Dim hotelParam As New MySqlParameter("@hotel", hotel)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
+                Dim hotelParam As New SqlParameter("@hotel", hotel)
 
                 'obtener lista de reservas activas para ese dia
                 cmd.Parameters.Clear()
@@ -6941,7 +6941,7 @@ Namespace geshotelk
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneReservasAFacturarPorDia)
 
                 'Dim resultado As New tablaServicios
-                ''Dim writer As MysqlDataAdapter
+                ''Dim writer As SqlDataAdapter
                 If Not IsNothing(reader) Then
                     Dim reserva_id As Integer
                     Try
@@ -6979,7 +6979,7 @@ Namespace geshotelk
                         ''writer.Update(datos.Tables(0))
 
                         'actualizar fecha de cierre 
-                        Dim useridParam As New MySqlParameter("@userid", userId)
+                        Dim useridParam As New SqlParameter("@userid", userId)
                         cmd.Parameters.Clear()
                         cmd.Parameters.Add(fechaParam)
                         cmd.Parameters.Add(hotelParam)
@@ -7015,8 +7015,8 @@ Namespace geshotelk
             If errorCode = 0 Then
                 ' No hacemos aqui el poscierre sino que lo dejamos para el proceso automático que se hace cada 15 minutos
                 ' Pero lo que hacemos es poner el flag de postcierre a 0 para ese proceso
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel)
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
                 ' Hacemos un Update del cierres y le ponemos un 0 en postcierre para lo haga el proceso automatico de madrugada
                 Dim sql_update As String = "UPDATE cierres SET postcierre=0 WHERE hotel_id=? AND fecha_cierre = ?"
                 cmd.Parameters.Clear()
@@ -7081,12 +7081,12 @@ Namespace geshotelk
 
         Public Function generarPreCheckoutsHotel(ByVal hotel_id As Integer) As Boolean
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 Dim fecha As Date = FechaHotel(cmd, hotel_id)
 
-                Dim fechaParam As New MySqlParameter("@fecha", Format(fecha, "yyyy-MM-dd"))
-                Dim hotelParam As New MySqlParameter("@hotel", hotel_id)
+                Dim fechaParam As New SqlParameter("@fecha", Format(fecha, "yyyy-MM-dd"))
+                Dim hotelParam As New SqlParameter("@hotel", hotel_id)
 
                 'obtener lista de reservas activas para ese dia
                 cmd.Parameters.Clear()
@@ -7119,11 +7119,11 @@ Namespace geshotelk
     & " GROUP BY " _
     & " arqueos_caja.caja_id, " _
     & " arqueos_caja.fecha,lineas_arqueo.forma_pago_id "
-        Private Function GenerarFaltantesOSobrantes(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
+        Private Function GenerarFaltantesOSobrantes(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
             'todo rellenar logica
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(fechaParam)
             Dim reader As DataTableReader = Me.getDataTable(cmd, sqlObtieneCajasHotel)
@@ -7146,7 +7146,7 @@ Namespace geshotelk
         End Function
         Function GenerarFaltantesOSobrantes(ByVal hotel_id As Integer, ByVal fecha As Date)
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado = GenerarFaltantesOSobrantes(cmd, hotel_id, fecha)
             If Not flushConection(cmd, errorCode) Then
                 resultado = Nothing
@@ -7172,11 +7172,11 @@ Namespace geshotelk
         Function obtieneListaServiciosValida(ByVal reserva_id As Integer) As DataTable
             Dim errorCode As Integer = 0
             Dim resultado As DataTable = Nothing
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
                 'Console.WriteLine(Join(contratos.ToArray, ","))
-                Dim reservaParam As New MySqlParameter("@reserva_id", reserva_id)
+                Dim reservaParam As New SqlParameter("@reserva_id", reserva_id)
                 cmd.Parameters.Add(reservaParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneDatosReserva)
 
@@ -7198,20 +7198,20 @@ Namespace geshotelk
         End Function
         Function obtieneListaServiciosValida(ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha_ini As Date, ByVal fecha_fin As Date) As DataTable
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As DataTable = obtieneListaServiciosValida(cmd, hotel_id, cliente_id, fecha_ini, fecha_fin)
             If Not flushConection(cmd, errorCode) Then
                 resultado = Nothing
             End If
             Return resultado
         End Function
-        Private Function obtieneListaServiciosValida(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha_ini As Date, ByVal fecha_fin As Date) As DataTable
+        Private Function obtieneListaServiciosValida(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha_ini As Date, ByVal fecha_fin As Date) As DataTable
             Dim contratos As ArrayList = obtieneContratoActivosCliente(cmd, hotel_id, cliente_id, fecha_ini, fecha_fin)
             Dim resultado As DataTable = obtieneListaServiciosValida(cmd, contratos)
             Return resultado
         End Function
 
-        Private Function obtieneListaServiciosValida(ByVal cmd As MySqlCommand, ByVal contratos As ArrayList) As DataTable
+        Private Function obtieneListaServiciosValida(ByVal cmd As SqlCommand, ByVal contratos As ArrayList) As DataTable
             'opcion 1
             'todo...deberia sacar la fecha ini y fecha fin de la reserva
             'todo...obtener lista de contratos del cliente
@@ -7219,7 +7219,7 @@ Namespace geshotelk
             'obtieneContratoActivosCliente(cmd, reader.Item("hotel_id"), reader.Item("cliente_id"), reader.Item("fecha_prevista_llegada"), reader.Item("fecha_prevista_salida"))
             cmd.Parameters.Clear()
             'Console.WriteLine(Join(contratos.ToArray, ","))
-            'Dim contratosParam As New MysqlParameter("@contrato_id", )
+            'Dim contratosParam As New SqlParameter("@contrato_id", )
             'contratosParam.DbType = DbType.
             'cmd.Parameters.Add(contratosParam)
 
@@ -7237,10 +7237,10 @@ Namespace geshotelk
         Function obtieneImporteTotalReservaFacturas(ByVal reserva_id As Integer, ByVal def As Decimal) As Decimal
             Dim errorCode As Integer = 0
             Dim resultado As String = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            'Dim defParam As New MysqlParameter("@def", def)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            'Dim defParam As New SqlParameter("@def", def)
             'cmd.Parameters.Add(defParam)
             cmd.Parameters.Add(reserva_idParam)
 
@@ -7286,10 +7286,10 @@ Namespace geshotelk
         Function obtieneImporteTotalCobradoReserva(ByVal reserva_id As Integer) As Decimal
             Dim errorCode As Integer = 0
             Dim resultado = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            'Dim defParam As New MysqlParameter("@def", def)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            'Dim defParam As New SqlParameter("@def", def)
             'cmd.Parameters.Add(defParam)
             cmd.Parameters.Add(reserva_idParam)
 
@@ -7320,10 +7320,10 @@ Namespace geshotelk
         Function obtieneImporteManualReserva(ByVal reserva_id As Integer) As Decimal
             Dim errorCode As Integer = 0
             Dim resultado = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            'Dim defParam As New MysqlParameter("@def", def)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            'Dim defParam As New SqlParameter("@def", def)
             'cmd.Parameters.Add(defParam)
             cmd.Parameters.Add(reserva_idParam)
 
@@ -7346,8 +7346,8 @@ Namespace geshotelk
         Function ClientePermiteCredito(ByVal cliente_id As Integer) As Boolean
             Dim errorCode As Integer = 0
             Dim resultado = 0
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(cliente_idParam)
             Try
@@ -7403,14 +7403,14 @@ Namespace geshotelk
 
         Function ObtieneErroresReservasOld(ByVal fecha As Date, ByVal hotel_id As Integer) As DataTable
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As DataSet = Nothing
             Try
                 resultado = getDataSet(cmd, sqlGenTablaSalidaErrores)
                 resultado.Tables(0).Rows.Clear()
                 cmd.Parameters.Clear()
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(fechaParam)
                 cmd.Parameters.Add(hotel_idParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneReservasEntreFechas)
@@ -7478,13 +7478,13 @@ Namespace geshotelk
         End Class
         Function ObtieneErroresReservas(ByVal fecha As Date, ByVal hotel_id As Integer) As DataTable
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection(IsolationLevel.RepeatableRead)
+            Dim cmd As SqlCommand = prepareConection(IsolationLevel.RepeatableRead)
             Dim resultado As DataSet = getDataSet(cmd, sqlGenTablaSalidaErrores)
             resultado.Tables(0).Rows.Clear()
             cmd.Parameters.Clear()
 
-            Dim fechaParam As New MySqlParameter("@fecha", convertFecha(fecha))
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", convertFecha(fecha))
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Add(fechaParam)
             cmd.Parameters.Add(hotel_idParam)
             Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneReservasEntreFechas)
@@ -7569,9 +7569,9 @@ Namespace geshotelk
             If Not estado Is Nothing Then
 
                 Dim z As New GesHotelClase(Me.userId)
-                Dim cmd As MySqlCommand = prepareConection(IsolationLevel.RepeatableRead)
+                Dim cmd As SqlCommand = prepareConection(IsolationLevel.RepeatableRead)
                 'cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
                 'cmd.Parameters.Add(reserva_idParam)
 
                 Dim serviciosmap As New Hashtable
@@ -7675,7 +7675,7 @@ Namespace geshotelk
                                 If tipoError = 0 Then
                                     reserva_idParam.Value = estado.reserva_id
                                     cmd.Parameters.Clear()
-                                    'Dim reserva_idParam As New MysqlParameter("@reserva_id", 0)
+                                    'Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
                                     cmd.Parameters.Add(reserva_idParam)
                                     Dim nreg As Integer = ExecuteScalar(cmd, sqlWarningCierreHuespedes)
                                     If nreg > 0 Then
@@ -7739,13 +7739,13 @@ Namespace geshotelk
         Shared sqlEquivalencias = "SELECT * from equivalencia_reservas_servicios"
         Shared sqlServicios = "SELECT * from servicios"
         Shared sqlHabitacion_id = "SELECT habitacion_id from habitaciones where hotel_id=? and numero_habitacion=? limit 0,1"
-        Private Function ObtieneHabitacion_Id(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal habitacion As Object) As Integer
+        Private Function ObtieneHabitacion_Id(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal habitacion As Object) As Integer
             Dim habitacion_id As Integer = 0
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(hotel_idParam)
-                Dim habitacionParam As New MySqlParameter("@habitacion", habitacion)
+                Dim habitacionParam As New SqlParameter("@habitacion", habitacion)
                 cmd.Parameters.Add(habitacionParam)
                 habitacion_id = ExecuteScalar(cmd, sqlHabitacion_id, True)
 
@@ -7853,7 +7853,7 @@ Namespace geshotelk
             End Try
 
         End Function
-        Private Function ConvierteDingusAMetareserva(ByVal cmd As MySqlCommand, ByVal res As MetaReserva)
+        Private Function ConvierteDingusAMetareserva(ByVal cmd As SqlCommand, ByVal res As MetaReserva)
             ' Coge el XML de dingus y convierte a Metareserva
             'datos
             'obtener cliente directo del hotel
@@ -7870,7 +7870,7 @@ Namespace geshotelk
                 'Saco empresa_id del hotel_id
                 ' GARRA JAVIER JULIO 2012                                             '
                 Dim sql_empresa As String = "Select empresa_id From hoteles where hotel_id =?"
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 Try
@@ -8196,14 +8196,14 @@ Namespace geshotelk
 & " Inner Join servicios ON servicios_hotel.servicio_id = servicios.servicio_id" _
 & " Right Join impuestos ON servicios_hotel.impuesto_id = impuestos.impuesto_id" _
 & " where servicios_hotel.hotel_id=?"
-        Private Function CreaLineasPreciosDingus(ByVal cmd As MySqlCommand, ByVal datos As DataSet, ByVal reserva_Dingus As Dingus.BookingRS, ByVal impuestos_incluidos As Integer, ByVal comision As Decimal) As Decimal
+        Private Function CreaLineasPreciosDingus(ByVal cmd As SqlCommand, ByVal datos As DataSet, ByVal reserva_Dingus As Dingus.BookingRS, ByVal impuestos_incluidos As Integer, ByVal comision As Decimal) As Decimal
 
             Dim resultado As New tablaServicios
             resultado.servicios.Columns.Add("impuesto_id", System.Type.GetType("System.Int16"))
             Dim x As Integer
 
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", reserva_Dingus.HotelCode)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", reserva_Dingus.HotelCode)
             cmd.Parameters.Add(hotel_idParam)
 
             Dim servicios As DataSet = getDataSet(cmd, sqlServiciosHotel, True)
@@ -8306,8 +8306,8 @@ Namespace geshotelk
             Dim sql_contrato_id = "SELECT contrato_id FROM contratos Where hotel_id =? AND cliente_id = ? AND ? Between fecha_desde AND fecha_hasta"
             Dim contrato_id As Integer = 0
 
-            Dim fechaParam As New MySqlParameter("@fecha", reserva_Dingus.DateFrom)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
+            Dim fechaParam As New SqlParameter("@fecha", reserva_Dingus.DateFrom)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
             Try
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
@@ -8317,7 +8317,7 @@ Namespace geshotelk
             Catch ex As Exception
 
             End Try
-            Dim contrato_idParam As New MySqlParameter("@contrato_id", contrato_id)
+            Dim contrato_idParam As New SqlParameter("@contrato_id", contrato_id)
             ' --------------------------------------------------------------------------------------------------------
             ' FIN GARRA JAVIER JULIO 2012
             ' --------------------------------------------------------------------------------------------------------
@@ -8389,7 +8389,7 @@ Namespace geshotelk
                         '---------------------------------------------------------------------------------------------------------
                         Dim dingus_pax As Dingus.Pax = ObtienePaxDingus(reserva_Dingus.Paxes, linea.PaxType, linea.PaxNo)
 
-                        Dim edadParam As New MySqlParameter("@edad_minima", 0)
+                        Dim edadParam As New SqlParameter("@edad_minima", 0)
                         Dim unidad_calculo_id As Integer = 0
                         ' ----------------------------------------------------------------------------------------------------------------------------------
                         ' Busco la unidad de calculo según paxType
@@ -8649,7 +8649,7 @@ Namespace geshotelk
         Shared sqlOfertasTienenCodigo = "SELECT count(*) FROM ofertas_codigos WHERE ofertas_codigos.codigo_oferta =  @codigo AND ofertas_codigos.oferta_id IN  (@ofertas_id)"
         Function obtieneServiciosReserva(ByVal res As MetaReserva, Optional ByVal crear As Boolean = False, Optional ByVal old_reserva_id As Integer = 0) As tablaServicios
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As tablaServicios
             resultado = New tablaServicios
             Dim datos As DataSet
@@ -8870,13 +8870,13 @@ Namespace geshotelk
                         Next
 
                         datos.Tables("reserva").Rows.Remove(row)
-                        Dim writer As MySqlDataAdapter
+                        Dim writer As SqlDataAdapter
                         writer = getDataAdapter(cmd, sqlCabReserva)
                         writer.Fill(datos.Tables("reserva"))
                         writer.Update(datos.Tables("reserva"))
                     End If
 
-                    'Dim writer As MysqlDataAdapter
+                    'Dim writer As SqlDataAdapter
                     'writer = getDataAdapter(cmd, sqlCabReserva)
                     'writer.Fill(datos.Tables(0))
                     'writer.Update(datos.Tables(0))
@@ -8983,7 +8983,7 @@ Namespace geshotelk
                         Dim lineaextras() As Dingus.Extra = res.reserva_Dingus.Extras
 
                         Dim dingus_extras As DataSet = getDataSet(cmd, "SELECT * FROM dingus_extras", True)
-                        Dim codigo_extraParam As New MySqlParameter("@codigo_extra", "")
+                        Dim codigo_extraParam As New SqlParameter("@codigo_extra", "")
                         For x = 0 To lineaextras.Length - 1
                             Dim tipo As Integer
                             Dim ser() As DataRow = dingus_extras.Tables(0).Select("codigo_extra='" + lineaextras(x).ExtraCode + "'")
@@ -9098,7 +9098,7 @@ Namespace geshotelk
                                 ' Si se ha hecho Checkin Online no se actualizan los huespedes SEPTIEMBRE 2013 
                                 Dim online As Boolean = False
                                 Dim estado_reserva_id As Integer = 1 ' Por defecto Pendiente de entrar
-                                Dim reserva_idParam As New MySqlParameter("@reserva_id", old_reserva_id)
+                                Dim reserva_idParam As New SqlParameter("@reserva_id", old_reserva_id)
 
                                 If old_reserva_id <> 0 Then ' Ya existe reserva, pregunto por su estado, sino, supongo pendiente de entrar
                                     'cmd.Parameters.Clear()
@@ -9164,9 +9164,9 @@ Namespace geshotelk
             Return resultado
 
         End Function
-        Function obtieneServiciosReserva(ByVal cmd As MySqlCommand, ByVal res As MetaReserva, Optional ByVal crear As Boolean = False) As tablaServicios
+        Function obtieneServiciosReserva(ByVal cmd As SqlCommand, ByVal res As MetaReserva, Optional ByVal crear As Boolean = False) As tablaServicios
             Dim errorCode As Integer = 0
-            'Dim cmd As MysqlCommand = prepareConection()
+            'Dim cmd As SqlCommand = prepareConection()
             Dim resultado As tablaServicios
             resultado = New tablaServicios
             Dim datos As DataSet
@@ -9179,7 +9179,7 @@ Namespace geshotelk
                     Dim servicios As DataSet = getDataSet(cmd, sqlServicios)
                     datos = preparaDatasetReserva(cmd, 0)
                     'cmd.Parameters.Clear()
-                    'Dim reserva_idParam As New MysqlParameter("@reserva_id", 0)
+                    'Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
                     'cmd.Parameters.Add(reserva_idParam)
                     'ExecuteNonQuery(cmd, "delete from reservas where reserva_id=?")
                     'Dim datos As DataSet = getDataSet(cmd, sqlCabReserva)
@@ -9240,7 +9240,7 @@ Namespace geshotelk
                     row.Item("user_id") = userId
                     row.Item("fecha_modificacion") = Now
 
-                    'Dim writer As MysqlDataAdapter
+                    'Dim writer As SqlDataAdapter
                     'writer = getDataAdapter(cmd, sqlCabReserva)
                     'writer.Fill(datos.Tables(0))
                     'writer.Update(datos.Tables(0))
@@ -9400,7 +9400,7 @@ Namespace geshotelk
         Function obtieneServiciosReserva(ByVal reserva_id As Integer) As tablaServicios
             Return obtieneServiciosReserva(reserva_id, Nothing, Nothing)
         End Function
-        Private Function obtieneServiciosReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As tablaServicios
+        Private Function obtieneServiciosReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As tablaServicios
             Return obtieneServiciosReserva(cmd, reserva_id, Nothing, Nothing)
         End Function
         Shared sqlTablaReservasOld = "" _
@@ -9410,7 +9410,7 @@ Namespace geshotelk
         Function obtieneServiciosReserva(ByVal reserva_id As Integer, ByVal fecha_ini As Object, ByVal fecha_fin As Object) As tablaServicios
             'Dim dt As Date = Now
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As tablaServicios = Nothing
             Try
                 resultado = obtieneServiciosReserva(cmd, reserva_id, fecha_ini, fecha_fin)
@@ -9471,7 +9471,7 @@ Namespace geshotelk
     & " unidades_calculo " _
     & " Left Join unidades_calculo_agrupados ON unidades_calculo.unidad_calculo_id = unidades_calculo_agrupados.unidad_calculo_padre_id "
         Shared sqlResultadoUC = "select 1 as unidad_calculo_id,0.0 as cantidad from hoteles where 1=0"
-        Private Function obtieneUCSReserva(ByVal cmd As MySqlCommand, ByVal ds As DataSet) As DataSet
+        Private Function obtieneUCSReserva(ByVal cmd As SqlCommand, ByVal ds As DataSet) As DataSet
             cmd.Parameters.Clear()
             Dim datos As DataTableReader = getDataTable(cmd, sqlUnidadesCalculoDetalladas, True)
             Dim destino As DataSet = getDataSet(cmd, sqlResultadoUC, True)
@@ -9501,9 +9501,9 @@ Namespace geshotelk
             End While
             Return destino
         End Function
-        Private Function obtieneUCSReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer) As DataSet
+        Private Function obtieneUCSReserva(ByVal cmd As SqlCommand, ByVal reserva As Integer) As DataSet
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva)
             cmd.Parameters.Add(reserva_idParam)
             Return getDataSet(cmd, sqlUCReservas)
         End Function
@@ -9515,10 +9515,10 @@ Namespace geshotelk
     & " unidades_calculo " _
     & " Left Join unidades_calculo_agrupados ON unidades_calculo.unidad_calculo_id = unidades_calculo_agrupados.unidad_calculo_padre_id "
         'Private cachedUCHijas As DataSet
-        Private Function obtieneUCHijas(ByVal cmd As MySqlCommand) As DataSet
+        Private Function obtieneUCHijas(ByVal cmd As SqlCommand) As DataSet
             Return getDataSet(cmd, sqlUCHijas, True)
         End Function
-        Private Function obtieneUCHijas(ByVal cmd As MySqlCommand, ByVal ucidPadre As Integer) As ArrayList
+        Private Function obtieneUCHijas(ByVal cmd As SqlCommand, ByVal ucidPadre As Integer) As ArrayList
             Dim dr As DataRow() = obtieneUCHijas(cmd).Tables(0).Select("unidad_calculo_id_padre=" & ucidPadre)
             Dim ar As New ArrayList()
             Dim x As DataRow
@@ -9540,10 +9540,10 @@ Namespace geshotelk
         Shared sqlCondicionesContratos = "select condiciones_linea_contrato.* from lineas_de_contrato inner join condiciones_linea_contrato on lineas_de_contrato.linea_contrato_id=condiciones_linea_contrato.linea_contrato_id where lineas_de_contrato.contrato_id=?"
         Shared sqlCondicionesOfertas = "select * from condiciones_ofertas where oferta_id=?"
         Shared sqlCondicionesOfertasContratos = "select condiciones_ofertas.* from ofertas inner join condiciones_ofertas on ofertas.oferta_id=condiciones_ofertas.oferta_id where ofertas.contrato_id in (?)"
-        Private Function cumpleCondicionesOfertas(ByVal cmd As MySqlCommand, ByVal oferta_id As Integer, ByVal ucsTable As DataSet)
+        Private Function cumpleCondicionesOfertas(ByVal cmd As SqlCommand, ByVal oferta_id As Integer, ByVal ucsTable As DataSet)
             Return cumpleCondiciones(cmd, sqlCondicionesOfertas, oferta_id, ucsTable)
         End Function
-        'Private Function cumpleCondicionesLineaContrato(ByVal cmd As MysqlCommand, ByVal linea_contrato_id As Integer, ByVal ucsTable As DataSet)
+        'Private Function cumpleCondicionesLineaContrato(ByVal cmd As SqlCommand, ByVal linea_contrato_id As Integer, ByVal ucsTable As DataSet)
         '    Return cumpleCondiciones(cmd, sqlCondiciones, linea_contrato_id, ucsTable)
         'End Function
         Private Function cumpleCondiciones(ByVal cond As DataTableReader, ByVal ucsTable As DataSet)
@@ -9590,12 +9590,12 @@ Namespace geshotelk
             Return cumple
         End Function
 
-        Private Function cumpleCondiciones(ByVal cmd As MySqlCommand, ByVal query As String, ByVal id As Integer, ByVal ucsTable As DataSet)
+        Private Function cumpleCondiciones(ByVal cmd As SqlCommand, ByVal query As String, ByVal id As Integer, ByVal ucsTable As DataSet)
             If IsNothing(ucsTable) Then
                 Return True
             End If
             cmd.Parameters.Clear()
-            Dim idParam As New MySqlParameter("@id", id)
+            Dim idParam As New SqlParameter("@id", id)
             cmd.Parameters.Add(idParam)
             Dim cond As DataTableReader = getDataTable(cmd, query, True)
             Return cumpleCondiciones(cond, ucsTable)
@@ -9965,10 +9965,10 @@ Namespace geshotelk
             Return reader
         End Function
 
-        Private Function preparaDatasetReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, Optional ByVal reserva_dingus As Dingus.BookingRS = Nothing, Optional ByVal resdingustipo As Integer = 0, Optional ByVal impuestos_incluidos As Integer = 1, Optional ByVal comision As Decimal = 0, Optional ByRef totalreserva As Decimal = Nothing) As DataSet
+        Private Function preparaDatasetReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, Optional ByVal reserva_dingus As Dingus.BookingRS = Nothing, Optional ByVal resdingustipo As Integer = 0, Optional ByVal impuestos_incluidos As Integer = 1, Optional ByVal comision As Decimal = 0, Optional ByRef totalreserva As Decimal = Nothing) As DataSet
             Dim ds As New DataSet
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
 
             getDataSet(cmd, sqlCabReserva, ds, "reserva")
@@ -10016,7 +10016,7 @@ Namespace geshotelk
             End If
             Return ds
         End Function
-        Private Function grabaDatasetReserva(ByVal cmd As MySqlCommand, ByVal ds As DataSet, Optional ByVal reserva_id As Integer = 0) As Object
+        Private Function grabaDatasetReserva(ByVal cmd As SqlCommand, ByVal ds As DataSet, Optional ByVal reserva_id As Integer = 0) As Object
             'actualizar todas las tablas y cambiar reserva_id por la nueva si la hubiese
             Try
                 If Not IsNothing(ds.Tables("reservas_descuentos_subclone")) And Not IsNothing(ds.Tables("reservas_descuentos").GetChanges) Then
@@ -10094,12 +10094,12 @@ Namespace geshotelk
                 If (ds.HasChanges Or reserva_id = 0) And reserva_id <> -1 Then
                     'TODO actualizar si ha cambiado
                     Console.WriteLine(reserva_id)
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
 
                     Dim filas As DataRowCollection
                     Dim x As Integer
                     cmd.Parameters.Clear()
-                    Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                    Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                     cmd.Parameters.Add(reserva_idParam)
                     If reserva_id = 0 Then
                         writer = getDataAdapter(cmd, sqlCabReserva)
@@ -10170,7 +10170,7 @@ Namespace geshotelk
                 Return Nothing
             End Try
         End Function
-        Private Function obtieneServiciosReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal fecha_ini As Object, ByVal fecha_fin As Object, Optional ByVal noupdate As Boolean = False) As tablaServicios
+        Private Function obtieneServiciosReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal fecha_ini As Object, ByVal fecha_fin As Object, Optional ByVal noupdate As Boolean = False) As tablaServicios
             'AgregaInfo("obtieneServiciosReserva", reserva_id & "_" & New System.Diagnostics.StackTrace(True).ToString(), -1)
             Dim resultado As tablaServicios
             Try
@@ -10204,9 +10204,9 @@ Namespace geshotelk
 & " WHERE " _
 & " servicios_hotel.hotel_id =  ? "
         Shared sqlUnidadesCalculos = "select * from unidades_calculo"
-        Private Function convierteReservasServicios(ByVal cmd As MySqlCommand, ByVal ds As DataSet, Optional ByVal paso As Integer = 0) As DataTable
+        Private Function convierteReservasServicios(ByVal cmd As SqlCommand, ByVal ds As DataSet, Optional ByVal paso As Integer = 0) As DataTable
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
             cmd.Parameters.Add(reserva_idParam)
 
             'getDataTable(cmd, sqlTablaReservas, True)
@@ -10222,7 +10222,7 @@ Namespace geshotelk
 
                 Dim cabres As DataRow = ds.Tables("reserva").Rows(0)
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", cabres("hotel_id"))
+                Dim hotel_idParam As New SqlParameter("@hotel_id", cabres("hotel_id"))
                 cmd.Parameters.Add(hotel_idParam)
                 Dim servhoteles As DataTable = getDataSet(cmd, sqlServiciosHoteles, True).Tables(0) ' se puede cachear
                 'Dim servhoteles As DataTable = readerToTable(Me.getDataTable(cmd, sqlServiciosHoteles, True)) ' se puede cachear
@@ -10334,7 +10334,7 @@ Namespace geshotelk
             End If
             Return datos.Tables(0) '.CreateDataReader
         End Function
-        Private Function obtieneServiciosReserva(ByVal cmd As MySqlCommand, ByVal ds As DataSet, ByVal fecha_ini As Object, ByVal fecha_fin As Object, Optional ByVal paso As Integer = 0, Optional ByVal forzarPaso As Boolean = False, Optional ByVal esManual As String = "A") As tablaServicios
+        Private Function obtieneServiciosReserva(ByVal cmd As SqlCommand, ByVal ds As DataSet, ByVal fecha_ini As Object, ByVal fecha_fin As Object, Optional ByVal paso As Integer = 0, Optional ByVal forzarPaso As Boolean = False, Optional ByVal esManual As String = "A") As tablaServicios
 
             Dim errorCode As Integer = 0
             'Dim reserva_id As Integer = 0 'quitar
@@ -10403,7 +10403,7 @@ Namespace geshotelk
                             'todo ejecutar funcion por todos los contratos.
                             'Dim ienu As IEnumerator = ncontratoid.GetEnumerator
 
-                            Dim contrato_idParam As New MySqlParameter("@contrato_id", 0)
+                            Dim contrato_idParam As New SqlParameter("@contrato_id", 0)
                             While contrareader.Read() And errorCode = 0
 
                                 'todo agregar solo si el servicio es para el touroperador y este es el contrato tour
@@ -10599,10 +10599,10 @@ Namespace geshotelk
                                     & "WHERE servicios_hotel.hotel_id = ? AND " _
                                     & "servicios_hotel.servicio_id = ? "
 
-                                    Dim hotel_idParam As New MySqlParameter("@reserva_id", ds.Tables("reserva").Rows(0).Item("hotel_id"))
+                                    Dim hotel_idParam As New SqlParameter("@reserva_id", ds.Tables("reserva").Rows(0).Item("hotel_id"))
 
-                                    Dim contrato_idParam As New MySqlParameter("@contrato_id", contrato_id)
-                                    Dim servicio_id_idParam As New MySqlParameter("@contrato_id", rows(x)("servicio_id"))
+                                    Dim contrato_idParam As New SqlParameter("@contrato_id", contrato_id)
+                                    Dim servicio_id_idParam As New SqlParameter("@contrato_id", rows(x)("servicio_id"))
                                     cmd.Parameters.Clear()
                                     cmd.Parameters.Add(hotel_idParam)
                                     cmd.Parameters.Add(servicio_id_idParam)
@@ -10742,16 +10742,16 @@ Namespace geshotelk
         & " )" _
         & " ) drvk group by drvk.contrato_id order by 2 desc,1"
         '    & " ?>=contratos.fecha_desde AND  ?<=contratos.fecha_hasta " _
-        Private Function obtieneContratoActivosCliente(ByVal cmd As MySqlCommand, ByVal hotel As Integer, ByVal cliente As Integer, ByVal fechaini As Date, ByVal fechafin As Date, Optional ByVal tipo As Integer = 0) As Object
+        Private Function obtieneContratoActivosCliente(ByVal cmd As SqlCommand, ByVal hotel As Integer, ByVal cliente As Integer, ByVal fechaini As Date, ByVal fechafin As Date, Optional ByVal tipo As Integer = 0) As Object
             cmd.Parameters.Clear()
             ' Create a SqlParameter for each parameter in the stored procedure.
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel)
-            Dim hotel_id1Param As New MySqlParameter("@hotel_id1", hotel)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente)
-            Dim fechainiParam As New MySqlParameter("@fechaini", fechaini)
-            Dim fechafinParam As New MySqlParameter("@fechafin", fechafin)
-            Dim fechaini1Param As New MySqlParameter("@fechaini1", fechaini)
-            Dim fechafin1Param As New MySqlParameter("@fechafin1", fechafin)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel)
+            Dim hotel_id1Param As New SqlParameter("@hotel_id1", hotel)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente)
+            Dim fechainiParam As New SqlParameter("@fechaini", fechaini)
+            Dim fechafinParam As New SqlParameter("@fechafin", fechafin)
+            Dim fechaini1Param As New SqlParameter("@fechaini1", fechaini)
+            Dim fechafin1Param As New SqlParameter("@fechafin1", fechafin)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(cliente_idParam)
             cmd.Parameters.Add(fechainiParam)
@@ -10773,7 +10773,7 @@ Namespace geshotelk
 
         End Function
 
-        Private Function obtieneContratoActivoCliente(ByVal cmd As MySqlCommand, ByVal hotel As Integer, ByVal cliente As Integer, ByVal fechaini As Date, ByVal fechafin As Date)
+        Private Function obtieneContratoActivoCliente(ByVal cmd As SqlCommand, ByVal hotel As Integer, ByVal cliente As Integer, ByVal fechaini As Date, ByVal fechafin As Date)
             Dim dtr As ArrayList = obtieneContratoActivosCliente(cmd, hotel, cliente, fechaini, fechafin)
             Dim contrato_id = 0
             If dtr.Count > 0 Then
@@ -10824,11 +10824,11 @@ Namespace geshotelk
             Dim errorCode As Integer = 0
 
 
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
 
 
             cmd.Parameters.Clear()
-            Dim ticketParam As New MySqlParameter("@ticket_id", ticket)
+            Dim ticketParam As New SqlParameter("@ticket_id", ticket)
             cmd.Parameters.Add(ticketParam)
             'limpia campos
             ExecuteNonQuery(cmd, sqlLimpiaLineaTickets)
@@ -10840,7 +10840,7 @@ Namespace geshotelk
             'cmd.Transaction = Transaccion
 
             'cmd.Parameters.Clear()
-            ''Dim ticketParam As New MysqlParameter("@ticket_id", ticket)
+            ''Dim ticketParam As New SqlParameter("@ticket_id", ticket)
             'cmd.Parameters.Add(ticketParam)
             'limpia campos
             'ExecuteNonQuery(cmd, sqlLimpiaLineaTickets)
@@ -10882,13 +10882,13 @@ Namespace geshotelk
                     End If
                 End If
                 If graba Then
-                    Dim contrato_idParam As New MySqlParameter("@contrato_id", contrato_id)
-                    Dim descripcionParam As New MySqlParameter("@descripcion", descripcion)
-                    Dim precioParam As New MySqlParameter("@precio", precio)
-                    Dim impuesto_idParam As New MySqlParameter("@impuesto_id", impuesto_id)
-                    Dim porc_impuestoParam As New MySqlParameter("@porc_impuesto", porcentaje)
-                    Dim linea_ticket_idParam As New MySqlParameter("@linea_ticket_id", linea_ticket_id)
-                    'Dim importeConIgicParam As New MysqlParameter("@importeConIgic", importeConIgic)
+                    Dim contrato_idParam As New SqlParameter("@contrato_id", contrato_id)
+                    Dim descripcionParam As New SqlParameter("@descripcion", descripcion)
+                    Dim precioParam As New SqlParameter("@precio", precio)
+                    Dim impuesto_idParam As New SqlParameter("@impuesto_id", impuesto_id)
+                    Dim porc_impuestoParam As New SqlParameter("@porc_impuesto", porcentaje)
+                    Dim linea_ticket_idParam As New SqlParameter("@linea_ticket_id", linea_ticket_id)
+                    'Dim importeConIgicParam As New SqlParameter("@importeConIgic", importeConIgic)
 
                     If IsNothing(linea_contrato_id) Then
                         contrato_idParam.Value = Nothing
@@ -10916,10 +10916,10 @@ Namespace geshotelk
         Shared sqlBorrarOferta = "delete  from ofertas where oferta_id=? and (select count(*) from reservas_ofertas r where r.oferta_id=ofertas.oferta_id and r.activa=1)=0 "
         Public Function BorrarOferta(ByVal oferta_id As Integer)
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
-                Dim oferta_idParam As New MySqlParameter("@oferta_id", oferta_id)
+                Dim oferta_idParam As New SqlParameter("@oferta_id", oferta_id)
                 cmd.Parameters.Add(oferta_idParam)
                 Me.ExecuteNonQuery(cmd, sqlBorrarOferta)
             Catch ex As Exception
@@ -10969,7 +10969,7 @@ Namespace geshotelk
         Public Function cobrarFactura(ByVal arrfac() As String, ByVal cobro_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1, Optional ByVal parcial As Boolean = False, Optional ByRef importe As Single = Nothing)
             Dim retVal As Boolean = True
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 'Dim arrfac() As String = facturas.Split(",")
                 Dim x As Integer
@@ -11021,7 +11021,7 @@ Namespace geshotelk
         Public Function cobrarFactura(ByVal factura_id As Integer, ByVal cobro_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1, Optional ByVal parcial As Boolean = False, Optional ByRef importe As Single = Nothing)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = cobrarFactura(cmd, factura_id, cobro_id, tipo_cobro_id, parcial, importe)
             If Not flushConection(cmd, errorCode) Then
                 retVal = False
@@ -11031,7 +11031,7 @@ Namespace geshotelk
         Shared sqlCobros = "select * from cobros where 1=0"
         Shared sqlLineasCobros = "select * from lineas_cobro where 1=0"
 
-        Private Function cobrarFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer, ByVal cobro_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1, Optional ByVal parcial As Boolean = False, Optional ByRef importe As Single = Nothing)
+        Private Function cobrarFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer, ByVal cobro_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1, Optional ByVal parcial As Boolean = False, Optional ByRef importe As Single = Nothing)
             'todo obtiene importe facturas
             'todo obtiene lo ya cobrado
 
@@ -11062,7 +11062,7 @@ Namespace geshotelk
             rowLin.Item("cobro_id") = cobro_id
             rowLin.Item("factura_id") = factura_id
             rowLin.Item("importe") = tmpi
-            Dim writer As MySqlDataAdapter
+            Dim writer As SqlDataAdapter
             writer = getDataAdapter(cmd, sqlLineasCobros)
             writer.Fill(datosCobros.Tables(0))
             writer.Update(datosCobros)
@@ -11115,9 +11115,9 @@ Namespace geshotelk
         Shared sqlActualizaLineasAnticipo = "update lineas_anticipo set fecha_contabilizacion=now() where anticipo_id=? and Fecha_Contabilizacion IS NULL "
         Shared sqlObtieneHotelAnticipo = "select hotel_id from anticipos where anticipo_id=?"
         Shared sqlCuentaLineasAnticiposPendientes = "select count(*) from lineas_anticipo where anticipo_id=? and Fecha_Contabilizacion IS NULL "
-        Private Function CrearCobro(ByVal cmd As MySqlCommand, ByVal Anticipo_id As Integer)
+        Private Function CrearCobro(ByVal cmd As SqlCommand, ByVal Anticipo_id As Integer)
             Dim retVal As Integer = 0
-            Dim anticipo_idParam As New MySqlParameter("@anticipo_id", Anticipo_id)
+            Dim anticipo_idParam As New SqlParameter("@anticipo_id", Anticipo_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(anticipo_idParam)
             Dim nant As Integer = ExecuteScalar(cmd, sqlCuentaLineasAnticiposPendientes)
@@ -11125,9 +11125,9 @@ Namespace geshotelk
                 Dim hotel_id As Integer = ExecuteScalar(cmd, sqlObtieneHotelAnticipo)
                 Dim fecha As Date = FechaHotel(cmd, hotel_id)
                 cmd.Parameters.Clear()
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                Dim tipo_cobro_idParam As New MySqlParameter("@tipo_cobro_id", 5)
-                Dim userIdParam As New MySqlParameter("@userId", userId)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
+                Dim tipo_cobro_idParam As New SqlParameter("@tipo_cobro_id", 5)
+                Dim userIdParam As New SqlParameter("@userId", userId)
                 cmd.Parameters.Add(fechaParam)
                 cmd.Parameters.Add(tipo_cobro_idParam)
                 cmd.Parameters.Add(userIdParam)
@@ -11135,7 +11135,7 @@ Namespace geshotelk
                 'creo cabecera cobro
                 If Me.ExecuteNonQuery(cmd, sqlCrearCobroAnticipo) = 1 Then
                     retVal = Obtiene_ultima_id(cmd)
-                    Dim cobro_idParam As New MySqlParameter("@cobro_id", retVal)
+                    Dim cobro_idParam As New SqlParameter("@cobro_id", retVal)
                     'meto lineas del cobro
                     cmd.Parameters.Clear()
                     cmd.Parameters.Add(cobro_idParam)
@@ -11171,15 +11171,15 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function CrearCobro(ByVal cmd As MySqlCommand, ByVal tipo_cobro_id As Integer, ByVal factura_id As Integer, ByVal caja_id As Integer) As Integer
+        Private Function CrearCobro(ByVal cmd As SqlCommand, ByVal tipo_cobro_id As Integer, ByVal factura_id As Integer, ByVal caja_id As Integer) As Integer
             'TODO Cambiar fecha?
             Dim retVal As Integer = 0
             cmd.Parameters.Clear()
-            Dim tipo_cobro_idParam As New MySqlParameter("@tipo_cobro_id", tipo_cobro_id)
-            Dim caja_idParam As New MySqlParameter("@caja_id", caja_id)
-            Dim user_idParam As New MySqlParameter("@user_id", userId)
-            Dim fecha_modificacionParam As New MySqlParameter("@fecha_modificacion", Now)
-            Dim Factura_IdParam As New MySqlParameter("@factura_id", factura_id)
+            Dim tipo_cobro_idParam As New SqlParameter("@tipo_cobro_id", tipo_cobro_id)
+            Dim caja_idParam As New SqlParameter("@caja_id", caja_id)
+            Dim user_idParam As New SqlParameter("@user_id", userId)
+            Dim fecha_modificacionParam As New SqlParameter("@fecha_modificacion", Now)
+            Dim Factura_IdParam As New SqlParameter("@factura_id", factura_id)
             cmd.Parameters.Add(tipo_cobro_idParam)
             cmd.Parameters.Add(caja_idParam)
             cmd.Parameters.Add(user_idParam)
@@ -11189,8 +11189,8 @@ Namespace geshotelk
                 retVal = Obtiene_ultima_id(cmd)
                 Dim importe As Single = obtieneImportePendienteFactura(cmd, factura_id)
                 cmd.Parameters.Clear()
-                Dim cobro_idParam As New MySqlParameter("@cobro_id", retVal)
-                Dim importeParam As New MySqlParameter("@importe", importe)
+                Dim cobro_idParam As New SqlParameter("@cobro_id", retVal)
+                Dim importeParam As New SqlParameter("@importe", importe)
                 cmd.Parameters.Add(cobro_idParam)
                 cmd.Parameters.Add(Factura_IdParam)
                 cmd.Parameters.Add(importeParam)
@@ -11210,7 +11210,7 @@ Namespace geshotelk
                 reserva = reserva_id
             Catch ex As Exception
             End Try
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 retval = obtieneImportePendienteFacturas(cmd, reserva, sincredito, absoluto)
             Catch ex As Exception
@@ -11220,10 +11220,10 @@ Namespace geshotelk
             Return retval
         End Function
 
-        Private Function obtieneImportePendienteFacturas(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal sincredito As Boolean, Optional ByVal absoluto As Boolean = True)
+        Private Function obtieneImportePendienteFacturas(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal sincredito As Boolean, Optional ByVal absoluto As Boolean = True)
             Dim retval As Single = 0
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
             Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneFacturasReserva)
             Dim contar As Boolean
@@ -11251,7 +11251,7 @@ Namespace geshotelk
         '        Shared sqlImporteFactura = "select Coalesce(sum(round(cantidad*precio,2)),0) from lineas_factura where lineas_factura.factura_id=?"
         Shared sqlImporteFactura = "select importe_total from facturas where factura_id=?"
         Shared SqlCobradoFactura = "select Coalesce(sum(lineas_cobro.importe),0) from  lineas_cobro where lineas_cobro.factura_id=?"
-        Private Function obtieneImportePendienteFactura(ByVal cmd As MySqlCommand, ByVal arrfac() As String, Optional ByVal tipo_cobro_id As Integer = 1) As Single
+        Private Function obtieneImportePendienteFactura(ByVal cmd As SqlCommand, ByVal arrfac() As String, Optional ByVal tipo_cobro_id As Integer = 1) As Single
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
             Try
@@ -11272,7 +11272,7 @@ Namespace geshotelk
         Public Function obtieneImportePendienteFactura(ByVal arrfac() As String, Optional ByVal tipo_cobro_id As Integer = 1) As Single
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = obtieneImportePendienteFactura(cmd, arrfac, tipo_cobro_id)
             If IsNothing(retVal) Then
                 retVal = 0
@@ -11286,7 +11286,7 @@ Namespace geshotelk
         Public Function obtieneImportePendienteFactura(ByVal factura_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1) As Single
             Dim retVal As Single
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = obtieneImportePendienteFactura(cmd, factura_id, tipo_cobro_id)
             If Not flushConection(cmd, errorCode) Then
                 retVal = False
@@ -11294,14 +11294,14 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function obtieneImportePendienteFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1) As Single
+        Private Function obtieneImportePendienteFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer, Optional ByVal tipo_cobro_id As Integer = 1) As Single
 
             Dim retVal As Single = 0
             cmd.Parameters.Clear()
-            Dim Factura_IdParam As New MySqlParameter("@factura_id", factura_id)
+            Dim Factura_IdParam As New SqlParameter("@factura_id", factura_id)
             cmd.Parameters.Add(Factura_IdParam)
 
-            'Dim multiParam As New MysqlParameter("@multi", 1)
+            'Dim multiParam As New SqlParameter("@multi", 1)
             If tipo_cobro_id > 1 Then
                 'multiParam.Value = 0
             Else
@@ -11327,9 +11327,9 @@ Namespace geshotelk
         Public Function contabilizarTicket(ByVal ticket_id As Integer, ByVal validar As Boolean)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim ticket_idParam As New MySqlParameter("@ticket_id", ticket_id)
+            Dim ticket_idParam As New SqlParameter("@ticket_id", ticket_id)
             cmd.Parameters.Add(ticket_idParam)
             Try
                 Dim ninvalidas As Integer = ExecuteScalar(cmd, sqlLineasTicketInvalidas)
@@ -11442,7 +11442,7 @@ Namespace geshotelk
                                     datos.Tables(0).Rows(0).Item("user_id") = userId
                                     datos.Tables(0).Rows(0).Item("fecha_actualizacion") = Now
                                     datos.Tables(0).Rows(0).Item("estado_ticket_id") = 2
-                                    Dim writer As MySqlDataAdapter
+                                    Dim writer As SqlDataAdapter
                                     writer = getDataAdapter(cmd, sqlCabeceraTicket)
                                     writer.Fill(datos.Tables(0))
                                     writer.Update(datos.Tables(0))
@@ -11496,7 +11496,7 @@ Namespace geshotelk
         Public Function crearLineasFacturas(ByVal reserva_id As Integer, ByVal servicio_id As Integer, ByVal unidad_calculo_id As Integer, ByVal cantidad As Single, Optional ByVal fecha_desde As Object = Nothing, Optional ByVal fecha_hasta As Object = Nothing)
 
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As tablaServicios = Nothing
             Try
                 'obtiene datos de la reserva
@@ -11567,7 +11567,7 @@ Namespace geshotelk
                 'cambiar tipo de D a M
                 If Not IsNothing(resultado) Then
                     If resultado.servicios.Rows.Count > 0 Then
-                        Dim writer As MySqlDataAdapter
+                        Dim writer As SqlDataAdapter
                         Dim dt As DataTable = ds.Tables("reservas_servicios")
                         Dim xx As Integer
                         dt.AcceptChanges()
@@ -11577,7 +11577,7 @@ Namespace geshotelk
 
                         If Not IsNothing(ds.Tables("reservas_servicios").GetChanges) Then
                             cmd.Parameters.Clear()
-                            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                             cmd.Parameters.Add(reserva_idParam)
                             writer = getDataAdapter(cmd, sqlReservasServicios)
                             writer.Fill(ds.Tables("reservas_servicios"))
@@ -11605,7 +11605,7 @@ Namespace geshotelk
 
 
         End Function
-        Private Function obtieneServicioPorDia(ByVal cmd As MySqlCommand, ByVal contrato_id As Integer, ByVal servicio As Integer, ByVal unidad_calculo_id As Integer, ByVal cantidad As Integer, ByVal fecha As Date, ByVal porcimpuesto As Decimal) As tablaServicios
+        Private Function obtieneServicioPorDia(ByVal cmd As SqlCommand, ByVal contrato_id As Integer, ByVal servicio As Integer, ByVal unidad_calculo_id As Integer, ByVal cantidad As Integer, ByVal fecha As Date, ByVal porcimpuesto As Decimal) As tablaServicios
             Dim errorCode As Integer = 0
             Dim resultado As tablaServicios = Nothing
 
@@ -11652,7 +11652,7 @@ Namespace geshotelk
 
         Public Function PruebaOfertas()
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim reader As DataTableReader = Me.getDataTable(cmd, sqlComprobarOfertas)
             While reader.Read
                 'If reader("reserva_id") = 5126 Then
@@ -11783,7 +11783,7 @@ Namespace geshotelk
             servicios_adicionales.AcceptChanges()
         End Function
         Shared sqlOfertaTieneCodigo = "select oferta_id from ofertas_codigos where oferta_id=? and codigo_oferta=?"
-        Private Function obtieneOfertasReserva(ByVal cmd As MySqlCommand, ByVal ds As DataSet, ByVal contratos As ArrayList, ByVal resultado As tablaServicios, Optional ByVal ucs As DataSet = Nothing, Optional ByVal paso As Integer = 0) As DataTable
+        Private Function obtieneOfertasReserva(ByVal cmd As SqlCommand, ByVal ds As DataSet, ByVal contratos As ArrayList, ByVal resultado As tablaServicios, Optional ByVal ucs As DataSet = Nothing, Optional ByVal paso As Integer = 0) As DataTable
             Dim datos As DataTable = ds.Tables("reservas_ofertas")  'getDataSet(cmd, sqlReservasOfertas)
             Dim quitardatos As Boolean = False
             'TODO filtrar solo las ofertas que se podrian aplicar
@@ -11803,7 +11803,7 @@ Namespace geshotelk
                 End If
                 Dim fecha_hotel As Date = FechaHotel(cmd, ds.Tables("reserva").Rows(0)("hotel_id"))
                 'cmd.Parameters.Clear()
-                'Dim reserva_idParam As New MysqlParameter("@reserva_id", reserva_id)
+                'Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                 'cmd.Parameters.Add(reserva_idParam)
                 Dim servicios As DataTable = resultado.servicios
                 servicios.Columns("ambito_id").ColumnName = "ambito_id1"
@@ -11830,7 +11830,7 @@ Namespace geshotelk
                 'TODO obtener las ofertas automaticas posibles
                 cmd.Parameters.Clear()
                 'Console.WriteLine(Join(contratos.ToArray, ","))
-                'Dim contratosParam As New MysqlParameter("@contrato_id", Join(contratos.ToArray, ","))
+                'Dim contratosParam As New SqlParameter("@contrato_id", Join(contratos.ToArray, ","))
                 'cmd.Parameters.Add(contratosParam)
 
                 'Dim ofertas As DataTableReader = getDataTable(cmd, sqlOfertasContratos, True)
@@ -11867,7 +11867,7 @@ Namespace geshotelk
                         'Dim x = 0
                         'End If
                         'Console.WriteLine(Join(contratos.ToArray, ","))
-                        'Dim oferta_idParam As New MysqlParameter("@oferta_id", ofertas.Item("oferta_id"))
+                        'Dim oferta_idParam As New SqlParameter("@oferta_id", ofertas.Item("oferta_id"))
                         'cmd.Parameters.Add(oferta_idParam)
 
                         dvconofertasrejilla.RowFilter = "oferta_id=" & ofertas.Item("oferta_id")
@@ -11977,7 +11977,7 @@ Namespace geshotelk
                             If Not IsDBNull(ofertas.Item("cupo_oferta")) Then
                                 'TODO:si tiene cupo,contar cuantas veces esta esa oferta activa
                                 'en reservas checkin ...solo si reserva entra en fecha_hotel?
-                                Dim oferta_idParam As New MySqlParameter("@oferta_id", ofertas.Item("oferta_id"))
+                                Dim oferta_idParam As New SqlParameter("@oferta_id", ofertas.Item("oferta_id"))
                                 cmd.Parameters.Add(oferta_idParam)
 
                                 Dim cupo As Integer = ofertas.Item("cupo_oferta")
@@ -12352,7 +12352,7 @@ Namespace geshotelk
             End If
 
         End Function
-        Private Function obtieneOfertasReservaOld(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal contratos As ArrayList, ByVal resultado As tablaServicios, Optional ByVal ucs As DataSet = Nothing) As DataTable
+        Private Function obtieneOfertasReservaOld(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal contratos As ArrayList, ByVal resultado As tablaServicios, Optional ByVal ucs As DataSet = Nothing) As DataTable
             If contratos.Count = 0 Then
                 Return Nothing
             End If
@@ -12364,7 +12364,7 @@ Namespace geshotelk
             End If
 
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
 
 
@@ -12395,7 +12395,7 @@ Namespace geshotelk
             'TODO obtener las ofertas automaticas posibles
             cmd.Parameters.Clear()
             'Console.WriteLine(Join(contratos.ToArray, ","))
-            Dim contratosParam As New MySqlParameter("@contrato_id", Join(contratos.ToArray, ","))
+            Dim contratosParam As New SqlParameter("@contrato_id", Join(contratos.ToArray, ","))
             cmd.Parameters.Add(contratosParam)
 
             Dim ofertas As DataTableReader = getDataTable(cmd, sqlOfertasContratos, True)
@@ -12407,7 +12407,7 @@ Namespace geshotelk
                 'todo leer la rejilla de esa oferta
                 cmd.Parameters.Clear()
                 'Console.WriteLine(Join(contratos.ToArray, ","))
-                Dim oferta_idParam As New MySqlParameter("@oferta_id", ofertas.Item("oferta_id"))
+                Dim oferta_idParam As New SqlParameter("@oferta_id", ofertas.Item("oferta_id"))
                 cmd.Parameters.Add(oferta_idParam)
 
                 Dim rejilla As DataTable = getTable(cmd, sqlOfertasRejilla, True)
@@ -12556,7 +12556,7 @@ Namespace geshotelk
 
             If datos.HasChanges Then
                 'TODO actualizar si ha cambiado
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlReservasOfertas)
                 writer.Fill(datos.Tables(0))
                 writer.Update(datos.Tables(0))
@@ -12619,10 +12619,10 @@ Namespace geshotelk
         Shared camposDias() As String = {"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"}
 
 
-        Private Function obtieneTablaServicioContrato(ByVal cmd As MySqlCommand, ByVal ucHijas As DataSet, ByVal contrato_id As Integer, ByVal servicio_id As Integer, ByVal unidad_calculo_id As Integer, ByVal UCServicio As String, ByVal cantidad As Single, ByVal fecha_ini As Date, ByVal fecha_fin As Date, ByVal grupo As Integer, ByVal ucs As DataSet, ByVal porcimpuesto As Decimal, Optional ByVal defecto As Boolean = False, Optional ByVal precio_servicio As Object = Nothing, Optional ByVal dvcontrato As DataView = Nothing) As tablaServicios
+        Private Function obtieneTablaServicioContrato(ByVal cmd As SqlCommand, ByVal ucHijas As DataSet, ByVal contrato_id As Integer, ByVal servicio_id As Integer, ByVal unidad_calculo_id As Integer, ByVal UCServicio As String, ByVal cantidad As Single, ByVal fecha_ini As Date, ByVal fecha_fin As Date, ByVal grupo As Integer, ByVal ucs As DataSet, ByVal porcimpuesto As Decimal, Optional ByVal defecto As Boolean = False, Optional ByVal precio_servicio As Object = Nothing, Optional ByVal dvcontrato As DataView = Nothing) As tablaServicios
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim contrato_idParam As New MySqlParameter("@contrato_id", contrato_id)
+            Dim contrato_idParam As New SqlParameter("@contrato_id", contrato_id)
             cmd.Parameters.Add(contrato_idParam)
             Dim impuesto_incluido As Boolean = ExecuteScalar(cmd, sqlObtieneImpuestoIncluido, True)
             Dim reader As DataTableReader
@@ -12682,7 +12682,7 @@ Namespace geshotelk
 
                         Next
                         cmd.Parameters.Clear()
-                        Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
+                        Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
                         cmd.Parameters.Add(servicio_idParam)
                         Dim sql As String = "SELECT nombre_servicio FROM servicios WHERE servicio_id = ? "
                         dt.Rows(0).Item("nombre_servicio") = "No Existe Servicio"
@@ -12867,17 +12867,17 @@ Namespace geshotelk
         & "WHERE cupos.hotel_id =  ? AND (cupos.cliente_id =  ? or ?=0) AND (cupos.tipo_habitacion_id=? or 0=? ) AND  ? BETWEEN cupos.fecha_desde AND cupos.fecha_hasta " _
         & "GROUP BY  cupos.cliente_id "
 
-        Private Function ObtieneCupoClienteDia(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha As Date, Optional ByVal tipo_habitacion_id As Integer = 0)
+        Private Function ObtieneCupoClienteDia(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha As Date, Optional ByVal tipo_habitacion_id As Integer = 0)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
 
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim cliente_id1Param As New MySqlParameter("@cliente_id1", cliente_id)
-            Dim fechaParam As New MySqlParameter("@fecha", convertFecha(fecha))
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
-            Dim tipo_habitacion_id1Param As New MySqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim cliente_id1Param As New SqlParameter("@cliente_id1", cliente_id)
+            Dim fechaParam As New SqlParameter("@fecha", convertFecha(fecha))
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim tipo_habitacion_id1Param As New SqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(cliente_idParam)
             cmd.Parameters.Add(cliente_id1Param)
@@ -12934,7 +12934,7 @@ Namespace geshotelk
             End If
             Dim z As New GesHotelClase(Me.userId)
             Dim limpiar As Boolean = False
-            Dim cmd As MySqlCommand = Nothing
+            Dim cmd As SqlCommand = Nothing
             If IsNothing(cmd) Then
                 cmd = prepareConection(IsolationLevel.RepeatableRead)
                 limpiar = True
@@ -12971,8 +12971,8 @@ Namespace geshotelk
         Public Function ObtienePlanningMensual(ByVal fini As Date, ByVal ffin As Date, ByVal hotel_id As Integer, Optional ByVal cliente_id As Integer = 0, Optional ByVal garantia As Integer = 0, Optional ByVal afecha As Date = Nothing) As DataSet
             'ThreadPool.SetMaxThreads(8, 8)
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection(IsolationLevel.RepeatableRead)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim cmd As SqlCommand = prepareConection(IsolationLevel.RepeatableRead)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim datos As DataSet = getDataSet(cmd, sqlPlanningMensual)
@@ -13063,8 +13063,8 @@ Namespace geshotelk
         End Function
         Public Function ObtienePlanningMensualOld(ByVal hotel_id As Integer, ByVal ano As Integer, ByVal mes As Integer, Optional ByVal cliente_id As Integer = 0, Optional ByVal garantia As Integer = 0) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim datos As DataSet = getDataSet(cmd, sqlPlanningMensual)
@@ -13193,15 +13193,15 @@ Namespace geshotelk
 
         Public Function ObtieneListadoReservas(ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal cliente_id As Integer = 0, Optional ByVal orderby As Integer = 0) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = getDataSet(cmd, sqlListadoSalidas)
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-                Dim cliente_id1Param As New MySqlParameter("@cliente_id1", cliente_id)
-                Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
-                Dim fechaini1Param As New MySqlParameter("@fechaini1", convertFecha(fechaini))
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+                Dim cliente_id1Param As New SqlParameter("@cliente_id1", cliente_id)
+                Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
+                Dim fechaini1Param As New SqlParameter("@fechaini1", convertFecha(fechaini))
                 cmd.Parameters.Add(hotel_idParam)
                 cmd.Parameters.Add(fechainiParam)
                 cmd.Parameters.Add(fechaini1Param)
@@ -13224,14 +13224,14 @@ Namespace geshotelk
         End Function
         Public Function ObtieneListadoLlegadas(ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal cliente_id As Integer = 0) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = getDataSet(cmd, sqlListadoSalidas)
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-                Dim cliente_id1Param As New MySqlParameter("@cliente_id1", cliente_id)
-                Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+                Dim cliente_id1Param As New SqlParameter("@cliente_id1", cliente_id)
+                Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
                 cmd.Parameters.Add(hotel_idParam)
                 cmd.Parameters.Add(fechainiParam)
                 cmd.Parameters.Add(cliente_idParam)
@@ -13249,15 +13249,15 @@ Namespace geshotelk
 
         Public Function ObtieneListadoSalidas(ByVal hotel_id As Integer, ByVal fechaini As Date, Optional ByVal cliente_id As Integer = 0) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = getDataSet(cmd, sqlListadoSalidas)
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-                Dim cliente_id1Param As New MySqlParameter("@cliente_id1", cliente_id)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+                Dim cliente_id1Param As New SqlParameter("@cliente_id1", cliente_id)
 
-                Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
+                Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
                 cmd.Parameters.Add(hotel_idParam)
                 cmd.Parameters.Add(fechainiParam)
                 cmd.Parameters.Add(cliente_idParam)
@@ -13282,16 +13282,16 @@ Namespace geshotelk
 & " reservas_ofertas.reserva_id =  ? AND " _
 & " reservas_ofertas.activa =  1 " _
 & " group by reservas_ofertas.reserva_id "
-        Private Sub procesarDatosListado(ByVal cmd As MySqlCommand, ByVal reader As DataTableReader, ByVal datos As DataSet, Optional ByVal fecha As Object = Nothing)
+        Private Sub procesarDatosListado(ByVal cmd As SqlCommand, ByVal reader As DataTableReader, ByVal datos As DataSet, Optional ByVal fecha As Object = Nothing)
             While reader.Read
                 'If reader.Item("reserva_id") = 2168 Then
                 'Dim zk = 0
                 'End If
                 Dim dr As DatosReserva = obtieneReservaDatosListados(cmd, reader.Item("reserva_id"), fecha)
                 cmd.Parameters.Clear()
-                'Dim reserva_idParam As New MysqlParameter("@reserva_id", 570)
+                'Dim reserva_idParam As New SqlParameter("@reserva_id", 570)
 
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reader.Item("reserva_id"))
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reader.Item("reserva_id"))
                 cmd.Parameters.Add(reserva_idParam)
                 Dim ofe As Object = ExecuteScalar(cmd, sqlObtieneOfertasReserva)
                 If IsNothing(ofe) Then
@@ -13349,7 +13349,7 @@ Namespace geshotelk
         End Class
         Public Function obtieneReservaDatosListados(ByVal reserva_id As Integer) As DatosReserva
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DatosReserva
             Try
                 datos = obtieneReservaDatosListados(cmd, reserva_id)
@@ -13374,7 +13374,7 @@ Namespace geshotelk
 & " ) as numero_habitacion  " _
 & " FROM reservas_huespedes Inner Join clientes ON reservas_huespedes.cliente_id = clientes.cliente_id WHERE reservas_huespedes.reserva_id =  ? LIMIT 1 "
 
-        Private Function obtieneReservaDatosListados(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, Optional ByVal fecha As Object = Nothing) As DatosReserva
+        Private Function obtieneReservaDatosListados(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, Optional ByVal fecha As Object = Nothing) As DatosReserva
             Dim cabres As DataSet = getDataSet(cmd, Replace(sqlCabReserva, "?", reserva_id))
             'Dim respri As DataSet = getDataSet(cmd, Replace(sqlReservaPrimerHuesped, "?", reserva_id))
             Dim respri As DataSet = getDataSet(cmd, Replace(sqlReservaPrimerCliente, "?", reserva_id))
@@ -13477,7 +13477,7 @@ Namespace geshotelk
         End Function
         Public Function ObtienePlanningDiario(ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal garantia As Integer, Optional ByVal cliente_id As Integer = 0, Optional ByVal tipo_habitacion_id As Integer = 0, Optional ByVal afecha As Date = Nothing) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = Nothing
             Try
                 datos = ObtienePlanningDiario(cmd, hotel_id, fechaini, fechafin, garantia, cliente_id, tipo_habitacion_id, Nothing, True, afecha)
@@ -13519,7 +13519,7 @@ Namespace geshotelk
         End Class
         Private Sub HiloDesgloseAgencia(ByVal blosta As Object)
             Dim z As New GesHotelClase(Me.userId)
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
 
             Dim bloque As System.Collections.Queue = blosta
             Dim estado As agenciaDesglose
@@ -13553,10 +13553,10 @@ Namespace geshotelk
         End Sub
         Public Function ObtieneDesglosePensionAgencia(ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As DataSet = getDataSet(cmd, sqlDesglosePensionAgencia)
 
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             'todo obtiene todas las agencias con contrato para ese hotel
@@ -13617,10 +13617,10 @@ Namespace geshotelk
         End Function
         Public Function ObtieneDesglosePensionAgenciaNew(ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As DataSet = getDataSet(cmd, sqlDesglosePensionAgencia)
 
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             'todo obtiene todas las agencias con contrato para ese hotel
@@ -13708,10 +13708,10 @@ Namespace geshotelk
         End Function
         Public Function ObtieneDesglosePensionAgenciaOld(ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date) As DataSet
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim resultado As DataSet = getDataSet(cmd, sqlDesglosePensionAgencia)
 
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             'todo obtiene todas las agencias con contrato para ese hotel
@@ -13944,17 +13944,17 @@ Namespace geshotelk
 
         End Function
         Public Function ObtieneEcolimpiezas(ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal cliente_id As Integer) As DataSet
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim datos As DataSet = ObtieneEcolimpiezas(cmd, hotel_id, fechaini, fechafin, cliente_id)
             flushConection(cmd, 0)
             Return datos
         End Function
-        Private Function ObtieneEcolimpiezas(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal cliente_id As Integer) As DataSet
+        Private Function ObtieneEcolimpiezas(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal cliente_id As Integer) As DataSet
             Dim ds As DataSet = getDataSet(cmd, "Select now() as fecha,0 As llegadas, 0 As eco, 0 as porc")
             Dim fecha As Date = fechaini
-            Dim fechaParam As New MySqlParameter("@fecha", convertFecha(fecha))
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
+            Dim fechaParam As New SqlParameter("@fecha", convertFecha(fecha))
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
             Dim llegadas As Object
             Dim eco As Object
             Dim porc As Double
@@ -14003,7 +14003,7 @@ Namespace geshotelk
             'ds.Tables.Add(dvk.ToTable())
             Return ds
         End Function
-        Private Function ObtienePlanningDiario(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal garantia As Integer, Optional ByVal cliente_id As Integer = 0, Optional ByVal tipo_habitacion_id As Integer = 0, Optional ByVal cachedHash As Hashtable = Nothing, Optional ByVal sindesvios As Boolean = False, Optional ByVal afecha As Date = Nothing) As DataSet
+        Private Function ObtienePlanningDiario(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fechaini As Date, ByVal fechafin As Date, ByVal garantia As Integer, Optional ByVal cliente_id As Integer = 0, Optional ByVal tipo_habitacion_id As Integer = 0, Optional ByVal cachedHash As Hashtable = Nothing, Optional ByVal sindesvios As Boolean = False, Optional ByVal afecha As Date = Nothing) As DataSet
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
             Dim datos As DataSet = getDataSet(cmd, sqlPlaningDiario, True)
@@ -14013,26 +14013,26 @@ Namespace geshotelk
                 fechaini = fechafin
                 fechafin = ft
             End If
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim cliente_id1Param As New MySqlParameter("@cliente_id1", cliente_id)
-            Dim fechainiParam As New MySqlParameter("@fechaini", convertFecha(fechaini))
-            Dim fechafinParam As New MySqlParameter("@fechafin", convertFecha(fechafin))
-            Dim fechaini1Param As New MySqlParameter("@fechaini1", convertFecha(fechaini))
-            Dim fechafin1Param As New MySqlParameter("@fechafin1", convertFecha(fechafin))
-            Dim fechaini2Param As New MySqlParameter("@fechaini2", convertFecha(fechaini))
-            Dim fechafin2Param As New MySqlParameter("@fechafin2", convertFecha(fechafin))
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim cliente_id1Param As New SqlParameter("@cliente_id1", cliente_id)
+            Dim fechainiParam As New SqlParameter("@fechaini", convertFecha(fechaini))
+            Dim fechafinParam As New SqlParameter("@fechafin", convertFecha(fechafin))
+            Dim fechaini1Param As New SqlParameter("@fechaini1", convertFecha(fechaini))
+            Dim fechafin1Param As New SqlParameter("@fechafin1", convertFecha(fechafin))
+            Dim fechaini2Param As New SqlParameter("@fechaini2", convertFecha(fechaini))
+            Dim fechafin2Param As New SqlParameter("@fechafin2", convertFecha(fechafin))
             Dim conafecha As Integer = 0
             If IsNothing(afecha) OrElse afecha.Year = 1 Then
                 afecha = Now
             Else
                 conafecha = 1
             End If
-            Dim conafechaParam As New MySqlParameter("@conafecha", conafecha)
-            Dim afechaParam As New MySqlParameter("@afecha", convertFecha(afecha))
+            Dim conafechaParam As New SqlParameter("@conafecha", conafecha)
+            Dim afechaParam As New SqlParameter("@afecha", convertFecha(afecha))
 
             cmd.Parameters.Add(hotel_idParam)
-            Dim todosParam As New MySqlParameter("@todos", 0)
+            Dim todosParam As New SqlParameter("@todos", 0)
             If sindesvios Then
                 todosParam.Value = 0
             Else
@@ -14098,7 +14098,7 @@ Namespace geshotelk
 
 
                 cmd.Parameters.Clear()
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
                 cmd.Parameters.Add(reserva_idParam)
                 orderstotal = New DataTable("dt_tmp")
                 Dim matresid As String = ConcatenarCampo(reader, "reserva_id", "0")
@@ -14167,8 +14167,8 @@ Namespace geshotelk
 & " INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id" _
 & "             WHERE" _
  & "            habitaciones.hotel_id = ? and (0=? or habitaciones.tipo_habitacion_id=?)"
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
-            Dim tipo_habitacion_id1Param As New MySqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim tipo_habitacion_id1Param As New SqlParameter("@tipo_habitacion_id1", tipo_habitacion_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(tipo_habitacion_idParam)
@@ -14737,7 +14737,7 @@ Namespace geshotelk
         End Function
         Public Function TestDB()
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim x = ExecuteScalar(cmd, "select count(*) from aplicaciones")
             Console.Write("Aplicaciones:" & x)
             flushConection(cmd, errorCode)
@@ -14789,7 +14789,7 @@ Namespace geshotelk
             'comprobar que no se haya generado el cierre contable anteriormente
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CrearCierreContable(cmd, fecha, hotel_id)
             If Not retVal Then
                 errorCode = 1
@@ -14811,7 +14811,7 @@ Namespace geshotelk
             'comprobar que no se haya generado el cierre contable anteriormente
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CrearFicheroPolicia(cmd, fecha, hotel_id)
             If Not retVal Then
                 errorCode = 1
@@ -14821,13 +14821,13 @@ Namespace geshotelk
             End If
             Return retVal
         End Function
-        Private Function CrearFicheroPolicia(ByVal cmd As MySqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer) As Boolean
+        Private Function CrearFicheroPolicia(ByVal cmd As SqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
             Try
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
                 cmd.Parameters.Add(hotel_idParam)
                 'obtiene parametros fichero policia del hotel
                 Dim reader As DataTableReader = getDataTable(cmd, sqlDatosFicheroPolicia)
@@ -14880,7 +14880,7 @@ Namespace geshotelk
                             End While
                             fp.generarFichero()
                             cierre.Tables(0).Rows(0).Item("fichero_policia") = fp.rutas(0)
-                            Dim writer As MySqlDataAdapter
+                            Dim writer As SqlDataAdapter
                             writer = getDataAdapter(cmd, sqlObtieneCierreFechaHotel)
                             writer.Fill(cierre.Tables(0))
                             writer.Update(cierre.Tables(0))
@@ -14895,13 +14895,13 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Function CrearCierreContable(ByVal cmd As MySqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer)
+        Function CrearCierreContable(ByVal cmd As SqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer)
             'comprobar que no se haya generado el cierre contable anteriormente
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
             cmd.Parameters.Add(hotel_idParam)
             Dim emp As String = ExecuteScalar(cmd, sqlObtieneEmpresaHotel)
             cmd.Parameters.Add(fechaParam)
@@ -14962,7 +14962,7 @@ Namespace geshotelk
                     AgregaInfo("CrearCierreContable", "No hay cierre del hotel:" & fecha, -errorCode)
                 End If
                 If errorCode = 0 Then
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlObtieneCierreFechaHotel)
                     writer.Fill(cierre.Tables(0))
                     writer.Update(cierre.Tables(0))
@@ -15005,7 +15005,7 @@ Namespace geshotelk
     & " lineas_factura.servicio_id"
         '   & " Sum(round((lineas_factura.cantidad*Coalesce(lineas_factura.precio_produccion,lineas_factura.precio))*100/(100+lineas_factura.porc_impuesto),2)) AS total, " _
 
-        Private Function GeneraAsientosProduccion(ByVal cmd As MySqlCommand, ByVal fc As FicheroContabilidad)
+        Private Function GeneraAsientosProduccion(ByVal cmd As SqlCommand, ByVal fc As FicheroContabilidad)
             'fc.agregarApunte("ANTICI", signoc, .Item("Fecha_Anticipo"), "", "", .Item("Cta_Cliente_Anticipo"), descriptivoCliente, multiplicador * .Item("Importe"))
             'todo filtrar por sw_produccion
 
@@ -15211,12 +15211,12 @@ Namespace geshotelk
             End If
             Return x
         End Function
-        Private Function GeneraAsientosMovimientosCaja(ByVal cmd As MySqlCommand, ByVal fc As FicheroContabilidad, ByVal apunteDesc As String)
+        Private Function GeneraAsientosMovimientosCaja(ByVal cmd As SqlCommand, ByVal fc As FicheroContabilidad, ByVal apunteDesc As String)
             'todo cambiar
             'cobros
             'todo comprobar cuentas.
             'Dim  apunteDesc= "RECEP3"
-            Dim cpparam(cmd.Parameters.Count - 1) As MySqlParameter
+            Dim cpparam(cmd.Parameters.Count - 1) As SqlParameter
             cmd.Parameters.CopyTo(cpparam, 0)
 
             Dim readerHotel As DataTableReader = getDataTable(cmd, sqlDatosContablesHotel)
@@ -15532,12 +15532,12 @@ Namespace geshotelk
             Return retval
         End Function
 
-        Private Function GeneraAsientosMovimientosCajaOld(ByVal cmd As MySqlCommand, ByVal fc As FicheroContabilidad)
+        Private Function GeneraAsientosMovimientosCajaOld(ByVal cmd As SqlCommand, ByVal fc As FicheroContabilidad)
             'todo cambiar
             'cobros
             'todo comprobar cuentas.
             Dim apunteDesc = "RECEP3"
-            Dim cpparam(cmd.Parameters.Count - 1) As MySqlParameter
+            Dim cpparam(cmd.Parameters.Count - 1) As SqlParameter
             cmd.Parameters.CopyTo(cpparam, 0)
 
             Dim readerHotel As DataTableReader = getDataTable(cmd, sqlDatosContablesHotel)
@@ -15814,7 +15814,7 @@ Namespace geshotelk
     & " FROM facturas INNER JOIN series ON facturas.serie_id=series.serie_id " _
     & " WHERE facturas.hotel_id =  ? AND " _
     & " facturas.Fecha_Factura =  ? and facturas.estado_factura_id=1 And facturas.Importe_Total<>0"
-        Private Function GeneraAsientosFacturas(ByVal cmd As MySqlCommand, ByVal fc As FicheroContabilidad, ByVal asiento As String)
+        Private Function GeneraAsientosFacturas(ByVal cmd As SqlCommand, ByVal fc As FicheroContabilidad, ByVal asiento As String)
             'todo cambiar
             'todo si asiento=recep4...
             Dim retValue As Boolean = True
@@ -15861,7 +15861,7 @@ Namespace geshotelk
 
                             fc.generaImpuestos(asiento)
                             fc.CuentasImpuestos.Clear()
-                            Dim cpparam(cmd.Parameters.Count - 1) As MySqlParameter
+                            Dim cpparam(cmd.Parameters.Count - 1) As SqlParameter
                             cmd.Parameters.CopyTo(cpparam, 0)
                             'Console.WriteLine(reader.Item("factura_id"))
                             retValue = CambiarEstadoFactura(cmd, reader.Item("factura_id"), 2, False)
@@ -15914,7 +15914,7 @@ Namespace geshotelk
     & " WHERE facturas.Factura_Id =  ? "
         Shared sqldatosclienteExtraContado = "SELECT MIN(cliente_id),desc_corta,razon,nif " _
         & "FROM clientes WHERE cliente_defecto=1 "
-        Private Function AgregaApunteDeFactura(ByVal cmd As MySqlCommand, ByVal fc As FicheroContabilidad, ByVal asiento As String, ByVal cta_manocorriente As String, ByVal dpto_contable As String, ByVal cta_contable_defecto As String)
+        Private Function AgregaApunteDeFactura(ByVal cmd As SqlCommand, ByVal fc As FicheroContabilidad, ByVal asiento As String, ByVal cta_manocorriente As String, ByVal dpto_contable As String, ByVal cta_contable_defecto As String)
             Dim retValue As Boolean = True
             Dim errorCode = 0
             Dim cont As Boolean = False
@@ -16062,7 +16062,7 @@ Namespace geshotelk
         End Function
         'enlaze contable
 
-        Private Function ObtieneFicheroConta(ByVal cmd As MySqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer, programa As String)
+        Private Function ObtieneFicheroConta(ByVal cmd As SqlCommand, ByVal fecha As Date, ByVal hotel_id As Integer, programa As String)
             ' ----------------------------------------------------------------------------
             ' AQUI Modificacion SAP grabamos el dataset para hacer las transformaciones
             ' y lo agregamos como parametro a FicheroContabilidad
@@ -16124,18 +16124,18 @@ Namespace geshotelk
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
             Dim numReg As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
 
 
                 Dim fechamin As Date = FechaHotel(cmd, hotel_id)
                 'retVal = ObtienePendienteAnticipoReserva(cmd, reserva_id)
                 'If retVal > 0 Then
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim extensionParam As New MySqlParameter("@extension", "")
-                Dim habitacion_idParam As New MySqlParameter("@extension", "")
-                Dim fecha_horaParam As New MySqlParameter("@fecha_hora", Now())
-                Dim fechaParam As New MySqlParameter("@fecha_hotel", Today.Date)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim extensionParam As New SqlParameter("@extension", "")
+                Dim habitacion_idParam As New SqlParameter("@extension", "")
+                Dim fecha_horaParam As New SqlParameter("@fecha_hora", Now())
+                Dim fechaParam As New SqlParameter("@fecha_hotel", Today.Date)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 Dim readerParametros As DataTableReader = getDataTable(cmd, sqlLLamadasParametros)
@@ -16249,7 +16249,7 @@ Namespace geshotelk
                                     'row("linea_factura_id") = 0 'encontrar la habitacion para esa extension
                                     'row("reserva_id") = 0 'encontrar la habitacion para esa extension
 
-                                    Dim writer As MySqlDataAdapter
+                                    Dim writer As SqlDataAdapter
                                     writer = getDataAdapter(cmd, sqlLLamadas)
                                     writer.Fill(ds.Tables(0))
                                     writer.Update(ds.Tables(0))
@@ -16333,18 +16333,18 @@ Namespace geshotelk
             Return retVal
         End Function
         Dim sqlObtienePrimerHuespededReserva = "SELECT clientes.razon FROM reservas_huespedes Inner Join clientes ON reservas_huespedes.cliente_id = clientes.cliente_id WHERE reservas_huespedes.reserva_id = ? LIMIT 1"
-        Private Function RefrescaTelefonoHabitacion(ByVal cmd As MySqlCommand, ByVal habitacion_id As Integer, Optional ByVal cenclaseExterna As Centralita = Nothing) As Boolean
+        Private Function RefrescaTelefonoHabitacion(ByVal cmd As SqlCommand, ByVal habitacion_id As Integer, Optional ByVal cenclaseExterna As Centralita = Nothing) As Boolean
 
             Dim retVal As Boolean = False
             Try
                 Dim errorCode As Integer = 0
-                Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
-                'Dim habitacion_id_oldParam As New MysqlParameter("@habitacion_id_old", habitacion_id)
+                Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
+                'Dim habitacion_id_oldParam As New SqlParameter("@habitacion_id_old", habitacion_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(habitacion_idParam)
                 Dim readerHabitacion As DataTableReader = getDataTable(cmd, sqlObtineDatosHabitacion)
                 While readerHabitacion.Read
-                    Dim hotel_idParam As New MySqlParameter("@hotel_id", readerHabitacion("hotel_id"))
+                    Dim hotel_idParam As New SqlParameter("@hotel_id", readerHabitacion("hotel_id"))
                     cmd.Parameters.Clear()
                     cmd.Parameters.Add(hotel_idParam)
                     Dim readerParametros As DataTableReader = getDataTable(cmd, sqlLLamadasParametros, True)
@@ -16360,8 +16360,8 @@ Namespace geshotelk
                     Dim razon = ""
                     If reserva_id <> 0 Then
                         'obtiene el primer huespede reserva
-                        Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-                        'Dim reserva_id_oldParam As New MysqlParameter("@reserva_id", 0)
+                        Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+                        'Dim reserva_id_oldParam As New SqlParameter("@reserva_id", 0)
                         cmd.Parameters.Clear()
                         cmd.Parameters.Add(reserva_idParam)
                         'cmd.Parameters.Add(reserva_id_oldParam)
@@ -16406,7 +16406,7 @@ Namespace geshotelk
         Function RefrescaTelefonoHabitacion(ByVal habitacion_id As Integer, Optional ByVal cenclaseExterna As Centralita = Nothing) As Boolean
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = RefrescaTelefonoHabitacion(cmd, habitacion_id, cenclaseExterna)
             If Not retVal Then
                 errorCode = 1
@@ -16426,7 +16426,7 @@ Namespace geshotelk
         Function RefrescaTelefonosHabitaciones()
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim cenclase As Centralita = New Centralita()
             Try
                 Dim dshab As DataSet = getDataSet(cmd, sqlHabitacionesPendientesProcesar)
@@ -16440,7 +16440,7 @@ Namespace geshotelk
                     End If
 
                 Next
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlHabitacionesPendientesProcesar)
                 writer.Fill(dshab.Tables(0))
                 writer.Update(dshab.Tables(0))
@@ -16460,7 +16460,7 @@ Namespace geshotelk
         Public Function CambiaEstadoTelefonoHabitacion(ByVal habitacion_id As Integer, ByVal estado As Integer) As Boolean
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = CambiaEstadoTelefonoHabitacion(cmd, habitacion_id, estado)
             If Not retVal Then
                 errorCode = 1
@@ -16469,16 +16469,16 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function CambiaEstadoTelefonoHabitacion(ByVal cmd As MySqlCommand, ByVal habitacion_id As Integer, ByVal estado As Integer) As Boolean
+        Private Function CambiaEstadoTelefonoHabitacion(ByVal cmd As SqlCommand, ByVal habitacion_id As Integer, ByVal estado As Integer) As Boolean
             Try
-                Dim habitacion_idParam As New MySqlParameter("@habitacion_id", habitacion_id)
+                Dim habitacion_idParam As New SqlParameter("@habitacion_id", habitacion_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(habitacion_idParam)
                 'habitacion_idParam.Value = habs(x)
                 Dim dshab As DataSet = getDataSet(cmd, sqlObtineDatosHabitacion)
                 dshab.Tables(0).Rows(0)("estado_procesado") = 0
                 dshab.Tables(0).Rows(0)("estado_telefono") = estado
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlObtineDatosHabitacion)
                 writer.Fill(dshab.Tables(0))
                 writer.Update(dshab.Tables(0))
@@ -16490,7 +16490,7 @@ Namespace geshotelk
         Public Function ActivaTelefonosReserva(ByVal reserva_id As Integer, ByVal estado As Integer) As Boolean
             Dim retVal As Single = 0
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = ActivaTelefonosReserva(cmd, reserva_id, estado)
             If Not retVal Then
                 errorCode = 1
@@ -16499,11 +16499,11 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function ActivaTelefonosReserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, ByVal estado As Integer) As Boolean
+        Private Function ActivaTelefonosReserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer, ByVal estado As Integer) As Boolean
             Try
-                Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-                'Dim habitacion_idParam As New MysqlParameter("@habitacion_id", 0)
-                'Dim reserva_id_oldParam As New MysqlParameter("@reserva_id", 0)
+                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+                'Dim habitacion_idParam As New SqlParameter("@habitacion_id", 0)
+                'Dim reserva_id_oldParam As New SqlParameter("@reserva_id", 0)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
                 'cmd.Parameters.Add(reserva_id_oldParam)
@@ -16532,11 +16532,11 @@ Namespace geshotelk
         End Function
 
         Function recalculaFactura(ByVal factura_id As Integer)
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             RecalculaFactura(cmd, factura_id)
             flushConection(cmd, 0)
         End Function
-        Private Function RecalculaFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer) As Boolean
+        Private Function RecalculaFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = True
             Dim cuota As Decimal = 0
             Dim Total As Decimal = 0
@@ -16544,7 +16544,7 @@ Namespace geshotelk
 
 
                 cmd.Parameters.Clear()
-                Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+                Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
 
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneDatosFacturaParaApunte)
@@ -16607,7 +16607,7 @@ Namespace geshotelk
                     ds.Tables(0).Rows(0).Item("reserva_id") = System.DBNull.Value
 
                 End If
-                Dim writer As MySqlDataAdapter
+                Dim writer As SqlDataAdapter
                 writer = getDataAdapter(cmd, sqlCabAbreFactura)
                 writer.Fill(ds.Tables(0))
                 writer.Update(ds.Tables(0))
@@ -16622,7 +16622,7 @@ Namespace geshotelk
         Public Function RecalculaFacturas() As Boolean
             Dim retVal As Boolean = True
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneFacturasNoPendientes)
@@ -16655,7 +16655,7 @@ Namespace geshotelk
             Dim lcaja_id As Integer = -1
             Dim lcliente_id As Integer = -1
             Dim cobro_id As Integer = -1
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
                 Dim reader As DataTableReader = getDataTable(cmd, sqlObtieneFacturasConDescuadres)
@@ -16711,7 +16711,7 @@ Namespace geshotelk
         Public Function ImportarTpvExternos(ByVal hotel_id As Integer, ByVal fecha As Date)
             Dim retVal As Boolean = True
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 'comprobar que no exista cierre contable
                 If Not ExisteCierreContable(cmd, hotel_id, fecha) Then
@@ -16763,8 +16763,8 @@ Namespace geshotelk
             'cantidades entre 1 y 4
             'fechas entre 5 y 15 dias
             'hotel 4
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
             Dim dscab As DataSet = Me.getDataSet(cmd, sqlCrearReserva)
             Dim dslin As DataSet = Me.getDataSet(cmd, sqlCrearLineasReserva)
@@ -16793,7 +16793,7 @@ Namespace geshotelk
 
                     rowcab.SetAdded()
                     rowcab.EndEdit()
-                    Dim writer As MySqlDataAdapter
+                    Dim writer As SqlDataAdapter
                     writer = getDataAdapter(cmd, sqlCrearReserva)
                     writer.Fill(dscab.Tables(0))
                     writer.Update(dscab.Tables(0))
@@ -16859,10 +16859,10 @@ Namespace geshotelk
 
                 flushCache()
                 fecha = fini.AddDays(fec)
-                Dim cmd As MySqlCommand = prepareConection()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim fechaParam As New MySqlParameter("@fecha", fecha)
-                Dim reserva_idParam As New MySqlParameter("@fecha", 0)
+                Dim cmd As SqlCommand = prepareConection()
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim fechaParam As New SqlParameter("@fecha", fecha)
+                Dim reserva_idParam As New SqlParameter("@fecha", 0)
                 Dim salidas As Integer = 0
                 Dim llegadas As Integer = 0
                 Dim facturas As Integer = 0
@@ -17096,7 +17096,7 @@ Namespace geshotelk
             istads.ReadXml("C:\Proyectos Codecharge\ClasesGesHotel_tano\ClasesGesHotel\ista.xsd")
             'crear encuesta
             Dim encuesta_id As Integer
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql_habitaciones_hotel As String = "SELECT count(habitacion_id)" _
             & " FROM habitaciones " _
             & " INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id " _
@@ -17105,9 +17105,9 @@ Namespace geshotelk
             Try
 
 
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim anoParam As New MySqlParameter("@ano", ano)
-                Dim mesParam As New MySqlParameter("@mes", mes)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim anoParam As New SqlParameter("@ano", ano)
+                Dim mesParam As New SqlParameter("@mes", mes)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 Dim total_habitaciones As Integer = ExecuteScalar(cmd, sql_habitaciones_hotel)
@@ -17176,10 +17176,10 @@ Namespace geshotelk
 
 
 
-                        Dim fecha_desdeParam As New MySqlParameter("@fecha_desde", convertFecha(fecha_desde))
-                        Dim fecha_hastaParam As New MySqlParameter("@fecha_hasta", convertFecha(fecha_hasta))
-                        Dim fecha_desde1Param As New MySqlParameter("@fecha_desde1", convertFecha(fecha_desde))
-                        Dim fecha_hasta1Param As New MySqlParameter("@fecha_hasta1", convertFecha(fecha_hasta))
+                        Dim fecha_desdeParam As New SqlParameter("@fecha_desde", convertFecha(fecha_desde))
+                        Dim fecha_hastaParam As New SqlParameter("@fecha_hasta", convertFecha(fecha_hasta))
+                        Dim fecha_desde1Param As New SqlParameter("@fecha_desde1", convertFecha(fecha_desde))
+                        Dim fecha_hasta1Param As New SqlParameter("@fecha_hasta1", convertFecha(fecha_hasta))
 
                         cmd.Parameters.Add(fecha_desdeParam)
                         cmd.Parameters.Add(fecha_hastaParam)
@@ -17371,15 +17371,15 @@ Namespace geshotelk
             istads.ReadXml("C:\Proyectos Codecharge\ClasesGesHotel_tano\ClasesGesHotel\ine.xsd")
             'crear encuesta
             Dim encuesta_id As Integer
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql_habitaciones_hotel As String = "SELECT count(habitacion_id)" _
             & " FROM habitaciones " _
             & " INNER JOIN tipos_habitacion ON habitaciones.tipo_habitacion_id = tipos_habitacion.tipo_habitacion_id " _
             & " WHERE habitaciones.hotel_id = ? And tipos_habitacion.desvios <> 1"
             Try
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim anoParam As New MySqlParameter("@ano", ano)
-                Dim mesParam As New MySqlParameter("@mes", mes)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim anoParam As New SqlParameter("@ano", ano)
+                Dim mesParam As New SqlParameter("@mes", mes)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 Dim total_habitaciones As Integer = ExecuteScalar(cmd, sql_habitaciones_hotel)
@@ -17439,10 +17439,10 @@ Namespace geshotelk
 
 
 
-                        Dim fecha_desdeParam As New MySqlParameter("@fecha_desde", convertFecha(fecha_desde))
-                        Dim fecha_hastaParam As New MySqlParameter("@fecha_hasta", convertFecha(fecha_hasta))
-                        Dim fecha_desde1Param As New MySqlParameter("@fecha_desde1", convertFecha(fecha_desde))
-                        Dim fecha_hasta1Param As New MySqlParameter("@fecha_hasta1", convertFecha(fecha_hasta))
+                        Dim fecha_desdeParam As New SqlParameter("@fecha_desde", convertFecha(fecha_desde))
+                        Dim fecha_hastaParam As New SqlParameter("@fecha_hasta", convertFecha(fecha_hasta))
+                        Dim fecha_desde1Param As New SqlParameter("@fecha_desde1", convertFecha(fecha_desde))
+                        Dim fecha_hasta1Param As New SqlParameter("@fecha_hasta1", convertFecha(fecha_hasta))
 
                         cmd.Parameters.Add(fecha_desdeParam)
                         cmd.Parameters.Add(fecha_hastaParam)
@@ -17687,8 +17687,8 @@ Namespace geshotelk
 
             row = istads.Tables("CABECERA").Rows.Add()   'crear una encuesta
 
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim ds As DataSet = getDataSet(cmd, sqlISTACabecera)
@@ -17710,7 +17710,7 @@ Namespace geshotelk
         End Function
 
         Sub pruebaBatch()
-            Dim cmd As MySqlCommand = prepareConectionOnlyRead()
+            Dim cmd As SqlCommand = prepareConectionOnlyRead()
             Dim ds As DataSet = getDataSet(cmd, "select reserva_id as reservas_reserva_id,0 as valor from reservas where reserva_id between 18000 and 18100")
             Dim x As Object = Me
             Dim tableIndex As Integer = 0
@@ -17727,7 +17727,7 @@ Namespace geshotelk
 
         End Sub
         Function ejecutaSql(ByVal tmp As String) As Object
-            Dim cmd As MySqlCommand = prepareConectionOnlyRead()
+            Dim cmd As SqlCommand = prepareConectionOnlyRead()
             Dim res As Object = Me.ExecuteScalar(cmd, tmp)
 
             flushConection(cmd, 0)
@@ -17735,17 +17735,17 @@ Namespace geshotelk
         End Function
         Public Function comprueba_paro_ventas(ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = comprueba_paro_ventas(cmd, reserva_id)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
-        Private Function comprueba_release(ByVal cmd As MySqlCommand, reserva_id As Integer) As String
+        Private Function comprueba_release(ByVal cmd As SqlCommand, reserva_id As Integer) As String
             Dim retorno_valor As String = ""
             Dim sql As String = "Select fecha_prevista_llegada,fecha_reserva,hotel_id,cliente_id " _
             & "FROM reservas " _
             & "WHERE reserva_id = ?"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
@@ -17764,12 +17764,12 @@ Namespace geshotelk
             End While
             Return comprueba_release(cmd, hotel_id, cliente_id, fecha_reserva, fecha_llegada)
         End Function
-        Private Function comprueba_release(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha_reserva As Date, ByVal fecha_llegada As Date) As String
+        Private Function comprueba_release(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha_reserva As Date, ByVal fecha_llegada As Date) As String
             Dim retorno_valor As String = ""
             Try
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-                Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-                Dim fecha_Param As New MySqlParameter("@fecha_reserva", fecha_reserva)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+                Dim fecha_Param As New SqlParameter("@fecha_reserva", fecha_reserva)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 cmd.Parameters.Add(cliente_idParam)
@@ -17791,7 +17791,7 @@ Namespace geshotelk
             End Try
             Return retorno_valor
         End Function
-        Private Function comprueba_paro_ventas(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha_desde As Date, ByVal Fecha_hasta As Date) As String
+        Private Function comprueba_paro_ventas(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha_desde As Date, ByVal Fecha_hasta As Date) As String
             Dim retorno_valor As String = ""
             Dim sql As String = "SELECT paro_ventas.paro_ventas_id,paro_ventas.desde,paro_ventas.hasta " _
             & "FROM paro_ventas Inner Join lineas_paro_ventas ON lineas_paro_ventas.paro_ventas_id = paro_ventas.paro_ventas_id " _
@@ -17801,13 +17801,13 @@ Namespace geshotelk
             & "AND ( ? BETWEEN paro_ventas.desde AND paro_ventas.hasta " _
             & "OR ? BETWEEN paro_ventas.desde AND paro_ventas.hasta ) "
 
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim fecha1_Param As New MySqlParameter("@fecha_desde", fecha_desde)
-            Dim fecha2_Param As New MySqlParameter("@fecha_hasta", Fecha_hasta)
-            Dim fecha3_Param As New MySqlParameter("@fecha_desde", fecha_desde)
-            Dim fecha4_Param As New MySqlParameter("@fecha_hasta", Fecha_hasta)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim fecha1_Param As New SqlParameter("@fecha_desde", fecha_desde)
+            Dim fecha2_Param As New SqlParameter("@fecha_hasta", Fecha_hasta)
+            Dim fecha3_Param As New SqlParameter("@fecha_desde", fecha_desde)
+            Dim fecha4_Param As New SqlParameter("@fecha_hasta", Fecha_hasta)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(tipo_habitacion_idParam)
@@ -17831,14 +17831,14 @@ Namespace geshotelk
             End While
             Return retorno_valor
         End Function
-        Private Function comprueba_paro_ventas(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As String
+        Private Function comprueba_paro_ventas(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
             Dim sql As String = "Select fecha_prevista_llegada,fecha_prevista_salida,reservas.hotel_id,cliente_id,tipos_habitacion_hotel.tipo_habitacion_id " _
             & "FROM reservas " _
             & "Inner Join reservas_tipo_habitacion ON reservas.reserva_id = reservas_tipo_habitacion.reserva_id " _
             & "Inner Join tipos_habitacion_hotel ON reservas_tipo_habitacion.servicio_id = tipos_habitacion_hotel.servicio_id AND reservas.hotel_id = tipos_habitacion_hotel.hotel_id " _
             & "WHERE reservas.reserva_id = ?"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
@@ -17848,7 +17848,7 @@ Namespace geshotelk
 
             Dim hotel_id As Integer
             Dim tipo_habitacion_id As New Integer
-            Dim servicio_id As New MySqlParameter("@servicio_id", 1)
+            Dim servicio_id As New SqlParameter("@servicio_id", 1)
             Dim fecha_desde As Date
             Dim fecha_hasta As Date
             While reader.Read
@@ -17863,19 +17863,19 @@ Namespace geshotelk
         End Function
         Public Function dame_cupo(ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = dame_cupo(cmd, hotel_id, cliente_id, tipo_habitacion_id, fecha)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
         Public Function dame_reservas(ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = dame_reservas(cmd, hotel_id, cliente_id, tipo_habitacion_id, fecha)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
-        Public Function dame_reservas(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
+        Public Function dame_reservas(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
             Dim retorno_valor As Integer = 0
             Dim sql_servicio_id As String = "SELECT tipos_habitacion_hotel.servicio_id " _
             & "FROM tipos_habitacion_hotel " _
@@ -17891,18 +17891,18 @@ Namespace geshotelk
             & "reservas.fecha_prevista_salida > ? AND " _
             & "(reservas.cliente_id = ? OR contratos.cliente_id_padre = ?) AND " _
             & "reservas_tipo_habitacion.servicio_id = ? "
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim clientePadre_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id_id", hotel_id)
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
-            Dim fecha1_Param As New MySqlParameter("@fecha_desde", fecha)
-            Dim fecha2_Param As New MySqlParameter("@fecha_desde", fecha)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim clientePadre_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id_id", hotel_id)
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim fecha1_Param As New SqlParameter("@fecha_desde", fecha)
+            Dim fecha2_Param As New SqlParameter("@fecha_desde", fecha)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(tipo_habitacion_idParam)
             Try
                 Dim servicio_id As Integer = ExecuteScalar(cmd, sql_servicio_id)
-                Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
+                Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
                 cmd.Parameters.Add(fecha1_Param)
@@ -17919,14 +17919,14 @@ Namespace geshotelk
             End Try
 
         End Function
-        Public Function dame_cupo(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
+        Public Function dame_cupo(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal tipo_habitacion_id As Integer, ByVal fecha As Date) As Integer
             Dim retorno_valor As Integer = 0
             Dim sql_cliente As String = "Select Coalesce(cliente_id_padre,cliente_id) As cliente_contrato from contratos where hotel_id = ? And cliente_id = ? And fecha_desde<= ? And fecha_hasta> ?"
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id_id", hotel_id)
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
-            Dim fecha1_Param As New MySqlParameter("@fecha_desde", fecha)
-            Dim fecha2_Param As New MySqlParameter("@fecha_desde", fecha)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id_id", hotel_id)
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", tipo_habitacion_id)
+            Dim fecha1_Param As New SqlParameter("@fecha_desde", fecha)
+            Dim fecha2_Param As New SqlParameter("@fecha_desde", fecha)
             'Dim sql_cupo As String = "SELECT cupo FROM cupos WHERE hotel_id = ? AND cliente_id = ? AND fecha_desde <= ? AND fecha_hasta > ? AND tipo_habitacion_id = ?"
             Dim sql_cupo As String = "SELECT SUM(cupo) FROM cupos WHERE hotel_id = ? AND cliente_id = ? AND fecha_desde <= ? AND fecha_hasta > ? AND tipo_habitacion_id = ?"
             cmd.Parameters.Clear()
@@ -17948,12 +17948,12 @@ Namespace geshotelk
 
         Public Function comprueba_cupos(ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = comprueba_cupos(cmd, reserva_id)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
-        Private Function comprueba_cupos(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByRef tipo_habitacion_id As Integer, ByVal fecha_desde As Date, ByVal Fecha_hasta As Date, ByVal servicio_id As Integer, ByVal cantidad As Integer) As String
+        Private Function comprueba_cupos(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByRef tipo_habitacion_id As Integer, ByVal fecha_desde As Date, ByVal Fecha_hasta As Date, ByVal servicio_id As Integer, ByVal cantidad As Integer) As String
             Dim retorno_valor As String = ""
             Dim fecha As Date = fecha_desde
             Dim sql_cliente As String = "Select Coalesce(cliente_id_padre,cliente_id) As cliente_contrato from contratos where hotel_id = ? And cliente_id = ? And fecha_desde<= ? And fecha_hasta> ?"
@@ -17969,13 +17969,13 @@ Namespace geshotelk
             & "contratos.cliente_id IN (?,?) AND " _
             & "reservas_tipo_habitacion.servicio_id = ? "
             Dim sql_tipo_habitacion_id As String = "SELECT tipo_habitacion_id FROM tipos_habitacion_hotel WHERE tipos_habitacion_hotel.hotel_id = ? AND tipos_habitacion_hotel.servicio_id = ?"
-            Dim cliente_padre_id As New MySqlParameter("@cliente_id", 1)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id_id", hotel_id)
-            Dim fecha1_Param As New MySqlParameter("@fecha_desde", Now)
-            Dim fecha2_Param As New MySqlParameter("@fecha_hasta", Now)
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
-            Dim tipo_habitacion_idParam As New MySqlParameter("@tipo_habitacion_id", 0)
+            Dim cliente_padre_id As New SqlParameter("@cliente_id", 1)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id_id", hotel_id)
+            Dim fecha1_Param As New SqlParameter("@fecha_desde", Now)
+            Dim fecha2_Param As New SqlParameter("@fecha_hasta", Now)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
+            Dim tipo_habitacion_idParam As New SqlParameter("@tipo_habitacion_id", 0)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -18039,14 +18039,14 @@ Namespace geshotelk
             End Try
             Return retorno_valor
         End Function
-        Private Function comprueba_cupos(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As String
+        Private Function comprueba_cupos(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
             Dim sql As String = "Select fecha_prevista_llegada,fecha_prevista_salida,reservas.hotel_id,cliente_id,tipos_habitacion_hotel.tipo_habitacion_id,reservas_tipo_habitacion.servicio_id,reservas_tipo_habitacion.cantidad " _
             & "FROM reservas " _
             & "Inner Join reservas_tipo_habitacion ON reservas.reserva_id = reservas_tipo_habitacion.reserva_id " _
             & "Inner Join tipos_habitacion_hotel ON reservas_tipo_habitacion.servicio_id = tipos_habitacion_hotel.servicio_id AND reservas.hotel_id = tipos_habitacion_hotel.hotel_id " _
             & "WHERE reservas.reserva_id = ?"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
@@ -18070,7 +18070,7 @@ Namespace geshotelk
             retorno_valor = comprueba_cupos(cmd, hotel_id, cliente_id, tipo_habitacion_id, fecha_desde, fecha_hasta, servicio_id, 0)
             Return retorno_valor
         End Function
-        Private Function comprueba_reserva_dingus(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As String
+        Private Function comprueba_reserva_dingus(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
             Dim aux As String = ""
             retorno_valor = comprueba_cupos(cmd, reserva_id)
@@ -18086,19 +18086,19 @@ Namespace geshotelk
         End Function
         Private Function comprueba_reserva_dingus(ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = comprueba_reserva_dingus(cmd, reserva_id)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
-        Function comprueba_bono(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal bono As String) As String
+        Function comprueba_bono(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal bono As String) As String
             Dim retorno_valor As String = ""
             ' Si hay alguna reserva no anulada con el mismo bono y mismo cliente, da los toques
             Dim sql As String = "SELECT reserva_id FROM reservas " _
             & "WHERE estado_reserva_id<>'2' AND bono_referencia = ? AND hotel_id = ? AND cliente_id = ?"
-            Dim BonoParam As New MySqlParameter("@bono_referencia", bono)
-            Dim Hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim Cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
+            Dim BonoParam As New SqlParameter("@bono_referencia", bono)
+            Dim Hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim Cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(BonoParam)
             cmd.Parameters.Add(Hotel_idParam)
@@ -18119,7 +18119,7 @@ Namespace geshotelk
             End If
             Return retorno_valor
         End Function
-        Function reserva_check(ByVal cmd As MySqlCommand, ByRef reserva As MetaReserva) As String
+        Function reserva_check(ByVal cmd As SqlCommand, ByRef reserva As MetaReserva) As String
             Dim retorno_valor As String = ""
             Try
                 Dim aux As String = ""
@@ -18197,20 +18197,20 @@ Namespace geshotelk
         End Function
         Function reserva_check(ByRef reserva As MetaReserva) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retorno_valor = reserva_check(cmd, reserva)
             flushConection(cmd, 0)
             Return retorno_valor
         End Function
         Function reserva_check(ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql As String = "Select fecha_prevista_llegada,fecha_prevista_salida,reservas.hotel_id,cliente_id,tipos_habitacion_hotel.tipo_habitacion_id,reservas_tipo_habitacion.servicio_id,bono_referencia,reservas_tipo_habitacion.cantidad " _
             & "FROM reservas " _
             & "Inner Join reservas_tipo_habitacion ON reservas.reserva_id = reservas_tipo_habitacion.reserva_id " _
             & "Inner Join tipos_habitacion_hotel ON reservas_tipo_habitacion.servicio_id = tipos_habitacion_hotel.servicio_id AND reservas.hotel_id = tipos_habitacion_hotel.hotel_id " _
             & "WHERE reservas.reserva_id = ?"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
@@ -18254,7 +18254,7 @@ Namespace geshotelk
  & " union ALL select ficheros_contrato.url_fichero from ficheros_contrato where ficheros_contrato.url_fichero like '..%' "
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 Dim reader As DataTableReader = getDataTable(cmd, sqlfotos)
                 While reader.Read
@@ -18309,10 +18309,10 @@ Namespace geshotelk
         Public Function ImportarReservasDingus(ByVal hotel_id As Integer)
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(hotel_idParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlDatosDingusHotel, True)
                 Dim emailcontrol = "jnunez@grupohd.com"
@@ -18365,8 +18365,8 @@ Namespace geshotelk
 
                                 Dim pservicios As tablaServicios = Nothing
                                 'es cliente dingus para ese hotel
-                                hotel_idParam = New MySqlParameter("@hotel_id", hotel_id)
-                                Dim cliente_idParam As New MySqlParameter("@reserva_dingus_id", reserva.CustomerCode)
+                                hotel_idParam = New SqlParameter("@hotel_id", hotel_id)
+                                Dim cliente_idParam As New SqlParameter("@reserva_dingus_id", reserva.CustomerCode)
                                 cmd.Parameters.Add(cliente_idParam)
                                 cmd.Parameters.Add(hotel_idParam)
                                 Dim impuestos_incluidos As Integer = 1
@@ -18400,7 +18400,7 @@ Namespace geshotelk
                                     'es dingus o tiene precio pms
 
                                     cmd.Parameters.Clear()
-                                    Dim reserva_dingus_idgeshotelParam As New MySqlParameter("@reserva_dingus_id", reserva.Localizer)
+                                    Dim reserva_dingus_idgeshotelParam As New SqlParameter("@reserva_dingus_id", reserva.Localizer)
                                     cmd.Parameters.Add(reserva_dingus_idgeshotelParam)
                                     cmd.Parameters.Add(hotel_idParam)
                                     Dim reserva_idgeshotel As Integer = ExecuteScalar(cmd, sqlExisteReservaDingusEnGeshotel)
@@ -18411,7 +18411,7 @@ Namespace geshotelk
                                     End If
 
                                     cmd.Parameters.Clear()
-                                    Dim reserva_dingus_idParam As New MySqlParameter("@reserva_dingus_id", reserva.Localizer & "//" & reserva.RoomReference)
+                                    Dim reserva_dingus_idParam As New SqlParameter("@reserva_dingus_id", reserva.Localizer & "//" & reserva.RoomReference)
                                     cmd.Parameters.Add(reserva_dingus_idParam)
                                     Dim existe As Boolean = True
                                     Dim reserva_id As Integer = ExecuteScalar(cmd, sqlExisteReservaDingus)
@@ -18428,7 +18428,7 @@ Namespace geshotelk
                                         'si reserva esta en facturado o anulada
                                         'es un error...
                                         cmd.Parameters.Clear()
-                                        Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                                        Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                                         cmd.Parameters.Add(reserva_idParam)
                                         estado_anterior = ExecuteScalar(cmd, sqlEstadoReserva, True)
                                         If IsDBNull(estado_anterior) Then
@@ -18503,7 +18503,7 @@ Namespace geshotelk
                                                     ' SEPTIEMBRE 2013 No borro los huespedes si se ha hecho checkin online
                                                     '*******************************************************************************************
                                                     cmd.Parameters.Clear()
-                                                    Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+                                                    Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
                                                     cmd.Parameters.Add(reserva_idParam)
                                                     Dim online As Object = ExecuteScalar(cmd, "SELECT idioma_id FROM reservas WHERE reserva_id=?", True)
                                                     If estado_anterior = 1 And IsDBNull(online) Then
@@ -18716,7 +18716,7 @@ Namespace geshotelk
             Return True
         End Function
 
-        Private Function getDingusHuespedes(ByVal cmd As MySqlCommand, ByVal reserva_Dingus As Dingus.BookingRS, ByVal unidades_calculos As DataTable, ByVal dni As String, ByVal telefono As String, ByVal email As String, ByVal cliente_id As Integer)
+        Private Function getDingusHuespedes(ByVal cmd As SqlCommand, ByVal reserva_Dingus As Dingus.BookingRS, ByVal unidades_calculos As DataTable, ByVal dni As String, ByVal telefono As String, ByVal email As String, ByVal cliente_id As Integer)
             Dim hues As New ArrayList()
             Dim unid As New Hashtable
             Dim x As Integer
@@ -18728,7 +18728,7 @@ Namespace geshotelk
             '--------------------------------------------------------------------------------------------
             Dim hotel_id As Integer = reserva_Dingus.HotelCode
             Dim sql_empresa As String = "Select empresa_id From hoteles where hotel_id =?"
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             ' Dim cliente_id = convertirCamposDingus(reserva_Dingus.CustomerCode, "CustomerCode")
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -18741,8 +18741,8 @@ Namespace geshotelk
             Dim sql_contrato_id = "SELECT MAX(contrato_id) FROM contratos Where hotel_id =? AND cliente_id = ? AND ? Between fecha_desde AND fecha_hasta"
             Dim contrato_id As Integer = 0
 
-            Dim fechaParam As New MySqlParameter("@fecha", reserva_Dingus.DateFrom)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
+            Dim fechaParam As New SqlParameter("@fecha", reserva_Dingus.DateFrom)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
             Try
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(hotel_idParam)
@@ -18762,8 +18762,8 @@ Namespace geshotelk
             & "WHERE hoteles_edades.hotel_id = ? AND " _
             & "? BETWEEN Coalesce(contratos_edades.edad_minima,hoteles_edades.edad_minima) AND Coalesce(contratos_edades.edad_maxima,hoteles_edades.edad_maxima)LIMIT 0,1)"
 
-            Dim contrato_idParam As New MySqlParameter("@contrato_id", contrato_id)
-            Dim edadParam As New MySqlParameter("@edad_minima", 0)
+            Dim contrato_idParam As New SqlParameter("@contrato_id", contrato_id)
+            Dim edadParam As New SqlParameter("@edad_minima", 0)
             ' --------------------------------------------
             ' FIN GARRA JAVIER JULIO 2012
             ' --------------------------------------------
@@ -18854,7 +18854,7 @@ Namespace geshotelk
         Shared sql_inserta_descuento As String = "INSERT INTO reservas_descuentos (reserva_id,servicio_id,tipo_descuento_id,descuento,user_id,fecha_modificacion,tipo) " _
             & " VALUES (?,?,?,?,1,now(),'A')"
         Shared borra_descuento = "Delete reservas_descuentos Where reserva_id = ? And servicio_id = ?"
-        Function crea_descuento_en_reserva(ByVal cmd As MySqlCommand, ByVal ds As DataSet) As Integer
+        Function crea_descuento_en_reserva(ByVal cmd As SqlCommand, ByVal ds As DataSet) As Integer
             Dim errorCode As Integer = 0
             ' Primero tengo que mirar si para ese cliente y las fechas de la reserva, tenemos descuento
             ' Borro todos los descuentos automaticos
@@ -18867,9 +18867,9 @@ Namespace geshotelk
             Try
                 Dim sql_hay_descuento As String = "SELECT servicio_id, tipo_descuento_id, descuento " _
                 & "FROM descuentos WHERE hotel_id = ? AND cliente_id = ? AND ? BETWEEN desde AND hasta ORDER BY servicio_id, tipo_descuento_id"
-                Dim cliente_idParam As New MySqlParameter("@cliente_id", 0)
-                Dim hotel_idParam As New MySqlParameter("@hotel_id", 0)
-                Dim desdeParam As New MySqlParameter("@desde", Now)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", 0)
+                Dim hotel_idParam As New SqlParameter("@hotel_id", 0)
+                Dim desdeParam As New SqlParameter("@desde", Now)
                 If ds.Tables("reserva").Rows(0).IsNull("cliente_id_factura") Then
                     If ds.Tables("reserva").Rows(0).IsNull("cliente_id") Then
                         Return 0
@@ -18904,7 +18904,7 @@ Namespace geshotelk
             End Try
 
         End Function
-        Function crea_descuento_en_reserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Integer
+        Function crea_descuento_en_reserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As Integer
             Dim errorCode As Integer = 0
             ' Primero tengo que mirar si para ese cliente y las fechas de la reserva, tenemos descuento
             Dim sql_hay_descuento As String = "SELECT servicio_id, tipo_descuento_id, descuento " _
@@ -18914,14 +18914,14 @@ Namespace geshotelk
             Dim sql_dto_reserva As String = "SELECT descuento " _
             & "FROM reservas_descuentos " _
             & "WHERE reserva_id = ? AND servicio_id = ? AND tipo_descuento_id = ? "
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", 0)
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", 0)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            Dim tipo_descuento_idParam As New MySqlParameter("@tipo_descuento_id", 0)
-            Dim descuentoParam As New MySqlParameter("@descuento", 0)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", 0)
-            Dim desdeParam As New MySqlParameter("@desde", Now)
-            Dim hastaParam As New MySqlParameter("@desde", Now)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 0)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim tipo_descuento_idParam As New SqlParameter("@tipo_descuento_id", 0)
+            Dim descuentoParam As New SqlParameter("@descuento", 0)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", 0)
+            Dim desdeParam As New SqlParameter("@desde", Now)
+            Dim hastaParam As New SqlParameter("@desde", Now)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Dim Reader As DataTableReader = getDataTable(cmd, sql_reserva)
@@ -18972,22 +18972,22 @@ Namespace geshotelk
         End Function
         Public Function crea_descuento_en_reserva(ByVal reserva_id As Integer) As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             crea_descuento_en_reserva(cmd, reserva_id)
             flushConection(cmd, 0)
         End Function
 
         Public Function crea_descuento_en_reservas_ttoo(ByVal cliente_id As Integer) As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", 0)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
-            Dim tipo_descuento_idParam As New MySqlParameter("@tipo_descuento_id", 0)
-            Dim descuentoParam As New MySqlParameter("@descuento", 0)
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", 0)
-            Dim desdeParam As New MySqlParameter("@desde", Now)
-            Dim hastaParam As New MySqlParameter("@desde", Now)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
+            Dim tipo_descuento_idParam As New SqlParameter("@tipo_descuento_id", 0)
+            Dim descuentoParam As New SqlParameter("@descuento", 0)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", 0)
+            Dim desdeParam As New SqlParameter("@desde", Now)
+            Dim hastaParam As New SqlParameter("@desde", Now)
             Dim select_reservas As String = "SELECT reservas.reserva_id, reservas_descuentos.descuento FROM reservas " _
             & "Left Join reservas_descuentos ON reservas.reserva_id = reservas_descuentos.reserva_id And reservas_descuentos.servicio_id = ? AND reservas_descuentos.tipo_descuento_id = ? " _
             & "WHERE reservas.hotel_id = ? AND reservas.cliente_id = ? AND reservas.estado_reserva_id IN (1, 3) AND " _
@@ -19042,14 +19042,14 @@ Namespace geshotelk
         Public Function crea_descuento_tui_nordic() As Integer
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql_dtos = "Select * From descuentos Where hasta >now()"
             Dim sql = "Select reserva_id FROM reservas WHERE reservas.hotel_id = 3 AND reservas.cliente_id = 14744 AND reservas.estado_reserva_id IN (1, 3) "   ' Reservas Tui Nordic hasta 24/04/20012
             Dim sql_check_reserva = "Select SUM(descuento) FROM reservas_descuentos WHERE reserva_id= ? AND servicio_id=177"
             Dim reader As DataTableReader = getDataTable(cmd, sql)
             Dim sql_insert As String = "INSERT INTO reservas_descuentos (reserva_id,servicio_id,tipo_descuento_id,descuento,user_id,fecha_modificacion,tipo) " _
             & " VALUES (?,177,1,1,79,now(),'A')"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", 0)
             While reader.Read
                 reserva_idParam.Value = reader.Item("reserva_id")
                 cmd.Parameters.Clear()
@@ -19064,14 +19064,14 @@ Namespace geshotelk
             flushConection(cmd, 0)
         End Function
         Function carga_valor_en_reserva(ByVal reserva_id As Integer) As Integer
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             carga_valor_en_reserva(cmd, reserva_id)
             flushConection(cmd, 0)
         End Function
-        Function carga_valor_en_reserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Integer
+        Function carga_valor_en_reserva(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As Integer
             Dim sql_update As String = "Update reservas SET valor=? WHERE reserva_id = ?"
-            Dim valorParam As New MySqlParameter("@valor", 0)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim valorParam As New SqlParameter("@valor", 0)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             valorParam.Value = obtieneImporteTotalReserva(reserva_idParam.Value)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(valorParam)
@@ -19079,10 +19079,10 @@ Namespace geshotelk
             Return ExecuteNonQuery(cmd, sql_update)
         End Function
         Public Function carga_valor_en_reservas(ByVal Hotel_id As Integer) As Integer
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorcode As Integer
             Dim sql As String = "Select reserva_id From reservas Where hotel_id=? And estado_reserva_id=1 and (valor Is Null or valor=0) Limit 5000"
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", Hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", Hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Try
@@ -19107,18 +19107,18 @@ Namespace geshotelk
             Return 0
         End Function
 
-        Function comprueba_cliente_duplicado(ByVal cmd As MySqlCommand, ByRef huesped() As MetaHuesped, ByVal x As Integer, ByVal reserva_id As Integer) As Boolean
+        Function comprueba_cliente_duplicado(ByVal cmd As SqlCommand, ByRef huesped() As MetaHuesped, ByVal x As Integer, ByVal reserva_id As Integer) As Boolean
             '-----------------------------------------------------------------------------------------------------------------------------
             ' Miro si ya existe un cliente con esos datos. Para ello mirare los campos Razon, Pais, Nº de documento, fecha de nacimiento
             ' Deberian coincidir 3 de ellos. Fecha de nacimiento ha de ser igual o nula, nacion igual, nombre o dni igual
             ' Si coincide entonces pongo el campo
             '-----------------------------------------------------------------------------------------------------------------------------
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", huesped(x).cliente_id)
-            Dim nifParam As New MySqlParameter("@nif", huesped(x).nif)
-            Dim razonParam As New MySqlParameter("@razon", huesped(x).razon)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", huesped(x).cliente_id)
+            Dim nifParam As New SqlParameter("@nif", huesped(x).nif)
+            Dim razonParam As New SqlParameter("@razon", huesped(x).razon)
             Dim fecha_nac As Object = huesped(x).fecha_nacimiento
-            Dim cliente2Param As New MySqlParameter("@cliente_id", 1)
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim cliente2Param As New SqlParameter("@cliente_id", 1)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             Dim sql As String = ""
             Dim Reader As DataTableReader
             Dim cliente_id As Integer
@@ -19265,7 +19265,7 @@ Namespace geshotelk
         Public Function elimina_clientes_duplicados() As Boolean
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             'Dim sql As String = "Select clientes.cliente_id,c.cliente_id As cliente2,clientes.razon As razon, c.razon As razon1,clientes.nif " _
             '& "From clientes, clientes as c " _
             '& "Where clientes.razon=c.razon AND clientes.nif=c.nif AND clientes.grupo_cliente_id=5 AND c.grupo_cliente_id=5 AND clientes.cliente_id<>c.cliente_id And LENGTH(clientes.nif)<>0 LIMIT 0,1"
@@ -19280,10 +19280,10 @@ Namespace geshotelk
             Dim reader As DataTableReader
             Dim cliente1 As Integer
             Dim cliente2 As Integer
-            Dim cliente1Param As New MySqlParameter("@cliente_id", 1)
-            Dim cliente2Param As New MySqlParameter("@cliente_id", 1)
-            Dim nifParam As New MySqlParameter("@nif", "nif")
-            Dim razonParam As New MySqlParameter("@razon", "razon")
+            Dim cliente1Param As New SqlParameter("@cliente_id", 1)
+            Dim cliente2Param As New SqlParameter("@cliente_id", 1)
+            Dim nifParam As New SqlParameter("@nif", "nif")
+            Dim razonParam As New SqlParameter("@razon", "razon")
             Dim sql1 As String = "Update IGNORE reservas_huespedes Set cliente_id = ? Where cliente_id = ?"
             Dim sql2 As String = "Update IGNORE facturas set cliente_id = ? Where cliente_id = ?"
             Dim sql_delete As String = "Delete From clientes where cliente_id = ?"
@@ -19345,7 +19345,7 @@ Namespace geshotelk
         Public Function elimina_clientes_duplicados_paso2() As Boolean
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
 
             'Seleccionamos los clientes con igual razon, nif y nacion_id
             Dim sql As String = "SELECT razon,nif, count(*) As contador FROM clientes WHERE grupo_cliente_id='5' AND nif IS NOT NULL AND nif <> '' group by nif,razon having count(*)>1"
@@ -19353,10 +19353,10 @@ Namespace geshotelk
             Dim reader As DataTableReader = getDataTable(cmd, sql)
             Dim cliente1 As Integer
             Dim cliente2 As Integer
-            Dim cliente1Param As New MySqlParameter("@cliente_id", 1)
-            Dim cliente2Param As New MySqlParameter("@cliente_id", 1)
-            Dim nifParam As New MySqlParameter("@nif", "nif")
-            Dim razonParam As New MySqlParameter("@razon", "razon")
+            Dim cliente1Param As New SqlParameter("@cliente_id", 1)
+            Dim cliente2Param As New SqlParameter("@cliente_id", 1)
+            Dim nifParam As New SqlParameter("@nif", "nif")
+            Dim razonParam As New SqlParameter("@razon", "razon")
             Dim sql1 As String = "Update IGNORE reservas_huespedes Set cliente_id = ? Where cliente_id = ?"
             Dim sql2 As String = "Update IGNORE facturas set cliente_id = ? Where cliente_id = ?"
             Dim sql_delete As String = "Delete From clientes where cliente_id = ?"
@@ -19438,7 +19438,7 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function dame_precio_fijo(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha As Date, ByVal servicio_id As Integer, ByVal uc_id As Integer) As Double
+        Private Function dame_precio_fijo(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal cliente_id As Integer, ByVal fecha As Date, ByVal servicio_id As Integer, ByVal uc_id As Integer) As Double
             '****************************************************************************************************************************
             ' Con los parametros dados conseguimos el precio fijo de un servicio. Especial para dingus.
             ' Va a leer a las tablas precios_fijo_cliente y precios_fijo_hotel
@@ -19447,11 +19447,11 @@ Namespace geshotelk
             '***************************************************************************************************************************
 
             Dim sql As String = "Select precio FROM precios_fijo_cliente WHERE hotel_id = ? AND cliente_id= ? AND servicio_id = ? AND uc_id = ? AND ? BETWEEN desde AND hasta "
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MySqlParameter("@fecha", fecha)
-            Dim cliente_idParam As New MySqlParameter("@cliente_id", cliente_id)
-            Dim servicio_idParam As New MySqlParameter("@servicio_id", servicio_id)
-            Dim uc_idParam As New MySqlParameter("@uc_id", uc_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", cliente_id)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", servicio_id)
+            Dim uc_idParam As New SqlParameter("@uc_id", uc_id)
             Dim precio As Object
 
             cmd.Parameters.Clear()
@@ -19510,11 +19510,11 @@ Namespace geshotelk
             Return 0
         End Function
 
-        Private Function busca_ttoo(ByVal cmd As MySqlCommand, ByVal res As MetaReserva) As Integer
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", res.hotel_id)
-            Dim agencia_idParam As New MySqlParameter("@agencia_id", res.cliente_id)
-            Dim fechaParam As New MySqlParameter("@fecha", res.fecha_prevista_llegada)
-            Dim contrato_clienteParam As New MySqlParameter("@numero_contrato_cliente", res.contract_id)
+        Private Function busca_ttoo(ByVal cmd As SqlCommand, ByVal res As MetaReserva) As Integer
+            Dim hotel_idParam As New SqlParameter("@hotel_id", res.hotel_id)
+            Dim agencia_idParam As New SqlParameter("@agencia_id", res.cliente_id)
+            Dim fechaParam As New SqlParameter("@fecha", res.fecha_prevista_llegada)
+            Dim contrato_clienteParam As New SqlParameter("@numero_contrato_cliente", res.contract_id)
             Try
                 ' -------------------------------------------------------------------------------------------------------
                 ' Primero compruebo que el cliente es una agencia. Si es ttoo entonces paso de lo que diga contract_id
@@ -19627,7 +19627,7 @@ Namespace geshotelk
         End Sub
         Public Function conformaFactura(ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = True
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             retVal = conformaFactura(cmd, factura_id)
             If retVal Then
                 flushConection(cmd, 0)
@@ -19636,10 +19636,10 @@ Namespace geshotelk
             End If
             Return retVal
         End Function
-        Private Function conformaFactura(ByVal cmd As MySqlCommand, ByVal factura_id As Integer) As Boolean
+        Private Function conformaFactura(ByVal cmd As SqlCommand, ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = True
             Dim sql As String = "Select conforme FROM facturas WHERE factura_id =?"
-            Dim factura_idParam As New MySqlParameter("@factura_id", factura_id)
+            Dim factura_idParam As New SqlParameter("@factura_id", factura_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(factura_idParam)
             Dim conforme As Object = ExecuteScalar(cmd, sql)
@@ -19706,8 +19706,8 @@ Namespace geshotelk
 
         End Function
         Public Function enviarEmailCreacionReserva(ByVal reserva_id As Integer) As Integer
-            Dim cmd As MySqlCommand = prepareConection()
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             Try
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(reserva_idParam)
@@ -19722,9 +19722,9 @@ Namespace geshotelk
         End Function
         Public Function Comprueba_tarjeta(ByVal reserva_id As Integer) As String
             Dim retorno_valor As String = ""
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql As String = "SELECT reserva_dingus_tipo,tarjeta_credito,cod_seguridad,caducidad FROM reservas WHERE reserva_id =?"
-            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Try
@@ -19777,7 +19777,7 @@ Namespace geshotelk
             ' Tano y Javier
             ' --------------------------------------------------------------------------------------------------
             Dim meta As New MetaReserva
-            Dim cmd As MySqlCommand
+            Dim cmd As SqlCommand
             cmd = prepareConection()
             Dim ds As DataSet = preparaDatasetReserva(cmd, reserva_id)
             Dim xml = ds.Tables("reserva").Rows(0).Item("reserva_dingus")
@@ -19810,9 +19810,9 @@ Namespace geshotelk
         Function importaFotosHotel(hotel_id As Integer, numero As Integer)
             'abro conexion
             Dim dt As Date = Now
-            Dim cmd As MySqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim sql As String = "SELECT DISTINCT clientes.foto1,clientes.foto2 FROM reservas INNER JOIN reservas_huespedes ON reservas.reserva_id = reservas_huespedes.reserva_id INNER JOIN clientes ON reservas_huespedes.cliente_id = clientes.cliente_id WHERE reservas.hotel_id = ? and (not clientes.foto1 is null or not clientes.foto1 is null)"
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Try
@@ -19837,23 +19837,23 @@ Namespace geshotelk
             Console.WriteLine("total:" & (xxl.ToString))
         End Function
         Public Sub carga_notificaciones_telegram(ByVal hotel_id As Integer, ByVal tipo_mensaje_id As Integer, ByVal mensaje As String)
-            Dim cmd As MySqlCommand
+            Dim cmd As SqlCommand
             cmd = prepareConection()
             carga_notificaciones_telegram(cmd, hotel_id, tipo_mensaje_id, mensaje)
             flushConection(cmd, 0)
 
         End Sub
-        Private Sub carga_notificaciones_telegram(ByVal cmd As MySqlCommand, ByVal hotel_id As Integer, ByVal tipo_mensaje_id As Integer, ByVal mensaje As String)
+        Private Sub carga_notificaciones_telegram(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal tipo_mensaje_id As Integer, ByVal mensaje As String)
 
             ' Primero compruebo que no haya ningun mensaje del mismo tipo pendiente de enviar o enviado en las últimas 4 horas
             ' Para no repetir posibles mensajes y saturar al receptor
             ' *****************************************************************************************************************************
             Dim sql As String = "SELECT COUNT(*) FROM notificaciones_telegram WHERE hotel_id=? AND tipo_id=? AND (estado_id=1 OR DATE_ADD(fecha_hora,INTERVAL 1 hour)>now())"
 
-            Dim hotel_idParam As New MySqlParameter("@hotel_id", hotel_id)
-            Dim tipo_mensaje_idParam As New MySqlParameter("@tipo_mensaje_id", tipo_mensaje_id)
-            Dim mensajeParam As New MySqlParameter("@mensaje", mensaje)
-            Dim contactoParam As New MySqlParameter("@mensaje", "")
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim tipo_mensaje_idParam As New SqlParameter("@tipo_mensaje_id", tipo_mensaje_id)
+            Dim mensajeParam As New SqlParameter("@mensaje", mensaje)
+            Dim contactoParam As New SqlParameter("@mensaje", "")
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(tipo_mensaje_idParam)
@@ -19879,19 +19879,19 @@ Namespace geshotelk
 
         End Sub
         Public Function comprueba_overbooking(ByVal reserva_id As Integer)
-            Dim cmd As MySqlCommand
+            Dim cmd As SqlCommand
             cmd = prepareConection()
             comprueba_overbooking(cmd, reserva_id)
             flushConection(cmd, 0)
         End Function
-        Private Function comprueba_overbooking(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer)
+        Private Function comprueba_overbooking(ByVal cmd As SqlCommand, ByVal reserva_id As Integer)
             Dim sql As String = "SELECT reservas.hotel_id,reservas.fecha_prevista_llegada,reservas.fecha_prevista_salida, " _
             & "reservas_tipo_habitacion.servicio_id, tipos_habitacion_hotel.tipo_habitacion_id, reservas_tipo_habitacion.tipo_habitacion " _
             & "FROM reservas " _
             & "INNER JOIN reservas_tipo_habitacion ON reservas.reserva_id = reservas_tipo_habitacion.reserva_id " _
             & "INNER JOIN tipos_habitacion_hotel ON reservas.hotel_id = tipos_habitacion_hotel.hotel_id AND reservas_tipo_habitacion.servicio_id = tipos_habitacion_hotel.servicio_id " _
             & "WHERE reservas.reserva_id = ? "
-            Dim reserva_idParam As New MySqlParameter("reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("reserva_id", reserva_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Dim mensaje As String = ""
@@ -19902,11 +19902,11 @@ Namespace geshotelk
                 Dim Reader As DataTableReader = getDataTable(cmd, sql)
                 While Reader.Read
                     Dim fecha As Date = Reader.Item("fecha_prevista_llegada")
-                    Dim servicio_idParam As New MySqlParameter("reserva_id", Reader.Item("servicio_id"))
-                    Dim servicio_idParam1 As New MySqlParameter("reserva_id", Reader.Item("servicio_id"))
-                    Dim hotel_idParam As New MySqlParameter("reserva_id", Reader.Item("hotel_id"))
-                    Dim tipo_habitacion_idParam As New MySqlParameter("reserva_id", Reader.Item("tipo_habitacion_id"))
-                    Dim tipo_habitacion_idParam1 As New MySqlParameter("reserva_id", Reader.Item("tipo_habitacion_id"))
+                    Dim servicio_idParam As New SqlParameter("reserva_id", Reader.Item("servicio_id"))
+                    Dim servicio_idParam1 As New SqlParameter("reserva_id", Reader.Item("servicio_id"))
+                    Dim hotel_idParam As New SqlParameter("reserva_id", Reader.Item("hotel_id"))
+                    Dim tipo_habitacion_idParam As New SqlParameter("reserva_id", Reader.Item("tipo_habitacion_id"))
+                    Dim tipo_habitacion_idParam1 As New SqlParameter("reserva_id", Reader.Item("tipo_habitacion_id"))
                     ' Miro cuantas habitaciones de ese tipo hay en el hotel
                     If IsDBNull(tipo_habitacion_idParam.Value) Then ' No hay habitacion paso de todo
                         Return True
@@ -19936,8 +19936,8 @@ Namespace geshotelk
                     & "OR (reservas_servicios.servicio_id<>? AND habitaciones.tipo_habitacion_id = ? AND servicios.concepto_acelerador_reservas_id=1)" _
                     & ")"
                     While fecha < Reader.Item("fecha_prevista_salida")
-                        Dim fechaParam As New MySqlParameter("@fecha_llegada", fecha)
-                        Dim fechaParam1 As New MySqlParameter("@fecha_salida", fecha)
+                        Dim fechaParam As New SqlParameter("@fecha_llegada", fecha)
+                        Dim fechaParam1 As New SqlParameter("@fecha_salida", fecha)
                         cmd.Parameters.Clear()
 
                         cmd.Parameters.Add(hotel_idParam)

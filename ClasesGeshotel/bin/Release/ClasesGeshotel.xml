@@ -22,7 +22,7 @@ ClasesGeshotel
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:ClasesGeshotel.geshotelk.GesHotelClase.ExecuteNonQuery(MySql.Data.MySqlClient.MySqlCommand,System.String)">
+<member name="M:ClasesGeshotel.geshotelk.GesHotelClase.ExecuteNonQuery(System.Data.SqlClient.SqlCommand,System.String)">
  <summary>
  Ejecuta el command executeNonQuery con control de errores
  </summary>
@@ -32,7 +32,7 @@ ClasesGeshotel
  <remarks></remarks>
      
 </member>
-<member name="M:ClasesGeshotel.geshotelk.GesHotelClase.ExecuteScalar(MySql.Data.MySqlClient.MySqlCommand,System.String)">
+<member name="M:ClasesGeshotel.geshotelk.GesHotelClase.ExecuteScalar(System.Data.SqlClient.SqlCommand,System.String)">
  <summary>
  Ejecuta el command execute Escalar con control de errores
  </summary>

@@ -20,7 +20,9 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(6000, "Contratos/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
 [assembly: NavigationLink(6000, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
 [assembly: NavigationLink(6000, "Contratos/CanalesReserva", typeof(Geshotel.Contratos.Pages.CanalesReservaController))]
-
+[assembly: NavigationLink(6000, "Contratos/Cajas", typeof(Geshotel.Contratos.Pages.CajasController))]
+[assembly: NavigationLink(6000, "Contratos/Contadores", typeof(Geshotel.Contratos.Pages.ContadoresController))]
+[assembly: NavigationLink(6000, "Contratos/Series", typeof(Geshotel.Contratos.Pages.SeriesController))]
 
 //[assembly: NavigationLink(6000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
 //[assembly: NavigationLink(6000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]

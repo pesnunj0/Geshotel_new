@@ -7,7 +7,7 @@ namespace Geshotel.Contratos.Scripts
     using Serenity.Web;
     using Portal.Scripts;
     [LookupScript("Contratos.Habitaciones")]
-    public class HotelesLookup : MultiTenantRowLookupScript<HabitacionesRow>
+    public class HabitacionesLookup : MultiTenantRowLookupScript<HabitacionesRow>
     {
 
     }

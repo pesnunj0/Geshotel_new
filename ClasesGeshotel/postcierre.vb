@@ -9,7 +9,7 @@ Imports MySql.Data.MySqlClient
 
 Namespace geshotelk
     Partial Public Class GesHotelClase
-        Public Function Materializa_tablas(ByVal cmd As MysqlCommand) As Integer
+        Public Function Materializa_tablas(ByVal cmd As SqlCommand) As Integer
             Dim ErrorCode As Integer = 0
 
             Dim sql_truncate = "Truncate Table tabla_clientes_repetidos"
@@ -25,11 +25,11 @@ Namespace geshotelk
         End Function
         Public Function Materializa_tablas() As Integer
             Dim ErrorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             ErrorCode = Materializa_tablas(cmd)
             flushConection(cmd, ErrorCode)
         End Function
-        Public Function genera_manocorriente(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
+        Public Function genera_manocorriente(ByVal cmd As SqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim ErrorCode As Integer = 0
             Dim RowCount As Integer
             Dim nombre_vista As String = "manocorriente_dia"
@@ -57,8 +57,8 @@ Namespace geshotelk
             & "GROUP BY hotel_id,fecha,reserva_id,servicio_id "
             sqlinsert = sqlinsert.Replace("{hotel_id}", Hotel_id)
             '& "Select hotel_id,fecha,reserva_id,servicio_id,cantidad,SUM(producido),SUM(facturado) from " & nombre_vista & " where hotel_id= ? "
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", Hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha_factura", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", Hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha_factura", fecha)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -83,19 +83,19 @@ Namespace geshotelk
         End Function
         Public Function genera_manocorriente(ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim Errorcode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Errorcode = genera_manocorriente(cmd, Hotel_id, fecha)
             flushConection(cmd, Errorcode)
             Return Errorcode
         End Function
-        Public Function genera_desvios(ByVal cmd As MysqlCommand) As Integer
+        Public Function genera_desvios(ByVal cmd As SqlCommand) As Integer
 
             Dim errorcode As Integer = 0
             Dim RowCount As Integer = 0
-            Dim reserva_idParam As New MysqlParameter("@reserva_id", 1)
-            Dim tipo_hab_idParam As New MysqlParameter("@tipo_id", 1)
-            Dim desdeParam As New MysqlParameter("@desde", Today())
-            Dim hastaParam As New MysqlParameter("@hasta", Today())
+            Dim reserva_idParam As New SqlParameter("@reserva_id", 1)
+            Dim tipo_hab_idParam As New SqlParameter("@tipo_id", 1)
+            Dim desdeParam As New SqlParameter("@desde", Today())
+            Dim hastaParam As New SqlParameter("@hasta", Today())
 
 
             Dim sqlinsert As String = "INSERT into desvios (reserva_id,tipo_habitacion_id,desde,hasta,interno,num_habitaciones,coste_unitario) " _
@@ -128,11 +128,11 @@ Namespace geshotelk
         End Function
         Public Function genera_desvios() As Integer
             Dim ErrorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             flushConection(cmd, ErrorCode)
             Return ErrorCode
         End Function
-        Public Function genera_historico(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, ByVal nombre_fichero As String, ByVal fecha As Date, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
+        Public Function genera_historico(ByVal cmd As SqlCommand, ByVal Hotel_id As Integer, ByVal nombre_fichero As String, ByVal fecha As Date, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
             Dim ErrorCode As Integer = 0
             Dim RowCount As Integer
             Dim dia As Integer = Day(fecha)
@@ -160,10 +160,10 @@ Namespace geshotelk
             sqlborra = sqlborra.Replace("{nombre_mes}", meses(mes))
             Dim sql_desvio As String = ""
 
-            Dim DesdeParam As New MysqlParameter("@fecha", Today)
-            Dim HastaParam As New MysqlParameter("@fecha", Today)
-            Dim Desde1Param As New MysqlParameter("@fecha", Today)
-            Dim Hasta1Param As New MysqlParameter("@fecha", Today)
+            Dim DesdeParam As New SqlParameter("@fecha", Today)
+            Dim HastaParam As New SqlParameter("@fecha", Today)
+            Dim Desde1Param As New SqlParameter("@fecha", Today)
+            Dim Hasta1Param As New SqlParameter("@fecha", Today)
 
             Dim fechacierrehotel As Date = FechaHotel(cmd, Hotel_id)
             If IsDate(fecha) Then  ' Solo cargamos un dia. En este caso, no hay que borrar ningún registro
@@ -182,15 +182,15 @@ Namespace geshotelk
                 Return ErrorCode
             End If
             sql = sql.Replace("{where}", where)
-            Dim diaParam As New MysqlParameter("@dia", dia)
-            Dim AnoParam As New MysqlParameter("@ano", ano)
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", Hotel_id)
-            Dim servicio_idParam As New MysqlParameter("@servicio_id", 1)
-            Dim uc_idParam As New MysqlParameter("@uc_id", 1)
-            Dim cliente_idParam As New MysqlParameter("@cliente_id", 1)
-            Dim cantidadParam As New MysqlParameter("@qty", 1)
-            Dim cantidadmesParam As New MysqlParameter("@qty", 1)
-            Dim desvioparam As New MysqlParameter("desvio", 0)
+            Dim diaParam As New SqlParameter("@dia", dia)
+            Dim AnoParam As New SqlParameter("@ano", ano)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", Hotel_id)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", 1)
+            Dim uc_idParam As New SqlParameter("@uc_id", 1)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 1)
+            Dim cantidadParam As New SqlParameter("@qty", 1)
+            Dim cantidadmesParam As New SqlParameter("@qty", 1)
+            Dim desvioparam As New SqlParameter("desvio", 0)
 
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -268,12 +268,12 @@ Namespace geshotelk
         End Function
         Public Function genera_historico(ByVal Hotel_id As Integer, Optional ByVal nombre_fichero As String = "totales_resumen_servicios", Optional ByVal fecha As Object = Nothing, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
             Dim ErrorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             ErrorCode = genera_historico(cmd, Hotel_id, nombre_fichero, fecha, dd, aa)
             flushConection(cmd, ErrorCode)
             Return ErrorCode
         End Function
-        Public Function genera_Solo_Alojamiento(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
+        Public Function genera_Solo_Alojamiento(ByVal cmd As SqlCommand, ByVal Hotel_id As Integer, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
             ' Mierda de funcion para generar las estadísticas de solo Alojamiento
             ' Como no es un servicio a facturar, lo calculamos como diferencia entre las pax y el resto de regímenes
             Dim ErrorCode As Integer = 0
@@ -344,13 +344,13 @@ Namespace geshotelk
 
             Try
                 Dim reader As DataTableReader = getDataTable(cmd, Sql)
-                Dim uc_idParam As New MysqlParameter("@uc_id", 1)
-                Dim cliente_idParam As New MysqlParameter("@cliente_id", 1)
-                Dim dia_param As New MysqlParameter("@dia", 0)
-                Dim desvioparam As New MysqlParameter("desvio", 0)
+                Dim uc_idParam As New SqlParameter("@uc_id", 1)
+                Dim cliente_idParam As New SqlParameter("@cliente_id", 1)
+                Dim dia_param As New SqlParameter("@dia", 0)
+                Dim desvioparam As New SqlParameter("desvio", 0)
                 Dim meses_param(13)
                 For i = 1 To 12
-                    meses_param(i) = New MysqlParameter("@Qty", 0)
+                    meses_param(i) = New SqlParameter("@Qty", 0)
                 Next
                 Dim aux As Integer
                 Dim cont As Integer = 0
@@ -407,12 +407,12 @@ Namespace geshotelk
         End Function
         Public Function genera_Solo_Alojamiento(ByVal Hotel_id As Integer, Optional ByVal dd As Integer = 0, Optional ByVal aa As Integer = 0) As Integer
             Dim ErrorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             ErrorCode = genera_Solo_Alojamiento(cmd, Hotel_id, dd, aa)
             flushConection(cmd, ErrorCode)
 
         End Function
-        Function Genera_informe_produccion(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
+        Function Genera_informe_produccion(ByVal cmd As SqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim errorCode As Integer = 0
             Dim Rowcount As Integer = 0
             Dim sql_borra As String = "DELETE FROM informe_produccion WHERE fecha =? AND hotel_id = ?"
@@ -430,8 +430,8 @@ Namespace geshotelk
             & "JOIN servicios on lineas_factura.servicio_id = servicios.servicio_id " _
             & "WHERE servicios.sw_produccion = '1' AND facturas.fecha_factura= ? AND facturas.hotel_id = ? " _
             & "GROUP BY facturas.hotel_id,facturas.fecha_factura) "
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", Hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", Hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechaParam)
             cmd.Parameters.Add(hotel_idParam)
@@ -453,37 +453,37 @@ Namespace geshotelk
             Return errorCode
         End Function
         Function Genera_informe_produccion(ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorCode As Integer = 0
             Genera_informe_produccion(cmd, Hotel_id, fecha)
             flushConection(cmd, 0)
             Return errorCode
         End Function
-        Function Genera_produccion_Agencia_Dia(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, Optional ByVal fecha As Object = Nothing) As Integer
+        Function Genera_produccion_Agencia_Dia(ByVal cmd As SqlCommand, ByVal Hotel_id As Integer, Optional ByVal fecha As Object = Nothing) As Integer
             Dim errorCode As Integer = 0
             Dim totproducido As Double = 0
             Dim rowcount As Integer
             Dim cont As Integer = 0
             Dim sqlborra As String = "Delete from totales_agencia_dia Where hotel_id=? {where}"
             Dim where As String = ""
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", Hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", Today)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", Hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", Today)
 
-            Dim cliente_idParam As New MysqlParameter("@cliente_id", 1)
-            Dim servicio_idParam As New MysqlParameter("@servicio_id", 1)
-            Dim uc_idParam As New MysqlParameter("@uc_id", 1)
-            Dim cantidadParam As New MysqlParameter("@cantidad", 1)
-            Dim nhabParam As New MysqlParameter("@nhab", 1)
-            Dim nhabParam1 As New MysqlParameter("@nhab", 1)
-            Dim producidoParam As New MysqlParameter("@producido", 1)
-            Dim cantidadParam1 As New MysqlParameter("@cantidad", 1)
-            Dim producidoParam1 As New MysqlParameter("@producido", 1)
-            Dim habitacionParam As New MysqlParameter("@precio", 1)
-            Dim habitacionParam1 As New MysqlParameter("@precio", 1)
-            Dim pensionParam As New MysqlParameter("@precio", 1)
-            Dim pensionParam1 As New MysqlParameter("@precio", 1)
-            Dim otrosParam As New MysqlParameter("@precio", 1)
-            Dim otrosParam1 As New MysqlParameter("@precio", 1)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 1)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", 1)
+            Dim uc_idParam As New SqlParameter("@uc_id", 1)
+            Dim cantidadParam As New SqlParameter("@cantidad", 1)
+            Dim nhabParam As New SqlParameter("@nhab", 1)
+            Dim nhabParam1 As New SqlParameter("@nhab", 1)
+            Dim producidoParam As New SqlParameter("@producido", 1)
+            Dim cantidadParam1 As New SqlParameter("@cantidad", 1)
+            Dim producidoParam1 As New SqlParameter("@producido", 1)
+            Dim habitacionParam As New SqlParameter("@precio", 1)
+            Dim habitacionParam1 As New SqlParameter("@precio", 1)
+            Dim pensionParam As New SqlParameter("@precio", 1)
+            Dim pensionParam1 As New SqlParameter("@precio", 1)
+            Dim otrosParam As New SqlParameter("@precio", 1)
+            Dim otrosParam1 As New SqlParameter("@precio", 1)
 
             Dim fechacierrehotel As Date = FechaHotel(cmd, Hotel_id)
             'fechaParam.Value = fechacierrehotel
@@ -652,12 +652,12 @@ Namespace geshotelk
 
         Function Genera_produccion_Agencia_Dia(ByVal Hotel_id As Integer, Optional ByVal fecha As Object = Nothing) As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             errorCode = Genera_produccion_Agencia_Dia(cmd, Hotel_id, fecha)
             flushConection(cmd, 0)
             Return errorCode
         End Function
-        Function genera_produccion_ttoo_dia(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
+        Function genera_produccion_ttoo_dia(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
             ' Esta carga la tabla produccion_ttoo_dia en la que no está sumado todo el credito al cliente extra contado
             ' la operativa es la siguiente.
             ' Todo lo automatico va al cliente_id de la reserva
@@ -680,15 +680,15 @@ Namespace geshotelk
             & " VALUES (?,?,?,?,?,?) " _
             & "ON DUPLICATE KEY UPDATE cantidad = cantidad + ? , importe = importe + ? "
             Dim sql_delete As String = "DELETE FROM produccion_ttoo_dia WHERE fecha= ? AND hotel_id =? "
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
 
-            Dim cliente_idParam As New MysqlParameter("@cliente_id", 1)
-            Dim servicio_idParam As New MysqlParameter("@servicio_id", 1)
-            Dim cantidadParam As New MysqlParameter("@cantidad", 1)
-            Dim cantidadParam1 As New MysqlParameter("@cantidad", 1)
-            Dim precioParam As New MysqlParameter("@precio", 1)
-            Dim precioParam1 As New MysqlParameter("@precio", 1)
+            Dim cliente_idParam As New SqlParameter("@cliente_id", 1)
+            Dim servicio_idParam As New SqlParameter("@servicio_id", 1)
+            Dim cantidadParam As New SqlParameter("@cantidad", 1)
+            Dim cantidadParam1 As New SqlParameter("@cantidad", 1)
+            Dim precioParam As New SqlParameter("@precio", 1)
+            Dim precioParam1 As New SqlParameter("@precio", 1)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(fechaParam)
             cmd.Parameters.Add(hotel_idParam)
@@ -760,7 +760,7 @@ Namespace geshotelk
         End Function
         Function genera_produccion_ttoo_dia(ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
 
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorCode As Integer = 0
             genera_produccion_ttoo_dia(cmd, hotel_id, fecha)
             flushConection(cmd, 0)
@@ -780,13 +780,13 @@ Namespace geshotelk
             End If
             Return importe.PadLeft(ancho, "0")
         End Function
-        Function genera_estadisticos_SAP(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
+        Function genera_estadisticos_SAP(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim errorcode As Integer = 0
             Dim sql As String = "SELECT hotel_sap FROM sap_hoteles where hotel_id =?"
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
-            Dim diaParam As New MysqlParameter("@dia", fecha.Day)
-            Dim anyParam As New MysqlParameter("@dia", fecha.Year)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim diaParam As New SqlParameter("@dia", fecha.Day)
+            Dim anyParam As New SqlParameter("@dia", fecha.Year)
             Dim mes As Integer = fecha.Month - 1
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
@@ -864,14 +864,14 @@ Namespace geshotelk
         End Function
         Function genera_estadisticos_SAP(ByVal hotel_id As Integer, fecha As Date) As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             errorCode = genera_estadisticos_SAP(cmd, hotel_id, fecha)
             flushConection(cmd, errorCode)
             Return errorCode
         End Function
         Function genera_estadisticos_SAP(ByVal fecha As Date) As Integer
             Dim errorCode As Integer = 0
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim Reader As DataTableReader = getDataTable(cmd, "SELECT hotel_id FROM hoteles Where empresa_id =1")
             While Reader.Read
                 errorCode = genera_estadisticos_SAP(cmd, Reader.Item("hotel_id"), fecha)
@@ -879,7 +879,7 @@ Namespace geshotelk
             flushConection(cmd, errorCode)
             Return errorCode
         End Function
-        Public Function generarTablasPostCierre(ByVal cmd As MysqlCommand, Hotel_id As Integer, Optional ByVal fecha As Object = Nothing) As Integer
+        Public Function generarTablasPostCierre(ByVal cmd As SqlCommand, Hotel_id As Integer, Optional ByVal fecha As Object = Nothing) As Integer
             Dim errorcode As Integer = 0
             Console.WriteLine("Llamando a Genera_manocorriente=")
             errorcode = genera_manocorriente(cmd, Hotel_id, fecha)
@@ -977,19 +977,19 @@ Namespace geshotelk
             Return errorcode
         End Function
         Public Function genera_usuario_radius(ByVal reserva_id As Integer) As Integer
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorcode As Integer = genera_usuario_radius(cmd, reserva_id)
 
             flushConection(cmd, 0)
 
         End Function
-        Private Function genera_usuario_radius(ByVal cmd As MysqlCommand, ByVal reserva_id As Integer) As Integer
+        Private Function genera_usuario_radius(ByVal cmd As SqlCommand, ByVal reserva_id As Integer) As Integer
             Dim errorcode As Integer = 0
             Dim errcheck As Integer = 0
             Dim sql As String = ""
-            Dim connRad As New MysqlConnection(radiusConnectionString)
+            Dim connRad As New SqlConnection(radiusConnectionString)
 
-            Dim reserva_idParam As New MysqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             Dim hotel_id = ExecuteScalar(cmd, "SELECT hotel_id FROM reservas WHERE reserva_id =?")
@@ -997,7 +997,7 @@ Namespace geshotelk
             If IsDBNull(hotel_id) Then
                 Return 1
             End If
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim ssid As Object = ExecuteScalar(cmd, "SELECT ssid FROM wifi_ssids WHERE hotel_id =? AND defecto=TRUE")
@@ -1018,9 +1018,9 @@ Namespace geshotelk
                     Return 1 ' Error
                 End If
             End If
-            Dim ssidParam As New MysqlParameter("ssid", ssid)
-            Dim cmdradius As New MysqlCommand
-            Dim Transaccion As MysqlTransaction
+            Dim ssidParam As New SqlParameter("ssid", ssid)
+            Dim cmdradius As New SqlCommand
+            Dim Transaccion As SqlTransaction
             Try
                 If Not connRad.State = ConnectionState.Open Then
                     connRad.Open()
@@ -1033,7 +1033,7 @@ Namespace geshotelk
                 Dim sql_insert_radcheck As String = "INSERT INTO radcheck (username, attribute,op, value,hotel_id) VALUES (?, 'Cleartext-Password',':=', ?,?)"
                 Dim sql_insert_group As String = "INSERT INTO radusergroup (username,groupname,priority) VALUES(?,?,1)"
                 If Not IsDBNull(ssid) And Not IsDBNull(clave_wifi) Then
-                    Dim passwordParam As New MysqlParameter("@password", clave_wifi)
+                    Dim passwordParam As New SqlParameter("@password", clave_wifi)
 
                     cmdradius.Parameters.Add(reserva_idParam)
                     cmdradius.Parameters.Add(passwordParam)
@@ -1061,27 +1061,27 @@ Namespace geshotelk
 
         End Function
         Public Function genera_usuarios_radius(ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorcode As Integer = genera_usuarios_radius(cmd, hotel_id, fecha)
             flushConection(cmd, 0)
         End Function
-        Private Function genera_usuarios_radius(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
+        Private Function genera_usuarios_radius(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim errorcode As Integer = 0
             Dim errcheck As Integer = 0
             ' Insertamos en Radius las llegadas de mañana
-            Dim fechaparam As New MysqlParameter("@fecha", DateAdd(DateInterval.Day, 1, fecha))
-            Dim connRad As New MysqlConnection(radiusConnectionString)
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
-            Dim hotel_idParam2 As New MysqlParameter("@hotel_id", hotel_id)
+            Dim fechaparam As New SqlParameter("@fecha", DateAdd(DateInterval.Day, 1, fecha))
+            Dim connRad As New SqlConnection(radiusConnectionString)
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam2 As New SqlParameter("@hotel_id", hotel_id)
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
             Dim ssid As Object = ExecuteScalar(cmd, "SELECT ssid FROM wifi_ssids WHERE hotel_id =? AND defecto=TRUE")
             If IsDBNull(ssid) OrElse IsNothing(ssid) Then
                 ssid = "Wifi-Free"
             End If
-            Dim ssidParam As New MysqlParameter("ssid", ssid)
-            Dim cmdradius As New MysqlCommand
-            Dim Transaccion As MysqlTransaction
+            Dim ssidParam As New SqlParameter("ssid", ssid)
+            Dim cmdradius As New SqlCommand
+            Dim Transaccion As SqlTransaction
             Try
                 If Not connRad.State = ConnectionState.Open Then
                     connRad.Open()
@@ -1104,9 +1104,9 @@ Namespace geshotelk
                 Dim contador = ExecuteNonQuery(cmdradius, sql)
 
                 ' Despues ponemos clave wifi en todas aquellas reservas que por lo que sea, no tengan
-                Dim usernameParam As New MysqlParameter("@username", "")
-                Dim passwordParam As New MysqlParameter("@password", "")
-                Dim groupNameParam As New MysqlParameter("@groupname", "")
+                Dim usernameParam As New SqlParameter("@username", "")
+                Dim passwordParam As New SqlParameter("@password", "")
+                Dim groupNameParam As New SqlParameter("@groupname", "")
                 cmd.Parameters.Clear()
                 cmd.Parameters.Add(ssidParam)
                 cmd.Parameters.Add(hotel_idParam)
@@ -1185,17 +1185,17 @@ Namespace geshotelk
             Return errorcode
         End Function
         Sub telegram_extras_hotel(ByVal hotel_id As Integer, ByVal fecha As Date)
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             telegram_extras_hotel(cmd, hotel_id, fecha)
             flushConection(cmd, 0)
         End Sub
-        Sub telegram_extras_hotel(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
+        Sub telegram_extras_hotel(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
             Dim tipo_mensaje_id As Integer = 3 ' Extras Hotel
             Dim salto_linea = "a3f4g52"  ' Como telegram no gestiona el salto de linea con crlf o lf me creo un salto de linea raro para luego leerlo en la shell linux y separar lineas
 
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
-            Dim fecha2Param As New MysqlParameter("@fecha", DateAdd(DateInterval.Year, -1, fecha))
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim fecha2Param As New SqlParameter("@fecha", DateAdd(DateInterval.Year, -1, fecha))
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
 
@@ -1245,11 +1245,11 @@ Namespace geshotelk
             carga_notificaciones_telegram(cmd, hotel_idParam.Value, tipo_mensaje_id, mensaje)
         End Sub
         Public Sub telegram_cierre_dia(ByVal hotel_id As Integer, ByVal fecha As Date)
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             telegram_cierre_dia(cmd, hotel_id, fecha)
             flushConection(cmd, 0)
         End Sub
-        Sub telegram_cierre_dia(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
+        Sub telegram_cierre_dia(ByVal cmd As SqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date)
             ' Preparameos el mensaje para telegram
             ' Contendrá lo siguiente
             ' ***************************************************
@@ -1272,9 +1272,9 @@ Namespace geshotelk
             Dim tipo_mensaje_id As Integer = 2 ' Cierrre dia
             Dim salto_linea = "a3f4g52"  ' Como telegram no gestiona el salto de linea con crlf o lf me creo un salto de linea raro para luego leerlo en la shell linux y separar lineas
 
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
-            Dim fecha2Param As New MysqlParameter("@fecha", DateAdd(DateInterval.Year, -1, fecha))
+            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
+            Dim fecha2Param As New SqlParameter("@fecha", DateAdd(DateInterval.Year, -1, fecha))
             cmd.Parameters.Clear()
             cmd.Parameters.Add(hotel_idParam)
 
@@ -1354,10 +1354,10 @@ Namespace geshotelk
             mensaje &= salto_linea & "RevPar ant.: " & FormatNumber(importe, 1, , , TriState.True)
             carga_notificaciones_telegram(cmd, hotel_idParam.Value, tipo_mensaje_id, mensaje)
         End Sub
-        Function reviewpro(ByVal cmd As MysqlCommand, ByVal fecha As Date, ByVal empresa_id As Integer) As String
+        Function reviewpro(ByVal cmd As SqlCommand, ByVal fecha As Date, ByVal empresa_id As Integer) As String
             Dim errortxt As String = ""
-            Dim empresa_idParam As New MysqlParameter("@empresa_id", empresa_id)
-            Dim fechaParam As New MysqlParameter("@fecha", fecha)
+            Dim empresa_idParam As New SqlParameter("@empresa_id", empresa_id)
+            Dim fechaParam As New SqlParameter("@fecha", fecha)
             Dim strQuery As String = "SELECT reservas.hotel_id AS pmsid,hoteles.hotel AS title,reservas.fecha_prevista_llegada AS checkin,reservas.fecha_prevista_salida AS checkout, " _
             & "(select (select SUBSTRING_INDEX(razon,' ',LENGTH(TRIM(razon))-LENGTH(REPLACE(TRIM(razon), ' ', ''))) from clientes where clientes.cliente_id=min(reservas_huespedes.cliente_id)) as cliente_id from reservas_huespedes where reservas_huespedes.reserva_id=reservas.reserva_id) as Apellidos, " _
             & "(select (select SUBSTR(razon FROM LENGTH(SUBSTRING_INDEX(razon,' ',LENGTH(TRIM(razon))-LENGTH(REPLACE(TRIM(razon), ' ', ''))))+2) from clientes where clientes.cliente_id=min(reservas_huespedes.cliente_id)) as cliente_id from reservas_huespedes where reservas_huespedes.reserva_id=reservas.reserva_id) as Nombre," _
@@ -1423,15 +1423,15 @@ Namespace geshotelk
             Return errortxt
         End Function
         Function reviewpro(ByVal fecha As Date, ByVal empresa_id As Integer) As String
-            Dim cmd As MysqlCommand = prepareConection()
+            Dim cmd As SqlCommand = prepareConection()
             Dim errorcode As String = reviewpro(cmd, fecha, empresa_id)
             flushConection(cmd, 0)
             Return errorcode
         End Function
         Sub lanza_postcierres()
-            Dim cmd As MysqlCommand = prepareConection()
-            Dim hotel_idParam As New MysqlParameter("@hotel_id", 1)
-            Dim fechaParam As New MysqlParameter("@fecha", Today)
+            Dim cmd As SqlCommand = prepareConection()
+            Dim hotel_idParam As New SqlParameter("@hotel_id", 1)
+            Dim fechaParam As New SqlParameter("@fecha", Today)
             Dim hotel_id As Integer
             Dim fecha As Date
             Dim errorcode As Integer
