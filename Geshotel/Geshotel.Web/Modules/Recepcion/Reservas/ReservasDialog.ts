@@ -33,10 +33,6 @@ namespace Geshotel.Recepcion {
 
             this.HabitacionesBloqueosGrid.reservaID = this.entityId;
             this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
-            this.ReservasHuespedesGrid.rese
-          
-
         }
-
     }
 }
