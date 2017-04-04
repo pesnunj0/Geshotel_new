@@ -67,5 +67,4 @@ namespace Geshotel.Recepcion {
         }
  
     }
-    }
 }

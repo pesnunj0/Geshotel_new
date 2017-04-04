@@ -55,6 +55,7 @@ namespace Geshotel.Portal {
         ProvinciaComunidadAutonomaId?: number;
         ProvinciaProvinciaIsta?: string;
         ProvinciaDefectoIsta?: number;
+        FechaHotel?: string;
     }
 
     export namespace HotelesRow {
@@ -122,9 +123,10 @@ namespace Geshotel.Portal {
             export declare const ProvinciaComunidadAutonomaId: string;
             export declare const ProvinciaProvinciaIsta: string;
             export declare const ProvinciaDefectoIsta: string;
+            export declare const FechaHotel: string;
         }
 
-        ['HotelId', 'Hotel', 'EmpresaId', 'TipoHotelId', 'CategoriaId', 'NombreCorto', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'NacionId', 'Telefono', 'Fax', 'CtaManocorriente', 'DptoContable', 'CtaContableCajas', 'CtaContableBanco', 'FechaInicioPrograma', 'RutaFicheroPolicia', 'ContadorFicheroPolicia', 'IdentificadorFicheroPolicia', 'EmailReservas', 'EmailVentas', 'EmailSmtp', 'TextoCancelacion', 'UsuarioIsta', 'PasswordIsta', 'UrlIsta', 'MunicipioIsta', 'NumeroRegistroIsta', 'RutaBavel', 'DingusUsuario', 'DingusPassword', 'DingusHotelCode', 'DingusTraductor', 'DingusUrl', 'CheckinOnLine', 'MinimoDiasCheckinOnline', 'ZoomMapa', 'Lat', 'Lng', 'Ancho', 'Alto', 'OverbookingLimit', 'Empresa', 'TipoHotel', 'TipoHotelAbreviatura', 'Categoria', 'CategoriaAbreviatura', 'Provincia', 'Nacion', 'ProvinciaComunidadAutonomaId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(x => (<any>Fields)[x] = x);
+        ['HotelId', 'Hotel', 'EmpresaId', 'TipoHotelId', 'CategoriaId', 'NombreCorto', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'NacionId', 'Telefono', 'Fax', 'CtaManocorriente', 'DptoContable', 'CtaContableCajas', 'CtaContableBanco', 'FechaInicioPrograma', 'RutaFicheroPolicia', 'ContadorFicheroPolicia', 'IdentificadorFicheroPolicia', 'EmailReservas', 'EmailVentas', 'EmailSmtp', 'TextoCancelacion', 'UsuarioIsta', 'PasswordIsta', 'UrlIsta', 'MunicipioIsta', 'NumeroRegistroIsta', 'RutaBavel', 'DingusUsuario', 'DingusPassword', 'DingusHotelCode', 'DingusTraductor', 'DingusUrl', 'CheckinOnLine', 'MinimoDiasCheckinOnline', 'ZoomMapa', 'Lat', 'Lng', 'Ancho', 'Alto', 'OverbookingLimit', 'Empresa', 'TipoHotel', 'TipoHotelAbreviatura', 'Categoria', 'CategoriaAbreviatura', 'Provincia', 'Nacion', 'ProvinciaComunidadAutonomaId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta', 'FechaHotel'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

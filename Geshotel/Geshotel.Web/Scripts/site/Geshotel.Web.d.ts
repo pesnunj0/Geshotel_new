@@ -5184,6 +5184,7 @@ declare namespace Geshotel.Portal {
         ProvinciaComunidadAutonomaId?: number;
         ProvinciaProvinciaIsta?: string;
         ProvinciaDefectoIsta?: number;
+        FechaHotel?: string;
     }
     namespace HotelesRow {
         const idProperty = "HotelId";
@@ -5246,6 +5247,7 @@ declare namespace Geshotel.Portal {
             const ProvinciaComunidadAutonomaId: string;
             const ProvinciaProvinciaIsta: string;
             const ProvinciaDefectoIsta: string;
+            const FechaHotel: string;
         }
     }
 }
@@ -9934,6 +9936,8 @@ declare namespace Geshotel.Recepcion {
         private ReservasHuespedesGrid;
         constructor();
         protected afterLoadEntity(): void;
+        protected updateInterface(): void;
+        protected getToolbarButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Geshotel.Recepcion {
