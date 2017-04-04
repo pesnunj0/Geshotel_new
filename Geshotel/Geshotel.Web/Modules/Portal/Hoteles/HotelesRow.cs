@@ -399,6 +399,17 @@ namespace Geshotel.Portal.Entities
             set { Fields.ProvinciaDefectoIsta[this] = value; }
         }
 
+        [DisplayName("Fecha Hotel"), LookupInclude]
+        // please uncomment below, and remove two expressions under after adding cierres table
+        //[Expression("(SELECT Max(cierres.fecha_cierre) FROM cierres WHERE cierres.hotel_id = t0.hotel_id)")]
+        [Expression("getdate()")]
+        [Expression("CURRENT_DATE()", Dialect = "MySql")]
+        public DateTime? FechaHotel
+        {
+            get { return Fields.FechaHotel[this]; }
+            set { Fields.FechaHotel[this] = value; }
+        }
+
         public Int16Field HotelIdField
         {
             get { return Fields.HotelId; }
@@ -495,6 +506,8 @@ namespace Geshotel.Portal.Entities
             public Int16Field ProvinciaComunidadAutonomaId;
             public StringField ProvinciaProvinciaIsta;
             public Int16Field ProvinciaDefectoIsta;
+
+            public DateTimeField FechaHotel;
 
             public RowFields()
                 : base("hoteles")
