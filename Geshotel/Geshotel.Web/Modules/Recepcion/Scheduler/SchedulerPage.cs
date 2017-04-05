@@ -55,7 +55,7 @@ namespace Geshotel.Recepcion.Pages
             {
                 string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
                 var user = (UserDefinition)Authorization.UserDefinition;
-                //var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId, conexion);
+                var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId, conexion);
                 //DateTime HotelDate = x.FechaHotel(hotel_id);
                 //var ErrorCode = x.CambiarEstadoReserva(24, 3,true);
               //  ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(1, conexion).regenerarLineasFacturasReserva(24);

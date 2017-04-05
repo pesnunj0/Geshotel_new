@@ -9936,6 +9936,7 @@ declare namespace Geshotel.Recepcion {
         private ReservasHuespedesGrid;
         constructor();
         protected afterLoadEntity(): void;
+        protected onSaveSuccess(response: Serenity.SaveResponse): void;
         protected updateInterface(): void;
         protected getToolbarButtons(): Serenity.ToolButton[];
     }

@@ -12541,15 +12541,33 @@ var Geshotel;
                 this.HabitacionesBloqueosGrid.reservaID = this.entityId;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
             };
+            ReservasDialog.prototype.onSaveSuccess = function (response) {
+                // check that this is an insert
+                if (this.isNew) {
+                    Q.notifySuccess("Just inserted a Reservation with ID: " + response.EntityId + " Let's Proceed To call function & Reload");
+                    // Here I should call ClasesGeshotel.Geshotelk on server side.
+                    // let's load inserted record using Retrieve service
+                    Recepcion.ReservasService.Retrieve({
+                        EntityId: response.EntityId
+                    }, function (resp) {
+                        Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
+                    });
+                }
+            };
             ReservasDialog.prototype.updateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 var fechaHotel = this.entity.HotelId == null ? null : Geshotel.Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
+                // Let's try to hide DeleteButton if EstadoReservaId != 0
+                // This one seems not working
+                this.deleteButton.toggle(this.entity.EstadoReservaId != 0);
+                //if (this.entity.EstadoReservaId != 0)
+                //    this.deleteButton.hide();
                 this.toolbar.findButton('cancel-button').toggle(this.entity.EstadoReservaId != 2);
                 this.toolbar.findButton('cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
                 this.toolbar.findButton('undo-cancel-button').toggle(this.entity.EstadoReservaId == 2);
                 this.toolbar.findButton('undo-cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 2 || fechaHotel > this.entity.FechaPrevistaLlegada);
                 this.toolbar.findButton('check-in-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
-                this.toolbar.findButton('check-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 3 || fechaHotel != this.entity.FechaPrevistaSalida);
+                this.toolbar.findButton('pre-check-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 3 || fechaHotel != this.entity.FechaPrevistaSalida);
                 this.toolbar.findButton('no-show-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || fechaHotel != this.entity.FechaPrevistaLlegada);
             };
             ReservasDialog.prototype.getToolbarButtons = function () {
@@ -12559,6 +12577,16 @@ var Geshotel;
                     cssClass: 'cancel-button',
                     icon: 'fa-times text-red',
                     onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
                     }
                 });
                 buttons.push({
@@ -12566,6 +12594,16 @@ var Geshotel;
                     cssClass: 'undo-cancel-button',
                     icon: 'fa-times text-red',
                     onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
                     }
                 });
                 buttons.push({
@@ -12573,13 +12611,33 @@ var Geshotel;
                     cssClass: 'check-in-button',
                     icon: 'fa-chevron-circle-right text-green',
                     onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
                     }
                 });
                 buttons.push({
-                    title: 'Checkout',
-                    cssClass: 'check-out-button',
+                    title: 'Pre Checkout',
+                    cssClass: 'pre-check-out-button',
                     icon: 'fa-chevron-circle-left text-blue',
                     onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
                     }
                 });
                 buttons.push({
@@ -12587,6 +12645,16 @@ var Geshotel;
                     cssClass: 'no-show-button',
                     icon: 'fa-hand-o-down text-maroon',
                     onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
                     }
                 });
                 return buttons;
