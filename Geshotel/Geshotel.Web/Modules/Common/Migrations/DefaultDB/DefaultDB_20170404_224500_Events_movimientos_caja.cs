@@ -20,7 +20,7 @@ using FluentMigrator;
 // ************************************************************************************************
 namespace Geshotel.Migrations.DefaultDB
 {
-    [Migration(20170405224500)]
+    [Migration(20170404224500)]
     public class DefaultDB_20170404_224500_Events_movimientos_caja : Migration
     { 
         public override void Up()

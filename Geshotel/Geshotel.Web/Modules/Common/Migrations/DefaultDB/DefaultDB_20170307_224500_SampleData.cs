@@ -325,12 +325,12 @@ namespace Geshotel.Migrations.DefaultDB
                     bebes = 0,
                     fecha_reserva = new DateTime(2017, 2, 1),
                     nombre_reserva = " Prueba " + i + " Hotel 1",
-                    fecha_prevista_llegada = new DateTime(2017, 3, 25, 14, 0, 0),
-                    fecha_prevista_salida = new DateTime(2017, 4, 1, 14, 0, 0),
+                    fecha_prevista_llegada = new DateTime(2017, 4, 25, 14, 0, 0),
+                    fecha_prevista_salida = new DateTime(2017, 5, 1, 14, 0, 0),
                     bono_referencia = "123456789"
                 });
             }
-            for (int i = 1; i < 10; i++)
+            for (int i = 10; i < 15; i++)
             {
                 Insert.IntoTable("reservas").Row(new
                 {
@@ -346,8 +346,8 @@ namespace Geshotel.Migrations.DefaultDB
                     bebes = 1,
                     fecha_reserva = new DateTime(2017, 2, 1),
                     nombre_reserva = " Prueba " + i + " Hotel 2",
-                    fecha_prevista_llegada = new DateTime(2017, 4, 1, 14, 0, 0),
-                    fecha_prevista_salida = new DateTime(2017, 4, 10, 14, 0, 0),
+                    fecha_prevista_llegada = new DateTime(2017, 4, 10, 14, 0, 0),
+                    fecha_prevista_salida = new DateTime(2017, 5, 1, 14, 0, 0),
                     bono_referencia = "123456789"
                 });
             }
