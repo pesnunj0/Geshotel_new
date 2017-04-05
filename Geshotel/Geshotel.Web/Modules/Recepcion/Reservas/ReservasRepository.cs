@@ -22,6 +22,14 @@ namespace Geshotel.Recepcion.Repositories
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }
+        
+        public SaveResponse ChangeReservationStatus(IUnitOfWork uow, SaveRequest<MyRow> request)
+        {
+            var response = new SaveResponse();
+            fld.EstadoReservaId.Fields. = 3;
+
+            return new MySaveHandler().ChangeReservationStatus(uow, request, SaveRequestType.Update);
+        }
 
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {

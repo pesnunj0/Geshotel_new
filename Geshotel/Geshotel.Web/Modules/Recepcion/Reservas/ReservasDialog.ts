@@ -40,17 +40,30 @@ namespace Geshotel.Recepcion {
 
             // check that this is an insert
             if (this.isNew) {
-                Q.notifySuccess("Just inserted a Reservation with ID: " + response.EntityId +" Let's Proceed To call function & Reload");
+                Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
 
                 // Here I should call ClasesGeshotel.Geshotelk on server side.
-                
-  
-          
+
+
+
                 // let's load inserted record using Retrieve service
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
                 }, resp => {
                     Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
+                });
+            } else {
+                Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
+
+                // Here I should call ClasesGeshotel.Geshotelk on server side.
+
+
+
+                // let's load inserted record using Retrieve service
+                Recepcion.ReservasService.Retrieve(<any>{
+                    EntityId: response.EntityId
+                }, resp => {
+                    Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                 });
             }
         }
@@ -77,24 +90,23 @@ namespace Geshotel.Recepcion {
                 this.saveAndCloseButton.hide();
             }
 
-
             this.toolbar.findButton('cancel-button').toggle(this.entity.EstadoReservaId != 2);
             this.toolbar.findButton('cancel-button').toggleClass('disabled',
                 this.isNew() || this.entity.EstadoReservaId != 1);
             this.toolbar.findButton('undo-cancel-button').toggle(this.entity.EstadoReservaId == 2);
             this.toolbar.findButton('undo-cancel-button').toggleClass('disabled',
-                this.isNew() || this.entity.EstadoReservaId != 2 || fechaHotel > this.entity.FechaPrevistaLlegada);
+                this.isNew() || this.entity.EstadoReservaId != 2 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') > Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
 
             this.toolbar.findButton('check-in-button').toggleClass('disabled',
                 this.isNew() || this.entity.EstadoReservaId != 1);
 
             this.toolbar.findButton('pre-check-out-button').toggleClass('disabled',
-                this.isNew() || this.entity.EstadoReservaId != 3 || fechaHotel != this.entity.FechaPrevistaSalida);
+                this.isNew() || this.entity.EstadoReservaId != 3 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
 
             this.toolbar.findButton('no-show-button').toggleClass('disabled',
-                this.isNew() || this.entity.EstadoReservaId != 1 || fechaHotel != this.entity.FechaPrevistaLlegada);
+                this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
         }
-
+        
         protected getToolbarButtons() {
             var buttons = super.getToolbarButtons();
 
@@ -149,6 +161,7 @@ namespace Geshotel.Recepcion {
                         "Are u sure?",
                         () => {
                             Q.notifySuccess("You clicked YES. Let's proceed!");
+                           
                         },
                         {
                             onNo: () => {

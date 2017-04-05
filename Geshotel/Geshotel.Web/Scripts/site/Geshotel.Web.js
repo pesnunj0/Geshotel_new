@@ -2572,7 +2572,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         SeriesForm.formKey = 'Contratos.Series';
         Contratos.SeriesForm = SeriesForm;
-        [['Descripcion', function () { return Serenity.StringEditor; }], ['Abreviatura', function () { return Serenity.StringEditor; }], ['Empresa', function () { return Serenity.StringEditor; }], ['Manocorriente', function () { return Serenity.BooleanEditor; }], ['Visible', function () { return Serenity.BooleanEditor; }], ['Factura', function () { return Serenity.BooleanEditor; }], ['Deposito', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(SeriesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Abreviatura', function () { return Serenity.StringEditor; }], ['Manocorriente', function () { return Serenity.BooleanEditor; }], ['Visible', function () { return Serenity.BooleanEditor; }], ['Factura', function () { return Serenity.BooleanEditor; }], ['Deposito', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(SeriesForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -12544,7 +12544,7 @@ var Geshotel;
             ReservasDialog.prototype.onSaveSuccess = function (response) {
                 // check that this is an insert
                 if (this.isNew) {
-                    Q.notifySuccess("Just inserted a Reservation with ID: " + response.EntityId + " Let's Proceed To call function & Reload");
+                    Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
                     // Here I should call ClasesGeshotel.Geshotelk on server side.
                     // let's load inserted record using Retrieve service
                     Recepcion.ReservasService.Retrieve({
@@ -12553,22 +12553,42 @@ var Geshotel;
                         Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
                     });
                 }
+                else {
+                    Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
+                    // Here I should call ClasesGeshotel.Geshotelk on server side.
+                    // let's load inserted record using Retrieve service
+                    Recepcion.ReservasService.Retrieve({
+                        EntityId: response.EntityId
+                    }, function (resp) {
+                        Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
+                    });
+                }
             };
             ReservasDialog.prototype.updateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 var fechaHotel = this.entity.HotelId == null ? null : Geshotel.Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
                 // Let's try to hide DeleteButton if EstadoReservaId != 0
-                // This one seems not working
-                this.deleteButton.toggle(this.entity.EstadoReservaId != 0);
-                //if (this.entity.EstadoReservaId != 0)
-                //    this.deleteButton.hide();
+                // This one seems not working perhaps deleteButton is not yet created
+                //this.deleteButton.toggle(this.entity.EstadoReservaId != 0);
+                // *********************************************************
+                // I only allow to remove a reservation if it has errors
+                // otherwise the user has to cancel
+                // *********************************************************
+                if (this.entity.EstadoReservaId != 0)
+                    this.deleteButton.hide();
+                // Reservation with status pre-checkOut or Checked-Out
+                // Can´t be changed
+                if (this.entity.EstadoReservaId > 3) {
+                    this.applyChangesButton.hide();
+                    this.saveAndCloseButton.hide();
+                }
                 this.toolbar.findButton('cancel-button').toggle(this.entity.EstadoReservaId != 2);
                 this.toolbar.findButton('cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
                 this.toolbar.findButton('undo-cancel-button').toggle(this.entity.EstadoReservaId == 2);
-                this.toolbar.findButton('undo-cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 2 || fechaHotel > this.entity.FechaPrevistaLlegada);
+                this.toolbar.findButton('undo-cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 2 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') > Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
                 this.toolbar.findButton('check-in-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
-                this.toolbar.findButton('pre-check-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 3 || fechaHotel != this.entity.FechaPrevistaSalida);
-                this.toolbar.findButton('no-show-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || fechaHotel != this.entity.FechaPrevistaLlegada);
+                this.toolbar.findButton('pre-check-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 3 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
+                this.toolbar.findButton('no-show-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
             };
             ReservasDialog.prototype.getToolbarButtons = function () {
                 var buttons = _super.prototype.getToolbarButtons.call(this);

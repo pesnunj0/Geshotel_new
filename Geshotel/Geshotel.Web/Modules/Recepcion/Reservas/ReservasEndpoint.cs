@@ -46,6 +46,22 @@ namespace Geshotel.Recepcion.Endpoints
         {
             return new MyRepository().List(connection, request);
         }
+        public SaveResponse ReservationCheckIn(IUnitOfWork uow, SaveRequest<MyRow> request)
+        {
+            var user = (UserDefinition)Authorization.UserDefinition;
+            Int32 userId = user.UserId;
+            Int32 ReservaId = Convert.ToInt32(request.EntityId);
+            Int16 NewStatus = 3;
+            var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(userId, "");
+            if (x.CambiarEstadoReserva(ReservaId, NewStatus, false))
+            {
+                // I do not know if here I should Retrieve or change MyRow MyRow.Fields.EstadoReservaId
+                
+
+            }
+
+            return new MyRepository().Update(uow, request);
+        }
         public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
         {
             var data = List(connection, request).Entities;

@@ -2057,9 +2057,9 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface SeriesForm {
+        EmpresaId: Serenity.LookupEditor;
         Descripcion: Serenity.StringEditor;
         Abreviatura: Serenity.StringEditor;
-        Empresa: Serenity.StringEditor;
         Manocorriente: Serenity.BooleanEditor;
         Visible: Serenity.BooleanEditor;
         Factura: Serenity.BooleanEditor;
