@@ -6891,6 +6891,7 @@ declare namespace Geshotel.Recepcion {
         CodigoOferta: Serenity.StringEditor;
         BloquearTarifa: Serenity.BooleanEditor;
         PermiteDevolucion: Serenity.BooleanEditor;
+        Vip: Serenity.BooleanEditor;
         FechaReserva: Serenity.DateEditor;
         FechaCreacion: Serenity.DateEditor;
         FechaPrevistaLlegada: Serenity.DateTimeEditor;
@@ -7077,6 +7078,7 @@ declare namespace Geshotel.Recepcion {
         ChildFree?: number;
         Bebes?: number;
         Pax?: number;
+        Vip?: boolean;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
         ObservacionesLlegada?: string;
@@ -7144,6 +7146,7 @@ declare namespace Geshotel.Recepcion {
             const ChildFree: string;
             const Bebes: string;
             const Pax: string;
+            const Vip: string;
             const FechaPrevistaLlegada: string;
             const FechaPrevistaSalida: string;
             const ObservacionesLlegada: string;
@@ -7200,12 +7203,14 @@ declare namespace Geshotel.Recepcion {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReservasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ReservationCheckIn(request: Serenity.SaveRequest<ReservasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
             const Delete: string;
             const Retrieve: string;
             const List: string;
+            const ReservationCheckIn: string;
         }
     }
 }

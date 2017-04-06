@@ -1,0 +1,12 @@
+bin\Debug\GesHotelChar.exe
+bin\Debug\GesHotelChar.pdb
+bin\Debug\GesHotelChar.xml
+bin\Debug\ClasesGesHotel.dll
+bin\Debug\ClasesGesHotel.pdb
+bin\Debug\ClasesGesHotel.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\GesHotelChar.Resources.resources
+obj\Debug\GesHotelChar.vbproj.GenerateResource.Cache
+obj\Debug\GesHotelChar.exe
+obj\Debug\GesHotelChar.xml
+obj\Debug\GesHotelChar.pdb

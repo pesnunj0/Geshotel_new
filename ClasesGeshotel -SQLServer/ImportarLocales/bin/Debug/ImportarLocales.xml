@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ImportarLocales
+</name>
+</assembly>
+<members>
+<member name="M:ImportarLocales.LocalesFacturacion.ExecuteNonQuery(System.Data.Odbc.OdbcCommand,System.String)">
+	<summary>
+ Ejecuta el command executeNonQuery con control de errores
+ </summary>
+	<param name="cmd">Control de transacciones</param>
+	<param name="sql">Sentencia sql a ejecutar</param>
+	<returns>Numero de filas afectadas por la sentencia o 0 si no la pudo hacer</returns>
+	<remarks></remarks>
+</member><member name="M:ImportarLocales.LocalesFacturacion.ExecuteScalar(System.Data.Odbc.OdbcCommand,System.String)">
+	<summary>
+ Ejecuta el command execute Escalar con control de errores
+ </summary>
+	<param name="cmd">Control de transacciones</param>
+	<param name="sql">Sentencia sql a ejecutar</param>
+	<returns>Deveuelve la primera columna de la primera fila. Objeto Nothing en caso de error</returns>
+	<remarks></remarks>
+</member><member name="P:ImportarLocales.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ImportarLocales.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ImportarLocales.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

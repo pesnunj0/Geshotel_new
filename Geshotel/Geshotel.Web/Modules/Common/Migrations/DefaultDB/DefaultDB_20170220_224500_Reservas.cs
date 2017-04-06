@@ -28,6 +28,7 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("cliente_id_factura").AsInt32().Nullable()
                 .ForeignKey("FK_reservas_cliente_id_factura", "clientes", "cliente_id")
                 .WithColumn("tipo_habitacion_id").AsInt16().NotNullable()
+                .WithColumn("vip").AsBoolean().WithDefaultValue(0).NotNullable()
                 .WithColumn("pension_id").AsInt16().NotNullable()
                 .WithColumn("adultos").AsInt16().NotNullable()
                 .WithColumn("child_50").AsInt16().NotNullable().WithDefaultValue(0)

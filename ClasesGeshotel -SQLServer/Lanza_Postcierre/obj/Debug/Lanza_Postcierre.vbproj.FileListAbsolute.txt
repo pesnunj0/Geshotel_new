@@ -1,0 +1,13 @@
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\Lanza_Postcierre.exe.config
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\Lanza_Postcierre.exe
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\Lanza_Postcierre.pdb
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\Lanza_Postcierre.xml
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\ClasesGesHotel.dll
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\ClasesGesHotel.pdb
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\bin\Debug\ClasesGesHotel.xml
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.Resources.resources
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.vbproj.GenerateResource.Cache
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.exe
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.xml
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.pdb
+C:\Proyectos Codecharge\ClasesGesHotel_new\Lanza_Postcierre\obj\Debug\Lanza_Postcierre.vbprojResolveAssemblyReference.cache

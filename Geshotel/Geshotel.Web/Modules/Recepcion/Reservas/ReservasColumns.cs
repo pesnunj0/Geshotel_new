@@ -17,6 +17,8 @@ namespace Geshotel.Recepcion.Columns
         public Int32 ReservaId { get; set; }
         [EditLink]
         public String NombreReserva { get; set; }
+        [Width(45),QuickFilter,AlignCenter]
+        public Boolean Vip { get; set; }
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
         [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]

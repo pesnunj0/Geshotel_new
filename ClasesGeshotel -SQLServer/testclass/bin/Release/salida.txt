@@ -1,0 +1,56 @@
+getDataSet:SELECT 1 as reserva_id, now() as fecha_prevista_llegada, now() as fecha_prevista_salida, 1 AS estado_factura_id, date_format(now(),'%d/%m/%Y' ) AS Fecha_Factura  ,'' AS descripcion, 1 AS errores, 1 AS num 
+ 
+getDataTable:     SELECT reserva_id,fecha_prevista_llegada,fecha_prevista_salida  FROM reservas  WHERE ? between fecha_prevista_llegada and fecha_prevista_salida  AND reservas.hotel_id = ?  
+ 
+getDataSet: select unidad_calculo_id_padre as unidad_calculo_id,sum(cantidad) as cantidad from (SELECT  unidades_calculo_detalladas.unidad_calculo_id_padre,  unidades_calculo_detalladas.unidad_calculo_id_hijo,  Max(ifnull(reservas_servicios.cantidad,0)) as cantidad  FROM (     SELECT  unidades_calculo.unidad_calculo_id AS unidad_calculo_id_padre,  ifnull(unidades_calculo_agrupados.unidad_calculo_hijo_id,unidades_calculo.unidad_calculo_id) AS unidad_calculo_id_hijo  FROM  unidades_calculo  Left Join unidades_calculo_agrupados ON unidades_calculo.unidad_calculo_id = unidades_calculo_agrupados.unidad_calculo_padre_id  ) unidades_calculo_detalladas  Left Join reservas_servicios ON unidades_calculo_detalladas.unidad_calculo_id_hijo = reservas_servicios.unidad_calculo_id  WHERE  reservas_servicios.reserva_id = ? or  reservas_servicios.reserva_id IS NULL  GROUP BY  unidades_calculo_detalladas.unidad_calculo_id_padre,  unidades_calculo_detalladas.unidad_calculo_id_hijo  ) drv group by unidad_calculo_id_padre 
+ 
+getDataTable:     SELECT  reservas_servicios.servicio_reserva_id, reservas_servicios.reserva_id, reservas_servicios.servicio_id, reservas_servicios.unidad_calculo_id, ifnull(reservas_servicios.fecha_desde,reservas.fecha_prevista_llegada) as fecha_desde, ifnull(reservas_servicios.fecha_hasta,reservas.fecha_prevista_salida) as fecha_hasta, reservas_servicios.cantidad, servicios_hotel.impuesto_id, impuestos.porcentaje, reservas.hotel_id,reservas.estado_reserva_id,reservas.bloquear_tarifa, reservas.cliente_id, datediff(ifnull(reservas.fecha_salida,reservas.fecha_prevista_salida),ifnull(reservas.fecha_llegada,reservas.fecha_prevista_llegada)) as dias_estancia,  datediff(ifnull(reservas.fecha_llegada,reservas.fecha_prevista_llegada),ifnull(fecha_reserva,'01/01/2001')) as dias_antelacion,  reservas.fecha_reserva, reservas.fecha_llegada, reservas.fecha_salida, reservas.fecha_prevista_llegada, reservas.fecha_prevista_salida FROM reservas_servicios Inner Join reservas ON reservas_servicios.reserva_id = reservas.reserva_id Inner Join servicios_hotel ON reservas.hotel_id = servicios_hotel.hotel_id AND reservas_servicios.servicio_id = servicios_hotel.servicio_id Inner Join impuestos ON servicios_hotel.impuesto_id = impuestos.impuesto_id WHERE reservas.reserva_id =  ?
+ 
+getDataTable:select contrato_id from reservas_contratos where reserva_id=?
+ 
+getDataSet:     SELECT  unidades_calculo.unidad_calculo_id AS unidad_calculo_id_padre,  ifnull(unidades_calculo_agrupados.unidad_calculo_hijo_id,unidades_calculo.unidad_calculo_id) AS unidad_calculo_id_hijo  FROM  unidades_calculo  Left Join unidades_calculo_agrupados ON unidades_calculo.unidad_calculo_id = unidades_calculo_agrupados.unidad_calculo_padre_id 
+ 
+ExecuteScalar:select impuesto_incluido from contratos where contrato_id=?
+ 
+getDataTable: SELECT lineas_de_contrato.*,  servicios.nombre_servicio,  servicios.tipo_servicio_id, tipos_de_oferta.Oferta,  unidades_calculo.descripcion_unidad_calculo,  frecuencia_facturacion.descripcion as descripcion_frecuencia_id,  tipos_de_imputacion.imputacion  FROM  servicios  Left Join lineas_de_contrato ON servicios.servicio_id = lineas_de_contrato.servicio_id  Left Join tipos_de_oferta ON lineas_de_contrato.tipo_oferta_id = tipos_de_oferta.tipo_oferta_id  Left Join unidades_calculo ON lineas_de_contrato.unidad_calculo_id = unidades_calculo.unidad_calculo_id  Left Join frecuencia_facturacion ON lineas_de_contrato.frecuencia_id = frecuencia_facturacion.frecuencia_id  Left Join tipos_de_imputacion ON lineas_de_contrato.tipo_imputacion_id = tipos_de_imputacion.tipo_imputacion_id  WHERE  ((lineas_de_contrato.contrato_id =? ) or lineas_de_contrato.contrato_id is null)  AND servicios.servicio_id  =  ? 
+ 
+getDataTable:select * from condiciones_linea_contrato where linea_contrato_id=?
+ 
+getDataTable:select * from condiciones_linea_contrato where linea_contrato_id=?
+ 
+getDataSet: select unidad_calculo_id_padre as unidad_calculo_id,sum(cantidad) as cantidad from (SELECT  unidades_calculo_detalladas.unidad_calculo_id_padre,  unidades_calculo_detalladas.unidad_calculo_id_hijo,  Max(ifnull(reservas_servicios.cantidad,0)) as cantidad  FROM (     SELECT  unidades_calculo.unidad_calculo_id AS unidad_calculo_id_padre,  ifnull(unidades_calculo_agrupados.unidad_calculo_hijo_id,unidades_calculo.unidad_calculo_id) AS unidad_calculo_id_hijo  FROM  unidades_calculo  Left Join unidades_calculo_agrupados ON unidades_calculo.unidad_calculo_id = unidades_calculo_agrupados.unidad_calculo_padre_id  ) unidades_calculo_detalladas  Left Join reservas_servicios ON unidades_calculo_detalladas.unidad_calculo_id_hijo = reservas_servicios.unidad_calculo_id  WHERE  reservas_servicios.reserva_id = ? or  reservas_servicios.reserva_id IS NULL  GROUP BY  unidades_calculo_detalladas.unidad_calculo_id_padre,  unidades_calculo_detalladas.unidad_calculo_id_hijo  ) drv group by unidad_calculo_id_padre 
+ 
+getDataSet:select * from reservas_ofertas where reserva_id=?
+ 
+getDataTable:select * from ofertas where  contrato_id in (?)
+ 
+getDataSet: SELECT 0 AS estado,1 as cliente_id, habitaciones_bloqueos.habitacion_id, habitaciones_bloqueos.reserva_id, items_limpieza.item_limpieza_id,  items_limpieza.item_limpieza,  habitaciones.numero_habitacion,  clientes_limpieza.cambios_semana,  clientes_limpieza.primer_dia,  clientes_limpieza.sucesivos_cambios, clientes_limpieza.lunes, clientes_limpieza.martes,  clientes_limpieza.miercoles,  clientes_limpieza.jueves,  clientes_limpieza.viernes,  clientes_limpieza.sabado,  clientes_limpieza.domingo,  reservas.fecha_prevista_llegada  FROM  habitaciones_bloqueos  Inner Join reservas ON habitaciones_bloqueos.reserva_id = reservas.reserva_id  Inner Join clientes_limpieza ON reservas.hotel_id = clientes_limpieza.hotel_id AND reservas.cliente_id = clientes_limpieza.cliente_id  Inner Join items_limpieza ON items_limpieza.item_limpieza_id = clientes_limpieza.item_limpieza_id  Inner Join habitaciones ON habitaciones_bloqueos.habitacion_id = habitaciones.habitacion_id AND habitaciones.tipo_habitacion_id = clientes_limpieza.tipo_habitacion_id  WHERE  habitaciones_bloqueos.tipo_bloqueo_id = 1 AND          ? BETWEEN  habitaciones_bloqueos.fecha_desde AND  habitaciones_bloqueos.fecha_hasta  and habitaciones.hotel_id=?  and ? in (0,items_limpieza.item_limpieza_id) and ? in (0,habitaciones_bloqueos.habitacion_id)
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+getDataTable: SELECT  limpiezas.fecha FROM  limpiezas  WHERE  yearweek(limpiezas.fecha)=yearweek(?) and  limpiezas.habitacion_id =  ? AND  limpiezas.reserva_id =  ? AND   limpiezas.item_limpieza_id =  ?
+ 
+0-1-3-10-1-Sabanas-101-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+0-1-3-10-3-Limpieza-101-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+0-1-3-10-2-Toallas-101-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+0-1-4-10-1-Sabanas-102-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+0-1-4-10-3-Limpieza-102-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+0-1-4-10-2-Toallas-102-0-0-0-True-True-True-True-True-True-True-14/04/2008 0:00:00-;
+ExecuteScalar:     SELECT Max(cierres.fecha_cierre)  FROM  cierres  WHERE  cierres.hotel_id =  ?
+ 
+26/06/2008 0:00:00
+ExecuteScalar:     SELECT Max(cierres.fecha_cierre)  FROM  cierres  WHERE  cierres.hotel_id =  ?
+ 
+26/06/2008 0:00:00
+ExecuteScalar:     SELECT Max(cierres.fecha_cierre)  FROM  cierres  WHERE  cierres.hotel_id =  ?
+ 
+27/04/2008 0:00:00
+g

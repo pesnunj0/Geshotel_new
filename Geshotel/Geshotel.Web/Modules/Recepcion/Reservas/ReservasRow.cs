@@ -239,6 +239,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.PermiteDevolucion[this] = value; }
         }
 
+        [DisplayName("VIP"), Column("vip"), NotNull]
+        public Boolean? Vip
+        {
+            get { return Fields.Vip[this]; }
+            set { Fields.Vip[this] = value; }
+        }
+
         [DisplayName("Tipo Tarjeta Id"), Column("tipo_tarjeta_id"),ForeignKey("tipos_de_tarjeta","tipo_tarjeta_id"),LeftJoin("jTipoTarjeta"),TextualField("tipo_tarjeta")]
         [LookupEditor(typeof(TiposDeTarjetaRow))]
         public Int16? TipoTarjetaId
@@ -495,6 +502,7 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field ChildFree;
             public Int16Field Bebes;
             public Int16Field Pax;
+            public BooleanField Vip;
             public DateTimeField FechaPrevistaLlegada;
             public DateTimeField FechaPrevistaSalida;
             public StringField ObservacionesLlegada;

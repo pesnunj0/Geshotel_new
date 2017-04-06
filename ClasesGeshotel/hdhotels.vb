@@ -18,7 +18,7 @@ Namespace geshotelk
             'Dim retVal As Integer
             Dim errorCode As Integer = 0
             Dim tmp As Integer = -1
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Try
                 tmp = ObtieneHabitacion_Id(cmd, hotel_id, habitacion)
             Catch ex As Exception
@@ -297,14 +297,14 @@ Namespace geshotelk
         & " ON habitaciones.habitacion_id = habitaciones_bloqueos.habitacion_id " _
         & " INNER JOIN tipos_habitacion on habitaciones.tipo_habitacion_id=tipos_habitacion.tipo_habitacion_id" _
         & " WHERE habitaciones.hotel_id =? AND tipos_habitacion.desc_corta = ?"
-        Private Function CheckinOnlineObitneReserva(cmd As SqlCommand, bono As String, fecha As Date, Optional reserva_id As Integer = 0)
+        Private Function CheckinOnlineObitneReserva(cmd As Odbc.OdbcCommand, bono As String, fecha As Date, Optional reserva_id As Integer = 0)
             Dim reserva As DataSet = Nothing
             Try
                 cmd.Parameters.Clear()
-                Dim fecha_llegadaParam As New SqlParameter("@fecha_llegada", fecha)
-                Dim bonoParam As New SqlParameter("@bono", bono)
-                Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
-                Dim reserva_id1Param As New SqlParameter("@reserva_id1", reserva_id)
+                Dim fecha_llegadaParam As New Odbc.OdbcParameter("@fecha_llegada", fecha)
+                Dim bonoParam As New Odbc.OdbcParameter("@bono", bono)
+                Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva_id)
+                Dim reserva_id1Param As New Odbc.OdbcParameter("@reserva_id1", reserva_id)
                 cmd.Parameters.Add(fecha_llegadaParam)
                 cmd.Parameters.Add(bonoParam)
                 cmd.Parameters.Add(reserva_idParam)
@@ -320,7 +320,7 @@ Namespace geshotelk
 
             Dim errorCode As Integer = 0
             Dim resultado As String = "no" 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Dim reserva As DataSet = CheckinOnlineObitneReserva(cmd, bono, fecha_llegada, reserva_id_filtro)
 
             If Not IsNothing(reserva) Then
@@ -339,7 +339,7 @@ Namespace geshotelk
                             End If
                             'compruba si puedo hacer checkin a esa reserva (algo mal introducido)
                             cmd.Parameters.Clear()
-                            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
+                            Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
                             cmd.Parameters.Add(reserva_idParam)
                             getDataSet(cmd, sqlHDhuespedes, reserva, "Huesped")
 
@@ -360,8 +360,8 @@ Namespace geshotelk
                             cmd.Parameters.Clear()
                             Dim hotel_id As Integer
                             hotel_id = reserva.Tables(0).Rows(0).Item("hotel_id")
-                            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
-                            Dim fecha_llegadaParam As New SqlParameter("@fecha_llegada", fecha_llegada)
+                            Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+                            Dim fecha_llegadaParam As New Odbc.OdbcParameter("@fecha_llegada", fecha_llegada)
                             cmd.Parameters.Add(hotel_idParam)
                             cmd.Parameters.Add(fecha_llegadaParam)
                             getDataSet(cmd, sqlHDBloqueoMin, reserva, "bloqueos_online")
@@ -369,7 +369,7 @@ Namespace geshotelk
 
                             Dim desc_corta As String
                             desc_corta = reserva.Tables(0).Rows(0).Item("abreviatura")
-                            Dim desc_cortaParam As New SqlParameter("@desc_corta", desc_corta)
+                            Dim desc_cortaParam As New Odbc.OdbcParameter("@desc_corta", desc_corta)
                             cmd.Parameters.Add(fecha_llegadaParam)
                             cmd.Parameters.Add(hotel_idParam)
                             cmd.Parameters.Add(desc_cortaParam)
@@ -404,8 +404,8 @@ Namespace geshotelk
         Function ObtieneEmpresaHotel(ByVal hotel_id As Integer)
             Dim errorCode As Integer = 0
             Dim resultado As Integer = 0 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
-            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
             cmd.Parameters.Add(hotel_idParam)
             Try
                 resultado = ExecuteScalar(cmd, sqlObtieneEmpresa_id, True)
@@ -422,7 +422,7 @@ Namespace geshotelk
         Private Function actualizaEmailReserva(reserva_id As Integer, email As Object, olleg As Object, languaje As Object, hora_llegada As Object) As Integer
             Dim errorCode As Integer = 0
             Dim resultado As Integer = 0 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             If IsNothing(languaje) Then
                 languaje = DBNull.Value
             End If
@@ -443,11 +443,11 @@ Namespace geshotelk
             Catch ex As Exception
 
             End Try
-            Dim emailParam As New SqlParameter("@email", email)
-            Dim ollegParam As New SqlParameter("@olleg", olleg)
-            Dim idioma_idParam As New SqlParameter("@idioma_id", languaje)
-            Dim hora_llegadaaram As New SqlParameter("@hora_llegada", hora_llegada)
-            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim emailParam As New Odbc.OdbcParameter("@email", email)
+            Dim ollegParam As New Odbc.OdbcParameter("@olleg", olleg)
+            Dim idioma_idParam As New Odbc.OdbcParameter("@idioma_id", languaje)
+            Dim hora_llegadaaram As New Odbc.OdbcParameter("@hora_llegada", hora_llegada)
+            Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(emailParam)
             cmd.Parameters.Add(ollegParam)
             cmd.Parameters.Add(idioma_idParam)
@@ -993,9 +993,9 @@ Namespace geshotelk
 
 
                     Dim errorCode As Integer = 0
-                    Dim cmd As SqlCommand = prepareConection()
+                    Dim cmd As Odbc.OdbcCommand = prepareConection()
                     cmd.Parameters.Clear()
-                    Dim usuario_idParam As New SqlParameter("@usuario_id", usuario_id)
+                    Dim usuario_idParam As New Odbc.OdbcParameter("@usuario_id", usuario_id)
                     cmd.Parameters.Add(usuario_idParam)
 
                     Try
@@ -1019,8 +1019,8 @@ Namespace geshotelk
                                 If habitacion_id > 0 Then
 
                                     cmd.Parameters.Clear()
-                                    Dim habitacion_idParam As New SqlParameter("@hotel_id", habitacion_id)
-                                    Dim fechaParam As New SqlParameter("@fecha", fecha)
+                                    Dim habitacion_idParam As New Odbc.OdbcParameter("@hotel_id", habitacion_id)
+                                    Dim fechaParam As New Odbc.OdbcParameter("@fecha", fecha)
                                     cmd.Parameters.Add(habitacion_idParam)
                                     cmd.Parameters.Add(fechaParam)
 
@@ -1073,14 +1073,14 @@ Namespace geshotelk
             Dim resultado As String = "no"
             Dim errorCode As Integer = 0
             Dim tipo As Integer = 0
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Try
                 tipo = obtieneTipoRegister(tiporegister)
                 registraDispositivoHDHotels(cmd, register, tiporegister, 0, 0, languaje, 0)
                 cmd.Parameters.Clear()
-                Dim registerParam As New SqlParameter("@register", register)
+                Dim registerParam As New Odbc.OdbcParameter("@register", register)
                 cmd.Parameters.Add(registerParam)
-                Dim tipoParam As New SqlParameter("@tipo", tipo)
+                Dim tipoParam As New Odbc.OdbcParameter("@tipo", tipo)
                 cmd.Parameters.Add(tipoParam)
                 Dim reserva As DataSet = Me.getDataSet(cmd, sqlHDNotificaciones)
                 reserva.Tables(0).TableName = "notificacion"
@@ -1134,17 +1134,17 @@ Namespace geshotelk
                 'obtener el user id
 
                 If Not IsDBNull(login.userId) Then
-                    Dim cmd As SqlCommand = prepareConection()
+                    Dim cmd As Odbc.OdbcCommand = prepareConection()
                     Try
                         login.userId = 10 'a quitar
-                        Dim user_idParam As New SqlParameter("@user_id", login.userId)
+                        Dim user_idParam As New Odbc.OdbcParameter("@user_id", login.userId)
                         ' Obtengo el departamento_id del usuario para ver las novedades de su departamento.
                         cmd.Parameters.Clear()
                         cmd.Parameters.Add(user_idParam)
                         Dim departamento_id As Object = Me.ExecuteScalar(cmd, sql_get_departamento)
                         If Not IsDBNull(departamento_id) Then
 
-                            Dim departamento_idParam As New SqlParameter("@departamento_id", departamento_id)
+                            Dim departamento_idParam As New Odbc.OdbcParameter("@departamento_id", departamento_id)
                             cmd.Parameters.Clear()
                             cmd.Parameters.Add(departamento_idParam)
                             'obtener Novedades Pendientes y convertir a xml
@@ -1187,9 +1187,9 @@ Namespace geshotelk
                 If Not IsDBNull(login.userId) Then
                     Dim usuario_id As Integer = login.userId
                     Dim errorCode As Integer = 0
-                    Dim cmd As SqlCommand = prepareConection()
+                    Dim cmd As Odbc.OdbcCommand = prepareConection()
                     cmd.Parameters.Clear()
-                    Dim usuario_idParam As New SqlParameter("@usuario_id", usuario_id)
+                    Dim usuario_idParam As New Odbc.OdbcParameter("@usuario_id", usuario_id)
                     cmd.Parameters.Add(usuario_idParam)
                     Dim hotel_id As Object = Me.ExecuteScalar(cmd, SQLHDObtieneHotelDelUsuario)
                     If Not IsDBNull(hotel_id) Then
@@ -1204,8 +1204,8 @@ Namespace geshotelk
                         'obtener fecha del hotel
                         Dim fecha As Date = FechaHotel(cmd, hotel_id)
                         cmd.Parameters.Clear()
-                        Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
-                        Dim fechaParam As New SqlParameter("@fecha", fecha)
+                        Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+                        Dim fechaParam As New Odbc.OdbcParameter("@fecha", fecha)
                         cmd.Parameters.Add(hotel_idParam)
                         cmd.Parameters.Add(fechaParam)
                         Try
@@ -1214,7 +1214,7 @@ Namespace geshotelk
                                 'resultado = habitaciones.GetXml()
                                 reserva.Tables(0).TableName = "limpieza"
                                 getDataSet(cmd, sqlItemsLimpiezas, reserva, "items_limpieza")
-                                Dim fechaParamn As New SqlParameter("@fecha", convertFecha(Today))
+                                Dim fechaParamn As New Odbc.OdbcParameter("@fecha", convertFecha(Today))
                                 cmd.Parameters.Clear()
                                 cmd.Parameters.Add(usuario_idParam)
                                 cmd.Parameters.Add(fechaParamn)
@@ -1248,10 +1248,10 @@ Namespace geshotelk
             'obtiene todas las galerias
             Dim resultado As String = "no"
             Dim errorCode As Integer = 0
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New SqlParameter("@hotel_id", hotel_id)
-            Dim hotel_id1Param As New SqlParameter("@hotel_id", hotel_id)
+            Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+            Dim hotel_id1Param As New Odbc.OdbcParameter("@hotel_id", hotel_id)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(hotel_id1Param)
             Try
@@ -1277,10 +1277,10 @@ Namespace geshotelk
         Public Function setGaleria(datos As String) As String
             Dim resultado As String = "no"
             Dim errorCode As Integer = 0
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim hotel_idParam As New SqlParameter("@hotel_id", 0)
-            Dim hotel_id1Param As New SqlParameter("@hotel_id", 0)
+            Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", 0)
+            Dim hotel_id1Param As New Odbc.OdbcParameter("@hotel_id", 0)
             cmd.Parameters.Add(hotel_idParam)
             cmd.Parameters.Add(hotel_id1Param)
             Try
@@ -1398,7 +1398,7 @@ Namespace geshotelk
 
                     End If
 
-                    Dim writer As SqlDataAdapter
+                    Dim writer As Odbc.OdbcDataAdapter
                     writer = getDataAdapter(cmd, sqlHdGaleria)
                     writer.Fill(galeriagrabada.Tables(0))
                     writer.Update(galeriagrabada.Tables(0))
@@ -1412,7 +1412,7 @@ Namespace geshotelk
                         Dim lenguajes As DataTable = galeriaentrada.Tables("language")
                         If Not IsNothing(lenguajes) Then
                             cmd.Parameters.Clear()
-                            Dim lan_codeParam As New SqlParameter("@lan_code", -1)
+                            Dim lan_codeParam As New Odbc.OdbcParameter("@lan_code", -1)
                             cmd.Parameters.Add(lan_codeParam)
                             Dim lan_upd As DataSet = Me.getDataSet(cmd, sqlHdhotel_lan)
                             Dim lan_tble As DataTable = lan_upd.Tables(0)
@@ -1437,8 +1437,8 @@ Namespace geshotelk
                         'borrar traduccion de fotos
                         'clave GALERIA_1
                         cmd.Parameters.Clear()
-                        Dim galeria_idNombreParam As New SqlParameter("@galeria_id", "GALERIA_NOMBRE_" & galeria_id)
-                        Dim galeria_idDescripcionParam As New SqlParameter("@galeria_id", "GALERIA_DESC_" & galeria_id)
+                        Dim galeria_idNombreParam As New Odbc.OdbcParameter("@galeria_id", "GALERIA_NOMBRE_" & galeria_id)
+                        Dim galeria_idDescripcionParam As New Odbc.OdbcParameter("@galeria_id", "GALERIA_DESC_" & galeria_id)
                         cmd.Parameters.Add(galeria_idNombreParam)
                         cmd.Parameters.Add(galeria_idDescripcionParam)
                         ExecuteNonQuery(cmd, "delete from hdhotels_lan where lan_key =? or lan_key =?")
@@ -1475,7 +1475,7 @@ Namespace geshotelk
 
             End Try
             If Not IsNothing(languages) Then
-                Dim cmd As SqlCommand = prepareConection()
+                Dim cmd As Odbc.OdbcCommand = prepareConection()
                 errorCode = setLanguage(cmd, languages)
                 If Not flushConection(cmd, errorCode) Then
                 End If
@@ -1483,7 +1483,7 @@ Namespace geshotelk
             Return resultado
         End Function
 
-        Public Function setLanguage(cmd As SqlCommand, languages As DataSet) As Integer
+        Public Function setLanguage(cmd As Odbc.OdbcCommand, languages As DataSet) As Integer
             Dim resultado As String = "no:" ' + lanurl 'un valor por defecto con error
             Dim errorCode As Integer = 0
             Try
@@ -1531,7 +1531,7 @@ Namespace geshotelk
                     End If
                 Next
 
-                Dim writer As SqlDataAdapter
+                Dim writer As Odbc.OdbcDataAdapter
                 writer = getDataAdapter(cmd, sqlHdhotel_lanStore)
                 writer.Fill(lan_old.Tables(0))
                 writer.Update(lan_old.Tables(0))
@@ -1552,10 +1552,10 @@ Namespace geshotelk
             Dim resultado As String = "no:" + lanurl 'un valor por defecto con error
             If lanurl.Length = 2 Then
                 Dim errorCode As Integer = 0
-                Dim cmd As SqlCommand = prepareConection()
+                Dim cmd As Odbc.OdbcCommand = prepareConection()
                 Try
                     cmd.Parameters.Clear()
-                    Dim lan_codeParam As New SqlParameter("@lan_code", lanurl)
+                    Dim lan_codeParam As New Odbc.OdbcParameter("@lan_code", lanurl)
                     cmd.Parameters.Add(lan_codeParam)
 
 
@@ -1602,7 +1602,7 @@ Namespace geshotelk
 
             Dim errorCode As Integer = 0
             Dim resultado As String = "no" 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Dim reserva As DataSet = CheckinOnlineObitneReserva(cmd, bono, fecha_llegada, reserva_id_filtro)
             If Not IsNothing(reserva) Then
                 Try
@@ -1610,13 +1610,13 @@ Namespace geshotelk
                     If reserva.Tables(0).Rows.Count > 0 Then
 
                         cmd.Parameters.Clear()
-                        Dim reserva_idParam As New SqlParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
+                        Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
                         cmd.Parameters.Add(reserva_idParam)
                         hotel_id = ExecuteScalar(cmd, sqlObtieneHotelReserva)
                     End If
                     If Not IsNothing(hotel_id) Then
                         cmd.Parameters.Clear()
-                        Dim hotel_idParam As New SqlParameter("@hote_id", hotel_id)
+                        Dim hotel_idParam As New Odbc.OdbcParameter("@hote_id", hotel_id)
                         cmd.Parameters.Add(hotel_idParam)
                         habitaciones = Me.getDataSet(cmd, sqlHDHabitaciones)
                         habitaciones.DataSetName = "Habitaciones"
@@ -1630,8 +1630,8 @@ Namespace geshotelk
                         Dim dtCopy As DataTable = hablibres.Tables(0).Copy()
 
                         cmd.Parameters.Clear()
-                        Dim fecha_prevista_llegadaParam As New SqlParameter("@fecha_prevista_llegada", reserva.Tables(0).Rows(0).Item("fecha_prevista_llegada"))
-                        Dim fecha_prevista_salidaParam As New SqlParameter("@fecha_prevista_salida", reserva.Tables(0).Rows(0).Item("fecha_prevista_salida"))
+                        Dim fecha_prevista_llegadaParam As New Odbc.OdbcParameter("@fecha_prevista_llegada", reserva.Tables(0).Rows(0).Item("fecha_prevista_llegada"))
+                        Dim fecha_prevista_salidaParam As New Odbc.OdbcParameter("@fecha_prevista_salida", reserva.Tables(0).Rows(0).Item("fecha_prevista_salida"))
                         cmd.Parameters.Add(fecha_prevista_llegadaParam)
                         cmd.Parameters.Add(fecha_prevista_salidaParam)
                         Dim reader As DataTableReader = getDataTable(cmd, sqlHdHabitacionesBloqueoOnline, False)
@@ -1684,7 +1684,7 @@ Namespace geshotelk
 
             Dim errorCode As Integer = 0
             Dim resultado As String = "no" 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Dim reserva As DataSet = CheckinOnlineObitneReserva(cmd, bono, fecha_llegada, reserva_id_filtro)
 
             If Not IsNothing(reserva) Then
@@ -1698,11 +1698,11 @@ Namespace geshotelk
                     If reserva.Tables(0).Rows.Count > 0 Then
 
                         cmd.Parameters.Clear()
-                        Dim reserva_idParam As New SqlParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
+                        Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva.Tables(0).Rows(0).Item("reserva_id"))
                         cmd.Parameters.Add(reserva_idParam)
                         Dim hotel_id As Integer = ExecuteScalar(cmd, sqlObtieneHotelReserva)
                         cmd.Parameters.Clear()
-                        Dim hotel_idParam As New SqlParameter("@hote_id", hotel_id)
+                        Dim hotel_idParam As New Odbc.OdbcParameter("@hote_id", hotel_id)
                         cmd.Parameters.Add(hotel_idParam)
                         habitaciones = Me.getDataSet(cmd, sqlHDHabitaciones)
                         'todo comprobar si entre el new y el antiguo ha habido cambios y grabarlos
@@ -1742,7 +1742,7 @@ Namespace geshotelk
                         Next
 
 
-                        Dim writer As SqlDataAdapter
+                        Dim writer As Odbc.OdbcDataAdapter
                         If Not IsNothing(habitaciones.Tables(0).GetChanges) Then
                             habitaciones.Tables(0).Columns.Remove("tipo_habitacion_id")
                             habitaciones.Tables(0).Columns.Remove("desc_corta")
@@ -1779,9 +1779,9 @@ Namespace geshotelk
             'todo sacar datos de la reserva
             Dim errorCode As Integer = 0
             Dim resultado As String = "no" 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva_id)
             Dim hab_desvios As Boolean = False
             cmd.Parameters.Add(reserva_idParam)
 
@@ -1814,9 +1814,9 @@ Namespace geshotelk
 
                             'encontrar los datos del email segun tipo y language de la reserva (defecto todos los idiomas)
                             cmd.Parameters.Clear()
-                            Dim idioma_idParam As New SqlParameter("@idioma_id", idioma_id)
-                            Dim idioma_id1Param As New SqlParameter("@idioma_id1", idioma_id)
-                            Dim tipoParam As New SqlParameter("@tipo", tipo)
+                            Dim idioma_idParam As New Odbc.OdbcParameter("@idioma_id", idioma_id)
+                            Dim idioma_id1Param As New Odbc.OdbcParameter("@idioma_id1", idioma_id)
+                            Dim tipoParam As New Odbc.OdbcParameter("@tipo", tipo)
                             cmd.Parameters.Add(idioma_idParam)
                             cmd.Parameters.Add(idioma_id1Param)
                             cmd.Parameters.Add(tipoParam)
@@ -1982,9 +1982,9 @@ Namespace geshotelk
 
             Dim errorCode As Integer = 0
             Dim resultado As String = "no" 'un valor por defecto con error
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             cmd.Parameters.Clear()
-            Dim reserva_idParam As New SqlParameter("@reserva_id", reserva_id)
+            Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", reserva_id)
             cmd.Parameters.Add(reserva_idParam)
 
             Try
@@ -2043,7 +2043,7 @@ Namespace geshotelk
             'faltan los demas tipos
             Return tipo
         End Function
-        Private Function registraDispositivoHDHotels(cmd As SqlCommand, register As String, tiporegister As String, hotel_id As Integer, reserva_id As Integer, language As String, Optional usuario_id As Integer = Nothing) As Boolean
+        Private Function registraDispositivoHDHotels(cmd As Odbc.OdbcCommand, register As String, tiporegister As String, hotel_id As Integer, reserva_id As Integer, language As String, Optional usuario_id As Integer = Nothing) As Boolean
             If IsNothing(register) Or IsNothing(tiporegister) Then
                 Return False
             End If
@@ -2064,10 +2064,10 @@ Namespace geshotelk
             Dim resultado As String = "no"
             Dim sql_encuesta As String = ""
             Dim errorCode As Integer = 0
-            Dim cmd As SqlCommand = prepareConection()
+            Dim cmd As Odbc.OdbcCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
-                Dim lan_codeParam As New SqlParameter("@hotel_id", hotel_id)
+                Dim lan_codeParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(lan_codeParam)
 
                 Dim reserva As DataSet = Me.getDataSet(cmd, sql_encuesta)
@@ -2106,7 +2106,7 @@ Namespace geshotelk
 
             End Try
             If Not IsNothing(encuesta) Then
-                Dim cmd As SqlCommand = prepareConection()
+                Dim cmd As Odbc.OdbcCommand = prepareConection()
                 errorCode = setEncuesta(cmd, hotel_id, habitacion, razon, encuesta)
                 If Not flushConection(cmd, errorCode) Then
                 End If
@@ -2114,7 +2114,7 @@ Namespace geshotelk
             Return resultado
         End Function
 
-        Private Function setEncuesta(cmd As SqlCommand, hotel_id As String, habitacion As String, razon As String, encuesta As DataSet) As Integer
+        Private Function setEncuesta(cmd As Odbc.OdbcCommand, hotel_id As String, habitacion As String, razon As String, encuesta As DataSet) As Integer
             'validar datos
             'getEncuesta()
             'no existe la creo
@@ -2146,14 +2146,14 @@ Namespace geshotelk
                     Dim numhab As Integer = CInt(habitacion)
                     fecha_llegada = CDate(fecha_llegada)
                     Dim errorCode As Integer = 0
-                    Dim cmd As SqlCommand = prepareConection()
+                    Dim cmd As Odbc.OdbcCommand = prepareConection()
                     Try
                         cmd.Parameters.Clear()
-                        Dim fecha_llegadaParam As New SqlParameter("@fecha_llegada", fecha_llegada)
+                        Dim fecha_llegadaParam As New Odbc.OdbcParameter("@fecha_llegada", fecha_llegada)
                         cmd.Parameters.Add(fecha_llegadaParam)
-                        Dim numhabParam As New SqlParameter("@numhab", numhab)
+                        Dim numhabParam As New Odbc.OdbcParameter("@numhab", numhab)
                         cmd.Parameters.Add(numhabParam)
-                        Dim apellidoParam As New SqlParameter("@apellido", apellido)
+                        Dim apellidoParam As New Odbc.OdbcParameter("@apellido", apellido)
                         cmd.Parameters.Add(apellidoParam)
                         Dim reader As IDataReader = Me.getDataTable(cmd, sqlHDEncuentraBono)
                         While reader.Read

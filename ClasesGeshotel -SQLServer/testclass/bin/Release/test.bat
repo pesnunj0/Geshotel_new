@@ -1,0 +1,1 @@
+testclass.exe >salida.txt

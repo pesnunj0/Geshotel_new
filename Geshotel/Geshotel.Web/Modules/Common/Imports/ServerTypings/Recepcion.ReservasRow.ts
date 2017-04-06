@@ -17,6 +17,7 @@ namespace Geshotel.Recepcion {
         ChildFree?: number;
         Bebes?: number;
         Pax?: number;
+        Vip?: boolean;
         FechaPrevistaLlegada?: string;
         FechaPrevistaSalida?: string;
         ObservacionesLlegada?: string;
@@ -86,6 +87,7 @@ namespace Geshotel.Recepcion {
             export declare const ChildFree: string;
             export declare const Bebes: string;
             export declare const Pax: string;
+            export declare const Vip: string;
             export declare const FechaPrevistaLlegada: string;
             export declare const FechaPrevistaSalida: string;
             export declare const ObservacionesLlegada: string;
@@ -133,7 +135,7 @@ namespace Geshotel.Recepcion {
             export declare const ReservaName: string;
         }
 
-        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'Pax', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'Pax', 'Vip', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

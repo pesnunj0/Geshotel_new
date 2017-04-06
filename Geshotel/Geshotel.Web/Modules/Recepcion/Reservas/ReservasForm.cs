@@ -40,10 +40,10 @@ namespace Geshotel.Recepcion.Forms
         public Decimal Valor { get; set; }
         public String CodigoOferta { get; set; }
         public Boolean BloquearTarifa { get; set; }
-        public Boolean PermiteDevolucion { get; set; }       
-       
-        
-       
+        public Boolean PermiteDevolucion { get; set; }
+        [DefaultValue(0)]
+        public Boolean Vip { get; set; }
+
 
         [Category("Fechas")]
         [DisplayFormat("dd/MM/yyyy")]

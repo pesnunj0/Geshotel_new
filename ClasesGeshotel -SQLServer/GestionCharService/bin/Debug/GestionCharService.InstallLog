@@ -1,0 +1,13 @@
+﻿Instalando ensamblado 'D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   assemblypath = D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.exe
+   logfile = D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.InstallLog
+Instalando el servicio ServicioGestionChar...
+El servicio ServicioGestionChar se ha instalado correctamente.
+Creando el origen de EventLog ServicioGestionChar en el registro Application...
+Confirmando ensamblado 'D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   assemblypath = D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.exe
+   logfile = D:\Proyectos Codecharge\ClasesGesHotel\GestionCharService\bin\Debug\GestionCharService.InstallLog

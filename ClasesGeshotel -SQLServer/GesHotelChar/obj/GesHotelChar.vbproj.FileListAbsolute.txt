@@ -1,0 +1,12 @@
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\GesHotelChar.exe
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\GesHotelChar.pdb
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\GesHotelChar.xml
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\ClasesGesHotel.dll
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\ClasesGesHotel.pdb
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\bin\Debug\ClasesGesHotel.xml
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\GesHotelChar.Resources.resources
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\GesHotelChar.vbproj.GenerateResource.Cache
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\GesHotelChar.exe
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\GesHotelChar.xml
+C:\Proyectos Codecharge\ClasesGesHotel\GesHotelChar\obj\Debug\GesHotelChar.pdb
