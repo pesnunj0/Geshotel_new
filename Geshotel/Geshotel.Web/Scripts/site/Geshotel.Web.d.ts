@@ -6363,6 +6363,15 @@ declare namespace Geshotel.Prtal {
     }
 }
 declare namespace Geshotel.Recepcion {
+    interface CheckInRequest extends Serenity.ServiceRequest {
+        ReservaId?: number;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    interface CheckInResponse extends Serenity.ServiceResponse {
+    }
+}
+declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosForm extends Serenity.PrefixedContext {
@@ -7203,14 +7212,14 @@ declare namespace Geshotel.Recepcion {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReservasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function ReservationCheckIn(request: Serenity.SaveRequest<ReservasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function CheckIn(request: CheckInRequest, onSuccess?: (response: CheckInResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
             const Delete: string;
             const Retrieve: string;
             const List: string;
-            const ReservationCheckIn: string;
+            const CheckIn: string;
         }
     }
 }
@@ -7447,6 +7456,15 @@ declare namespace Geshotel.Recepcion {
             const Retrieve: string;
             const List: string;
         }
+    }
+}
+declare namespace Geshotel.Recepcion {
+    enum ReservationStatus {
+        ArrivalPending = 1,
+        Cancelled = 2,
+        CheckedIn = 3,
+        CheckedOut = 4,
+        Finished = 5,
     }
 }
 declare namespace Geshotel.Reservas {

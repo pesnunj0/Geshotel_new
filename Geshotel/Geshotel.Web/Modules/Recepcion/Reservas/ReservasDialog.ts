@@ -160,20 +160,13 @@ namespace Geshotel.Recepcion {
                 cssClass: 'check-in-button',
                 icon: 'fa-chevron-circle-right text-green',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {                           
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                            Q.serviceCall("Recepcion/Reservas/CheckIn");                          
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.CheckIn({
+                            ReservaId: this.entityId
+                        }, response => {
+                            Q.notifySuccess("Check-in successful");
                         });
+                    });
                 }
             });
 

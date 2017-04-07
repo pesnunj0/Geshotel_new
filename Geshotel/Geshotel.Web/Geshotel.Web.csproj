@@ -3087,6 +3087,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoPage.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
+    <Compile Include="Modules\Recepcion\Reservas\ReservasModels.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosColumns.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\ReservationController.cs" />

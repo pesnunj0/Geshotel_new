@@ -46,22 +46,29 @@ namespace Geshotel.Recepcion.Endpoints
         {
             return new MyRepository().List(connection, request);
         }
-        public SaveResponse CheckIn(IUnitOfWork uow, SaveRequest<MyRow> request)
-        {
-            var user = (UserDefinition)Authorization.UserDefinition;
-            Int32 userId = user.UserId;
-            Int32 ReservaId = Convert.ToInt32(request.EntityId);
-            Int16 NewStatus = 3;
-            var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(userId, "");
-            if (x.CambiarEstadoReserva(ReservaId, NewStatus, false))
-            // This function returns true if everything went well or false if there was any error
-            // Should be good notify if something went wrong. I do not know how
-            {
-                // I do not know if here I should Retrieve or change MyRow MyRow.Fields.EstadoReservaId
-            }
 
-            return new MyRepository().Update(uow, request);
+        public CheckInResponse CheckIn(IUnitOfWork uow, CheckInRequest request)
+        {
+            request.CheckNotNull();
+
+            Check.NotNull(request.ReservaId, nameof(request.ReservaId));
+
+            var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(Convert.ToInt32(Authorization.UserId), "");
+            if (!x.CambiarEstadoReserva(request.ReservaId.Value, 3, false))
+                throw new ValidationError("Sorry, can't check in!");
+
+            new MyRepository().Update(uow, new SaveRequest<MyRow>
+            {
+                EntityId = request.ReservaId,
+                Entity = new MyRow
+                {
+                    EstadoReservaId = (int)ReservationStatus.CheckedIn
+                }
+            });
+
+            return new CheckInResponse();
         }
+
         public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
         {
             var data = List(connection, request).Entities;
