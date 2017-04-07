@@ -46,7 +46,7 @@ namespace Geshotel.Recepcion.Endpoints
         {
             return new MyRepository().List(connection, request);
         }
-        public SaveResponse ReservationCheckIn(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse CheckIn(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
@@ -54,10 +54,10 @@ namespace Geshotel.Recepcion.Endpoints
             Int16 NewStatus = 3;
             var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(userId, "");
             if (x.CambiarEstadoReserva(ReservaId, NewStatus, false))
+            // This function returns true if everything went well or false if there was any error
+            // Should be good notify if something went wrong. I do not know how
             {
                 // I do not know if here I should Retrieve or change MyRow MyRow.Fields.EstadoReservaId
-                
-
             }
 
             return new MyRepository().Update(uow, request);

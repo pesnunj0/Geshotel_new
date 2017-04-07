@@ -31,5 +31,6 @@ namespace Geshotel.Behaviors
             UserId.AsObject(handler.Row, Authorization.UserId == null ? null : 
                 UserId.ConvertValue(Authorization.UserId, CultureInfo.InvariantCulture));
         }
+
     }
 }

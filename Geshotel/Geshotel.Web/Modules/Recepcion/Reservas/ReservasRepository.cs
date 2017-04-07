@@ -49,12 +49,12 @@ namespace Geshotel.Recepcion.Repositories
 
                 var user = (UserDefinition)Authorization.UserDefinition;
                 Int32 userId = user.UserId;
-                Int32 ReservaId = Convert.ToInt32(fld.ReservaId);
 
+                Int32 ReservaId = Convert.ToInt32(fld.ReservaId.ToString());
                 var x = new GesHotelClase(userId);
                 var res = new GesHotelClase.MetaReserva();
                 var hus = new GesHotelClase.MetaHuesped();
-                
+
                 // Filling fields for MetaReserva
 
                 res.bloquear_tarifa = Convert.ToBoolean(fld.BloquearTarifa);
@@ -93,7 +93,7 @@ namespace Geshotel.Recepcion.Repositories
 
                 res.unidades_calculos = ucs;
 
-                x.obtieneServiciosReserva(res,false,ReservaId);
+                x.obtieneServiciosReserva(res, false, ReservaId);
 
             }
         }

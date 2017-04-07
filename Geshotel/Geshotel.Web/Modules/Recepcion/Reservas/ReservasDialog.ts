@@ -98,13 +98,16 @@ namespace Geshotel.Recepcion {
                 this.isNew() || this.entity.EstadoReservaId != 2 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') > Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
 
             this.toolbar.findButton('check-in-button').toggleClass('disabled',
-                this.isNew() || this.entity.EstadoReservaId != 1);
-
+                this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
+            this.toolbar.findButton('pre-check-out-button').toggle(this.entity.EstadoReservaId < 3);
             this.toolbar.findButton('pre-check-out-button').toggleClass('disabled',
                 this.isNew() || this.entity.EstadoReservaId != 3 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
 
+            this.toolbar.findButton('checked-out-button').toggleClass('disabled',
+                this.isNew() || this.entity.EstadoReservaId != 4 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
+
             this.toolbar.findButton('no-show-button').toggleClass('disabled',
-                this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
+                this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
         }
         
         protected getToolbarButtons() {
@@ -153,15 +156,15 @@ namespace Geshotel.Recepcion {
             });
 
             buttons.push({
-                title: 'Checkin',
+                title: 'CheckIn',
                 cssClass: 'check-in-button',
                 icon: 'fa-chevron-circle-right text-green',
                 onClick: () => {
                     Q.confirm(
                         "Are u sure?",
-                        () => {
+                        () => {                           
                             Q.notifySuccess("You clicked YES. Let's proceed!");
-                           
+                            Q.serviceCall("Recepcion/Reservas/CheckIn");                          
                         },
                         {
                             onNo: () => {
@@ -175,7 +178,7 @@ namespace Geshotel.Recepcion {
             });
 
             buttons.push({
-                title: 'Pre Checkout',
+                title: 'Pre CheckOut',
                 cssClass: 'pre-check-out-button',
                 icon: 'fa-chevron-circle-left text-blue',
                 onClick: () => {
@@ -194,7 +197,26 @@ namespace Geshotel.Recepcion {
                         });
                 }
             });
-
+            buttons.push({
+                title: 'CheckedOut',
+                cssClass: 'checked-out-button',
+                icon: 'icon-plane text-green',
+                onClick: () => {
+                    Q.confirm(
+                        "Are u sure?",
+                        () => {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                        },
+                        {
+                            onNo: () => {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: () => {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
+                }
+            });
             buttons.push({
                 title: 'No Show',
                 cssClass: 'no-show-button',

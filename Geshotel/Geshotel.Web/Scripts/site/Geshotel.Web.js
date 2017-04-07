@@ -12586,9 +12586,11 @@ var Geshotel;
                 this.toolbar.findButton('cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
                 this.toolbar.findButton('undo-cancel-button').toggle(this.entity.EstadoReservaId == 2);
                 this.toolbar.findButton('undo-cancel-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 2 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') > Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
-                this.toolbar.findButton('check-in-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1);
+                this.toolbar.findButton('check-in-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
+                this.toolbar.findButton('pre-check-out-button').toggle(this.entity.EstadoReservaId < 3);
                 this.toolbar.findButton('pre-check-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 3 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
-                this.toolbar.findButton('no-show-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
+                this.toolbar.findButton('checked-out-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 4 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaSalida, 'yyyy-MM-dd'));
+                this.toolbar.findButton('no-show-button').toggleClass('disabled', this.isNew() || this.entity.EstadoReservaId != 1 || Q.formatDate(fechaHotel, 'yyyy-MM-dd') != Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
             };
             ReservasDialog.prototype.getToolbarButtons = function () {
                 var buttons = _super.prototype.getToolbarButtons.call(this);
@@ -12627,9 +12629,27 @@ var Geshotel;
                     }
                 });
                 buttons.push({
-                    title: 'Checkin',
+                    title: 'CheckIn',
                     cssClass: 'check-in-button',
                     icon: 'fa-chevron-circle-right text-green',
+                    onClick: function () {
+                        Q.confirm("Are u sure?", function () {
+                            Q.notifySuccess("You clicked YES. Let's proceed!");
+                            Q.serviceCall("Recepcion/Reservas/CheckIn");
+                        }, {
+                            onNo: function () {
+                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
+                            },
+                            onCancel: function () {
+                                Q.notifyError("You clicked X. So you were wrong");
+                            }
+                        });
+                    }
+                });
+                buttons.push({
+                    title: 'Pre CheckOut',
+                    cssClass: 'pre-check-out-button',
+                    icon: 'fa-chevron-circle-left text-blue',
                     onClick: function () {
                         Q.confirm("Are u sure?", function () {
                             Q.notifySuccess("You clicked YES. Let's proceed!");
@@ -12644,9 +12664,9 @@ var Geshotel;
                     }
                 });
                 buttons.push({
-                    title: 'Pre Checkout',
-                    cssClass: 'pre-check-out-button',
-                    icon: 'fa-chevron-circle-left text-blue',
+                    title: 'CheckedOut',
+                    cssClass: 'checked-out-button',
+                    icon: 'icon-plane text-green',
                     onClick: function () {
                         Q.confirm("Are u sure?", function () {
                             Q.notifySuccess("You clicked YES. Let's proceed!");

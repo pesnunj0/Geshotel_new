@@ -130,7 +130,7 @@ namespace Geshotel.Behaviors
         public void OnAfterDelete(IDeleteRequestHandler handler) { }
         public void OnAfterExecuteQuery(IRetrieveRequestHandler handler) { }
         public void OnAfterExecuteQuery(IListRequestHandler handler) { }
-        public void OnAfterSave(ISaveRequestHandler handler) { }
+        public void OnAfterSave(ISaveRequestHandler handler) {}
         public void OnApplyFilters(IListRequestHandler handler, SqlQuery query) { }
         public void OnAudit(IDeleteRequestHandler handler) { }
         public void OnAudit(ISaveRequestHandler handler) { }
