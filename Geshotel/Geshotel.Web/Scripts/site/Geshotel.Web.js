@@ -12654,6 +12654,8 @@ var Geshotel;
                                 ReservaId: _this.entityId
                             }, function (response) {
                                 Q.notifySuccess("Check-in successful");
+                                _this.reloadById();
+                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
                             });
                         });
                     }

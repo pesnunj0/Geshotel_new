@@ -165,6 +165,8 @@ namespace Geshotel.Recepcion {
                             ReservaId: this.entityId
                         }, response => {
                             Q.notifySuccess("Check-in successful");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
                     });
                 }
