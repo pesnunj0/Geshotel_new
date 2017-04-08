@@ -47,6 +47,27 @@ namespace Geshotel.Recepcion.Endpoints
             return new MyRepository().List(connection, request);
         }
 
+        public ChangeReservationStatusResponse ChangeReservationStatus(IUnitOfWork uow, ChangeReservationStatusRequest request)
+        {
+            request.CheckNotNull();
+
+            Check.NotNull(request.ReservaId, nameof(request.ReservaId));
+
+            var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(Convert.ToInt32(Authorization.UserId), "");
+            if (!x.CambiarEstadoReserva(request.ReservaId.Value, request.NewStatusId.Value, false))
+                throw new ValidationError("Sorry, can't change Status To the Reservation!");
+
+            new MyRepository().Update(uow, new SaveRequest<MyRow>
+            {
+                EntityId = request.ReservaId,
+                Entity = new MyRow
+                {
+                    EstadoReservaId = (int)ReservationStatus.CheckedIn
+                }
+            });
+
+            return new ChangeReservationStatusResponse();
+        }
         public CheckInResponse CheckIn(IUnitOfWork uow, CheckInRequest request)
         {
             request.CheckNotNull();

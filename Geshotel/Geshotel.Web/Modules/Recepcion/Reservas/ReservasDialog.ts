@@ -118,19 +118,17 @@ namespace Geshotel.Recepcion {
                 cssClass: 'cancel-button',
                 icon: 'fa-times text-red',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.Cancelled
+
+                        }, response => {
+                            Q.notifySuccess("Reservation Cancelled successfully");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
+                    });
                 }
             });
 
@@ -139,19 +137,17 @@ namespace Geshotel.Recepcion {
                 cssClass: 'undo-cancel-button',
                 icon: 'fa-times text-red',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.ArrivalPending
+
+                        }, response => {
+                            Q.notifySuccess("Reservation in Status Arrival Pending successfully");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
+                    });
                 }
             });
 
@@ -161,10 +157,12 @@ namespace Geshotel.Recepcion {
                 icon: 'fa-chevron-circle-right text-green',
                 onClick: () => {
                     Q.confirm("Are u sure?", () => {
-                        ReservasService.CheckIn({
-                            ReservaId: this.entityId
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.CheckedIn
+
                         }, response => {
-                            Q.notifySuccess("Check-in successful");
+                            Q.notifySuccess("Reservation Checked In successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
@@ -175,21 +173,19 @@ namespace Geshotel.Recepcion {
             buttons.push({
                 title: 'Pre CheckOut',
                 cssClass: 'pre-check-out-button',
-                icon: 'fa-chevron-circle-left text-blue',
+                icon: 'fa-chevron-circle-left text-green',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.PreCheckedOut
+
+                        }, response => {
+                            Q.notifySuccess("Reservation in Status Pre Check Out successfully");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
+                    });
                 }
             });
             buttons.push({
@@ -197,19 +193,17 @@ namespace Geshotel.Recepcion {
                 cssClass: 'checked-out-button',
                 icon: 'icon-plane text-green',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.CheckedOut
+
+                        }, response => {
+                            Q.notifySuccess("Reservation in Status Checked Out successfully");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
+                    });
                 }
             });
             buttons.push({
@@ -217,19 +211,17 @@ namespace Geshotel.Recepcion {
                 cssClass: 'no-show-button',
                 icon: 'fa-hand-o-down text-maroon',
                 onClick: () => {
-                    Q.confirm(
-                        "Are u sure?",
-                        () => {
-                            Q.notifySuccess("You clicked YES. Let's proceed!");
-                        },
-                        {
-                            onNo: () => {
-                                Q.notifyInfo("You clicked NO. We'll do Nothing?");
-                            },
-                            onCancel: () => {
-                                Q.notifyError("You clicked X. So you were wrong");
-                            }
+                    Q.confirm("Are u sure?", () => {
+                        ReservasService.ChangeReservationStatus({
+                            ReservaId: this.entityId,
+                            NewStatusId: ReservationStatus.NoShow
+
+                        }, response => {
+                            Q.notifySuccess("Reservation in Status Checked Out successfully");
+                            this.reloadById();
+                            Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });
+                    });
                 }
             });
 

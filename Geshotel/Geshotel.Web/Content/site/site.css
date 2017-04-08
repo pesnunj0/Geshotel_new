@@ -8666,6 +8666,7 @@ section.content > .s-DataGrid {
   .s-Recepcion-ReservasDialog .field.CodigoOferta,
   .s-Recepcion-ReservasDialog .field.BloquearTarifa,
   .s-Recepcion-ReservasDialog .field.PermiteDevolucion,
+  .s-Recepcion-ReservasDialog .field.Vip,
   .s-Recepcion-ReservasDialog .field.FechaReserva,
   .s-Recepcion-ReservasDialog .field.FechaCreacion,
   .s-Recepcion-ReservasDialog .field.FechaPrevistaLlegada,
