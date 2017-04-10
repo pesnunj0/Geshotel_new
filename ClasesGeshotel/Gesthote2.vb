@@ -8771,6 +8771,8 @@ Namespace geshotelk
                     End If
                     row.Item("fecha_reserva") = res.fecha_reserva
                     row.Item("fecha_prevista_llegada") = res.fecha_prevista_llegada
+                    row.Item("fecha_llegada") = FormatDateTime(res.fecha_prevista_llegada, DateFormat.ShortDate)
+                    row.Item("fecha_salida") = FormatDateTime(res.fecha_prevista_salida, DateFormat.ShortDate)
                     row.Item("fecha_prevista_salida") = res.fecha_prevista_salida
                     Try  ' Garra Javier
                         row.Item("valor") = totalreserva

@@ -16,14 +16,93 @@ namespace Geshotel.Recepcion.Repositories
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
-        public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Create(SaveRequest<MyRow> request)
         {
-            return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
+            using (var connection = SqlConnections.NewByKey("Default"))
+            using (var uow = new UnitOfWork(connection))
+            {
+                var result = new MySaveHandler().Process(uow, request, SaveRequestType.Create);
+                uow.Commit();
+                CargaMetaReserva(request);
+                return result;
+            }
+        }
+ 
+        private tablaServicios CargaMetaReserva(SaveRequest<MyRow> request)
+        {
+            var user = (UserDefinition)Authorization.UserDefinition;
+            Int32 userId = user.UserId;
+            var kk = request.Entity.BonoReferencia.ToString();
+            Int32 ReservaId = Convert.ToInt32(request.Entity.ReservaId);
+            var x = new GesHotelClase(userId);
+            var res = new GesHotelClase.MetaReserva();
+            var hus = new GesHotelClase.MetaHuesped();
+
+            // Filling fields for MetaReserva
+
+            res.bloquear_tarifa = Convert.ToBoolean(request.Entity.BloquearTarifa);
+            if (request.Entity.BonoOnline != null)
+                res.bono_online = request.Entity.BonoOnline.ToString();
+            res.bono_referencia = request.Entity.BonoReferencia.ToString();
+            if (request.Entity.CodigoOferta != null)
+                res.codigo_oferta = request.Entity.CodigoOferta.ToString();
+            if (request.Entity.CanalReservaId != null)
+                res.canal_reserva_id = Convert.ToInt16(request.Entity.CanalReservaId);
+            res.cliente_id = Convert.ToInt32(request.Entity.ClienteId);
+            if (request.Entity.ClienteIdFactura != null)
+                res.cliente_id_factura = Convert.ToInt32(request.Entity.ClienteIdFactura);
+            res.permite_devolucion = Convert.ToBoolean(request.Entity.PermiteDevolucion);
+            res.vip = Convert.ToBoolean(request.Entity.Vip);
+            res.hotel_id = Convert.ToInt16(request.Entity.HotelId);
+            res.habitacion_servicio_id = Convert.ToInt16(request.Entity.TipoHabitacionId);
+            res.pension_servicio_id = Convert.ToInt16(request.Entity.PensionId);
+            res.numero_habitaciones = 1; // Por ahora a piñón 1 habitación por reserva
+            if (res.observaciones != null)
+                res.observaciones = request.Entity.Observaciones.ToString();
+            // Fechas
+            res.fecha_reserva = Convert.ToDateTime(request.Entity.FechaReserva).Date;
+            res.fecha_prevista_llegada = Convert.ToDateTime(request.Entity.FechaPrevistaLlegada);
+            res.fecha_prevista_salida = Convert.ToDateTime(request.Entity.FechaPrevistaSalida);
+            // Datos de tarjeta credito
+            if (request.Entity.TipoTarjetaId != null)
+                res.tipo_tarjeta_id = Convert.ToInt16(request.Entity.TipoTarjetaId);
+            if (request.Entity.TarjetaCredito != null)
+                res.tarjeta_credito = request.Entity.TarjetaCredito.ToString();
+            if (request.Entity.Caducidad != null)
+                res.caducidad = request.Entity.Caducidad.ToString();
+            if (request.Entity.CodSeguridad != null)
+                res.cod_seguridad = request.Entity.CodSeguridad.ToString();
+            // *************************
+            // Unidades de Calculo
+            // *************************
+            var ucs = new List<GesHotelClase.UCS>
+                {
+                    new GesHotelClase.UCS() {unidad_calculo_id=2,cantidad = Convert.ToInt32(request.Entity.Adultos) },
+                    new GesHotelClase.UCS() {unidad_calculo_id=3,cantidad = Convert.ToInt32(request.Entity.Child50) },
+                    new GesHotelClase.UCS() {unidad_calculo_id=4,cantidad = Convert.ToInt32(request.Entity.ChildFree) },
+                    new GesHotelClase.UCS() {unidad_calculo_id=5,cantidad = Convert.ToInt32(request.Entity.Bebes) }
+                };
+
+            res.unidades_calculos = ucs;
+            //Here I call My function to validate Reservation and calculate Price
+            //The function is as follow
+            return x.obtieneServiciosReserva(res, false, ReservaId);
+            //if (!isok)
+            //    throw new ValidationError("Reservation with Errors. Please Check the contract!");
         }
 
-        public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
+        public SaveResponse Update( SaveRequest<MyRow> request)
+
         {
-            return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
+            using (var connection = SqlConnections.NewByKey("Default"))
+            using (var uow = new UnitOfWork(connection))
+            {
+                var result = new MySaveHandler().Process(uow, request, SaveRequestType.Update);
+                uow.Commit();
+                CargaMetaReserva(request);
+
+                return result;
+            }
         }
         
 
@@ -42,66 +121,16 @@ namespace Geshotel.Recepcion.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> {
-            protected override void AfterSave()
-            {
-                base.AfterSave();
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                Int32 userId = user.UserId;
-                var kk= Request.Entity.BonoReferencia.ToString();
-                Int32 ReservaId = Convert.ToInt32(Request.Entity.ReservaId);
-                var x = new GesHotelClase(userId);
-                var res = new GesHotelClase.MetaReserva();
-                var hus = new GesHotelClase.MetaHuesped();
-
-                // Filling fields for MetaReserva
-
-                res.bloquear_tarifa = Convert.ToBoolean(Request.Entity.BloquearTarifa);
-                res.bono_online = Request.Entity.BonoOnline.ToString();
-                res.bono_referencia = Request.Entity.BonoReferencia.ToString();
-                res.codigo_oferta = Request.Entity.CodigoOferta.ToString();
-                res.canal_reserva_id = Convert.ToInt16(Request.Entity.CanalReservaId);
-                res.cliente_id = Convert.ToInt32(Request.Entity.ClienteId);
-                res.cliente_id_factura = Convert.ToInt32(Request.Entity.ClienteIdFactura);
-                res.permite_devolucion = Convert.ToBoolean(Request.Entity.PermiteDevolucion);
-                res.vip = Convert.ToBoolean(Request.Entity.Vip);
-                res.hotel_id = Convert.ToInt16(Request.Entity.HotelId);
-                res.habitacion_servicio_id = Convert.ToInt16(Request.Entity.TipoHabitacionId);
-                res.pension_servicio_id = Convert.ToInt16(Request.Entity.PensionId);
-                res.numero_habitaciones = 1; // Por ahora a piñón 1 habitación por reserva
-                res.observaciones = Request.Entity.Observaciones.ToString();
-                // Fechas
-                res.fecha_reserva = Convert.ToDateTime(Request.Entity.FechaReserva).Date;
-                res.fecha_prevista_llegada = Convert.ToDateTime(Request.Entity.FechaPrevistaLlegada);
-                res.fecha_prevista_salida = Convert.ToDateTime(Request.Entity.FechaPrevistaSalida);
-                // Datos de tarjeta credito
-                res.tipo_tarjeta_id = Convert.ToInt16(Request.Entity.TipoTarjetaId);
-                res.tarjeta_credito = Request.Entity.TarjetaCredito.ToString();
-                res.caducidad = Request.Entity.Caducidad.ToString();
-                res.cod_seguridad = Request.Entity.CodSeguridad.ToString();
-                // *************************
-                // Unidades de Calculo
-                // *************************
-                var ucs = new List<GesHotelClase.UCS>
-                {
-                    new GesHotelClase.UCS() {unidad_calculo_id=2,cantidad = Convert.ToInt32(Request.Entity.Adultos) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=3,cantidad = Convert.ToInt32(Request.Entity.Child50) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=4,cantidad = Convert.ToInt32(Request.Entity.ChildFree) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=5,cantidad = Convert.ToInt32(Request.Entity.Bebes) }
-                };
-
-                res.unidades_calculos = ucs;
-                // Here I call My function to validate Reservation and calculate Price
-                // The function is as follow
-                // var isok = x.obtieneServiciosReserva(res, false, ReservaId);
-                // if (!isok) 
-                //     throw new ValidationError("Reservation with Errors. Please Check the contract!");
-
-            }
-        }
+        private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void ApplySortBy(SqlQuery query, SortBy sortBy)
+            {    
+                base.ApplySortBy(query, sortBy);
+                query.OrderBy("fecha_prevista_llegada",true);
+            }
+        }
     }
 }

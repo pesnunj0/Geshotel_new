@@ -34,15 +34,18 @@ namespace Geshotel.Recepcion.Forms
         public Int16 Bebes { get; set; }
 
         public String BonoReferencia { get; set; }
+        
+        public String BonoOnline { get; set; }
         public Int16 CanalReservaId { get; set; }
-
-        [ReadOnly(true), DisplayFormat("#,##0.00"),AlignRight]
-        public Decimal Valor { get; set; }
         public String CodigoOferta { get; set; }
+        [DefaultValue(0)]
         public Boolean BloquearTarifa { get; set; }
+        [DefaultValue(0)]
         public Boolean PermiteDevolucion { get; set; }
         [DefaultValue(0)]
         public Boolean Vip { get; set; }
+        [ReadOnly(true), DisplayFormat("#,##0.00"), AlignRight]
+        public Decimal Valor { get; set; }
 
 
         [Category("Fechas")]
