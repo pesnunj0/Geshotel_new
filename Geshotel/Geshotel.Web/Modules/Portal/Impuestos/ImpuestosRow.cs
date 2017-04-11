@@ -12,9 +12,18 @@ namespace Geshotel.Portal.Entities
     [ConnectionKey("Default"), TableName("impuestos"), DisplayName("Impuestos"), InstanceName("Impuestos"), TwoLevelCached]
     [ReadPermission("Todos:General")]
     [ModifyPermission("Contratos:Empresa")]
-    [LookupScript("Portal.Impuestos")]
-    public sealed class ImpuestosRow : Row, IIdRow, INameRow
+    
+    public sealed class ImpuestosRow : Row, IIdRow, INameRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+    
         [DisplayName("Impuesto Id"), Column("impuesto_id"), Identity]
         public Int16? ImpuestoId
         {
@@ -79,11 +88,11 @@ namespace Geshotel.Portal.Entities
             set { Fields.UserName[this] = value; }
         }
 
-        [DisplayName("Fecha Actualizacion"), Column("fecha_actualizacion")]
-        public DateTime? FechaActualizacion
+        [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
+        public DateTime? FechaModificacion
         {
-            get { return Fields.FechaActualizacion[this]; }
-            set { Fields.FechaActualizacion[this] = value; }
+            get { return Fields.FechaModificacion[this]; }
+            set { Fields.FechaModificacion[this] = value; }
         }
 
         IIdField IIdRow.IdField
@@ -112,7 +121,7 @@ namespace Geshotel.Portal.Entities
             public StringField CtaContable;
             public BooleanField ActivoGeshotel;
             public Int32Field UserId;
-            public DateTimeField FechaActualizacion;
+            public DateTimeField FechaModificacion;
             public StringField UserName;
             public StringField Empresa;
 

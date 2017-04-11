@@ -2773,6 +2773,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170410_224500_Equivalencias_reservas_servicios.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170405_224500_Cierres.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170404_224500_Events_movimientos_caja.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170326_224500_Guests.cs" />
@@ -3015,6 +3016,7 @@
     <Compile Include="Modules\Portal\Hoteles\HotelesPage.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesRepository.cs" />
     <Compile Include="Modules\Portal\Hoteles\HotelesRow.cs" />
+    <Compile Include="Modules\Portal\Impuestos\ImpuestosLookup.cs" />
     <Compile Include="Modules\Portal\Monedas\MonedasColumns.cs" />
     <Compile Include="Modules\Portal\Monedas\MonedasEndpoint.cs" />
     <Compile Include="Modules\Portal\Monedas\MonedasForm.cs" />

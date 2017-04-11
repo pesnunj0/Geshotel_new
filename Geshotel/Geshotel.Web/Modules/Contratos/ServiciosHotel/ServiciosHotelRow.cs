@@ -75,7 +75,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Impuesto"), Column("impuesto_id"), NotNull, ForeignKey("impuestos", "impuesto_id"), LeftJoin("jImpuesto"), TextualField("Impuesto")]
-        [LookupEditor(typeof(ImpuestosRow))]
+        [LookupEditor("Portal.Impuestos")]
         public Int16? ImpuestoId
         {
             get { return Fields.ImpuestoId[this]; }

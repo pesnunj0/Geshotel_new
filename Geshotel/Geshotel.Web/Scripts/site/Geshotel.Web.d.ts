@@ -5293,7 +5293,7 @@ declare namespace Geshotel.Portal {
         CtaContable?: string;
         ActivoGeshotel?: boolean;
         UserId?: number;
-        FechaActualizacion?: string;
+        FechaModificacion?: string;
         UserName?: string;
         Empresa?: string;
     }
@@ -5311,7 +5311,7 @@ declare namespace Geshotel.Portal {
             const CtaContable: string;
             const ActivoGeshotel: string;
             const UserId: string;
-            const FechaActualizacion: string;
+            const FechaModificacion: string;
             const UserName: string;
             const Empresa: string;
         }
@@ -6905,12 +6905,13 @@ declare namespace Geshotel.Recepcion {
         ChildFree: Serenity.IntegerEditor;
         Bebes: Serenity.IntegerEditor;
         BonoReferencia: Serenity.StringEditor;
+        BonoOnline: Serenity.StringEditor;
         CanalReservaId: Serenity.LookupEditor;
-        Valor: Serenity.DecimalEditor;
         CodigoOferta: Serenity.StringEditor;
         BloquearTarifa: Serenity.BooleanEditor;
         PermiteDevolucion: Serenity.BooleanEditor;
         Vip: Serenity.BooleanEditor;
+        Valor: Serenity.DecimalEditor;
         FechaReserva: Serenity.DateEditor;
         FechaCreacion: Serenity.DateEditor;
         FechaPrevistaLlegada: Serenity.DateTimeEditor;

@@ -34,7 +34,7 @@ Namespace geshotelk
         Public Function generarEfacturaBavel(ByVal factura_id As Integer, Optional ByRef fb As facbavel = Nothing, Optional ByVal soloProbar As Boolean = False) As String
             Dim retVal As String = Nothing
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             retVal = generarEfacturaBavel(cmd, factura_id, fb, soloProbar)
             If IsNothing(retVal) Then
                 errorCode = -1
@@ -42,7 +42,7 @@ Namespace geshotelk
             flushConection(cmd, errorCode)
             Return retVal
         End Function
-        Private Function generarEfacturaBavel(ByVal cmd As Odbc.OdbcCommand, ByVal factura_id As Integer, Optional ByRef fb As facbavel = Nothing, Optional ByVal soloProbar As Boolean = False) As String
+        Private Function generarEfacturaBavel(ByVal cmd As MysqlCommand, ByVal factura_id As Integer, Optional ByRef fb As facbavel = Nothing, Optional ByVal soloProbar As Boolean = False) As String
             Dim retVal As String = Nothing
             Dim errorCode As Integer = 0
 
@@ -51,7 +51,7 @@ Namespace geshotelk
                 'sqlCabAbreFactura
 
                 cmd.Parameters.Clear()
-                Dim factura_idParam As New Odbc.OdbcParameter("@factura_id", factura_id)
+                Dim factura_idParam As New MysqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
                 Dim cabfactura As DataRow
                 Dim tmpds As DataSet = getDataSet(cmd, sqlCabAbreFactura)
@@ -70,9 +70,9 @@ Namespace geshotelk
                         'comprobar factura en estado 1
                         Dim hotel_id As Integer = cabfactura("hotel_id")
                         Dim supplier_id As Integer = cabfactura("hotel_id")
-                        Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+                        Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
                         Dim cliente_id As Integer = cabfactura("cliente_id") 'codigo cliente factura
-                        Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", cliente_id)
+                        Dim cliente_idParam As New MysqlParameter("@cliente_id", cliente_id)
 
 
                         If Not IsNothing(fb) Then
@@ -96,7 +96,7 @@ Namespace geshotelk
                                 & "FROM lineas_factura " _
                                 & "Inner Join servicios ON lineas_factura.servicio_id = servicios.servicio_id " _
                                 & "WHERE lineas_factura.factura_id = ? AND servicios.tipo_servicio_id = ? "
-                                Dim tipo_servicio_idParam As New Odbc.OdbcParameter("@tipo_servicio_id", 1)  ' A piñon 1 Habitacion
+                                Dim tipo_servicio_idParam As New MysqlParameter("@tipo_servicio_id", 1)  ' A piñon 1 Habitacion
                                 cmd.Parameters.Clear()
                                 cmd.Parameters.Add(factura_idParam)
                                 cmd.Parameters.Add(tipo_servicio_idParam)
@@ -198,7 +198,7 @@ Namespace geshotelk
                                     'sacar numero fac rectificada
                                     Dim cabfacrec As DataRow = Nothing
                                     cmd.Parameters.Clear()
-                                    Dim facturarec_idParam As New Odbc.OdbcParameter("@factura_id", cabfactura("id_factura_rectificada"))
+                                    Dim facturarec_idParam As New MysqlParameter("@factura_id", cabfactura("id_factura_rectificada"))
                                     cmd.Parameters.Add(facturarec_idParam)
 
                                     Try
@@ -226,7 +226,7 @@ Namespace geshotelk
                             If datosfacturacompletos Then
 
                                 'Dim cliente_id As Integer = cabfactura("cliente_id") 'codigo cliente factura
-                                'Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", cliente_id)
+                                'Dim cliente_idParam As New MysqlParameter("@cliente_id", cliente_id)
 
                                 'obtiene datos cliente
                                 cmd.Parameters.Clear()
@@ -308,7 +308,7 @@ Namespace geshotelk
                                             'si tiene agencia..sacarlo de la agencia
                                             If Not cabcliente.IsNull("agencia_id") Then
                                                 cmd.Parameters.Clear()
-                                                Dim agencia_idParam As New Odbc.OdbcParameter("@agencia_id", cabcliente("agencia_id"))
+                                                Dim agencia_idParam As New MysqlParameter("@agencia_id", cabcliente("agencia_id"))
                                                 cmd.Parameters.Add(agencia_idParam)
                                                 'datos del cliente
                                                 Dim cabagencia As DataRow = getDataSet(cmd, sqlCabCliente, True).Tables(0).Rows(0)
@@ -642,17 +642,17 @@ Namespace geshotelk
             Return retVal
         End Function
         Shared sqlProvincias = "select provincia from provincias where provincia_id=?"
-        Private Function ObtieneProvincia(ByVal cmd As Odbc.OdbcCommand, ByVal provincia_id As Integer) As String
+        Private Function ObtieneProvincia(ByVal cmd As MysqlCommand, ByVal provincia_id As Integer) As String
             cmd.Parameters.Clear()
-            Dim provincia_idParam As New Odbc.OdbcParameter("@provincia_id", provincia_id)
+            Dim provincia_idParam As New MysqlParameter("@provincia_id", provincia_id)
             cmd.Parameters.Add(provincia_idParam)
             'datos del cliente
             Return Me.ExecuteScalar(cmd, sqlProvincias, True)
         End Function
         Shared sqlNaciones = "select desc_corta from naciones where nacion_id=?"
-        Private Function ObtienePais(ByVal cmd As Odbc.OdbcCommand, ByVal nacion_id As Integer) As String
+        Private Function ObtienePais(ByVal cmd As MysqlCommand, ByVal nacion_id As Integer) As String
             cmd.Parameters.Clear()
-            Dim nacion_idParam As New Odbc.OdbcParameter("@nacion_id", nacion_id)
+            Dim nacion_idParam As New MysqlParameter("@nacion_id", nacion_id)
             cmd.Parameters.Add(nacion_idParam)
             'datos del cliente
             Return Me.ExecuteScalar(cmd, sqlNaciones, True)
@@ -792,7 +792,7 @@ Namespace geshotelk
             Public fecha_envio_bavel As String = Nothing
 
         End Class
-        Function generaFicheroBavel(ByVal cmd As Odbc.OdbcCommand, ByVal factura_id As Integer) As Boolean
+        Function generaFicheroBavel(ByVal cmd As MysqlCommand, ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
 
@@ -803,7 +803,7 @@ Namespace geshotelk
                 If IsNothing(facb.fecha_envio_bavel) And facb.envio_bavel = 1 Then
                     'actualizar fecha factura envio babel
                     cmd.Parameters.Clear()
-                    Dim factura_idParam As New Odbc.OdbcParameter("@factura_id", factura_id)
+                    Dim factura_idParam As New MysqlParameter("@factura_id", factura_id)
                     cmd.Parameters.Add(factura_idParam)
                     Dim sqlActualizaFechaEnvioBavel = "update facturas set fecha_envio_bavel=now() where factura_id=?"
                     Dim c As Integer = ExecuteNonQuery(cmd, sqlActualizaFechaEnvioBavel)
@@ -842,7 +842,7 @@ Namespace geshotelk
         Function generaFicheroBavel(ByVal factura_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             errorCode = generaFicheroBavel(cmd, factura_id)
             flushConection(cmd, errorCode)
             Return retVal
@@ -850,16 +850,16 @@ Namespace geshotelk
         Function generarFicherosBavelCliente(ByVal cliente_id As Integer) As Boolean
             'en cada cierre de hotel generar las facturas bavel de ese hotel
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             Dim reader As DataTableReader = Nothing
             Try
 
 
                 cmd.Parameters.Clear()
-                Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", cliente_id)
+                Dim cliente_idParam As New MysqlParameter("@cliente_id", cliente_id)
                 cmd.Parameters.Add(cliente_idParam)
 
-                Dim cliente_id1Param As New Odbc.OdbcParameter("@cliente_id1", cliente_id)
+                Dim cliente_id1Param As New MysqlParameter("@cliente_id1", cliente_id)
                 cmd.Parameters.Add(cliente_id1Param)
                 Dim sqlObtieneFacturasBavel = "select factura_id from facturas where cliente_id=? or ?=0"
 
@@ -892,13 +892,13 @@ Namespace geshotelk
             End If
             Return True
         End Function
-        Function generarFicherosBavelHotel(ByVal cmd As Odbc.OdbcCommand, ByVal hotel_id As Integer) As Boolean
+        Function generarFicherosBavelHotel(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer) As Boolean
             'en cada cierre de hotel generar las facturas bavel de ese hotel
             Dim errorCode As Integer = 0
             Dim reader As DataTableReader = Nothing
             Try
                 cmd.Parameters.Clear()
-                Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+                Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(hotel_idParam)
                 Dim sqlObtieneFacturasBavel = "select factura_id from facturas where envio_bavel=1 and fecha_envio_bavel is null and hotel_id=?"
 
@@ -919,21 +919,21 @@ Namespace geshotelk
         Function generarFicherosBavelHotel(ByVal hotel_id As Integer) As Boolean
             'en cada cierre de hotel generar las facturas bavel de ese hotel
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             generarFicherosBavelHotel(cmd, hotel_id)
             Return True
         End Function
         Function ColocaEstadoBavel(ByVal factura_id As Integer, Optional ByVal enviar As Boolean = True) As Boolean
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             Dim retVal As Boolean = ColocaEstadoBavel(cmd, factura_id, enviar)
             flushConection(cmd, 0)
         End Function
-        Function ColocaEstadoBavel(ByVal cmd As Odbc.OdbcCommand, ByVal factura_id As Integer, Optional ByVal enviar As Boolean = True) As Boolean
+        Function ColocaEstadoBavel(ByVal cmd As MysqlCommand, ByVal factura_id As Integer, Optional ByVal enviar As Boolean = True) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             Try
                 cmd.Parameters.Clear()
-                Dim factura_idParam As New Odbc.OdbcParameter("@factura_id", factura_id)
+                Dim factura_idParam As New MysqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
                 Dim cabfactura As DataRow = getDataSet(cmd, sqlCabAbreFactura).Tables(0).Rows(0)
                 Dim c As Integer = 1
@@ -949,8 +949,8 @@ Namespace geshotelk
                     ' *******************************************************************************************************************
                     Dim sql_tipo_factura = "select tipo_bavel from clientes_hotel where cliente_id = ? and hotel_id = ?"
                     cmd.Parameters.Clear()
-                    Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", cabfactura("cliente_id"))
-                    Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", cabfactura("hotel_id"))
+                    Dim cliente_idParam As New MysqlParameter("@cliente_id", cabfactura("cliente_id"))
+                    Dim hotel_idParam As New MysqlParameter("@hotel_id", cabfactura("hotel_id"))
                     cmd.Parameters.Add(cliente_idParam)
                     cmd.Parameters.Add(hotel_idParam)
                     Dim tipo_bavel = ExecuteScalar(cmd, sql_tipo_factura)
@@ -963,7 +963,7 @@ Namespace geshotelk
                             & "FROM lineas_factura " _
                             & "Inner Join servicios ON lineas_factura.servicio_id = servicios.servicio_id " _
                             & "WHERE lineas_factura.factura_id = ? AND servicios.tipo_servicio_id = ? "
-                            Dim tipo_servicio_idParam As New Odbc.OdbcParameter("@tipo_servicio_id", tipo_bavel)
+                            Dim tipo_servicio_idParam As New MysqlParameter("@tipo_servicio_id", tipo_bavel)
                             cmd.Parameters.Clear()
                             cmd.Parameters.Add(factura_idParam)
                             cmd.Parameters.Add(tipo_servicio_idParam)
@@ -999,20 +999,20 @@ Namespace geshotelk
         Function EsClienteBavel(ByVal cliente_id As Integer, ByVal hotel_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             retVal = EsClienteBavel(cmd, cliente_id, hotel_id)
             flushConection(cmd, errorCode)
             Return retVal
         End Function
-        Function EsClienteBavel(ByVal cmd As Odbc.OdbcCommand, ByVal cliente_id As Integer, ByVal hotel_id As Integer) As Boolean
+        Function EsClienteBavel(ByVal cmd As MysqlCommand, ByVal cliente_id As Integer, ByVal hotel_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             Try
                 Dim sqlClienteBavel = "SELECT clientes_hotel.cliente_bavel ,clientes.cliente_bavel FROM clientes left join clientes_hotel on clientes.cliente_id=clientes_hotel.cliente_id WHERE clientes.cliente_id = ? And clientes_hotel.hotel_id = ?"
                 cmd.Parameters.Clear()
-                Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", cliente_id)
+                Dim cliente_idParam As New MysqlParameter("@cliente_id", cliente_id)
                 cmd.Parameters.Add(cliente_idParam)
-                Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", hotel_id)
+                Dim hotel_idParam As New MysqlParameter("@hotel_id", hotel_id)
                 cmd.Parameters.Add(hotel_idParam)
                 Dim reader As DataTableReader = getDataTable(cmd, sqlClienteBavel)
                 Dim cliente As Object

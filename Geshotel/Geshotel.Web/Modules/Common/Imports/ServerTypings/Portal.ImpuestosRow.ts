@@ -8,7 +8,7 @@ namespace Geshotel.Portal {
         CtaContable?: string;
         ActivoGeshotel?: boolean;
         UserId?: number;
-        FechaActualizacion?: string;
+        FechaModificacion?: string;
         UserName?: string;
         Empresa?: string;
     }
@@ -31,12 +31,12 @@ namespace Geshotel.Portal {
             export declare const CtaContable: string;
             export declare const ActivoGeshotel: string;
             export declare const UserId: string;
-            export declare const FechaActualizacion: string;
+            export declare const FechaModificacion: string;
             export declare const UserName: string;
             export declare const Empresa: string;
         }
 
-        ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaActualizacion', 'UserName', 'Empresa'].forEach(x => (<any>Fields)[x] = x);
+        ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaModificacion', 'UserName', 'Empresa'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

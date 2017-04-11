@@ -4871,7 +4871,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ImpuestosRow.Fields || (ImpuestosRow.Fields = {}));
-            ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaActualizacion', 'UserName', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+            ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaModificacion', 'UserName', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
         })(ImpuestosRow = Portal.ImpuestosRow || (Portal.ImpuestosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6146,7 +6146,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ReservasForm.formKey = 'Recepcion.Reservas';
         Recepcion.ReservasForm = ReservasForm;
-        [['HotelId', function () { return Serenity.LookupEditor; }], ['EstadoReservaId', function () { return Serenity.LookupEditor; }], ['ClienteId', function () { return Serenity.LookupEditor; }], ['ClienteIdFactura', function () { return Serenity.LookupEditor; }], ['NombreReserva', function () { return Serenity.StringEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['PensionId', function () { return Serenity.LookupEditor; }], ['Adultos', function () { return Serenity.IntegerEditor; }], ['Child50', function () { return Serenity.IntegerEditor; }], ['ChildFree', function () { return Serenity.IntegerEditor; }], ['Bebes', function () { return Serenity.IntegerEditor; }], ['BonoReferencia', function () { return Serenity.StringEditor; }], ['CanalReservaId', function () { return Serenity.LookupEditor; }], ['Valor', function () { return Serenity.DecimalEditor; }], ['CodigoOferta', function () { return Serenity.StringEditor; }], ['BloquearTarifa', function () { return Serenity.BooleanEditor; }], ['PermiteDevolucion', function () { return Serenity.BooleanEditor; }], ['Vip', function () { return Serenity.BooleanEditor; }], ['FechaReserva', function () { return Serenity.DateEditor; }], ['FechaCreacion', function () { return Serenity.DateEditor; }], ['FechaPrevistaLlegada', function () { return Serenity.DateTimeEditor; }], ['FechaPrevistaSalida', function () { return Serenity.DateTimeEditor; }], ['FechaLlegada', function () { return Serenity.DateEditor; }], ['FechaSalida', function () { return Serenity.DateEditor; }], ['ObservacionesLlegada', function () { return Serenity.TextAreaEditor; }], ['ObservacionesSalida', function () { return Serenity.TextAreaEditor; }], ['Observaciones', function () { return Serenity.TextAreaEditor; }], ['ObservacionesCliente', function () { return Serenity.TextAreaEditor; }], ['TipoTarjetaId', function () { return Serenity.LookupEditor; }], ['TarjetaCredito', function () { return Serenity.StringEditor; }], ['Caducidad', function () { return Serenity.StringEditor; }], ['CodSeguridad', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['HotelId', function () { return Serenity.LookupEditor; }], ['EstadoReservaId', function () { return Serenity.LookupEditor; }], ['ClienteId', function () { return Serenity.LookupEditor; }], ['ClienteIdFactura', function () { return Serenity.LookupEditor; }], ['NombreReserva', function () { return Serenity.StringEditor; }], ['TipoHabitacionId', function () { return Serenity.LookupEditor; }], ['PensionId', function () { return Serenity.LookupEditor; }], ['Adultos', function () { return Serenity.IntegerEditor; }], ['Child50', function () { return Serenity.IntegerEditor; }], ['ChildFree', function () { return Serenity.IntegerEditor; }], ['Bebes', function () { return Serenity.IntegerEditor; }], ['BonoReferencia', function () { return Serenity.StringEditor; }], ['BonoOnline', function () { return Serenity.StringEditor; }], ['CanalReservaId', function () { return Serenity.LookupEditor; }], ['CodigoOferta', function () { return Serenity.StringEditor; }], ['BloquearTarifa', function () { return Serenity.BooleanEditor; }], ['PermiteDevolucion', function () { return Serenity.BooleanEditor; }], ['Vip', function () { return Serenity.BooleanEditor; }], ['Valor', function () { return Serenity.DecimalEditor; }], ['FechaReserva', function () { return Serenity.DateEditor; }], ['FechaCreacion', function () { return Serenity.DateEditor; }], ['FechaPrevistaLlegada', function () { return Serenity.DateTimeEditor; }], ['FechaPrevistaSalida', function () { return Serenity.DateTimeEditor; }], ['FechaLlegada', function () { return Serenity.DateEditor; }], ['FechaSalida', function () { return Serenity.DateEditor; }], ['ObservacionesLlegada', function () { return Serenity.TextAreaEditor; }], ['ObservacionesSalida', function () { return Serenity.TextAreaEditor; }], ['Observaciones', function () { return Serenity.TextAreaEditor; }], ['ObservacionesCliente', function () { return Serenity.TextAreaEditor; }], ['TipoTarjetaId', function () { return Serenity.LookupEditor; }], ['TarjetaCredito', function () { return Serenity.StringEditor; }], ['Caducidad', function () { return Serenity.StringEditor; }], ['CodSeguridad', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -12559,6 +12559,8 @@ var Geshotel;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
+                var fechaHotel = this.entity.HotelId == null ? null : Geshotel.Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
+                Q.notifyInfo(Q.formatDate(fechaHotel, 'yyyy-MM-dd') + " " + Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
                 // check that this is an insert
                 if (this.isNew) {
                     Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
@@ -12572,7 +12574,6 @@ var Geshotel;
                 }
                 else {
                     Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
-                    // Here I should call ClasesGeshotel.Geshotelk on server side.
                     // let's load inserted record using Retrieve service
                     Recepcion.ReservasService.Retrieve({
                         EntityId: response.EntityId

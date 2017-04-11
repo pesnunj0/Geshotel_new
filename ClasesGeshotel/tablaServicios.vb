@@ -13,6 +13,8 @@ Namespace geshotelk
         Shared cloneser As DataTable = Nothing
         Public ofertasUsadas As Hashtable
         Private borrarQueue As New Text.StringBuilder
+        Public errortxt As String = ""
+        Public errornum As Integer = 0
         Public Sub New(ByVal x As DataTable)
             servicios = x.Clone
         End Sub

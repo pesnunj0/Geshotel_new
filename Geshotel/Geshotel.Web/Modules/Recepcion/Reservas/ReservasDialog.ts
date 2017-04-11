@@ -37,6 +37,8 @@ namespace Geshotel.Recepcion {
         }
 
         protected onSaveSuccess(response: Serenity.SaveResponse): void {
+            var fechaHotel = this.entity.HotelId == null ? null : Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
+            Q.notifyInfo(Q.formatDate(fechaHotel, 'yyyy-MM-dd') + " " + Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'))
 
             // check that this is an insert
             if (this.isNew) {
@@ -55,7 +57,6 @@ namespace Geshotel.Recepcion {
             } else {
                 Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
 
-                // Here I should call ClasesGeshotel.Geshotelk on server side.
 
 
 

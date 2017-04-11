@@ -32,14 +32,13 @@ namespace Geshotel.Recepcion.Repositories
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
-            var kk = request.Entity.BonoReferencia.ToString();
             Int32 ReservaId = Convert.ToInt32(request.Entity.ReservaId);
             var x = new GesHotelClase(userId);
             var res = new GesHotelClase.MetaReserva();
             var hus = new GesHotelClase.MetaHuesped();
 
             // Filling fields for MetaReserva
-
+            res.nombre_reserva = Convert.ToString(request.Entity.NombreReserva);
             res.bloquear_tarifa = Convert.ToBoolean(request.Entity.BloquearTarifa);
             if (request.Entity.BonoOnline != null)
                 res.bono_online = request.Entity.BonoOnline.ToString();
@@ -56,10 +55,17 @@ namespace Geshotel.Recepcion.Repositories
             res.hotel_id = Convert.ToInt16(request.Entity.HotelId);
             res.habitacion_servicio_id = Convert.ToInt16(request.Entity.TipoHabitacionId);
             res.pension_servicio_id = Convert.ToInt16(request.Entity.PensionId);
+            res.pension_id = Convert.ToInt16(request.Entity.PensionId);
+            res.tipo_habitacion_id = Convert.ToInt16(request.Entity.TipoHabitacionId);
+            res.adultos = Convert.ToInt16(request.Entity.Adultos);
+            res.child_50 = Convert.ToInt16(request.Entity.Child50);
+            res.child_free = Convert.ToInt16(request.Entity.ChildFree);
+            res.bebes = Convert.ToInt16(request.Entity.Bebes);
             res.numero_habitaciones = 1; // Por ahora a piñón 1 habitación por reserva
             if (res.observaciones != null)
                 res.observaciones = request.Entity.Observaciones.ToString();
             // Fechas
+            res.fecha_creacion = Convert.ToDateTime(request.Entity.FechaCreacion);
             res.fecha_reserva = Convert.ToDateTime(request.Entity.FechaReserva).Date;
             res.fecha_prevista_llegada = Convert.ToDateTime(request.Entity.FechaPrevistaLlegada);
             res.fecha_prevista_salida = Convert.ToDateTime(request.Entity.FechaPrevistaSalida);
@@ -86,9 +92,10 @@ namespace Geshotel.Recepcion.Repositories
             res.unidades_calculos = ucs;
             //Here I call My function to validate Reservation and calculate Price
             //The function is as follow
-            return x.obtieneServiciosReserva(res, false, ReservaId);
-            //if (!isok)
-            //    throw new ValidationError("Reservation with Errors. Please Check the contract!");
+            var result = x.obtieneServiciosReserva(res, false, ReservaId);
+            //if (result.errornum !=0)
+            //    throw new ValidationError("Reservation with Errors. Please Check the contract! " + result.errortxt );
+            return result;
         }
 
         public SaveResponse Update( SaveRequest<MyRow> request)

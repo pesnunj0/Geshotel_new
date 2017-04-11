@@ -15,22 +15,22 @@ Namespace geshotelk
 
         Public Class ObjDuplicacion
             'tabla maestra origen
-            Public TMO_DataAdapter As Odbc.OdbcDataAdapter
+            Public TMO_DataAdapter As MysqlDataAdapter
             'tabla maestra destino
-            Public TMD_DataAdapter As Odbc.OdbcDataAdapter
+            Public TMD_DataAdapter As MysqlDataAdapter
             'tabla hijas origen
-            Public THO_DataAdapters() As Odbc.OdbcDataAdapter
+            Public THO_DataAdapters() As MysqlDataAdapter
             'tabla hijas destino
-            Public THD_DataAdapters() As Odbc.OdbcDataAdapter
+            Public THD_DataAdapters() As MysqlDataAdapter
             Public THT_DataTables() As DataTable
             Public ds As DataSet 'con todas las tablas
-            Public tr As Odbc.OdbcTransaction 'la transaccion
+            Public tr As MysqlTransaction 'la transaccion
             Public origen_id As Integer
             Public destino_id As Integer
 
         End Class
         Public objd As New ObjDuplicacion
-        Public cmd As Odbc.OdbcCommand
+        Public cmd As MysqlCommand
         Private clavePrimaria As String
         Private campoEnlazeDuplicados As String
         Private campoEnlazeDuplicadosSiguiente As String
@@ -52,15 +52,15 @@ Namespace geshotelk
             Dim errorCode As Integer = 0
 
             objd.ds = New DataSet()
-            Dim myDataRowsCommandBuilder As Odbc.OdbcCommandBuilder
+            Dim myDataRowsCommandBuilder As MysqlCommandBuilder
 
             cmd.CommandText = sqlTablaMaestra
-            objd.TMO_DataAdapter = New Odbc.OdbcDataAdapter(cmd)
-            myDataRowsCommandBuilder = New Odbc.OdbcCommandBuilder(objd.TMO_DataAdapter)
+            objd.TMO_DataAdapter = New MysqlDataAdapter(cmd)
+            myDataRowsCommandBuilder = New MysqlCommandBuilder(objd.TMO_DataAdapter)
             objd.TMO_DataAdapter.Fill(objd.ds, "TMO")
 
-            objd.TMD_DataAdapter = New Odbc.OdbcDataAdapter(cmd)
-            myDataRowsCommandBuilder = New Odbc.OdbcCommandBuilder(objd.TMD_DataAdapter)
+            objd.TMD_DataAdapter = New MysqlDataAdapter(cmd)
+            myDataRowsCommandBuilder = New MysqlCommandBuilder(objd.TMD_DataAdapter)
             objd.TMD_DataAdapter.Fill(objd.ds, "TMD")
             Dim sqlTablaHija As String
             Dim count As Integer = 0
@@ -69,13 +69,13 @@ Namespace geshotelk
             ReDim objd.THT_DataTables(sqlTablaHijas.Length)
             For Each sqlTablaHija In sqlTablaHijas
                 cmd.CommandText = sqlTablaHija
-                objd.THO_DataAdapters(count) = New Odbc.OdbcDataAdapter(cmd)
-                myDataRowsCommandBuilder = New Odbc.OdbcCommandBuilder(objd.THO_DataAdapters(count))
+                objd.THO_DataAdapters(count) = New MysqlDataAdapter(cmd)
+                myDataRowsCommandBuilder = New MysqlCommandBuilder(objd.THO_DataAdapters(count))
                 myDataRowsCommandBuilder.ConflictOption = ConflictOption.OverwriteChanges
                 objd.THO_DataAdapters(count).Fill(objd.ds, "THO" & count)
 
-                objd.THD_DataAdapters(count) = New Odbc.OdbcDataAdapter(cmd)
-                myDataRowsCommandBuilder = New Odbc.OdbcCommandBuilder(objd.THD_DataAdapters(count))
+                objd.THD_DataAdapters(count) = New MysqlDataAdapter(cmd)
+                myDataRowsCommandBuilder = New MysqlCommandBuilder(objd.THD_DataAdapters(count))
                 myDataRowsCommandBuilder.ConflictOption = ConflictOption.OverwriteChanges
                 objd.THD_DataAdapters(count).Fill(objd.ds, "THD" & count)
 
@@ -527,7 +527,7 @@ Namespace geshotelk
             Next
             Return errores
         End Function
-        Public Sub New(ByVal cmde As Odbc.OdbcCommand, ByVal usu As Integer)
+        Public Sub New(ByVal cmde As MysqlCommand, ByVal usu As Integer)
             cmd = cmde
             usuario = usu
         End Sub

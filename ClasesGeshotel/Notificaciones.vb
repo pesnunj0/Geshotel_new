@@ -211,7 +211,7 @@ Namespace geshotelk
         Public Function enviarNotificacionesPendientes() As Boolean
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             Try
 
                 'sacar las notificationes pendientes
@@ -225,7 +225,7 @@ Namespace geshotelk
                     Dim todook As Boolean = False
                     Dim row As DataRow = noti.Rows(x)
                     cmd.Parameters.Clear()
-                    Dim dispositivo_idParam As New Odbc.OdbcParameter("@dispositivo_id", row.Item("dispositivo_id"))
+                    Dim dispositivo_idParam As New MysqlParameter("@dispositivo_id", row.Item("dispositivo_id"))
                     cmd.Parameters.Add(dispositivo_idParam)
                     Dim dsdis As DataSet = getDataSet(cmd, sqlDispositivos)
                     If dsdis.Tables(0).Rows.Count > 0 Then
@@ -247,7 +247,7 @@ Namespace geshotelk
                     row.Item("fecha_cambio_estado") = Now
                 Next
 
-                Dim writer As Odbc.OdbcDataAdapter
+                Dim writer As MysqlDataAdapter
                 writer = getDataAdapter(cmd, sqlDispositivosNotificaciones)
                 writer.Fill(ds.Tables(0))
                 writer.Update(ds.Tables(0))
@@ -269,10 +269,10 @@ Namespace geshotelk
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
 
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             Try
                 cmd.Parameters.Clear()
-                Dim notificacion_idParam As New Odbc.OdbcParameter("@notificacion_id", -1)
+                Dim notificacion_idParam As New MysqlParameter("@notificacion_id", -1)
                 cmd.Parameters.Add(notificacion_idParam)
                 Dim ds As DataSet = getDataSet(cmd, sqlDispositivosNotificaciones)
 
@@ -284,7 +284,7 @@ Namespace geshotelk
                     row.Item("fecha_creacion") = Now
                     row.Item("mensaje") = mensaje
                 Next
-                Dim writer As Odbc.OdbcDataAdapter
+                Dim writer As MysqlDataAdapter
                 writer = getDataAdapter(cmd, sqlDispositivosNotificaciones)
                 writer.Fill(ds.Tables(0))
                 writer.Update(ds.Tables(0))
@@ -327,9 +327,9 @@ Namespace geshotelk
             End If
         End Function
         Shared sqlDispositivos As String = "select * from dispositivos where dispositivo_id=?"
-        Private Function crearNuevoDisp(cmd As Odbc.OdbcCommand, disp As Dispositivo, dispositivo_id As Integer)
+        Private Function crearNuevoDisp(cmd As MysqlCommand, disp As Dispositivo, dispositivo_id As Integer)
             cmd.Parameters.Clear()
-            Dim dispositivo_idParam As New Odbc.OdbcParameter("@dispositivo_id", dispositivo_id)
+            Dim dispositivo_idParam As New MysqlParameter("@dispositivo_id", dispositivo_id)
             cmd.Parameters.Add(dispositivo_idParam)
             Dim ds As DataSet = getDataSet(cmd, sqlDispositivos)
             Dim row As DataRow = ds.Tables(0).Rows.Add
@@ -360,12 +360,12 @@ Namespace geshotelk
             End If
 
             row.Item("fecha_creacion") = Now()
-            Dim writer As Odbc.OdbcDataAdapter
+            Dim writer As MysqlDataAdapter
             writer = getDataAdapter(cmd, sqlDispositivos)
             writer.Fill(ds.Tables(0))
             writer.Update(ds.Tables(0))
         End Function
-        Public Function registrarDispositivo(cmd As Odbc.OdbcCommand, disp As Dispositivo)
+        Public Function registrarDispositivo(cmd As MysqlCommand, disp As Dispositivo)
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
             Try
@@ -377,7 +377,7 @@ Namespace geshotelk
                     'existe...actualizar?
                     'actualizar si los 4 campos estan en blanco?
                     cmd.Parameters.Clear()
-                    Dim dispositivo_idParam As New Odbc.OdbcParameter("@dispositivo_id", dispositivo_id)
+                    Dim dispositivo_idParam As New MysqlParameter("@dispositivo_id", dispositivo_id)
                     cmd.Parameters.Add(dispositivo_idParam)
                     Dim ds As DataSet = getDataSet(cmd, sqlDispositivos)
 
@@ -404,7 +404,7 @@ Namespace geshotelk
                                 row.Item("idioma_id") = disp.idioma_id
 
                             End If
-                            Dim writer As Odbc.OdbcDataAdapter
+                            Dim writer As MysqlDataAdapter
                             writer = getDataAdapter(cmd, sqlDispositivos)
                             writer.Fill(ds.Tables(0))
                             writer.Update(ds.Tables(0))
@@ -458,7 +458,7 @@ Namespace geshotelk
             Dim retVal As Boolean = False
             Dim errorCode As Integer = 0
 
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             retVal = registrarDispositivo(cmd, disp)
             If Not retVal Then
                 errorCode = 1
@@ -469,7 +469,7 @@ Namespace geshotelk
             Return retVal
         End Function
 
-        Private Function ObtieneDispositivo(cmd As Odbc.OdbcCommand, disp As Dispositivo) As Integer
+        Private Function ObtieneDispositivo(cmd As MysqlCommand, disp As Dispositivo) As Integer
             'enconntrar el disposivo
             Dim retval() As Integer = ObtieneDispositivos(cmd, disp)
             If Not IsNothing(retval) Then
@@ -490,42 +490,42 @@ Namespace geshotelk
        & "and (tipo_dispositivo_id=? )" _
        & "and (destino=?)"
 
-        Private Function ObtieneDispositivos(cmd As Odbc.OdbcCommand, filtrodisp As Dispositivo) As Integer()
+        Private Function ObtieneDispositivos(cmd As MysqlCommand, filtrodisp As Dispositivo) As Integer()
             Dim errorCode As Integer = 0
             Dim retVal() As Integer = Nothing
             Try
                 cmd.Parameters.Clear()
                 Dim reader As DataTableReader = Nothing
                 If filtrodisp.usuario_id = 0 And filtrodisp.cliente_id = 0 And filtrodisp.hotel_id = 0 And filtrodisp.reserva_id = 0 Then
-                    Dim tipoParam As New Odbc.OdbcParameter("@tipo", filtrodisp.tipo)
+                    Dim tipoParam As New MysqlParameter("@tipo", filtrodisp.tipo)
                     cmd.Parameters.Add(tipoParam)
-                    Dim destinoParam As New Odbc.OdbcParameter("@destino", filtrodisp.destino)
+                    Dim destinoParam As New MysqlParameter("@destino", filtrodisp.destino)
                     cmd.Parameters.Add(destinoParam)
                     reader = getDataTable(cmd, sqlDispositivosFiltroUnknown)
                 Else
-                    Dim usuario_idParam As New Odbc.OdbcParameter("@usuario_id", filtrodisp.usuario_id)
-                    Dim usuario_id1Param As New Odbc.OdbcParameter("@usuario_id1", filtrodisp.usuario_id)
+                    Dim usuario_idParam As New MysqlParameter("@usuario_id", filtrodisp.usuario_id)
+                    Dim usuario_id1Param As New MysqlParameter("@usuario_id1", filtrodisp.usuario_id)
                     cmd.Parameters.Add(usuario_idParam)
                     cmd.Parameters.Add(usuario_id1Param)
-                    Dim cliente_idParam As New Odbc.OdbcParameter("@cliente_id", filtrodisp.cliente_id)
-                    Dim cliente_id1Param As New Odbc.OdbcParameter("@cliente_id1", filtrodisp.cliente_id)
+                    Dim cliente_idParam As New MysqlParameter("@cliente_id", filtrodisp.cliente_id)
+                    Dim cliente_id1Param As New MysqlParameter("@cliente_id1", filtrodisp.cliente_id)
                     cmd.Parameters.Add(cliente_idParam)
                     cmd.Parameters.Add(cliente_id1Param)
-                    Dim hotel_idParam As New Odbc.OdbcParameter("@hotel_id", filtrodisp.hotel_id)
-                    Dim hotel_id1Param As New Odbc.OdbcParameter("@hotel_id1", filtrodisp.hotel_id)
+                    Dim hotel_idParam As New MysqlParameter("@hotel_id", filtrodisp.hotel_id)
+                    Dim hotel_id1Param As New MysqlParameter("@hotel_id1", filtrodisp.hotel_id)
                     cmd.Parameters.Add(hotel_idParam)
                     cmd.Parameters.Add(hotel_id1Param)
-                    Dim reserva_idParam As New Odbc.OdbcParameter("@reserva_id", filtrodisp.reserva_id)
-                    Dim reserva_id1Param As New Odbc.OdbcParameter("@reserva_id1", filtrodisp.reserva_id)
+                    Dim reserva_idParam As New MysqlParameter("@reserva_id", filtrodisp.reserva_id)
+                    Dim reserva_id1Param As New MysqlParameter("@reserva_id1", filtrodisp.reserva_id)
                     cmd.Parameters.Add(reserva_idParam)
                     cmd.Parameters.Add(reserva_id1Param)
 
                     reader = getDataTable(cmd, sqlDispositivosFiltro)
                     If Not reader.HasRows Then
                         cmd.Parameters.Clear()
-                        Dim tipoParam As New Odbc.OdbcParameter("@tipo", filtrodisp.tipo)
+                        Dim tipoParam As New MysqlParameter("@tipo", filtrodisp.tipo)
                         cmd.Parameters.Add(tipoParam)
-                        Dim destinoParam As New Odbc.OdbcParameter("@destino", filtrodisp.destino)
+                        Dim destinoParam As New MysqlParameter("@destino", filtrodisp.destino)
                         cmd.Parameters.Add(destinoParam)
                         reader = getDataTable(cmd, sqlDispositivosFiltroUnknown)
                     End If
@@ -547,7 +547,7 @@ Namespace geshotelk
             Dim retVal(0) As Integer
             retVal(0) = 0
             Dim errorCode As Integer = 0
-            Dim cmd As Odbc.OdbcCommand = prepareConection()
+            Dim cmd As MysqlCommand = prepareConection()
             retVal = ObtieneDispositivos(cmd, filtrodisp)
             If IsNothing(retVal) Then
                 errorCode = 1
