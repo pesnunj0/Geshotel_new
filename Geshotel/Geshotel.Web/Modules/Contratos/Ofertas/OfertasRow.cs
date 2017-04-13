@@ -211,7 +211,7 @@ namespace Geshotel.Contratos.Entities
             set { Fields.M[this] = value; }
         }
 
-        [DisplayName("Ambito Oferta Id"), Column("ambito_oferta_id"),ForeignKey("ambito_oferta","ambito_oferta_id"),LeftJoin("jAmbito")]
+        [DisplayName("Ambito Oferta Id"), Column("ambito_oferta_id"),ForeignKey("ambito_oferta","ambito_oferta_id"),LeftJoin("jAmbito"),NotNull]
         [LookupEditor(typeof(AmbitoOfertaRow))]
         public Int16? AmbitoOfertaId
         {

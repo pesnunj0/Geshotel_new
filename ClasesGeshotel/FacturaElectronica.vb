@@ -53,7 +53,7 @@ Namespace geshotelk
                 cmd.Parameters.Clear()
                 Dim factura_idParam As New MysqlParameter("@factura_id", factura_id)
                 cmd.Parameters.Add(factura_idParam)
-                Dim cabfactura As DataRow
+                Dim cabfactura As DataRow = Nothing
                 Dim tmpds As DataSet = getDataSet(cmd, sqlCabAbreFactura)
                 If Not IsNothing(tmpds) Then
                     If tmpds.Tables.Count > 0 Then
@@ -123,14 +123,14 @@ Namespace geshotelk
                         End Try
 
                         'Dim centro_bavel_hotel As String
-                        Dim cif_hotel As String
-                        Dim nombre_hotel As String
-                        Dim direccion_hotel As String
-                        Dim codigopostal_hotel As String
-                        Dim poblacion_hotel As String
-                        Dim provincia_hotel As String
-                        Dim pais_hotel As String
-                        Dim email_hotel As String
+                        Dim cif_hotel As String = ""
+                        Dim nombre_hotel As String = ""
+                        Dim direccion_hotel As String = ""
+                        Dim codigopostal_hotel As String = ""
+                        Dim poblacion_hotel As String = ""
+                        Dim provincia_hotel As String = ""
+                        Dim pais_hotel As String = ""
+                        Dim email_hotel As String = ""
                         Dim datoshotelcompletos As Boolean = False
                         'obtener datos del hotel
                         If Not IsNothing(cabhotel) Then
@@ -164,14 +164,14 @@ Namespace geshotelk
                         If datoshotelcompletos Then
                             cif_hotel = filtrarCifBavel(cif_hotel)
                             Dim datosfacturacompletos As Boolean = False
-                            Dim numero_factura As String
-                            Dim serie_factura As String
-                            Dim numero_factura_rectificada As String
+                            Dim numero_factura As String = ""
+                            Dim serie_factura As String = ""
+                            Dim numero_factura_rectificada As String = ""
                             'Dim serie_factura_rectificada
-                            Dim fecha_factura As Date
-                            Dim bono_reserva As String
+                            Dim fecha_factura As Date = Nothing
+                            Dim bono_reserva As String = ""
                             'obtiene datos factura
-                            Dim total_factura As Decimal
+                            Dim total_factura As Decimal = 0
                             Try
                                 total_factura = cabfactura("Importe_Total")
                                 numero_factura = cabfactura("numero_factura")
@@ -239,15 +239,15 @@ Namespace geshotelk
 
                                 End Try
 
-                                Dim cif_cliente As String
-                                Dim nombre_cliente As String
-                                Dim direccion_cliente As String
-                                Dim codigopostal_cliente As String
-                                Dim poblacion_cliente As String
-                                Dim provincia_cliente As String
-                                Dim pais_cliente As String
-                                Dim email_cliente As String
-                                Dim cliente_id_convertido As String
+                                Dim cif_cliente As String = ""
+                                Dim nombre_cliente As String = ""
+                                Dim direccion_cliente As String = ""
+                                Dim codigopostal_cliente As String = ""
+                                Dim poblacion_cliente As String = ""
+                                Dim provincia_cliente As String = ""
+                                Dim pais_cliente As String = ""
+                                Dim email_cliente As String = ""
+                                Dim cliente_id_convertido As String = ""
                                 Dim datosclientecompletos As Boolean = False
                                 If Not IsNothing(cabcliente) Then
                                     Try
@@ -927,6 +927,7 @@ Namespace geshotelk
             Dim cmd As MysqlCommand = prepareConection()
             Dim retVal As Boolean = ColocaEstadoBavel(cmd, factura_id, enviar)
             flushConection(cmd, 0)
+            Return True
         End Function
         Function ColocaEstadoBavel(ByVal cmd As MysqlCommand, ByVal factura_id As Integer, Optional ByVal enviar As Boolean = True) As Boolean
             Dim retVal As Boolean = False

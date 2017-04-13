@@ -54,10 +54,10 @@ Namespace geshotelk
             'lineasFichero.AddLast(sb.ToString)
             Return True
         End Function
-        Public Function agregaLinea(ByVal nif As String, ByVal tipo As String, ByVal fecha_doc As Date, ByVal apellido_1 As String, ByVal apellido_2 As String, ByVal nombre As String, ByVal sexo As String, ByVal fecha_nac As Date, ByVal pais As String, ByVal fecha_llegada As Date)
+        Public Sub agregaLinea(ByVal nif As String, ByVal tipo As String, ByVal fecha_doc As Date, ByVal apellido_1 As String, ByVal apellido_2 As String, ByVal nombre As String, ByVal sexo As String, ByVal fecha_nac As Date, ByVal pais As String, ByVal fecha_llegada As Date)
             Dim linea As String = ("2||" & nif & "|" & tipo & "|" & Format(fecha_doc, "yyyyMMdd") & "|" & apellido_1 & "|" & apellido_2 & "|" & nombre & "|" & sexo & "|" & Format(fecha_nac, "yyyyMMdd") & "|" & pais & "|" & Format(fecha_llegada, "yyyyMMdd") & "|")
             lineasFichero.AddLast(linea)
-        End Function
+        End Sub
 
 
     End Class

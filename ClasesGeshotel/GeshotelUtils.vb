@@ -1,4 +1,4 @@
-Imports geshotel.Data
+'Imports geshotel.Data
 Imports System.Text.RegularExpressions
 Namespace geshotelk
     Public Class GesHotelClaseUtils

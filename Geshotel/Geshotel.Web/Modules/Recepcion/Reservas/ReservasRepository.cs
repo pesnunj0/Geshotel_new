@@ -92,7 +92,7 @@ namespace Geshotel.Recepcion.Repositories
             res.unidades_calculos = ucs;
             //Here I call My function to validate Reservation and calculate Price
             //The function is as follow
-            var result = x.obtieneServiciosReserva(res, false, ReservaId);
+            var result = x.obtieneServiciosReserva(res, true, ReservaId);
             //if (result.errornum !=0)
             //    throw new ValidationError("Reservation with Errors. Please Check the contract! " + result.errortxt );
             return result;

@@ -190,7 +190,7 @@ Namespace geshotelk
         'posibles dispositivos
         'email.firefoxos las 2 primeras
         'deberia usar proceso paralelo al server....por ke algunos plugins tardarian mas en enviar
-        Private Function enviarNotificacion(lista() As EndPoint, mensaje As String)
+        Private Function enviarNotificacion(lista() As EndPoint, mensaje As String) As Boolean
             'por cada item de la lista
             'obtener el tipo de dispositivo
             'y enviar por el plugin de kada dispositivo
@@ -199,6 +199,7 @@ Namespace geshotelk
                 Dim mes As EndPoint = lista(x)
                 enviarNotificacion(mes, mensaje)
             Next
+            Return True
         End Function
         Private Function enviarNotificacion(tipo As TipoNoti, destino As String, mensaje As String) As Boolean
             Dim lis As New EndPoint
@@ -312,6 +313,7 @@ Namespace geshotelk
                     enviarNotificacion(dispositivo_id, mensaje)
                 End If
             End If
+            Return True
         End Function
         Public Function enviarNotificacion(mensaje As String, hotel_id As Integer, Optional reserva_id As Integer = 0) As Boolean
             'sacar todos los dispositivos del hotel y enviar la notificacion
@@ -325,11 +327,12 @@ Namespace geshotelk
                     enviarNotificacion(dispositivo_id, mensaje)
                 End If
             End If
+            Return True
         End Function
         Shared sqlDispositivos As String = "select * from dispositivos where dispositivo_id=?"
-        Private Function crearNuevoDisp(cmd As MysqlCommand, disp As Dispositivo, dispositivo_id As Integer)
+        Private Function crearNuevoDisp(cmd As MySqlCommand, disp As Dispositivo, dispositivo_id As Integer) As Boolean
             cmd.Parameters.Clear()
-            Dim dispositivo_idParam As New MysqlParameter("@dispositivo_id", dispositivo_id)
+            Dim dispositivo_idParam As New MySqlParameter("@dispositivo_id", dispositivo_id)
             cmd.Parameters.Add(dispositivo_idParam)
             Dim ds As DataSet = getDataSet(cmd, sqlDispositivos)
             Dim row As DataRow = ds.Tables(0).Rows.Add
@@ -360,10 +363,11 @@ Namespace geshotelk
             End If
 
             row.Item("fecha_creacion") = Now()
-            Dim writer As MysqlDataAdapter
+            Dim writer As MySqlDataAdapter
             writer = getDataAdapter(cmd, sqlDispositivos)
             writer.Fill(ds.Tables(0))
             writer.Update(ds.Tables(0))
+            Return True
         End Function
         Public Function registrarDispositivo(cmd As MysqlCommand, disp As Dispositivo)
             Dim retVal As Boolean = False

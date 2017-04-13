@@ -2,8 +2,9 @@
 using FluentMigrator;
 // ************************************************************************************************
 // Creacion de los ficheros siguientes:
-// - cierres
-// - Cambiamos estado_reserva_id a 1 en las reservas de la 10 a la 14
+// - equivalencias_reservas_servicios
+// - unidades_calculo_agrupados. Importante para definir que A+N1+N2+B lo que tiene
+// - ofertas_codigos
 // ************************************************************************************************
 namespace Geshotel.Migrations.DefaultDB
 {
@@ -12,6 +13,9 @@ namespace Geshotel.Migrations.DefaultDB
     { 
         public override void Up()
         {
+            if (Schema.Table("equivalencia_reservas_servicios").Exists())
+                Delete.Table("equivalencia_reservas_servicios");
+
             Create.Table("equivalencia_reservas_servicios")
                 .WithColumn("reserva_servicio_id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("servicio_opcion_id").AsInt32().NotNullable()
@@ -32,6 +36,7 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+
             Insert.IntoTable("equivalencia_reservas_servicios").Row(new
             {
                 servicio_opcion_id = 11,
@@ -39,6 +44,7 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+
             Insert.IntoTable("equivalencia_reservas_servicios").Row(new
             {
                 servicio_opcion_id = 55,
@@ -46,6 +52,7 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+
             Insert.IntoTable("equivalencia_reservas_servicios").Row(new
             {
                 servicio_opcion_id = 56,
@@ -53,6 +60,7 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+
             Insert.IntoTable("equivalencia_reservas_servicios").Row(new
             {
                 servicio_opcion_id = 96,
@@ -60,6 +68,7 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+
             Insert.IntoTable("equivalencia_reservas_servicios").Row(new
             {
                 servicio_opcion_id = 97,
@@ -67,6 +76,9 @@ namespace Geshotel.Migrations.DefaultDB
                 user_id = 1,
                 fecha_modificacion = DateTime.Now
             });
+            if (Schema.Table("unidades_calculo_agrupados").Exists())
+                Delete.Table("unidades_calculo_agrupados");
+
             Create.Table("unidades_calculo_agrupados")
                 .WithColumn("unidad_calculo_padre_id").AsInt16().PrimaryKey().NotNullable()
                 .WithColumn("unidad_calculo_hijo_id").AsInt16().PrimaryKey().NotNullable();
@@ -76,22 +88,29 @@ namespace Geshotel.Migrations.DefaultDB
                 unidad_calculo_padre_id = 6,
                 unidad_calculo_hijo_id = 2
             });
+
             Insert.IntoTable("unidades_calculo_agrupados").Row(new
             {        
                 unidad_calculo_padre_id = 6,
                 unidad_calculo_hijo_id = 3
 
             });
+
             Insert.IntoTable("unidades_calculo_agrupados").Row(new
             {             
                 unidad_calculo_padre_id = 6,
                 unidad_calculo_hijo_id = 4
             });
+
             Insert.IntoTable("unidades_calculo_agrupados").Row(new
             {               
                 unidad_calculo_padre_id = 6,
                 unidad_calculo_hijo_id = 5
             });
+
+            if (Schema.Table("condiciones_linea_contrato").Exists())
+                Delete.Table("condiciones_linea_contrato");
+
             Create.Table("condiciones_linea_contrato")
                 .WithColumn("condiciones_linea_contrato_id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("linea_contrato_id").AsInt32().NotNullable()
@@ -104,6 +123,24 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnColumn("linea_contrato_id").Ascending()
                 .OnColumn("unidad_calculo_id").Ascending()
                 .OnColumn("tipo_condicion_id").Ascending()
+                .WithOptions().Unique();
+
+            if (Schema.Table("ofertas_codigos").Exists())
+                Delete.Table("ofertas_codigos");
+
+            Create.Table("ofertas_codigos")
+                .WithColumn("oferta_codigo_id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("oferta_id").AsInt32().NotNullable()
+                .WithColumn("codigo_oferta").AsString(20).NotNullable();
+
+            Create.Index("IX_ofertas_codigos_oferta_id")
+                .OnTable("ofertas_codigos")
+                .OnColumn("oferta_id").Ascending();
+
+            Create.Index("IX_ofertas_codigos")
+                .OnTable("ofertas_codigos")
+                .OnColumn("oferta_id").Ascending()
+                .OnColumn("codigo_oferta").Ascending()
                 .WithOptions().Unique();
 
         }

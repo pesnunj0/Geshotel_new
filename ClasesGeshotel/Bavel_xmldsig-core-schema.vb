@@ -340,18 +340,8 @@ Namespace FacturaElectronicaBavel
                 Me.eMailSenderField = value
             End Set
         End Property
-        
-        '''<comentarios/>
-        'Public Property SpecificReflectionIdentity() As Integer
-        '    Get
-        '        Return Me.specificReflectionIdentityField
-        '    End Get
-        '    Set
-        '        Me.specificReflectionIdentityField = value
-        '    End Set
-        'End Property
 
-        '''<comentarios/>
+
         Public Property Sender() As CMessageAgent
             Get
                 Return Me.senderField

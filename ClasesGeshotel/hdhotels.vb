@@ -5,7 +5,7 @@ Imports System.Data.OleDb
 Imports System.Data
 Imports System.Collections.Generic
 Imports System.Threading
-Imports GestionUsuarios.GESTCAC
+'Imports GestionUsuarios.GESTCAC
 Imports MySql.Data.MySqlClient
 
 
@@ -244,6 +244,7 @@ Namespace geshotelk
                 Return ex.Message
                 'recordar quitar
             End Try
+            Return ""
         End Function
         Shared sqlHdHotelBonoFecha = "select ifnull(bono_online,bono_referencia) as bono_referencia,fecha_prevista_llegada from reservas where reserva_id=?"
         Shared sqlEmailReserva = "select reservas.*" _
@@ -1098,7 +1099,7 @@ Namespace geshotelk
         End Function
         Public Function getNodi(incidencia_id As Integer, usuario As String, password As String, Optional ip As String = "80.59.112.27", Optional register As String = Nothing, Optional tiporegister As String = Nothing)
             Dim resultado As String = "no"
-            Dim Ds As DataSet
+            Dim Ds As DataSet = New DataSet
             Dim sql_get_pendientes As String = "SELECT cms.incidencias.*,cms.departamentos.departamento " _
             & "FROM cms.incidencias " _
             & "INNER JOIN cms.usuarios_departamentos ON cms.incidencias.para_departamento_id = cms.usuarios_departamentos.departamento_id " _
@@ -2119,6 +2120,7 @@ Namespace geshotelk
             'getEncuesta()
             'no existe la creo
             'existe la actualizo
+            Return True
         End Function
         Shared sqlHDEncuentraBono As String = "SELECT distinct" _
 & " reservas.reserva_id," _

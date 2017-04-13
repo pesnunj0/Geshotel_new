@@ -28,6 +28,7 @@ Namespace geshotelk
             Dim cmd As MysqlCommand = prepareConection()
             ErrorCode = Materializa_tablas(cmd)
             flushConection(cmd, ErrorCode)
+            Return ErrorCode
         End Function
         Public Function genera_manocorriente(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim ErrorCode As Integer = 0
@@ -278,8 +279,7 @@ Namespace geshotelk
             ' Como no es un servicio a facturar, lo calculamos como diferencia entre las pax y el resto de regímenes
             Dim ErrorCode As Integer = 0
             Dim RowCount As Integer
-            Dim dia As Integer
-            Dim mes As Integer
+
             Dim ano As Integer
             Dim where As String = ""
 
@@ -410,7 +410,7 @@ Namespace geshotelk
             Dim cmd As MysqlCommand = prepareConection()
             ErrorCode = genera_Solo_Alojamiento(cmd, Hotel_id, dd, aa)
             flushConection(cmd, ErrorCode)
-
+            Return ErrorCode
         End Function
         Function Genera_informe_produccion(ByVal cmd As MysqlCommand, ByVal Hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim errorCode As Integer = 0
@@ -981,7 +981,7 @@ Namespace geshotelk
             Dim errorcode As Integer = genera_usuario_radius(cmd, reserva_id)
 
             flushConection(cmd, 0)
-
+            Return 0
         End Function
         Private Function genera_usuario_radius(ByVal cmd As MysqlCommand, ByVal reserva_id As Integer) As Integer
             Dim errorcode As Integer = 0
@@ -1019,8 +1019,8 @@ Namespace geshotelk
                 End If
             End If
             Dim ssidParam As New MysqlParameter("ssid", ssid)
-            Dim cmdradius As New MysqlCommand
-            Dim Transaccion As MysqlTransaction
+            Dim cmdradius As New MySqlCommand
+            Dim Transaccion As MySqlTransaction = Nothing
             Try
                 If Not connRad.State = ConnectionState.Open Then
                     connRad.Open()
@@ -1058,12 +1058,13 @@ Namespace geshotelk
                 End If
                 connRad.Close()
             End If
-
+            Return errorcode
         End Function
         Public Function genera_usuarios_radius(ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim cmd As MysqlCommand = prepareConection()
             Dim errorcode As Integer = genera_usuarios_radius(cmd, hotel_id, fecha)
-            flushConection(cmd, 0)
+            flushConection(cmd, errorcode)
+            Return errorcode
         End Function
         Private Function genera_usuarios_radius(ByVal cmd As MysqlCommand, ByVal hotel_id As Integer, ByVal fecha As Date) As Integer
             Dim errorcode As Integer = 0

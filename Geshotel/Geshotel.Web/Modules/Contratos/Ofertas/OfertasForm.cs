@@ -25,6 +25,7 @@ namespace Geshotel.Contratos.Forms
         
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
+        [DefaultValue("E")]
         public String TipoAplicacionOfertaId { get; set; }
         public Int16 OrdenAplicacion { get; set; }
 
@@ -42,7 +43,9 @@ namespace Geshotel.Contratos.Forms
         public Int32 ServicioLigadoId { get; set; }
         
         //      public Decimal Precio { get; set; }
+        [DefaultValue(0)]
         public Int16 TipoImputacionId { get; set; }
+        [DefaultValue(1)]
         public Int16 AmbitoOfertaId { get; set; }
         public Int16 TipoOfertaId { get; set; }
         public Int16 N { get; set; }

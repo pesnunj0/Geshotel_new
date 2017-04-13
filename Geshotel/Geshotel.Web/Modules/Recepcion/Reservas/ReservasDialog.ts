@@ -37,8 +37,6 @@ namespace Geshotel.Recepcion {
         }
 
         protected onSaveSuccess(response: Serenity.SaveResponse): void {
-            var fechaHotel = this.entity.HotelId == null ? null : Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
-            Q.notifyInfo(Q.formatDate(fechaHotel, 'yyyy-MM-dd') + " " + Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'))
 
             // check that this is an insert
             if (this.isNew) {
@@ -174,7 +172,7 @@ namespace Geshotel.Recepcion {
             buttons.push({
                 title: 'Pre CheckOut',
                 cssClass: 'pre-check-out-button',
-                icon: 'fa-chevron-circle-left text-green',
+                icon: 'fa-chevron-circle-left text-orange',
                 onClick: () => {
                     Q.confirm("Are u sure?", () => {
                         ReservasService.ChangeReservationStatus({

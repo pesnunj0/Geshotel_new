@@ -12559,8 +12559,6 @@ var Geshotel;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
-                var fechaHotel = this.entity.HotelId == null ? null : Geshotel.Portal.HotelesRow.getLookup().itemById[this.entity.HotelId].FechaHotel;
-                Q.notifyInfo(Q.formatDate(fechaHotel, 'yyyy-MM-dd') + " " + Q.formatDate(this.entity.FechaPrevistaLlegada, 'yyyy-MM-dd'));
                 // check that this is an insert
                 if (this.isNew) {
                     Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
@@ -12667,7 +12665,7 @@ var Geshotel;
                 buttons.push({
                     title: 'Pre CheckOut',
                     cssClass: 'pre-check-out-button',
-                    icon: 'fa-chevron-circle-left text-green',
+                    icon: 'fa-chevron-circle-left text-orange',
                     onClick: function () {
                         Q.confirm("Are u sure?", function () {
                             Recepcion.ReservasService.ChangeReservationStatus({

@@ -969,6 +969,7 @@ Namespace geshotelk
                     rows(x).Item("precio") = imp / rows(x).Item("cantidad")
                 End If
             Next
+            Return True
         End Function
         Public Function redondearOld(ByVal digits As Integer, Optional ByVal reserva_id As Integer = 0, Optional ByVal mat As Hashtable = Nothing) As Boolean
             Dim x As Integer
@@ -996,6 +997,7 @@ Namespace geshotelk
                     rows(x).Item("precio") = imp / rows(x).Item("cantidad")
                 End If
             Next
+            Return True
         End Function
         Public Function ActualizarMediaServiciosUC(ByVal datos As DataTable)
             Dim reader As DataTableReader = datos.CreateDataReader
@@ -1064,7 +1066,7 @@ Namespace geshotelk
                 Dim filtro As String
                 Dim lfiltro As String = ""
                 Dim drows() As DataRow
-                Dim drow As DataRow
+                Dim drow As DataRow = Nothing
                 While reader.Read
                     'recorrerse servicios..por cada servicio+uc..crear o sumar a la tabla resultado
                     filtro = "servicio_id=" & reader.Item("servicio_id") & " and ucid=" & reader.Item(ucid) & ""
