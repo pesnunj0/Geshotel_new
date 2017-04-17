@@ -2324,7 +2324,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         LineasForm.formKey = 'Contratos.Lineas';
         Contratos.LineasForm = LineasForm;
-        [['ContratoId', function () { return Serenity.IntegerEditor; }], ['Desde', function () { return Serenity.DateEditor; }], ['Hasta', function () { return Serenity.DateEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['FrecuenciaId', function () { return Serenity.LookupEditor; }], ['TipoImputacionId', function () { return Serenity.LookupEditor; }], ['Importe', function () { return Serenity.DecimalEditor; }], ['Lunes', function () { return Serenity.BooleanEditor; }], ['Martes', function () { return Serenity.BooleanEditor; }], ['Miercoles', function () { return Serenity.BooleanEditor; }], ['Jueves', function () { return Serenity.BooleanEditor; }], ['Viernes', function () { return Serenity.BooleanEditor; }], ['Sabado', function () { return Serenity.BooleanEditor; }], ['Domingo', function () { return Serenity.BooleanEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['ContratoId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['Desde', function () { return Serenity.DateEditor; }], ['Hasta', function () { return Serenity.DateEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['FrecuenciaId', function () { return Serenity.LookupEditor; }], ['TipoImputacionId', function () { return Serenity.LookupEditor; }], ['Importe', function () { return Serenity.DecimalEditor; }], ['Lunes', function () { return Serenity.BooleanEditor; }], ['Martes', function () { return Serenity.BooleanEditor; }], ['Miercoles', function () { return Serenity.BooleanEditor; }], ['Jueves', function () { return Serenity.BooleanEditor; }], ['Viernes', function () { return Serenity.BooleanEditor; }], ['Sabado', function () { return Serenity.BooleanEditor; }], ['Domingo', function () { return Serenity.BooleanEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -2338,7 +2338,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = LineasRow.Fields || (LineasRow.Fields = {}));
-            ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'DescripcionUnidadCalculo', 'Frecuencia', 'Imputacion', 'UserName', 'TipoServicio'].forEach(function (x) { return Fields[x] = x; });
+            ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'DescripcionUnidadCalculo', 'Frecuencia', 'Imputacion', 'UserName', 'TipoServicio', 'HotelId', 'HotelName', 'EmpresaId', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
         })(LineasRow = Contratos.LineasRow || (Contratos.LineasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2538,7 +2538,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReleasesRow.Fields || (ReleasesRow.Fields = {}));
-            ['ReleaseId', 'ClienteId', 'HotelId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'Dias', 'UserId', 'FechaModificacion', 'ClienteRazon', 'HotelName', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            ['ReleaseId', 'ClienteId', 'HotelId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'Dias', 'UserId', 'FechaModificacion', 'ClienteRazon', 'HotelName', 'EmpresaId', 'Empresa', 'UserName'].forEach(function (x) { return Fields[x] = x; });
         })(ReleasesRow = Contratos.ReleasesRow || (Contratos.ReleasesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6225,7 +6225,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasOfertasRow.Fields || (ReservasOfertasRow.Fields = {}));
-            ['ReservaOfertaId', 'ReservaId', 'OfertaId', 'Tipo', 'Activa', 'OfertaUsada'].forEach(function (x) { return Fields[x] = x; });
+            ['ReservaOfertaId', 'ReservaId', 'OfertaId', 'Tipo', 'Activa', 'OfertaUsada', 'UnidadCalculoId', 'Texto', 'N', 'TipoOfertaId', 'M', 'TipoOfertaName', 'UnidadCalculoName'].forEach(function (x) { return Fields[x] = x; });
         })(ReservasOfertasRow = Recepcion.ReservasOfertasRow || (Recepcion.ReservasOfertasRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6292,7 +6292,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ReservasServiciosForm.formKey = 'Recepcion.ReservasServicios';
         Recepcion.ReservasServiciosForm = ReservasServiciosForm;
-        [['ReservaId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['FlagContrato', function () { return Serenity.IntegerEditor; }], ['PrecioServicio', function () { return Serenity.DecimalEditor; }], ['ServicioExtra', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasServiciosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['ReservaId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['FlagContrato', function () { return Serenity.IntegerEditor; }], ['PrecioServicio', function () { return Serenity.DecimalEditor; }], ['ServicioExtra', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasServiciosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -6306,7 +6306,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasServiciosRow.Fields || (ReservasServiciosRow.Fields = {}));
-            ['ServicioReservaId', 'ReservaId', 'ServicioId', 'UnidadCalculoId', 'FechaDesde', 'FechaHasta', 'Cantidad', 'UserId', 'FechaModificacion', 'FlagContrato', 'PrecioServicio', 'ServicioExtra', 'ReservaFechaCreacion', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaClienteId', 'ReservaCanalReservaId', 'ReservaClienteIdFactura', 'ReservaFechaReserva', 'ReservaNombreReserva', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'ReservaHoraPrevistaLlegada', 'ReservaHoraPrevistaSalida', 'ReservaObservacionesLlegada', 'ReservaObservacionesSalida', 'ReservaObservacionesCliente', 'ReservaObservaciones', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'ReservaBonoReferencia', 'ReservaBonoOnline', 'ReservaBloquearTarifa', 'ReservaPermiteDevolucion', 'ReservaTipoTarjetaId', 'ReservaTarjetaCredito', 'ReservaCaducidad', 'ReservaCodSeguridad', 'ReservaContratoTtoo', 'ReservaCodigoOferta', 'ReservaValor', 'ReservaValorValidado', 'ReservaFechaValidacion', 'ReservaUsuarioValidacion', 'ReservaParoventasCheck', 'ReservaCuposCheck', 'ReservaReleaseCheck', 'ReservaReservaDingus', 'ReservaDingusImpuestosIncluidos', 'ReservaDingusComision', 'ReservaReservaDingusTipo', 'ReservaFechaAnulacion', 'ReservaUserId', 'ReservaFechaModificacion', 'ServicioNombreServicio', 'ServicioAbreviatura', 'ServicioTipoServicioId', 'ServicioSwProduccion', 'ServicioSwDescuento', 'ServicioSwAjustes', 'ServicioSwGastos', 'ServicioSwPension', 'ServicioSwRectificativa', 'ServicioTipoUnidadCalculoId', 'ServicioConceptoAceleradorReservasId', 'ServicioCosto', 'ServicioSumaServicioId', 'ServicioRestaServicioId', 'ServicioUserId', 'ServicioFechaModificacion', 'ServicioTipoHab', 'ServicioTipoPension', 'UnidadCalculoUc', 'UnidadCalculoDescripcionUnidadCalculo', 'UnidadCalculoTipoUnidadCalculoId', 'UnidadCalculoPax', 'UnidadCalculoServicioId', 'UnidadCalculoUserId', 'UnidadCalculoFechaModificacion', 'UserUsername', 'UserDisplayName', 'UserEmail', 'UserSource', 'UserPasswordHash', 'UserPasswordSalt', 'UserLastDirectoryUpdate', 'UserUserImage', 'UserInsertDate', 'UserInsertUserId', 'UserUpdateDate', 'UserUpdateUserId', 'UserIsActive', 'UserEmpresaId', 'UserHotelId'].forEach(function (x) { return Fields[x] = x; });
+            ['ServicioReservaId', 'ReservaId', 'ServicioId', 'UnidadCalculoId', 'FechaDesde', 'FechaHasta', 'Cantidad', 'UserId', 'FechaModificacion', 'FlagContrato', 'PrecioServicio', 'ServicioExtra', 'ServicioNombreServicio', 'UnidadCalculo', 'Username'].forEach(function (x) { return Fields[x] = x; });
         })(ReservasServiciosRow = Recepcion.ReservasServiciosRow || (Recepcion.ReservasServiciosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -7627,6 +7627,7 @@ var Geshotel;
             ContratosDialog.prototype.afterLoadEntity = function () {
                 _super.prototype.afterLoadEntity.call(this);
                 this.lineasGrid.contratoID = this.entityId;
+                this.lineasGrid.hotelID = this.entity.HotelId;
                 this.ofertasGrid.contratoID = this.entityId;
                 this.cuposGrid.fechaDesde = this.entity.FechaDesde;
                 this.cuposGrid.fechaHasta = this.entity.FechaHasta;
@@ -7868,6 +7869,7 @@ var Geshotel;
             ContratosLineasDialog.prototype.updateInterface = function () {
                 _super.prototype.updateInterface.call(this);
                 Serenity.EditorUtils.setReadOnly(this.form.ContratoId, true);
+                Serenity.EditorUtils.setReadOnly(this.form.HotelId, true);
             };
             return ContratosLineasDialog;
         }(Contratos.LineasDialog));
@@ -7931,6 +7933,20 @@ var Geshotel;
                     if (this._contratoID !== value) {
                         this._contratoID = value;
                         this.setEquality(Contratos.LineasRow.Fields.ContratoId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(ContratosLineasGrid.prototype, "hotelID", {
+                get: function () {
+                    return this._hotelID;
+                },
+                set: function (value) {
+                    if (this._hotelID !== value) {
+                        this._hotelID = value;
+                        this.setEquality(Contratos.LineasRow.Fields.HotelId, value);
                         this.refresh();
                     }
                 },
@@ -12543,6 +12559,9 @@ var Geshotel;
                 _this.HabitacionesBloqueosGrid = new Recepcion.ReservasHabitacionesBloqueosGrid(_this.byId("HabitacionesBloqueosGrid"));
                 _this.ReservasServiciosGrid = new Recepcion.ReservasServiciosGrid(_this.byId("ReservasServiciosGrid"));
                 _this.ReservasHuespedesGrid = new Recepcion.ReservasHuespedesGrid(_this.byId("ReservasHuespedesGrid"));
+                _this.ReservasContratosGrid = new Recepcion.ReservasContratosGrid(_this.byId("ReservasContratosGrid"));
+                _this.ReservasOfertasGrid = new Recepcion.ReservasOfertasGrid(_this.byId("ReservasOfertasGrid"));
+                _this.ReservasDescuentosGrid = new Recepcion.ReservasDescuentosGrid(_this.byId("ReservasDescuentosGrid"));
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
                 });
@@ -12557,8 +12576,15 @@ var Geshotel;
                 _super.prototype.afterLoadEntity.call(this);
                 this.HabitacionesBloqueosGrid.reservaID = this.entityId;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+                this.ReservasServiciosGrid.reservaID = this.entityId;
+                this.ReservasServiciosGrid.flagcontrato = 1;
+                this.ReservasContratosGrid.reservaID = this.entityId;
+                this.ReservasOfertasGrid.reservaID = this.entityId;
+                this.ReservasHuespedesGrid.reservaID = this.entityId;
+                this.ReservasDescuentosGrid.reservaID = this.entityId;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
+                var _this = this;
                 // check that this is an insert
                 if (this.isNew) {
                     Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
@@ -12568,6 +12594,7 @@ var Geshotel;
                         EntityId: response.EntityId
                     }, function (resp) {
                         Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                     });
                 }
                 else {
@@ -12577,6 +12604,7 @@ var Geshotel;
                         EntityId: response.EntityId
                     }, function (resp) {
                         Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                     });
                 }
             };
@@ -12624,6 +12652,7 @@ var Geshotel;
                                 Q.notifySuccess("Reservation Cancelled successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                             });
                         });
                     }
@@ -12641,6 +12670,7 @@ var Geshotel;
                                 Q.notifySuccess("Reservation in Status Arrival Pending successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                             });
                         });
                     }
@@ -12658,6 +12688,7 @@ var Geshotel;
                                 Q.notifySuccess("Reservation Checked In successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                             });
                         });
                     }
@@ -12675,6 +12706,7 @@ var Geshotel;
                                 Q.notifySuccess("Reservation in Status Pre Check Out successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                             });
                         });
                     }
@@ -12692,6 +12724,7 @@ var Geshotel;
                                 Q.notifySuccess("Reservation in Status Checked Out successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                             });
                         });
                     }
@@ -12867,6 +12900,144 @@ var Geshotel;
         Recepcion.ReservasHabitacionesBloqueosGrid = ReservasHabitacionesBloqueosGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
+/*
+    Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
+    Además, se elimina el AddButton
+    Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
+    Javier Nuñez Abril 2017
+*/
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasContratosGrid = (function (_super) {
+            __extends(ReservasContratosGrid, _super);
+            function ReservasContratosGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ReservasContratosGrid.prototype.getColumnsKey = function () { return 'Recepcion.ReservasContratos'; };
+            ReservasContratosGrid.prototype.getDialogType = function () { return Recepcion.ReservasContratosDialog; };
+            ReservasContratosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasContratosRow.idProperty; };
+            ReservasContratosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasContratosRow.localTextPrefix; };
+            ReservasContratosGrid.prototype.getService = function () { return Recepcion.ReservasContratosService.baseUrl; };
+            ReservasContratosGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasContratosGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasContratosGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasContratosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            /**
+      * This method is called to get list of buttons to be created.
+      */
+            ReservasContratosGrid.prototype.getButtons = function () {
+                // call base method to get list of buttons
+                // by default, base entity grid adds a few buttons, 
+                // add, refresh, column selection in order.
+                var buttons = _super.prototype.getButtons.call(this);
+                // here is several methods to remove add button
+                // only one is enabled, others are commented
+                // METHOD 1
+                // we would be able to simply return an empty button list,
+                // but this would also remove all other buttons
+                // return [];
+                // METHOD 2
+                // remove by splicing (something like delete by index)
+                // here we hard code add button index (not nice!)
+                // buttons.splice(0, 1);
+                // METHOD 3 - recommended
+                // remove by splicing, but this time find button index
+                // by its css class. it is the best and safer method
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            ReservasContratosGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                var fld = Recepcion.ReservasContratosRow.Fields;
+                Q.first(columns, function (x) { return x.field == fld.ContratoId; }).format =
+                    function (ctx) { return "<a href=\"javascript:;\" class=\"contrato-link\">" + Q.htmlEncode(ctx.value) + "</a>"; };
+                return columns;
+            };
+            ReservasContratosGrid.prototype.onClick = function (e, row, cell) {
+                // let base grid handle clicks for its edit links
+                _super.prototype.onClick.call(this, e, row, cell);
+                // if base grid already handled, we shouldn"t handle it again
+                if (e.isDefaultPrevented()) {
+                    return;
+                }
+                // get reference to current item
+                var item = this.itemAt(row);
+                // get reference to clicked element
+                var target = $(e.target);
+                if (target.hasClass("contrato-link")) {
+                    e.preventDefault();
+                    new Geshotel.Contratos.ContratosDialog().loadByIdAndOpenDialog(item.ContratoId);
+                }
+            };
+            return ReservasContratosGrid;
+        }(Serenity.EntityGrid));
+        ReservasContratosGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ReservasContratosGrid);
+        Recepcion.ReservasContratosGrid = ReservasContratosGrid;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="ReservasContratosGrid.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var RemovingReservasContratosAddButton = (function (_super) {
+            __extends(RemovingReservasContratosAddButton, _super);
+            function RemovingReservasContratosAddButton(container) {
+                return _super.call(this, container) || this;
+            }
+            /**
+             * This method is called to get list of buttons to be created.
+             */
+            RemovingReservasContratosAddButton.prototype.getButtons = function () {
+                // call base method to get list of buttons
+                // by default, base entity grid adds a few buttons, 
+                // add, refresh, column selection in order.
+                var buttons = _super.prototype.getButtons.call(this);
+                // here is several methods to remove add button
+                // only one is enabled, others are commented
+                // METHOD 1
+                // we would be able to simply return an empty button list,
+                // but this would also remove all other buttons
+                // return [];
+                // METHOD 2
+                // remove by splicing (something like delete by index)
+                // here we hard code add button index (not nice!)
+                // buttons.splice(0, 1);
+                // METHOD 3 - recommended
+                // remove by splicing, but this time find button index
+                // by its css class. it is the best and safer method
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            return RemovingReservasContratosAddButton;
+        }(Recepcion.ReservasContratosGrid));
+        RemovingReservasContratosAddButton = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RemovingReservasContratosAddButton);
+        Recepcion.RemovingReservasContratosAddButton = RemovingReservasContratosAddButton;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
     var Recepcion;
@@ -12882,6 +13053,10 @@ var Geshotel;
             ReservasContratosDialog.prototype.getIdProperty = function () { return Recepcion.ReservasContratosRow.idProperty; };
             ReservasContratosDialog.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasContratosRow.localTextPrefix; };
             ReservasContratosDialog.prototype.getService = function () { return Recepcion.ReservasContratosService.baseUrl; };
+            ReservasContratosDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.ReservaId, true);
+            };
             return ReservasContratosDialog;
         }(Serenity.EntityDialog));
         ReservasContratosDialog = __decorate([
@@ -12889,28 +13064,6 @@ var Geshotel;
             Serenity.Decorators.responsive()
         ], ReservasContratosDialog);
         Recepcion.ReservasContratosDialog = ReservasContratosDialog;
-    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Recepcion;
-    (function (Recepcion) {
-        var ReservasContratosGrid = (function (_super) {
-            __extends(ReservasContratosGrid, _super);
-            function ReservasContratosGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ReservasContratosGrid.prototype.getColumnsKey = function () { return 'Recepcion.ReservasContratos'; };
-            ReservasContratosGrid.prototype.getDialogType = function () { return Recepcion.ReservasContratosDialog; };
-            ReservasContratosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasContratosRow.idProperty; };
-            ReservasContratosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasContratosRow.localTextPrefix; };
-            ReservasContratosGrid.prototype.getService = function () { return Recepcion.ReservasContratosService.baseUrl; };
-            return ReservasContratosGrid;
-        }(Serenity.EntityGrid));
-        ReservasContratosGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ReservasContratosGrid);
-        Recepcion.ReservasContratosGrid = ReservasContratosGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -12952,6 +13105,26 @@ var Geshotel;
             ReservasDescuentosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasDescuentosRow.idProperty; };
             ReservasDescuentosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasDescuentosRow.localTextPrefix; };
             ReservasDescuentosGrid.prototype.getService = function () { return Recepcion.ReservasDescuentosService.baseUrl; };
+            ReservasDescuentosGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasDescuentosGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasDescuentosGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasDescuentosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             return ReservasDescuentosGrid;
         }(Serenity.EntityGrid));
         ReservasDescuentosGrid = __decorate([
@@ -13056,6 +13229,114 @@ var Geshotel;
 (function (Geshotel) {
     var Recepcion;
     (function (Recepcion) {
+        var ReservasOfertasGrid = (function (_super) {
+            __extends(ReservasOfertasGrid, _super);
+            function ReservasOfertasGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ReservasOfertasGrid.prototype.getColumnsKey = function () { return 'Recepcion.ReservasOfertas'; };
+            ReservasOfertasGrid.prototype.getDialogType = function () { return Recepcion.ReservasOfertasDialog; };
+            ReservasOfertasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasOfertasRow.idProperty; };
+            ReservasOfertasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasOfertasRow.localTextPrefix; };
+            ReservasOfertasGrid.prototype.getService = function () { return Recepcion.ReservasOfertasService.baseUrl; };
+            ReservasOfertasGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasOfertasGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasOfertasGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasOfertasRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            /**
+      * This method is called to get list of buttons to be created.
+      */
+            ReservasOfertasGrid.prototype.getButtons = function () {
+                // call base method to get list of buttons
+                // by default, base entity grid adds a few buttons, 
+                // add, refresh, column selection in order.
+                var buttons = _super.prototype.getButtons.call(this);
+                // here is several methods to remove add button
+                // only one is enabled, others are commented
+                // METHOD 1
+                // we would be able to simply return an empty button list,
+                // but this would also remove all other buttons
+                // return [];
+                // METHOD 2
+                // remove by splicing (something like delete by index)
+                // here we hard code add button index (not nice!)
+                // buttons.splice(0, 1);
+                // METHOD 3 - recommended
+                // remove by splicing, but this time find button index
+                // by its css class. it is the best and safer method
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            return ReservasOfertasGrid;
+        }(Serenity.EntityGrid));
+        ReservasOfertasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ReservasOfertasGrid);
+        Recepcion.ReservasOfertasGrid = ReservasOfertasGrid;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="ReservasOfertasGrid.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var RemovingReservasOfertasAddButton = (function (_super) {
+            __extends(RemovingReservasOfertasAddButton, _super);
+            function RemovingReservasOfertasAddButton(container) {
+                return _super.call(this, container) || this;
+            }
+            /**
+             * This method is called to get list of buttons to be created.
+             */
+            RemovingReservasOfertasAddButton.prototype.getButtons = function () {
+                // call base method to get list of buttons
+                // by default, base entity grid adds a few buttons, 
+                // add, refresh, column selection in order.
+                var buttons = _super.prototype.getButtons.call(this);
+                // here is several methods to remove add button
+                // only one is enabled, others are commented
+                // METHOD 1
+                // we would be able to simply return an empty button list,
+                // but this would also remove all other buttons
+                // return [];
+                // METHOD 2
+                // remove by splicing (something like delete by index)
+                // here we hard code add button index (not nice!)
+                // buttons.splice(0, 1);
+                // METHOD 3 - recommended
+                // remove by splicing, but this time find button index
+                // by its css class. it is the best and safer method
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
+            };
+            return RemovingReservasOfertasAddButton;
+        }(Recepcion.ReservasOfertasGrid));
+        RemovingReservasOfertasAddButton = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RemovingReservasOfertasAddButton);
+        Recepcion.RemovingReservasOfertasAddButton = RemovingReservasOfertasAddButton;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
         var ReservasOfertasDialog = (function (_super) {
             __extends(ReservasOfertasDialog, _super);
             function ReservasOfertasDialog() {
@@ -13075,28 +13356,6 @@ var Geshotel;
             Serenity.Decorators.responsive()
         ], ReservasOfertasDialog);
         Recepcion.ReservasOfertasDialog = ReservasOfertasDialog;
-    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Recepcion;
-    (function (Recepcion) {
-        var ReservasOfertasGrid = (function (_super) {
-            __extends(ReservasOfertasGrid, _super);
-            function ReservasOfertasGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ReservasOfertasGrid.prototype.getColumnsKey = function () { return 'Recepcion.ReservasOfertas'; };
-            ReservasOfertasGrid.prototype.getDialogType = function () { return Recepcion.ReservasOfertasDialog; };
-            ReservasOfertasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasOfertasRow.idProperty; };
-            ReservasOfertasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasOfertasRow.localTextPrefix; };
-            ReservasOfertasGrid.prototype.getService = function () { return Recepcion.ReservasOfertasService.baseUrl; };
-            return ReservasOfertasGrid;
-        }(Serenity.EntityGrid));
-        ReservasOfertasGrid = __decorate([
-            Serenity.Decorators.registerClass()
-        ], ReservasOfertasGrid);
-        Recepcion.ReservasOfertasGrid = ReservasOfertasGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -13137,10 +13396,43 @@ var Geshotel;
             ReservasServiciosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasServiciosRow.idProperty; };
             ReservasServiciosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasServiciosRow.localTextPrefix; };
             ReservasServiciosGrid.prototype.getService = function () { return Recepcion.ReservasServiciosService.baseUrl; };
+            ReservasServiciosGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasServiciosGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasServiciosGrid.prototype, "flagcontrato", {
+                get: function () {
+                    return 1;
+                },
+                set: function (value) {
+                    this._flagcontrato = 1;
+                    this.setEquality(Recepcion.ReservasServiciosRow.Fields.FlagContrato, 1);
+                    this.refresh();
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(ReservasServiciosGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasServiciosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             return ReservasServiciosGrid;
         }(Serenity.EntityGrid));
         ReservasServiciosGrid = __decorate([
-            Serenity.Decorators.registerClass()
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
         ], ReservasServiciosGrid);
         Recepcion.ReservasServiciosGrid = ReservasServiciosGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));

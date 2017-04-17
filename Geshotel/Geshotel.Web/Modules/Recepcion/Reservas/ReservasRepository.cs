@@ -130,7 +130,14 @@ namespace Geshotel.Recepcion.Repositories
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        {
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+                query.OrderBy("fecha_prevista_llegada", true);
+            }
+        }
         private class MyListHandler : ListRequestHandler<MyRow>
         {
             protected override void ApplySortBy(SqlQuery query, SortBy sortBy)

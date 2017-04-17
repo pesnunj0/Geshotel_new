@@ -1,42 +1,17 @@
-﻿
+﻿/// <reference path="ReservasContratosGrid.ts" />
+
 namespace Geshotel.Recepcion {
-    
+
     @Serenity.Decorators.registerClass()
-    export class ReservasOfertasGrid extends Serenity.EntityGrid<ReservasOfertasRow, any> {
-        protected getColumnsKey() { return 'Recepcion.ReservasOfertas'; }
-        protected getDialogType() { return ReservasOfertasDialog; }
-        protected getIdProperty() { return ReservasOfertasRow.idProperty; }
-        protected getLocalTextPrefix() { return ReservasOfertasRow.localTextPrefix; }
-        protected getService() { return ReservasOfertasService.baseUrl; }
+    export class RemovingReservasContratosAddButton extends Recepcion.ReservasContratosGrid {
 
         constructor(container: JQuery) {
             super(container);
         }
-        protected getInitialTitle() {
-            return null;
-        }
 
-        protected getGridCanLoad() {
-            return this.reservaID != null;
-
-        }
-
-        private _reservaID: number;
-
-        get reservaID() {
-            return this._reservaID;
-        }
-
-        set reservaID(value: number) {
-            if (this._reservaID !== value) {
-                this._reservaID = value;
-                this.setEquality(ReservasOfertasRow.Fields.ReservaId, value);
-                this.refresh();
-            }
-        }
         /**
-  * This method is called to get list of buttons to be created.
-  */
+         * This method is called to get list of buttons to be created.
+         */
         protected getButtons(): Serenity.ToolButton[] {
 
             // call base method to get list of buttons

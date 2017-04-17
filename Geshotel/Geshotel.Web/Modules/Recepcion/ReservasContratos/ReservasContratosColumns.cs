@@ -13,7 +13,7 @@ namespace Geshotel.Recepcion.Columns
     [BasedOnRow(typeof(Entities.ReservasContratosRow))]
     public class ReservasContratosColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ReservaContratoId { get; set; }
         public Int32 ReservaId { get; set; }
         public Int32 ContratoId { get; set; }

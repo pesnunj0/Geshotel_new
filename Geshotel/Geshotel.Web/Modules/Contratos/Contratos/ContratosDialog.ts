@@ -53,6 +53,7 @@ namespace Geshotel.Contratos {
             super.afterLoadEntity();
 
             this.lineasGrid.contratoID = this.entityId;
+            this.lineasGrid.hotelID = this.entity.HotelId;
             this.ofertasGrid.contratoID = this.entityId;
 
             this.cuposGrid.fechaDesde = this.entity.FechaDesde;

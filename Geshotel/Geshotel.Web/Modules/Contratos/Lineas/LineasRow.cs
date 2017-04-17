@@ -23,12 +23,47 @@ namespace Geshotel.Contratos.Entities
             set { Fields.LineaContratoId[this] = value; }
         }
 
-        [DisplayName("Contrato Id"), Column("contrato_id"), NotNull]
+        [DisplayName("Contrato"), Column("contrato_id"), NotNull, ForeignKey("contratos","contrato_id"),LeftJoin("jContratos")]
         public Int32? ContratoId
         {
             get { return Fields.ContratoId[this]; }
             set { Fields.ContratoId[this] = value; }
         }
+
+        [DisplayName("Hotel"), Expression("jContratos.[hotel_id]"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"),LookupInclude]
+        [LookupEditor("Portal.Hoteles")]
+        public Int16? HotelId
+        {
+            get { return Fields.HotelId[this]; }
+            set { Fields.HotelId[this] = value; }
+        }
+
+
+        [DisplayName("Hotel"), Expression("jHotel.[hotel]")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
+        }
+
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+        //*******
 
         [DisplayName("Oferta"), Column("oferta")]
         public Boolean? Oferta
@@ -52,7 +87,7 @@ namespace Geshotel.Contratos.Entities
         }
 
         [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jServicios"), TextualField("Servicio")]
-        [LookupEditor(typeof(ServiciosRow))]
+        [LookupEditor("Contratos.ServiciosHotel", CascadeFrom = "HotelId", CascadeField = "HotelId")]
         public Int32? ServicioId
         {
             get { return Fields.ServicioId[this]; }
@@ -289,6 +324,11 @@ namespace Geshotel.Contratos.Entities
             public StringField Imputacion;
             public StringField UserName;
             public StringField TipoServicio;
+
+            public Int16Field HotelId;
+            public StringField HotelName;
+            public Int16Field EmpresaId;
+            public StringField Empresa;
 
             public RowFields()
                 : base("[lineas_de_contrato]")

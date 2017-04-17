@@ -16,6 +16,9 @@ namespace Geshotel.Recepcion {
         private HabitacionesBloqueosGrid: ReservasHabitacionesBloqueosGrid;
         private ReservasServiciosGrid: ReservasServiciosGrid;
         private ReservasHuespedesGrid: ReservasHuespedesGrid;
+        private ReservasContratosGrid: ReservasContratosGrid;
+        private ReservasDescuentosGrid: ReservasDescuentosGrid;
+        private ReservasOfertasGrid: ReservasOfertasGrid;
 
 
         constructor() {
@@ -24,6 +27,9 @@ namespace Geshotel.Recepcion {
             this.HabitacionesBloqueosGrid = new ReservasHabitacionesBloqueosGrid(this.byId("HabitacionesBloqueosGrid"));
             this.ReservasServiciosGrid = new ReservasServiciosGrid(this.byId("ReservasServiciosGrid"));
             this.ReservasHuespedesGrid = new ReservasHuespedesGrid(this.byId("ReservasHuespedesGrid"));
+            this.ReservasContratosGrid = new ReservasContratosGrid(this.byId("ReservasContratosGrid"));
+            this.ReservasOfertasGrid = new ReservasOfertasGrid(this.byId("ReservasOfertasGrid"));
+            this.ReservasDescuentosGrid = new ReservasDescuentosGrid(this.byId("ReservasDescuentosGrid"));
             this.tabs.on('tabsactivate', (e, i) => {
                 this.arrange();
             });
@@ -34,6 +40,12 @@ namespace Geshotel.Recepcion {
 
             this.HabitacionesBloqueosGrid.reservaID = this.entityId;
             this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+            this.ReservasServiciosGrid.reservaID = this.entityId;
+            this.ReservasServiciosGrid.flagcontrato = 1;
+            this.ReservasContratosGrid.reservaID = this.entityId;
+            this.ReservasOfertasGrid.reservaID = this.entityId;
+            this.ReservasHuespedesGrid.reservaID = this.entityId;
+            this.ReservasDescuentosGrid.reservaID = this.entityId;
         }
 
         protected onSaveSuccess(response: Serenity.SaveResponse): void {
@@ -41,28 +53,22 @@ namespace Geshotel.Recepcion {
             // check that this is an insert
             if (this.isNew) {
                 Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
-
                 // Here I should call ClasesGeshotel.Geshotelk on server side.
-
-
-
                 // let's load inserted record using Retrieve service
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
                 }, resp => {
                     Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                 });
             } else {
                 Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
-
-
-
-
                 // let's load inserted record using Retrieve service
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
                 }, resp => {
                     Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                 });
             }
         }
@@ -126,6 +132,7 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess("Reservation Cancelled successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                         });
                     });
                 }
@@ -145,6 +152,7 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess("Reservation in Status Arrival Pending successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                         });
                     });
                 }
@@ -164,6 +172,7 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess("Reservation Checked In successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                         });
                     });
                 }
@@ -183,6 +192,7 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess("Reservation in Status Pre Check Out successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                         });
                     });
                 }
@@ -201,6 +211,7 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess("Reservation in Status Checked Out successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                         });
                     });
                 }

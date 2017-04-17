@@ -2,6 +2,7 @@
 namespace Geshotel.Recepcion {
     
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.filterable()
     export class ReservasServiciosGrid extends Serenity.EntityGrid<ReservasServiciosRow, any> {
         protected getColumnsKey() { return 'Recepcion.ReservasServicios'; }
         protected getDialogType() { return ReservasServiciosDialog; }
@@ -11,6 +12,38 @@ namespace Geshotel.Recepcion {
 
         constructor(container: JQuery) {
             super(container);
+        }
+        protected getInitialTitle() {
+            return null;
+        }
+
+        protected getGridCanLoad() {
+            return this.reservaID != null;
+
+        }
+
+        private _reservaID: number;
+        private _flagcontrato: number;
+
+        get flagcontrato() {
+            return 1;
+        }
+
+        get reservaID() {
+            return this._reservaID;
+        }
+
+        set reservaID(value: number) {
+            if (this._reservaID !== value) {
+                this._reservaID = value;
+                this.setEquality(ReservasServiciosRow.Fields.ReservaId, value);
+                this.refresh();
+            }
+        }
+        set flagcontrato(value: number) {
+            this._flagcontrato = 1;
+            this.setEquality(ReservasServiciosRow.Fields.FlagContrato, 1);
+            this.refresh();
         }
     }
 }

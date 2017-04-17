@@ -14,12 +14,22 @@ namespace Geshotel.Recepcion.Columns
     public class ReservasOfertasColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 ReservaOfertaId { get; set; }
-        public Int32 ReservaId { get; set; }
+        //public Int32 ReservaOfertaId { get; set; }
+        //public Int32 ReservaId { get; set; }
         public Int32 OfertaId { get; set; }
-        [EditLink]
-        public String Tipo { get; set; }
-        public Int16 Activa { get; set; }
-        public Int16 OfertaUsada { get; set; }
+        [EditLink, Width(120)]
+        public String Texto { get; set; }
+        [Width(90)]
+        public String UnidadCalculoName { get; set; }
+        [Width(30), AlignRight]
+        public Int16 N { get; set; }
+        [Width(150)]
+        public String TipoOfertaName { get; set; }
+        [Width(40), AlignRight]
+        public Decimal M { get; set; }
+        [Width(50),AlignCenter]
+        public Boolean Activa { get; set; }
+        [DisplayName("Usada"),Width(50),AlignCenter]
+        public Boolean OfertaUsada { get; set; }
     }
 }

@@ -1647,6 +1647,7 @@ declare namespace Geshotel.Contratos {
     }
     interface LineasForm {
         ContratoId: Serenity.IntegerEditor;
+        HotelId: Serenity.LookupEditor;
         Desde: Serenity.DateEditor;
         Hasta: Serenity.DateEditor;
         ServicioId: Serenity.LookupEditor;
@@ -1693,6 +1694,10 @@ declare namespace Geshotel.Contratos {
         Imputacion?: string;
         UserName?: string;
         TipoServicio?: string;
+        HotelId?: number;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
     }
     namespace LineasRow {
         const idProperty = "LineaContratoId";
@@ -1725,6 +1730,10 @@ declare namespace Geshotel.Contratos {
             const Imputacion: string;
             const UserName: string;
             const TipoServicio: string;
+            const HotelId: string;
+            const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
         }
     }
 }
@@ -2011,6 +2020,8 @@ declare namespace Geshotel.Contratos {
         FechaModificacion?: string;
         ClienteRazon?: string;
         HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
         UserName?: string;
     }
     namespace ReleasesRow {
@@ -2029,6 +2040,8 @@ declare namespace Geshotel.Contratos {
             const FechaModificacion: string;
             const ClienteRazon: string;
             const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
             const UserName: string;
         }
     }
@@ -7046,8 +7059,15 @@ declare namespace Geshotel.Recepcion {
         ReservaId?: number;
         OfertaId?: number;
         Tipo?: string;
-        Activa?: number;
-        OfertaUsada?: number;
+        Activa?: boolean;
+        OfertaUsada?: boolean;
+        UnidadCalculoId?: number;
+        Texto?: string;
+        N?: number;
+        TipoOfertaId?: number;
+        M?: number;
+        TipoOfertaName?: string;
+        UnidadCalculoName?: string;
     }
     namespace ReservasOfertasRow {
         const idProperty = "ReservaOfertaId";
@@ -7060,6 +7080,13 @@ declare namespace Geshotel.Recepcion {
             const Tipo: string;
             const Activa: string;
             const OfertaUsada: string;
+            const UnidadCalculoId: string;
+            const Texto: string;
+            const N: string;
+            const TipoOfertaId: string;
+            const M: string;
+            const TipoOfertaName: string;
+            const UnidadCalculoName: string;
         }
     }
 }
@@ -7244,13 +7271,11 @@ declare namespace Geshotel.Recepcion {
     }
     interface ReservasServiciosForm {
         ReservaId: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
-        UnidadCalculoId: Serenity.IntegerEditor;
+        ServicioId: Serenity.LookupEditor;
+        UnidadCalculoId: Serenity.LookupEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         Cantidad: Serenity.DecimalEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
         FlagContrato: Serenity.IntegerEditor;
         PrecioServicio: Serenity.DecimalEditor;
         ServicioExtra: Serenity.IntegerEditor;
@@ -7270,88 +7295,9 @@ declare namespace Geshotel.Recepcion {
         FlagContrato?: number;
         PrecioServicio?: number;
         ServicioExtra?: number;
-        ReservaFechaCreacion?: string;
-        ReservaHotelId?: number;
-        ReservaEstadoReservaId?: number;
-        ReservaClienteId?: number;
-        ReservaCanalReservaId?: number;
-        ReservaClienteIdFactura?: number;
-        ReservaFechaReserva?: string;
-        ReservaNombreReserva?: string;
-        ReservaFechaPrevistaLlegada?: string;
-        ReservaFechaPrevistaSalida?: string;
-        ReservaHoraPrevistaLlegada?: string;
-        ReservaHoraPrevistaSalida?: string;
-        ReservaObservacionesLlegada?: string;
-        ReservaObservacionesSalida?: string;
-        ReservaObservacionesCliente?: string;
-        ReservaObservaciones?: string;
-        ReservaFechaLlegada?: string;
-        ReservaFechaSalida?: string;
-        ReservaBonoReferencia?: string;
-        ReservaBonoOnline?: string;
-        ReservaBloquearTarifa?: number;
-        ReservaPermiteDevolucion?: number;
-        ReservaTipoTarjetaId?: number;
-        ReservaTarjetaCredito?: string;
-        ReservaCaducidad?: string;
-        ReservaCodSeguridad?: string;
-        ReservaContratoTtoo?: string;
-        ReservaCodigoOferta?: string;
-        ReservaValor?: number;
-        ReservaValorValidado?: number;
-        ReservaFechaValidacion?: string;
-        ReservaUsuarioValidacion?: number;
-        ReservaParoventasCheck?: number;
-        ReservaCuposCheck?: number;
-        ReservaReleaseCheck?: number;
-        ReservaReservaDingus?: number[];
-        ReservaDingusImpuestosIncluidos?: number;
-        ReservaDingusComision?: number;
-        ReservaReservaDingusTipo?: number;
-        ReservaFechaAnulacion?: string;
-        ReservaUserId?: number;
-        ReservaFechaModificacion?: string;
         ServicioNombreServicio?: string;
-        ServicioAbreviatura?: string;
-        ServicioTipoServicioId?: number;
-        ServicioSwProduccion?: boolean;
-        ServicioSwDescuento?: boolean;
-        ServicioSwAjustes?: boolean;
-        ServicioSwGastos?: boolean;
-        ServicioSwPension?: boolean;
-        ServicioSwRectificativa?: boolean;
-        ServicioTipoUnidadCalculoId?: number;
-        ServicioConceptoAceleradorReservasId?: number;
-        ServicioCosto?: number;
-        ServicioSumaServicioId?: number;
-        ServicioRestaServicioId?: number;
-        ServicioUserId?: number;
-        ServicioFechaModificacion?: string;
-        ServicioTipoHab?: number;
-        ServicioTipoPension?: number;
-        UnidadCalculoUc?: string;
-        UnidadCalculoDescripcionUnidadCalculo?: string;
-        UnidadCalculoTipoUnidadCalculoId?: number;
-        UnidadCalculoPax?: boolean;
-        UnidadCalculoServicioId?: number;
-        UnidadCalculoUserId?: number;
-        UnidadCalculoFechaModificacion?: string;
-        UserUsername?: string;
-        UserDisplayName?: string;
-        UserEmail?: string;
-        UserSource?: string;
-        UserPasswordHash?: string;
-        UserPasswordSalt?: string;
-        UserLastDirectoryUpdate?: string;
-        UserUserImage?: string;
-        UserInsertDate?: string;
-        UserInsertUserId?: number;
-        UserUpdateDate?: string;
-        UserUpdateUserId?: number;
-        UserIsActive?: number;
-        UserEmpresaId?: number;
-        UserHotelId?: number;
+        UnidadCalculo?: string;
+        Username?: string;
     }
     namespace ReservasServiciosRow {
         const idProperty = "ServicioReservaId";
@@ -7369,88 +7315,9 @@ declare namespace Geshotel.Recepcion {
             const FlagContrato: string;
             const PrecioServicio: string;
             const ServicioExtra: string;
-            const ReservaFechaCreacion: string;
-            const ReservaHotelId: string;
-            const ReservaEstadoReservaId: string;
-            const ReservaClienteId: string;
-            const ReservaCanalReservaId: string;
-            const ReservaClienteIdFactura: string;
-            const ReservaFechaReserva: string;
-            const ReservaNombreReserva: string;
-            const ReservaFechaPrevistaLlegada: string;
-            const ReservaFechaPrevistaSalida: string;
-            const ReservaHoraPrevistaLlegada: string;
-            const ReservaHoraPrevistaSalida: string;
-            const ReservaObservacionesLlegada: string;
-            const ReservaObservacionesSalida: string;
-            const ReservaObservacionesCliente: string;
-            const ReservaObservaciones: string;
-            const ReservaFechaLlegada: string;
-            const ReservaFechaSalida: string;
-            const ReservaBonoReferencia: string;
-            const ReservaBonoOnline: string;
-            const ReservaBloquearTarifa: string;
-            const ReservaPermiteDevolucion: string;
-            const ReservaTipoTarjetaId: string;
-            const ReservaTarjetaCredito: string;
-            const ReservaCaducidad: string;
-            const ReservaCodSeguridad: string;
-            const ReservaContratoTtoo: string;
-            const ReservaCodigoOferta: string;
-            const ReservaValor: string;
-            const ReservaValorValidado: string;
-            const ReservaFechaValidacion: string;
-            const ReservaUsuarioValidacion: string;
-            const ReservaParoventasCheck: string;
-            const ReservaCuposCheck: string;
-            const ReservaReleaseCheck: string;
-            const ReservaReservaDingus: string;
-            const ReservaDingusImpuestosIncluidos: string;
-            const ReservaDingusComision: string;
-            const ReservaReservaDingusTipo: string;
-            const ReservaFechaAnulacion: string;
-            const ReservaUserId: string;
-            const ReservaFechaModificacion: string;
             const ServicioNombreServicio: string;
-            const ServicioAbreviatura: string;
-            const ServicioTipoServicioId: string;
-            const ServicioSwProduccion: string;
-            const ServicioSwDescuento: string;
-            const ServicioSwAjustes: string;
-            const ServicioSwGastos: string;
-            const ServicioSwPension: string;
-            const ServicioSwRectificativa: string;
-            const ServicioTipoUnidadCalculoId: string;
-            const ServicioConceptoAceleradorReservasId: string;
-            const ServicioCosto: string;
-            const ServicioSumaServicioId: string;
-            const ServicioRestaServicioId: string;
-            const ServicioUserId: string;
-            const ServicioFechaModificacion: string;
-            const ServicioTipoHab: string;
-            const ServicioTipoPension: string;
-            const UnidadCalculoUc: string;
-            const UnidadCalculoDescripcionUnidadCalculo: string;
-            const UnidadCalculoTipoUnidadCalculoId: string;
-            const UnidadCalculoPax: string;
-            const UnidadCalculoServicioId: string;
-            const UnidadCalculoUserId: string;
-            const UnidadCalculoFechaModificacion: string;
-            const UserUsername: string;
-            const UserDisplayName: string;
-            const UserEmail: string;
-            const UserSource: string;
-            const UserPasswordHash: string;
-            const UserPasswordSalt: string;
-            const UserLastDirectoryUpdate: string;
-            const UserUserImage: string;
-            const UserInsertDate: string;
-            const UserInsertUserId: string;
-            const UserUpdateDate: string;
-            const UserUpdateUserId: string;
-            const UserIsActive: string;
-            const UserEmpresaId: string;
-            const UserHotelId: string;
+            const UnidadCalculo: string;
+            const Username: string;
         }
     }
 }
@@ -8490,7 +8357,9 @@ declare namespace Geshotel.Contratos {
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         private _contratoID;
+        private _hotelID;
         contratoID: number;
+        hotelID: number;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -9972,6 +9841,9 @@ declare namespace Geshotel.Recepcion {
         private HabitacionesBloqueosGrid;
         private ReservasServiciosGrid;
         private ReservasHuespedesGrid;
+        private ReservasContratosGrid;
+        private ReservasDescuentosGrid;
+        private ReservasOfertasGrid;
         constructor();
         protected afterLoadEntity(): void;
         protected onSaveSuccess(response: Serenity.SaveResponse): void;
@@ -10016,15 +9888,6 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
-    class ReservasContratosDialog extends Serenity.EntityDialog<ReservasContratosRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: ReservasContratosForm;
-    }
-}
-declare namespace Geshotel.Recepcion {
     class ReservasContratosGrid extends Serenity.EntityGrid<ReservasContratosRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ReservasContratosDialog;
@@ -10032,6 +9895,35 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
+        /**
+  * This method is called to get list of buttons to be created.
+  */
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class RemovingReservasContratosAddButton extends Recepcion.ReservasContratosGrid {
+        constructor(container: JQuery);
+        /**
+         * This method is called to get list of buttons to be created.
+         */
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class ReservasContratosDialog extends Serenity.EntityDialog<ReservasContratosRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: ReservasContratosForm;
+        updateInterface(): void;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10052,6 +9944,10 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10081,16 +9977,6 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
-    class ReservasOfertasDialog extends Serenity.EntityDialog<ReservasOfertasRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ReservasOfertasForm;
-    }
-}
-declare namespace Geshotel.Recepcion {
     class ReservasOfertasGrid extends Serenity.EntityGrid<ReservasOfertasRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ReservasOfertasDialog;
@@ -10098,6 +9984,33 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
+        /**
+  * This method is called to get list of buttons to be created.
+  */
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class RemovingReservasOfertasAddButton extends Recepcion.ReservasOfertasGrid {
+        constructor(container: JQuery);
+        /**
+         * This method is called to get list of buttons to be created.
+         */
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class ReservasOfertasDialog extends Serenity.EntityDialog<ReservasOfertasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ReservasOfertasForm;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10117,5 +10030,11 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        private _flagcontrato;
+        flagcontrato: number;
+        reservaID: number;
     }
 }

@@ -38,6 +38,26 @@ namespace Geshotel.Contratos.Entities
             set { Fields.HotelId[this] = value; }
         }
 
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+        //*******
+
+
         [DisplayName("Fecha Desde"), Column("fecha_desde"), NotNull]
         public DateTime? FechaDesde
         {
@@ -135,7 +155,8 @@ namespace Geshotel.Contratos.Entities
             public StringField ClienteRazon;
 
             public StringField HotelName;
-
+            public Int16Field EmpresaId;
+            public StringField Empresa;
             public StringField UserName;
 
             public RowFields()

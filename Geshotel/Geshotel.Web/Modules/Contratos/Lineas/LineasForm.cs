@@ -15,8 +15,11 @@ namespace Geshotel.Contratos.Forms
     {
         public Int32 ContratoId { get; set; }
         //public Boolean Oferta { get; set; }
+        [Updatable(false),Insertable(false)]
+        public Int16 HotelId { get; set; }
         public DateTime Desde { get; set; }
         public DateTime Hasta { get; set; }
+        [LookupEditor(("Contratos.ServiciosHotel"),CascadeFrom ="HotelId",CascadeField ="HotelId")]
         public Int32 ServicioId { get; set; }
         public Int16 UnidadCalculoId { get; set; }
         public Int16 FrecuenciaId { get; set; }

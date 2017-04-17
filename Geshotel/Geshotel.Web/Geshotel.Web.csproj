@@ -2586,8 +2586,10 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosGrid.ts" />
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosDialog.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\RemovingReservasContratosAddButton.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\RemovingReservasOfertasAddButton.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasDescuentos\ReservasDescuentosGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesDialog.ts" />

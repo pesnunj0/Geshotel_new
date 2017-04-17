@@ -11,5 +11,12 @@ namespace Geshotel.Recepcion {
 
         protected form = new ReservasContratosForm(this.idPrefix);
 
+        updateInterface() {
+            super.updateInterface();
+
+            Serenity.EditorUtils.setReadOnly(this.form.ReservaId, true);
+        }
+    }
+
     }
 }

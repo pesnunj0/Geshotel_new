@@ -32,7 +32,7 @@ namespace Geshotel.Contratos.Columns
         //public Int16 DiasDeAntelacion { get; set; }
         //public Int16 TipoServicioId { get; set; }
         //public Int32 ServicioId { get; set; }
-        [Width(80)]
+        [Width(100)]
         public String UnidadCalculoName { get; set; }
         //public Int32 ServicioLigadoId { get; set; }
         //public Int16 CupoOferta { get; set; }

@@ -5138,7 +5138,7 @@ Namespace geshotelk
 
         Function CambiarEstadoReserva(ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean) As Boolean
             Dim errorCode As Integer = 0
-            Dim retVal As Boolean = True
+            Dim retval As Boolean = True
             Dim cmd As MySqlCommand = prepareConection()
             Try
                 errorCode = CambiarEstadoReserva(cmd, reserva, estado, validar)
@@ -5146,10 +5146,11 @@ Namespace geshotelk
                 errorCode = 2
             End Try
 
-            If Not flushConection(cmd, errorCode) Then
-                retVal = False
+            flushConection(cmd, errorCode)
+            If errorCode <> 0 Then
+                retval = False
             End If
-            Return retVal
+            Return retval
         End Function
         Shared olddatosReservaActual As tablaServicios = Nothing
         Public Function obtieneServiciosReservaCache(ByVal reserva As Integer)
@@ -9208,7 +9209,7 @@ Namespace geshotelk
                 End If
             End If
             If Not skipValidar Then
-                If CambiarEstadoReserva(resultado.reserva_id, 1, False) <> 0 Then
+                If Not CambiarEstadoReserva(resultado.reserva_id, 1, False) Then
                     errorCode = 7
                     errorTxt = "No se puedo cambiar a Estado Reserva Pendiente"
                     AgregaInfo("obtieneServiciosReserva", "No pudo cambiar estado", -errorCode)
@@ -10173,6 +10174,11 @@ Namespace geshotelk
                     Dim fcount As Integer = filas.Count - 1
                     For x = 0 To fcount
                         If Not filas(x).RowState = DataRowState.Deleted Then
+                            ' Grabo user_id y fecha de modificacion
+                            ' GARRA ABRIL 2017
+                            '
+                            filas(x)("fecha_modificacion") = Now
+                            filas(x)("user_id") = userId
                             If filas(x)("reserva_id") <> reserva_id Then
                                 filas(x)("reserva_id") = reserva_id
                             End If
@@ -10180,6 +10186,9 @@ Namespace geshotelk
                         End If
                     Next
                     If Not IsNothing(ds.Tables("reservas_servicios").GetChanges) Then
+                        ' Borrar reservas_servicios con reserva_id y flag_contrato = 1 ??
+                        ' Preguntar a Tano
+                        fcount = ExecuteNonQuery(cmd, "DELETE FROM reservas_servicios WHERE flag_contrato =1 AND reserva_id =?")
                         writer = getDataAdapter(cmd, sqlReservasServicios)
                         writer.Fill(ds.Tables("reservas_servicios"))
                         writer.Update(ds.Tables("reservas_servicios"))

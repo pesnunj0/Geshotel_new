@@ -17,8 +17,12 @@ namespace Geshotel.Recepcion.Columns
         public Int32 ReservasHuespedesId { get; set; }
         [Hidden,DisplayName("Reserva"),Width(45)]
         public Int32 ReservaId { get; set; }
-        [Width(130),QuickFilter]
-        public String NombreCompleto { get; set; }
+        //[Width(130), QuickFilter]
+        //public String NombreCompleto { get; set; }
+        [Width(90), QuickFilter]
+        public String Nombre { get; set; }
+        [Width(100),QuickFilter]
+        public String Apellidos { get; set; }
         public String Nif { get; set; }
 
         public DateTime FechaLlegada { get; set; }

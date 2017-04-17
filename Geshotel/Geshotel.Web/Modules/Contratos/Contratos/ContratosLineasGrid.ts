@@ -54,9 +54,22 @@
         }
 
         private _contratoID: number;
+        private _hotelID: number;
 
         get contratoID() {
             return this._contratoID;
+        }
+
+        get hotelID() {
+            return this._hotelID;
+        }
+
+        set hotelID(value: number) {
+            if (this._hotelID !== value) {
+                this._hotelID = value;
+                this.setEquality(LineasRow.Fields.HotelId, value);
+                this.refresh();
+            }
         }
 
         set contratoID(value: number) {

@@ -13,6 +13,7 @@ namespace Geshotel.Contratos {
             super.updateInterface();
 
             Serenity.EditorUtils.setReadOnly(this.form.ContratoId, true);
+            Serenity.EditorUtils.setReadOnly(this.form.HotelId, true);
         }
     }
 }

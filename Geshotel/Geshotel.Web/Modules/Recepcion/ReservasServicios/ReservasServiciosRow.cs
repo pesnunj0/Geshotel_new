@@ -45,14 +45,14 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.UnidadCalculoId[this] = value; }
         }
 
-        [DisplayName("Fecha Desde"), Column("fecha_desde"), NotNull]
+        [DisplayName("Fecha Desde"), Column("fecha_desde")]
         public DateTime? FechaDesde
         {
             get { return Fields.FechaDesde[this]; }
             set { Fields.FechaDesde[this] = value; }
         }
 
-        [DisplayName("Fecha Hasta"), Column("fecha_hasta"), NotNull]
+        [DisplayName("Fecha Hasta"), Column("fecha_hasta")]
         public DateTime? FechaHasta
         {
             get { return Fields.FechaHasta[this]; }
@@ -67,7 +67,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("User"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
-        [LookupEditor("Portal.Usuarios")]
+        [LookupEditor("Portal.Users")]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
@@ -102,14 +102,12 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ServicioExtra[this] = value; }
         }
 
-        [DisplayName("Servicio Nombre Servicio"), Expression("jServicio.[nombre_servicio]")]
+        [DisplayName("Servicio"), Expression("jServicio.[nombre_servicio]")]
         public String ServicioNombreServicio
         {
             get { return Fields.ServicioNombreServicio[this]; }
             set { Fields.ServicioNombreServicio[this] = value; }
         }
-
-
 
 
         [DisplayName("Unidad Calculo"), Expression("jUnidadCalculo.[descripcion_unidad_calculo]")]

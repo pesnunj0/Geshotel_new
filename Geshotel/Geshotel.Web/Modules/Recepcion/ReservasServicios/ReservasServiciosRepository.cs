@@ -41,6 +41,22 @@ namespace Geshotel.Recepcion.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            // --------------------------------------------------------------------
+            // Filtramos y mostramos solo los servicios para el contrato de TTOO
+            // ABRIL 2017
+            // --------------------------------------------------------------------
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                query.Where(
+                     fld.FlagContrato == 1
+                       .ToString()
+                        );
+
+            }
+        }
     }
 }

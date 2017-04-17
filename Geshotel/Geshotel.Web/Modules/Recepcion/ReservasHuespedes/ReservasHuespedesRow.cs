@@ -28,7 +28,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ReservaId[this] = value; }
         }
 
-        [DisplayName("Huesped Id"), Column("huesped_id"), NotNull,ForeignKey("huespedes","huesped_id"),LeftJoin("jHuesped"), TextualField("GuestName")]
+        [DisplayName("Huesped Id"), Column("huesped_id"), NotNull, ForeignKey("huespedes", "huesped_id") ,LeftJoin("jHuesped"), TextualField("NombreCompleto")]
         public Int32? HuespedId
         {
             get { return Fields.HuespedId[this]; }
@@ -49,12 +49,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Apellidos[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(jHuesped.[nombre],jHuesped.[apellidos]")]
-        public String NombreCompleto
-        {
-            get { return Fields.NombreCompleto[this]; }
-            set { Fields.NombreCompleto[this] = value; }
-        }
+        //[DisplayName("Full Name"), Expression("CONCAT(jHuesped.[nombre],' ',jHuesped.[apellidos]"),QuickSearch]
+
+        //public String NombreCompleto
+        //{
+        //    get { return Fields.NombreCompleto[this]; }
+        //    set { Fields.NombreCompleto[this] = value; }
+        //}
         [DisplayName("Birthday"), Expression("jHuesped.[fecha_nacimiento]")]
         public DateTime? FechaNacimiento
         {
@@ -246,7 +247,7 @@ namespace Geshotel.Recepcion.Entities
 
             public StringField Nombre;
             public StringField Apellidos;
-            public StringField NombreCompleto;
+ //           public StringField NombreCompleto;
             public StringField TipoDocumentoId;
             public StringField TipoDocumento;
             public StringField Nif;
