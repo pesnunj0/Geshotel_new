@@ -685,6 +685,13 @@ namespace MVC
         public static class Recepcion
         {
 
+            public static class Arrivals
+            {
+
+                public const string ArrivalsIndex = "~/Modules/Recepcion/Arrivals/ArrivalsIndex.cshtml";
+            }
+
+
             public static class HabitacionesBloqueos
             {
 

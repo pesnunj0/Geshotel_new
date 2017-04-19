@@ -1,5 +1,6 @@
 {
     "Controls.EntityDialog.LocalizationConfirmation": "Guardar traducciones?",
+    "Controls.EntityGrid.CheckInArrivalsButton": "Check-In de las Reservas Seleccionadas",
     "Controls.SelectEditor.EmptyItemText": "--All--",
     "Db.Administration.CategoriaHoteles.EntityPlural": "Categoria Hoteles",
     "Db.Administration.CategoriaHoteles.EntitySingular": "Categoria Hoteles",
@@ -187,6 +188,8 @@
     "Db.Recepcion.Reservas.HoraPrevistaSalida": "Hora Salida",
     "Db.Recepcion.Reservas.NombreReserva": "Contacto",
     "Db.Recepcion.Reservas.ReservaId": "Nº Reserva",
+    "Db.Recepcion.Reservas.TipoHabitacion": "Tipo Habit.",
+    "Db.Recepcion.Reservas.TipoHabitacionId": "Tipo Habitacion",
     "Db.Recepcion.Reservas.Valor": "Importe Total",
     "Db.Recepcion.Reservas.ValorValidado": "Importe Validado",
     "Db.Recepcion.ReservasContratos.EntityPlural": "Contratos",

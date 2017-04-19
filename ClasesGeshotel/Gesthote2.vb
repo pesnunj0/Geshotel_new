@@ -10,7 +10,7 @@ Imports System.Configuration
 Imports MySql.Data.MySqlClient
 Imports System.Collections
 
-'******************************************************************************************************************************************
+'******************************************************************************************************************************************************
 'Aqui voy As apuntar los cambios que voy haciendo sobre el original
 '    1.- Crear provider para saber si es Mysql o SqlServer. Sigo empeñado en intentar que sean compatibles
 '    2.- Reemplazar los IFNULL por COALESCE que sirve para las dos BD
@@ -21,9 +21,9 @@ Imports System.Collections
 '    7.- Quitar hora_llegada y hora de salida en Metareserva
 '    8.- Cambiar las busquedas en base de datos de hora_prevista_llegada y salida por '12:00:00'
 '    9.- CrearClase se añade el parámetro de conexion por si hiciera falta en un futuro
-'   10.- Metareserva UCS se ha cambiado a List. IMPORTANTE ver lineas comentadas 8015 que debe buscarse solucion
+'   10.- Metareserva UCS se ha cambiado a List. IMPORTANTE ver lineas comentadas 8028 que debe buscarse solucion GARRA Javier
 '   11.- Campos añadidos a Reserva y MetaReserva fecha_creacion,adultos,child_50, child_free, bebes,nombre_reserva, pension_id, tipo_habitacion_id
-'******************************************************************************************************************************************
+'******************************************************************************************************************************************************
 Namespace geshotelk
     Public Class GesHotelClase
         Inherits GesHotelClaseUtils
@@ -38,7 +38,7 @@ Namespace geshotelk
 
         Public metaresid As Integer = -1
         Public metaresidhash As Hashtable
-        Private Shared sql_last_insert_id As String = "SELECT SCOPE_IDENTITY()"
+        Private Shared sql_last_insert_id As String = "SELECT LAST_INSERT_ID()"
 
         Private Function permitirCache() As Boolean
             Return True
@@ -257,10 +257,9 @@ Namespace geshotelk
 
         Private Function Obtiene_ultima_id(ByVal cmd As Object) As Integer
 
-            Dim sql_last_insert_id As Integer = "SELECT SCOPE_IDENTITY()"
-            If provider = "Mysql.Data.MySqlClient" Then
-                sql_last_insert_id = "SELECT LAST_INSERT_ID()"
-
+            Dim sql_last_insert_id As Integer = "SELECT LAST_INSERT_ID()"
+            If provider = "System.Data.SqlClient" Then
+                sql_last_insert_id = "SELECT SCOPE_IDENTITY()"
             End If
             Return ExecuteScalar(cmd, sql_last_insert_id)
         End Function
@@ -714,7 +713,8 @@ Namespace geshotelk
             Public habitacion_servicio_id As Integer
             Public numero_habitaciones As Integer
             Public pension_servicio_id As Integer
-            Public unidades_calculos As List(Of UCS)
+            'Public unidades_calculos As List(Of UCS)
+            Public unidades_calculos() As UCS
             Public observaciones As String
             Public codigo_oferta As String = ""
             Public contract_id As String = ""
@@ -8020,14 +8020,15 @@ Namespace geshotelk
                     res.cliente_id = busca_ttoo(cmd, res)
                 End If
                 Dim retval() As Object = getDingusHuespedes(cmd, res.reserva_Dingus, unidades_calculos.Tables(0), dni, telefono, res.email, res.cliente_id)
+
                 Dim hues As ArrayList = retval(0)
                 Dim unid As Hashtable = retval(1)
 
 
                 res.huespedes = hues.ToArray(GetType(MetaHuesped))
-                'Dim toarray As List(Of UCS)
-                'unid.Values.CopyTo(toarray, 0)
-                'res.unidades_calculos = toarray
+                Dim toarray(unid.Count - 1) As UCS
+                unid.Values.CopyTo(toarray, 0)
+                res.unidades_calculos = toarray
 
                 Dim habs As New Hashtable()
 
@@ -10186,10 +10187,9 @@ Namespace geshotelk
                         End If
                     Next
                     If Not IsNothing(ds.Tables("reservas_servicios").GetChanges) Then
-                        ' Borrar reservas_servicios con reserva_id y flag_contrato = 1 ??
-                        ' Preguntar a Tano
-                        fcount = ExecuteNonQuery(cmd, "DELETE FROM reservas_servicios WHERE flag_contrato =1 AND reserva_id =?")
+
                         writer = getDataAdapter(cmd, sqlReservasServicios)
+
                         writer.Fill(ds.Tables("reservas_servicios"))
                         writer.Update(ds.Tables("reservas_servicios"))
                     End If

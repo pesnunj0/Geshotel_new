@@ -62,3 +62,72 @@
     > .size { width: 650px; }
     .caption { width: 150px; }
 }
+
+.s-Recepcion-ReservasGrid {
+    .anulada .slick-cell, .anulada .slick-cell a {
+        color: lightgray;
+    }
+    .facturada .slick-cell, .facturada .slick-cell a {
+        color: gray;
+    }
+
+    .con-errores .slick-cell, .con-errores .slick-cell a {
+        background-color: #ffaaaa;
+        color: black;
+    }
+
+    .checked-in .slick-cell, .checked-in .slick-cell a {
+        background-color: lightgreen;
+    }
+
+    .pendiente .slick-cell, .pendiente .slick-cell a {
+        background-color: orange;
+    }
+
+    .no-show {
+        background-color: #ffd5c0;
+
+    .slick-cell, .slick-cell a {
+        color: black;
+        }
+    }
+    
+    .discontinued .slick-cell, .discontinued .slick-cell a {
+        color: lightgray;
+    }
+
+    .out-of-stock .slick-cell, .out-of-stock .slick-cell a {
+        background-color: #ffaaaa;
+        color: red;
+    }
+
+    .critical-stock {
+        background-color: #ffd5c0;
+
+        .slick-cell, .slick-cell a {
+            color: black;
+        }
+    }
+
+    .much-stock {
+
+        .slick-cell, .slick-cell a {
+            font-style: italic;
+        }
+    }
+
+    .high-price .col-unit-price {
+        background-color: darkorchid;
+        color: #fff;
+    }
+
+    .medium-price .col-unit-price {
+        background-color: yellow;
+        color: #000;
+    }
+
+    .low-price .col-unit-price {
+        background-color: green;
+        color: #fff;
+    }
+}

@@ -28,15 +28,40 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ReservaId[this] = value; }
         }
 
-        [DisplayName("Contrato Id"), Column("contrato_id"), NotNull]
+        [DisplayName("Contrato Id"), Column("contrato_id"), ForeignKey("contratos","contrato_id"),LeftJoin("jContratos"), NotNull]
         public Int32? ContratoId
         {
             get { return Fields.ContratoId[this]; }
             set { Fields.ContratoId[this] = value; }
         }
+        [DisplayName("Fecha Desde"),Expression("jContratos.fecha_desde")]
+        public DateTime? FechaDesde
+        {
+            get { return Fields.FechaDesde[this]; }
+            set { Fields.FechaDesde[this] = value; }
+        }
+
+        [DisplayName("Fecha Hasta"), Expression("jContratos.fecha_hasta")]
+        public DateTime? FechaHasta
+        {
+            get { return Fields.FechaHasta[this]; }
+            set { Fields.FechaHasta[this] = value; }
+        }
+        [DisplayName("ClienteId"), Expression("jContratos.cliente_id"), ForeignKey("clientes","cliente_id"),LeftJoin("jClientes")]
+        public Int32? ClienteId
+        {
+            get { return Fields.ClienteId[this]; }
+            set { Fields.ClienteId[this] = value; }
+        }
+        [DisplayName("Cliente"), Expression("jClientes.razon")]
+        public String ClienteName
+        {
+            get { return Fields.ClienteName[this]; }
+            set { Fields.ClienteName[this] = value; }
+        }
 
         [DisplayName("Directo"), Column("directo")]
-        public Int16? Directo
+        public Boolean? Directo
         {
             get { return Fields.Directo[this]; }
             set { Fields.Directo[this] = value; }
@@ -59,7 +84,12 @@ namespace Geshotel.Recepcion.Entities
             public Int32Field ReservaContratoId;
             public Int32Field ReservaId;
             public Int32Field ContratoId;
-            public Int16Field Directo;
+            public BooleanField Directo;
+
+            public DateTimeField FechaDesde;
+            public DateTimeField FechaHasta;
+            public Int32Field ClienteId;
+            public StringField ClienteName;
 
             public RowFields()
                 : base()

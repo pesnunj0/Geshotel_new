@@ -8738,6 +8738,66 @@ section.content > .s-DataGrid {
 .s-Recepcion-HuespedesDialog .caption {
   width: 150px;
 }
+.s-Recepcion-ReservasGrid .anulada .slick-cell,
+.s-Recepcion-ReservasGrid .anulada .slick-cell a {
+  color: lightgray;
+}
+.s-Recepcion-ReservasGrid .facturada .slick-cell,
+.s-Recepcion-ReservasGrid .facturada .slick-cell a {
+  color: gray;
+}
+.s-Recepcion-ReservasGrid .con-errores .slick-cell,
+.s-Recepcion-ReservasGrid .con-errores .slick-cell a {
+  background-color: #ffaaaa;
+  color: black;
+}
+.s-Recepcion-ReservasGrid .checked-in .slick-cell,
+.s-Recepcion-ReservasGrid .checked-in .slick-cell a {
+  background-color: lightgreen;
+}
+.s-Recepcion-ReservasGrid .pendiente .slick-cell,
+.s-Recepcion-ReservasGrid .pendiente .slick-cell a {
+  background-color: orange;
+}
+.s-Recepcion-ReservasGrid .no-show {
+  background-color: #ffd5c0;
+}
+.s-Recepcion-ReservasGrid .no-show .slick-cell,
+.s-Recepcion-ReservasGrid .no-show .slick-cell a {
+  color: black;
+}
+.s-Recepcion-ReservasGrid .discontinued .slick-cell,
+.s-Recepcion-ReservasGrid .discontinued .slick-cell a {
+  color: lightgray;
+}
+.s-Recepcion-ReservasGrid .out-of-stock .slick-cell,
+.s-Recepcion-ReservasGrid .out-of-stock .slick-cell a {
+  background-color: #ffaaaa;
+  color: red;
+}
+.s-Recepcion-ReservasGrid .critical-stock {
+  background-color: #ffd5c0;
+}
+.s-Recepcion-ReservasGrid .critical-stock .slick-cell,
+.s-Recepcion-ReservasGrid .critical-stock .slick-cell a {
+  color: black;
+}
+.s-Recepcion-ReservasGrid .much-stock .slick-cell,
+.s-Recepcion-ReservasGrid .much-stock .slick-cell a {
+  font-style: italic;
+}
+.s-Recepcion-ReservasGrid .high-price .col-unit-price {
+  background-color: darkorchid;
+  color: #fff;
+}
+.s-Recepcion-ReservasGrid .medium-price .col-unit-price {
+  background-color: yellow;
+  color: #000;
+}
+.s-Recepcion-ReservasGrid .low-price .col-unit-price {
+  background-color: green;
+  color: #fff;
+}
 .s-Default-ReservasHabitacionesDialog > .size {
   width: 650px;
 }

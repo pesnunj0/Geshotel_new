@@ -14,7 +14,6 @@ namespace Geshotel.Recepcion {
         ReservaFechaPrevistaSalida?: string;
         Nombre?: string;
         Apellidos?: string;
-        NombreCompleto?: string;
         TipoDocumentoId?: string;
         TipoDocumento?: string;
         Nif?: string;
@@ -48,7 +47,6 @@ namespace Geshotel.Recepcion {
             export declare const ReservaFechaPrevistaSalida: string;
             export declare const Nombre: string;
             export declare const Apellidos: string;
-            export declare const NombreCompleto: string;
             export declare const TipoDocumentoId: string;
             export declare const TipoDocumento: string;
             export declare const Nif: string;
@@ -64,7 +62,7 @@ namespace Geshotel.Recepcion {
             export declare const TarjetaFidelizacion: string;
         }
 
-        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'TipoDocumentoId', 'TipoDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

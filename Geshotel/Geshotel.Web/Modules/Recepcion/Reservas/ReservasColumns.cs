@@ -23,12 +23,13 @@ namespace Geshotel.Recepcion.Columns
         public String Empresa { get; set; }
         [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
         public String HotelName { get; set; }
+        [Width(70),QuickFilter]
         public String EstadoReserva { get; set; }
         [DisplayName("Contrato"),Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
         public String ClienteRazon { get; set; }
-        [Width(110),QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"), QuickFilterOption("FilterValue", 1)]
+        [LookupEditor("Contratos.ServiciosHotel"),Width(110),QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"), QuickFilterOption("FilterValue", 1)]
         public String TipoHabitacion { get; set; }
-        [Width(100), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
+        [LookupEditor("Contratos.ServiciosHotel"),Width(100), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
         public String Pension { get; set; }
         [Width(45), AlignCenter]
         public Int16 Pax { get; set; }

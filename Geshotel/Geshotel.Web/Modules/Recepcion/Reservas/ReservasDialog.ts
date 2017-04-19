@@ -60,6 +60,8 @@ namespace Geshotel.Recepcion {
                 }, resp => {
                     Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
                 });
             } else {
                 Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -69,6 +71,7 @@ namespace Geshotel.Recepcion {
                 }, resp => {
                     Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
                 });
             }
         }

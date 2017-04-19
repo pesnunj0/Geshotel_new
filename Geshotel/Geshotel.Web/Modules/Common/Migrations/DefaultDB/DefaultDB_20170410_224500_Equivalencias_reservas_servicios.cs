@@ -5,6 +5,7 @@ using FluentMigrator;
 // - equivalencias_reservas_servicios
 // - unidades_calculo_agrupados. Importante para definir que A+N1+N2+B lo que tiene
 // - ofertas_codigos
+// - clientes_hotel
 // ************************************************************************************************
 namespace Geshotel.Migrations.DefaultDB
 {
@@ -141,6 +142,31 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnTable("ofertas_codigos")
                 .OnColumn("oferta_id").Ascending()
                 .OnColumn("codigo_oferta").Ascending()
+                .WithOptions().Unique();
+
+            if (Schema.Table("clientes_hotel").Exists())
+                Delete.Table("clientes_hotel");
+
+            Create.Table("clientes_hotel")
+                .WithColumn("clientes_hotel_id").AsInt32().PrimaryKey().Identity().NotNullable()
+                .WithColumn("cliente_id").AsInt32().NotNullable()
+                .WithColumn("hotel_id").AsInt16().NotNullable()
+                .WithColumn("cta_contable").AsString(15)
+                .WithColumn("dpto_contable").AsString(5)
+                .WithColumn("cta_anticipos").AsString(15)
+                .WithColumn("dpto_anticipos").AsString(5)
+                .WithColumn("cta_depositos").AsString(15)
+                .WithColumn("cliente_bavel").AsString(20)
+                .WithColumn("tipo_bavel").AsBoolean()
+                .WithColumn("factura_anticipada").AsBoolean()
+                .WithColumn("precio_dingus").AsBoolean()
+                .WithColumn("impuestos_incluidos").AsBoolean().WithDefaultValue(1)
+                .WithColumn("comision").AsDecimal(5, 2);
+
+            Create.Index("IX_clientes_hotel")
+                .OnTable("clientes_hotel")
+                .OnColumn("cliente_id").Ascending()
+                .OnColumn("hotel_id").Ascending()
                 .WithOptions().Unique();
 
         }

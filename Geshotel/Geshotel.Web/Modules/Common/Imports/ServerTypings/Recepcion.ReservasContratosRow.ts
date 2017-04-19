@@ -4,7 +4,11 @@ namespace Geshotel.Recepcion {
         ReservaContratoId?: number;
         ReservaId?: number;
         ContratoId?: number;
-        Directo?: number;
+        Directo?: boolean;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        ClienteId?: number;
+        ClienteName?: string;
     }
 
     export namespace ReservasContratosRow {
@@ -16,9 +20,13 @@ namespace Geshotel.Recepcion {
             export declare const ReservaId: string;
             export declare const ContratoId: string;
             export declare const Directo: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
+            export declare const ClienteId: string;
+            export declare const ClienteName: string;
         }
 
-        ['ReservaContratoId', 'ReservaId', 'ContratoId', 'Directo'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservaContratoId', 'ReservaId', 'ContratoId', 'Directo', 'FechaDesde', 'FechaHasta', 'ClienteId', 'ClienteName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

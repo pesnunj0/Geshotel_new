@@ -6687,7 +6687,11 @@ declare namespace Geshotel.Recepcion {
         ReservaContratoId?: number;
         ReservaId?: number;
         ContratoId?: number;
-        Directo?: number;
+        Directo?: boolean;
+        FechaDesde?: string;
+        FechaHasta?: string;
+        ClienteId?: number;
+        ClienteName?: string;
     }
     namespace ReservasContratosRow {
         const idProperty = "ReservaContratoId";
@@ -6697,6 +6701,10 @@ declare namespace Geshotel.Recepcion {
             const ReservaId: string;
             const ContratoId: string;
             const Directo: string;
+            const FechaDesde: string;
+            const FechaHasta: string;
+            const ClienteId: string;
+            const ClienteName: string;
         }
     }
 }
@@ -6973,7 +6981,6 @@ declare namespace Geshotel.Recepcion {
         ReservaFechaPrevistaSalida?: string;
         Nombre?: string;
         Apellidos?: string;
-        NombreCompleto?: string;
         TipoDocumentoId?: string;
         TipoDocumento?: string;
         Nif?: string;
@@ -7005,7 +7012,6 @@ declare namespace Geshotel.Recepcion {
             const ReservaFechaPrevistaSalida: string;
             const Nombre: string;
             const Apellidos: string;
-            const NombreCompleto: string;
             const TipoDocumentoId: string;
             const TipoDocumento: string;
             const Nif: string;
@@ -9790,6 +9796,85 @@ declare namespace Geshotel.Portal {
         constructor(container: JQuery);
     }
 }
+/*********************************************************************************************************************************
+Cambiamos el css si el estado de la reserva es con errores, la ponemos en rojo " out-of-stock"
+Si está pendiente de entrar o de salir la pondremos en Naranja (estado = 2 y llegada = hoy o estado =3 o 4 y salida = hoy)
+Gris si estado =1 o si estado= 5. Normal el resto.
+Seems no working
+Javier Núñez : ABRIL 2017
+**********************************************************************************************************************************/
+declare namespace Geshotel.Recepcion {
+    class ReservasGrid extends Serenity.EntityGrid<ReservasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ReservasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        /**
+ * This method is called for all rows
+ * @param item Data item for current row
+ * @param index Index of the row in grid
+ */
+        protected getItemCssClass(item: Recepcion.ReservasRow, index: number): string;
+        /**
+         * This method is called to get list of quick filters to be created for this grid.
+         * By default, it returns quick filter objects corresponding to properties that
+         * have a [QuickFilter] attribute at server side OrderColumns.cs
+         */
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+/************************************************************************************************************************************************************
+Arrivals List
+What I try to do is the following:
+
+1.- Filter Reservations with status = ArrivalPending and FechaPervistaLLegada = FechaHotel. As I do not know how to get it, i use currentdate instead
+2.- Select Reservations end user wants to checkIn and Add a button to do it
+
+Javier Núñez : APRIL 2017
+*************************************************************************************************************************************************************/
+declare namespace Geshotel.Recepcion {
+    class ArrivalsGrid extends Recepcion.ReservasGrid {
+        private rowSelection;
+        constructor(container: JQuery);
+        protected createToolbarExtensions(): void;
+        getInitialTitle(): string;
+        getButtons(): {
+            title: string;
+            cssClass: string;
+            icon: string;
+            onClick: () => void;
+        }[];
+        protected getColumns(): Slick.Column[];
+        protected getViewOptions(): Slick.RemoteViewOptions;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class CheckInAction extends Common.BulkServiceAction {
+        /**
+         * This controls how many service requests will be used in parallel.
+         * Determine this number based on how many requests your server
+         * might be able to handle, and amount of wait on external resources.
+         */
+        protected getParallelRequests(): number;
+        /**
+         * These number of records IDs will be sent to your service in one
+         * service call. If your service is designed to handle one record only,
+         * set it to 1. But note that, if you have 5000 records, this will
+         * result in 5000 service calls / requests.
+         */
+        protected getBatchSize(): number;
+        /**
+         * This is where you should call your service.
+         * Batch parameter contains the selected order IDs
+         * that should be processed in this service call.
+         */
+        protected executeForBatch(batch: any): void;
+    }
+}
 declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosDialog extends Serenity.EntityDialog<HabitacionesBloqueosRow, any> {
         protected getFormKey(): string;
@@ -9849,17 +9934,6 @@ declare namespace Geshotel.Recepcion {
         protected onSaveSuccess(response: Serenity.SaveResponse): void;
         protected updateInterface(): void;
         protected getToolbarButtons(): Serenity.ToolButton[];
-    }
-}
-declare namespace Geshotel.Recepcion {
-    class ReservasGrid extends Serenity.EntityGrid<ReservasRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ReservasDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Geshotel.Recepcion {

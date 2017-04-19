@@ -6063,7 +6063,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasContratosRow.Fields || (ReservasContratosRow.Fields = {}));
-            ['ReservaContratoId', 'ReservaId', 'ContratoId', 'Directo'].forEach(function (x) { return Fields[x] = x; });
+            ['ReservaContratoId', 'ReservaId', 'ContratoId', 'Directo', 'FechaDesde', 'FechaHasta', 'ClienteId', 'ClienteName'].forEach(function (x) { return Fields[x] = x; });
         })(ReservasContratosRow = Recepcion.ReservasContratosRow || (Recepcion.ReservasContratosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6176,7 +6176,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasHuespedesRow.Fields || (ReservasHuespedesRow.Fields = {}));
-            ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion'].forEach(function (x) { return Fields[x] = x; });
+            ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'TipoDocumentoId', 'TipoDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion'].forEach(function (x) { return Fields[x] = x; });
         })(ReservasHuespedesRow = Recepcion.ReservasHuespedesRow || (Recepcion.ReservasHuespedesRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -12453,6 +12453,245 @@ var Geshotel;
         Portal.UnidadesCalculoGrid = UnidadesCalculoGrid;
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
+/*********************************************************************************************************************************
+Cambiamos el css si el estado de la reserva es con errores, la ponemos en rojo " out-of-stock"
+Si está pendiente de entrar o de salir la pondremos en Naranja (estado = 2 y llegada = hoy o estado =3 o 4 y salida = hoy)
+Gris si estado =1 o si estado= 5. Normal el resto.
+Seems no working
+Javier Núñez : ABRIL 2017
+**********************************************************************************************************************************/
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasGrid = (function (_super) {
+            __extends(ReservasGrid, _super);
+            function ReservasGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ReservasGrid.prototype.getColumnsKey = function () { return 'Recepcion.Reservas'; };
+            ReservasGrid.prototype.getDialogType = function () { return Recepcion.ReservasDialog; };
+            ReservasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasRow.idProperty; };
+            ReservasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasRow.localTextPrefix; };
+            ReservasGrid.prototype.getService = function () { return Recepcion.ReservasService.baseUrl; };
+            ReservasGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Recepcion/Reservas/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            /**
+     * This method is called for all rows
+     * @param item Data item for current row
+     * @param index Index of the row in grid
+     */
+            ReservasGrid.prototype.getItemCssClass = function (item, index) {
+                var fechaHotel = item.HotelId == null ? null : Geshotel.Portal.HotelesRow.getLookup().itemById[item.HotelId].FechaHotel;
+                var klass = "";
+                if (item.EstadoReservaId == 0)
+                    klass += " con-errores";
+                else if (item.EstadoReservaId == 5)
+                    klass += " facturada";
+                else if (item.EstadoReservaId == 2)
+                    klass += " anulada";
+                else if (item.EstadoReservaId == 6)
+                    klass += " no-show";
+                else if (Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(item.FechaPrevistaLlegada, 'yyyy-MM-dd') && item.EstadoReservaId == 1)
+                    klass += " pendiente";
+                else if (Q.formatDate(fechaHotel, 'yyyy-MM-dd') == Q.formatDate(item.FechaPrevistaSalida, 'yyyy-MM-dd') && item.EstadoReservaId >= 3)
+                    klass += " pendiente";
+                else if (item.EstadoReservaId == 3)
+                    klass += " checked-in";
+                return Q.trimToNull(klass);
+            };
+            /**
+             * This method is called to get list of quick filters to be created for this grid.
+             * By default, it returns quick filter objects corresponding to properties that
+             * have a [QuickFilter] attribute at server side OrderColumns.cs
+             */
+            ReservasGrid.prototype.getQuickFilters = function () {
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                // get a reference to order row field names
+                var fld = Recepcion.ReservasRow.Fields;
+                // quick filter init method is a good place to set initial
+                // value for a quick filter editor, just after it is created
+                // *************************************************************************
+                // Here I would like to get QuickFilter By default EmpresaId and HotelId 
+                // corresponding to users record for current userId
+                //var user = fld.UserId;
+                //Q.first(filters, x => x.field == fld.EmpresaId).init = w => {
+                //    (w as Serenity.EnumEditor).value = fld.EmpresaId.toString();
+                //};
+                //Q.first(filters, x => x.field == fld.HotelId).init = w => {
+                //    (w as Serenity.EnumEditor).value = Northwind.OrderShippingState.NotShipped.toString()
+                //};
+                return filters;
+            };
+            return ReservasGrid;
+        }(Serenity.EntityGrid));
+        ReservasGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ReservasGrid);
+        Recepcion.ReservasGrid = ReservasGrid;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/************************************************************************************************************************************************************
+Arrivals List
+What I try to do is the following:
+
+1.- Filter Reservations with status = ArrivalPending and FechaPervistaLLegada = FechaHotel. As I do not know how to get it, i use currentdate instead
+2.- Select Reservations end user wants to checkIn and Add a button to do it
+
+Javier Núñez : APRIL 2017
+*************************************************************************************************************************************************************/
+/// <reference path="../Reservas/ReservasGrid.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ArrivalsGrid = (function (_super) {
+            __extends(ArrivalsGrid, _super);
+            function ArrivalsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ArrivalsGrid.prototype.createToolbarExtensions = function () {
+                _super.prototype.createToolbarExtensions.call(this);
+                this.rowSelection = new Serenity.GridRowSelectionMixin(this);
+            };
+            ArrivalsGrid.prototype.getInitialTitle = function () {
+                _super.prototype.getInitialTitle.call(this);
+                return Q.text("Db.Recepcion.Arrivals.EntityPlural");
+            };
+            ArrivalsGrid.prototype.getButtons = function () {
+                var _this = this;
+                return [{
+                        title: Q.text('Controls.EntityGrid.CheckInArrivalsButton'),
+                        cssClass: 'check-in-button',
+                        icon: 'fa-chevron-circle-right text-green',
+                        onClick: function () {
+                            if (!_this.onViewSubmit()) {
+                                return;
+                            }
+                            var action = new Recepcion.CheckInAction();
+                            action.done = function () { return _this.rowSelection.resetCheckedAndRefresh(); };
+                            action.execute(_this.rowSelection.getSelectedKeys());
+                        }
+                    }];
+            };
+            ArrivalsGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                columns.splice(0, 0, Serenity.GridRowSelectionMixin.createSelectColumn(function () { return _this.rowSelection; }));
+                return columns;
+            };
+            ArrivalsGrid.prototype.getViewOptions = function () {
+                var opt = _super.prototype.getViewOptions.call(this);
+                opt.rowsPerPage = 2500;
+                return opt;
+            };
+            ArrivalsGrid.prototype.getQuickFilters = function () {
+                // Let's filter Reservations with arrival (fecha_prevista_llegada) = today
+                // and withs status = ReservationStatus.ArrivalPending
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                // get a reference to reservas row field names
+                var fld = Recepcion.ReservasRow.Fields;
+                // quick filter init method is a good place to set initial
+                // value for a quick filter editor, just after it is created
+                // ****************************************************************
+                // Here should be good to get FechaHotel instead of CurrentDate
+                // Asking Volkan how to
+                // ****************************************************************
+                var dateini = new Date();
+                var datefin = dateini;
+                dateini.setHours(0, 0, 0, 0);
+                datefin.setHours(23, 59, 59, 0);
+                Q.first(filters, function (x) { return x.field == fld.FechaPrevistaLlegada; }).init = function (w) {
+                    // w is a reference to the editor for this quick filter widget
+                    // here we cast it to DateEditor, and set its value as date.
+                    // note that in Javascript, months are 0 based, so date below
+                    // is actually 2016-05-01
+                    w.valueAsDate = dateini;
+                    // setting start date was simple. but this quick filter is actually
+                    // a combination of two date editors. to get reference to second one,
+                    // need to find its next sibling element by its class
+                    var endDate = w.element.nextAll(".s-DateEditor").getWidget(Serenity.DateEditor);
+                    endDate.valueAsDate = datefin;
+                };
+                Q.first(filters, function (x) { return x.field == fld.EstadoReservaId; }).init = function (w) {
+                    // enum editor has a string value, so need to call toString()
+                    w.value = Recepcion.ReservationStatus.ArrivalPending.toString();
+                };
+                return filters;
+            };
+            return ArrivalsGrid;
+        }(Recepcion.ReservasGrid));
+        ArrivalsGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ArrivalsGrid);
+        Recepcion.ArrivalsGrid = ArrivalsGrid;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="../../Common/Helpers/BulkServiceAction.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var CheckInAction = (function (_super) {
+            __extends(CheckInAction, _super);
+            function CheckInAction() {
+                return _super.apply(this, arguments) || this;
+            }
+            /**
+             * This controls how many service requests will be used in parallel.
+             * Determine this number based on how many requests your server
+             * might be able to handle, and amount of wait on external resources.
+             */
+            CheckInAction.prototype.getParallelRequests = function () {
+                return 10;
+            };
+            /**
+             * These number of records IDs will be sent to your service in one
+             * service call. If your service is designed to handle one record only,
+             * set it to 1. But note that, if you have 5000 records, this will
+             * result in 5000 service calls / requests.
+             */
+            CheckInAction.prototype.getBatchSize = function () {
+                return 5;
+            };
+            /**
+             * This is where you should call your service.
+             * Batch parameter contains the selected order IDs
+             * that should be processed in this service call.
+             */
+            CheckInAction.prototype.executeForBatch = function (batch) {
+                var _this = this;
+                Recepcion.ReservasService.ChangeReservationStatus({
+                    ReservaId: batch.map(function (x) { return Q.parseInteger(x); }),
+                    NewStatusId: Recepcion.ReservationStatus.CheckedIn
+                }, function (response) { return _this.set_successCount(_this.get_successCount() + batch.length); }, {
+                    blockUI: false,
+                    onError: function (response) { return _this.set_errorCount(_this.get_errorCount() + batch.length); },
+                    onCleanup: function () { return _this.serviceCallCleanup(); }
+                });
+            };
+            return CheckInAction;
+        }(Geshotel.Common.BulkServiceAction));
+        Recepcion.CheckInAction = CheckInAction;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
 var Geshotel;
 (function (Geshotel) {
     var Recepcion;
@@ -12595,6 +12834,8 @@ var Geshotel;
                     }, function (resp) {
                         Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
                     });
                 }
                 else {
@@ -12605,6 +12846,7 @@ var Geshotel;
                     }, function (resp) {
                         Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
                     });
                 }
             };
@@ -12755,44 +12997,6 @@ var Geshotel;
             Serenity.Decorators.responsive()
         ], ReservasDialog);
         Recepcion.ReservasDialog = ReservasDialog;
-    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
-})(Geshotel || (Geshotel = {}));
-var Geshotel;
-(function (Geshotel) {
-    var Recepcion;
-    (function (Recepcion) {
-        var ReservasGrid = (function (_super) {
-            __extends(ReservasGrid, _super);
-            function ReservasGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ReservasGrid.prototype.getColumnsKey = function () { return 'Recepcion.Reservas'; };
-            ReservasGrid.prototype.getDialogType = function () { return Recepcion.ReservasDialog; };
-            ReservasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasRow.idProperty; };
-            ReservasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasRow.localTextPrefix; };
-            ReservasGrid.prototype.getService = function () { return Recepcion.ReservasService.baseUrl; };
-            ReservasGrid.prototype.getButtons = function () {
-                var _this = this;
-                var buttons = _super.prototype.getButtons.call(this);
-                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); },
-                    service: 'Recepcion/Reservas/ListExcel',
-                    separator: true
-                }));
-                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
-                    grid: this,
-                    onViewSubmit: function () { return _this.onViewSubmit(); }
-                }));
-                return buttons;
-            };
-            return ReservasGrid;
-        }(Serenity.EntityGrid));
-        ReservasGrid = __decorate([
-            Serenity.Decorators.registerClass(),
-            Serenity.Decorators.filterable()
-        ], ReservasGrid);
-        Recepcion.ReservasGrid = ReservasGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 /// <reference path="../HabitacionesBloqueos/HabitacionesBloqueosDialog.ts" />

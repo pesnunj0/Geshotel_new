@@ -81,13 +81,41 @@ namespace Geshotel.Recepcion.Repositories
             // *************************
             // Unidades de Calculo
             // *************************
-            var ucs = new List<GesHotelClase.UCS>
-                {
-                    new GesHotelClase.UCS() {unidad_calculo_id=2,cantidad = Convert.ToInt32(request.Entity.Adultos) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=3,cantidad = Convert.ToInt32(request.Entity.Child50) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=4,cantidad = Convert.ToInt32(request.Entity.ChildFree) },
-                    new GesHotelClase.UCS() {unidad_calculo_id=5,cantidad = Convert.ToInt32(request.Entity.Bebes) }
-                };
+            var ucs = new GesHotelClase.UCS[4];
+
+            int i = 0;
+            if (Convert.ToInt32(request.Entity.Adultos)>0)
+            {
+                ucs[i].cantidad = Convert.ToInt32(request.Entity.Adultos);
+                ucs[i].unidad_calculo_id = 2;
+                i++;
+            }
+            if (Convert.ToInt32(request.Entity.Child50) > 0)
+            {
+                ucs[i].cantidad = Convert.ToInt32(request.Entity.Child50);
+                ucs[i].unidad_calculo_id = 3;
+                i++;
+            }
+            if (Convert.ToInt32(request.Entity.ChildFree) > 0)
+            {
+                ucs[i].cantidad = Convert.ToInt32(request.Entity.ChildFree);
+                ucs[i].unidad_calculo_id = 4;
+                i++;
+            }
+            if (Convert.ToInt32(request.Entity.Bebes) > 0)
+            {
+                ucs[i].cantidad = Convert.ToInt32(request.Entity.Bebes);
+                ucs[i].unidad_calculo_id = 5;
+                i++;
+            }
+
+            //var ucs = new List<GesHotelClase.UCS>
+            //    {
+            //        new GesHotelClase.UCS() {unidad_calculo_id=2,cantidad = Convert.ToInt32(request.Entity.Adultos) },
+            //        new GesHotelClase.UCS() {unidad_calculo_id=3,cantidad = Convert.ToInt32(request.Entity.Child50) },
+            //        new GesHotelClase.UCS() {unidad_calculo_id=4,cantidad = Convert.ToInt32(request.Entity.ChildFree) },
+            //        new GesHotelClase.UCS() {unidad_calculo_id=5,cantidad = Convert.ToInt32(request.Entity.Bebes) }
+            //    };
 
             res.unidades_calculos = ucs;
             //Here I call My function to validate Reservation and calculate Price
@@ -106,8 +134,19 @@ namespace Geshotel.Recepcion.Repositories
             {
                 var result = new MySaveHandler().Process(uow, request, SaveRequestType.Update);
                 uow.Commit();
-                CargaMetaReserva(request);
-
+                if (request.Entity.EstadoReservaId == 0) // Si la reserva dió errores anteriormente
+                    CargaMetaReserva(request);          // Genero MetaReserva y Recargo 
+                else
+                {
+                    var user = (UserDefinition)Authorization.UserDefinition;
+                    Int32 userId = user.UserId;
+                    Int32 ReservaId = Convert.ToInt32(request.Entity.ReservaId);
+                    var x = new GesHotelClase(userId);
+                    var res = new GesHotelClase.MetaReserva();
+                    var hus = new GesHotelClase.MetaHuesped();
+                    x.regenerarLineasFacturasReserva(ReservaId);
+                }
+                   
                 return result;
             }
         }
@@ -130,20 +169,13 @@ namespace Geshotel.Recepcion.Repositories
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
-        {
-            protected override void PrepareQuery(SqlQuery query)
-            {
-                base.PrepareQuery(query);
-                query.OrderBy("fecha_prevista_llegada", true);
-            }
-        }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow>
         {
-            protected override void ApplySortBy(SqlQuery query, SortBy sortBy)
-            {    
-                base.ApplySortBy(query, sortBy);
-                query.OrderBy("fecha_prevista_llegada",true);
+            protected override void ApplySort(SqlQuery query)
+            {
+                query.OrderBy("fecha_prevista_llegada", true);
+                base.ApplySort(query);
             }
         }
     }
