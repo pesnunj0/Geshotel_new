@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/ClasesGeshotel.dll">
-      <publishTime>04/16/2017 21:36:42</publishTime>
+      <publishTime>04/21/2017 13:44:11</publishTime>
     </File>
     <File Include="bin/CsQuery.dll">
       <publishTime>05/02/2013 06:41:36</publishTime>
@@ -31,7 +31,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 10:25:12</publishTime>
     </File>
     <File Include="bin/Geshotel.Web.dll">
-      <publishTime>04/17/2017 12:13:08</publishTime>
+      <publishTime>04/21/2017 13:44:17</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 11:48:56</publishTime>
@@ -1831,7 +1831,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 15:41:09</publishTime>
     </File>
     <File Include="Content/site/site.css">
-      <publishTime>04/17/2017 12:13:10</publishTime>
+      <publishTime>04/21/2017 13:44:18</publishTime>
     </File>
     <File Include="Content/site/site.htmlcontent.css">
       <publishTime>01/29/2017 21:11:49</publishTime>
@@ -1858,7 +1858,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/21/2017 15:55:07</publishTime>
     </File>
     <File Include="Content/site/site.recepcion.less">
-      <publishTime>04/07/2017 13:43:12</publishTime>
+      <publishTime>04/18/2017 17:19:48</publishTime>
     </File>
     <File Include="Content/site/site.rtl.css">
       <publishTime>01/29/2017 21:11:49</publishTime>
@@ -2221,7 +2221,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/28/2017 17:24:59</publishTime>
     </File>
     <File Include="Modules/Common/Imports/ClientTypes/ClientTypes.log">
-      <publishTime>04/17/2017 12:12:28</publishTime>
+      <publishTime>04/19/2017 16:04:50</publishTime>
     </File>
     <File Include="Modules/Common/Imports/CodeGenerationHelpers.ttinclude">
       <publishTime>02/14/2017 18:24:48</publishTime>
@@ -2469,6 +2469,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Modules/Portal/UnidadesCalculo/UnidadesCalculoIndex.cshtml">
       <publishTime>01/29/2017 21:11:56</publishTime>
     </File>
+    <File Include="Modules/Recepcion/Arrivals/ArrivalsIndex.cshtml">
+      <publishTime>04/19/2017 12:34:40</publishTime>
+    </File>
     <File Include="Modules/Recepcion/HabitacionesBloqueos/HabitacionesBloqueosIndex.cshtml">
       <publishTime>03/20/2017 15:55:30</publishTime>
     </File>
@@ -2476,7 +2479,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2017 10:37:33</publishTime>
     </File>
     <File Include="Modules/Recepcion/Reservas/Recepcion.ReservasDialog.Template.html">
-      <publishTime>03/21/2017 10:36:13</publishTime>
+      <publishTime>04/17/2017 12:38:09</publishTime>
     </File>
     <File Include="Modules/Recepcion/Reservas/ReservasIndex.cshtml">
       <publishTime>02/20/2017 18:50:56</publishTime>
@@ -2497,7 +2500,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/21/2017 15:59:30</publishTime>
     </File>
     <File Include="Modules/Recepcion/Scheduler/SchedulerIndex.cshtml">
-      <publishTime>02/04/2017 21:23:43</publishTime>
+      <publishTime>04/21/2017 10:24:50</publishTime>
     </File>
     <File Include="Modules/Web.config">
       <publishTime>01/29/2017 21:11:49</publishTime>
@@ -3844,7 +3847,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/28/2017 18:11:19</publishTime>
     </File>
     <File Include="Scripts/site/Geshotel.Web.js">
-      <publishTime>04/17/2017 12:13:17</publishTime>
+      <publishTime>04/21/2017 13:44:26</publishTime>
     </File>
     <File Include="Scripts/site/texts/meeting/meeting.vi-VN.json">
       <publishTime>01/29/2017 21:11:59</publishTime>
@@ -3895,10 +3898,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.de.json">
-      <publishTime>01/29/2017 21:11:59</publishTime>
+      <publishTime>04/21/2017 10:24:32</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.es.json">
-      <publishTime>01/29/2017 21:11:59</publishTime>
+      <publishTime>04/21/2017 07:35:42</publishTime>
     </File>
     <File Include="Scripts/site/texts/site.texts.fa.json">
       <publishTime>01/29/2017 21:11:59</publishTime>

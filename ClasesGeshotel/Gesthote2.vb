@@ -29,7 +29,7 @@ Namespace geshotelk
         Inherits GesHotelClaseUtils
         'Public Shared ultimaMetaReserva As MetaReserva = Nothing
         Private Shared isProduccion As Boolean = True     ' True o False segun sea máquina de produccion o no
-        Private Shared ConnectionString As String = ConfigurationManager.ConnectionStrings("Default").ConnectionString
+        Private Shared ConnectionString As String = ConfigurationManager.ConnectionStrings("Default").ConnectionString & ";TreatTinyAsBoolean=false"
         Public provider As String = ConfigurationManager.ConnectionStrings("Default").ProviderName
         'Private Shared ConnectionString As String = "DSN=GeshotelDB"
         Private Shared radiusConnectionString As String = "DSN=radius"
@@ -200,6 +200,7 @@ Namespace geshotelk
 
                 If typeCachedConnections(xx).Count = 0 Then
                     conn = New MySqlConnection(ConnectionString)
+
                     'Console.WriteLine("creo con")
 
                 Else
@@ -5153,7 +5154,7 @@ Namespace geshotelk
             Return retval
         End Function
         Shared olddatosReservaActual As tablaServicios = Nothing
-        Public Function obtieneServiciosReservaCache(ByVal reserva As Integer)
+        Public Function obtieneServiciosReservaCache(ByVal reserva As Integer) As tablaServicios
             Dim datosReservaActual As tablaServicios = Nothing
             If Not IsNothing(olddatosReservaActual) Then
                 If olddatosReservaActual.reserva_id = reserva Then
@@ -5169,7 +5170,7 @@ Namespace geshotelk
             End If
             Return datosReservaActual
         End Function
-        Private Function obtieneServiciosReservaCache(ByVal cmd As MySqlCommand, ByVal reserva As Integer)
+        Private Function obtieneServiciosReservaCache(ByVal cmd As MySqlCommand, ByVal reserva As Integer) As tablaServicios
             Dim datosReservaActual As tablaServicios = Nothing
             If Not IsNothing(olddatosReservaActual) Then
                 If olddatosReservaActual.reserva_id = reserva Then

@@ -21,6 +21,7 @@ namespace Geshotel.Contratos.Repositories
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
+            
         }
 
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
@@ -38,7 +39,10 @@ namespace Geshotel.Contratos.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
+            
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

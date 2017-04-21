@@ -20,9 +20,8 @@ namespace Geshotel.Recepcion.Forms
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         public Decimal Cantidad { get; set; }
-        //public Int32 UserId { get; set; }
-        //public DateTime FechaModificacion { get; set; }
-        [ReadOnly(true),DefaultValue(1)]
+ 
+        [ReadOnly(true),DefaultValue(2)]
         public Int16 FlagContrato { get; set; }
         public Double PrecioServicio { get; set; }
         public Int16 ServicioExtra { get; set; }

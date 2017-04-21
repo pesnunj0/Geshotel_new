@@ -179,7 +179,6 @@ namespace Geshotel.Administration.Repositories
 
                 return username;
             }
-
             protected override void ValidateRequest()
             {
                 base.ValidateRequest();

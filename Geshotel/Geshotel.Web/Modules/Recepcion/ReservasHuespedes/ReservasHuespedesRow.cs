@@ -49,13 +49,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Apellidos[this] = value; }
         }
 
-        //[DisplayName("Full Name"), Expression("CONCAT(jHuesped.[nombre],' ',jHuesped.[apellidos]"),QuickSearch]
+        [DisplayName("Full Name"), Expression("CONCAT(jHuesped.[nombre], CONCAT(' ', jHuesped.[apellidos]))"), QuickSearch]
 
-        //public String NombreCompleto
-        //{
-        //    get { return Fields.NombreCompleto[this]; }
-        //    set { Fields.NombreCompleto[this] = value; }
-        //}
+        public String NombreCompleto
+        {
+            get { return Fields.NombreCompleto[this]; }
+            set { Fields.NombreCompleto[this] = value; }
+        }
         [DisplayName("Birthday"), Expression("jHuesped.[fecha_nacimiento]")]
         public DateTime? FechaNacimiento
         {
@@ -247,7 +247,7 @@ namespace Geshotel.Recepcion.Entities
 
             public StringField Nombre;
             public StringField Apellidos;
- //           public StringField NombreCompleto;
+            public StringField NombreCompleto;
             public StringField TipoDocumentoId;
             public StringField TipoDocumento;
             public StringField Nif;

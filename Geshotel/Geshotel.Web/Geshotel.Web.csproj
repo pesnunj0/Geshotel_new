@@ -2778,6 +2778,7 @@
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170118_182000_Usercompany.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170203_224500_ReservaAutomatica.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170420_224500_PreviewServicios.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170410_224500_Equivalencias_reservas_servicios.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170405_224500_Cierres.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20170404_224500_Events_movimientos_caja.cs" />

@@ -86,24 +86,28 @@ namespace Geshotel.Recepcion.Repositories
             int i = 0;
             if (Convert.ToInt32(request.Entity.Adultos)>0)
             {
+                ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.Adultos);
                 ucs[i].unidad_calculo_id = 2;
                 i++;
             }
             if (Convert.ToInt32(request.Entity.Child50) > 0)
             {
+                ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.Child50);
                 ucs[i].unidad_calculo_id = 3;
                 i++;
             }
             if (Convert.ToInt32(request.Entity.ChildFree) > 0)
             {
+                ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.ChildFree);
                 ucs[i].unidad_calculo_id = 4;
                 i++;
             }
             if (Convert.ToInt32(request.Entity.Bebes) > 0)
             {
+                ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.Bebes);
                 ucs[i].unidad_calculo_id = 5;
                 i++;
@@ -126,7 +130,7 @@ namespace Geshotel.Recepcion.Repositories
             return result;
         }
 
-        public SaveResponse Update( SaveRequest<MyRow> request)
+        public SaveResponse Update(SaveRequest<MyRow> request)
 
         {
             using (var connection = SqlConnections.NewByKey("Default"))
@@ -134,7 +138,7 @@ namespace Geshotel.Recepcion.Repositories
             {
                 var result = new MySaveHandler().Process(uow, request, SaveRequestType.Update);
                 uow.Commit();
-                if (request.Entity.EstadoReservaId == 0) // Si la reserva dió errores anteriormente
+                if (1==1 || request.Entity.EstadoReservaId == 0) // Si la reserva dió errores anteriormente
                     CargaMetaReserva(request);          // Genero MetaReserva y Recargo 
                 else
                 {
