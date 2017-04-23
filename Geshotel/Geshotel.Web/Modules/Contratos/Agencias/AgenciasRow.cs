@@ -441,7 +441,7 @@ namespace Geshotel.Contratos.Entities
             public StringField UserName;
 
             public RowFields()
-                : base("clientes")
+                : base("[clientes]")
             {
                 LocalTextPrefix = "Contratos.Agencias";
             }

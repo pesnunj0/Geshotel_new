@@ -93,7 +93,7 @@ CREATE TABLE lineas_de_contrato (
   [sabado] bit NOT NULL DEFAULT '1',
   [domingo] bit NOT NULL DEFAULT '1',
   [pag_factura] smallint DEFAULT '1',
-  [n] smalint DEFAULT NULL,
+  [n] smallint DEFAULT NULL,
   [m] decimal(10,2) DEFAULT NULL,
   [tipo_oferta_id] smallint DEFAULT NULL,
   [ambito_oferta_id] smallint DEFAULT NULL,

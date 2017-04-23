@@ -17721,6 +17721,7 @@ Namespace geshotelk
             xml = xml.Insert(xml.IndexOf("<CABECERA>") + "<CABECERA>".Length, fech)
             Return xml
         End Function
+
         Public Shared mErrorsList As New ArrayList
         Shared Function Validate(ByVal Schema As String, ByVal XMLDoc As IO.Stream) As ArrayList
 
