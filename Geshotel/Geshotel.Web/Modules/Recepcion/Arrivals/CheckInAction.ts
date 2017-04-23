@@ -20,7 +20,7 @@ namespace Geshotel.Recepcion {
          * result in 5000 service calls / requests.
          */
         protected getBatchSize() {
-            return 5;
+            return 1;
         }
 
         /**
@@ -31,7 +31,7 @@ namespace Geshotel.Recepcion {
         protected executeForBatch(batch) {
             ReservasService.ChangeReservationStatus(
                 {
-                    ReservaId: batch.map(x => Q.parseInteger(x)),
+                    ReservaId: Q.parseInteger(batch[0]),
                     NewStatusId: ReservationStatus.CheckedIn                    
                 },
                 response => this.set_successCount(this.get_successCount() + batch.length),

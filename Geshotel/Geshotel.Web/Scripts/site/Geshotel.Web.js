@@ -12651,7 +12651,7 @@ var Geshotel;
              * result in 5000 service calls / requests.
              */
             CheckInAction.prototype.getBatchSize = function () {
-                return 5;
+                return 1;
             };
             /**
              * This is where you should call your service.
@@ -12661,7 +12661,7 @@ var Geshotel;
             CheckInAction.prototype.executeForBatch = function (batch) {
                 var _this = this;
                 Recepcion.ReservasService.ChangeReservationStatus({
-                    ReservaId: batch.map(function (x) { return Q.parseInteger(x); }),
+                    ReservaId: Q.parseInteger(batch[0]),
                     NewStatusId: Recepcion.ReservationStatus.CheckedIn
                 }, function (response) { return _this.set_successCount(_this.get_successCount() + batch.length); }, {
                     blockUI: false,
