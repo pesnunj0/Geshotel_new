@@ -48,7 +48,7 @@ namespace Geshotel.Recepcion.Columns
         public String ClienteIdFacturaRazon { get; set; }
         [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaReserva { get; set; }
-        [Width(110), QuickFilter,DisplayFormat("g")]
+        [Width(110), QuickFilter,DisplayFormat("g"), SortOrder(-1)]
         public DateTime FechaPrevistaLlegada { get; set; }
         [Width(110), QuickFilter, DisplayFormat("g")]
         public DateTime FechaPrevistaSalida { get; set; }

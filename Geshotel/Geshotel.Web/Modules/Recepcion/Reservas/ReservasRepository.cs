@@ -178,8 +178,10 @@ namespace Geshotel.Recepcion.Repositories
         {
             protected override void ApplySort(SqlQuery query)
             {
-                query.OrderBy("fecha_prevista_llegada", true);
                 base.ApplySort(query);
+
+                // if you do this here, users can't sort by other columns, as fechaprevista... will always be sorted first
+                // query.OrderByFirst("fecha_prevista_llegada", true);
             }
         }
     }
