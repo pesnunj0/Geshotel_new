@@ -64,37 +64,20 @@ namespace Geshotel.Recepcion {
             return Q.trimToNull(klass);
         }
 
-        /**
-         * This method is called to get list of quick filters to be created for this grid.
-         * By default, it returns quick filter objects corresponding to properties that
-         * have a [QuickFilter] attribute at server side OrderColumns.cs
-         */
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
 
-            // get quick filter list from base class
             let filters = super.getQuickFilters();
-
-            // get a reference to order row field names
             let fld = Recepcion.ReservasRow.Fields;
 
-            // quick filter init method is a good place to set initial
-            // value for a quick filter editor, just after it is created
-            // *************************************************************************
-            // Here I would like to get QuickFilter By default EmpresaId and HotelId 
-            // corresponding to users record for current userId
+            var user = Q.Authorization.userDefinition as ScriptUserDefinition;
 
-            //var user = fld.UserId;
-            
+            Q.first(filters, x => x.field == fld.EmpresaId).init = w => {
+                (w as Serenity.LookupEditor).value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+            };
 
-            //Q.first(filters, x => x.field == fld.EmpresaId).init = w => {
- 
-            //    (w as Serenity.EnumEditor).value = fld.EmpresaId.toString();
-
-            //};
-
-            //Q.first(filters, x => x.field == fld.HotelId).init = w => {
-            //    (w as Serenity.EnumEditor).value = Northwind.OrderShippingState.NotShipped.toString()
-            //};
+            Q.first(filters, x => x.field == fld.HotelId).init = w => {
+                (w as Serenity.LookupEditor).value = user.HotelId == null ? "" : user.HotelId.toString();
+            };
             
             return filters;
         }

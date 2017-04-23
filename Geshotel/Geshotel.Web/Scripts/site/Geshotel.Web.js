@@ -12513,28 +12513,16 @@ var Geshotel;
                     klass += " checked-in";
                 return Q.trimToNull(klass);
             };
-            /**
-             * This method is called to get list of quick filters to be created for this grid.
-             * By default, it returns quick filter objects corresponding to properties that
-             * have a [QuickFilter] attribute at server side OrderColumns.cs
-             */
             ReservasGrid.prototype.getQuickFilters = function () {
-                // get quick filter list from base class
                 var filters = _super.prototype.getQuickFilters.call(this);
-                // get a reference to order row field names
                 var fld = Recepcion.ReservasRow.Fields;
-                // quick filter init method is a good place to set initial
-                // value for a quick filter editor, just after it is created
-                // *************************************************************************
-                // Here I would like to get QuickFilter By default EmpresaId and HotelId 
-                // corresponding to users record for current userId
-                //var user = fld.UserId;
-                //Q.first(filters, x => x.field == fld.EmpresaId).init = w => {
-                //    (w as Serenity.EnumEditor).value = fld.EmpresaId.toString();
-                //};
-                //Q.first(filters, x => x.field == fld.HotelId).init = w => {
-                //    (w as Serenity.EnumEditor).value = Northwind.OrderShippingState.NotShipped.toString()
-                //};
+                var user = Q.Authorization.userDefinition;
+                Q.first(filters, function (x) { return x.field == fld.EmpresaId; }).init = function (w) {
+                    w.value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+                };
+                Q.first(filters, function (x) { return x.field == fld.HotelId; }).init = function (w) {
+                    w.value = user.HotelId == null ? "" : user.HotelId.toString();
+                };
                 return filters;
             };
             return ReservasGrid;

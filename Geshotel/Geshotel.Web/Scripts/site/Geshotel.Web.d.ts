@@ -9847,11 +9847,6 @@ declare namespace Geshotel.Recepcion {
  * @param index Index of the row in grid
  */
         protected getItemCssClass(item: Recepcion.ReservasRow, index: number): string;
-        /**
-         * This method is called to get list of quick filters to be created for this grid.
-         * By default, it returns quick filter objects corresponding to properties that
-         * have a [QuickFilter] attribute at server side OrderColumns.cs
-         */
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
