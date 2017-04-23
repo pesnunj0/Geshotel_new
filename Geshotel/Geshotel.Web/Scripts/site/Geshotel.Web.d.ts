@@ -6587,6 +6587,7 @@ declare namespace Geshotel.Recepcion {
         Email: Serenity.StringEditor;
         Foto1: Serenity.StringEditor;
         Foto2: Serenity.StringEditor;
+        ReservaId: Serenity.IntegerEditor;
         TarjetaFidelizacion: Serenity.StringEditor;
     }
 }
@@ -6617,6 +6618,7 @@ declare namespace Geshotel.Recepcion {
         Nacion?: string;
         NacionDescCorta?: string;
         Provincia?: string;
+        ReservaId?: number;
     }
     namespace HuespedesRow {
         const idProperty = "HuespedId";
@@ -6648,6 +6650,7 @@ declare namespace Geshotel.Recepcion {
             const Nacion: string;
             const NacionDescCorta: string;
             const Provincia: string;
+            const ReservaId: string;
         }
     }
 }
@@ -6914,6 +6917,7 @@ declare namespace Geshotel.Recepcion {
         static formKey: string;
     }
     interface ReservasForm {
+        EmpresaId: Serenity.LookupEditor;
         HotelId: Serenity.LookupEditor;
         EstadoReservaId: Serenity.LookupEditor;
         ClienteId: Serenity.LookupEditor;
@@ -6959,6 +6963,19 @@ declare namespace Geshotel.Recepcion {
     }
     interface ReservasHuespedesForm {
         ReservaId: Serenity.IntegerEditor;
+        Nombre: Serenity.StringEditor;
+        Apellidos: Serenity.StringEditor;
+        TipoDocumentoId: Serenity.LookupEditor;
+        Nif: Serenity.StringEditor;
+        FechaDocumento: Serenity.DateEditor;
+        SexoId: Serenity.LookupEditor;
+        Direccion: Serenity.StringEditor;
+        Poblacion: Serenity.StringEditor;
+        Zip: Serenity.StringEditor;
+        NacionId: Serenity.LookupEditor;
+        ProvinciaId: Serenity.LookupEditor;
+        Telefono: Serenity.StringEditor;
+        Email: Serenity.EmailEditor;
         HuespedId: Serenity.IntegerEditor;
         FechaLlegada: Serenity.DateEditor;
         FechaSalida: Serenity.DateEditor;
@@ -6981,8 +6998,10 @@ declare namespace Geshotel.Recepcion {
         ReservaFechaPrevistaSalida?: string;
         Nombre?: string;
         Apellidos?: string;
+        NombreCompleto?: string;
         TipoDocumentoId?: string;
         TipoDocumento?: string;
+        FechaDocumento?: string;
         Nif?: string;
         FechaNacimiento?: string;
         Direccion?: string;
@@ -6994,6 +7013,10 @@ declare namespace Geshotel.Recepcion {
         Telefono?: string;
         Email?: string;
         TarjetaFidelizacion?: string;
+        NumeroHabitacion?: string;
+        SexoId?: string;
+        HotelId?: number;
+        EmpresaId?: number;
     }
     namespace ReservasHuespedesRow {
         const idProperty = "ReservasHuespedesId";
@@ -7012,8 +7035,10 @@ declare namespace Geshotel.Recepcion {
             const ReservaFechaPrevistaSalida: string;
             const Nombre: string;
             const Apellidos: string;
+            const NombreCompleto: string;
             const TipoDocumentoId: string;
             const TipoDocumento: string;
+            const FechaDocumento: string;
             const Nif: string;
             const FechaNacimiento: string;
             const Direccion: string;
@@ -7025,6 +7050,10 @@ declare namespace Geshotel.Recepcion {
             const Telefono: string;
             const Email: string;
             const TarjetaFidelizacion: string;
+            const NumeroHabitacion: string;
+            const SexoId: string;
+            const HotelId: string;
+            const EmpresaId: string;
         }
     }
 }
@@ -10047,7 +10076,9 @@ declare namespace Geshotel.Recepcion {
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         private _reservaID;
+        private _empresaID;
         reservaID: number;
+        empresaID: number;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10105,6 +10136,7 @@ declare namespace Geshotel.Recepcion {
         protected getService(): string;
         constructor(container: JQuery);
         protected getInitialTitle(): any;
+        protected addButtonClick(): void;
         protected getGridCanLoad(): boolean;
         private _reservaID;
         private _flagcontrato;

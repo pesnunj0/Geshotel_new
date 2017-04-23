@@ -27,6 +27,24 @@ namespace Geshotel.Recepcion {
 
         getButtons() {
             var buttons = super.getButtons();
+            // Quitamos el Botón de Añadir 
+            // buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
+            // Pondremos uno nuevo que añada un registro en Huespedes
+            buttons.push({
+                title: Q.text('Controls.EntityGrid.NewButton'),
+                cssClass: 'add-guest',
+                icon: 'icon-plus text-green',
+                onClick: () => {
+                    new HuespedesDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.HuespedesRow>{
+                        reservaID: this.reservaID
+                    });
+                }
+                //onClick: () => {
+                //    new HuespedesDialog({
+                //        reservaID: this.reservaID,
+                //    }).dialogOpen();
+                //}
+            });
 
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,
@@ -53,6 +71,7 @@ namespace Geshotel.Recepcion {
         }
 
         private _reservaID: number;
+        private _empresaID: number;
  
         get reservaID() {
             return this._reservaID;
@@ -61,7 +80,19 @@ namespace Geshotel.Recepcion {
         set reservaID(value: number) {
             if (this._reservaID !== value) {
                 this._reservaID = value;
-                this.setEquality(HabitacionesBloqueosRow.Fields.ReservaId, value);
+                this.setEquality(ReservasHuespedesRow.Fields.ReservaId, value);
+                this.refresh();
+            }
+        }
+
+        get empresaID() {
+            return this._empresaID;
+        }
+
+        set empresaID(value: number) {
+            if (this._empresaID !== value) {
+                this._empresaID = value;
+                this.setEquality(ReservasHuespedesRow.Fields.EmpresaId, value);
                 this.refresh();
             }
         }

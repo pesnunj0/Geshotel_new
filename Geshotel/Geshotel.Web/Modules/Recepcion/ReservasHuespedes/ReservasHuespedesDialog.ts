@@ -5,6 +5,7 @@ namespace Geshotel.Recepcion {
     @Serenity.Decorators.responsive()
     export class ReservasHuespedesDialog extends Serenity.EntityDialog<ReservasHuespedesRow, any> {
         protected getFormKey() { return ReservasHuespedesForm.formKey; }
+        //protected getFormKey() { return HuespedesForm.formKey; }
         protected getIdProperty() { return ReservasHuespedesRow.idProperty; }
         protected getLocalTextPrefix() { return ReservasHuespedesRow.localTextPrefix; }
         protected getService() { return ReservasHuespedesService.baseUrl; }

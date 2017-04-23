@@ -13,11 +13,11 @@ namespace Geshotel.Recepcion.Columns
     [BasedOnRow(typeof(Entities.ReservasOfertasRow))]
     public class ReservasOfertasColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [DisplayName("Db.Shared.RecordId"), AlignRight]
         //public Int32 ReservaOfertaId { get; set; }
         //public Int32 ReservaId { get; set; }
         public Int32 OfertaId { get; set; }
-        [EditLink, Width(120)]
+        [Width(120)]
         public String Texto { get; set; }
         [Width(90)]
         public String UnidadCalculoName { get; set; }

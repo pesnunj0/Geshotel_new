@@ -19,8 +19,8 @@
         }
 
         protected addButtonClick() {
-            // Javascript is case sensitive, so contratoID didn't work here.
-            // To get intellisense, use a TS cast like below <LineasRow>
+            // Javascript is case sensitive, so reservaID didn't work here.
+            // To get intellisense, use a TS cast like below <HabitacionesBloqueosRow>
             this.editItem(<HabitacionesBloqueosRow>{
                 ReservaId: this.reservaID,
                 TipoBloqueoId : 1

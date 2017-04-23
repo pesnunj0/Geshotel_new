@@ -26,6 +26,7 @@ namespace Geshotel.Recepcion {
         Nacion?: string;
         NacionDescCorta?: string;
         Provincia?: string;
+        ReservaId?: number;
     }
 
     export namespace HuespedesRow {
@@ -59,9 +60,10 @@ namespace Geshotel.Recepcion {
             export declare const Nacion: string;
             export declare const NacionDescCorta: string;
             export declare const Provincia: string;
+            export declare const ReservaId: string;
         }
 
-        ['HuespedId', 'EmpresaId', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'FechaNacimiento', 'SexoId', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'Telefono', 'Email', 'Foto1', 'Foto2', 'TarjetaFidelizacion', 'Empresa', 'TipoDocumento', 'Nacion', 'NacionDescCorta', 'Provincia'].forEach(x => (<any>Fields)[x] = x);
+        ['HuespedId', 'EmpresaId', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'FechaNacimiento', 'SexoId', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'Telefono', 'Email', 'Foto1', 'Foto2', 'TarjetaFidelizacion', 'Empresa', 'TipoDocumento', 'Nacion', 'NacionDescCorta', 'Provincia', 'ReservaId'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

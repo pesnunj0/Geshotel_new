@@ -14,7 +14,7 @@ namespace Geshotel.Recepcion.Forms
     public class HabitacionesBloqueosForm
     {
         public Int16 HabitacionId { get; set; }
-        [ReadOnly(true), DefaultValue(1)]
+       
         public Int16 TipoBloqueoId { get; set; }
         
         public DateTime FechaDesde { get; set; }

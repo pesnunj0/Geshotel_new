@@ -29,6 +29,9 @@ namespace Geshotel.Recepcion.Forms
         public String Email { get; set; }
         public String Foto1 { get; set; }
         public String Foto2 { get; set; }
+        [Insertable(false)]
+        public Int32 ReservaId { get; set; }
         public String TarjetaFidelizacion { get; set; }
+        
     }
 }

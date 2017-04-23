@@ -8649,6 +8649,7 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 @media (min-width: 900px) {
+  .s-Recepcion-ReservasDialog .field.EmpresaId,
   .s-Recepcion-ReservasDialog .field.HotelId,
   .s-Recepcion-ReservasDialog .field.EstadoReservaId,
   .s-Recepcion-ReservasDialog .field.ClienteId,
@@ -8661,6 +8662,7 @@ section.content > .s-DataGrid {
   .s-Recepcion-ReservasDialog .field.ChildFree,
   .s-Recepcion-ReservasDialog .field.Bebes,
   .s-Recepcion-ReservasDialog .field.BonoReferencia,
+  .s-Recepcion-ReservasDialog .field.BonoOnline,
   .s-Recepcion-ReservasDialog .field.CanalReservaId,
   .s-Recepcion-ReservasDialog .field.Valor,
   .s-Recepcion-ReservasDialog .field.CodigoOferta,

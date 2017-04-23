@@ -14,8 +14,10 @@ namespace Geshotel.Recepcion {
         ReservaFechaPrevistaSalida?: string;
         Nombre?: string;
         Apellidos?: string;
+        NombreCompleto?: string;
         TipoDocumentoId?: string;
         TipoDocumento?: string;
+        FechaDocumento?: string;
         Nif?: string;
         FechaNacimiento?: string;
         Direccion?: string;
@@ -27,6 +29,10 @@ namespace Geshotel.Recepcion {
         Telefono?: string;
         Email?: string;
         TarjetaFidelizacion?: string;
+        NumeroHabitacion?: string;
+        SexoId?: string;
+        HotelId?: number;
+        EmpresaId?: number;
     }
 
     export namespace ReservasHuespedesRow {
@@ -47,8 +53,10 @@ namespace Geshotel.Recepcion {
             export declare const ReservaFechaPrevistaSalida: string;
             export declare const Nombre: string;
             export declare const Apellidos: string;
+            export declare const NombreCompleto: string;
             export declare const TipoDocumentoId: string;
             export declare const TipoDocumento: string;
+            export declare const FechaDocumento: string;
             export declare const Nif: string;
             export declare const FechaNacimiento: string;
             export declare const Direccion: string;
@@ -60,9 +68,13 @@ namespace Geshotel.Recepcion {
             export declare const Telefono: string;
             export declare const Email: string;
             export declare const TarjetaFidelizacion: string;
+            export declare const NumeroHabitacion: string;
+            export declare const SexoId: string;
+            export declare const HotelId: string;
+            export declare const EmpresaId: string;
         }
 
-        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'TipoDocumentoId', 'TipoDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'HotelId', 'EmpresaId'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

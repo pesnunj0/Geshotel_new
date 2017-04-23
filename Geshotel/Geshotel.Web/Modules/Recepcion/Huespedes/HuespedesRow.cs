@@ -73,6 +73,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Nif[this] = value; }
         }
 
+        [DisplayName("Reserva_id"),Insertable(false)]
+        public Int32? ReservaId
+        {
+            get { return Fields.ReservaId[this]; }
+            set { Fields.ReservaId[this] = value; }
+        }
+
         [DisplayName("Birthday"), Column("fecha_nacimiento")]
         public DateTime? FechaNacimiento
         {
@@ -246,6 +253,8 @@ namespace Geshotel.Recepcion.Entities
             public StringField NacionDescCorta;
 
             public StringField Provincia;
+
+            public Int32Field ReservaId;
 
             public RowFields()
                 : base()

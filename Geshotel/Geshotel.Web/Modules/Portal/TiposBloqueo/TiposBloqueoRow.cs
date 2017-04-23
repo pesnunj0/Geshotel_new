@@ -13,6 +13,7 @@ namespace Geshotel.Portal.Entities
     [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.TiposBloqueo")]
+    
     public sealed class TiposBloqueoRow : Row, IIdRow, INameRow
     {
         [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), Identity]

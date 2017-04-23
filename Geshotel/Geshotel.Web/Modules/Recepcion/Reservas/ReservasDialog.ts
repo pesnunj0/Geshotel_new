@@ -30,12 +30,15 @@ namespace Geshotel.Recepcion {
             this.ReservasContratosGrid = new ReservasContratosGrid(this.byId("ReservasContratosGrid"));
             this.ReservasOfertasGrid = new ReservasOfertasGrid(this.byId("ReservasOfertasGrid"));
             this.ReservasDescuentosGrid = new ReservasDescuentosGrid(this.byId("ReservasDescuentosGrid"));
+
+            this.form.EmpresaId.change(e => this.ReservasHuespedesGrid.empresaID = Q.toId(this.form.EmpresaId));
             this.tabs.on('tabsactivate', (e, i) => {
                 this.arrange();
             });
         }
 
         protected afterLoadEntity() {
+
             super.afterLoadEntity();
 
             this.HabitacionesBloqueosGrid.reservaID = this.entityId;
@@ -45,6 +48,7 @@ namespace Geshotel.Recepcion {
             this.ReservasContratosGrid.reservaID = this.entityId;
             this.ReservasOfertasGrid.reservaID = this.entityId;
             this.ReservasHuespedesGrid.reservaID = this.entityId;
+            this.ReservasHuespedesGrid.empresaID = this.entity.EmpresaId;
             this.ReservasDescuentosGrid.reservaID = this.entityId;
         }
 

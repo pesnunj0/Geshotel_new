@@ -17,6 +17,15 @@ namespace Geshotel.Recepcion {
             return null;
         }
 
+        protected addButtonClick() {
+            // Javascript is case sensitive, so reservaID didn't work here.
+            // To get intellisense, use a TS cast like below <ReservasServiciosRow>
+            this.editItem(<ReservasServiciosRow>{
+                ReservaId: this.reservaID,
+                FlagContrato: 2   // Los añadidos son manuales. es importante para que no sean destruidos en caso de regrabar reserva
+            });
+        }
+
         protected getGridCanLoad() {
             return this.reservaID != null;
 

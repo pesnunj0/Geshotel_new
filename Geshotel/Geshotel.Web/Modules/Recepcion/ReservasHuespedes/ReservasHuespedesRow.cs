@@ -35,48 +35,73 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.HuespedId[this] = value; }
         }
 
-        [DisplayName("First Name"), Expression("jHuesped.[nombre]")]
+        [DisplayName("Hotel"), Expression("jReserva.[hotel_id]"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"), LookupInclude]
+        [LookupEditor("Portal.Hoteles")]
+        public Int16? HotelId
+        {
+            get { return Fields.HotelId[this]; }
+            set { Fields.HotelId[this] = value; }
+        }
+
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Nombre"), Expression("jHuesped.[nombre]")]
         public String Nombre
         {
             get { return Fields.Nombre[this]; }
             set { Fields.Apellidos[this] = value; }
         }
 
-        [DisplayName("Last Name"), Expression("jHuesped.[apellidos]")]
+        [DisplayName("Apellidos"), Expression("jHuesped.[apellidos]")]
         public String Apellidos
         {
             get { return Fields.Apellidos[this]; }
             set { Fields.Apellidos[this] = value; }
         }
 
-        [DisplayName("Full Name"), Expression("CONCAT(jHuesped.[nombre], CONCAT(' ', jHuesped.[apellidos]))"), QuickSearch]
+        [DisplayName("Nombre Completo"), Expression("CONCAT(jHuesped.[nombre], CONCAT(' ', jHuesped.[apellidos]))"), QuickSearch]
 
         public String NombreCompleto
         {
             get { return Fields.NombreCompleto[this]; }
             set { Fields.NombreCompleto[this] = value; }
         }
-        [DisplayName("Birthday"), Expression("jHuesped.[fecha_nacimiento]")]
+        [DisplayName("F. Nacimiento"), Expression("jHuesped.[fecha_nacimiento]")]
         public DateTime? FechaNacimiento
         {
             get { return Fields.FechaNacimiento[this]; }
             set { Fields.FechaNacimiento[this] = value; }
         }
-        [DisplayName("Address"), Expression("jHuesped.[direccion]")]
+        [DisplayName("Dirección"), Expression("jHuesped.[direccion]")]
         public String Direccion
         {
             get { return Fields.Direccion[this]; }
             set { Fields.Direccion[this] = value; }
         }
 
-        [DisplayName("Location"), Expression("jHuesped.[poblacion]")]
+        [DisplayName("Poblacion"), Expression("jHuesped.[poblacion]")]
         public String Poblacion
         {
             get { return Fields.Poblacion[this]; }
             set { Fields.Poblacion[this] = value; }
         }
 
-        [DisplayName("Country Id"), Expression("jHuesped.[nacion_id]"), ForeignKey("naciones","nacion_id"),LeftJoin("jNaciones"),TextualField("Nacion")]
+        [DisplayName("Sexo"), Expression("jHuesped.[sexo_id]"), Size(1), ForeignKey("sexos", "sexo_id"), LeftJoin("jSexo")]
+        [LookupEditor(typeof(Portal.Entities.SexosRow))]
+        public String SexoId
+        {
+            get { return Fields.SexoId[this]; }
+            set { Fields.SexoId[this] = value; }
+        }
+
+        [DisplayName("Nación"), Expression("jHuesped.[nacion_id]"), ForeignKey("naciones","nacion_id"),LeftJoin("jNaciones"),TextualField("Nacion")]
         [LookupEditor(typeof(Portal.Entities.NacionesRow))]
         public Int16? NacionId
         {
@@ -84,22 +109,22 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.NacionId[this] = value; }
         }
 
-        [DisplayName("Country"), Expression("jNaciones.[desc_corta]")]
+        [DisplayName("Nación"), Expression("jNaciones.[desc_corta]")]
         public String Nacion
         {
             get { return Fields.Nacion[this]; }
             set { Fields.Nacion[this] = value; }
         }
 
-        [DisplayName("State Id"), Expression("jHuesped.[provincia_id]"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvincias"), TextualField("Provincia")]
-        [LookupEditor(typeof(Portal.Entities.NacionesRow))]
+        [DisplayName("Provincia"), Expression("jHuesped.[provincia_id]"), ForeignKey("provincias", "provincia_id"), LeftJoin("jProvincias"), TextualField("Provincia")]
+        [LookupEditor(typeof(Portal.Entities.ProvinciasRow))]
         public Int16? ProvinciaId
         {
             get { return Fields.ProvinciaId[this]; }
             set { Fields.ProvinciaId[this] = value; }
         }
 
-        [DisplayName("State"), Expression("jProvincias.[provincia]")]
+        [DisplayName("Provincia"), Expression("jProvincias.[provincia]")]
         public String Provincia
         {
             get { return Fields.Provincia[this]; }
@@ -107,21 +132,21 @@ namespace Geshotel.Recepcion.Entities
         }
 
 
-        [DisplayName("Doc Type Id"), Expression("jHuesped.[tipo_documento_id]"),ForeignKey("tipos_documento","tipo_documento_id"),LeftJoin("jTiposDocumento")]
+        [DisplayName("Tipo Doc"), Expression("jHuesped.[tipo_documento_id]"),ForeignKey("tipos_documento","tipo_documento_id"),LeftJoin("jTiposDocumento")]
         [LookupEditor(typeof(Portal.Entities.TiposDocumentoRow))]
         public String TipoDocumentoId
         {
             get { return Fields.TipoDocumentoId[this]; }
             set { Fields.TipoDocumentoId[this] = value; }
         }
-        [DisplayName("Doc Type"), Expression("jTiposDocumento.[tipo_documento]")]
+        [DisplayName("Tipo Doc"), Expression("jTiposDocumento.[tipo_documento]")]
         
         public String TipoDocumento
         {
             get { return Fields.TipoDocumento[this]; }
             set { Fields.TipoDocumento[this] = value; }
         }
-        [DisplayName("IDCard"), Expression("jHuesped.[nif]")]
+        [DisplayName("Nº Doc."), Expression("jHuesped.[nif]")]
 
         public String Nif
         {
@@ -129,7 +154,14 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Nif[this] = value; }
         }
 
-        [DisplayName("Phone"), Expression("jHuesped.[telefono]")]
+        [DisplayName("Fecha Exp."), Expression("jHuesped.[fecha_documento]")]
+        public DateTime? FechaDocumento
+        {
+            get { return Fields.FechaDocumento[this]; }
+            set { Fields.FechaDocumento[this] = value; }
+        }
+
+        [DisplayName("Tel."), Expression("jHuesped.[telefono]")]
 
         public String Telefono
         {
@@ -167,14 +199,19 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.FechaSalida[this] = value; }
         }
 
-        [DisplayName("Habitacion Id"), Column("habitacion_id"),ForeignKey("habitaciones","habitacion_id"),LeftJoin("jHabitaciones")]
+        [DisplayName("Habitacion"), Column("habitacion_id"),ForeignKey("habitaciones","habitacion_id"),LeftJoin("jHabitaciones")]
         [LookupEditor("Contratos.Habitaciones")]
         public Int32? HabitacionId
         {
             get { return Fields.HabitacionId[this]; }
             set { Fields.HabitacionId[this] = value; }
         }
-
+        [DisplayName("Habitacion"),Expression("jHabitaciones.[numero_habitacion]")]
+        public String NumeroHabitacion
+        {
+            get { return Fields.NumeroHabitacion[this]; }
+            set { Fields.NumeroHabitacion[this] = value; }
+        }
 
         [DisplayName("Edad"), Column("edad")]
         public Int16? Edad
@@ -184,38 +221,33 @@ namespace Geshotel.Recepcion.Entities
         }
 
 
-        [DisplayName("Reserva Hotel Id"), Expression("jReserva.[hotel_id]")]
+        [DisplayName("Hotel"), Expression("jReserva.[hotel_id]")]
         public Int16? ReservaHotelId
         {
             get { return Fields.ReservaHotelId[this]; }
             set { Fields.ReservaHotelId[this] = value; }
         }
 
-        [DisplayName("Reserva Estado Reserva Id"), Expression("jReserva.[estado_reserva_id]")]
+        [DisplayName("Estado Reserva"), Expression("jReserva.[estado_reserva_id]")]
         public Int16? ReservaEstadoReservaId
         {
             get { return Fields.ReservaEstadoReservaId[this]; }
             set { Fields.ReservaEstadoReservaId[this] = value; }
         }
-
- 
-
   
-        [DisplayName("Reserva Fecha Prevista Llegada"), Expression("jReserva.[fecha_prevista_llegada]")]
+        [DisplayName("FechaLlegada"), Expression("jReserva.[fecha_prevista_llegada]")]
         public DateTime? ReservaFechaPrevistaLlegada
         {
             get { return Fields.ReservaFechaPrevistaLlegada[this]; }
             set { Fields.ReservaFechaPrevistaLlegada[this] = value; }
         }
 
-        [DisplayName("Reserva Fecha Prevista Salida"), Expression("jReserva.[fecha_prevista_salida]")]
+        [DisplayName("Fecha Salida"), Expression("jReserva.[fecha_prevista_salida]")]
         public DateTime? ReservaFechaPrevistaSalida
         {
             get { return Fields.ReservaFechaPrevistaSalida[this]; }
             set { Fields.ReservaFechaPrevistaSalida[this] = value; }
         }
-
-
  
         IIdField IIdRow.IdField
         {
@@ -250,6 +282,8 @@ namespace Geshotel.Recepcion.Entities
             public StringField NombreCompleto;
             public StringField TipoDocumentoId;
             public StringField TipoDocumento;
+            public DateTimeField FechaDocumento;
+      
             public StringField Nif;
             public DateTimeField FechaNacimiento;
             public StringField Direccion;
@@ -261,7 +295,12 @@ namespace Geshotel.Recepcion.Entities
             public StringField Telefono;
             public StringField Email;
             public StringField TarjetaFidelizacion;
-                
+            public StringField NumeroHabitacion;
+            public StringField SexoId;
+            public Int16Field HotelId;
+            public Int16Field EmpresaId;
+
+
             public RowFields()
                 : base()
             {

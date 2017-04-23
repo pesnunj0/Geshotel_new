@@ -10,7 +10,7 @@ namespace Geshotel.Portal.Entities
     using System.IO;
 
     [ConnectionKey("Default"), DisplayName("sexos"), InstanceName("sexos"), TwoLevelCached]
-    [ReadPermission("Administration:General")]
+    [ReadPermission("Todos:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript("Portal.Sexos")]
     public sealed class SexosRow : Row, IIdRow, INameRow

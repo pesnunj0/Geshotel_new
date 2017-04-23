@@ -11,9 +11,11 @@ namespace Geshotel.Recepcion.Forms
 
     [FormScript("Recepcion.Reservas")]
     [BasedOnRow(typeof(Entities.ReservasRow))]
-    public class ReservasForm
+    public class ReservasForm 
     {
         [Category("General")]
+        public Int16 EmpresaId { get; set; }
+        [LookupEditor(("Portal.Hoteles"), CascadeFrom = "EmpresaId", CascadeField ="EmpresaId")]
         public Int16 HotelId { get; set; }
         [ReadOnly(true),DefaultValue(0)]
         public Int16 EstadoReservaId { get; set; }

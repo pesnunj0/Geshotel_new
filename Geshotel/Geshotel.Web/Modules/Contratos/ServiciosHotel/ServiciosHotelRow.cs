@@ -17,7 +17,7 @@ namespace Geshotel.Contratos.Entities
     {
         public Int16Field HotelIdField
         {
-            get { return null; }
+            get { return Fields.HotelId; }
         }
         public Int16Field EmpresaIdField
         {

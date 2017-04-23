@@ -17,12 +17,11 @@ Imports System.Collections
 '    3.- Namespace se cambia de Geshotel a Geshotelk para diferenciarlo del otro
 '    4.- Select scope_identity() para cambiar select last_insert_id segun sea BD
 '    5.- Crear la clase añade connectionString
-'    6.- Añadir a MetaReserva nombre_reserva
+'    6.- Campos añadidos a Reserva y MetaReserva fecha_creacion,adultos,child_50, child_free, bebes,nombre_reserva, pension_id, tipo_habitacion_id
 '    7.- Quitar hora_llegada y hora de salida en Metareserva
 '    8.- Cambiar las busquedas en base de datos de hora_prevista_llegada y salida por '12:00:00'
 '    9.- CrearClase se añade el parámetro de conexion por si hiciera falta en un futuro
-'   10.- Metareserva UCS se ha cambiado a List. IMPORTANTE ver lineas comentadas 8028 que debe buscarse solucion GARRA Javier
-'   11.- Campos añadidos a Reserva y MetaReserva fecha_creacion,adultos,child_50, child_free, bebes,nombre_reserva, pension_id, tipo_habitacion_id
+'
 '******************************************************************************************************************************************************
 Namespace geshotelk
     Public Class GesHotelClase

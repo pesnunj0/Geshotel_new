@@ -17,7 +17,7 @@ namespace Geshotel.Recepcion.Entities
     public sealed class ReservasRow : Row, IIdRow, INameRow
     {
         [DisplayName("Tipo Habitacion"),Column("tipo_habitacion_id"),NotNull, ForeignKey("servicios","servicio_id"), LeftJoin("jTipoHabitacion"),TextualField("TipoHabitacion")]
-        [LookupEditor(("Contratos.ServiciosHotel"), FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
         public Int16? TipoHabitacionId
         {
             get { return Fields.TipoHabitacionId[this]; }
@@ -32,7 +32,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Pension"), Column("pension_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jPension"), TextualField("Pension")]
-        [LookupEditor(("Contratos.ServiciosHotel"), FilterField = "ConceptoAceleradorReservasId", FilterValue = 2)]
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 2)]
         public Int16? PensionId
         {
             get { return Fields.PensionId[this]; }
@@ -96,7 +96,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.FechaCreacion[this] = value; }
         }
 
-        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName")]
+        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"),LookupInclude]
         [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {

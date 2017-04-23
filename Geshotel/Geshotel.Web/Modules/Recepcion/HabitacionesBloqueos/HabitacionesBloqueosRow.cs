@@ -44,8 +44,7 @@ namespace Geshotel.Recepcion.Entities
 
         }
         [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), ForeignKey("tipos_bloqueo","tipo_bloqueo_id"),LeftJoin("jTipoBloqueo"), NotNull]
-        [LookupEditor(typeof(Portal.Entities.TiposBloqueoRow))]
-
+        [LookupEditor("Portal.TiposBloqueo")]
         public Int16? TipoBloqueoId
         {
             get { return Fields.TipoBloqueoId[this]; }
