@@ -36,7 +36,7 @@ namespace Geshotel.Portal.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.SexoId; }
+            get { return Fields.Sexo; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

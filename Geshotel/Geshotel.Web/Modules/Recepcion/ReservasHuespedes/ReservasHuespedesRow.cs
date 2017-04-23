@@ -93,12 +93,18 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Poblacion[this] = value; }
         }
 
-        [DisplayName("Sexo"), Expression("jHuesped.[sexo_id]"), Size(1), ForeignKey("sexos", "sexo_id"), LeftJoin("jSexo")]
+        [DisplayName("Sexo"), Expression("jHuesped.[sexo_id]"), Size(1), ForeignKey("sexos", "sexo_id"), LeftJoin("jSexo"),TextualField("Sexo")]
         [LookupEditor(typeof(Portal.Entities.SexosRow))]
         public String SexoId
         {
             get { return Fields.SexoId[this]; }
             set { Fields.SexoId[this] = value; }
+        }
+        [DisplayName("Sexo"),Expression("jSexo.[sexo]")]
+        public String Sexo
+        {
+            get { return Fields.Sexo[this]; }
+            set { Fields.Sexo[this] = value; }
         }
 
         [DisplayName("Nación"), Expression("jHuesped.[nacion_id]"), ForeignKey("naciones","nacion_id"),LeftJoin("jNaciones"),TextualField("Nacion")]
@@ -235,14 +241,14 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ReservaEstadoReservaId[this] = value; }
         }
   
-        [DisplayName("FechaLlegada"), Expression("jReserva.[fecha_prevista_llegada]")]
+        [DisplayName("Llegada"), Expression("jReserva.[fecha_prevista_llegada]")]
         public DateTime? ReservaFechaPrevistaLlegada
         {
             get { return Fields.ReservaFechaPrevistaLlegada[this]; }
             set { Fields.ReservaFechaPrevistaLlegada[this] = value; }
         }
 
-        [DisplayName("Fecha Salida"), Expression("jReserva.[fecha_prevista_salida]")]
+        [DisplayName("Salida"), Expression("jReserva.[fecha_prevista_salida]")]
         public DateTime? ReservaFechaPrevistaSalida
         {
             get { return Fields.ReservaFechaPrevistaSalida[this]; }
@@ -276,6 +282,7 @@ namespace Geshotel.Recepcion.Entities
             
             public DateTimeField ReservaFechaPrevistaLlegada;
             public DateTimeField ReservaFechaPrevistaSalida;
+            
 
             public StringField Nombre;
             public StringField Apellidos;
@@ -297,6 +304,7 @@ namespace Geshotel.Recepcion.Entities
             public StringField TarjetaFidelizacion;
             public StringField NumeroHabitacion;
             public StringField SexoId;
+            public StringField Sexo;
             public Int16Field HotelId;
             public Int16Field EmpresaId;
 

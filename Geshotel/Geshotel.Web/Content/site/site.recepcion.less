@@ -30,8 +30,17 @@
 }
 
 .s-Recepcion-ReservasHuespedesDialog {
-    > .size { width: 650px; }
+    > .size { min-width: 700px; }
     .caption { width: 150px; }
+    @media (min-width: 800px) {
+    .field.EmpresaId, .field.ReservaId, .field.Nombre, .field.Apellidos, .field.TipoDocumentoId,
+    .field.Nif, .field.FechaDocumento, .field.SexoId, .field.FechaNacimiento, .field.Direccion, .field.Poblacion, .field.Zip ,.field.NacionId,
+    .field.ProvinciaId, .field.Telefono, .field.FechaLlegada, .field.FechaSalida, .field.HabitacionId
+        {
+            max-width: 50%;
+        }
+    } 
+
 }
 
 .s-Recepcion-ReservasOfertasDialog {

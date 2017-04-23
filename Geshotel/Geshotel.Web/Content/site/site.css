@@ -8699,10 +8699,32 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Recepcion-ReservasHuespedesDialog > .size {
-  width: 650px;
+  min-width: 700px;
 }
 .s-Recepcion-ReservasHuespedesDialog .caption {
   width: 150px;
+}
+@media (min-width: 800px) {
+  .s-Recepcion-ReservasHuespedesDialog .field.EmpresaId,
+  .s-Recepcion-ReservasHuespedesDialog .field.ReservaId,
+  .s-Recepcion-ReservasHuespedesDialog .field.Nombre,
+  .s-Recepcion-ReservasHuespedesDialog .field.Apellidos,
+  .s-Recepcion-ReservasHuespedesDialog .field.TipoDocumentoId,
+  .s-Recepcion-ReservasHuespedesDialog .field.Nif,
+  .s-Recepcion-ReservasHuespedesDialog .field.FechaDocumento,
+  .s-Recepcion-ReservasHuespedesDialog .field.SexoId,
+  .s-Recepcion-ReservasHuespedesDialog .field.FechaNacimiento,
+  .s-Recepcion-ReservasHuespedesDialog .field.Direccion,
+  .s-Recepcion-ReservasHuespedesDialog .field.Poblacion,
+  .s-Recepcion-ReservasHuespedesDialog .field.Zip,
+  .s-Recepcion-ReservasHuespedesDialog .field.NacionId,
+  .s-Recepcion-ReservasHuespedesDialog .field.ProvinciaId,
+  .s-Recepcion-ReservasHuespedesDialog .field.Telefono,
+  .s-Recepcion-ReservasHuespedesDialog .field.FechaLlegada,
+  .s-Recepcion-ReservasHuespedesDialog .field.FechaSalida,
+  .s-Recepcion-ReservasHuespedesDialog .field.HabitacionId {
+    max-width: 50%;
+  }
 }
 .s-Recepcion-ReservasOfertasDialog > .size {
   width: 650px;
