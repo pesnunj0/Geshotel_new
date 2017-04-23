@@ -12595,26 +12595,20 @@ var Geshotel;
                 var filters = _super.prototype.getQuickFilters.call(this);
                 // get a reference to reservas row field names
                 var fld = Recepcion.ReservasRow.Fields;
-                // quick filter init method is a good place to set initial
-                // value for a quick filter editor, just after it is created
-                // ****************************************************************
-                // Here should be good to get FechaHotel instead of CurrentDate
-                // Asking Volkan how to
-                // ****************************************************************
-                var dateini = new Date();
-                var datefin = dateini;
-                dateini.setHours(0, 0, 0, 0);
-                datefin.setHours(23, 59, 59, 0);
+                var user = Q.Authorization.userDefinition;
                 Q.first(filters, function (x) { return x.field == fld.FechaPrevistaLlegada; }).init = function (w) {
-                    // w is a reference to the editor for this quick filter widget
-                    // here we cast it to DateEditor, and set its value as date.
-                    // note that in Javascript, months are 0 based, so date below
-                    // is actually 2016-05-01
+                    var date = new Date();
+                    date.setHours(0, 0, 0, 0);
+                    if (user.HotelId != null) {
+                        var hotel = Geshotel.Portal.HotelesRow.getLookup().itemById[user.HotelId];
+                        if (hotel != null && !Q.isEmptyOrNull(hotel.FechaHotel))
+                            date = Q.parseDate(hotel.FechaHotel);
+                    }
+                    var dateini = new Date(date.getTime());
                     w.valueAsDate = dateini;
-                    // setting start date was simple. but this quick filter is actually
-                    // a combination of two date editors. to get reference to second one,
-                    // need to find its next sibling element by its class
-                    var endDate = w.element.nextAll(".s-DateEditor").getWidget(Serenity.DateEditor);
+                    var datefin = new Date(date.getTime());
+                    datefin.setHours(23, 55, 0, 0);
+                    var endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
                     endDate.valueAsDate = datefin;
                 };
                 Q.first(filters, function (x) { return x.field == fld.EstadoReservaId; }).init = function (w) {
