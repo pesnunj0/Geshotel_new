@@ -160,6 +160,14 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Nif[this] = value; }
         }
 
+        [DisplayName("Zip"), Expression("jHuesped.[zip]")]
+
+        public String Zip
+        {
+            get { return Fields.Zip[this]; }
+            set { Fields.Zip[this] = value; }
+        }
+
         [DisplayName("Fecha Exp."), Expression("jHuesped.[fecha_documento]")]
         public DateTime? FechaDocumento
         {
@@ -300,6 +308,7 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field NacionId;
             public StringField Nacion;
             public StringField Telefono;
+            public StringField Zip;
             public StringField Email;
             public StringField TarjetaFidelizacion;
             public StringField NumeroHabitacion;

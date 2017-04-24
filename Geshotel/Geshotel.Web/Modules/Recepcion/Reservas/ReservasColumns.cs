@@ -13,7 +13,7 @@ namespace Geshotel.Recepcion.Columns
     [BasedOnRow(typeof(Entities.ReservasRow))]
     public class ReservasColumns
     {
-        [Width(65),EditLink, DisplayName("Db.Recepcion.Reservas.ReservaId"), AlignRight]
+        [Width(65),EditLink, DisplayName("Db.Recepcion.Reservas.ReservaId"), AlignRight, SortOrder(-1)]
         public Int32 ReservaId { get; set; }
         [EditLink]
         public String NombreReserva { get; set; }
@@ -48,11 +48,11 @@ namespace Geshotel.Recepcion.Columns
         public String ClienteIdFacturaRazon { get; set; }
         [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaReserva { get; set; }
-        [Width(110), QuickFilter,DisplayFormat("g"), SortOrder(-1)]
+        [Width(110), QuickFilter,DisplayFormat("g")]
         public DateTime FechaPrevistaLlegada { get; set; }
         [Width(110), QuickFilter, DisplayFormat("g")]
         public DateTime FechaPrevistaSalida { get; set; }
-        [Hidden,Width(90),DisplayFormat("HH:mm")]
+        [Hidden,Width(110)]
         public String ObservacionesLlegada { get; set; }
         [Hidden, Width(110)]
         public String ObservacionesSalida { get; set; }

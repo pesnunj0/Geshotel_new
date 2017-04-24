@@ -9829,7 +9829,7 @@ declare namespace Geshotel.Portal {
 Cambiamos el css si el estado de la reserva es con errores, la ponemos en rojo " out-of-stock"
 Si está pendiente de entrar o de salir la pondremos en Naranja (estado = 2 y llegada = hoy o estado =3 o 4 y salida = hoy)
 Gris si estado =1 o si estado= 5. Normal el resto.
-Seems no working
+!!!! IMPORTANTE !!!!  Ir a site.recepcion.less y crear los estilos. Si no, no rula
 Javier Núñez : ABRIL 2017
 **********************************************************************************************************************************/
 declare namespace Geshotel.Recepcion {

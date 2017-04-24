@@ -27,24 +27,6 @@ namespace Geshotel.Recepcion {
 
         getButtons() {
             var buttons = super.getButtons();
-            // Quitamos el Botón de Añadir 
-            // buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
-            // Pondremos uno nuevo que añada un registro en Huespedes
-            buttons.push({
-                title: Q.text('Controls.EntityGrid.NewButton'),
-                cssClass: 'add-guest',
-                icon: 'icon-plus text-green',
-                onClick: () => {
-                    new HuespedesDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.HuespedesRow>{
-                        reservaID: this.reservaID
-                    });
-                }
-                //onClick: () => {
-                //    new HuespedesDialog({
-                //        reservaID: this.reservaID,
-                //    }).dialogOpen();
-                //}
-            });
 
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,

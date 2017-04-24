@@ -257,7 +257,7 @@ Namespace geshotelk
 
         Private Function Obtiene_ultima_id(ByVal cmd As Object) As Integer
 
-            Dim sql_last_insert_id As Integer = "SELECT LAST_INSERT_ID()"
+            Dim sql_last_insert_id = "SELECT LAST_INSERT_ID()"
             If provider = "System.Data.SqlClient" Then
                 sql_last_insert_id = "SELECT SCOPE_IDENTITY()"
             End If

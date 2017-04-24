@@ -2725,6 +2725,7 @@
     <Compile Include="Modules\AdminLTE\Forms\FormsController.cs" />
     <Compile Include="Modules\AdminLTE\UIElements\UIElementsController.cs" />
     <Compile Include="Modules\Common\Behaviors\AuditBehavior.cs" />
+    <Compile Include="Modules\Common\Behaviors\ReservasHuespedesBehavior.cs" />
     <Compile Include="Modules\Common\Behaviors\TenantBehavior.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />

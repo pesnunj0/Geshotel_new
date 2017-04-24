@@ -98,6 +98,7 @@ namespace Geshotel.Recepcion.Repositories
                 ucs[i].unidad_calculo_id = 3;
                 i++;
             }
+            
             if (Convert.ToInt32(request.Entity.ChildFree) > 0)
             {
                 ucs[i] = new GesHotelClase.UCS();
