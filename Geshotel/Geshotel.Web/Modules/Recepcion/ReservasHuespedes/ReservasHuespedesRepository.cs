@@ -142,36 +142,79 @@ namespace Geshotel.Recepcion.Repositories
             {
                 var user = (UserDefinition)Authorization.UserDefinition;
 
-                string sqlQuery = "INSERT INTO huespedes SET nombre=@nombre,apellidos=@apellidos,empresa_id="+ row.EmpresaId;
+                string sqlQuery = "INSERT INTO huespedes (nombre,apellidos,empresa_id";
+                string Values = "VALUES(@nombre,@apellidos," + row.EmpresaId;
                 if (row.TipoDocumentoId != null)
-                    sqlQuery += ",tipo_documento_id='" + row.TipoDocumentoId + "'";
+                {
+                    sqlQuery += ",tipo_documento_id";
+                    Values += ",'" + row.TipoDocumentoId + "'";
+                }
                 if (row.Nif != null)
-                    sqlQuery += ",nif='" + row.Nif + "'";
+                {
+                    sqlQuery += ",nif";
+                    Values += ",'" + row.Nif + "'";
+                }
                 if (row.FechaDocumento != null)
-                    sqlQuery += ",fecha_documento='" + Convert.ToDateTime(row.FechaDocumento).ToString("yyyy-MM-dd") + "'";
+                {
+                    sqlQuery += ",fecha_documento";
+                    Values += ",'" + Convert.ToDateTime(row.FechaDocumento).ToString("yyyy-MM-dd") + "'";
+                }
                 if (row.SexoId != null)
-                    sqlQuery += ",sexo_id='" + row.SexoId + "'";
+                {
+                    sqlQuery += ",sexo_id";
+                    Values += ",'" + row.SexoId + "'";
+                }
                 if (row.Direccion != null)
-                    sqlQuery += ",direccion='" + row.Direccion + "'";
-                if (row.Poblacion != null)
-                    sqlQuery += ",poblacion='" + row.Poblacion + "'";
-                if (row.Zip != null)
-                    sqlQuery += ",zip='" + row.Zip + "'";
-                if (row.NacionId != null)
-                    sqlQuery += ",nacion_id='" + row.NacionId + "'";
-                if (row.ProvinciaId != null)
-                    sqlQuery += ",provincia_id='" + row.ProvinciaId + "'";
-                if (row.FechaNacimiento != null)
-                    sqlQuery += ",fecha_nacimiento='" + Convert.ToDateTime(row.FechaNacimiento).ToString("yyyy-MM-dd") + "'";
-                if (row.Telefono != null)
-                    sqlQuery += ",telefono='" + row.Telefono + "'";
-                if (row.Email != null)
-                    sqlQuery += ",email='" + row.Email + "'";
-                if (row.TarjetaFidelizacion != null)
-                    sqlQuery += ",tarjeta_fidelizacion='" + row.TarjetaFidelizacion + "'";
-                sqlQuery += ",user_id =" + user.UserId + ",fecha_modificacion ='" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                
+                {
+                    sqlQuery += ",direccion";
+                    Values += ",'" + row.Direccion + "'";
+                }
 
+                if (row.Poblacion != null)
+                {
+                    sqlQuery += ",poblacion";
+                    Values += ",'" + row.Poblacion + "'";
+                }
+                if (row.Zip != null)
+                {
+                    sqlQuery += ",zip";
+                    Values += ",'" + row.Zip + "'";
+                }
+                if (row.NacionId != null)
+                {
+                    sqlQuery += ",nacion_id";
+                    Values += ",'" + row.NacionId + "'";
+                }
+                if (row.ProvinciaId != null)
+                {
+                    sqlQuery += ",provincia_id";
+                    Values += ",'" + row.ProvinciaId + "'";
+                }
+                if (row.FechaNacimiento != null)
+                {
+                    sqlQuery += ",fecha_nacimiento";
+                    Values += ",'" + Convert.ToDateTime(row.FechaNacimiento).ToString("yyyy-MM-dd") + "'";
+                }
+                if (row.Telefono != null)
+                {
+                    sqlQuery += ",telefono";
+                    Values += ",'" + row.Telefono + "'";
+                }
+                if (row.Email != null)
+                {
+                    sqlQuery += ",email"; 
+                    Values += ",'" + row.Email + "'";
+                }
+                if (row.TarjetaFidelizacion != null)
+                {
+                    sqlQuery += ",tarjeta_fidelizacion";
+                    Values += ",'"+ row.TarjetaFidelizacion + "'";
+                }
+                sqlQuery += ",user_id,fecha_modificacion) ";
+                Values +=  "," + user.UserId + ",'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "');";
+                sqlQuery += Values;
+                
+                
                 //string sqlQuery = "UPDATE huespedes SET nombre=@nombre,apellidos=@apellidos,tipo_documento_id=@tipo_documento,nif=@nif,fecha_documento=@fecha_dcumento, ";
                 //sqlQuery += "sexo_id=@sexo_id,direccion=@direccion,poblacion=@poblacion,zip=@zip,nacion_id=@nacion_id,provincia_id=@provincia_id,telefono=@telefono,email=@email,fecha_naciomento=@fecha_nacimiento=@fecha_nacimiento,user_id=@user_id,fecha_modificacion=@fecha_modificacion";
 
@@ -180,7 +223,7 @@ namespace Geshotel.Recepcion.Repositories
                     {
                         row.Nombre,
                         row.Apellidos,
-                        row.EmpresaId
+                        //row.EmpresaId
                         //    row.TipoDocumentoId,
                         //    row.Nif,
                         //    row.FechaDocumento,
@@ -198,14 +241,18 @@ namespace Geshotel.Recepcion.Repositories
                         
                     });
                 
-                string sql_last_insert_id = "SELECT LAST_INSERT_ID()";
+                sqlQuery = "SELECT Last_insert_id()";
                 string provider = ConfigurationManager.ConnectionStrings["Default"].ProviderName;
                 if (provider == "System.Data.SqlClient")
-                    sql_last_insert_id = "SELECT SCOPE_IDENTITY()";
-            
-                sqlQuery = "SELECT LAST_INSERT_ID()";
-                var id = connection.Execute(sql_last_insert_id);
-                return (int)id;
+                    sqlQuery= "SELECT SCOPE_IDENTITY()";
+
+                var result = connection.Query<ulong>("SELECT LAST_INSERT_ID();");
+                int huespedid = 0;
+                foreach (Int64 id in result)
+                {
+                    huespedid = Convert.ToInt32(id);
+                }
+                return huespedid;
             }
             public static Boolean DeleteGuest(IDbConnection connection, Int32 Id)
             {
@@ -256,6 +303,15 @@ namespace Geshotel.Recepcion.Repositories
                         error = DeleteGuest(this.Connection, (int)Row.HuespedId);
                         error = UpdateGuest(this.Connection, Row, HuespedID);
                     } 
+                }else
+                {
+                    if (Row.HuespedId==null)
+                        HuespedID = CreateGuest(this.Connection, Row);
+                    else
+                    {
+                        error = UpdateGuest(this.Connection, Row, (int)Row.HuespedId);
+                        HuespedID = (int)Row.HuespedId;
+                    }
                 }
                 if (Row.FechaNacimiento != null)
                     Row.Edad = Edad(Convert.ToDateTime(Row.FechaNacimiento));                             

@@ -5689,7 +5689,7 @@ declare namespace Geshotel.Portal {
     }
     namespace SexosRow {
         const idProperty = "SexoId";
-        const nameProperty = "SexoId";
+        const nameProperty = "Sexo";
         const localTextPrefix = "Portal.Sexos";
         const lookupKey = "Portal.Sexos";
         function getLookup(): Q.Lookup<SexosRow>;
@@ -6963,23 +6963,25 @@ declare namespace Geshotel.Recepcion {
     }
     interface ReservasHuespedesForm {
         ReservaId: Serenity.IntegerEditor;
+        EmpresaId: Serenity.LookupEditor;
         Nombre: Serenity.StringEditor;
         Apellidos: Serenity.StringEditor;
         TipoDocumentoId: Serenity.LookupEditor;
         Nif: Serenity.StringEditor;
         FechaDocumento: Serenity.DateEditor;
         SexoId: Serenity.LookupEditor;
+        FechaNacimiento: Serenity.DateEditor;
         Direccion: Serenity.StringEditor;
         Poblacion: Serenity.StringEditor;
         Zip: Serenity.StringEditor;
         NacionId: Serenity.LookupEditor;
         ProvinciaId: Serenity.LookupEditor;
-        Telefono: Serenity.StringEditor;
         Email: Serenity.EmailEditor;
+        Telefono: Serenity.StringEditor;
         HuespedId: Serenity.IntegerEditor;
+        HabitacionId: Serenity.LookupEditor;
         FechaLlegada: Serenity.DateEditor;
         FechaSalida: Serenity.DateEditor;
-        HabitacionId: Serenity.LookupEditor;
         Edad: Serenity.IntegerEditor;
     }
 }
@@ -7011,10 +7013,12 @@ declare namespace Geshotel.Recepcion {
         NacionId?: number;
         Nacion?: string;
         Telefono?: string;
+        Zip?: string;
         Email?: string;
         TarjetaFidelizacion?: string;
         NumeroHabitacion?: string;
         SexoId?: string;
+        Sexo?: string;
         HotelId?: number;
         EmpresaId?: number;
     }
@@ -7048,10 +7052,12 @@ declare namespace Geshotel.Recepcion {
             const NacionId: string;
             const Nacion: string;
             const Telefono: string;
+            const Zip: string;
             const Email: string;
             const TarjetaFidelizacion: string;
             const NumeroHabitacion: string;
             const SexoId: string;
+            const Sexo: string;
             const HotelId: string;
             const EmpresaId: string;
         }

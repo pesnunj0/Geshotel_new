@@ -27,10 +27,12 @@ namespace Geshotel.Recepcion {
         NacionId?: number;
         Nacion?: string;
         Telefono?: string;
+        Zip?: string;
         Email?: string;
         TarjetaFidelizacion?: string;
         NumeroHabitacion?: string;
         SexoId?: string;
+        Sexo?: string;
         HotelId?: number;
         EmpresaId?: number;
     }
@@ -66,15 +68,17 @@ namespace Geshotel.Recepcion {
             export declare const NacionId: string;
             export declare const Nacion: string;
             export declare const Telefono: string;
+            export declare const Zip: string;
             export declare const Email: string;
             export declare const TarjetaFidelizacion: string;
             export declare const NumeroHabitacion: string;
             export declare const SexoId: string;
+            export declare const Sexo: string;
             export declare const HotelId: string;
             export declare const EmpresaId: string;
         }
 
-        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'HotelId', 'EmpresaId'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

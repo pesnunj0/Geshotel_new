@@ -7,7 +7,7 @@ namespace Geshotel.Portal {
 
     export namespace SexosRow {
         export const idProperty = 'SexoId';
-        export const nameProperty = 'SexoId';
+        export const nameProperty = 'Sexo';
         export const localTextPrefix = 'Portal.Sexos';
         export const lookupKey = 'Portal.Sexos';
 
