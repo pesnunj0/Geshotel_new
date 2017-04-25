@@ -22,7 +22,8 @@
             // Javascript is case sensitive, so contratoID didn't work here.
             // To get intellisense, use a TS cast like below <LineasRow>
             this.editItem(<LineasRow>{
-                ContratoId: this.contratoID
+                ContratoId: this.contratoID,
+                HotelId: this.hotelID
             });
         }
 

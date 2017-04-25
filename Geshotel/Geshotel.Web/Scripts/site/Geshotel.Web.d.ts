@@ -8367,6 +8367,7 @@ declare namespace Geshotel.Contratos {
         protected getService(): string;
         constructor(container: JQuery);
         getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {

@@ -7823,6 +7823,18 @@ var Geshotel;
                 }));
                 return buttons;
             };
+            ContratosGrid.prototype.getQuickFilters = function () {
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var fld = Contratos.ContratosRow.Fields;
+                var user = Q.Authorization.userDefinition;
+                Q.first(filters, function (x) { return x.field == fld.EmpresaId; }).init = function (w) {
+                    w.value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+                };
+                Q.first(filters, function (x) { return x.field == fld.HotelId; }).init = function (w) {
+                    w.value = user.HotelId == null ? "" : user.HotelId.toString();
+                };
+                return filters;
+            };
             return ContratosGrid;
         }(Serenity.EntityGrid));
         ContratosGrid = __decorate([
@@ -7901,7 +7913,8 @@ var Geshotel;
                 // Javascript is case sensitive, so contratoID didn't work here.
                 // To get intellisense, use a TS cast like below <LineasRow>
                 this.editItem({
-                    ContratoId: this.contratoID
+                    ContratoId: this.contratoID,
+                    HotelId: this.hotelID
                 });
             };
             ContratosLineasGrid.prototype.getButtons = function () {

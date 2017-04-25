@@ -1,4 +1,10 @@
-﻿
+﻿/*********************************************************************************************************
+ * Para evitar deadlocks entre Serenity y Geshotel, en vez de utilizar MySavehandler etc
+ * He cambiado la llamada en Create y Update para que despues de la llamada a MySavehandler, es decir, cuando
+ * la reserva ya ha sido grabada, pueda llamar a la funcion de geshotel ObtieneServiviosReserva
+ * En MySaveHandler he añadido que iguale fecha_llegada y fecha_salida a fecha_prevista_llegada y 
+ * fecha_prevista_salida (esta estupidez la hago para poder hacer busqueda de reservas solo por fechas
+ * ********************************************************************************************************/
 
 namespace Geshotel.Recepcion.Repositories
 {
@@ -91,7 +97,7 @@ namespace Geshotel.Recepcion.Repositories
                 ucs[i].unidad_calculo_id = 2;
                 i++;
             }
-            if (Convert.ToInt32(request.Entity.Child50) > 0)
+            if (Convert.ToInt32(request.Entity.Child50) >= 0)
             {
                 ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.Child50);
@@ -99,14 +105,14 @@ namespace Geshotel.Recepcion.Repositories
                 i++;
             }
             
-            if (Convert.ToInt32(request.Entity.ChildFree) > 0)
+            if (Convert.ToInt32(request.Entity.ChildFree) >= 0)
             {
                 ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.ChildFree);
                 ucs[i].unidad_calculo_id = 4;
                 i++;
             }
-            if (Convert.ToInt32(request.Entity.Bebes) > 0)
+            if (Convert.ToInt32(request.Entity.Bebes) >= 0)
             {
                 ucs[i] = new GesHotelClase.UCS();
                 ucs[i].cantidad = Convert.ToInt32(request.Entity.Bebes);
@@ -172,7 +178,18 @@ namespace Geshotel.Recepcion.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
+            protected override void SetInternalFields()
+            {
+                base.SetInternalFields();
+                if (Row.EstadoReservaId < 3)
+                {
+                    Row.FechaLlegada = Row.FechaPrevistaLlegada;
+                    Row.FechaSalida = Row.FechaPrevistaSalida;
+                }
+            }
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow>
