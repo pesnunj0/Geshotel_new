@@ -12602,15 +12602,15 @@ var Geshotel;
                 return opt;
             };
             ArrivalsGrid.prototype.getQuickFilters = function () {
-                // Let's filter Reservations with arrival (fecha_prevista_llegada) = today
+                // Let's filter Reservations with arrival (fecha_llegada) = today
                 // and withs status = ReservationStatus.ArrivalPending
                 // get quick filter list from base class
                 var filters = _super.prototype.getQuickFilters.call(this);
                 // get a reference to reservas row field names
                 var fld = Recepcion.ReservasRow.Fields;
                 var user = Q.Authorization.userDefinition;
-                Q.first(filters, function (x) { return x.field == fld.FechaPrevistaLlegada; }).init = function (w) {
-                    var date = new Date();
+                Q.first(filters, function (x) { return x.field == fld.FechaLlegada; }).init = function (w) {
+                    var date = new Date(); // La fecha actual es por defecto la fecha del hotel si no hay cierres
                     date.setHours(0, 0, 0, 0);
                     if (user.HotelId != null) {
                         var hotel = Geshotel.Portal.HotelesRow.getLookup().itemById[user.HotelId];
@@ -12621,7 +12621,10 @@ var Geshotel;
                     w.valueAsDate = dateini;
                     var datefin = new Date(date.getTime());
                     datefin.setHours(23, 55, 0, 0);
-                    var endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
+                    // Aqui en caso de que quisieramos llamar a FechaPrevistaLlegada que tiene fecha y hora,
+                    // En vez de .s-DateEditor.dateQ pondremos .s-DateTimeEditor.dateQ y en vez de Serenity.DateEditor
+                    // pondremos Serenity.DateTimeEditor
+                    var endDate = w.element.nextAll(".s-DateEditor.dateQ").getWidget(Serenity.DateEditor);
                     endDate.valueAsDate = datefin;
                 };
                 Q.first(filters, function (x) { return x.field == fld.EstadoReservaId; }).init = function (w) {
@@ -12685,6 +12688,149 @@ var Geshotel;
             return CheckInAction;
         }(Geshotel.Common.BulkServiceAction));
         Recepcion.CheckInAction = CheckInAction;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/// <reference path="../../Common/Helpers/BulkServiceAction.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var CheckOutAction = (function (_super) {
+            __extends(CheckOutAction, _super);
+            function CheckOutAction() {
+                return _super.apply(this, arguments) || this;
+            }
+            /**
+             * This controls how many service requests will be used in parallel.
+             * Determine this number based on how many requests your server
+             * might be able to handle, and amount of wait on external resources.
+             */
+            CheckOutAction.prototype.getParallelRequests = function () {
+                return 10;
+            };
+            /**
+             * These number of records IDs will be sent to your service in one
+             * service call. If your service is designed to handle one record only,
+             * set it to 1. But note that, if you have 5000 records, this will
+             * result in 5000 service calls / requests.
+             */
+            CheckOutAction.prototype.getBatchSize = function () {
+                return 1;
+            };
+            /**
+             * This is where you should call your service.
+             * Batch parameter contains the selected order IDs
+             * that should be processed in this service call.
+             */
+            CheckOutAction.prototype.executeForBatch = function (batch) {
+                var _this = this;
+                Recepcion.ReservasService.ChangeReservationStatus({
+                    ReservaId: Q.parseInteger(batch[0]),
+                    NewStatusId: Recepcion.ReservationStatus.CheckedOut
+                }, function (response) { return _this.set_successCount(_this.get_successCount() + batch.length); }, {
+                    blockUI: false,
+                    onError: function (response) { return _this.set_errorCount(_this.get_errorCount() + batch.length); },
+                    onCleanup: function () { return _this.serviceCallCleanup(); }
+                });
+            };
+            return CheckOutAction;
+        }(Geshotel.Common.BulkServiceAction));
+        Recepcion.CheckOutAction = CheckOutAction;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/************************************************************************************************************************************************************
+Departures List
+What I try to do is the following:
+
+1.- Filter Reservations with status = PreCheckedOut and FechaSalida = FechaHotel. As I do not know how to get it, i use currentdate instead
+2.- Select Reservations end user wants to checkOut and Add a button to do it
+
+Javier Núñez : APRIL 2017
+*************************************************************************************************************************************************************/
+/// <reference path="../Reservas/ReservasGrid.ts" />
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var DeparturesGrid = (function (_super) {
+            __extends(DeparturesGrid, _super);
+            function DeparturesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            DeparturesGrid.prototype.createToolbarExtensions = function () {
+                _super.prototype.createToolbarExtensions.call(this);
+                this.rowSelection = new Serenity.GridRowSelectionMixin(this);
+            };
+            DeparturesGrid.prototype.getInitialTitle = function () {
+                _super.prototype.getInitialTitle.call(this);
+                return Q.text("Db.Recepcion.Departures.EntityPlural");
+            };
+            DeparturesGrid.prototype.getButtons = function () {
+                var _this = this;
+                return [{
+                        title: Q.text('Controls.EntityGrid.CheckOutDeparturesButton'),
+                        cssClass: 'check-out-button',
+                        icon: 'fa-chevron-circle-left text-green',
+                        onClick: function () {
+                            if (!_this.onViewSubmit()) {
+                                return;
+                            }
+                            var action = new Recepcion.CheckOutAction();
+                            action.done = function () { return _this.rowSelection.resetCheckedAndRefresh(); };
+                            action.execute(_this.rowSelection.getSelectedKeys());
+                        }
+                    }];
+            };
+            DeparturesGrid.prototype.getColumns = function () {
+                var _this = this;
+                var columns = _super.prototype.getColumns.call(this);
+                columns.splice(0, 0, Serenity.GridRowSelectionMixin.createSelectColumn(function () { return _this.rowSelection; }));
+                return columns;
+            };
+            DeparturesGrid.prototype.getViewOptions = function () {
+                var opt = _super.prototype.getViewOptions.call(this);
+                opt.rowsPerPage = 2500;
+                return opt;
+            };
+            DeparturesGrid.prototype.getQuickFilters = function () {
+                // Let's filter Reservations with Departure (fecha_salida) = FechaHotel
+                // and withs status = ReservationStatus.ArrivalPending
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                // get a reference to reservas row field names
+                var fld = Recepcion.ReservasRow.Fields;
+                var user = Q.Authorization.userDefinition;
+                Q.first(filters, function (x) { return x.field == fld.FechaSalida; }).init = function (w) {
+                    var date = new Date(); // La fecha actual es por defecto la fecha del hotel si no hay cierres
+                    date.setHours(0, 0, 0, 0);
+                    if (user.HotelId != null) {
+                        var hotel = Geshotel.Portal.HotelesRow.getLookup().itemById[user.HotelId];
+                        if (hotel != null && !Q.isEmptyOrNull(hotel.FechaHotel))
+                            date = Q.parseDate(hotel.FechaHotel);
+                    }
+                    var dateini = new Date(date.getTime());
+                    w.valueAsDate = dateini;
+                    var datefin = new Date(date.getTime());
+                    datefin.setHours(23, 55, 0, 0);
+                    // Aqui en caso de que quisieramos llamar a FechaPrevistaLlegada que tiene fecha y hora,
+                    // En vez de .s-DateEditor.dateQ pondremos .s-DateTimeEditor.dateQ y en vez de Serenity.DateEditor
+                    // pondremos Serenity.DateTimeEditor
+                    var endDate = w.element.nextAll(".s-DateEditor.dateQ").getWidget(Serenity.DateEditor);
+                    endDate.valueAsDate = datefin;
+                };
+                Q.first(filters, function (x) { return x.field == fld.EstadoReservaId; }).init = function (w) {
+                    // enum editor has a string value, so need to call toString()
+                    w.value = Recepcion.ReservationStatus.PreCheckedOut.toString();
+                };
+                return filters;
+            };
+            return DeparturesGrid;
+        }(Recepcion.ReservasGrid));
+        DeparturesGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], DeparturesGrid);
+        Recepcion.DeparturesGrid = DeparturesGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

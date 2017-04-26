@@ -48,10 +48,14 @@ namespace Geshotel.Recepcion.Columns
         public String ClienteIdFacturaRazon { get; set; }
         [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaReserva { get; set; }
-        [Width(110), QuickFilter,DisplayFormat("g")]
+        [Width(110),DisplayFormat("g")]
         public DateTime FechaPrevistaLlegada { get; set; }
-        [Width(110), QuickFilter, DisplayFormat("g")]
+        [Width(110), DisplayFormat("g")]
         public DateTime FechaPrevistaSalida { get; set; }
+        [Width(110), QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        public DateTime FechaLlegada { get; set; }
+        [Width(110), QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        public DateTime FechaSalida { get; set; }
         [Hidden,Width(110)]
         public String ObservacionesLlegada { get; set; }
         [Hidden, Width(110)]
@@ -60,10 +64,6 @@ namespace Geshotel.Recepcion.Columns
         public String ObservacionesCliente { get; set; }
         [Hidden, Width(110)]
         public String Observaciones { get; set; }
-        [Hidden, Width(110)]
-        public DateTime FechaLlegada { get; set; }
-        [Hidden, Width(110)]
-        public DateTime FechaSalida { get; set; }
         [Width(110)]
         public String BonoReferencia { get; set; }
         [Hidden, Width(110)]

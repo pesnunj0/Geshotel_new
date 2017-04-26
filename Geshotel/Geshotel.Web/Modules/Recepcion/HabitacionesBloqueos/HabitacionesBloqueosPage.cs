@@ -1,7 +1,5 @@
 ﻿
 
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Recepcion/HabitacionesBloqueos", typeof(Geshotel.Recepcion.Pages.HabitacionesBloqueosController))]
-
 namespace Geshotel.Recepcion.Pages
 {
     using Serenity;

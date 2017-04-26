@@ -851,6 +851,7 @@
     <Content Include="Modules\Recepcion\ReservasServicios\ReservasServiciosIndex.cshtml" />
     <Content Include="Modules\Recepcion\Scheduler\SchedulerIndex.cshtml" />
     <Content Include="Modules\Recepcion\Arrivals\ArrivalsIndex.cshtml" />
+    <Content Include="Modules\Recepcion\Departures\DeparturesIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -2589,6 +2590,8 @@
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Arrivals\ArrivalsGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Arrivals\CheckInAction.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Departures\DeparturesGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\Departures\CheckOutAction.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\RemovingReservasContratosAddButton.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\ReservasContratosGrid.ts" />
@@ -2725,7 +2728,6 @@
     <Compile Include="Modules\AdminLTE\Forms\FormsController.cs" />
     <Compile Include="Modules\AdminLTE\UIElements\UIElementsController.cs" />
     <Compile Include="Modules\Common\Behaviors\AuditBehavior.cs" />
-    <Compile Include="Modules\Common\Behaviors\ReservasHuespedesBehavior.cs" />
     <Compile Include="Modules\Common\Behaviors\TenantBehavior.cs" />
     <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />
@@ -3112,6 +3114,7 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
     <Compile Include="Modules\Recepcion\Arrivals\ArrivalsPage.cs" />
+    <Compile Include="Modules\Recepcion\Departures\DeparturesPage.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasModels.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosColumns.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
@@ -3398,7 +3401,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Modules\Northwind\ProductLang\OrderDetail\" />
     <Folder Include="Modules\Recepcion\Calendario\" />
-    <Folder Include="Modules\Recepcion\Departures\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

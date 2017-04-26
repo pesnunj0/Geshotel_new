@@ -9907,6 +9907,55 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+    class CheckOutAction extends Common.BulkServiceAction {
+        /**
+         * This controls how many service requests will be used in parallel.
+         * Determine this number based on how many requests your server
+         * might be able to handle, and amount of wait on external resources.
+         */
+        protected getParallelRequests(): number;
+        /**
+         * These number of records IDs will be sent to your service in one
+         * service call. If your service is designed to handle one record only,
+         * set it to 1. But note that, if you have 5000 records, this will
+         * result in 5000 service calls / requests.
+         */
+        protected getBatchSize(): number;
+        /**
+         * This is where you should call your service.
+         * Batch parameter contains the selected order IDs
+         * that should be processed in this service call.
+         */
+        protected executeForBatch(batch: any): void;
+    }
+}
+/************************************************************************************************************************************************************
+Departures List
+What I try to do is the following:
+
+1.- Filter Reservations with status = PreCheckedOut and FechaSalida = FechaHotel. As I do not know how to get it, i use currentdate instead
+2.- Select Reservations end user wants to checkOut and Add a button to do it
+
+Javier Núñez : APRIL 2017
+*************************************************************************************************************************************************************/
+declare namespace Geshotel.Recepcion {
+    class DeparturesGrid extends Recepcion.ReservasGrid {
+        private rowSelection;
+        constructor(container: JQuery);
+        protected createToolbarExtensions(): void;
+        getInitialTitle(): string;
+        getButtons(): {
+            title: string;
+            cssClass: string;
+            icon: string;
+            onClick: () => void;
+        }[];
+        protected getColumns(): Slick.Column[];
+        protected getViewOptions(): Slick.RemoteViewOptions;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosDialog extends Serenity.EntityDialog<HabitacionesBloqueosRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;

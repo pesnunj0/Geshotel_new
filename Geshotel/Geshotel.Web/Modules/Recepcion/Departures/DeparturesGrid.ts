@@ -1,9 +1,9 @@
 ﻿/************************************************************************************************************************************************************
-Arrivals List
+Departures List
 What I try to do is the following:
 
-1.- Filter Reservations with status = ArrivalPending and FechaPervistaLLegada = FechaHotel. As I do not know how to get it, i use currentdate instead
-2.- Select Reservations end user wants to checkIn and Add a button to do it
+1.- Filter Reservations with status = PreCheckedOut and FechaSalida = FechaHotel. As I do not know how to get it, i use currentdate instead
+2.- Select Reservations end user wants to checkOut and Add a button to do it
 
 Javier Núñez : APRIL 2017
 *************************************************************************************************************************************************************/
@@ -14,7 +14,7 @@ namespace Geshotel.Recepcion {
     
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class ArrivalsGrid extends Recepcion.ReservasGrid {
+    export class DeparturesGrid extends Recepcion.ReservasGrid {
 
         private rowSelection: Serenity.GridRowSelectionMixin;
 
@@ -30,20 +30,20 @@ namespace Geshotel.Recepcion {
 
         getInitialTitle() {
             super.getInitialTitle()
-            return Q.text("Db.Recepcion.Arrivals.EntityPlural")
+            return Q.text("Db.Recepcion.Departures.EntityPlural")
         }
 
         getButtons() {
             return [{
-                title: Q.text('Controls.EntityGrid.CheckInArrivalsButton'),
-                cssClass: 'check-in-button',
-                icon: 'fa-chevron-circle-right text-green',
+                title: Q.text('Controls.EntityGrid.CheckOutDeparturesButton'),
+                cssClass: 'check-out-button',
+                icon: 'fa-chevron-circle-left text-green',
                 onClick: () => {
                     if (!this.onViewSubmit()) {
                         return;
                     }
 
-                    var action = new CheckInAction();
+                    var action = new CheckOutAction();
                     action.done = () => this.rowSelection.resetCheckedAndRefresh();
                     action.execute(this.rowSelection.getSelectedKeys());
                 }
@@ -62,7 +62,7 @@ namespace Geshotel.Recepcion {
         }
 
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
-            // Let's filter Reservations with arrival (fecha_llegada) = today
+            // Let's filter Reservations with Departure (fecha_salida) = FechaHotel
             // and withs status = ReservationStatus.ArrivalPending
 
 
@@ -74,7 +74,7 @@ namespace Geshotel.Recepcion {
 
             var user = Q.Authorization.userDefinition as ScriptUserDefinition;
 
-            Q.first(filters, x => x.field == fld.FechaLlegada).init = w => {
+            Q.first(filters, x => x.field == fld.FechaSalida).init = w => {
                 var date = new Date();  // La fecha actual es por defecto la fecha del hotel si no hay cierres
                 date.setHours(0, 0, 0, 0);
                 if (user.HotelId != null) {
@@ -97,7 +97,7 @@ namespace Geshotel.Recepcion {
 
             Q.first(filters, x => x.field == fld.EstadoReservaId).init = w => {
                 // enum editor has a string value, so need to call toString()
-                (w as Serenity.EnumEditor).value = ReservationStatus.ArrivalPending.toString();
+                (w as Serenity.EnumEditor).value = ReservationStatus.PreCheckedOut.toString();
             };
 
             return filters;

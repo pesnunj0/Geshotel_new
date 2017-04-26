@@ -401,7 +401,8 @@ namespace Geshotel.Portal.Entities
 
         [DisplayName("Fecha Hotel"), LookupInclude]
         // please uncomment below, and remove two expressions under after adding cierres table
-        [Expression("(SELECT Max(cierres.fecha_cierre) FROM cierres WHERE cierres.hotel_id = t0.hotel_id)")]
+        // Note that it does not work on SQL SERVER becouse in SQL Server you have DATEADD(day,1,fecha_cierre)
+        [Expression("(SELECT DATE_ADD(Max(fecha_cierre),INTERVAL 1 DAY) FROM cierres WHERE hotel_id = t0.hotel_id)")]
         //[Expression("getdate()")]
         //[Expression("CURRENT_DATE()", Dialect = "MySql")]
         public DateTime? FechaHotel

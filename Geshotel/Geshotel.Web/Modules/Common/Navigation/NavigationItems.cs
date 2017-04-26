@@ -5,9 +5,13 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(1000, "Dashboard", url: "~/", permission: "", icon: "icon-speedometer")]
 
 [assembly: NavigationMenu(4000, "Recepcion", icon: "icon-people")]
-[assembly: NavigationLink(4000, "Recepcion/Reservas", typeof(Geshotel.Recepcion.Pages.ReservasController),icon:"icon-plane")]
+[assembly: NavigationLink(4000, "Recepcion/Reservas", typeof(Geshotel.Recepcion.Pages.ReservasController),icon:"icon-note")]
 [assembly: NavigationLink(4000, "Recepcion/Scheduler", typeof(Geshotel.Recepcion.Pages.SchedulerController), icon: "icon-calendar")]
 [assembly: NavigationLink(4000, "Recepcion/Llegadas", typeof(Geshotel.Recepcion.Pages.ArrivalsController), icon: "fa-briefcase")]
+[assembly: NavigationLink(4000, "Recepcion/Salidas", typeof(Geshotel.Recepcion.Pages.DeparturesController), icon: "fa-plane")]
+[assembly: NavigationLink(4000, "Recepcion/Huespedes", typeof(Geshotel.Recepcion.Pages.HuespedesController), icon:"icon-people")]
+[assembly: NavigationLink(4000, "Recepcion/HabitacionesBloqueos", typeof(Geshotel.Recepcion.Pages.HabitacionesBloqueosController),icon:"icon-lock")]
+
 
 [assembly: NavigationMenu(6000, "Contratos", icon:"icon-layers")]
 
@@ -21,9 +25,9 @@ using Portal = Geshotel.Portal.Pages;
 [assembly: NavigationLink(6000, "Contratos/ServiciosHotel", typeof(Geshotel.Contratos.Pages.ServiciosHotelController), icon: "icon-basket")]
 [assembly: NavigationLink(6000, "Contratos/Impuestos", typeof(Geshotel.Portal.Pages.ImpuestosController), icon: "fa-money")]
 [assembly: NavigationLink(6000, "Contratos/CanalesReserva", typeof(Geshotel.Contratos.Pages.CanalesReservaController))]
-[assembly: NavigationLink(6000, "Contratos/Cajas", typeof(Geshotel.Contratos.Pages.CajasController))]
-[assembly: NavigationLink(6000, "Contratos/Contadores", typeof(Geshotel.Contratos.Pages.ContadoresController))]
-[assembly: NavigationLink(6000, "Contratos/Series", typeof(Geshotel.Contratos.Pages.SeriesController))]
+[assembly: NavigationLink(6000, "Contratos/Cajas", typeof(Geshotel.Contratos.Pages.CajasController),icon:"fa-eur")]
+[assembly: NavigationLink(6000, "Contratos/Contadores", typeof(Geshotel.Contratos.Pages.ContadoresController),icon:"icon-calculator")]
+[assembly: NavigationLink(6000, "Contratos/Series", typeof(Geshotel.Contratos.Pages.SeriesController),icon:"icon-bubbles")]
 
 //[assembly: NavigationLink(6000, "Contratos/Lineas de Contrato", typeof(Geshotel.Contratos.Pages.LineasController), icon: "icon-note")]
 //[assembly: NavigationLink(6000, "Contratos/Cupos", typeof(Geshotel.Contratos.Pages.CuposController))]

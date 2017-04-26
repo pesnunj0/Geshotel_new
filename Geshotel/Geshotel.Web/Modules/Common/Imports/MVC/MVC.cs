@@ -692,6 +692,13 @@ namespace MVC
             }
 
 
+            public static class Departures
+            {
+
+                public const string DeparturesIndex = "~/Modules/Recepcion/Departures/DeparturesIndex.cshtml";
+            }
+
+
             public static class HabitacionesBloqueos
             {
 
