@@ -7,7 +7,7 @@ namespace Geshotel.Common
         public int Salidas { get; set; }
         public int PorcentajeOcupacion { get; set; }
         public int PaxAlojados { get; set; }
-        public int FechaHotel { get; set; }
+        public string FechaHotel { get; set; }
         public string HotelName { get; set; }
     }
 }

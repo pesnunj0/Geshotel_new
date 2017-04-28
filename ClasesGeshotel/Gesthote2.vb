@@ -9188,8 +9188,11 @@ Namespace geshotelk
             Else
                 errorCode = 1
             End If
-
-
+            cmd.Parameters.Clear()
+            Dim reserva_Param As New MySqlParameter("@reserva_id", resultado.reserva_id)
+            cmd.Parameters.Add(reserva_Param)
+            Dim estado_anterior = ExecuteScalar(cmd, sqlEstadoReserva)
+            carga_valor_en_reserva(cmd, resultado.reserva_id)
             If Not flushConection(cmd, errorCode) Then
                 '                resultado = Nothing
             End If
@@ -9210,11 +9213,14 @@ Namespace geshotelk
                 End If
             End If
             If Not skipValidar Then
-                If Not CambiarEstadoReserva(resultado.reserva_id, 1, False) Then
-                    errorCode = 7
-                    errorTxt = "No se puedo cambiar a Estado Reserva Pendiente"
-                    AgregaInfo("obtieneServiciosReserva", "No pudo cambiar estado", -errorCode)
+                If estado_anterior <> 1 Then  ' si hay cambio de estado GARRA JAVIER ABRIL 2017
+                    If Not CambiarEstadoReserva(resultado.reserva_id, 1, False) Then
+                        errorCode = 7
+                        errorTxt = "No se puedo cambiar a Estado Reserva Pendiente"
+                        AgregaInfo("obtieneServiciosReserva", "No pudo cambiar estado", -errorCode)
+                    End If
                 End If
+
             End If
             'End If
             If errorCode <> 0 Then

@@ -19,6 +19,7 @@ namespace Geshotel.Recepcion {
         private ReservasContratosGrid: ReservasContratosGrid;
         private ReservasDescuentosGrid: ReservasDescuentosGrid;
         private ReservasOfertasGrid: ReservasOfertasGrid;
+        private ReservasPreviewGrid: ReservasPreviewGrid;
 
 
         constructor() {
@@ -30,6 +31,7 @@ namespace Geshotel.Recepcion {
             this.ReservasContratosGrid = new ReservasContratosGrid(this.byId("ReservasContratosGrid"));
             this.ReservasOfertasGrid = new ReservasOfertasGrid(this.byId("ReservasOfertasGrid"));
             this.ReservasDescuentosGrid = new ReservasDescuentosGrid(this.byId("ReservasDescuentosGrid"));
+            this.ReservasPreviewGrid = new ReservasPreviewGrid(this.byId("ReservasPreviewGrid"));
 
             this.form.EmpresaId.change(e => this.ReservasHuespedesGrid.empresaID = Q.toId(this.form.EmpresaId));
             this.tabs.on('tabsactivate', (e, i) => {
@@ -50,6 +52,7 @@ namespace Geshotel.Recepcion {
             this.ReservasHuespedesGrid.reservaID = this.entityId;
             this.ReservasHuespedesGrid.empresaID = this.entity.EmpresaId;
             this.ReservasDescuentosGrid.reservaID = this.entityId;
+            this.ReservasPreviewGrid.reservaID = this.entityId;
         }
 
         protected onSaveSuccess(response: Serenity.SaveResponse): void {
@@ -66,6 +69,7 @@ namespace Geshotel.Recepcion {
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                 });
             } else {
                 Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -75,7 +79,9 @@ namespace Geshotel.Recepcion {
                 }, resp => {
                     Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                 });
             }
         }

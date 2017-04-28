@@ -30,14 +30,16 @@ namespace Geshotel.Common.Pages
                     var hbRow = HabitacionesBloqueosRow.Fields;
                     var o = HotelesRow.Fields;
                     string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
- //                   var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId,conexion);
-                    //  DateTime hoy = x.FechaHotel((int)user.HotelId); Por ahora lo comento ya que todavía no hay cierres
+                    var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId,conexion);
+                    model.FechaHotel = x.FechaHotel((int)user.HotelId).ToString("dd/MM/yyyy");
+
                     DateTime hoy = DateTime.Today;
                     DateTime tomorrow = hoy.AddDays(1);
-                    using (var connection = SqlConnections.NewFor<ReservasRow>())
+                    using (var connection = SqlConnections.NewFor<HotelesRow>())
                     {
                         var rowHotel = connection.TrySingle<HotelesRow>(o.HotelId == (int)hotelId);
                         model.HotelName = rowHotel.Hotel;
+                        
 
                         model.Llegadas = connection.Count<ReservasRow>(rRow.FechaPrevistaLlegada >= hoy & rRow.FechaPrevistaLlegada<tomorrow & rRow.HotelId == (int)hotelId);
                         model.Salidas = connection.Count<ReservasRow>(rRow.FechaPrevistaSalida>= hoy & rRow.FechaPrevistaSalida < tomorrow & rRow.HotelId == (int)hotelId);
@@ -52,6 +54,7 @@ namespace Geshotel.Common.Pages
                         {
                             model.PaxAlojados += (int)c.Adultos + (int)c.Child50 + (int)c.ChildFree;
                         }
+                        
                         
                     }
                     return model;

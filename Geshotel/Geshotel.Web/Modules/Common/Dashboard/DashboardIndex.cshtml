@@ -26,7 +26,7 @@
 }
 
 @section ContentHeader {
-    <h1>@LocalText.Get("Navigation.Dashboard")&nbsp;@Model.HotelName</h1>
+    <h1>@LocalText.Get("Navigation.Dashboard")&nbsp;@Model.HotelName&nbsp;@LocalText.Get("Site.Dashboard.FechaHotel")@Model.FechaHotel</h1>
 }
 
 <!-- Small boxes (Stat box) -->
@@ -36,7 +36,7 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>@Model.Llegadas</h3>
-                <p>Llegadas Del Día</p>
+                <p>@LocalText.Get("Site.Dashboard.Llegadas")</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -49,7 +49,7 @@
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>@Model.Salidas</h3>
-                <p>Salidas del Día</p>
+                <p>@LocalText.Get("Site.Dashboard.Salidas")</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -62,7 +62,7 @@
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>@Model.PorcentajeOcupacion<sup style="font-size: 20px">%</sup></h3>
-                <p>Porcentaje Ocupación</p>
+                <p>@LocalText.Get("Site.Dashboard.PorcentajeOcupacion")</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -76,7 +76,7 @@
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>@Model.PaxAlojados</h3>
-                <p>Pax Alojados</p>
+                <p>@LocalText.Get("Site.Dashboard.PaxAlojados")</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>

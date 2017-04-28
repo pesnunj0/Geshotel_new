@@ -852,6 +852,7 @@
     <Content Include="Modules\Recepcion\Scheduler\SchedulerIndex.cshtml" />
     <Content Include="Modules\Recepcion\Arrivals\ArrivalsIndex.cshtml" />
     <Content Include="Modules\Recepcion\Departures\DeparturesIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ReservasPreview\ReservasPreviewIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -2602,6 +2603,7 @@
     <TypeScriptCompile Include="Modules\Recepcion\ReservasHuespedes\ReservasHuespedesGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasOfertas\ReservasOfertasGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosDialog.ts" />
@@ -3115,6 +3117,10 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
     <Compile Include="Modules\Recepcion\Arrivals\ArrivalsPage.cs" />
     <Compile Include="Modules\Recepcion\Departures\DeparturesPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewItem.cs" />
+    <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewListRequest.cs" />
+    <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewRepository.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasModels.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosColumns.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />

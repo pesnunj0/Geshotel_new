@@ -1,6 +1,11 @@
 {
+	"Site.Dashboard.FechaHotel": "Fecha del Hotel:",
+	"Site.Dashboard.Llegadas": "Llegadas del Día",
+	"Site.Dashboard.Salidas": "Salidas del Día",
+	"Site.Dashboard.PorcentajeOcupacion": "Porcentaje Ocupación",
+	"Site.Dashboard.PaxAlojados": "Pax Alojados",
     "Controls.EntityDialog.LocalizationConfirmation": "Guardar traducciones?",
-    "Controls.SelectEditor.EmptyItemText": "--All--",
+    "Controls.SelectEditor.EmptyItemText": "--Choose One or Default--",
 	"Controls.EntityGrid.CheckInArrivalsButton": "CheckIn de las Reservas Seleccionadas",
 	"Controls.EntityGrid.CheckOutDeparturesButton": "Check Out de las Reservas Seleccionadas",
     "Db.Administration.CategoriaHoteles.EntityPlural": "Categoria Hoteles",
