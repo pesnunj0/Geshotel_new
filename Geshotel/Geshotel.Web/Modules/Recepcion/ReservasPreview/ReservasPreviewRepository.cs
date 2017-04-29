@@ -32,7 +32,7 @@ namespace Geshotel.Recepcion.Repositories
             var ReservaId = Convert.ToInt32(request.ReservaId);
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
-            
+
             var x = new GesHotelClase(userId);
             var xx = x.obtieneServiciosReservaCache(ReservaId);
 
@@ -42,9 +42,10 @@ namespace Geshotel.Recepcion.Repositories
                 ds.Tables.Add(xx.ordenarPor("fecha").Table);
                 string json = JsonConvert.SerializeObject(ds);
             }
-            
+
 
             return result;
 
         }
     }
+}

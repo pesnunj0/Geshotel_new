@@ -208,6 +208,7 @@
     "Db.Recepcion.ReservasOfertas.EntitySingular": "Oferta",
     "Db.Recepcion.ReservasOfertas.ReservaOfertaId": "Oferta",
     "Db.Recepcion.ReservasServicios.EntityPlural": "Servicios",
+	"Db.Recepcion.ReservasPreview.EntityPlural": "Preview",
     "Db.Recepcion.ReservasServicios.EntitySingular": "Servicio",
     "Forms.Membership.Login.Password_Placeholder": "Enter Password",
     "Forms.Membership.Login.Username_Placeholder": "Enter Valid Username",
