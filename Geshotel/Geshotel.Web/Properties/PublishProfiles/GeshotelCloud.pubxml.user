@@ -10,10 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/ClasesGeshotel.dll">
-      <publishTime>04/24/2017 18:02:15</publishTime>
+      <publishTime>04/30/2017 16:45:25</publishTime>
     </File>
     <File Include="bin/CsQuery.dll">
-      <publishTime>05/02/2013 06:41:36</publishTime>
+      <publishTime>02/05/2013 06:41:36</publishTime>
     </File>
     <File Include="bin/Dapper.dll">
       <publishTime>07/22/2016 14:52:40</publishTime>
@@ -31,13 +31,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 10:25:12</publishTime>
     </File>
     <File Include="bin/Geshotel.Web.dll">
-      <publishTime>04/27/2017 10:50:48</publishTime>
+      <publishTime>04/30/2017 16:45:38</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/MsieJavaScriptEngine.dll">
-      <publishTime>02/12/2016 20:56:14</publishTime>
+      <publishTime>12/02/2016 20:56:14</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>06/17/2016 18:29:10</publishTime>
@@ -46,10 +46,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 23:06:14</publishTime>
     </File>
     <File Include="bin/NUglify.dll">
-      <publishTime>03/01/2017 20:18:18</publishTime>
+      <publishTime>01/03/2017 20:18:18</publishTime>
     </File>
     <File Include="bin/ru-ru/MsieJavaScriptEngine.resources.dll">
-      <publishTime>02/12/2016 20:56:14</publishTime>
+      <publishTime>12/02/2016 20:56:14</publishTime>
     </File>
     <File Include="bin/Serenity.Core.dll">
       <publishTime>03/26/2017 18:49:40</publishTime>
@@ -67,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/26/2017 18:49:46</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
-      <publishTime>04/08/2015 00:51:54</publishTime>
+      <publishTime>08/04/2015 00:51:54</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
@@ -88,7 +88,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/wkhtmltopdf.exe">
-      <publishTime>12/02/2016 09:48:42</publishTime>
+      <publishTime>02/12/2016 09:48:42</publishTime>
     </File>
     <File Include="Content/adminlte/.csslintrc">
       <publishTime>01/29/2017 21:11:44</publishTime>
@@ -1828,10 +1828,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/29/2017 21:11:49</publishTime>
     </File>
     <File Include="Content/site/site.contratos.less">
-      <publishTime>04/04/2017 15:41:09</publishTime>
+      <publishTime>04/29/2017 20:32:58</publishTime>
     </File>
     <File Include="Content/site/site.css">
-      <publishTime>04/27/2017 10:50:50</publishTime>
+      <publishTime>04/30/2017 16:45:46</publishTime>
     </File>
     <File Include="Content/site/site.htmlcontent.css">
       <publishTime>01/29/2017 21:11:49</publishTime>
@@ -2221,7 +2221,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2017 09:12:46</publishTime>
     </File>
     <File Include="Modules/Common/Imports/ClientTypes/ClientTypes.log">
-      <publishTime>04/26/2017 20:48:46</publishTime>
+      <publishTime>04/30/2017 16:42:16</publishTime>
     </File>
     <File Include="Modules/Common/Imports/CodeGenerationHelpers.ttinclude">
       <publishTime>02/14/2017 18:24:48</publishTime>
@@ -2251,13 +2251,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 15:41:08</publishTime>
     </File>
     <File Include="Modules/Contratos/Contratos/Contratos.ContratosDialog.Template.html">
-      <publishTime>01/02/2017 18:45:43</publishTime>
+      <publishTime>02/01/2017 18:45:43</publishTime>
     </File>
     <File Include="Modules/Contratos/Contratos/ContratosIndex.cshtml">
-      <publishTime>01/02/2017 17:58:51</publishTime>
+      <publishTime>02/01/2017 17:58:51</publishTime>
     </File>
     <File Include="Modules/Contratos/Cupos/CuposIndex.cshtml">
-      <publishTime>01/02/2017 17:58:55</publishTime>
+      <publishTime>02/01/2017 17:58:55</publishTime>
     </File>
     <File Include="Modules/Contratos/Edades/EdadesIndex.cshtml">
       <publishTime>02/09/2017 16:03:38</publishTime>
@@ -2266,7 +2266,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/17/2017 09:33:38</publishTime>
     </File>
     <File Include="Modules/Contratos/Lineas/LineasIndex.cshtml">
-      <publishTime>01/02/2017 18:37:18</publishTime>
+      <publishTime>02/01/2017 18:37:18</publishTime>
+    </File>
+    <File Include="Modules/Contratos/LineasFactura/LineasFacturaIndex.cshtml">
+      <publishTime>04/29/2017 20:32:59</publishTime>
     </File>
     <File Include="Modules/Contratos/Mercados/MercadosIndex.cshtml">
       <publishTime>02/03/2017 11:33:38</publishTime>
@@ -2278,7 +2281,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2017 23:33:13</publishTime>
     </File>
     <File Include="Modules/Contratos/Releases/ReleasesIndex.cshtml">
-      <publishTime>01/02/2017 17:58:57</publishTime>
+      <publishTime>02/01/2017 17:58:57</publishTime>
     </File>
     <File Include="Modules/Contratos/Series/SeriesIndex.cshtml">
       <publishTime>04/04/2017 15:41:09</publishTime>
@@ -2482,7 +2485,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2017 10:37:33</publishTime>
     </File>
     <File Include="Modules/Recepcion/Reservas/Recepcion.ReservasDialog.Template.html">
-      <publishTime>04/17/2017 12:38:09</publishTime>
+      <publishTime>04/28/2017 11:33:13</publishTime>
     </File>
     <File Include="Modules/Recepcion/Reservas/ReservasIndex.cshtml">
       <publishTime>02/20/2017 18:50:56</publishTime>
@@ -2499,11 +2502,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Modules/Recepcion/ReservasOfertas/ReservasOfertasIndex.cshtml">
       <publishTime>02/21/2017 15:59:29</publishTime>
     </File>
+    <File Include="Modules/Recepcion/ReservasPreview/ReservasPreviewIndex.cshtml">
+      <publishTime>04/28/2017 09:56:06</publishTime>
+    </File>
     <File Include="Modules/Recepcion/ReservasServicios/ReservasServiciosIndex.cshtml">
       <publishTime>02/21/2017 15:59:30</publishTime>
     </File>
     <File Include="Modules/Recepcion/Scheduler/SchedulerIndex.cshtml">
-      <publishTime>04/21/2017 10:24:50</publishTime>
+      <publishTime>04/29/2017 19:02:07</publishTime>
     </File>
     <File Include="Modules/Web.config">
       <publishTime>01/29/2017 21:11:49</publishTime>
@@ -3850,7 +3856,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/28/2017 18:11:19</publishTime>
     </File>
     <File Include="Scripts/site/Geshotel.Web.js">
-      <publishTime>04/27/2017 10:50:58</publishTime>
+      <publishTime>04/30/2017 16:45:54</publishTime>
     </File>
     <File Include="Scripts/site/texts/meeting/meeting.vi-VN.json">
       <publishTime>01/29/2017 21:11:59</publishTime>
@@ -4291,7 +4297,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/24/2017 18:02:31</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Welcome.htm">
       <publishTime>01/29/2017 21:11:44</publishTime>
@@ -4300,7 +4306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/29/2017 21:11:44</publishTime>
     </File>
     <File Include="wkhtmltopdf.exe">
-      <publishTime>12/02/2016 09:48:42</publishTime>
+      <publishTime>02/12/2016 09:48:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

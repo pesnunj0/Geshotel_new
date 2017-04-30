@@ -1642,6 +1642,102 @@ declare namespace Geshotel.Contratos {
 declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
+}
+declare namespace Geshotel.Contratos {
+    class LineasFacturaForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface LineasFacturaForm {
+        HotelId: Serenity.IntegerEditor;
+        Fecha: Serenity.DateEditor;
+        FacturaId: Serenity.IntegerEditor;
+        ReservaId: Serenity.IntegerEditor;
+        ContratoId: Serenity.IntegerEditor;
+        Descripcion: Serenity.StringEditor;
+        Cantidad: Serenity.DecimalEditor;
+        Precio: Serenity.DecimalEditor;
+        ImpuestoId: Serenity.IntegerEditor;
+        PorcImpuesto: Serenity.DecimalEditor;
+        ServicioId: Serenity.IntegerEditor;
+        UnidadCalculoId: Serenity.IntegerEditor;
+        TipoLineaFactura: Serenity.StringEditor;
+        PrecioProduccion: Serenity.DecimalEditor;
+        PagFactura: Serenity.IntegerEditor;
+        Costo: Serenity.DecimalEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+        SwAjuste: Serenity.IntegerEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface LineasFacturaRow {
+        LineaFacturaId?: number;
+        HotelId?: number;
+        Fecha?: string;
+        FacturaId?: number;
+        ReservaId?: number;
+        ContratoId?: number;
+        Descripcion?: string;
+        Cantidad?: number;
+        Precio?: number;
+        ImpuestoId?: number;
+        PorcImpuesto?: number;
+        ServicioId?: number;
+        UnidadCalculoId?: number;
+        TipoLineaFactura?: string;
+        PrecioProduccion?: number;
+        PagFactura?: number;
+        Costo?: number;
+        UserId?: number;
+        FechaModificacion?: string;
+        SwAjuste?: number;
+    }
+    namespace LineasFacturaRow {
+        const idProperty = "LineaFacturaId";
+        const nameProperty = "Descripcion";
+        const localTextPrefix = "Contratos.LineasFactura";
+        namespace Fields {
+            const LineaFacturaId: string;
+            const HotelId: string;
+            const Fecha: string;
+            const FacturaId: string;
+            const ReservaId: string;
+            const ContratoId: string;
+            const Descripcion: string;
+            const Cantidad: string;
+            const Precio: string;
+            const ImpuestoId: string;
+            const PorcImpuesto: string;
+            const ServicioId: string;
+            const UnidadCalculoId: string;
+            const TipoLineaFactura: string;
+            const PrecioProduccion: string;
+            const PagFactura: string;
+            const Costo: string;
+            const UserId: string;
+            const FechaModificacion: string;
+            const SwAjuste: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace LineasFacturaService {
+        const baseUrl = "Contratos/LineasFactura";
+        function Create(request: Serenity.SaveRequest<LineasFacturaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<LineasFacturaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<LineasFacturaRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<LineasFacturaRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
     class LineasForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -7149,6 +7245,24 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+    interface ReservasPreviewItem {
+        Fecha?: string;
+        Descripcion?: string;
+        DescTipo?: string;
+        DescUCReserva?: string;
+        Cantidad?: number;
+        Precio?: number;
+        PrecioProduccion?: number;
+        Importe?: number;
+        Error?: number;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    interface ReservasPreviewListRequest extends Serenity.ListRequest {
+        ReservaId?: string;
+    }
+}
+declare namespace Geshotel.Recepcion {
     interface ReservasRow {
         ReservaId?: number;
         FechaCreacion?: string;
@@ -8521,6 +8635,26 @@ declare namespace Geshotel.Contratos {
     class LineasGrid extends Serenity.EntityGrid<LineasRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof LineasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
+    class LineasFacturaDialog extends Serenity.EntityDialog<LineasFacturaRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: LineasFacturaForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class LineasFacturaGrid extends Serenity.EntityGrid<LineasFacturaRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof LineasFacturaDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -10009,6 +10143,7 @@ declare namespace Geshotel.Recepcion {
         private ReservasContratosGrid;
         private ReservasDescuentosGrid;
         private ReservasOfertasGrid;
+        private ReservasPreviewGrid;
         constructor();
         protected afterLoadEntity(): void;
         protected onSaveSuccess(response: Serenity.SaveResponse): void;
@@ -10167,6 +10302,23 @@ declare namespace Geshotel.Recepcion {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: ReservasOfertasForm;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any> {
+        protected getIdProperty(): any;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
+        /**
+  * This method is called to get list of buttons to be created.
+  */
+        protected getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
     }
 }
 declare namespace Geshotel.Recepcion {

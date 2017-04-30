@@ -2324,7 +2324,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         LineasFacturaForm.formKey = 'Contratos.LineasFactura';
         Contratos.LineasFacturaForm = LineasFacturaForm;
-        [['LineaFacturaId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['Fecha', function () { return Serenity.DateEditor; }], ['FacturaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['ImpuestoId', function () { return Serenity.IntegerEditor; }], ['PorcImpuesto', function () { return Serenity.DecimalEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['TipoLineaFactura', function () { return Serenity.StringEditor; }], ['PrecioProduccion', function () { return Serenity.DecimalEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['SwAjuste', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasFacturaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['HotelId', function () { return Serenity.IntegerEditor; }], ['Fecha', function () { return Serenity.DateEditor; }], ['FacturaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['ImpuestoId', function () { return Serenity.IntegerEditor; }], ['PorcImpuesto', function () { return Serenity.DecimalEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['TipoLineaFactura', function () { return Serenity.StringEditor; }], ['PrecioProduccion', function () { return Serenity.DecimalEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['SwAjuste', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasFacturaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -13100,10 +13100,10 @@ var Geshotel;
                 // Let's try to hide DeleteButton if EstadoReservaId != 0
                 // This one seems not working perhaps deleteButton is not yet created
                 //this.deleteButton.toggle(this.entity.EstadoReservaId != 0);
-                // *********************************************************
+                // ****************************************************************
                 // I only allow to remove a reservation if it has errors
-                // otherwise the user has to cancel
-                // *********************************************************
+                // otherwise the user has to change to status cancelled
+                // ****************************************************************
                 if (this.entity.EstadoReservaId != 0)
                     this.deleteButton.hide();
                 // Reservation with status pre-checkOut or Checked-Out
@@ -13139,6 +13139,9 @@ var Geshotel;
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13157,6 +13160,9 @@ var Geshotel;
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13175,6 +13181,9 @@ var Geshotel;
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13193,6 +13202,9 @@ var Geshotel;
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13211,6 +13223,9 @@ var Geshotel;
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13225,7 +13240,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.NoShow
                             }, function (response) {
-                                Q.notifySuccess("Reservation in Status Checked Out successfully");
+                                Q.notifySuccess("Reservation in Status No Show successfully");
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this.element);
                             });

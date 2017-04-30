@@ -1392,6 +1392,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1888,6 +1891,12 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasPreviewItem.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasPreviewListRequest.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasRow.ts">
@@ -2687,9 +2696,15 @@
     <TypeScriptCompile Include="Modules\Contratos\Series\SeriesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Series\SeriesDialog.ts" />
     <Content Include="Modules\Contratos\LineasFactura\LineasFacturaIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaRow.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaService.ts" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaForm.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaDialog.ts" />
   </ItemGroup>

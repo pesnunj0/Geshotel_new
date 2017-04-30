@@ -230,6 +230,13 @@ namespace MVC
             }
 
 
+            public static class LineasFactura
+            {
+
+                public const string LineasFacturaIndex = "~/Modules/Contratos/LineasFactura/LineasFacturaIndex.cshtml";
+            }
+
+
             public static class Mercados
             {
 
@@ -745,6 +752,13 @@ namespace MVC
             {
 
                 public const string ReservasOfertasIndex = "~/Modules/Recepcion/ReservasOfertas/ReservasOfertasIndex.cshtml";
+            }
+
+
+            public static class ReservasPreview
+            {
+
+                public const string ReservasPreviewIndex = "~/Modules/Recepcion/ReservasPreview/ReservasPreviewIndex.cshtml";
             }
 
 

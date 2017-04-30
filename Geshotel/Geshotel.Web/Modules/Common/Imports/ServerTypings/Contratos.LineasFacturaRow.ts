@@ -29,26 +29,26 @@ namespace Geshotel.Contratos {
         export const localTextPrefix = 'Contratos.LineasFactura';
 
         export namespace Fields {
-            export declare const LineaFacturaId;
-            export declare const HotelId;
-            export declare const Fecha;
-            export declare const FacturaId;
-            export declare const ReservaId;
-            export declare const ContratoId;
-            export declare const Descripcion;
-            export declare const Cantidad;
-            export declare const Precio;
-            export declare const ImpuestoId;
-            export declare const PorcImpuesto;
-            export declare const ServicioId;
-            export declare const UnidadCalculoId;
-            export declare const TipoLineaFactura;
-            export declare const PrecioProduccion;
-            export declare const PagFactura;
-            export declare const Costo;
-            export declare const UserId;
-            export declare const FechaModificacion;
-            export declare const SwAjuste;
+            export declare const LineaFacturaId: string;
+            export declare const HotelId: string;
+            export declare const Fecha: string;
+            export declare const FacturaId: string;
+            export declare const ReservaId: string;
+            export declare const ContratoId: string;
+            export declare const Descripcion: string;
+            export declare const Cantidad: string;
+            export declare const Precio: string;
+            export declare const ImpuestoId: string;
+            export declare const PorcImpuesto: string;
+            export declare const ServicioId: string;
+            export declare const UnidadCalculoId: string;
+            export declare const TipoLineaFactura: string;
+            export declare const PrecioProduccion: string;
+            export declare const PagFactura: string;
+            export declare const Costo: string;
+            export declare const UserId: string;
+            export declare const FechaModificacion: string;
+            export declare const SwAjuste: string;
         }
 
         ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste'].forEach(x => (<any>Fields)[x] = x);
