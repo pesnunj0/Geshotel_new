@@ -2686,6 +2686,12 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\Series\SeriesGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Series\SeriesDialog.ts" />
+    <Content Include="Modules\Contratos\LineasFactura\LineasFacturaIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaRow.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaService.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.LineasFacturaForm.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -3402,6 +3408,12 @@
     <Compile Include="Modules\Contratos\Series\SeriesRepository.cs" />
     <Compile Include="Modules\Contratos\Series\SeriesEndpoint.cs" />
     <Compile Include="Modules\Contratos\Series\SeriesPage.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaRow.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaColumns.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaForm.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaRepository.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaEndpoint.cs" />
+    <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

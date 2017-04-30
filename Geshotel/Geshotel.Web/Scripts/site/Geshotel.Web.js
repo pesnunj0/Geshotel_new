@@ -2315,6 +2315,55 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var LineasFacturaForm = (function (_super) {
+            __extends(LineasFacturaForm, _super);
+            function LineasFacturaForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return LineasFacturaForm;
+        }(Serenity.PrefixedContext));
+        LineasFacturaForm.formKey = 'Contratos.LineasFactura';
+        Contratos.LineasFacturaForm = LineasFacturaForm;
+        [['LineaFacturaId', function () { return Serenity.IntegerEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['Fecha', function () { return Serenity.DateEditor; }], ['FacturaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['ImpuestoId', function () { return Serenity.IntegerEditor; }], ['PorcImpuesto', function () { return Serenity.DecimalEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['TipoLineaFactura', function () { return Serenity.StringEditor; }], ['PrecioProduccion', function () { return Serenity.DecimalEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['SwAjuste', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasFacturaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var LineasFacturaRow;
+        (function (LineasFacturaRow) {
+            LineasFacturaRow.idProperty = 'LineaFacturaId';
+            LineasFacturaRow.nameProperty = 'Descripcion';
+            LineasFacturaRow.localTextPrefix = 'Contratos.LineasFactura';
+            var Fields;
+            (function (Fields) {
+            })(Fields = LineasFacturaRow.Fields || (LineasFacturaRow.Fields = {}));
+            ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste'].forEach(function (x) { return Fields[x] = x; });
+        })(LineasFacturaRow = Contratos.LineasFacturaRow || (Contratos.LineasFacturaRow = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var LineasFacturaService;
+        (function (LineasFacturaService) {
+            LineasFacturaService.baseUrl = 'Contratos/LineasFactura';
+            var Methods;
+            (function (Methods) {
+            })(Methods = LineasFacturaService.Methods || (LineasFacturaService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                LineasFacturaService[x] = function (r, s, o) { return Q.serviceRequest(LineasFacturaService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = LineasFacturaService.baseUrl + '/' + x;
+            });
+        })(LineasFacturaService = Contratos.LineasFacturaService || (Contratos.LineasFacturaService = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var LineasForm = (function (_super) {
             __extends(LineasForm, _super);
             function LineasForm() {
@@ -8384,6 +8433,53 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var LineasFacturaDialog = (function (_super) {
+            __extends(LineasFacturaDialog, _super);
+            function LineasFacturaDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.LineasFacturaForm(_this.idPrefix);
+                return _this;
+            }
+            LineasFacturaDialog.prototype.getFormKey = function () { return Contratos.LineasFacturaForm.formKey; };
+            LineasFacturaDialog.prototype.getIdProperty = function () { return Contratos.LineasFacturaRow.idProperty; };
+            LineasFacturaDialog.prototype.getLocalTextPrefix = function () { return Contratos.LineasFacturaRow.localTextPrefix; };
+            LineasFacturaDialog.prototype.getNameProperty = function () { return Contratos.LineasFacturaRow.nameProperty; };
+            LineasFacturaDialog.prototype.getService = function () { return Contratos.LineasFacturaService.baseUrl; };
+            return LineasFacturaDialog;
+        }(Serenity.EntityDialog));
+        LineasFacturaDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], LineasFacturaDialog);
+        Contratos.LineasFacturaDialog = LineasFacturaDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var LineasFacturaGrid = (function (_super) {
+            __extends(LineasFacturaGrid, _super);
+            function LineasFacturaGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            LineasFacturaGrid.prototype.getColumnsKey = function () { return 'Contratos.LineasFactura'; };
+            LineasFacturaGrid.prototype.getDialogType = function () { return Contratos.LineasFacturaDialog; };
+            LineasFacturaGrid.prototype.getIdProperty = function () { return Contratos.LineasFacturaRow.idProperty; };
+            LineasFacturaGrid.prototype.getLocalTextPrefix = function () { return Contratos.LineasFacturaRow.localTextPrefix; };
+            LineasFacturaGrid.prototype.getService = function () { return Contratos.LineasFacturaService.baseUrl; };
+            return LineasFacturaGrid;
+        }(Serenity.EntityGrid));
+        LineasFacturaGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LineasFacturaGrid);
+        Contratos.LineasFacturaGrid = LineasFacturaGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var MercadosDialog = (function (_super) {
             __extends(MercadosDialog, _super);
             function MercadosDialog() {
@@ -12942,6 +13038,7 @@ var Geshotel;
                 _this.ReservasContratosGrid = new Recepcion.ReservasContratosGrid(_this.byId("ReservasContratosGrid"));
                 _this.ReservasOfertasGrid = new Recepcion.ReservasOfertasGrid(_this.byId("ReservasOfertasGrid"));
                 _this.ReservasDescuentosGrid = new Recepcion.ReservasDescuentosGrid(_this.byId("ReservasDescuentosGrid"));
+                _this.ReservasPreviewGrid = new Recepcion.ReservasPreviewGrid(_this.byId("ReservasPreviewGrid"));
                 _this.form.EmpresaId.change(function (e) { return _this.ReservasHuespedesGrid.empresaID = Q.toId(_this.form.EmpresaId); });
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
@@ -12964,6 +13061,7 @@ var Geshotel;
                 this.ReservasHuespedesGrid.reservaID = this.entityId;
                 this.ReservasHuespedesGrid.empresaID = this.entity.EmpresaId;
                 this.ReservasDescuentosGrid.reservaID = this.entityId;
+                this.ReservasPreviewGrid.reservaID = this.entityId;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
                 var _this = this;
@@ -12979,6 +13077,7 @@ var Geshotel;
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                     });
                 }
                 else {
@@ -12989,7 +13088,9 @@ var Geshotel;
                     }, function (resp) {
                         Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
                     });
                 }
             };
@@ -13723,6 +13824,74 @@ var Geshotel;
             Serenity.Decorators.responsive()
         ], ReservasOfertasDialog);
         Recepcion.ReservasOfertasDialog = ReservasOfertasDialog;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/*
+    Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
+    Además, se elimina el AddButton
+    Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
+    Javier Nuñez Abril 2017
+*/
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasPreviewGrid = (function (_super) {
+            __extends(ReservasPreviewGrid, _super);
+            function ReservasPreviewGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ReservasPreviewGrid.prototype.getIdProperty = function () { return null; };
+            ReservasPreviewGrid.prototype.getLocalTextPrefix = function () { return "Recepcion.ReservasPreview"; };
+            ReservasPreviewGrid.prototype.getService = function () { return Recepcion.ReservasContratosService.baseUrl; };
+            ReservasPreviewGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasPreviewGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasPreviewGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasContratosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            /**
+      * This method is called to get list of buttons to be created.
+      */
+            ReservasPreviewGrid.prototype.getButtons = function () {
+                // As Grid and items are readonly
+                // All Buttons are removed
+                var buttons = _super.prototype.getButtons.call(this);
+                return [];
+            };
+            ReservasPreviewGrid.prototype.getColumns = function () {
+                var columns = [];
+                columns.push({ field: 'Fecha', width: 80, sortable: false });
+                columns.push({ field: 'Descripcion', width: 100, sortable: false });
+                columns.push({ field: 'DescTipo', width: 90, sortable: false });
+                columns.push({ field: 'DescUCReserva', width: 90, sortable: false });
+                columns.push({ field: 'Cantidad', width: 80, sortable: false });
+                columns.push({ field: 'Precio', width: 80, sortable: false });
+                columns.push({ field: 'PrecioProduccion', width: 80, sortable: false });
+                columns.push({ field: 'Importe', width: 80, sortable: false });
+                return columns;
+            };
+            return ReservasPreviewGrid;
+        }(Serenity.EntityGrid));
+        ReservasPreviewGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ReservasPreviewGrid);
+        Recepcion.ReservasPreviewGrid = ReservasPreviewGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;

@@ -94,10 +94,10 @@ namespace Geshotel.Recepcion {
             // This one seems not working perhaps deleteButton is not yet created
             //this.deleteButton.toggle(this.entity.EstadoReservaId != 0);
 
-            // *********************************************************
+            // ****************************************************************
             // I only allow to remove a reservation if it has errors
-            // otherwise the user has to cancel
-            // *********************************************************
+            // otherwise the user has to change to status cancelled
+            // ****************************************************************
             if (this.entity.EstadoReservaId != 0)
                 this.deleteButton.hide();
 
@@ -146,6 +146,9 @@ namespace Geshotel.Recepcion {
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                         });
                     });
                 }
@@ -166,6 +169,9 @@ namespace Geshotel.Recepcion {
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                         });
                     });
                 }
@@ -186,6 +192,9 @@ namespace Geshotel.Recepcion {
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                         });
                     });
                 }
@@ -206,6 +215,9 @@ namespace Geshotel.Recepcion {
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                         });
                     });
                 }
@@ -225,6 +237,9 @@ namespace Geshotel.Recepcion {
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                         });
                     });
                 }
@@ -240,7 +255,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.NoShow
 
                         }, response => {
-                            Q.notifySuccess("Reservation in Status Checked Out successfully");
+                            Q.notifySuccess("Reservation in Status No Show successfully");
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this.element);
                         });

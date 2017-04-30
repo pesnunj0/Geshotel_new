@@ -5136,12 +5136,12 @@ Namespace geshotelk
 & " FROM reservas WHERE reservas.reserva_id = ? "
 
 
-        Function CambiarEstadoReserva(ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean) As Boolean
+        Function CambiarEstadoReserva(ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional forzarPrecheckout As Boolean = False, Optional DatosReservaActual As tablaServicios = Nothing) As Boolean
             Dim errorCode As Integer = 0
             Dim retval As Boolean = True
             Dim cmd As MySqlCommand = prepareConection()
             Try
-                errorCode = CambiarEstadoReserva(cmd, reserva, estado, validar)
+                errorCode = CambiarEstadoReserva(cmd, reserva, estado, validar, forzarPrecheckout, DatosReservaActual)
             Catch ex As Exception
                 errorCode = 2
             End Try
@@ -5645,12 +5645,13 @@ Namespace geshotelk
             End Try
             Return retval
         End Function
-        Function CambiarEstadoReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal forzarprecheckout As Boolean = False) As Integer
+        Function CambiarEstadoReserva(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal estado As Integer, ByVal validar As Boolean, Optional ByVal forzarprecheckout As Boolean = False, Optional datosReservaActual As tablaServicios = Nothing) As Integer
 
             Dim errorCode As Integer = 0
             Dim retVal As Boolean = False
-            Dim datosReservaActual As tablaServicios = obtieneServiciosReservaCache(cmd, reserva)
-
+            If IsNothing(datosReservaActual) Then 'Lo podemos haber pasado como parámetro y ya no hace falta calcularlo otra vez
+                datosReservaActual = obtieneServiciosReservaCache(cmd, reserva)
+            End If
             If Not IsNothing(datosReservaActual) Then
                 Dim nerrores As Integer = datosReservaActual.sumaErrores()
                 cmd.Parameters.Clear()
@@ -5993,7 +5994,7 @@ Namespace geshotelk
                     enviarEmailReserva(cmd, reserva, True)
                 End If
             End If
-            carga_valor_en_reserva(cmd, reserva)
+            carga_valor_en_reserva(cmd, reserva, datosReservaActual)
 
             Return errorCode
         End Function
@@ -9192,7 +9193,9 @@ Namespace geshotelk
             Dim reserva_Param As New MySqlParameter("@reserva_id", resultado.reserva_id)
             cmd.Parameters.Add(reserva_Param)
             Dim estado_anterior = ExecuteScalar(cmd, sqlEstadoReserva)
-            carga_valor_en_reserva(cmd, resultado.reserva_id)
+            carga_valor_en_reserva(cmd, resultado.reserva_id, resultado)
+
+
             If Not flushConection(cmd, errorCode) Then
                 '                resultado = Nothing
             End If
@@ -19161,6 +19164,16 @@ Namespace geshotelk
             carga_valor_en_reserva(cmd, reserva_id)
             flushConection(cmd, 0)
             Return True
+        End Function
+        Function carga_valor_en_reserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, x As tablaServicios) As Integer
+            Dim sql_update As String = "Update reservas SET valor=? WHERE reserva_id = ?"
+            Dim valorParam As New MySqlParameter("@valor", 0)
+            Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
+            valorParam.Value = x.sumaImporte()
+            cmd.Parameters.Clear()
+            cmd.Parameters.Add(valorParam)
+            cmd.Parameters.Add(reserva_idParam)
+            Return ExecuteNonQuery(cmd, sql_update)
         End Function
         Function carga_valor_en_reserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Integer
             Dim sql_update As String = "Update reservas SET valor=? WHERE reserva_id = ?"
