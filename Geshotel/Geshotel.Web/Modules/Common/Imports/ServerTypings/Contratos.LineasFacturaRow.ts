@@ -20,7 +20,14 @@ namespace Geshotel.Contratos {
         Costo?: number;
         UserId?: number;
         FechaModificacion?: string;
-        SwAjuste?: number;
+        SwAjuste?: boolean;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        Username?: string;
+        Importe?: number;
+        NombreServicio?: string;
+        UnidadCalculo?: string;
     }
 
     export namespace LineasFacturaRow {
@@ -49,9 +56,16 @@ namespace Geshotel.Contratos {
             export declare const UserId: string;
             export declare const FechaModificacion: string;
             export declare const SwAjuste: string;
+            export declare const HotelName: string;
+            export declare const EmpresaId: string;
+            export declare const Empresa: string;
+            export declare const Username: string;
+            export declare const Importe: string;
+            export declare const NombreServicio: string;
+            export declare const UnidadCalculo: string;
         }
 
-        ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste'].forEach(x => (<any>Fields)[x] = x);
+        ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste', 'HotelName', 'EmpresaId', 'Empresa', 'Username', 'Importe', 'NombreServicio', 'UnidadCalculo'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -8,6 +8,7 @@ namespace Geshotel.Portal.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using System.Configuration;
 
     [ConnectionKey("Default"), DisplayName("hoteles"), InstanceName("hoteles"), TwoLevelCached]
     [ReadPermission("Todos:General")]
@@ -15,6 +16,7 @@ namespace Geshotel.Portal.Entities
 
     public sealed class HotelesRow : Row, IIdRow, INameRow, ITenantRow
     {
+
         [DisplayName("Hotel Id"), Column("hotel_id"), Identity]
         public Int16? HotelId
         {
@@ -509,6 +511,7 @@ namespace Geshotel.Portal.Entities
             public Int16Field ProvinciaDefectoIsta;
 
             public DateTimeField FechaHotel;
+
 
             public RowFields()
                 : base("hoteles")

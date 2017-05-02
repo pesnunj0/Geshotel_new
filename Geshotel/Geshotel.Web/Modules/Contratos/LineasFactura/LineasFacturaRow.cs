@@ -21,12 +21,38 @@ namespace Geshotel.Contratos.Entities
             set { Fields.LineaFacturaId[this] = value; }
         }
 
-        [DisplayName("Hotel Id"), Column("hotel_id"), NotNull]
+        [DisplayName("Hotel"), Column("hotel_id"), NotNull, ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"), LookupInclude]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
             set { Fields.HotelId[this] = value; }
         }
+        [DisplayName("Hotel"), Expression("jHotel.[hotel]")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
+        }
+        //*********
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+        //*******
 
         [DisplayName("Fecha"), Column("fecha"), NotNull]
         public DateTime? Fecha
@@ -77,6 +103,14 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Precio[this] = value; }
         }
 
+        [DisplayName("Importe"),Expression("T0.Cantidad*T0.precio")]
+        public Decimal? Importe
+        {
+            get { return Fields.Importe[this]; }
+            set { Fields.Importe[this] = value; }
+
+        }
+
         [DisplayName("Impuesto Id"), Column("impuesto_id"), NotNull]
         public Int16? ImpuestoId
         {
@@ -91,18 +125,34 @@ namespace Geshotel.Contratos.Entities
             set { Fields.PorcImpuesto[this] = value; }
         }
 
-        [DisplayName("Servicio Id"), Column("servicio_id"), NotNull]
+        [DisplayName("Servicio"), Column("servicio_id"), NotNull, ForeignKey("servicios", "servicio_id"), LeftJoin("jServicio"), TextualField("ServicioNombreServicio")]
+        [LookupEditor("Portal.Servicios")]
         public Int32? ServicioId
         {
             get { return Fields.ServicioId[this]; }
             set { Fields.ServicioId[this] = value; }
         }
 
-        [DisplayName("Unidad Calculo Id"), Column("unidad_calculo_id"), NotNull]
+        [DisplayName("Unidad Calculo"), Column("unidad_calculo_id"), NotNull, ForeignKey("unidades_calculo", "unidad_calculo_id"), LeftJoin("jUnidadCalculo"), TextualField("UnidadCalculo")]
+        [LookupEditor(typeof(Portal.Entities.UnidadesCalculoRow))]
         public Int16? UnidadCalculoId
         {
             get { return Fields.UnidadCalculoId[this]; }
             set { Fields.UnidadCalculoId[this] = value; }
+        }
+
+        [DisplayName("Servicio"), Expression("jServicio.[nombre_servicio]")]
+        public String NombreServicio
+        {
+            get { return Fields.NombreServicio[this]; }
+            set { Fields.NombreServicio[this] = value; }
+        }
+
+        [DisplayName("Unidad Calculo"), Expression("jUnidadCalculo.[descripcion_unidad_calculo]")]
+        public String UnidadCalculo
+        {
+            get { return Fields.UnidadCalculo[this]; }
+            set { Fields.UnidadCalculo[this] = value; }
         }
 
         [DisplayName("Tipo Linea Factura"), Column("tipo_linea_factura"), Size(1), NotNull]
@@ -133,7 +183,8 @@ namespace Geshotel.Contratos.Entities
             set { Fields.Costo[this] = value; }
         }
 
-        [DisplayName("User Id"), Column("user_id")]
+        [DisplayName("User"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUser"), TextualField("Username")]
+        [LookupEditor("Portal.Users")]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
@@ -147,8 +198,15 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaModificacion[this] = value; }
         }
 
+        [DisplayName("User Username"), Expression("jUser.[Username]")]
+        public String Username
+        {
+            get { return Fields.Username[this]; }
+            set { Fields.Username[this] = value; }
+        }
+
         [DisplayName("Sw Ajuste"), Column("sw_ajuste"), NotNull]
-        public Int16? SwAjuste
+        public Boolean? SwAjuste
         {
             get { return Fields.SwAjuste[this]; }
             set { Fields.SwAjuste[this] = value; }
@@ -192,7 +250,16 @@ namespace Geshotel.Contratos.Entities
             public DecimalField Costo;
             public Int32Field UserId;
             public DateTimeField FechaModificacion;
-            public Int16Field SwAjuste;
+            public BooleanField SwAjuste;
+
+            public StringField HotelName;
+            public Int16Field EmpresaId;
+            public StringField Empresa;
+            public StringField Username;
+            public DecimalField Importe;
+            public StringField NombreServicio;
+
+            public StringField UnidadCalculo;
 
             public RowFields()
                 : base()

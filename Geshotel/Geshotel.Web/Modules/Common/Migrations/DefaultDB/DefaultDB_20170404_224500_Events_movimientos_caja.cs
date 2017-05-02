@@ -64,6 +64,7 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("hotel_id").AsInt16().NotNullable()
                 .WithColumn("cliente_id").AsInt32().NotNullable()
                 .WithColumn("forma_pago_id").AsInt16().Nullable()
+                .WithColumn("reserva_id").AsInt32().Nullable()
                 .WithColumn("direccion_factura").AsString(70).Nullable()
                 .WithColumn("poblacion_factura").AsString(50).Nullable()
                 .WithColumn("zip").AsString(10).Nullable()
@@ -75,7 +76,31 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("id_factura_rectificada").AsInt32().Nullable()
                 .WithColumn("motivo_rectificacion").AsString(75).Nullable()
                 .WithColumn("user_id").AsInt32().Nullable()
-                .WithColumn("fecha_modificacion").AsDateTime().Nullable();
+                .WithColumn("fecha_modificacion").AsDateTime().Nullable()
+                .WithColumn("cuota").AsDecimal(15,2).Nullable()
+                .WithColumn("importe_total").AsDecimal(15,2).Nullable()
+                .WithColumn("envio_bavel").AsInt16().Nullable()
+                .WithColumn("fecha_envio_bavel").AsDateTime().Nullable()
+                .WithColumn("motivo").AsString(512).Nullable()
+                .WithColumn("calculo").AsString(512).Nullable()
+                .WithColumn("conforme").AsDateTime().Nullable()
+                .WithColumn("usuario_confirmacion").AsInt32().Nullable();
+            
+            Create.Index("IX_factura_hotel_id")
+                .OnTable("factura")
+                .OnColumn("hotel_id").Ascending();
+
+            Create.Index("IX_factura_cliente_id")
+                .OnTable("factura")
+                .OnColumn("cliente_id").Ascending();
+
+            Create.Index("IX_factura_fecha")
+                .OnTable("factura")
+                .OnColumn("fecha_factura").Ascending();
+
+            Create.Index("IX_factura_numero")
+                .OnTable("factura")
+                .OnColumn("numero_factura").Ascending();
 
             Create.Table("lineas_factura")
                 .WithColumn("linea_factura_id").AsInt32().PrimaryKey().Identity().NotNullable()
@@ -98,6 +123,26 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime().Nullable()
                 .WithColumn("sw_ajuste").AsBoolean().WithDefaultValue(0).NotNullable();
+
+            Create.Index("IX_linea_hotel_id")
+                .OnTable("lineas_factura")
+                .OnColumn("hotel_id").Ascending();
+
+            Create.Index("IX_linea_factura_id")
+                .OnTable("lineas_factura")
+                .OnColumn("factura_id").Ascending();
+
+            Create.Index("IX_linea_reserva_id")
+                .OnTable("lineas_factura")
+                .OnColumn("reserva_id").Ascending();
+
+            Create.Index("IX_linea_servicio_id")
+                .OnTable("lineas_factura")
+                .OnColumn("servicio_id").Ascending();
+
+            Create.Index("IX_linea_fecha")
+                .OnTable("lineas_factura")
+                .OnColumn("fecha").Ascending();
 
             Create.Table("tickets")
                 .WithColumn("ticket_id").AsInt32().PrimaryKey().Identity()
@@ -212,6 +257,22 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime().Nullable();
 
+            Create.Index("IX_movimientos_hotel_id")
+                .OnTable("movimientos_caja")
+                .OnColumn("hotel_id").Ascending();
+
+            Create.Index("IX_movimientos_fecha")
+                .OnTable("movimientos_caja")
+                .OnColumn("fecha").Ascending();
+
+            Create.Index("IX_movimientos_tipo_movimiento")
+                .OnTable("movimientos_caja")
+                .OnColumn("tipo_movimiento_id").Ascending();
+
+            Create.Index("IX_movimientos_caja")
+                .OnTable("movimientos_caja")
+                .OnColumn("caja_id").Ascending();
+
             Create.Table("anticipos")
                 .WithColumn("anticipo_id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("hotel_id").AsInt16().NotNullable()
@@ -249,6 +310,22 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime().Nullable();
 
+            Create.Index("IX_cobros_hotel_id")
+                .OnTable("cobros")
+                .OnColumn("hotel_id").Ascending();
+
+            Create.Index("IX_cobros_caja_id")
+                .OnTable("cobros")
+                .OnColumn("caja_id").Ascending();
+
+            Create.Index("IX_cobros_fecha")
+                .OnTable("cobros")
+                .OnColumn("fecha").Ascending();
+
+            Create.Index("IX_cobros_forma_pago_id")
+                .OnTable("cobros")
+                .OnColumn("forma_pago_id").Ascending();
+
             // *****************************
             // Incompletos por aqui abajo
             // *****************************
@@ -259,14 +336,12 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("factura_id").AsInt32().Nullable()
                 .WithColumn("importe").AsDecimal(12, 2).NotNullable();
 
-
             Create.Table("tipos_cobro")
                 .WithColumn("tipo_cobro_id").AsInt16().PrimaryKey().Identity()
                 .WithColumn("descripcion").AsString(20).NotNullable()
                 .WithColumn("signo").AsInt16().NotNullable()
                 .WithColumn("tipo_movimiento_id").AsInt16().NotNullable()
                 .WithColumn("cobro").AsBoolean().WithDefaultValue(1);
-
 
             Insert.IntoTable("tipos_cobro").Row(new
             {

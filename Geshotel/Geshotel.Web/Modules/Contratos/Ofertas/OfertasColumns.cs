@@ -24,17 +24,26 @@ namespace Geshotel.Contratos.Columns
         public DateTime FechaHasta { get; set; }
         [Width(80)]
         public String TipoAplicacionOfertaName { get; set; }
-        //public Boolean AplicableAuto { get; set; }
-        //public DateTime FechaReservaDesde { get; set; }
-        //public DateTime FechaReservaHasta { get; set; }
-        //public Int16 EstanciaMinimaDias { get; set; }
-        //public Int16 EstanciaMaximaDias { get; set; }
-        //public Int16 DiasDeAntelacion { get; set; }
-        //public Int16 TipoServicioId { get; set; }
-        //public Int32 ServicioId { get; set; }
+        [Hidden,AlignCenter,Width(50)]
+        public Boolean AplicableAuto { get; set; }
+        [Hidden,Width(100)]
+        public DateTime FechaReservaDesde { get; set; }
+        [Hidden, Width(100)]
+        public DateTime FechaReservaHasta { get; set; }
+        [Hidden, Width(80)]
+        public Int16 EstanciaMinimaDias { get; set; }
+        [Hidden, Width(80)]
+        public Int16 EstanciaMaximaDias { get; set; }
+        [Hidden, Width(100)]
+        public Int16 DiasDeAntelacion { get; set; }
+        [Hidden]
+        public String TipoServicioName { get; set; }
+        [Hidden]
+        public String ServicioName { get; set; }
         [Width(100)]
         public String UnidadCalculoName { get; set; }
-        //public Int32 ServicioLigadoId { get; set; }
+        [Hidden,Width(100)]
+        public String ServicioLigdoName { get; set; }
         //public Int16 CupoOferta { get; set; }
         //public Decimal Precio { get; set; }
         [Width(30), AlignRight]
@@ -45,9 +54,9 @@ namespace Geshotel.Contratos.Columns
         public Decimal M { get; set; }
         [Width(80)]
         public String AmbitoOfertaName { get; set; }
-        [Width(80)]
+        [Width(80),Hidden]
         public String UserName { get; set; }
-        [Width(110), DisplayFormat("g")]
+        [Width(110), DisplayFormat("g"),Hidden]
         public DateTime FechaModificacion { get; set; }
         //public Boolean ImpuestoIncluido { get; set; }
         //public Int16 TipoImputacionId { get; set; }

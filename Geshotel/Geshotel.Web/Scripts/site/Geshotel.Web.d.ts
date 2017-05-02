@@ -1531,6 +1531,99 @@ declare namespace Geshotel.Contratos {
 declare namespace Geshotel.Contratos {
 }
 declare namespace Geshotel.Contratos {
+    class FacturasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface FacturasForm {
+        NumeroFactura: Serenity.IntegerEditor;
+        SerieId: Serenity.IntegerEditor;
+        FechaFactura: Serenity.DateEditor;
+        HotelId: Serenity.IntegerEditor;
+        ClienteId: Serenity.IntegerEditor;
+        FormaPagoId: Serenity.IntegerEditor;
+        DireccionFactura: Serenity.StringEditor;
+        PoblacionFactura: Serenity.StringEditor;
+        Zip: Serenity.StringEditor;
+        ProvinciaId: Serenity.IntegerEditor;
+        FechaVencimiento: Serenity.DateEditor;
+        EstadoFacturaId: Serenity.IntegerEditor;
+        RefFra1: Serenity.StringEditor;
+        RefFra2: Serenity.StringEditor;
+        IdFacturaRectificada: Serenity.IntegerEditor;
+        MotivoRectificacion: Serenity.StringEditor;
+        UserId: Serenity.IntegerEditor;
+        FechaModificacion: Serenity.DateEditor;
+    }
+}
+declare namespace Geshotel.Contratos {
+    interface FacturasRow {
+        FacturaId?: number;
+        NumeroFactura?: number;
+        SerieId?: number;
+        FechaFactura?: string;
+        HotelId?: number;
+        ClienteId?: number;
+        FormaPagoId?: number;
+        DireccionFactura?: string;
+        PoblacionFactura?: string;
+        Zip?: string;
+        ProvinciaId?: number;
+        FechaVencimiento?: string;
+        EstadoFacturaId?: number;
+        RefFra1?: string;
+        RefFra2?: string;
+        IdFacturaRectificada?: number;
+        MotivoRectificacion?: string;
+        UserId?: number;
+        FechaModificacion?: string;
+    }
+    namespace FacturasRow {
+        const idProperty = "FacturaId";
+        const nameProperty = "DireccionFactura";
+        const localTextPrefix = "Contratos.Facturas";
+        namespace Fields {
+            const FacturaId: string;
+            const NumeroFactura: string;
+            const SerieId: string;
+            const FechaFactura: string;
+            const HotelId: string;
+            const ClienteId: string;
+            const FormaPagoId: string;
+            const DireccionFactura: string;
+            const PoblacionFactura: string;
+            const Zip: string;
+            const ProvinciaId: string;
+            const FechaVencimiento: string;
+            const EstadoFacturaId: string;
+            const RefFra1: string;
+            const RefFra2: string;
+            const IdFacturaRectificada: string;
+            const MotivoRectificacion: string;
+            const UserId: string;
+            const FechaModificacion: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+    namespace FacturasService {
+        const baseUrl = "Contratos/Facturas";
+        function Create(request: Serenity.SaveRequest<FacturasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<FacturasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<FacturasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<FacturasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Contratos {
+}
+declare namespace Geshotel.Contratos {
     class HabitacionesForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -1648,7 +1741,7 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface LineasFacturaForm {
-        HotelId: Serenity.IntegerEditor;
+        HotelId: Serenity.LookupEditor;
         Fecha: Serenity.DateEditor;
         FacturaId: Serenity.IntegerEditor;
         ReservaId: Serenity.IntegerEditor;
@@ -1658,13 +1751,13 @@ declare namespace Geshotel.Contratos {
         Precio: Serenity.DecimalEditor;
         ImpuestoId: Serenity.IntegerEditor;
         PorcImpuesto: Serenity.DecimalEditor;
-        ServicioId: Serenity.IntegerEditor;
-        UnidadCalculoId: Serenity.IntegerEditor;
+        ServicioId: Serenity.LookupEditor;
+        UnidadCalculoId: Serenity.LookupEditor;
         TipoLineaFactura: Serenity.StringEditor;
         PrecioProduccion: Serenity.DecimalEditor;
         PagFactura: Serenity.IntegerEditor;
         Costo: Serenity.DecimalEditor;
-        UserId: Serenity.IntegerEditor;
+        UserId: Serenity.LookupEditor;
         FechaModificacion: Serenity.DateEditor;
         SwAjuste: Serenity.IntegerEditor;
     }
@@ -1690,7 +1783,14 @@ declare namespace Geshotel.Contratos {
         Costo?: number;
         UserId?: number;
         FechaModificacion?: string;
-        SwAjuste?: number;
+        SwAjuste?: boolean;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        Username?: string;
+        Importe?: number;
+        NombreServicio?: string;
+        UnidadCalculo?: string;
     }
     namespace LineasFacturaRow {
         const idProperty = "LineaFacturaId";
@@ -1717,6 +1817,13 @@ declare namespace Geshotel.Contratos {
             const UserId: string;
             const FechaModificacion: string;
             const SwAjuste: string;
+            const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
+            const Username: string;
+            const Importe: string;
+            const NombreServicio: string;
+            const UnidadCalculo: string;
         }
     }
 }
@@ -6493,6 +6600,8 @@ declare namespace Geshotel.Recepcion {
 declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
+}
+declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -7092,8 +7201,8 @@ declare namespace Geshotel.Recepcion {
         Edad?: number;
         ReservaHotelId?: number;
         ReservaEstadoReservaId?: number;
-        ReservaFechaPrevistaLlegada?: string;
-        ReservaFechaPrevistaSalida?: string;
+        ReservaFechaLlegada?: string;
+        ReservaFechaSalida?: string;
         Nombre?: string;
         Apellidos?: string;
         NombreCompleto?: string;
@@ -7117,6 +7226,15 @@ declare namespace Geshotel.Recepcion {
         Sexo?: string;
         HotelId?: number;
         EmpresaId?: number;
+        Desde?: string;
+        Hasta?: string;
+        HotelName?: string;
+        Empresa?: string;
+        TipoHabitacionId?: number;
+        PensionId?: number;
+        TipoHabitacion?: string;
+        Pension?: string;
+        EstadoReserva?: string;
     }
     namespace ReservasHuespedesRow {
         const idProperty = "ReservasHuespedesId";
@@ -7131,8 +7249,8 @@ declare namespace Geshotel.Recepcion {
             const Edad: string;
             const ReservaHotelId: string;
             const ReservaEstadoReservaId: string;
-            const ReservaFechaPrevistaLlegada: string;
-            const ReservaFechaPrevistaSalida: string;
+            const ReservaFechaLlegada: string;
+            const ReservaFechaSalida: string;
             const Nombre: string;
             const Apellidos: string;
             const NombreCompleto: string;
@@ -7156,6 +7274,15 @@ declare namespace Geshotel.Recepcion {
             const Sexo: string;
             const HotelId: string;
             const EmpresaId: string;
+            const Desde: string;
+            const Hasta: string;
+            const HotelName: string;
+            const Empresa: string;
+            const TipoHabitacionId: string;
+            const PensionId: string;
+            const TipoHabitacion: string;
+            const Pension: string;
+            const EstadoReserva: string;
         }
     }
 }
@@ -8612,6 +8739,26 @@ declare namespace Geshotel.Contratos {
     }
 }
 declare namespace Geshotel.Contratos {
+    class FacturasDialog extends Serenity.EntityDialog<FacturasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: FacturasForm;
+    }
+}
+declare namespace Geshotel.Contratos {
+    class FacturasGrid extends Serenity.EntityGrid<FacturasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof FacturasDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Geshotel.Contratos {
     class HabitacionesDialog extends Serenity.EntityDialog<HabitacionesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -10038,6 +10185,42 @@ declare namespace Geshotel.Recepcion {
          * that should be processed in this service call.
          */
         protected executeForBatch(batch: any): void;
+    }
+}
+/***********************************************************************************************************************************
+* En este Grid hacemos varias cosas.
+* 1.- Eliminamos el Botón añadir nuevo registro para evitar usarlo de mantenimiento
+* 2.- Ponemos los botones de exportar a PDF y Excel
+* 3.- Ponemos los quickFilter por defecto de EmpresaId, HotelId y EstadoReservaId = Check-in y PreCheck-Out (3 y 4)
+*     Para ello usamos la función getQuickFilters() y como no se poner en esta función varios valores posibles para un campo,
+*     utilizo la subrutina createQuickFilters(): void
+*
+* Javier Nuñez
+* Mayo 2017
+*************************************************************************************************************************************/
+declare namespace Geshotel.Recepcion {
+    class ClientesAlojadosGrid extends Serenity.EntityGrid<ReservasHuespedesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ReservasHuespedesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        getInitialTitle(): string;
+        getButtons(): Serenity.ToolButton[];
+        protected getColumns(): Slick.Column[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        /**
+        * This method is another possible place to modify quick filter widgets.
+        * It is where the quick filter widgets are actually created.
+        *
+        * By default, it calls getQuickFilters() then renders UI for these
+        * quick filters.
+        *
+        * We could use getQuickFilters() method for EstadoReserva too,
+        * but this is for demonstration purposes and I do not know how to place several values
+        * Javier Nuñez Mayo 2017
+        */
+        protected createQuickFilters(): void;
     }
 }
 declare namespace Geshotel.Recepcion {

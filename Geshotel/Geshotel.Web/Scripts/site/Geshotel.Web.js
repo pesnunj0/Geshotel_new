@@ -2261,6 +2261,55 @@ var Geshotel;
 (function (Geshotel) {
     var Contratos;
     (function (Contratos) {
+        var FacturasForm = (function (_super) {
+            __extends(FacturasForm, _super);
+            function FacturasForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return FacturasForm;
+        }(Serenity.PrefixedContext));
+        FacturasForm.formKey = 'Contratos.Facturas';
+        Contratos.FacturasForm = FacturasForm;
+        [['NumeroFactura', function () { return Serenity.IntegerEditor; }], ['SerieId', function () { return Serenity.IntegerEditor; }], ['FechaFactura', function () { return Serenity.DateEditor; }], ['HotelId', function () { return Serenity.IntegerEditor; }], ['ClienteId', function () { return Serenity.IntegerEditor; }], ['FormaPagoId', function () { return Serenity.IntegerEditor; }], ['DireccionFactura', function () { return Serenity.StringEditor; }], ['PoblacionFactura', function () { return Serenity.StringEditor; }], ['Zip', function () { return Serenity.StringEditor; }], ['ProvinciaId', function () { return Serenity.IntegerEditor; }], ['FechaVencimiento', function () { return Serenity.DateEditor; }], ['EstadoFacturaId', function () { return Serenity.IntegerEditor; }], ['RefFra1', function () { return Serenity.StringEditor; }], ['RefFra2', function () { return Serenity.StringEditor; }], ['IdFacturaRectificada', function () { return Serenity.IntegerEditor; }], ['MotivoRectificacion', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(FacturasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var FacturasRow;
+        (function (FacturasRow) {
+            FacturasRow.idProperty = 'FacturaId';
+            FacturasRow.nameProperty = 'DireccionFactura';
+            FacturasRow.localTextPrefix = 'Contratos.Facturas';
+            var Fields;
+            (function (Fields) {
+            })(Fields = FacturasRow.Fields || (FacturasRow.Fields = {}));
+            ['FacturaId', 'NumeroFactura', 'SerieId', 'FechaFactura', 'HotelId', 'ClienteId', 'FormaPagoId', 'DireccionFactura', 'PoblacionFactura', 'Zip', 'ProvinciaId', 'FechaVencimiento', 'EstadoFacturaId', 'RefFra1', 'RefFra2', 'IdFacturaRectificada', 'MotivoRectificacion', 'UserId', 'FechaModificacion'].forEach(function (x) { return Fields[x] = x; });
+        })(FacturasRow = Contratos.FacturasRow || (Contratos.FacturasRow = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var FacturasService;
+        (function (FacturasService) {
+            FacturasService.baseUrl = 'Contratos/Facturas';
+            var Methods;
+            (function (Methods) {
+            })(Methods = FacturasService.Methods || (FacturasService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                FacturasService[x] = function (r, s, o) { return Q.serviceRequest(FacturasService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = FacturasService.baseUrl + '/' + x;
+            });
+        })(FacturasService = Contratos.FacturasService || (Contratos.FacturasService = {}));
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
         var HabitacionesForm = (function (_super) {
             __extends(HabitacionesForm, _super);
             function HabitacionesForm() {
@@ -2324,7 +2373,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         LineasFacturaForm.formKey = 'Contratos.LineasFactura';
         Contratos.LineasFacturaForm = LineasFacturaForm;
-        [['HotelId', function () { return Serenity.IntegerEditor; }], ['Fecha', function () { return Serenity.DateEditor; }], ['FacturaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['ImpuestoId', function () { return Serenity.IntegerEditor; }], ['PorcImpuesto', function () { return Serenity.DecimalEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['TipoLineaFactura', function () { return Serenity.StringEditor; }], ['PrecioProduccion', function () { return Serenity.DecimalEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['SwAjuste', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasFacturaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['HotelId', function () { return Serenity.LookupEditor; }], ['Fecha', function () { return Serenity.DateEditor; }], ['FacturaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ContratoId', function () { return Serenity.IntegerEditor; }], ['Descripcion', function () { return Serenity.StringEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['Precio', function () { return Serenity.DecimalEditor; }], ['ImpuestoId', function () { return Serenity.IntegerEditor; }], ['PorcImpuesto', function () { return Serenity.DecimalEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['TipoLineaFactura', function () { return Serenity.StringEditor; }], ['PrecioProduccion', function () { return Serenity.DecimalEditor; }], ['PagFactura', function () { return Serenity.IntegerEditor; }], ['Costo', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['SwAjuste', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(LineasFacturaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -2339,7 +2388,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = LineasFacturaRow.Fields || (LineasFacturaRow.Fields = {}));
-            ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste'].forEach(function (x) { return Fields[x] = x; });
+            ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste', 'HotelName', 'EmpresaId', 'Empresa', 'Username', 'Importe', 'NombreServicio', 'UnidadCalculo'].forEach(function (x) { return Fields[x] = x; });
         })(LineasFacturaRow = Contratos.LineasFacturaRow || (Contratos.LineasFacturaRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6225,7 +6274,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasHuespedesRow.Fields || (ReservasHuespedesRow.Fields = {}));
-            ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId'].forEach(function (x) { return Fields[x] = x; });
+            ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId', 'Desde', 'Hasta', 'HotelName', 'Empresa', 'TipoHabitacionId', 'PensionId', 'TipoHabitacion', 'Pension', 'EstadoReserva'].forEach(function (x) { return Fields[x] = x; });
         })(ReservasHuespedesRow = Recepcion.ReservasHuespedesRow || (Recepcion.ReservasHuespedesRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -8358,6 +8407,53 @@ var Geshotel;
             Serenity.Decorators.registerClass()
         ], EdadesGrid);
         Contratos.EdadesGrid = EdadesGrid;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var FacturasDialog = (function (_super) {
+            __extends(FacturasDialog, _super);
+            function FacturasDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Contratos.FacturasForm(_this.idPrefix);
+                return _this;
+            }
+            FacturasDialog.prototype.getFormKey = function () { return Contratos.FacturasForm.formKey; };
+            FacturasDialog.prototype.getIdProperty = function () { return Contratos.FacturasRow.idProperty; };
+            FacturasDialog.prototype.getLocalTextPrefix = function () { return Contratos.FacturasRow.localTextPrefix; };
+            FacturasDialog.prototype.getNameProperty = function () { return Contratos.FacturasRow.nameProperty; };
+            FacturasDialog.prototype.getService = function () { return Contratos.FacturasService.baseUrl; };
+            return FacturasDialog;
+        }(Serenity.EntityDialog));
+        FacturasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], FacturasDialog);
+        Contratos.FacturasDialog = FacturasDialog;
+    })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Contratos;
+    (function (Contratos) {
+        var FacturasGrid = (function (_super) {
+            __extends(FacturasGrid, _super);
+            function FacturasGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            FacturasGrid.prototype.getColumnsKey = function () { return 'Contratos.Facturas'; };
+            FacturasGrid.prototype.getDialogType = function () { return Contratos.FacturasDialog; };
+            FacturasGrid.prototype.getIdProperty = function () { return Contratos.FacturasRow.idProperty; };
+            FacturasGrid.prototype.getLocalTextPrefix = function () { return Contratos.FacturasRow.localTextPrefix; };
+            FacturasGrid.prototype.getService = function () { return Contratos.FacturasService.baseUrl; };
+            return FacturasGrid;
+        }(Serenity.EntityGrid));
+        FacturasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], FacturasGrid);
+        Contratos.FacturasGrid = FacturasGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -12784,6 +12880,105 @@ var Geshotel;
             return CheckInAction;
         }(Geshotel.Common.BulkServiceAction));
         Recepcion.CheckInAction = CheckInAction;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+/***********************************************************************************************************************************
+* En este Grid hacemos varias cosas.
+* 1.- Eliminamos el Botón añadir nuevo registro para evitar usarlo de mantenimiento
+* 2.- Ponemos los botones de exportar a PDF y Excel
+* 3.- Ponemos los quickFilter por defecto de EmpresaId, HotelId y EstadoReservaId = Check-in y PreCheck-Out (3 y 4)
+*     Para ello usamos la función getQuickFilters() y como no se poner en esta función varios valores posibles para un campo,
+*     utilizo la subrutina createQuickFilters(): void
+*
+* Javier Nuñez
+* Mayo 2017
+*************************************************************************************************************************************/
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ClientesAlojadosGrid = (function (_super) {
+            __extends(ClientesAlojadosGrid, _super);
+            function ClientesAlojadosGrid() {
+                return _super.apply(this, arguments) || this;
+            }
+            ClientesAlojadosGrid.prototype.getColumnsKey = function () { return 'Recepcion.ClientesAlojados'; };
+            ClientesAlojadosGrid.prototype.getDialogType = function () { return Recepcion.ReservasHuespedesDialog; };
+            ClientesAlojadosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasHuespedesRow.idProperty; };
+            ClientesAlojadosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasHuespedesRow.localTextPrefix; };
+            ClientesAlojadosGrid.prototype.getService = function () { return Recepcion.ReservasHuespedesService.baseUrl; };
+            ClientesAlojadosGrid.prototype.getInitialTitle = function () {
+                _super.prototype.getInitialTitle.call(this);
+                return Q.text("Db.Recepcion.ClientesAlojados.EntityPlural");
+            };
+            ClientesAlojadosGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                // Quitamos el botón de añadir nuevo huesped para evitar la creación aqui
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                // Añadimos la posibilidad de exportar a excel y PDF
+                buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Recepcion/ClientesAlojados/ListExcel',
+                    separator: true
+                }));
+                buttons.push(Geshotel.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); }
+                }));
+                return buttons;
+            };
+            ClientesAlojadosGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                return columns;
+            };
+            ClientesAlojadosGrid.prototype.getQuickFilters = function () {
+                // Let's filter Reservations with arrival (fecha_llegada) = today
+                // and withs status = ReservationStatus.CheckedIn
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                // get a reference to reservas row field names
+                var fld = Recepcion.ReservasHuespedesRow.Fields;
+                var user = Q.Authorization.userDefinition;
+                Q.first(filters, function (x) { return x.field == fld.EmpresaId; }).init = function (w) {
+                    w.value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+                };
+                Q.first(filters, function (x) { return x.field == fld.HotelId; }).init = function (w) {
+                    w.value = user.HotelId == null ? "" : user.HotelId.toString();
+                };
+                //Q.first(filters, x => x.field == fld.ReservaEstadoReservaId).init = w => {
+                //    // enum editor has a string value, so need to call toString()
+                //    (w as Serenity.EnumEditor).value = "3" || (w as Serenity.EnumEditor).value = "3" ;
+                //};
+                return filters;
+            };
+            /**
+            * This method is another possible place to modify quick filter widgets.
+            * It is where the quick filter widgets are actually created.
+            *
+            * By default, it calls getQuickFilters() then renders UI for these
+            * quick filters.
+            *
+            * We could use getQuickFilters() method for EstadoReserva too,
+            * but this is for demonstration purposes and I do not know how to place several values
+            * Javier Nuñez Mayo 2017
+            */
+            ClientesAlojadosGrid.prototype.createQuickFilters = function () {
+                // let base class to create quick filters first
+                _super.prototype.createQuickFilters.call(this);
+                // get a reference to order row field names
+                var fld = Recepcion.ReservasHuespedesRow.Fields;
+                // find a quick filter widget by its field name
+                this.findQuickFilter(Serenity.LookupEditor, fld.ReservaEstadoReservaId).values = ["3", "4"];
+            };
+            return ClientesAlojadosGrid;
+        }(Serenity.EntityGrid));
+        ClientesAlojadosGrid = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
+        ], ClientesAlojadosGrid);
+        Recepcion.ClientesAlojadosGrid = ClientesAlojadosGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 /// <reference path="../../Common/Helpers/BulkServiceAction.ts" />

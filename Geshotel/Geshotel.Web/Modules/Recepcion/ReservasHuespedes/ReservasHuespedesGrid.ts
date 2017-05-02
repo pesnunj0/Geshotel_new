@@ -1,4 +1,5 @@
 ﻿
+
 namespace Geshotel.Recepcion {
     
     @Serenity.Decorators.registerClass()

@@ -1,7 +1,5 @@
 ﻿
 
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Contratos/LineasFactura", typeof(Geshotel.Contratos.Pages.LineasFacturaController))]
-
 namespace Geshotel.Contratos.Pages
 {
     using Serenity;

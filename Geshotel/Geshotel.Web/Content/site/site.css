@@ -8647,6 +8647,12 @@ section.content > .s-DataGrid {
 .s-Contratos-LineasFacturaDialog .caption {
   width: 150px;
 }
+.s-Contratos-FacturasDialog > .size {
+  width: 650px;
+}
+.s-Contratos-FacturasDialog .caption {
+  width: 150px;
+}
 .s-Recepcion-ReservasDialog > .size {
   min-width: 950px;
   height: 650px;

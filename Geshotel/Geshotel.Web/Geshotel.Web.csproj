@@ -853,6 +853,7 @@
     <Content Include="Modules\Recepcion\Arrivals\ArrivalsIndex.cshtml" />
     <Content Include="Modules\Recepcion\Departures\DeparturesIndex.cshtml" />
     <Content Include="Modules\Recepcion\ReservasPreview\ReservasPreviewIndex.cshtml" />
+    <Content Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosIndex.cshtml" />
     <None Include="package.json" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Modules\Common\Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
@@ -1386,6 +1387,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.EdadesService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FacturasColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.HabitacionesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1828,6 +1832,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.CheckInResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ClientesAlojadosColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosColumns.ts">
@@ -2600,6 +2607,7 @@
     <TypeScriptCompile Include="Modules\Portal\Impuestos\ImpuestosDialog.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Arrivals\ArrivalsGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Arrivals\CheckInAction.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Departures\DeparturesGrid.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\Departures\CheckOutAction.ts" />
     <TypeScriptCompile Include="Modules\Recepcion\ReservasContratos\RemovingReservasContratosAddButton.ts" />
@@ -2707,6 +2715,18 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\LineasFactura\LineasFacturaDialog.ts" />
+    <Content Include="Modules\Contratos\Facturas\FacturasIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FacturasRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FacturasService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Contratos.FacturasForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasGrid.ts" />
+    <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -3137,6 +3157,8 @@
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRepository.cs" />
     <Compile Include="Modules\Portal\UnidadesCalculo\UnidadesCalculoRow.cs" />
     <Compile Include="Modules\Recepcion\Arrivals\ArrivalsPage.cs" />
+    <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosPage.cs" />
+    <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosColumns.cs" />
     <Compile Include="Modules\Recepcion\Departures\DeparturesPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewItem.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewListRequest.cs" />
@@ -3429,6 +3451,12 @@
     <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaRepository.cs" />
     <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaEndpoint.cs" />
     <Compile Include="Modules\Contratos\LineasFactura\LineasFacturaPage.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasRow.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasColumns.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasForm.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasRepository.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasEndpoint.cs" />
+    <Compile Include="Modules\Contratos\Facturas\FacturasPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

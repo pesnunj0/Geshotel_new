@@ -11644,8 +11644,6 @@ Namespace geshotelk
                 'obtengo precios
                 resultado = obtieneServiciosReserva(cmd, ds, fecha_desde, fecha_hasta, -1, False, "M")
 
-
-
                 'todo lo ke sea menor a la fecha de trabajo hotel..se mueve a fecha trabajo hotel
                 'dumpResultado(resultado)
                 'inserto lineas

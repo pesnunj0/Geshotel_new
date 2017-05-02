@@ -43,6 +43,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.HotelId[this] = value; }
         }
 
+        [DisplayName("Hotel"), Expression("jHotel.[hotel]")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
+        }
+
         [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
         [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
@@ -51,6 +58,16 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.EmpresaId[this] = value; }
 
         }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+        //*******
 
         [DisplayName("Nombre"), Expression("jHuesped.[nombre]")]
         public String Nombre
@@ -66,7 +83,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Apellidos[this] = value; }
         }
 
-        [DisplayName("Nombre Completo"), Expression("CONCAT(jHuesped.[nombre], CONCAT(' ', jHuesped.[apellidos]))"), QuickSearch]
+        [DisplayName("Nombre Completo"), Expression("CONCAT(jHuesped.[nombre], CONCAT(' ', jHuesped.[apellidos]))"), QuickSearch,LookupInclude]
 
         public String NombreCompleto
         {
@@ -213,6 +230,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.FechaSalida[this] = value; }
         }
 
+
         [DisplayName("Habitacion"), Column("habitacion_id"),ForeignKey("habitaciones","habitacion_id"),LeftJoin("jHabitaciones")]
         [LookupEditor("Contratos.Habitaciones")]
         public Int32? HabitacionId
@@ -220,7 +238,7 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.HabitacionId[this]; }
             set { Fields.HabitacionId[this] = value; }
         }
-        [DisplayName("Habitacion"),Expression("jHabitaciones.[numero_habitacion]")]
+        [DisplayName("Habitacion"),Expression("(SELECT MAX(COALESCE(reservas_huespedes.habitacion_id,habitaciones_bloqueos.habitacion_id)) As habitacion_id FROM reservas_huespedes LEFT JOIN habitaciones_bloqueos ON reservas_huespedes.reserva_id = habitaciones_bloqueos.reserva_id WHERE reservas_huespedes_id = t0.reservas_huespedes_id)")]
         public String NumeroHabitacion
         {
             get { return Fields.NumeroHabitacion[this]; }
@@ -234,7 +252,6 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Edad[this] = value; }
         }
 
-
         [DisplayName("Hotel"), Expression("jReserva.[hotel_id]")]
         public Int16? ReservaHotelId
         {
@@ -242,27 +259,81 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ReservaHotelId[this] = value; }
         }
 
-        [DisplayName("Estado Reserva"), Expression("jReserva.[estado_reserva_id]")]
+        [DisplayName("Estado Reserva"), Expression("jReserva.[estado_reserva_id]"),ForeignKey("reserva_estados","estado_reserva_id"),LeftJoin("jEstadoReserva"), TextualField("EstadoReserva")]
+        [LookupEditor("Portal.ReservaEstados")]
         public Int16? ReservaEstadoReservaId
         {
             get { return Fields.ReservaEstadoReservaId[this]; }
             set { Fields.ReservaEstadoReservaId[this] = value; }
         }
-  
-        [DisplayName("Llegada"), Expression("jReserva.[fecha_prevista_llegada]")]
-        public DateTime? ReservaFechaPrevistaLlegada
+        [DisplayName("Estado Reserva"), Expression("jEstadoReserva.[estado]")]
+        public String EstadoReserva
         {
-            get { return Fields.ReservaFechaPrevistaLlegada[this]; }
-            set { Fields.ReservaFechaPrevistaLlegada[this] = value; }
+            get { return Fields.EstadoReserva[this]; }
+            set { Fields.EstadoReserva[this] = value; }
         }
 
-        [DisplayName("Salida"), Expression("jReserva.[fecha_prevista_salida]")]
-        public DateTime? ReservaFechaPrevistaSalida
+        [DisplayName("Llegada"), Expression("jReserva.[fecha_llegada]")]
+        public DateTime? ReservaFechaLlegada
         {
-            get { return Fields.ReservaFechaPrevistaSalida[this]; }
-            set { Fields.ReservaFechaPrevistaSalida[this] = value; }
+            get { return Fields.ReservaFechaLlegada[this]; }
+            set { Fields.ReservaFechaLlegada[this] = value; }
         }
- 
+
+        [DisplayName("Salida"), Expression("jReserva.[fecha_salida]")]
+        public DateTime? ReservaFechaSalida
+        {
+            get { return Fields.ReservaFechaSalida[this]; }
+            set { Fields.ReservaFechaSalida[this] = value; }
+        }
+
+        [DisplayName("Desde")]
+        [Expression("(SELECT COALESCE(reservas_huespedes.fecha_llegada, reservas.fecha_llegada) FROM reservas_huespedes INNER JOIN reservas ON reservas_huespedes.reserva_id = reservas.reserva_id WHERE reservas_huespedes.reservas_huespedes_id = t0.reservas_huespedes_id )")]
+        public DateTime? Desde
+        {
+            get { return Fields.Desde[this]; }
+            set { Fields.Desde[this] = value; }
+        }
+
+        [DisplayName("Hasta")]
+        [Expression("(SELECT COALESCE(reservas_huespedes.fecha_salida, reservas.fecha_salida) FROM reservas_huespedes INNER JOIN reservas ON reservas_huespedes.reserva_id = reservas.reserva_id WHERE reservas_huespedes.reservas_huespedes_id = t0.reservas_huespedes_id )")]
+
+        public DateTime? Hasta
+        {
+            get { return Fields.Hasta[this]; }
+            set { Fields.Hasta[this] = value; }
+        }
+
+        [DisplayName("Tipo Habitacion"), Expression("jReserva.tipo_habitacion_id"), ForeignKey("servicios", "servicio_id"), LeftJoin("jTipoHabitacion"), TextualField("TipoHabitacion")]
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 1)]
+        public Int16? TipoHabitacionId
+        {
+            get { return Fields.TipoHabitacionId[this]; }
+            set { Fields.TipoHabitacionId[this] = value; }
+        }
+
+        [DisplayName("TipoHabitacion"), Expression("jTipoHabitacion.abreviatura")]
+        public String TipoHabitacion
+        {
+            get { return Fields.TipoHabitacion[this]; }
+            set { Fields.TipoHabitacion[this] = value; }
+        }
+
+        [DisplayName("Pension"), Expression("jReserva.pension_id"), ForeignKey("servicios", "servicio_id"), LeftJoin("jPension"), TextualField("Pension")]
+        [LookupEditor(("Contratos.ServiciosHotel"), CascadeFrom = "HotelId", CascadeField = "HotelId", FilterField = "ConceptoAceleradorReservasId", FilterValue = 2)]
+        public Int16? PensionId
+        {
+            get { return Fields.PensionId[this]; }
+            set { Fields.PensionId[this] = value; }
+        }
+
+        [DisplayName("Pension"), Expression("jPension.abreviatura")]
+        public String Pension
+        {
+            get { return Fields.Pension[this]; }
+            set { Fields.Pension[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ReservasHuespedesId; }
@@ -288,8 +359,8 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field ReservaHotelId;
             public Int16Field ReservaEstadoReservaId;
             
-            public DateTimeField ReservaFechaPrevistaLlegada;
-            public DateTimeField ReservaFechaPrevistaSalida;
+            public DateTimeField ReservaFechaLlegada;
+            public DateTimeField ReservaFechaSalida;
             
 
             public StringField Nombre;
@@ -317,7 +388,18 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field HotelId;
             public Int16Field EmpresaId;
 
+            public DateTimeField Desde;
+            public DateTimeField Hasta;
 
+            public StringField HotelName;
+            public StringField Empresa;
+
+            public Int16Field TipoHabitacionId;
+            public Int16Field PensionId;
+            public StringField TipoHabitacion;
+            public StringField Pension;
+
+            public StringField EstadoReserva;
             public RowFields()
                 : base()
             {

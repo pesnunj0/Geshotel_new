@@ -216,6 +216,13 @@ namespace MVC
             }
 
 
+            public static class Facturas
+            {
+
+                public const string FacturasIndex = "~/Modules/Contratos/Facturas/FacturasIndex.cshtml";
+            }
+
+
             public static class Habitaciones
             {
 
@@ -696,6 +703,13 @@ namespace MVC
             {
 
                 public const string ArrivalsIndex = "~/Modules/Recepcion/Arrivals/ArrivalsIndex.cshtml";
+            }
+
+
+            public static class ClientesAlojados
+            {
+
+                public const string ClientesAlojadosIndex = "~/Modules/Recepcion/ClientesAlojados/ClientesAlojadosIndex.cshtml";
             }
 
 
