@@ -132,7 +132,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.NacionId[this] = value; }
         }
 
-        [DisplayName("Nación"), Expression("jNaciones.[desc_corta]")]
+        [DisplayName("Nación"), Expression("jNaciones.[nacion]")]
         public String Nacion
         {
             get { return Fields.Nacion[this]; }

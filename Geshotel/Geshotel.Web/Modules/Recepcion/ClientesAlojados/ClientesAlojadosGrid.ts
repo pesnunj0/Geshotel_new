@@ -20,7 +20,7 @@ namespace Geshotel.Recepcion {
         protected getDialogType() { return ReservasHuespedesDialog; }
         protected getIdProperty() { return ReservasHuespedesRow.idProperty; }
         protected getLocalTextPrefix() { return ReservasHuespedesRow.localTextPrefix; }
-        protected getService() { return ReservasHuespedesService.baseUrl; }
+        protected getService() { return ClientesAlojadosService.baseUrl; }
 
 
         getInitialTitle() {

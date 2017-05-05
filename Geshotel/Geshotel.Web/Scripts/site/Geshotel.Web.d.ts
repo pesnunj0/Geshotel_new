@@ -6600,6 +6600,23 @@ declare namespace Geshotel.Recepcion {
 declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
+    namespace ClientesAlojadosService {
+        const baseUrl = "Recepcion/ClientesAlojados";
+        function Create(request: Serenity.SaveRequest<ReservasHuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ReservasHuespedesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReservasHuespedesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasHuespedesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     class HabitacionesBloqueosForm extends Serenity.PrefixedContext {

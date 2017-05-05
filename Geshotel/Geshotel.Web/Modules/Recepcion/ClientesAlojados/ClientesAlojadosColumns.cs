@@ -32,6 +32,10 @@ namespace Geshotel.Recepcion.Columns
         public Int32 ReservaId { get; set; }
         [DisplayName("Estado"),Width(70), QuickFilter, QuickFilterOption("Multiple",true)]
         public String EstadoReserva { get; set; }
+        [DisplayName("Nacion"), Width(80), QuickFilter]
+        public String Nacion { get; set; }
+        [DisplayName("Sexo"), Width(80), QuickFilter]
+        public String Sexo { get; set; }
 
         [DisplayName("Desde"),QuickFilter,Width(90)]
         public DateTime Desde { get; set; }

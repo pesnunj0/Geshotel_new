@@ -25,7 +25,7 @@ namespace Data
 
         //todo
         //funcion que devuelva los hoteles para un usuario
-        //se necesita el usuario_id del serenty
+        //se necesita el usuario_id del serenity
         //
         public static DataTable SelectHoteles()
         {
@@ -107,8 +107,6 @@ namespace Data
             }
             return null;
         }
-
-        
 
         public static DataTable GetReservations(string hotelId)
         {

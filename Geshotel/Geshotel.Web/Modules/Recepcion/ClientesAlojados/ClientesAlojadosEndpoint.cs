@@ -15,9 +15,9 @@ namespace Geshotel.Recepcion.Endpoints
     using Serenity.Web;
     // Fin Añadidos
 
-    [RoutePrefix("Services/Recepcion/ReservasHuespedes"), Route("{action}")]
+    [RoutePrefix("Services/Recepcion/ClientesAlojados"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class ReservasHuespedesController : ServiceEndpoint
+    public class ClientesAlojadosController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -49,9 +49,9 @@ namespace Geshotel.Recepcion.Endpoints
         public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
         {
             var data = List(connection, request).Entities;
-            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ReservasHuespedesColumns));
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ClientesAlojadosColumns));
             var bytes = new ReportRepository().Render(report);
-            return ExcelContentResult.Create(bytes, "ReservasHuespedes_" +
+            return ExcelContentResult.Create(bytes, "ClientesAlojados_" +
                 DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }

@@ -1837,6 +1837,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ClientesAlojadosColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ClientesAlojadosService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.HabitacionesBloqueosColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -3159,6 +3162,7 @@
     <Compile Include="Modules\Recepcion\Arrivals\ArrivalsPage.cs" />
     <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosPage.cs" />
     <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosColumns.cs" />
+    <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosEndpoint.cs" />
     <Compile Include="Modules\Recepcion\Departures\DeparturesPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewItem.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewListRequest.cs" />

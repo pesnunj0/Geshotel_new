@@ -5991,6 +5991,23 @@ var Geshotel;
 (function (Geshotel) {
     var Recepcion;
     (function (Recepcion) {
+        var ClientesAlojadosService;
+        (function (ClientesAlojadosService) {
+            ClientesAlojadosService.baseUrl = 'Recepcion/ClientesAlojados';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ClientesAlojadosService.Methods || (ClientesAlojadosService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                ClientesAlojadosService[x] = function (r, s, o) { return Q.serviceRequest(ClientesAlojadosService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = ClientesAlojadosService.baseUrl + '/' + x;
+            });
+        })(ClientesAlojadosService = Recepcion.ClientesAlojadosService || (Recepcion.ClientesAlojadosService = {}));
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
         var HabitacionesBloqueosForm = (function (_super) {
             __extends(HabitacionesBloqueosForm, _super);
             function HabitacionesBloqueosForm() {
@@ -12906,7 +12923,7 @@ var Geshotel;
             ClientesAlojadosGrid.prototype.getDialogType = function () { return Recepcion.ReservasHuespedesDialog; };
             ClientesAlojadosGrid.prototype.getIdProperty = function () { return Recepcion.ReservasHuespedesRow.idProperty; };
             ClientesAlojadosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasHuespedesRow.localTextPrefix; };
-            ClientesAlojadosGrid.prototype.getService = function () { return Recepcion.ReservasHuespedesService.baseUrl; };
+            ClientesAlojadosGrid.prototype.getService = function () { return Recepcion.ClientesAlojadosService.baseUrl; };
             ClientesAlojadosGrid.prototype.getInitialTitle = function () {
                 _super.prototype.getInitialTitle.call(this);
                 return Q.text("Db.Recepcion.ClientesAlojados.EntityPlural");
