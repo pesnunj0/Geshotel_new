@@ -7421,7 +7421,7 @@ section.content > .s-DataGrid {
   padding: 30px 20px;
   width: 550px;
   margin: 90px auto auto auto;
-  background: rgba(0, 0, 0, 0.5);
+  background: white;
   border-radius: 12px;
   font-weight: 700;
 }
@@ -7438,9 +7438,8 @@ section.content > .s-DataGrid {
   font-size: 18px;
   font-weight: 700;
   margin: 16px 0 24px;
-  color: #f5f27e;
+  color: #0059b3;
   text-align: center;
-  text-shadow: 0 1px 1px #333;
 }
 .page-content .s-LoginPanel .buttons {
   text-align: right;
@@ -7452,22 +7451,20 @@ section.content > .s-DataGrid {
   font-weight: 700;
 }
 .page-content .s-LoginPanel .caption {
-  color: #ececec;
+  color: #007399;
   font-weight: 700;
-  text-shadow: 0 1px 1px #333;
 }
 .page-content .s-LoginPanel .actions {
   padding-right: 28px;
 }
 .page-content .s-LoginPanel .actions a {
-  color: #ececec;
+  color: #007399;
   padding: 2px 2px 2px 2px;
   margin-top: 5px;
   display: block;
   float: right;
   clear: both;
   border-bottom: 1px dashed #999;
-  text-shadow: 0 1px 1px #333;
 }
 .page-content .s-LoginPanel .actions a i {
   font-weight: 700;
@@ -7486,15 +7483,15 @@ section.content > .s-DataGrid {
 .page-content .s-LoginPanel .s-Form input {
   padding: 6px 10px;
   border: none;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  background: #f0f5f5;
+  color: #737373;
 }
 .page-content .s-LoginPanel .s-Form .caption {
   padding: 6px 10px;
-  color: #fff;
+  color: #007399;
 }
 .page-content .s-LoginPanel a {
-  color: aqua;
+  color: #f0f5f5;
 }
 .page-content .s-LoginPanel .s-PropertyGrid .categories {
   height: auto;
@@ -8833,6 +8830,12 @@ section.content > .s-DataGrid {
 .s-Recepcion-ReservasGrid .low-price .col-unit-price {
   background-color: green;
   color: #fff;
+}
+.s-Recepcion-ReservasExtrasDialog > .size {
+  width: 650px;
+}
+.s-Recepcion-ReservasExtrasDialog .caption {
+  width: 150px;
 }
 .s-Default-ReservasHabitacionesDialog > .size {
   width: 650px;

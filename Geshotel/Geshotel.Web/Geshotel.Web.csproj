@@ -2730,6 +2730,12 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasDialog.ts" />
+    <Content Include="Modules\Recepcion\ReservasExtras\ReservasExtrasIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasExtrasRow.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasExtrasService.ts" />
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasExtrasForm.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasGrid.ts" />
+    <TypeScriptCompile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -3461,6 +3467,12 @@
     <Compile Include="Modules\Contratos\Facturas\FacturasRepository.cs" />
     <Compile Include="Modules\Contratos\Facturas\FacturasEndpoint.cs" />
     <Compile Include="Modules\Contratos\Facturas\FacturasPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasRow.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasColumns.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasForm.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasRepository.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

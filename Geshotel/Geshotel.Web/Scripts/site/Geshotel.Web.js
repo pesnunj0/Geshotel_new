@@ -6252,6 +6252,54 @@ var Geshotel;
 (function (Geshotel) {
     var Recepcion;
     (function (Recepcion) {
+        var ReservasExtrasForm = (function (_super) {
+            __extends(ReservasExtrasForm, _super);
+            function ReservasExtrasForm() {
+                return _super.apply(this, arguments) || this;
+            }
+            return ReservasExtrasForm;
+        }(Serenity.PrefixedContext));
+        ReservasExtrasForm.formKey = 'Recepcion.ReservasExtras';
+        Recepcion.ReservasExtrasForm = ReservasExtrasForm;
+        [['ServicioReservaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['FlagContrato', function () { return Serenity.IntegerEditor; }], ['PrecioServicio', function () { return Serenity.DecimalEditor; }], ['ServicioExtra', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasExtrasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasExtrasRow;
+        (function (ReservasExtrasRow) {
+            ReservasExtrasRow.idProperty = 'ServicioReservaId';
+            ReservasExtrasRow.localTextPrefix = 'Recepcion.ReservasExtras';
+            var Fields;
+            (function (Fields) {
+            })(Fields = ReservasExtrasRow.Fields || (ReservasExtrasRow.Fields = {}));
+            ['ServicioReservaId', 'ReservaId', 'ServicioId', 'UnidadCalculoId', 'FechaDesde', 'FechaHasta', 'Cantidad', 'UserId', 'FechaModificacion', 'FlagContrato', 'PrecioServicio', 'ServicioExtra', 'ReservaFechaCreacion', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaClienteId', 'ReservaCanalReservaId', 'ReservaClienteIdFactura', 'ReservaTipoHabitacionId', 'ReservaVip', 'ReservaPensionId', 'ReservaAdultos', 'ReservaChild50', 'ReservaChildFree', 'ReservaBebes', 'ReservaFechaReserva', 'ReservaNombreReserva', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'ReservaObservacionesLlegada', 'ReservaObservacionesSalida', 'ReservaObservacionesCliente', 'ReservaObservaciones', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'ReservaBonoReferencia', 'ReservaBonoOnline', 'ReservaBloquearTarifa', 'ReservaPermiteDevolucion', 'ReservaTipoTarjetaId', 'ReservaTarjetaCredito', 'ReservaCaducidad', 'ReservaCodSeguridad', 'ReservaContratoTtoo', 'ReservaCodigoOferta', 'ReservaValor', 'ReservaValorValidado', 'ReservaFechaValidacion', 'ReservaUsuarioValidacion', 'ReservaParoventasCheck', 'ReservaCuposCheck', 'ReservaReleaseCheck', 'ReservaReservaDingus', 'ReservaDingusImpuestosIncluidos', 'ReservaDingusComision', 'ReservaReservaDingusTipo', 'ReservaFechaAnulacion', 'ReservaUserId', 'ReservaFechaModificacion', 'ServicioNombreServicio', 'ServicioAbreviatura', 'ServicioTipoServicioId', 'ServicioSwProduccion', 'ServicioSwDescuento', 'ServicioSwAjustes', 'ServicioSwGastos', 'ServicioSwPension', 'ServicioSwRectificativa', 'ServicioTipoUnidadCalculoId', 'ServicioConceptoAceleradorReservasId', 'ServicioCosto', 'ServicioSumaServicioId', 'ServicioRestaServicioId', 'ServicioUserId', 'ServicioFechaModificacion', 'ServicioTipoHab', 'ServicioTipoPension', 'UnidadCalculoUc', 'UnidadCalculoDescripcionUnidadCalculo', 'UnidadCalculoTipoUnidadCalculoId', 'UnidadCalculoPax', 'UnidadCalculoServicioId', 'UnidadCalculoUserId', 'UnidadCalculoFechaModificacion', 'UserUsername', 'UserDisplayName', 'UserEmail', 'UserSource', 'UserPasswordHash', 'UserPasswordSalt', 'UserLastDirectoryUpdate', 'UserUserImage', 'UserInsertDate', 'UserInsertUserId', 'UserUpdateDate', 'UserUpdateUserId', 'UserIsActive', 'UserEmpresaId', 'UserHotelId'].forEach(function (x) { return Fields[x] = x; });
+        })(ReservasExtrasRow = Recepcion.ReservasExtrasRow || (Recepcion.ReservasExtrasRow = {}));
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasExtrasService;
+        (function (ReservasExtrasService) {
+            ReservasExtrasService.baseUrl = 'Recepcion/ReservasExtras';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ReservasExtrasService.Methods || (ReservasExtrasService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                ReservasExtrasService[x] = function (r, s, o) { return Q.serviceRequest(ReservasExtrasService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = ReservasExtrasService.baseUrl + '/' + x;
+            });
+        })(ReservasExtrasService = Recepcion.ReservasExtrasService || (Recepcion.ReservasExtrasService = {}));
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
         var ReservasForm = (function (_super) {
             __extends(ReservasForm, _super);
             function ReservasForm() {
@@ -13811,6 +13859,52 @@ var Geshotel;
             Serenity.Decorators.registerClass()
         ], ReservasDescuentosGrid);
         Recepcion.ReservasDescuentosGrid = ReservasDescuentosGrid;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasExtrasDialog = (function (_super) {
+            __extends(ReservasExtrasDialog, _super);
+            function ReservasExtrasDialog() {
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Recepcion.ReservasExtrasForm(_this.idPrefix);
+                return _this;
+            }
+            ReservasExtrasDialog.prototype.getFormKey = function () { return Recepcion.ReservasExtrasForm.formKey; };
+            ReservasExtrasDialog.prototype.getIdProperty = function () { return Recepcion.ReservasExtrasRow.idProperty; };
+            ReservasExtrasDialog.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasExtrasRow.localTextPrefix; };
+            ReservasExtrasDialog.prototype.getService = function () { return Recepcion.ReservasExtrasService.baseUrl; };
+            return ReservasExtrasDialog;
+        }(Serenity.EntityDialog));
+        ReservasExtrasDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], ReservasExtrasDialog);
+        Recepcion.ReservasExtrasDialog = ReservasExtrasDialog;
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasExtrasGrid = (function (_super) {
+            __extends(ReservasExtrasGrid, _super);
+            function ReservasExtrasGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ReservasExtrasGrid.prototype.getColumnsKey = function () { return 'Recepcion.ReservasExtras'; };
+            ReservasExtrasGrid.prototype.getDialogType = function () { return Recepcion.ReservasExtrasDialog; };
+            ReservasExtrasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasExtrasRow.idProperty; };
+            ReservasExtrasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasExtrasRow.localTextPrefix; };
+            ReservasExtrasGrid.prototype.getService = function () { return Recepcion.ReservasExtrasService.baseUrl; };
+            return ReservasExtrasGrid;
+        }(Serenity.EntityGrid));
+        ReservasExtrasGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ReservasExtrasGrid);
+        Recepcion.ReservasExtrasGrid = ReservasExtrasGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
