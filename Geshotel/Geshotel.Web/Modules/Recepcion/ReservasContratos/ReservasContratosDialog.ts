@@ -17,6 +17,4 @@ namespace Geshotel.Recepcion {
             Serenity.EditorUtils.setReadOnly(this.form.ReservaId, true);
         }
     }
-
-    }
 }
