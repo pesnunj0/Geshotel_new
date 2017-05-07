@@ -3608,13 +3608,7 @@ Namespace geshotelk
             Return tmp
             'CompruebaEstadoHabitacion(habitacion_id, reserva_id, fecha_desde, fecha_hasta)
         End Function
-        Shared sqlUlitmaFechaHotel = "" _
-    & "     SELECT" _
-    & " Max(cierres.fecha_cierre) " _
-    & " FROM " _
-    & " cierres " _
-    & " WHERE " _
-    & " cierres.hotel_id =  ?"
+        Shared sqlUlitmaFechaHotel = "SELECT Max(cierres.fecha_cierre) FROM cierres WHERE cierres.hotel_id =  ?"
         Private Function ComparaFechaHotel(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer) As Boolean
             Dim retVal As Boolean = False
             Try

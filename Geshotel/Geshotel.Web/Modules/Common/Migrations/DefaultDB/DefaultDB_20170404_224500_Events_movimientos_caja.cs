@@ -25,11 +25,17 @@ namespace Geshotel.Migrations.DefaultDB
     { 
         public override void Up()
         {
+            if (Schema.Table("events").Exists())
+                Delete.Table("events");
+
             Create.Table("events")
                 .WithColumn("id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("name").AsString(25).NotNullable()
                 .WithColumn("eventstart").AsDateTime().NotNullable()
                 .WithColumn("eventend").AsDateTime().NotNullable();
+
+            if (Schema.Table("contadores").Exists())
+                Delete.Table("contadores");
 
             Create.Table("contadores")
                 .WithColumn("contador_id").AsInt32().PrimaryKey().Identity()
@@ -45,6 +51,9 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnColumn("ano").Ascending()
                 .WithOptions().Unique();
 
+            if (Schema.Table("cajas").Exists())
+                Delete.Table("cajas");
+
             Create.Table("cajas")
                 .WithColumn("caja_id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("hotel_id").AsInt16().NotNullable()
@@ -55,6 +64,9 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("dpto_contable").AsString(5).Nullable()
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime();
+
+            if (Schema.Table("facturas").Exists())
+                Delete.Table("facturas");
 
             Create.Table("facturas")
                 .WithColumn("factura_id").AsInt32().Identity().PrimaryKey().NotNullable()
@@ -87,20 +99,23 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("usuario_confirmacion").AsInt32().Nullable();
             
             Create.Index("IX_factura_hotel_id")
-                .OnTable("factura")
+                .OnTable("facturas")
                 .OnColumn("hotel_id").Ascending();
 
             Create.Index("IX_factura_cliente_id")
-                .OnTable("factura")
+                .OnTable("facturas")
                 .OnColumn("cliente_id").Ascending();
 
             Create.Index("IX_factura_fecha")
-                .OnTable("factura")
+                .OnTable("facturas")
                 .OnColumn("fecha_factura").Ascending();
 
             Create.Index("IX_factura_numero")
-                .OnTable("factura")
+                .OnTable("facturas")
                 .OnColumn("numero_factura").Ascending();
+
+            if (Schema.Table("lineas_factura").Exists())
+                Delete.Table("lineas_factura");
 
             Create.Table("lineas_factura")
                 .WithColumn("linea_factura_id").AsInt32().PrimaryKey().Identity().NotNullable()
@@ -144,6 +159,8 @@ namespace Geshotel.Migrations.DefaultDB
                 .OnTable("lineas_factura")
                 .OnColumn("fecha").Ascending();
 
+            if (Schema.Table("tickets").Exists())
+                Delete.Table("tickets");
             Create.Table("tickets")
                 .WithColumn("ticket_id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("serie_id").AsInt16().NotNullable()
@@ -157,6 +174,9 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("forma_pago_id").AsInt16().Nullable()
                 .WithColumn("factura_id").AsInt32().Nullable()
                 .WithColumn("estado_ticket_id").AsInt16().WithDefaultValue(0).NotNullable();
+
+            if (Schema.Table("lineas_ticket").Exists())
+                Delete.Table("lineas_ticket");
 
             Create.Table("lineas_ticket")
                 .WithColumn("linea_ticket_id").AsInt32().PrimaryKey().Identity()
@@ -257,9 +277,6 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime().Nullable();
 
-            Create.Index("IX_movimientos_hotel_id")
-                .OnTable("movimientos_caja")
-                .OnColumn("hotel_id").Ascending();
 
             Create.Index("IX_movimientos_fecha")
                 .OnTable("movimientos_caja")

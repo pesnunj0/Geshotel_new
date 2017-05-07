@@ -31,14 +31,26 @@ namespace Geshotel.Common.Pages
                     var o = HotelesRow.Fields;
                     string conexion = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
                     var x = ClasesGeshotel.geshotelk.GesHotelClase.CrearClase(user.UserId,conexion);
+
+                    model.FechaHotel = o.FechaHotel.ToString();
+                    DateTime FechaHotel = DateTime.Now;
+                    //DateTime FechaHotel = x.FechaHotel((int)user.HotelId);
                     
-                    DateTime FechaHotel = x.FechaHotel((int)user.HotelId);
-                    model.FechaHotel = FechaHotel.ToString("dd/MM/yyyy");
                     using (var connection = SqlConnections.NewFor<HotelesRow>())
                     {
+                        string sqlQuery = "SELECT Max(cierres.fecha_cierre) FROM cierres WHERE cierres.hotel_id =" + hotelId.ToString();
+                        var result = connection.Query<DateTime>(sqlQuery);
+                        
+                        foreach (DateTime id in result)
+                        {
+                            FechaHotel = Convert.ToDateTime(id);
+                            FechaHotel = FechaHotel.AddDays(1);
+                        }
+                        
                         var rowHotel = connection.TrySingle<HotelesRow>(o.HotelId == (int)hotelId);
                         model.HotelName = rowHotel.Hotel;
-                        
+ 
+                        model.FechaHotel = FechaHotel.ToString("dd/MM/yyyy");
 
                         model.Llegadas = connection.Count<ReservasRow>(rRow.FechaLlegada == FechaHotel & rRow.HotelId == (int)hotelId & (rRow.EstadoReservaId == 3 | rRow.EstadoReservaId == 1));
                         model.Salidas = connection.Count<ReservasRow>(rRow.FechaSalida == FechaHotel & rRow.HotelId == (int)hotelId & (rRow.EstadoReservaId == 3 | rRow.EstadoReservaId == 4 | rRow.EstadoReservaId == 5));
