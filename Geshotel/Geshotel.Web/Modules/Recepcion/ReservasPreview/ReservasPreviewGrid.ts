@@ -63,9 +63,5 @@ namespace Geshotel.Recepcion {
             return columns;
 
         }
- 
-
-
-        }
     }
 }
