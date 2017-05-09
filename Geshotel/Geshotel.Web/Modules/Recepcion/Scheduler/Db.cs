@@ -530,7 +530,7 @@ namespace Data
             string tipoHabitacionId = "";
             string tipoHabitacionReserva = "";
             string sql = "";
-            if(resource.EndsWith("000"))            
+            if(resource != null && resource.EndsWith("000"))            
                  tipoHabitacionId= resource.Substring(0, resource.Length - 3);
             else
             {

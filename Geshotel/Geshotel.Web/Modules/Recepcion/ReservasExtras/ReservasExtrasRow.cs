@@ -9,7 +9,7 @@ namespace Geshotel.Recepcion.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("reservas_servicios"), DisplayName("Reservas Extras"), InstanceName("Reservas Extras"), TwoLevelCached]
+    [ConnectionKey("Default"), TableName("[reservas_servicios]"), DisplayName("Reservas Extras"), InstanceName("Reservas Extras"), TwoLevelCached]
     [ReadPermission("Recepcion:Hotel")]
     [ModifyPermission("Recepcion:Hotel")]
     public sealed class ReservasExtrasRow : Row, IIdRow

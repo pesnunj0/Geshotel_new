@@ -227,19 +227,31 @@ Update Exceptions
                     }
                     else
                     {
-                        var count = new SqlUpdate("Exceptions")
+                        var upd = new SqlUpdate("Exceptions")
                             .Set("DuplicateCount", "DuplicateCount + @DuplicateCount")
                             .Where(new Criteria("[Id]").In(
                                 new SqlQuery()
                                     .From("Exceptions")
                                     .Take(1)
-                                    .Where(hashMatch)))
-                                .Execute(c, ExpectedRows.Ignore);
+                                    .Where(hashMatch)));
+
+                        upd.AddParam("DuplicateCount", error.DuplicateCount);
+                        upd.AddParam("ErrorHash", error.ErrorHash);
+                        upd.AddParam("ApplicationName", error.ApplicationName.Truncate(50));
+                        upd.AddParam("minDate", DateTime.UtcNow.Add(RollupThreshold.Value.Negate()));
+
+                        var count = upd.Execute(c, ExpectedRows.Ignore);
 
                         // if we found an exception that's a duplicate, jump out
                         if (count > 0)
                         {
-                            error.GUID = c.Query<Guid>(new SqlQuery()
+                            var q = new SqlQuery();
+                            q.AddParam("DuplicateCount", error.DuplicateCount);
+                            q.AddParam("ErrorHash", error.ErrorHash);
+                            q.AddParam("ApplicationName", error.ApplicationName.Truncate(50));
+                            q.AddParam("minDate", DateTime.UtcNow.Add(RollupThreshold.Value.Negate()));
+
+                            error.GUID = c.Query<Guid>(q
                                 .From("Exceptions")
                                 .Select("GUID")
                                 .Take(1)
