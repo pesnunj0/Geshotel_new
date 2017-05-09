@@ -6261,7 +6261,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ReservasExtrasForm.formKey = 'Recepcion.ReservasExtras';
         Recepcion.ReservasExtrasForm = ReservasExtrasForm;
-        [['ServicioReservaId', function () { return Serenity.IntegerEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.IntegerEditor; }], ['UnidadCalculoId', function () { return Serenity.IntegerEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['UserId', function () { return Serenity.IntegerEditor; }], ['FechaModificacion', function () { return Serenity.DateEditor; }], ['FlagContrato', function () { return Serenity.IntegerEditor; }], ['PrecioServicio', function () { return Serenity.DecimalEditor; }], ['ServicioExtra', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasExtrasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['ReservaId', function () { return Serenity.IntegerEditor; }], ['ServicioId', function () { return Serenity.LookupEditor; }], ['UnidadCalculoId', function () { return Serenity.LookupEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Cantidad', function () { return Serenity.DecimalEditor; }], ['FlagContrato', function () { return Serenity.IntegerEditor; }], ['PrecioServicio', function () { return Serenity.DecimalEditor; }], ['ServicioExtra', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(ReservasExtrasForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -6407,6 +6407,23 @@ var Geshotel;
                 Methods[x] = ReservasOfertasService.baseUrl + '/' + x;
             });
         })(ReservasOfertasService = Recepcion.ReservasOfertasService || (Recepcion.ReservasOfertasService = {}));
+    })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
+})(Geshotel || (Geshotel = {}));
+var Geshotel;
+(function (Geshotel) {
+    var Recepcion;
+    (function (Recepcion) {
+        var ReservasPreviewService;
+        (function (ReservasPreviewService) {
+            ReservasPreviewService.baseUrl = 'Recepcion/ReservasPreview';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ReservasPreviewService.Methods || (ReservasPreviewService.Methods = {}));
+            ['List'].forEach(function (x) {
+                ReservasPreviewService[x] = function (r, s, o) { return Q.serviceRequest(ReservasPreviewService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = ReservasPreviewService.baseUrl + '/' + x;
+            });
+        })(ReservasPreviewService = Recepcion.ReservasPreviewService || (Recepcion.ReservasPreviewService = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -13289,6 +13306,7 @@ var Geshotel;
     (function (Recepcion) {
         var ReservasDialog = (function (_super) {
             __extends(ReservasDialog, _super);
+            //        private ReservasFacturasGrid: ReservasFacturasGrid;
             function ReservasDialog() {
                 var _this = _super.call(this) || this;
                 _this.form = new Recepcion.ReservasForm(_this.idPrefix);
@@ -13299,6 +13317,8 @@ var Geshotel;
                 _this.ReservasOfertasGrid = new Recepcion.ReservasOfertasGrid(_this.byId("ReservasOfertasGrid"));
                 _this.ReservasDescuentosGrid = new Recepcion.ReservasDescuentosGrid(_this.byId("ReservasDescuentosGrid"));
                 _this.ReservasPreviewGrid = new Recepcion.ReservasPreviewGrid(_this.byId("ReservasPreviewGrid"));
+                _this.ReservasExtrasGrid = new Recepcion.ReservasExtrasGrid(_this.byId("ReservasExtrasGrid"));
+                //   this.ReservasFacturasGrid = new ReservasFacturasGrid(this.byId("ReservasFacturasGrid"));
                 _this.form.EmpresaId.change(function (e) { return _this.ReservasHuespedesGrid.empresaID = Q.toId(_this.form.EmpresaId); });
                 _this.tabs.on('tabsactivate', function (e, i) {
                     _this.arrange();
@@ -13322,14 +13342,13 @@ var Geshotel;
                 this.ReservasHuespedesGrid.empresaID = this.entity.EmpresaId;
                 this.ReservasDescuentosGrid.reservaID = this.entityId;
                 this.ReservasPreviewGrid.reservaID = this.entityId;
+                this.ReservasExtrasGrid.reservaID = this.entityId;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
                 var _this = this;
                 // check that this is an insert
                 if (this.isNew) {
                     Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
-                    // Here I should call ClasesGeshotel.Geshotelk on server side.
-                    // let's load inserted record using Retrieve service
                     Recepcion.ReservasService.Retrieve({
                         EntityId: response.EntityId
                     }, function (resp) {
@@ -13676,19 +13695,6 @@ var Geshotel;
                 // by default, base entity grid adds a few buttons, 
                 // add, refresh, column selection in order.
                 var buttons = _super.prototype.getButtons.call(this);
-                // here is several methods to remove add button
-                // only one is enabled, others are commented
-                // METHOD 1
-                // we would be able to simply return an empty button list,
-                // but this would also remove all other buttons
-                // return [];
-                // METHOD 2
-                // remove by splicing (something like delete by index)
-                // here we hard code add button index (not nice!)
-                // buttons.splice(0, 1);
-                // METHOD 3 - recommended
-                // remove by splicing, but this time find button index
-                // by its css class. it is the best and safer method
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
                 return buttons;
             };
@@ -13899,6 +13905,26 @@ var Geshotel;
             ReservasExtrasGrid.prototype.getIdProperty = function () { return Recepcion.ReservasExtrasRow.idProperty; };
             ReservasExtrasGrid.prototype.getLocalTextPrefix = function () { return Recepcion.ReservasExtrasRow.localTextPrefix; };
             ReservasExtrasGrid.prototype.getService = function () { return Recepcion.ReservasExtrasService.baseUrl; };
+            ReservasExtrasGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ReservasExtrasGrid.prototype.getGridCanLoad = function () {
+                return this.reservaID != null;
+            };
+            Object.defineProperty(ReservasExtrasGrid.prototype, "reservaID", {
+                get: function () {
+                    return this._reservaID;
+                },
+                set: function (value) {
+                    if (this._reservaID !== value) {
+                        this._reservaID = value;
+                        this.setEquality(Recepcion.ReservasExtrasRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             return ReservasExtrasGrid;
         }(Serenity.EntityGrid));
         ReservasExtrasGrid = __decorate([
@@ -14162,9 +14188,9 @@ var Geshotel;
             function ReservasPreviewGrid(container) {
                 return _super.call(this, container) || this;
             }
-            ReservasPreviewGrid.prototype.getIdProperty = function () { return null; };
+            ReservasPreviewGrid.prototype.getIdProperty = function () { return "Key"; };
             ReservasPreviewGrid.prototype.getLocalTextPrefix = function () { return "Recepcion.ReservasPreview"; };
-            ReservasPreviewGrid.prototype.getService = function () { return Recepcion.ReservasContratosService.baseUrl; };
+            ReservasPreviewGrid.prototype.getService = function () { return Recepcion.ReservasService.baseUrl; };
             ReservasPreviewGrid.prototype.getInitialTitle = function () {
                 return null;
             };
@@ -14178,7 +14204,7 @@ var Geshotel;
                 set: function (value) {
                     if (this._reservaID !== value) {
                         this._reservaID = value;
-                        this.setEquality(Recepcion.ReservasContratosRow.Fields.ReservaId, value);
+                        //this.setEquality(ReservasContratosRow.Fields.ReservaId, value);
                         this.refresh();
                     }
                 },
@@ -14189,21 +14215,26 @@ var Geshotel;
       * This method is called to get list of buttons to be created.
       */
             ReservasPreviewGrid.prototype.getButtons = function () {
-                // As Grid and items are readonly
-                // All Buttons are removed
                 var buttons = _super.prototype.getButtons.call(this);
-                return [];
+                // METHOD 3 - recommended
+                // remove by splicing, but this time find button index
+                // by its css class. it is the best and safer method
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                return buttons;
             };
             ReservasPreviewGrid.prototype.getColumns = function () {
                 var columns = [];
-                columns.push({ field: 'Fecha', width: 80, sortable: false });
-                columns.push({ field: 'Descripcion', width: 100, sortable: false });
+                // Key and Reserva are not Necesary
+                columns.push({ field: 'Key', width: 50, sortable: false });
+                columns.push({ field: 'Reserva', width: 70, sortable: false });
+                columns.push({ field: 'Fecha', width: 80, sortable: true });
+                columns.push({ field: 'Descripcion', width: 100, sortable: true });
                 columns.push({ field: 'DescTipo', width: 90, sortable: false });
                 columns.push({ field: 'DescUCReserva', width: 90, sortable: false });
                 columns.push({ field: 'Cantidad', width: 80, sortable: false });
                 columns.push({ field: 'Precio', width: 80, sortable: false });
                 columns.push({ field: 'PrecioProduccion', width: 80, sortable: false });
-                columns.push({ field: 'Importe', width: 80, sortable: false });
+                columns.push({ field: 'Importe', width: 80, sortable: true });
                 return columns;
             };
             return ReservasPreviewGrid;

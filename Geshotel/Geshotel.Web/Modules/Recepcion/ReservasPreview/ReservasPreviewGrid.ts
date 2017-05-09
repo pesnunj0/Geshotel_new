@@ -9,9 +9,9 @@ namespace Geshotel.Recepcion {
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
     export class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any > {
-        protected getIdProperty() { return null; }
+        protected getIdProperty()  { return "Key"; } 
         protected getLocalTextPrefix() { return "Recepcion.ReservasPreview"; }
-        protected getService() { return ReservasContratosService.baseUrl; }
+        protected getService() { return ReservasService.baseUrl; }
 
         constructor(container: JQuery) {
             super(container);
@@ -33,8 +33,8 @@ namespace Geshotel.Recepcion {
 
         set reservaID(value: number) {
             if (this._reservaID !== value) {
-                this._reservaID = value;
-                this.setEquality(ReservasContratosRow.Fields.ReservaId, value);
+                this._reservaID = value;               
+                //this.setEquality(ReservasContratosRow.Fields.ReservaId, value);
                 this.refresh();
             }
         }
@@ -44,22 +44,29 @@ namespace Geshotel.Recepcion {
   */
         protected getButtons(): Serenity.ToolButton[] {
 
-            // As Grid and items are readonly
-            // All Buttons are removed
             var buttons = super.getButtons();
-            return [];
+
+            // METHOD 3 - recommended
+            // remove by splicing, but this time find button index
+            // by its css class. it is the best and safer method
+            buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
+            return buttons;
         }
+
         protected getColumns(): Slick.Column[] {
 
             var columns: Slick.Column[] = [];
-            columns.push({ field: 'Fecha', width: 80, sortable: false });
-            columns.push({ field: 'Descripcion', width: 100, sortable: false });
+            // Key and Reserva are not Necesary
+            columns.push({ field: 'Key', width: 50, sortable: false });
+            columns.push({ field: 'Reserva', width: 70, sortable: false });
+            columns.push({ field: 'Fecha', width: 80, sortable: true });
+            columns.push({ field: 'Descripcion', width: 100, sortable: true });
             columns.push({ field: 'DescTipo', width: 90, sortable: false });
             columns.push({ field: 'DescUCReserva', width: 90, sortable: false });
             columns.push({ field: 'Cantidad', width: 80, sortable: false });
             columns.push({ field: 'Precio', width: 80, sortable: false });
             columns.push({ field: 'PrecioProduccion', width: 80, sortable: false });
-            columns.push({ field: 'Importe', width: 80, sortable: false });
+            columns.push({ field: 'Importe', width: 80, sortable: true });
             return columns;
 
         }

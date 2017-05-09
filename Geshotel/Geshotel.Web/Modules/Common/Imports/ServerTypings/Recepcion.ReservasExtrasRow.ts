@@ -107,18 +107,18 @@ namespace Geshotel.Recepcion {
         export const localTextPrefix = 'Recepcion.ReservasExtras';
 
         export namespace Fields {
-            export declare const ServicioReservaId;
-            export declare const ReservaId;
-            export declare const ServicioId;
-            export declare const UnidadCalculoId;
-            export declare const FechaDesde;
-            export declare const FechaHasta;
-            export declare const Cantidad;
-            export declare const UserId;
-            export declare const FechaModificacion;
-            export declare const FlagContrato;
-            export declare const PrecioServicio;
-            export declare const ServicioExtra;
+            export declare const ServicioReservaId: string;
+            export declare const ReservaId: string;
+            export declare const ServicioId: string;
+            export declare const UnidadCalculoId: string;
+            export declare const FechaDesde: string;
+            export declare const FechaHasta: string;
+            export declare const Cantidad: string;
+            export declare const UserId: string;
+            export declare const FechaModificacion: string;
+            export declare const FlagContrato: string;
+            export declare const PrecioServicio: string;
+            export declare const ServicioExtra: string;
             export declare const ReservaFechaCreacion: string;
             export declare const ReservaHotelId: string;
             export declare const ReservaEstadoReservaId: string;

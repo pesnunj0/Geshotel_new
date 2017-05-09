@@ -755,6 +755,13 @@ namespace MVC
             }
 
 
+            public static class ReservasExtras
+            {
+
+                public const string ReservasExtrasIndex = "~/Modules/Recepcion/ReservasExtras/ReservasExtrasIndex.cshtml";
+            }
+
+
             public static class ReservasHuespedes
             {
 

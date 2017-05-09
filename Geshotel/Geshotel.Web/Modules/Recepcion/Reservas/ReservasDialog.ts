@@ -20,6 +20,8 @@ namespace Geshotel.Recepcion {
         private ReservasDescuentosGrid: ReservasDescuentosGrid;
         private ReservasOfertasGrid: ReservasOfertasGrid;
         private ReservasPreviewGrid: ReservasPreviewGrid;
+        private ReservasExtrasGrid: ReservasExtrasGrid;
+//        private ReservasFacturasGrid: ReservasFacturasGrid;
 
 
         constructor() {
@@ -32,6 +34,8 @@ namespace Geshotel.Recepcion {
             this.ReservasOfertasGrid = new ReservasOfertasGrid(this.byId("ReservasOfertasGrid"));
             this.ReservasDescuentosGrid = new ReservasDescuentosGrid(this.byId("ReservasDescuentosGrid"));
             this.ReservasPreviewGrid = new ReservasPreviewGrid(this.byId("ReservasPreviewGrid"));
+            this.ReservasExtrasGrid = new ReservasExtrasGrid(this.byId("ReservasExtrasGrid"));
+         //   this.ReservasFacturasGrid = new ReservasFacturasGrid(this.byId("ReservasFacturasGrid"));
 
             this.form.EmpresaId.change(e => this.ReservasHuespedesGrid.empresaID = Q.toId(this.form.EmpresaId));
             this.tabs.on('tabsactivate', (e, i) => {
@@ -53,6 +57,7 @@ namespace Geshotel.Recepcion {
             this.ReservasHuespedesGrid.empresaID = this.entity.EmpresaId;
             this.ReservasDescuentosGrid.reservaID = this.entityId;
             this.ReservasPreviewGrid.reservaID = this.entityId;
+            this.ReservasExtrasGrid.reservaID = this.entityId;
         }
 
         protected onSaveSuccess(response: Serenity.SaveResponse): void {
@@ -60,8 +65,6 @@ namespace Geshotel.Recepcion {
             // check that this is an insert
             if (this.isNew) {
                 Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
-                // Here I should call ClasesGeshotel.Geshotelk on server side.
-                // let's load inserted record using Retrieve service
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
                 }, resp => {

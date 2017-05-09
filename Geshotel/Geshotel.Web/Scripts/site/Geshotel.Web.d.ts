@@ -7135,18 +7135,18 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+}
+declare namespace Geshotel.Recepcion {
     class ReservasExtrasForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
     interface ReservasExtrasForm {
         ReservaId: Serenity.IntegerEditor;
-        ServicioId: Serenity.IntegerEditor;
-        UnidadCalculoId: Serenity.IntegerEditor;
+        ServicioId: Serenity.LookupEditor;
+        UnidadCalculoId: Serenity.LookupEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
         Cantidad: Serenity.DecimalEditor;
-        UserId: Serenity.IntegerEditor;
-        FechaModificacion: Serenity.DateEditor;
         FlagContrato: Serenity.IntegerEditor;
         PrecioServicio: Serenity.DecimalEditor;
         ServicioExtra: Serenity.IntegerEditor;
@@ -7258,18 +7258,18 @@ declare namespace Geshotel.Recepcion {
         const idProperty = "ServicioReservaId";
         const localTextPrefix = "Recepcion.ReservasExtras";
         namespace Fields {
-            const ServicioReservaId: any;
-            const ReservaId: any;
-            const ServicioId: any;
-            const UnidadCalculoId: any;
-            const FechaDesde: any;
-            const FechaHasta: any;
-            const Cantidad: any;
-            const UserId: any;
-            const FechaModificacion: any;
-            const FlagContrato: any;
-            const PrecioServicio: any;
-            const ServicioExtra: any;
+            const ServicioReservaId: string;
+            const ReservaId: string;
+            const ServicioId: string;
+            const UnidadCalculoId: string;
+            const FechaDesde: string;
+            const FechaHasta: string;
+            const Cantidad: string;
+            const UserId: string;
+            const FechaModificacion: string;
+            const FlagContrato: string;
+            const PrecioServicio: string;
+            const ServicioExtra: string;
             const ReservaFechaCreacion: string;
             const ReservaHotelId: string;
             const ReservaEstadoReservaId: string;
@@ -7363,11 +7363,11 @@ declare namespace Geshotel.Recepcion {
 declare namespace Geshotel.Recepcion {
     namespace ReservasExtrasService {
         const baseUrl = "Recepcion/ReservasExtras";
-        function Create(request: Serenity.SaveRequest<ReservasExtrasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<ReservasExtrasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReservasExtrasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasExtrasRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<ReservasExtrasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ReservasExtrasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ReservasExtrasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasExtrasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -7633,6 +7633,7 @@ declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     interface ReservasPreviewItem {
+        Key?: number;
         Fecha?: string;
         Descripcion?: string;
         DescTipo?: string;
@@ -7647,6 +7648,15 @@ declare namespace Geshotel.Recepcion {
 declare namespace Geshotel.Recepcion {
     interface ReservasPreviewListRequest extends Serenity.ListRequest {
         ReservaId?: string;
+    }
+}
+declare namespace Geshotel.Recepcion {
+    namespace ReservasPreviewService {
+        const baseUrl = "Recepcion/ReservasPreview";
+        function List(request: ReservasPreviewListRequest, onSuccess?: (response: Serenity.ListResponse<ReservasPreviewItem>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const List: string;
+        }
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10587,6 +10597,7 @@ declare namespace Geshotel.Recepcion {
         private ReservasDescuentosGrid;
         private ReservasOfertasGrid;
         private ReservasPreviewGrid;
+        private ReservasExtrasGrid;
         constructor();
         protected afterLoadEntity(): void;
         protected onSaveSuccess(response: Serenity.SaveResponse): void;
@@ -10699,6 +10710,10 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _reservaID;
+        reservaID: number;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10768,7 +10783,7 @@ declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any> {
-        protected getIdProperty(): any;
+        protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);

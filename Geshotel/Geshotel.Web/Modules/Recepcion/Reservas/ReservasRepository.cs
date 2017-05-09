@@ -175,6 +175,7 @@ namespace Geshotel.Recepcion.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+            
             return new MyListHandler().Process(connection, request);
         }
 
@@ -196,6 +197,7 @@ namespace Geshotel.Recepcion.Repositories
         {
             protected override void ApplySort(SqlQuery query)
             {
+                
                 base.ApplySort(query);
 
                 // if you do this here, users can't sort by other columns, as fechaprevista... will always be sorted first

@@ -10,6 +10,9 @@ namespace Geshotel.Recepcion
     [ScriptInclude]
     public class ReservasPreviewItem
     {
+        public int Error { get; set; }
+        public int Key { get; set; }
+        public int ReservaId { get; set; }
         public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string DescTipo { get; set; }
@@ -18,6 +21,5 @@ namespace Geshotel.Recepcion
         public decimal Precio { get; set; }
         public decimal PrecioProduccion { get; set; }
         public decimal Importe { get; set; }
-        public int Error { get; set; }
     }
 }
