@@ -1,4 +1,10 @@
-﻿
+﻿/*****************************************************************************************************
+ * AgenciasRepository.cs
+ * Filtramos por GrupoCliente= 1
+ * Rutina ApplyFilters
+ * Javier Nuñez
+ * Marzo 2017
+ * ***************************************************************************************************/
 
 namespace Geshotel.Contratos.Repositories
 {

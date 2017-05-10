@@ -7,7 +7,7 @@ namespace Geshotel.Recepcion.Endpoints
     using System.Data;
     using System.Web.Mvc;
     using MyRepository = Repositories.ReservasExtrasRepository;
-    using MyRow = Entities.ReservasExtrasRow;
+    using MyRow = Recepcion.Entities.ReservasServiciosRow;
 
     [RoutePrefix("Services/Recepcion/ReservasExtras"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

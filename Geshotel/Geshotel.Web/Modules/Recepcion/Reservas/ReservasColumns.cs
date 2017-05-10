@@ -17,44 +17,50 @@ namespace Geshotel.Recepcion.Columns
         public Int32 ReservaId { get; set; }
         [EditLink]
         public String NombreReserva { get; set; }
-        [Width(45),QuickFilter,AlignCenter]
+        [Width(40),QuickFilter,AlignCenter]
         public Boolean Vip { get; set; }
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
+        [Width(150),Hidden, QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
         public String HotelName { get; set; }
-        [Width(70),QuickFilter]
+        [DisplayName("Estado"),Width(70),QuickFilter]
         public String EstadoReserva { get; set; }
         [DisplayName("Contrato"),Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
         public String ClienteRazon { get; set; }
-        [LookupEditor("Contratos.ServiciosHotel"),Width(110),QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"), QuickFilterOption("FilterValue", 1)]
+        [DisplayName("Habit."),AlignCenter]
+        [LookupEditor("Contratos.ServiciosHotel"),Width(90),QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("CascadeFrom", "HotelId"), QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"), QuickFilterOption("FilterValue", 1)]
         public String TipoHabitacion { get; set; }
-        [LookupEditor("Contratos.ServiciosHotel"),Width(100), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
+        [DisplayName("Pension"),AlignCenter]
+        [LookupEditor("Contratos.ServiciosHotel"),Width(75), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId"),QuickFilterOption("FilterField", "ConceptoAceleradorReservasId"),QuickFilterOption("FilterValue",2)]
         public String Pension { get; set; }
+        [Width(55),AlignRight]
+        public Int32 Noches { get; set; }
         [Width(45), AlignCenter]
         public Int16 Pax { get; set; }
-        [Width(55),AlignCenter]
+        [Width(58),AlignCenter]
         public Int16 Adultos { get; set; }
         [Width(65), AlignCenter]
         public Int16 Child50 { get; set; }
-        [Width(65), AlignCenter]
+        [Width(68), AlignCenter]
         public Int16 ChildFree { get; set; }
         [Width(55), AlignCenter]
         public Int16 Bebes { get; set; }
+        [DisplayName("Importe"),Width(70), DisplayFormat("#,##0.00"), AlignRight]
+        public Decimal Valor { get; set; }
         [Hidden]
         public String CanalReserva { get; set; }
-        [DisplayName("Cliente Factura"),Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
+        [DisplayName("Cliente Factura"),Hidden,Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
 
         public String ClienteIdFacturaRazon { get; set; }
         [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaReserva { get; set; }
-        [Width(110),DisplayFormat("g")]
+        [Width(120),DisplayFormat("g")]
         public DateTime FechaPrevistaLlegada { get; set; }
-        [Width(110), DisplayFormat("g")]
+        [Width(120), DisplayFormat("g")]
         public DateTime FechaPrevistaSalida { get; set; }
-        [Width(110), QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        [Width(110), Hidden,QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaLlegada { get; set; }
-        [Width(110), QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        [Width(110),Hidden, QuickFilter, DisplayFormat("dd/MM/yyyy")]
         public DateTime FechaSalida { get; set; }
         [Hidden,Width(110)]
         public String ObservacionesLlegada { get; set; }
@@ -87,8 +93,7 @@ namespace Geshotel.Recepcion.Columns
 
         [Hidden, Width(10)]
         public String CodigoOferta { get; set; }
-        [ Width(100),DisplayFormat("#,##0.00"), AlignRight]
-        public Decimal Valor { get; set; }
+ 
         [Hidden, Width(100), DisplayFormat("#,##0.00"),AlignRight]
         public Decimal ValorValidado { get; set; }
         [Hidden,Width(110)]

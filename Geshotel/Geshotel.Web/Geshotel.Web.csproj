@@ -2737,9 +2737,6 @@
     <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasGrid.ts" />
     <TypeScriptCompile Include="Modules\Contratos\Facturas\FacturasDialog.ts" />
     <Content Include="Modules\Recepcion\ReservasExtras\ReservasExtrasIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasExtrasRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasExtrasService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -3187,6 +3184,7 @@
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewRepository.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewEndpoint.cs" />
+    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosRow.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasModels.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasHabitacionesBloqueosColumns.cs" />
     <Compile Include="Modules\Recepcion\Scheduler\Db.cs" />
@@ -3221,7 +3219,6 @@
     <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosForm.cs" />
     <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosPage.cs" />
     <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosRepository.cs" />
-    <Compile Include="Modules\Recepcion\ReservasServicios\ReservasServiciosRow.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasColumns.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasEndpoint.cs" />
     <Compile Include="Modules\Recepcion\Reservas\ReservasForm.cs" />
@@ -3480,7 +3477,6 @@
     <Compile Include="Modules\Contratos\Facturas\FacturasRepository.cs" />
     <Compile Include="Modules\Contratos\Facturas\FacturasEndpoint.cs" />
     <Compile Include="Modules\Contratos\Facturas\FacturasPage.cs" />
-    <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasRow.cs" />
     <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasColumns.cs" />
     <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasForm.cs" />
     <Compile Include="Modules\Recepcion\ReservasExtras\ReservasExtrasRepository.cs" />

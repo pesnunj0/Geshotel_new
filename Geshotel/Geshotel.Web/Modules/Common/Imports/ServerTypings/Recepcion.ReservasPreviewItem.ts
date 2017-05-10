@@ -1,7 +1,9 @@
 ﻿
 namespace Geshotel.Recepcion {
     export interface ReservasPreviewItem {
+        Error?: number;
         Key?: number;
+        ReservaId?: number;
         Fecha?: string;
         Descripcion?: string;
         DescTipo?: string;
@@ -10,7 +12,6 @@ namespace Geshotel.Recepcion {
         Precio?: number;
         PrecioProduccion?: number;
         Importe?: number;
-        Error?: number;
     }
 }
 

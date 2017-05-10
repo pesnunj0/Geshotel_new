@@ -1,4 +1,11 @@
-﻿
+﻿/*****************************************************************************************************
+ * ReservasExtrasRepository.cs
+ * Filtramos por FlagContrato = 2
+ * Rutina ApplyFilters
+ * Javier Nuñez
+ * Mayo 2017
+ * ***************************************************************************************************/
+
 
 namespace Geshotel.Recepcion.Repositories
 {
@@ -7,7 +14,7 @@ namespace Geshotel.Recepcion.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.ReservasExtrasRow;
+    using MyRow = Entities.ReservasServiciosRow;
 
     public class ReservasExtrasRepository
     {
@@ -41,6 +48,18 @@ namespace Geshotel.Recepcion.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                query.Where(
+                     fld.FlagContrato == 2 && fld.ServicioExtra == 1
+                       .ToString()
+                        );
+
+            }
+        }
     }
 }

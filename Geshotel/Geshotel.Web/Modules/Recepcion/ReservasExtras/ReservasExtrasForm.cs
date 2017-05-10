@@ -25,6 +25,7 @@ namespace Geshotel.Recepcion.Forms
         //public DateTime FechaModificacion { get; set; }
         [Hidden,DefaultValue(0)]
         public Int16 FlagContrato { get; set; }
+        [Hidden]
         public Double PrecioServicio { get; set; }
         [Hidden, DefaultValue(1)]
         public Int16 ServicioExtra { get; set; }

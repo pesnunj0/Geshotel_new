@@ -89,6 +89,13 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.ReservaName[this] = value; }
         }
 
+        [DisplayName("Noches"),Expression("DATEDIFF(t0.fecha_prevista_salida,t0.fecha_prevista_llegada)")]
+        public Int32? Noches
+        {
+            get { return Fields.Noches[this]; }
+            set { Fields.Noches[this] = value; }
+        }
+
         [DisplayName("Fecha Creacion"), Column("fecha_creacion"), DisplayFormat("g"), NotNull]
         public DateTime? FechaCreacion
         {
@@ -556,6 +563,7 @@ namespace Geshotel.Recepcion.Entities
             public StringField ValidationUsername;
 
             public StringField ReservaName;
+            public Int32Field Noches;
 
             public RowFields()
                 : base()

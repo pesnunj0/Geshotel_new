@@ -1,7 +1,4 @@
 ﻿
-
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Recepcion/ReservasExtras", typeof(Geshotel.Recepcion.Pages.ReservasExtrasController))]
-
 namespace Geshotel.Recepcion.Pages
 {
     using Serenity;
@@ -9,7 +6,7 @@ namespace Geshotel.Recepcion.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Recepcion/ReservasExtras"), Route("{action=index}")]
-    [PageAuthorize(typeof(Entities.ReservasExtrasRow))]
+    [PageAuthorize(typeof(Entities.ReservasServiciosRow))]
     public class ReservasExtrasController : Controller
     {
         public ActionResult Index()

@@ -1,4 +1,10 @@
-﻿
+﻿/*****************************************************************************************************
+ * ReservasServiciosRepository.cs
+ * Filtramos por FlagContrato = 1
+ * Rutina ApplyFilters
+ * Javier Nuñez
+ * Mayo 2017
+ * ***************************************************************************************************/
 
 namespace Geshotel.Recepcion.Repositories
 {

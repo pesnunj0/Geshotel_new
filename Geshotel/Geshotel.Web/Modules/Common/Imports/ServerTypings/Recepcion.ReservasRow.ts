@@ -63,6 +63,7 @@ namespace Geshotel.Recepcion {
         Username?: string;
         ValidationUsername?: string;
         ReservaName?: string;
+        Noches?: number;
     }
 
     export namespace ReservasRow {
@@ -133,9 +134,10 @@ namespace Geshotel.Recepcion {
             export declare const Username: string;
             export declare const ValidationUsername: string;
             export declare const ReservaName: string;
+            export declare const Noches: string;
         }
 
-        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'Pax', 'Vip', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'Pax', 'Vip', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName', 'Noches'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 
