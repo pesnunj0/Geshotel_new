@@ -137,7 +137,8 @@ namespace Geshotel.Migrations.DefaultDB
                 .WithColumn("costo").AsDecimal(10, 2).Nullable()
                 .WithColumn("user_id").AsInt32().Nullable()
                 .WithColumn("fecha_modificacion").AsDateTime().Nullable()
-                .WithColumn("sw_ajuste").AsBoolean().WithDefaultValue(0).NotNullable();
+                .WithColumn("sw_ajuste").AsBoolean().WithDefaultValue(0).NotNullable()
+                .WithColumn("reserva_servicio_id").AsInt32().Nullable();
 
             Create.Index("IX_linea_hotel_id")
                 .OnTable("lineas_factura")
@@ -158,6 +159,10 @@ namespace Geshotel.Migrations.DefaultDB
             Create.Index("IX_linea_fecha")
                 .OnTable("lineas_factura")
                 .OnColumn("fecha").Ascending();
+
+            Create.Index("IX_linea_reserva_servicio")
+                .OnTable("lineas_factura")
+                .OnColumn("reserva_servicio_id").Ascending();
 
             if (Schema.Table("tickets").Exists())
                 Delete.Table("tickets");
