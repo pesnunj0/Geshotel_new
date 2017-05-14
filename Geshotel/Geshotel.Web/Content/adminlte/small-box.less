@@ -1,10 +1,18 @@
-/*
+/* -------------------------------
  * Component: Small Box
- * --------------------
+ * Modified By Javier Nuñez
+ * On May 2017 See Comments
+ * -------------------------------
  */
 
 .small-box {
   .border-radius(2px);
+  background: #c0d0e3; /* For browsers that do not support gradients */ 
+  background: -webkit-linear-gradient(left, #c0d0e3 , white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #c0d0e3, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #c0d0e3, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #c0d0e3 , white); /* Standard syntax */
+
   position: relative;
   display: block;
   margin-bottom: 20px;
@@ -36,7 +44,6 @@
     margin: 0 0 10px 0;
     white-space: nowrap;
     padding: 0;
-
   }
 
   p {
