@@ -14188,12 +14188,15 @@ var Geshotel;
             }
             ReservasPreviewGrid.prototype.getIdProperty = function () { return "Key"; };
             ReservasPreviewGrid.prototype.getLocalTextPrefix = function () { return "Recepcion.ReservasPreview"; };
-            ReservasPreviewGrid.prototype.getService = function () { return Recepcion.ReservasService.baseUrl; };
+            ReservasPreviewGrid.prototype.getService = function () { return Recepcion.ReservasPreviewService.baseUrl; };
             ReservasPreviewGrid.prototype.getInitialTitle = function () {
                 return null;
             };
             ReservasPreviewGrid.prototype.getGridCanLoad = function () {
                 return this.reservaID != null;
+            };
+            ReservasPreviewGrid.prototype.usePager = function () {
+                return false;
             };
             Object.defineProperty(ReservasPreviewGrid.prototype, "reservaID", {
                 get: function () {
@@ -14209,14 +14212,14 @@ var Geshotel;
                 enumerable: true,
                 configurable: true
             });
-            /**
-      * This method is called to get list of buttons to be created.
-      */
+            ReservasPreviewGrid.prototype.onViewSubmit = function () {
+                if (!_super.prototype.onViewSubmit.call(this))
+                    return false;
+                this.view.params.ReservaId = this._reservaID;
+                return true;
+            };
             ReservasPreviewGrid.prototype.getButtons = function () {
                 var buttons = _super.prototype.getButtons.call(this);
-                // METHOD 3 - recommended
-                // remove by splicing, but this time find button index
-                // by its css class. it is the best and safer method
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
                 return buttons;
             };

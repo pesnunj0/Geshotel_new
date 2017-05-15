@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
     export interface SupplierRow {
         SupplierID?: number;
         CompanyName?: string;

@@ -30,28 +30,23 @@ namespace Geshotel.Recepcion.Repositories
         {
             var result = new ListResponse<ReservasPreviewItem>();
             result.Entities = new List<ReservasPreviewItem>();
-            var ReservaId = Convert.ToInt32(request.ReservaId);
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
-            // Something is wrong here becouse I do not get ReserveId from request
-            ReservaId = 10;
             var x = new GesHotelClase(userId);
-            var xx = x.obtieneServiciosReservaCache(ReservaId);
-            
+            var xx = x.obtieneServiciosReservaCache(request.ReservaId.Value);
+
+            result.Entities = new List<ReservasPreviewItem>();
             if (xx != null)
             {
-                result.Entities = new List<ReservasPreviewItem>();
-                var ds = new DataSet();
-                ds.Tables.Add(xx.ordenarPor("fecha").Table);
                 int cont = 0;
                 // Fill Entities from Dataset
-                foreach (DataRow row in ds.Tables[0].Rows)
+                foreach (DataRow row in xx.ordenarPor("fecha").Table.Rows)
                 {
                     result.Entities.Add(new ReservasPreviewItem
                     {
                         Error = row.Field<int>("error"),
                         Key = cont++,
-                        ReservaId = ReservaId,
+                        ReservaId = request.ReservaId.Value,
                         Fecha = row.Field<DateTime>("fecha"),
                         Descripcion = row.Field<string>("descripcion"),
                         DescTipo = row.Field<string>("desc_tipo"),                      
@@ -63,6 +58,9 @@ namespace Geshotel.Recepcion.Repositories
                     });
                 }
             }
+            result.TotalCount = result.Entities.Count;
+            result.Skip = 0;
+            result.Take = 0;
             return result;
         }
     }

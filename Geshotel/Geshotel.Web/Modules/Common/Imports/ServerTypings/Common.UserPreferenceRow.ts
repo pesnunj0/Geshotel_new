@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Common {
+﻿namespace Geshotel.Common {
     export interface UserPreferenceRow {
         UserPreferenceId?: number;
         UserId?: number;

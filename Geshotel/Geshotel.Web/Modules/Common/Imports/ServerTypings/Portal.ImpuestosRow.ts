@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface ImpuestosRow {
         ImpuestoId?: number;
         EmpresaId?: number;

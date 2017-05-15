@@ -11,7 +11,7 @@ namespace Geshotel.Recepcion {
     export class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any > {
         protected getIdProperty()  { return "Key"; } 
         protected getLocalTextPrefix() { return "Recepcion.ReservasPreview"; }
-        protected getService() { return ReservasService.baseUrl; }
+        protected getService() { return ReservasPreviewService.baseUrl; }
 
         constructor(container: JQuery) {
             super(container);
@@ -25,6 +25,10 @@ namespace Geshotel.Recepcion {
             return this.reservaID != null;
         }
 
+        protected usePager() {
+            return false;
+        }
+
         private _reservaID: number;
 
         get reservaID() {
@@ -33,22 +37,24 @@ namespace Geshotel.Recepcion {
 
         set reservaID(value: number) {
             if (this._reservaID !== value) {
-                this._reservaID = value;               
+                this._reservaID = value;
                 //this.setEquality(ReservasContratosRow.Fields.ReservaId, value);
                 this.refresh();
             }
         }
 
-        /**
-  * This method is called to get list of buttons to be created.
-  */
+        protected onViewSubmit() {
+            if (!super.onViewSubmit())
+                return false;
+
+            (this.view.params as ReservasPreviewListRequest).ReservaId = this._reservaID;
+
+            return true;
+        }
+
         protected getButtons(): Serenity.ToolButton[] {
 
             var buttons = super.getButtons();
-
-            // METHOD 3 - recommended
-            // remove by splicing, but this time find button index
-            // by its css class. it is the best and safer method
             buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
             return buttons;
         }

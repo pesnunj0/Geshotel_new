@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export namespace LineasFacturaService {
         export const baseUrl = 'Contratos/LineasFactura';
 

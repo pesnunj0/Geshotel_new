@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Common.Pages {
+﻿namespace Geshotel.Common.Pages {
     export interface UploadResponse extends Serenity.ServiceResponse {
         TemporaryFile?: string;
         Size?: number;

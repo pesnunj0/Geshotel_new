@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Organization {
+﻿namespace Geshotel.Organization {
     export interface ContactRow {
         ContactId?: number;
         Title?: string;

@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Recepcion {
+﻿namespace Geshotel.Recepcion {
     export interface ReservasServiciosRow {
         ServicioReservaId?: number;
         ReservaId?: number;

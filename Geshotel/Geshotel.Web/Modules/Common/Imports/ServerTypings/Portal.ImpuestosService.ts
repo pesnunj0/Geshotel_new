@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export namespace ImpuestosService {
         export const baseUrl = 'Portal/Impuestos';
 

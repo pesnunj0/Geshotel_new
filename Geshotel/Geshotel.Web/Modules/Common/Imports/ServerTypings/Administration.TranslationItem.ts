@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export interface TranslationItem {
         Key?: string;
         SourceText?: string;

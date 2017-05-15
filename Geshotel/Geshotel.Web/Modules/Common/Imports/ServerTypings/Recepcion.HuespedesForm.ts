@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Recepcion {
+﻿namespace Geshotel.Recepcion {
     export class HuespedesForm extends Serenity.PrefixedContext {
         static formKey = 'Recepcion.Huespedes';
 

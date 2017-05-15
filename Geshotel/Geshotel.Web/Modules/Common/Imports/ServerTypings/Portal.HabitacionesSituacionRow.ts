@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export interface HabitacionesSituacionRow {
         SituacionId?: number;
         Situacion?: string;

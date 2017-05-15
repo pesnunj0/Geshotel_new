@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export class FacturasForm extends Serenity.PrefixedContext {
         static formKey = 'Contratos.Facturas';
 

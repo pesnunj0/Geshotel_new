@@ -7440,7 +7440,7 @@ declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     interface ReservasPreviewListRequest extends Serenity.ListRequest {
-        ReservaId?: string;
+        ReservaId?: number;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -10587,11 +10587,10 @@ declare namespace Geshotel.Recepcion {
         constructor(container: JQuery);
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
+        protected usePager(): boolean;
         private _reservaID;
         reservaID: number;
-        /**
-  * This method is called to get list of buttons to be created.
-  */
+        protected onViewSubmit(): boolean;
         protected getButtons(): Serenity.ToolButton[];
         protected getColumns(): Slick.Column[];
     }

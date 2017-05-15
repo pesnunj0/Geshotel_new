@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Meeting {
+﻿namespace Geshotel.Meeting {
     export class MeetingAttendeeForm extends Serenity.PrefixedContext {
         static formKey = 'Meeting.MeetingAttendee';
 

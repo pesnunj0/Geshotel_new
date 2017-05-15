@@ -1,4 +1,3 @@
-﻿
-namespace Geshotel.Northwind {
+﻿namespace Geshotel.Northwind {
 }
 

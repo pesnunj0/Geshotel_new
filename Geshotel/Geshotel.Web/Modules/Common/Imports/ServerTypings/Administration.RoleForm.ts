@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Administration {
+﻿namespace Geshotel.Administration {
     export class RoleForm extends Serenity.PrefixedContext {
         static formKey = 'Administration.Role';
 

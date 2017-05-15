@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Membership {
+﻿namespace Geshotel.Membership {
     export class ChangePasswordForm extends Serenity.PrefixedContext {
         static formKey = 'Membership.ChangePassword';
 

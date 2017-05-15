@@ -4,6 +4,6 @@ namespace Geshotel.Recepcion
 {
     public class ReservasPreviewListRequest : ListRequest
     {
-        public string ReservaId { get; set; }
+        public int? ReservaId { get; set; }
     }
 } 

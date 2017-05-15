@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Contratos {
+﻿namespace Geshotel.Contratos {
     export interface OfertasRow {
         OfertaId?: number;
         Texto?: string;

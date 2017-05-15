@@ -1,5 +1,4 @@
-﻿
-namespace Geshotel.Portal {
+﻿namespace Geshotel.Portal {
     export namespace TiposBloqueoService {
         export const baseUrl = 'Portal/TiposBloqueo';
 
