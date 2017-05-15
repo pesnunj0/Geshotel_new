@@ -166,15 +166,14 @@
         }
 
         function create(start, end, resource) {
-            //x = new Geshotel.Recepcion.ReservasDialog().loadEntityAndOpenDialog(<Geshotel.Recepcion.ReservasRow>{
-            //    FechaPrevistaLlegada: start,
-            //    FechaPrevistaSalida: end
-            //        });
-            var x = new Geshotel.Recepcion.ReservasDialog();
+            x = new Geshotel.Recepcion.ReservasDialog();
             x.onSaveSuccess = function () {
                 dp.commandCallBack("refresh");
             }
-            x.loadEntityAndOpenDialog();
+            x.loadEntityAndOpenDialog({
+                FechaPrevistaLlegada: start,
+                FechaPrevistaSalida: end
+            });
         }
         function edit(e) {
             var x = new Geshotel.Recepcion.ReservasDialog();
