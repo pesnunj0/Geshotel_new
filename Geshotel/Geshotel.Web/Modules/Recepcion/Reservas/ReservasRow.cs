@@ -204,7 +204,7 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Observaciones[this] = value; }
         }
 
-        [DisplayName("Fecha Llegada"), Column("fecha_llegada")]
+        [DisplayName("Fecha Llegada"), Column("fecha_llegada"), DateTimeKind(DateTimeKind.Local)]
         public DateTime? FechaLlegada
         {
             get { return Fields.FechaLlegada[this]; }

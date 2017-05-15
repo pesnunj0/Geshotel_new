@@ -52,15 +52,15 @@ namespace Geshotel.Recepcion.Columns
         [DisplayName("Cliente Factura"),Hidden,Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
 
         public String ClienteIdFacturaRazon { get; set; }
-        [Width(110),QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        [Width(110),QuickFilter, DisplayFormat("d")]
         public DateTime FechaReserva { get; set; }
         [Width(120),DisplayFormat("g")]
         public DateTime FechaPrevistaLlegada { get; set; }
         [Width(120), DisplayFormat("g")]
         public DateTime FechaPrevistaSalida { get; set; }
-        [Width(110), Hidden,QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        [Width(110), Hidden,QuickFilter, DisplayFormat("d")]
         public DateTime FechaLlegada { get; set; }
-        [Width(110),Hidden, QuickFilter, DisplayFormat("dd/MM/yyyy")]
+        [Width(110),Hidden, QuickFilter, DisplayFormat("d")]
         public DateTime FechaSalida { get; set; }
         [Hidden,Width(110)]
         public String ObservacionesLlegada { get; set; }

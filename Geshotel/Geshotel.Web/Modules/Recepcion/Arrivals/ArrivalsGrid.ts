@@ -75,23 +75,20 @@ namespace Geshotel.Recepcion {
             var user = Q.Authorization.userDefinition as ScriptUserDefinition;
 
             Q.first(filters, x => x.field == fld.FechaLlegada).init = w => {
-                var date = new Date();  // La fecha actual es por defecto la fecha del hotel si no hay cierres
+                var date = new Date();
                 date.setHours(0, 0, 0, 0);
                 if (user.HotelId != null) {
                     var hotel = Portal.HotelesRow.getLookup().itemById[user.HotelId];
                     if (hotel != null && !Q.isEmptyOrNull(hotel.FechaHotel))
-                        date = Q.parseDate(hotel.FechaHotel);                   
+                        date = Q.parseDate(hotel.FechaHotel);
                 }
 
                 var dateini = new Date(date.getTime());
-                (w as Serenity.DateEditor).valueAsDate = dateini;
+                (w as Serenity.DateTimeEditor).valueAsDate = dateini;
 
                 var datefin = new Date(date.getTime());
                 datefin.setHours(23, 55, 0, 0);
-                // Aqui en caso de que quisieramos llamar a FechaPrevistaLlegada que tiene fecha y hora,
-                // En vez de .s-DateEditor.dateQ pondremos .s-DateTimeEditor.dateQ y en vez de Serenity.DateEditor
-                // pondremos Serenity.DateTimeEditor
-                let endDate = w.element.nextAll(".s-DateEditor.dateQ").getWidget(Serenity.DateEditor);
+                let endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
                 endDate.valueAsDate = datefin;
             };
 
