@@ -1,3 +1,4 @@
-﻿namespace Geshotel.Recepcion {
+﻿
+namespace Geshotel.Recepcion {
 }
 

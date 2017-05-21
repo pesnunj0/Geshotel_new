@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Recepcion {
+﻿
+namespace Geshotel.Recepcion {
     export enum ReservationStatus {
         WithErrors = 0,
         ArrivalPending = 1,

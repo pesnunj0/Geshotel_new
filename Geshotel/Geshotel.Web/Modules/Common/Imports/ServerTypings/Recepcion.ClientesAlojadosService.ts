@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Recepcion {
+﻿
+namespace Geshotel.Recepcion {
     export namespace ClientesAlojadosService {
         export const baseUrl = 'Recepcion/ClientesAlojados';
 

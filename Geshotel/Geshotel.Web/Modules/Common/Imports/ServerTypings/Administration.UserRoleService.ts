@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Administration {
+﻿
+namespace Geshotel.Administration {
     export namespace UserRoleService {
         export const baseUrl = 'Administration/UserRole';
 

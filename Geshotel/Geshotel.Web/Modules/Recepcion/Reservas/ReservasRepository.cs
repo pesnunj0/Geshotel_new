@@ -129,6 +129,7 @@ namespace Geshotel.Recepcion.Repositories
             //    };
 
             res.unidades_calculos = ucs;
+            res.estado_reserva_id = Convert.ToInt16(request.Entity.EstadoReservaId);
             //Here I call My function to validate Reservation and calculate Price
             //The function is as follow
             var result = x.obtieneServiciosReserva(res, true, ReservaId);
@@ -138,14 +139,14 @@ namespace Geshotel.Recepcion.Repositories
         }
 
         public SaveResponse Update(SaveRequest<MyRow> request)
-
-        {
+        {           
             using (var connection = SqlConnections.NewByKey("Default"))
             using (var uow = new UnitOfWork(connection))
             {
                 var result = new MySaveHandler().Process(uow, request, SaveRequestType.Update);
                 uow.Commit();
-                if (1==1 || request.Entity.EstadoReservaId == 0) // Si la reserva dió errores anteriormente
+                
+                if (request.Entity.EstadoReservaId <2) // En estado 0 (Con Errores o Pendiente de entrar)
                     CargaMetaReserva(request);          // Genero MetaReserva y Recargo 
                 else
                 {
@@ -156,13 +157,11 @@ namespace Geshotel.Recepcion.Repositories
                     var res = new GesHotelClase.MetaReserva();
                     var hus = new GesHotelClase.MetaHuesped();
                     x.regenerarLineasFacturasReserva(ReservaId);
-                }
-                   
+                }                   
                 return result;
             }
         }
         
-
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
             return new MyDeleteHandler().Process(uow, request);

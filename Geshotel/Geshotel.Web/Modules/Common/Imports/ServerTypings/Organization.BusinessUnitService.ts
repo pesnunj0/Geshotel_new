@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Organization {
+﻿
+namespace Geshotel.Organization {
     export namespace BusinessUnitService {
         export const baseUrl = 'Organization/BusinessUnit';
 

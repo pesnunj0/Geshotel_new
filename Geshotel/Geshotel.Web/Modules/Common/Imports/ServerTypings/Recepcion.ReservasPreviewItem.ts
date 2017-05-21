@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Recepcion {
+﻿
+namespace Geshotel.Recepcion {
     export interface ReservasPreviewItem {
         Error?: number;
         Key?: number;

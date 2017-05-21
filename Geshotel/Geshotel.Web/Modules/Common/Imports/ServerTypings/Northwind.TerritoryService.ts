@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Northwind {
+﻿
+namespace Geshotel.Northwind {
     export namespace TerritoryService {
         export const baseUrl = 'Northwind/Territory';
 

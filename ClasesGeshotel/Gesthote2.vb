@@ -749,6 +749,7 @@ Namespace geshotelk
             Public child_50 As Int16
             Public child_free As Int16
             Public bebes As Int16
+            Public estado_reserva_id As Int16
             ' Fin añadidos nuevo geshotel
         End Class
 

@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Contratos {
+﻿
+namespace Geshotel.Contratos {
     export interface LineasFacturaRow {
         LineaFacturaId?: number;
         HotelId?: number;

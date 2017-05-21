@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Organization {
+﻿
+namespace Geshotel.Organization {
     export class BusinessUnitForm extends Serenity.PrefixedContext {
         static formKey = 'Organization.BusinessUnit';
 

@@ -63,10 +63,10 @@ namespace Geshotel.Recepcion {
 
             var columns: Slick.Column[] = [];
             // Key and Reserva are not Necesary
-            columns.push({ field: 'Key', width: 50, sortable: false });
-            columns.push({ field: 'Reserva', width: 70, sortable: false });
+            // columns.push({ field: 'Key', width: 50, sortable: false });
+            //columns.push({ field: 'Reserva', width: 70, sortable: false });
             columns.push({ field: 'Fecha', width: 80, sortable: true });
-            columns.push({ field: 'Descripcion', width: 100, sortable: true });
+            columns.push({ field: 'Descripcion', width: 120, sortable: true });
             columns.push({ field: 'DescTipo', width: 90, sortable: false });
             columns.push({ field: 'DescUCReserva', width: 90, sortable: false });
             columns.push({ field: 'Cantidad', width: 80, sortable: false });

@@ -29,7 +29,7 @@ namespace Geshotel.Recepcion.Repositories
         public ListResponse<ReservasPreviewItem> List(ReservasPreviewListRequest request)
         {
             var result = new ListResponse<ReservasPreviewItem>();
-            result.Entities = new List<ReservasPreviewItem>();
+//            result.Entities = new List<ReservasPreviewItem>();
             var user = (UserDefinition)Authorization.UserDefinition;
             Int32 userId = user.UserId;
             var x = new GesHotelClase(userId);
@@ -42,20 +42,38 @@ namespace Geshotel.Recepcion.Repositories
                 // Fill Entities from Dataset
                 foreach (DataRow row in xx.ordenarPor("fecha").Table.Rows)
                 {
+                    cont++;
                     result.Entities.Add(new ReservasPreviewItem
                     {
                         Error = row.Field<int>("error"),
-                        Key = cont++,
+                        Key = cont,
                         ReservaId = request.ReservaId.Value,
-                        Fecha = row.Field<DateTime>("fecha"),
+                        Fecha = row.Field<DateTime>("fecha").ToShortDateString(),
                         Descripcion = row.Field<string>("descripcion"),
-                        DescTipo = row.Field<string>("desc_tipo"),                      
+                        DescTipo = row.Field<string>("desc_tipo"),
                         DescUCReserva = row.Field<string>("desc_uc_reserva"),
-                        Cantidad = row.Field<decimal>("cantidad"),
-                        Precio = row.Field<decimal>("precio"),
-                        PrecioProduccion = row.Field<decimal>("precio_produccion"),
-                        Importe = row.Field<decimal>("importe")
+                        Cantidad = Convert.ToDecimal(row.Field<object>("cantidad")),
+                        Precio = Convert.ToDecimal(row.Field<object>("precio")),
+                        PrecioProduccion = Convert.ToDecimal(row.Field<object>("precio_produccion")),
+                        Importe = Convert.ToDecimal(row.Field<object>("importe"))
                     });
+
+                    //int Error = row.Field<int>("error");
+                    //cont++;
+                    //int Key = cont;
+                    //int ReservaId = request.ReservaId.Value;
+                    //DateTime Fecha = row.Field<DateTime>("fecha");
+                    //string Descripcion = row.Field<string>("descripcion");
+                    //string DescTipo = row.Field<string>("desc_tipo");
+                    //string DescUCReserva = row.Field<string>("desc_uc_reserva");
+                    //object aux;
+                    //double Cantidad = row.Field<double>("cantidad");
+                    //double Precio = row.Field<double>("precio");
+                    //double PrecioProduccion = 0;
+                    //aux = row.Field<object>("precio_produccion");
+                    //PrecioProduccion = Convert.ToDouble(aux);
+                    //aux = row.Field<object>("importe");
+                    //double Importe = Convert.ToDouble(aux);
                 }
             }
             result.TotalCount = result.Entities.Count;

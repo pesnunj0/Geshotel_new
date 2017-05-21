@@ -1,4 +1,5 @@
-﻿namespace Geshotel.Portal {
+﻿
+namespace Geshotel.Portal {
     export interface TiposBloqueoRow {
         TipoBloqueoId?: number;
         Descriptivo?: string;

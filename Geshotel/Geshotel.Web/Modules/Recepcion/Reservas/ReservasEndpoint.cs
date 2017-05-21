@@ -60,9 +60,10 @@ namespace Geshotel.Recepcion.Endpoints
             new MyRepository().Update(new SaveRequest<MyRow>
             {
                 EntityId = request.ReservaId,
+               
                 Entity = new MyRow
                 {
-                    EstadoReservaId = (int)ReservationStatus.CheckedIn
+                    EstadoReservaId = Convert.ToInt16(request.NewStatusId.Value)
                 }
             });
 

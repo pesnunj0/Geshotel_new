@@ -48,12 +48,12 @@ Namespace geshotelk
                 servicios.Columns.Add("contrato_id", System.Type.GetType("System.Int32"), "")
                 servicios.Columns.Add("impuesto_incluido", System.Type.GetType("System.Int32"), "")
                 servicios.Columns.Add("porc_impuesto", System.Type.GetType("System.Decimal"), "")
-                servicios.Columns.Add("rejilla", System.Type.GetType("System.Object"), "")
                 'servicios.Columns.Add("importehConIgic", System.Type.GetType("System.Double"), "")
                 servicios.Columns.Add("precio_produccion", System.Type.GetType("System.Decimal"), "")
                 servicios.Columns.Add("pag_factura", System.Type.GetType("System.Int32"), "")
                 servicios.Columns.Add("defecto", System.Type.GetType("System.Int32"), "")
                 servicios.Columns.Add("contrato_id_defecto", System.Type.GetType("System.String"), "")
+                servicios.Columns.Add("rejilla", System.Type.GetType("System.Object"), "")
 
                 cloneser = servicios.Clone()
             Else
