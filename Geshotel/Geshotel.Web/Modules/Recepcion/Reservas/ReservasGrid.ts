@@ -23,7 +23,7 @@ namespace Geshotel.Recepcion {
 
         getButtons() {
             var buttons = super.getButtons();
-
+            
             buttons.push(Geshotel.Common.ExcelExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),

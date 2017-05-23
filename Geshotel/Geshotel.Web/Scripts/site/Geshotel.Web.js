@@ -13398,11 +13398,11 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation Cancelled successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
+                                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
+                                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
+                                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
+                                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                             });
                         });
                     }
@@ -13419,7 +13419,7 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation in Status Arrival Pending successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
@@ -13440,7 +13440,7 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation Checked In successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
@@ -13461,7 +13461,7 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation in Status Pre Check Out successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
@@ -13482,7 +13482,7 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation in Status Checked Out successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
@@ -13503,7 +13503,7 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess("Reservation in Status No Show successfully");
                                 _this.reloadById();
-                                Serenity.SubDialogHelper.triggerDataChange(_this.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this);
                             });
                         });
                     }
