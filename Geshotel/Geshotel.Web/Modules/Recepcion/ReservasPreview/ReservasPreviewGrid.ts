@@ -8,7 +8,8 @@ namespace Geshotel.Recepcion {
     
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any > {
+    export class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any> {
+        protected getColumnsKey() { return "Recepcion.ReservasPreview"; }
         protected getIdProperty()  { return "Key"; } 
         protected getLocalTextPrefix() { return "Recepcion.ReservasPreview"; }
         protected getService() { return ReservasPreviewService.baseUrl; }
@@ -57,24 +58,6 @@ namespace Geshotel.Recepcion {
             var buttons = super.getButtons();
             buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
             return buttons;
-        }
-
-        protected getColumns(): Slick.Column[] {
-
-            var columns: Slick.Column[] = [];
-            // Key and Reserva are not Necesary
-            // columns.push({ field: 'Key', width: 50, sortable: false });
-            //columns.push({ field: 'Reserva', width: 70, sortable: false });
-            columns.push({ field: 'Fecha', width: 80, sortable: true });
-            columns.push({ field: 'Descripcion', width: 120, sortable: true });
-            columns.push({ field: 'DescTipo', width: 90, sortable: false });
-            columns.push({ field: 'DescUCReserva', width: 90, sortable: false });
-            columns.push({ field: 'Cantidad', width: 80, sortable: false });
-            columns.push({ field: 'Precio', width: 80, sortable: false });
-            columns.push({ field: 'PrecioProduccion', width: 80, sortable: false });
-            columns.push({ field: 'Importe', width: 80, sortable: true });
-            return columns;
-
         }
     }
 }

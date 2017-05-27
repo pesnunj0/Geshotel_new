@@ -10581,6 +10581,7 @@ declare namespace Geshotel.Recepcion {
 }
 declare namespace Geshotel.Recepcion {
     class ReservasPreviewGrid extends Serenity.EntityGrid<ReservasPreviewItem, any> {
+        protected getColumnsKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -10592,7 +10593,6 @@ declare namespace Geshotel.Recepcion {
         reservaID: number;
         protected onViewSubmit(): boolean;
         protected getButtons(): Serenity.ToolButton[];
-        protected getColumns(): Slick.Column[];
     }
 }
 declare namespace Geshotel.Recepcion {
