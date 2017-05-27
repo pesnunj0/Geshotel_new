@@ -3179,6 +3179,7 @@
     <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosColumns.cs" />
     <Compile Include="Modules\Recepcion\ClientesAlojados\ClientesAlojadosEndpoint.cs" />
     <Compile Include="Modules\Recepcion\Departures\DeparturesPage.cs" />
+    <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewColumns.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewItem.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewListRequest.cs" />
     <Compile Include="Modules\Recepcion\ReservasPreview\ReservasPreviewPage.cs" />
