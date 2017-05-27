@@ -1906,6 +1906,9 @@
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasOfertasService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasPreviewColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Imports\ServerTypings\Recepcion.ReservasPreviewItem.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>

@@ -1,6 +1,7 @@
 ﻿/*
     Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
-    Además, se elimina el AddButton
+    Además, se elimina el AddButton.
+    Totalizamos Importe y Agrupamos por Fecha
     Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
     Javier Nuñez Abril 2017
 */
@@ -18,6 +19,33 @@ namespace Geshotel.Recepcion {
             super(container);
         }
 
+        // Esta la utilizaremos para totalizar Precio
+        protected createSlickGrid() {
+            var grid = super.createSlickGrid();
+
+            // need to register this plugin for grouping or you'll have errors
+            grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+            // Sumamos la columna Importe
+            this.view.setSummaryOptions({
+                aggregators: [
+                    new Slick.Aggregators.Sum('Importe')
+                ]
+            });
+            // Agrupamos por día
+            this.view.setGrouping(
+                [{
+                    getter: 'Fecha'
+                }])
+            return grid;
+        }
+
+        protected getSlickOptions() {
+            var opt = super.getSlickOptions();
+            opt.showFooterRow = true;
+            return opt;
+        }
+
+
         protected getInitialTitle() {
             return null;
         }
@@ -25,7 +53,7 @@ namespace Geshotel.Recepcion {
         protected getGridCanLoad() {
             return this.reservaID != null;
         }
-
+        // Esta hace que no se pagine. Importante si se totaliza
         protected usePager() {
             return false;
         }

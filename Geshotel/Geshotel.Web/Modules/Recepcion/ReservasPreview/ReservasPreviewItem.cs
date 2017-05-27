@@ -13,7 +13,7 @@ namespace Geshotel.Recepcion
         public int Error { get; set; }
         public int Key { get; set; }
         public int ReservaId { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string DescTipo { get; set; }
         public string DescUCReserva { get; set; }

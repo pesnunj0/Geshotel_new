@@ -12,21 +12,21 @@ namespace Geshotel.Recepcion.Columns
     [ColumnsScript("Recepcion.ReservasPreview")]
     public class ReservasPreviewColumns
     {
-        [Width(110), DisplayFormat("d"), Sortable(true)]
-        public DateTime FechaReserva { get; set; }
-        [Width(120), Sortable(true)]
+        [Width(100), Sortable(true),QuickFilter]
+        public DateTime Fecha { get; set; }
+        [Width(170), Sortable(true)]
         public string Descripcion { get; set; }
-        [Sortable(false), Width(90)]
+        [DisplayName("Imputacion"),Sortable(false), Width(90)]
         public string DescTipo { get;set; }
-        [Sortable(false), Width(90)]
+        [DisplayName("UC"),Sortable(false), Width(60)]
         public string DescUCReserva { get; set; }
-        [Sortable(false), Width(80)]
-        public string Cantidad { get; set; }
-        [Sortable(false), Width(80)]
-        public string Precio { get; set; }
-        [Sortable(false), Width(80)]
-        public string PrecioProduccion { get; set; }
-        [Sortable(false), Width(80)]
-        public string Importe { get; set; }
+        [Sortable(false), Width(70),AlignRight]
+        public decimal Cantidad { get; set; }
+        [Sortable(false), Width(70), DisplayFormat("#,##0.00"), AlignRight]
+        public decimal Precio { get; set; }
+        [DisplayName("Produccion"),Sortable(false), Width(80),DisplayFormat("#,##0.00"),AlignRight]
+        public decimal PrecioProduccion { get; set; }
+        [Sortable(false), Width(80), DisplayFormat("#,##0.00"), AlignRight]
+        public decimal Importe { get; set; }
     }
 }

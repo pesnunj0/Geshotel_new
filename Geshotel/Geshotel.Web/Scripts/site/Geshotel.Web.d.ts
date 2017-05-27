@@ -7424,6 +7424,8 @@ declare namespace Geshotel.Recepcion {
     }
 }
 declare namespace Geshotel.Recepcion {
+}
+declare namespace Geshotel.Recepcion {
     interface ReservasPreviewItem {
         Error?: number;
         Key?: number;
@@ -10586,6 +10588,8 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
         protected usePager(): boolean;

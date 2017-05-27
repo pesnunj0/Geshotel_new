@@ -48,7 +48,7 @@ namespace Geshotel.Recepcion.Repositories
                         Error = row.Field<int>("error"),
                         Key = cont,
                         ReservaId = request.ReservaId.Value,
-                        Fecha = row.Field<DateTime>("fecha").ToShortDateString(),
+                        Fecha = row.Field<DateTime>("fecha"),
                         Descripcion = row.Field<string>("descripcion"),
                         DescTipo = row.Field<string>("desc_tipo"),
                         DescUCReserva = row.Field<string>("desc_uc_reserva"),
@@ -57,23 +57,6 @@ namespace Geshotel.Recepcion.Repositories
                         PrecioProduccion = Convert.ToDecimal(row.Field<object>("precio_produccion")),
                         Importe = Convert.ToDecimal(row.Field<object>("importe"))
                     });
-
-                    //int Error = row.Field<int>("error");
-                    //cont++;
-                    //int Key = cont;
-                    //int ReservaId = request.ReservaId.Value;
-                    //DateTime Fecha = row.Field<DateTime>("fecha");
-                    //string Descripcion = row.Field<string>("descripcion");
-                    //string DescTipo = row.Field<string>("desc_tipo");
-                    //string DescUCReserva = row.Field<string>("desc_uc_reserva");
-                    //object aux;
-                    //double Cantidad = row.Field<double>("cantidad");
-                    //double Precio = row.Field<double>("precio");
-                    //double PrecioProduccion = 0;
-                    //aux = row.Field<object>("precio_produccion");
-                    //PrecioProduccion = Convert.ToDouble(aux);
-                    //aux = row.Field<object>("importe");
-                    //double Importe = Convert.ToDouble(aux);
                 }
             }
             result.TotalCount = result.Entities.Count;
