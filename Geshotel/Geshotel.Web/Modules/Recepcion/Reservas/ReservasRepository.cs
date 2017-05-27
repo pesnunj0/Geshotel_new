@@ -148,14 +148,12 @@ namespace Geshotel.Recepcion.Repositories
                 
                 if (request.Entity.EstadoReservaId <2) // En estado 0 (Con Errores o Pendiente de entrar)
                     CargaMetaReserva(request);          // Genero MetaReserva y Recargo 
-                else
+                if (request.Entity.EstadoReservaId>2 & request.Entity.EstadoReservaId<6) // Menos estado Anulada o No Show Regenero Lineas de Factura
                 {
                     var user = (UserDefinition)Authorization.UserDefinition;
                     Int32 userId = user.UserId;
                     Int32 ReservaId = Convert.ToInt32(request.Entity.ReservaId);
                     var x = new GesHotelClase(userId);
-                    var res = new GesHotelClase.MetaReserva();
-                    var hus = new GesHotelClase.MetaHuesped();
                     x.regenerarLineasFacturasReserva(ReservaId);
                 }                   
                 return result;

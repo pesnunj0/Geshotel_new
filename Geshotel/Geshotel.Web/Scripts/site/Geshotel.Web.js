@@ -13330,7 +13330,7 @@ var Geshotel;
                 var _this = this;
                 // check that this is an insert
                 if (this.isNew) {
-                    Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
+                    //Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
                     Recepcion.ReservasService.Retrieve({
                         EntityId: response.EntityId
                     }, function (resp) {
@@ -13342,7 +13342,7 @@ var Geshotel;
                     });
                 }
                 else {
-                    Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
+                    //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
                     // let's load inserted record using Retrieve service
                     Recepcion.ReservasService.Retrieve({
                         EntityId: response.EntityId
@@ -13391,12 +13391,12 @@ var Geshotel;
                     cssClass: 'cancel-button',
                     icon: 'fa-times text-red',
                     onClick: function () {
-                        Q.confirm("Are u sure?", function () {
+                        Q.confirm(Q.text('Site.ConfirmationMessage'), function () {
                             Recepcion.ReservasService.ChangeReservationStatus({
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.Cancelled
                             }, function (response) {
-                                Q.notifySuccess("Reservation Cancelled successfully");
+                                Q.notifySuccess(Q.text('Reservation.Cancelled'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                                 //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
@@ -13417,7 +13417,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.ArrivalPending
                             }, function (response) {
-                                Q.notifySuccess("Reservation in Status Arrival Pending successfully");
+                                Q.notifySuccess(Q.text('Reservation.Pending'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
@@ -13438,7 +13438,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.CheckedIn
                             }, function (response) {
-                                Q.notifySuccess("Reservation Checked In successfully");
+                                Q.notifySuccess(Q.text('Reservation.CheckedIn'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
@@ -13459,7 +13459,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.PreCheckedOut
                             }, function (response) {
-                                Q.notifySuccess("Reservation in Status Pre Check Out successfully");
+                                Q.notifySuccess(Q.text('Reservation.PreCheckedOut'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
@@ -13480,7 +13480,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.CheckedOut
                             }, function (response) {
-                                Q.notifySuccess("Reservation in Status Checked Out successfully");
+                                Q.notifySuccess(Q.text('Reservation.CheckedOut'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                                 Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
@@ -13501,7 +13501,7 @@ var Geshotel;
                                 ReservaId: _this.entityId,
                                 NewStatusId: Recepcion.ReservationStatus.NoShow
                             }, function (response) {
-                                Q.notifySuccess("Reservation in Status No Show successfully");
+                                Q.notifySuccess(Q.text('Reservation.NoShow'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
                             });

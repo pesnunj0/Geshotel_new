@@ -64,7 +64,7 @@ namespace Geshotel.Recepcion {
 
             // check that this is an insert
             if (this.isNew) {
-                Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
+                //Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
                 }, resp => {
@@ -75,7 +75,7 @@ namespace Geshotel.Recepcion {
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
                 });
             } else {
-                Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
+                //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
                 // let's load inserted record using Retrieve service
                 Recepcion.ReservasService.Retrieve(<any>{
                     EntityId: response.EntityId
@@ -139,13 +139,13 @@ namespace Geshotel.Recepcion {
                 cssClass: 'cancel-button',
                 icon: 'fa-times text-red',
                 onClick: () => {
-                    Q.confirm("Are u sure?", () => {
+                    Q.confirm(Q.text('Site.ConfirmationMessage'), () => {
                         ReservasService.ChangeReservationStatus({
                             ReservaId: this.entityId,
                             NewStatusId: ReservationStatus.Cancelled
 
                         }, response => {
-                            Q.notifySuccess("Reservation Cancelled successfully");
+                            Q.notifySuccess(Q.text('Reservation.Cancelled'));
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this);
                             //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
@@ -168,7 +168,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.ArrivalPending
 
                         }, response => {
-                            Q.notifySuccess("Reservation in Status Arrival Pending successfully");
+                            Q.notifySuccess(Q.text('Reservation.Pending'));
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
@@ -191,7 +191,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.CheckedIn
 
                         }, response => {
-                            Q.notifySuccess("Reservation Checked In successfully");
+                            Q.notifySuccess(Q.text('Reservation.CheckedIn'));
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
@@ -214,7 +214,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.PreCheckedOut
 
                         }, response => {
-                            Q.notifySuccess("Reservation in Status Pre Check Out successfully");
+                            Q.notifySuccess(Q.text('Reservation.PreCheckedOut'));
                             this.reloadById();
 
                             Serenity.SubDialogHelper.triggerDataChange(this);
@@ -237,7 +237,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.CheckedOut
 
                         }, response => {
-                            Q.notifySuccess("Reservation in Status Checked Out successfully");
+                            Q.notifySuccess(Q.text('Reservation.CheckedOut'));
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this);
                             Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid.element);
@@ -259,7 +259,7 @@ namespace Geshotel.Recepcion {
                             NewStatusId: ReservationStatus.NoShow
 
                         }, response => {
-                            Q.notifySuccess("Reservation in Status No Show successfully");
+                            Q.notifySuccess(Q.text('Reservation.NoShow'));
                             this.reloadById();
                             Serenity.SubDialogHelper.triggerDataChange(this);
                         });
