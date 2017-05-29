@@ -18,10 +18,10 @@ namespace Geshotel.Contratos.Columns
 
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
+        [EditLink,Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
         public String HotelName { get; set; }
 
-        [EditLink, Width(120), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId")]
+        [EditLink, Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "HotelId")]
         public String Touroperador { get; set; }
  
         [Width(120),DisplayName("Fecha Contrato") , QuickFilter]
@@ -30,9 +30,9 @@ namespace Geshotel.Contratos.Columns
         public DateTime FechaDesde { get; set; }
         [Width(80), DisplayName("Hasta"), QuickFilter]
         public DateTime FechaHasta { get; set; }
-        [Width(80),QuickFilter]
+        [Width(120),QuickFilter,DisplayName("Contrato Cliente")]
         public String NumeroContratoCliente { get; set; }
-        [Width(120),AlignCenter]
+        [Hidden,Width(120),AlignCenter]
         public Boolean ImpuestoIncluido { get; set; }
         [Width(100),QuickFilter, QuickFilterOption("multiple", true),Hidden]
         public String Temporada { get; set; }

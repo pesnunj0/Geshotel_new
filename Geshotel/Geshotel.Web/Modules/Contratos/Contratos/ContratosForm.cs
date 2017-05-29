@@ -19,6 +19,7 @@ namespace Geshotel.Contratos.Forms
         public DateTime FechaContrato { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
+        [DisplayName("Nº Contrato TTOO")]
         public String NumeroContratoCliente { get; set; }
         public Int16 TemporadaId { get; set; }
         [DefaultValue(1)]
