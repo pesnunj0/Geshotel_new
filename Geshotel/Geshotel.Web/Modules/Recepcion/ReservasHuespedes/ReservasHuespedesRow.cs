@@ -258,11 +258,11 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.ReservaHotelId[this]; }
             set { Fields.ReservaHotelId[this] = value; }
         }
-        [DisplayName("Gallery Images"),MultipleImageUploadEditor(FilenameFormat = "Huespedes/GalleryImages/~"),Expression("jHuesped.GalleryImages")]
-        public string GalleryImages
+        [DisplayName("Fotos"),MultipleImageUploadEditor(FilenameFormat = "Huespedes/Ficheros/~"),Expression("jHuesped.[ficheros]")]
+        public string Ficheros
         {
-            get { return Fields.GalleryImages[this]; }
-            set { Fields.GalleryImages[this] = value; }
+            get { return Fields.Ficheros[this]; }
+            set { Fields.Ficheros[this] = value; }
         }
 
         [DisplayName("Estado Reserva"), Expression("jReserva.[estado_reserva_id]"),ForeignKey("reserva_estados","estado_reserva_id"),LeftJoin("jEstadoReserva"), TextualField("EstadoReserva")]
@@ -404,7 +404,7 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field PensionId;
             public StringField TipoHabitacion;
             public StringField Pension;
-            public readonly StringField GalleryImages;
+            public readonly StringField Ficheros;
             public StringField EstadoReserva;
             public RowFields()
                 : base()

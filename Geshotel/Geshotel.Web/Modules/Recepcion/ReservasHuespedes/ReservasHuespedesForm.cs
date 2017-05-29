@@ -41,7 +41,7 @@ namespace Geshotel.Recepcion.Forms
         public Int32 HabitacionId { get; set; }
         public DateTime FechaLlegada { get; set; }
         public DateTime FechaSalida { get; set; }
-        public String GalleryImages { get; set; }
+        public String Ficheros { get; set; }
         [Hidden]
         public Int16 Edad { get; set; }
     }

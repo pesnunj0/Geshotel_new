@@ -20,6 +20,7 @@ namespace Geshotel.Contratos {
         Mercado?: string;
         Temporada?: string;
         UserName?: string;
+        Ficheros?: string;
     }
 
     export namespace ContratosRow {
@@ -52,9 +53,10 @@ namespace Geshotel.Contratos {
             export declare const Mercado: string;
             export declare const Temporada: string;
             export declare const UserName: string;
+            export declare const Ficheros: string;
         }
 
-        ['ContratoId', 'HotelId', 'ClienteId', 'FechaContrato', 'FechaDesde', 'FechaHasta', 'NumeroContratoCliente', 'UserId', 'FechaModificacion', 'TemporadaId', 'ImpuestoIncluido', 'MercadoId', 'HotelName', 'Touroperador', 'EmpresaId', 'Empresa', 'Mercado', 'Temporada', 'UserName'].forEach(x => (<any>Fields)[x] = x);
+        ['ContratoId', 'HotelId', 'ClienteId', 'FechaContrato', 'FechaDesde', 'FechaHasta', 'NumeroContratoCliente', 'UserId', 'FechaModificacion', 'TemporadaId', 'ImpuestoIncluido', 'MercadoId', 'HotelName', 'Touroperador', 'EmpresaId', 'Empresa', 'Mercado', 'Temporada', 'UserName', 'Ficheros'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

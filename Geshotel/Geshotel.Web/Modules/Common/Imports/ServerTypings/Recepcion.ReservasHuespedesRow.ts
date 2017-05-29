@@ -43,6 +43,7 @@ namespace Geshotel.Recepcion {
         PensionId?: number;
         TipoHabitacion?: string;
         Pension?: string;
+        Ficheros?: string;
         EstadoReserva?: string;
     }
 
@@ -93,10 +94,11 @@ namespace Geshotel.Recepcion {
             export declare const PensionId: string;
             export declare const TipoHabitacion: string;
             export declare const Pension: string;
+            export declare const Ficheros: string;
             export declare const EstadoReserva: string;
         }
 
-        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId', 'Desde', 'Hasta', 'HotelName', 'Empresa', 'TipoHabitacionId', 'PensionId', 'TipoHabitacion', 'Pension', 'EstadoReserva'].forEach(x => (<any>Fields)[x] = x);
+        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId', 'Desde', 'Hasta', 'HotelName', 'Empresa', 'TipoHabitacionId', 'PensionId', 'TipoHabitacion', 'Pension', 'Ficheros', 'EstadoReserva'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

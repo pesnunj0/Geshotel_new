@@ -1292,12 +1292,13 @@ declare namespace Geshotel.Contratos {
         HotelId: Serenity.LookupEditor;
         ClienteId: Serenity.LookupEditor;
         FechaContrato: Serenity.DateEditor;
+        NumeroContratoCliente: Serenity.StringEditor;
         FechaDesde: Serenity.DateEditor;
         FechaHasta: Serenity.DateEditor;
-        NumeroContratoCliente: Serenity.StringEditor;
         TemporadaId: Serenity.LookupEditor;
         ImpuestoIncluido: Serenity.BooleanEditor;
         MercadoId: Serenity.LookupEditor;
+        Ficheros: Serenity.MultipleImageUploadEditor;
     }
 }
 declare namespace Geshotel.Contratos {
@@ -1321,6 +1322,7 @@ declare namespace Geshotel.Contratos {
         Mercado?: string;
         Temporada?: string;
         UserName?: string;
+        Ficheros?: string;
     }
     namespace ContratosRow {
         const idProperty = "ContratoId";
@@ -1348,6 +1350,7 @@ declare namespace Geshotel.Contratos {
             const Mercado: string;
             const Temporada: string;
             const UserName: string;
+            const Ficheros: string;
         }
     }
 }
@@ -7208,6 +7211,7 @@ declare namespace Geshotel.Recepcion {
         TarjetaCredito: Serenity.StringEditor;
         Caducidad: Serenity.StringEditor;
         CodSeguridad: Serenity.StringEditor;
+        Ficheros: Serenity.MultipleImageUploadEditor;
     }
 }
 declare namespace Geshotel.Recepcion {
@@ -7239,6 +7243,7 @@ declare namespace Geshotel.Recepcion {
         HabitacionId: Serenity.LookupEditor;
         FechaLlegada: Serenity.DateEditor;
         FechaSalida: Serenity.DateEditor;
+        ficheros: Serenity.MultipleImageUploadEditor;
         Edad: Serenity.IntegerEditor;
     }
 }
@@ -7286,6 +7291,7 @@ declare namespace Geshotel.Recepcion {
         PensionId?: number;
         TipoHabitacion?: string;
         Pension?: string;
+        Ficheros?: string;
         EstadoReserva?: string;
     }
     namespace ReservasHuespedesRow {
@@ -7334,6 +7340,7 @@ declare namespace Geshotel.Recepcion {
             const PensionId: string;
             const TipoHabitacion: string;
             const Pension: string;
+            const Ficheros: string;
             const EstadoReserva: string;
         }
     }
@@ -7519,6 +7526,7 @@ declare namespace Geshotel.Recepcion {
         ValidationUsername?: string;
         ReservaName?: string;
         Noches?: number;
+        Ficheros?: string;
     }
     namespace ReservasRow {
         const idProperty = "ReservaId";
@@ -7588,6 +7596,7 @@ declare namespace Geshotel.Recepcion {
             const ValidationUsername: string;
             const ReservaName: string;
             const Noches: string;
+            const Ficheros: string;
         }
     }
 }

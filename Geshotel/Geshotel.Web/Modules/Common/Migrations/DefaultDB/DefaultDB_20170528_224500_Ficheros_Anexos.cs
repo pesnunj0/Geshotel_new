@@ -12,7 +12,7 @@ namespace Geshotel.Migrations.DefaultDB
         public override void Up()
         {
             Alter.Table("Huespedes")
-               .AddColumn("GalleryImages").AsString(int.MaxValue).Nullable();
+               .AddColumn("ficheros").AsString(int.MaxValue).Nullable();
             Alter.Table("Contratos")
                .AddColumn("ficheros").AsString(int.MaxValue).Nullable();
             Alter.Table("Reservas")
