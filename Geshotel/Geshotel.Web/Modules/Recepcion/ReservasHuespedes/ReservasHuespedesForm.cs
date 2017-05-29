@@ -36,13 +36,12 @@ namespace Geshotel.Recepcion.Forms
         [EmailEditor]
         public String Email { get; set; }
         public String Telefono { get; set; }
-        
         [Hidden]
         public Int32 HuespedId { get; set; }
         public Int32 HabitacionId { get; set; }
         public DateTime FechaLlegada { get; set; }
         public DateTime FechaSalida { get; set; }
-       
+        public String GalleryImages { get; set; }
         [Hidden]
         public Int16 Edad { get; set; }
     }

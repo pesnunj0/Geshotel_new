@@ -7,7 +7,7 @@ using FluentMigrator;
 namespace Geshotel.Migrations.DefaultDB
 {
     [Migration(20170528224500)]
-    public class DefaultDB_20170528_224500_PreviewServicios : Migration
+    public class DefaultDB_20170528_224500_Ficheros_Anexos : Migration
     { 
         public override void Up()
         {

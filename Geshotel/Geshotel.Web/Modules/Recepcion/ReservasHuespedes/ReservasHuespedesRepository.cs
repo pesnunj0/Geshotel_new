@@ -89,6 +89,8 @@ namespace Geshotel.Recepcion.Repositories
                     sqlQuery += ",email='" + row.Email + "'";
                 if (row.TarjetaFidelizacion != null)
                     sqlQuery += ",tarjeta_fidelizacion='" + row.TarjetaFidelizacion + "'";
+                if (row.GalleryImages != null)
+                    sqlQuery += ",GalleryImages='" + row.GalleryImages + "'";
                 sqlQuery += ",user_id =" + user.UserId + ",fecha_modificacion ='" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                 sqlQuery += " WHERE huesped_id=@id";
 
