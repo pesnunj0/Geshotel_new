@@ -84,6 +84,8 @@ namespace Geshotel.Recepcion.Repositories
                 res.caducidad = request.Entity.Caducidad.ToString();
             if (request.Entity.CodSeguridad != null)
                 res.cod_seguridad = request.Entity.CodSeguridad.ToString();
+            if (request.Entity.Ficheros != null)
+                res.ficheros = request.Entity.Ficheros.ToString();
             // *************************
             // Unidades de Calculo
             // *************************

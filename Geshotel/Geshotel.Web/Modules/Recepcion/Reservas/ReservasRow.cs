@@ -76,6 +76,12 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.ReservaId[this]; }
             set { Fields.ReservaId[this] = value; }
         }
+        [DisplayName("Ficheros"), MultipleFileUploadEditor(FilenameFormat = "Contratos/Ficheros/~")]
+        public string Ficheros
+        {
+            get { return Fields.Ficheros[this]; }
+            set { Fields.Ficheros[this] = value; }
+        }
         [DisplayName("Pax"), Expression("T0.adultos+T0.child_50+t0.child_free")]
         public Int16? Pax
         {
@@ -564,6 +570,7 @@ namespace Geshotel.Recepcion.Entities
 
             public StringField ReservaName;
             public Int32Field Noches;
+            public readonly StringField Ficheros;
 
             public RowFields()
                 : base()

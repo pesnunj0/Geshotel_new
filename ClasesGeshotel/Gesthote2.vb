@@ -750,6 +750,7 @@ Namespace geshotelk
             Public child_free As Int16
             Public bebes As Int16
             Public estado_reserva_id As Int16
+            Public ficheros As String
             ' Fin añadidos nuevo geshotel
         End Class
 
@@ -8854,6 +8855,7 @@ Namespace geshotelk
                     row.Item("fecha_llegada") = FormatDateTime(res.fecha_prevista_llegada, DateFormat.ShortDate)
                     row.Item("fecha_salida") = FormatDateTime(res.fecha_prevista_salida, DateFormat.ShortDate)
                     row.Item("nombre_reserva") = res.nombre_reserva
+                    row.Item("ficheros") = res.ficheros
                     Try
                         row.Item("fecha_creacion") = res.fecha_creacion
                     Catch ex As Exception

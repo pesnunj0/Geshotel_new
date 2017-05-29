@@ -164,6 +164,12 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.Mercado[this]; }
             set { Fields.Mercado[this] = value; }
         }
+        [DisplayName("Ficheros"),MultipleFileUploadEditor(FilenameFormat = "Contratos/Ficheros/~")]
+        public string Ficheros
+        {
+            get { return Fields.Ficheros[this]; }
+            set { Fields.Ficheros[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -204,6 +210,7 @@ namespace Geshotel.Contratos.Entities
             public StringField Mercado;
             public StringField Temporada;
             public StringField UserName;
+            public readonly StringField Ficheros;
 
             public RowFields()
                 : base("[contratos]")

@@ -18,7 +18,6 @@ namespace Geshotel.Migrations.DefaultDB
             Alter.Table("Reservas")
                .AddColumn("ficheros").AsString(int.MaxValue).Nullable();
         }
-
         public override void Down()
         {
         }

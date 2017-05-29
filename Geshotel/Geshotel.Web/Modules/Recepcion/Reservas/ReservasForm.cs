@@ -74,30 +74,14 @@ namespace Geshotel.Recepcion.Forms
         [TextAreaEditor(Rows = 3)]
         public String Observaciones { get; set; }
         [TextAreaEditor(Rows = 3)]
-        public String ObservacionesCliente { get; set; }
-
-        //public String BonoOnline { get; set; }
-       
-        
+        public String ObservacionesCliente { get; set; }        
         [Category("Tarjeta Credito")]
         public Int16 TipoTarjetaId { get; set; }
         public String TarjetaCredito { get; set; }
         public String Caducidad { get; set; }
         public String CodSeguridad { get; set; }
+        [Category("Ficheros")]
+        public String Ficheros { get; set; }
 
-        //public Decimal ValorValidado { get; set; }
-        //[ReadOnly(true)]
-        //public DateTime FechaValidacion { get; set; }
-        //public Int32 UsuarioValidacion { get; set; }
-        //public Int16 ParoventasCheck { get; set; }
-        //public Int16 CuposCheck { get; set; }
-        //public Int16 ReleaseCheck { get; set; }
-        //public Stream ReservaDingus { get; set; }
-        //public Int16 DingusImpuestosIncluidos { get; set; }
-        //public Int16 DingusComision { get; set; }
-        //public Int16 ReservaDingusTipo { get; set; }
-        //public DateTime FechaAnulacion { get; set; }
-        //public Int32 UserId { get; set; }
-        //public DateTime FechaModificacion { get; set; }
     }
 }
