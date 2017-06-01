@@ -31,7 +31,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 11:25:12</publishTime>
     </File>
     <File Include="bin/Geshotel.Web.dll">
-      <publishTime>05/29/2017 22:45:49</publishTime>
+      <publishTime>05/30/2017 13:03:47</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 12:48:56</publishTime>
@@ -1831,7 +1831,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2017 21:45:20</publishTime>
     </File>
     <File Include="Content/site/site.css">
-      <publishTime>05/29/2017 22:45:51</publishTime>
+      <publishTime>05/30/2017 13:03:50</publishTime>
     </File>
     <File Include="Content/site/site.htmlcontent.css">
       <publishTime>01/29/2017 22:11:49</publishTime>
@@ -2221,7 +2221,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/29/2017 16:23:25</publishTime>
     </File>
     <File Include="Modules/Common/Imports/ClientTypes/ClientTypes.log">
-      <publishTime>05/29/2017 17:14:47</publishTime>
+      <publishTime>05/30/2017 12:23:35</publishTime>
     </File>
     <File Include="Modules/Common/Imports/CodeGenerationHelpers.ttinclude">
       <publishTime>05/29/2017 16:23:25</publishTime>
@@ -3865,7 +3865,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/17/2017 12:24:03</publishTime>
     </File>
     <File Include="Scripts/site/Geshotel.Web.js">
-      <publishTime>05/29/2017 22:45:59</publishTime>
+      <publishTime>05/30/2017 13:04:06</publishTime>
     </File>
     <File Include="Scripts/site/texts/meeting/meeting.vi-VN.json">
       <publishTime>01/29/2017 22:11:59</publishTime>

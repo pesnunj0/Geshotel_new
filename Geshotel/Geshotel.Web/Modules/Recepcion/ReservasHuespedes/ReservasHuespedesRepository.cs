@@ -89,8 +89,8 @@ namespace Geshotel.Recepcion.Repositories
                     sqlQuery += ",email='" + row.Email + "'";
                 if (row.TarjetaFidelizacion != null)
                     sqlQuery += ",tarjeta_fidelizacion='" + row.TarjetaFidelizacion + "'";
-                if (row.Ficheros != null)
-                    sqlQuery += ",ficheros='" + row.Ficheros + "'";
+                //if (row.Ficheros != null)
+                //    sqlQuery += ",ficheros='" + row.Ficheros + "'";
                 sqlQuery += ",user_id =" + user.UserId + ",fecha_modificacion ='" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                 sqlQuery += " WHERE huesped_id=@id";
 
@@ -265,6 +265,23 @@ namespace Geshotel.Recepcion.Repositories
                         Id
                     });
                 return true;
+            }
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+                Int32? Id = Row.HuespedId;
+                if (Row.Ficheros!= null)
+                {
+                    string sqlQuery = "UPDATE huespedes SET ficheros=@ficheros";
+                    sqlQuery += " WHERE huesped_id=@id";
+
+                    var cont = this.Connection.Execute(sqlQuery,
+                        new
+                        {
+                            Row.Ficheros,
+                            Id
+                        });
+                }
             }
             protected override void SetInternalFields()
             {

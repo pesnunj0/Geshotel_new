@@ -7243,7 +7243,7 @@ declare namespace Geshotel.Recepcion {
         HabitacionId: Serenity.LookupEditor;
         FechaLlegada: Serenity.DateEditor;
         FechaSalida: Serenity.DateEditor;
-        ficheros: Serenity.MultipleImageUploadEditor;
+        Ficheros: Serenity.MultipleImageUploadEditor;
         Edad: Serenity.IntegerEditor;
     }
 }

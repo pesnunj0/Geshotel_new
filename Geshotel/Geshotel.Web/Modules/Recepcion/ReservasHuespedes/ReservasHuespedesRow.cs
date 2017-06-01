@@ -258,7 +258,7 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.ReservaHotelId[this]; }
             set { Fields.ReservaHotelId[this] = value; }
         }
-        [DisplayName("Fotos"),MultipleImageUploadEditor(FilenameFormat = "Huespedes/Ficheros/~"),Expression("jHuesped.[ficheros]")]
+        [DisplayName("Fotos"), Expression("jHuesped.[ficheros]"),MultipleFileUploadEditor(FilenameFormat = "Huespedes/Ficheros/~")]
         public string Ficheros
         {
             get { return Fields.Ficheros[this]; }
