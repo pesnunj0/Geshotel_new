@@ -7433,7 +7433,7 @@ section.content > .s-DataGrid {
   padding: 30px 20px;
   width: 550px;
   margin: 90px auto auto auto;
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   font-weight: 700;
 }
@@ -7461,6 +7461,7 @@ section.content > .s-DataGrid {
 .page-content .s-LoginPanel .buttons .btn {
   padding: 8px 24px;
   font-weight: 700;
+  background: #0059b3;
 }
 .page-content .s-LoginPanel .caption {
   color: #007399;
@@ -7503,7 +7504,7 @@ section.content > .s-DataGrid {
   color: #007399;
 }
 .page-content .s-LoginPanel a {
-  color: #f0f5f5;
+  color: white;
 }
 .page-content .s-LoginPanel .s-PropertyGrid .categories {
   height: auto;
