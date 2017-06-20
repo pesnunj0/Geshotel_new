@@ -73,6 +73,7 @@ namespace Geshotel.Recepcion {
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this);
                 });
             } else {
                 //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -85,6 +86,7 @@ namespace Geshotel.Recepcion {
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid.element);
                     Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid.element);
+                    Serenity.SubDialogHelper.triggerDataChange(this);
                 });
             }
         }

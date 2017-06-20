@@ -9227,6 +9227,7 @@ Namespace geshotelk
                 resultado.errortxt = errorTxt
                 resultado.errornum = errorCode
             End If
+            olddatosReservaActual = resultado
             Return resultado
 
         End Function
@@ -9461,6 +9462,9 @@ Namespace geshotelk
             If errorCode <> 0 Then
                 Return Nothing
             Else
+                ' Garra made in Javier Junio 2017
+                olddatosReservaActual = resultado
+                ' Fin de Garra
                 Return resultado
             End If
 

@@ -21,9 +21,12 @@ namespace Geshotel.Recepcion.Repositories
     public class ReservasRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
+        private static bool LlamaCargaMetaReserva = false;
+
 
         public SaveResponse Create(SaveRequest<MyRow> request)
         {
+            LlamaCargaMetaReserva = true;
             using (var connection = SqlConnections.NewByKey("Default"))
             using (var uow = new UnitOfWork(connection))
             {
@@ -42,6 +45,8 @@ namespace Geshotel.Recepcion.Repositories
             var x = new GesHotelClase(userId);
             var res = new GesHotelClase.MetaReserva();
             var hus = new GesHotelClase.MetaHuesped();
+            
+            if (LlamaCargaMetaReserva)
 
             // Filling fields for MetaReserva
             res.nombre_reserva = Convert.ToString(request.Entity.NombreReserva);
@@ -147,10 +152,10 @@ namespace Geshotel.Recepcion.Repositories
             {
                 var result = new MySaveHandler().Process(uow, request, SaveRequestType.Update);
                 uow.Commit();
-                
-                if (request.Entity.EstadoReservaId <2) // En estado 0 (Con Errores o Pendiente de entrar)
+                if (LlamaCargaMetaReserva)
+                //if (request.Entity.EstadoReservaId <2) // En estado 0 (Con Errores o Pendiente de entrar)
                     CargaMetaReserva(request);          // Genero MetaReserva y Recargo 
-                if (request.Entity.EstadoReservaId>2 & request.Entity.EstadoReservaId<6) // Menos estado Anulada o No Show Regenero Lineas de Factura
+                if (request.Entity.EstadoReservaId>2 & request.Entity.EstadoReservaId<5) // Menos estado Anulada o No Show Regenero Lineas de Factura
                 {
                     var user = (UserDefinition)Authorization.UserDefinition;
                     Int32 userId = user.UserId;
@@ -180,9 +185,20 @@ namespace Geshotel.Recepcion.Repositories
 
         private class MySaveHandler : SaveRequestHandler<MyRow>
         {
+            
             protected override void SetInternalFields()
             {
+                
                 base.SetInternalFields();
+                // ****************************************************************************************
+                // Si hay cambio en alguno de los campos importantes entonces Llamamos a CargaMetaReserva
+                // Evitamos llamarla siempre
+                // ****************************************************************************************
+                if (Old != null)
+                {
+                    if (Old.PensionId != Row.PensionId || Old.TipoHabitacionId != Row.TipoHabitacionId || Old.Adultos != Row.Adultos || Old.Bebes != Row.Bebes || Old.Child50 != Row.Child50 || Old.ChildFree != Row.ChildFree || Old.ClienteId != Row.ClienteId)
+                        LlamaCargaMetaReserva = true;
+                }
                 if (Row.EstadoReservaId < 3)
                 {
                     Row.FechaLlegada = Row.FechaPrevistaLlegada;

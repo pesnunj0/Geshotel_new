@@ -13,8 +13,11 @@ namespace Geshotel.Contratos.Forms
     [BasedOnRow(typeof(Entities.ContratosRow))]
     public class ContratosForm
     {
+        public Int16 EmpresaId { get; set; }
+        [DisplayName("Hotel"), LookupEditor(("Portal.Hoteles"), CascadeFrom = "EmpresaId", CascadeField = "EmpresaId")]
         public Int16 HotelId { get; set; }
-        [DisplayName("Touroperador")]
+        [DisplayName("Touroperador"),LookupEditor(("Contratos.Clientes"), FilterField = "GrupoClienteId", FilterValue = 2)]
+        
         public Int32 ClienteId { get; set; }
         public DateTime FechaContrato { get; set; }
         [DisplayName("Nº Contrato TTOO")]

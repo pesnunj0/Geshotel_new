@@ -60,7 +60,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Cantidad"), Column("cantidad"), Size(5), Scale(2), NotNull]
-        public Decimal? Cantidad
+        public Double? Cantidad
         {
             get { return Fields.Cantidad[this]; }
             set { Fields.Cantidad[this] = value; }
@@ -89,7 +89,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Precio Servicio"), Column("precio_servicio")]
-        public Double? PrecioServicio
+        public double? PrecioServicio
         {
             get { return Fields.PrecioServicio[this]; }
             set { Fields.PrecioServicio[this] = value; }
@@ -145,7 +145,7 @@ namespace Geshotel.Recepcion.Entities
             public Int16Field UnidadCalculoId;
             public DateTimeField FechaDesde;
             public DateTimeField FechaHasta;
-            public DecimalField Cantidad;
+            public DoubleField Cantidad;
             public Int32Field UserId;
             public DateTimeField FechaModificacion;
             public Int16Field FlagContrato;

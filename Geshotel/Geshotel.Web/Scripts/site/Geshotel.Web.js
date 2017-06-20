@@ -13341,6 +13341,7 @@ var Geshotel;
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this);
                     });
                 }
                 else {
@@ -13354,6 +13355,7 @@ var Geshotel;
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
                         Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                        Serenity.SubDialogHelper.triggerDataChange(_this);
                     });
                 }
             };

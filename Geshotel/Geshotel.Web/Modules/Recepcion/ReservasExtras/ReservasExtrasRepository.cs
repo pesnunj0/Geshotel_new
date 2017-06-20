@@ -15,6 +15,7 @@ namespace Geshotel.Recepcion.Repositories
     using System;
     using System.Data;
     using MyRow = Entities.ReservasServiciosRow;
+    using ClasesGeshotel.geshotelk;
 
     public class ReservasExtrasRepository
     {
@@ -45,7 +46,29 @@ namespace Geshotel.Recepcion.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
+            protected override void SetInternalFields()
+            {
+                // Antes de salvar ponemos fecha_desde y fecha_hasta
+                // Verificamos que no tengan errores
+                base.SetInternalFields();
+                var user = (UserDefinition)Authorization.UserDefinition;
+                Int32 userId = user.UserId;
+                Int32 ReservaId = (int)Row.ReservaId;
+                
+            }
+ 
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+                BatchGenerationUpdater.OnCommit(this.UnitOfWork, fld.GenerationKey);
+                var user = (UserDefinition)Authorization.UserDefinition;
+                Int32 userId = user.UserId;
+                var x = new GesHotelClase(userId);
+                x.crearLineasFacturas((int)Row.ReservaId,(int)Row.ServicioId,(int)Row.UnidadCalculoId,(float)Row.Cantidad,Row.FechaDesde,Row.FechaHasta);
+            }
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow>

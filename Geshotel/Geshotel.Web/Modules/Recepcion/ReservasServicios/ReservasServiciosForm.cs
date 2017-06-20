@@ -19,7 +19,7 @@ namespace Geshotel.Recepcion.Forms
         public Int16 UnidadCalculoId { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
-        public Decimal Cantidad { get; set; }
+        public Double Cantidad { get; set; }
  
         [ReadOnly(true),DefaultValue(2)]
         public Int16 FlagContrato { get; set; }
