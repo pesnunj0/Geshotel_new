@@ -310,7 +310,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Valor"), Column("valor"), Size(10), Scale(2)]
-        public Decimal? Valor
+        public Double? Valor
         {
             get { return Fields.Valor[this]; }
             set { Fields.Valor[this] = value; }
@@ -534,7 +534,7 @@ namespace Geshotel.Recepcion.Entities
             public StringField CodSeguridad;
             public StringField ContratoTtoo;
             public StringField CodigoOferta;
-            public DecimalField Valor;
+            public DoubleField Valor;
             public DecimalField ValorValidado;
             public DateTimeField FechaValidacion;
             public Int32Field UsuarioValidacion;

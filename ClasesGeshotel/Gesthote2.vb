@@ -9139,6 +9139,7 @@ Namespace geshotelk
                     errorCode = 1
                 Else
                     Try
+
                         Dim resobject = grabaDatasetReserva(cmd, datos, old_reserva_id)
                         If Not IsNothing(resobject) Then
                             resultado.reserva_id = resobject
@@ -19166,9 +19167,9 @@ Namespace geshotelk
         End Function
         Function carga_valor_en_reserva(ByVal cmd As MySqlCommand, ByVal reserva_id As Integer, x As tablaServicios) As Integer
             Dim sql_update As String = "Update reservas SET valor=? WHERE reserva_id = ?"
-            Dim valorParam As New MySqlParameter("@valor", 0)
+            Dim valor As Double = x.sumaImporte()
+            Dim valorParam As New MySqlParameter("@valor", valor)
             Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
-            valorParam.Value = x.sumaImporte()
             cmd.Parameters.Clear()
             cmd.Parameters.Add(valorParam)
             cmd.Parameters.Add(reserva_idParam)

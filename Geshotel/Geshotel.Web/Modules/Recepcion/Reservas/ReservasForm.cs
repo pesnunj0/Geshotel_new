@@ -47,7 +47,7 @@ namespace Geshotel.Recepcion.Forms
         [DefaultValue(0)]
         public Boolean Vip { get; set; }
         [ReadOnly(true), DisplayFormat("#,##0.00"), AlignRight]
-        public Decimal Valor { get; set; }
+        public Double Valor { get; set; }
 
 
         [Category("Fechas")]

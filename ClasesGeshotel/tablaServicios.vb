@@ -751,7 +751,8 @@ Namespace geshotelk
             Return resultado
         End Function
         Public Function sumaImporte() As Decimal
-            Dim resultado As Decimal = 0
+            ' Modificado
+            Dim resultado As Double = 0
             'Optional ByVal computar As Object = Nothing
             'If IsNothing(computar) Then
             'computar = "sum(importe)"

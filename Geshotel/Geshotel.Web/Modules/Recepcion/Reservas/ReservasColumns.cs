@@ -46,7 +46,7 @@ namespace Geshotel.Recepcion.Columns
         [Width(55), AlignCenter]
         public Int16 Bebes { get; set; }
         [DisplayName("Importe"),Width(70), DisplayFormat("#,##0.00"), AlignRight]
-        public Decimal Valor { get; set; }
+        public Double Valor { get; set; }
         [Hidden]
         public String CanalReserva { get; set; }
         [DisplayName("Cliente Factura"),Hidden,Width(150),QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("FilterField", "GrupoClienteId"), QuickFilterOption("FilterValue", 2)]
