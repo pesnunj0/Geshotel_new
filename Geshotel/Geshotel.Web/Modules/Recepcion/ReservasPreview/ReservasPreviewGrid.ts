@@ -35,7 +35,10 @@ namespace Geshotel.Recepcion {
             // Agrupamos por día
             this.view.setGrouping(
                 [{
-                    getter: 'Fecha'
+                    getter: 'Fecha',
+                    formatter: function (g) {
+                        return Q.formatDate(g.value, 'dd/MM/yyyy');
+                    }
                 }])
             return grid;
         }
