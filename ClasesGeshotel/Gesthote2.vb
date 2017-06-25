@@ -5156,7 +5156,7 @@ Namespace geshotelk
                     datosReservaActual = olddatosReservaActual
                 End If
             End If
-            If IsNothing(datosReservaActual) Then
+            If IsNothing(datosReservaActual) Or 1 = 1 Then
                 datosReservaActual = obtieneServiciosReserva(reserva)
             End If
             olddatosReservaActual = datosReservaActual
@@ -10847,6 +10847,7 @@ Namespace geshotelk
             cmd.Parameters.Add(hotel_id1Param)
             cmd.Parameters.Add(fechaini1Param)
             cmd.Parameters.Add(fechafin1Param)
+            ' En esta query tengo un problema 
             Dim dtr As DataTableReader = getDataTable(cmd, sqlContratoHotelClienteFecha, True)
             If tipo = 0 Then
                 Dim x As New ArrayList()

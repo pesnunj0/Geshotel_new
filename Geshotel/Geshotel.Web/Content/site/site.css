@@ -8784,6 +8784,15 @@ section.content > .s-DataGrid {
 .s-Recepcion-HuespedesDialog .caption {
   width: 150px;
 }
+.s-Recepcion-ReservasPreviewGrid .con-errores .slick-cell,
+.s-Recepcion-ReservasPreviewGrid .con-errores .slick-cell a {
+  background-color: #ffaaaa;
+  color: black;
+}
+.s-Recepcion-ReservasPreviewGrid .sin-errores .slick-cell,
+.s-Recepcion-ReservasPreviewGrid .sin-errores .slick-cell a {
+  background-color: lightgreen;
+}
 .s-Recepcion-ReservasGrid .anulada .slick-cell,
 .s-Recepcion-ReservasGrid .anulada .slick-cell a {
   color: lightgray;

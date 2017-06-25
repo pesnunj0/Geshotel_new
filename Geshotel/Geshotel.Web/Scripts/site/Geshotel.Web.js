@@ -14179,6 +14179,7 @@ var Geshotel;
     Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
     Además, se elimina el AddButton.
     Totalizamos Importe y Agrupamos por Fecha
+    Miramos si el campo error = 1 y ponemos la fila en rojo.
     Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
     Javier Nuñez Abril 2017
 */
@@ -14251,6 +14252,19 @@ var Geshotel;
                 var buttons = _super.prototype.getButtons.call(this);
                 buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
                 return buttons;
+            };
+            /**
+    * This method is called for all rows
+    * @param item Data item for current row
+    * @param index Index of the row in grid
+    */
+            ReservasPreviewGrid.prototype.getItemCssClass = function (item, index) {
+                var klass = "";
+                if (item.Error == 1 && item.DescTipo == null)
+                    klass += " con-errores";
+                else
+                    klass += " sin-errores";
+                return Q.trimToNull(klass);
             };
             return ReservasPreviewGrid;
         }(Serenity.EntityGrid));

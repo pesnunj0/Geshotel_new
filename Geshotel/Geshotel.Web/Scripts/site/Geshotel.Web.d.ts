@@ -10606,6 +10606,12 @@ declare namespace Geshotel.Recepcion {
         reservaID: number;
         protected onViewSubmit(): boolean;
         protected getButtons(): Serenity.ToolButton[];
+        /**
+* This method is called for all rows
+* @param item Data item for current row
+* @param index Index of the row in grid
+*/
+        protected getItemCssClass(item: Recepcion.ReservasPreviewItem, index: number): string;
     }
 }
 declare namespace Geshotel.Recepcion {

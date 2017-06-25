@@ -2,6 +2,7 @@
     Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
     Además, se elimina el AddButton.
     Totalizamos Importe y Agrupamos por Fecha
+    Miramos si el campo error = 1 y ponemos la fila en rojo.
     Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
     Javier Nuñez Abril 2017
 */
@@ -86,6 +87,21 @@ namespace Geshotel.Recepcion {
             var buttons = super.getButtons();
             buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
             return buttons;
+        }
+        /**
+* This method is called for all rows
+* @param item Data item for current row
+* @param index Index of the row in grid
+*/
+        protected getItemCssClass(item: Recepcion.ReservasPreviewItem, index: number): string {
+
+            let klass: string = "";
+            if (item.Error == 1 && item.DescTipo == null)
+                klass += " con-errores";
+            else
+                klass += " sin-errores";
+
+            return Q.trimToNull(klass);
         }
     }
 }
