@@ -28,14 +28,22 @@ namespace Geshotel.Recepcion.Entities
             get { return Fields.HabitacionId[this]; }
             set { Fields.HabitacionId[this] = value; }
         }
-        [DisplayName("Hotel"),Expression("jHabitacion.hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [DisplayName("Hotel"), Expression("jHabitacion.hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHotel"), TextualField("HotelName"), LookupInclude]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
             set { Fields.HotelId[this] = value; }
         }
 
-        [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [DisplayName("Hotel"), Expression("jHotel.[hotel]")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
+        }
+
+        [DisplayName("Empresa"), Expression("jHotel.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
         [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
@@ -43,6 +51,16 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.EmpresaId[this] = value; }
 
         }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+
         [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), ForeignKey("tipos_bloqueo","tipo_bloqueo_id"),LeftJoin("jTipoBloqueo"), NotNull]
         [LookupEditor("Portal.TiposBloqueo")]
         public Int16? TipoBloqueoId
@@ -99,8 +117,6 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.FechaModificacion[this] = value; }
         }
 
- 
-
         [DisplayName("Numero Habitacion"), Expression("jHabitacion.[numero_habitacion]")]
         public String HabitacionNumeroHabitacion
         {
@@ -151,13 +167,14 @@ namespace Geshotel.Recepcion.Entities
             public DateTimeField FechaModificacion;
 
             public Int16Field HotelId;
+            public StringField HotelName;
             public Int16Field EmpresaId;
+            public StringField Empresa;
             public StringField HabitacionNumeroHabitacion;
             public Int16Field HabitacionTipoHabitacionId;
 
             public StringField DescCorta;
             public StringField UserName;
-
 
             public RowFields()
                 : base()

@@ -23,6 +23,7 @@
             // To get intellisense, use a TS cast like below <HabitacionesBloqueosRow>
             this.editItem(<HabitacionesBloqueosRow>{
                 ReservaId: this.reservaID,
+                HotelId: this.hotelID,
                 TipoBloqueoId : 1
             });
         }
@@ -56,6 +57,7 @@
 
         private _reservaID: number;
         private _tipoBloqueoID: number;
+        private _hotelID: number;
 
         get tipoBloqueoID() {
             return 1;
@@ -63,6 +65,10 @@
 
         get reservaID() {
             return this._reservaID;
+        }
+
+        get hotelID() {
+            return this._hotelID;
         }
 
         set reservaID(value: number) {
@@ -76,6 +82,13 @@
             this._tipoBloqueoID = 1;
             this.setEquality(HabitacionesBloqueosRow.Fields.TipoBloqueoId, 1);
             this.refresh();
+        }
+        set hotelID(value: number) {
+            if (this._hotelID !== value) {
+                this._hotelID = value;
+                this.setEquality(HabitacionesBloqueosRow.Fields.HotelId, value);
+                this.refresh();
+            }
         }
     }
 }

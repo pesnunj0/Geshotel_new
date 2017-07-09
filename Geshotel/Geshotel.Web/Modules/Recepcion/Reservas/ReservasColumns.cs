@@ -70,7 +70,7 @@ namespace Geshotel.Recepcion.Columns
         public String ObservacionesCliente { get; set; }
         [Hidden, Width(110)]
         public String Observaciones { get; set; }
-        [Width(110)]
+        [Width(110),QuickFilter]
         public String BonoReferencia { get; set; }
         [Hidden, Width(110)]
         public String BonoOnline { get; set; }

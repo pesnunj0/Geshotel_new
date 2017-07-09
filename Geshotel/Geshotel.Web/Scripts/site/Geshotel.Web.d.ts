@@ -10433,8 +10433,10 @@ declare namespace Geshotel.Recepcion {
         protected getGridCanLoad(): boolean;
         private _reservaID;
         private _tipoBloqueoID;
+        private _hotelID;
         tipoBloqueoID: number;
         reservaID: number;
+        hotelID: number;
     }
 }
 declare namespace Geshotel.Recepcion {

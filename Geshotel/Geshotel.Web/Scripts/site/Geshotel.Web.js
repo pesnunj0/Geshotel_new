@@ -13320,6 +13320,7 @@ var Geshotel;
                 _super.prototype.afterLoadEntity.call(this);
                 this.HabitacionesBloqueosGrid.reservaID = this.entityId;
                 this.HabitacionesBloqueosGrid.tipoBloqueoID = 1;
+                this.HabitacionesBloqueosGrid.hotelID = this.entity.HotelId;
                 this.ReservasServiciosGrid.reservaID = this.entityId;
                 this.ReservasServiciosGrid.flagcontrato = 1;
                 this.ReservasContratosGrid.reservaID = this.entityId;
@@ -13446,10 +13447,10 @@ var Geshotel;
                                 Q.notifySuccess(Q.text('Reservation.CheckedIn'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13467,10 +13468,10 @@ var Geshotel;
                                 Q.notifySuccess(Q.text('Reservation.PreCheckedOut'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13488,10 +13489,10 @@ var Geshotel;
                                 Q.notifySuccess(Q.text('Reservation.CheckedOut'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13575,6 +13576,7 @@ var Geshotel;
                 // To get intellisense, use a TS cast like below <HabitacionesBloqueosRow>
                 this.editItem({
                     ReservaId: this.reservaID,
+                    HotelId: this.hotelID,
                     TipoBloqueoId: 1
                 });
             };
@@ -13619,6 +13621,20 @@ var Geshotel;
                     if (this._reservaID !== value) {
                         this._reservaID = value;
                         this.setEquality(Recepcion.HabitacionesBloqueosRow.Fields.ReservaId, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(ReservasHabitacionesBloqueosGrid.prototype, "hotelID", {
+                get: function () {
+                    return this._hotelID;
+                },
+                set: function (value) {
+                    if (this._hotelID !== value) {
+                        this._hotelID = value;
+                        this.setEquality(Recepcion.HabitacionesBloqueosRow.Fields.HotelId, value);
                         this.refresh();
                     }
                 },
