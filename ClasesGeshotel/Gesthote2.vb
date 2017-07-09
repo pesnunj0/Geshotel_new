@@ -40,7 +40,7 @@ Namespace geshotelk
         Private Shared sql_last_insert_id As String = "SELECT LAST_INSERT_ID()"
 
         Private Function permitirCache() As Boolean
-            Return True
+            Return False
         End Function
 
         Private Function convertFecha(ByVal fec As Date) As String
@@ -9133,8 +9133,8 @@ Namespace geshotelk
             End Try
             If Not IsNothing(resultado) Then
                 'dumpResultado(resultado)
-
-                If Not crear Or resultado.sumaErrores() > 0 Or resultado.servicios.Rows.Count = 0 Or IsNothing(datos) Then
+                'If Not crear Or resultado.sumaErrores() > 0 Or resultado.servicios.Rows.Count = 0 Or IsNothing(datos) Then
+                If Not crear Or resultado.servicios.Rows.Count = 0 Or IsNothing(datos) Then
                     'existen errores..o no hay datos...o simplemente es un preview
                     errorCode = 1
                 Else
@@ -9214,8 +9214,15 @@ Namespace geshotelk
                 End If
             End If
             If Not skipValidar Then
-                If estado_anterior <> 1 Then  ' si hay cambio de estado GARRA JAVIER ABRIL 2017
-                    If Not CambiarEstadoReserva(resultado.reserva_id, 1, False) Then
+                If estado_anterior = 0 And resultado.sumaErrores = 0 Then  ' si hay cambio de estado GARRA JAVIER ABRIL 2017
+                    If Not CambiarEstadoReserva(resultado.reserva_id, 1, False, False, resultado) Then
+                        errorCode = 7
+                        errorTxt = "No se puedo cambiar a Estado Reserva Pendiente"
+                        AgregaInfo("obtieneServiciosReserva", "No pudo cambiar estado", -errorCode)
+                    End If
+                End If
+                If estado_anterior = 1 And resultado.sumaErrores > 0 Then  ' Si está pendiente de entrar con errores, paso la reserva a estado con errores JUKIO 2017
+                    If Not Not CambiarEstadoReserva(resultado.reserva_id, 0, False, False, resultado) Then
                         errorCode = 7
                         errorTxt = "No se puedo cambiar a Estado Reserva Pendiente"
                         AgregaInfo("obtieneServiciosReserva", "No pudo cambiar estado", -errorCode)
@@ -12764,12 +12771,16 @@ Namespace geshotelk
                         Dim dt As DataTable = dvcontrato.ToTable()
                         dt.Clear()
                         dt.Rows.Add(dvcontrato.Table.Rows(0).ItemArray)
+                        'dt.Columns.Item("desde").AllowDBNull = True
+                        'dt.Columns.Item("hasta").AllowDBNull = True
                         Dim x As Integer
                         For x = 0 To dt.Rows(0).ItemArray.Length - 1
                             Try
+                                dt.Columns(x).AllowDBNull = True
                                 dt.Rows(0).Item(x) = System.DBNull.Value
+                                'dt.Rows(0).Item(x) = 0
                             Catch ex As Exception
-
+                                Dim xxxxx As Integer = 0
                             End Try
 
                         Next
@@ -12839,6 +12850,7 @@ Namespace geshotelk
                                 'si uc es diario
                                 tipo = 0
                         End Select
+
                         descripcion = reader.Item("nombre_servicio")
                         desc_oferta = reader.Item("Oferta") & "(" & reader.Item("n") & "," & reader.Item("m") & ")"
                         Dim noregori As Boolean

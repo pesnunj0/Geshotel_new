@@ -1289,6 +1289,7 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface ContratosForm {
+        EmpresaId: Serenity.LookupEditor;
         HotelId: Serenity.LookupEditor;
         ClienteId: Serenity.LookupEditor;
         FechaContrato: Serenity.DateEditor;

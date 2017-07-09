@@ -84,11 +84,14 @@ namespace Geshotel.Recepcion {
                 }
 
                 var dateini = new Date(date.getTime());
-                (w as Serenity.DateTimeEditor).valueAsDate = dateini;
+                //(w as Serenity.DateTimeEditor).valueAsDate = dateini;
+
+                (w as Serenity.DateEditor).valueAsDate = dateini;
 
                 var datefin = new Date(date.getTime());
                 datefin.setHours(23, 55, 0, 0);
-                let endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
+                //let endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
+                let endDate = w.element.nextAll(".s-DateEditor.dateQ").getWidget(Serenity.DateEditor);
                 endDate.valueAsDate = datefin;
             };
 

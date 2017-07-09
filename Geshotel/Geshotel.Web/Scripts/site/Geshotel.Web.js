@@ -2114,7 +2114,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         ContratosForm.formKey = 'Contratos.Contratos';
         Contratos.ContratosForm = ContratosForm;
-        [['HotelId', function () { return Serenity.LookupEditor; }], ['ClienteId', function () { return Serenity.LookupEditor; }], ['FechaContrato', function () { return Serenity.DateEditor; }], ['NumeroContratoCliente', function () { return Serenity.StringEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['TemporadaId', function () { return Serenity.LookupEditor; }], ['ImpuestoIncluido', function () { return Serenity.BooleanEditor; }], ['MercadoId', function () { return Serenity.LookupEditor; }], ['Ficheros', function () { return Serenity.MultipleImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(ContratosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['ClienteId', function () { return Serenity.LookupEditor; }], ['FechaContrato', function () { return Serenity.DateEditor; }], ['NumeroContratoCliente', function () { return Serenity.StringEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['TemporadaId', function () { return Serenity.LookupEditor; }], ['ImpuestoIncluido', function () { return Serenity.BooleanEditor; }], ['MercadoId', function () { return Serenity.LookupEditor; }], ['Ficheros', function () { return Serenity.MultipleImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(ContratosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -12879,10 +12879,12 @@ var Geshotel;
                             date = Q.parseDate(hotel.FechaHotel);
                     }
                     var dateini = new Date(date.getTime());
+                    //(w as Serenity.DateTimeEditor).valueAsDate = dateini;
                     w.valueAsDate = dateini;
                     var datefin = new Date(date.getTime());
                     datefin.setHours(23, 55, 0, 0);
-                    var endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
+                    //let endDate = w.element.nextAll(".s-DateTimeEditor.dateQ").getWidget(Serenity.DateTimeEditor);
+                    var endDate = w.element.nextAll(".s-DateEditor.dateQ").getWidget(Serenity.DateEditor);
                     endDate.valueAsDate = datefin;
                 };
                 Q.first(filters, function (x) { return x.field == fld.EstadoReservaId; }).init = function (w) {
@@ -13329,7 +13331,6 @@ var Geshotel;
                 this.ReservasExtrasGrid.reservaID = this.entityId;
             };
             ReservasDialog.prototype.onSaveSuccess = function (response) {
-                var _this = this;
                 // check that this is an insert
                 if (this.isNew) {
                     //Q.notifySuccess("New Reservation with ID: " + response.EntityId + " Let's Proceed To Check, Calculate import & Reload");
@@ -13337,12 +13338,12 @@ var Geshotel;
                         EntityId: response.EntityId
                     }, function (resp) {
                         Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this);
                     });
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this);
                 }
                 else {
                     //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -13351,12 +13352,12 @@ var Geshotel;
                         EntityId: response.EntityId
                     }, function (resp) {
                         Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
-                        Serenity.SubDialogHelper.triggerDataChange(_this);
                     });
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
+                    Serenity.SubDialogHelper.triggerDataChange(this);
                 }
             };
             ReservasDialog.prototype.updateInterface = function () {
@@ -13424,10 +13425,10 @@ var Geshotel;
                                 Q.notifySuccess(Q.text('Reservation.Pending'));
                                 _this.reloadById();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid.element);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid.element);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
+                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -14178,7 +14179,7 @@ var Geshotel;
 /*
     Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
     Además, se elimina el AddButton.
-    Totalizamos Importe y Agrupamos por Fecha
+    Totalizamos Importe y Agrupamos por Fecha (Ver el Formateo de la fecha ya que por defecto la pone yyyy-MM-dd hh:mm:ss y es un asco
     Miramos si el campo error = 1 y ponemos la fila en rojo.
     Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
     Javier Nuñez Abril 2017
@@ -14207,7 +14208,7 @@ var Geshotel;
                         new Slick.Aggregators.Sum('Importe')
                     ]
                 });
-                // Agrupamos por día
+                // Agrupamos por día Ver el formateo de la fecha
                 this.view.setGrouping([{
                         getter: 'Fecha',
                         formatter: function (g) {
@@ -14263,10 +14264,10 @@ var Geshotel;
     */
             ReservasPreviewGrid.prototype.getItemCssClass = function (item, index) {
                 var klass = "";
-                if (item.Error == 1 && item.DescTipo == null)
+                if (item.Error == 1)
                     klass += " con-errores";
-                else
-                    klass += " sin-errores";
+                //else
+                //    klass += " sin-errores";
                 return Q.trimToNull(klass);
             };
             return ReservasPreviewGrid;

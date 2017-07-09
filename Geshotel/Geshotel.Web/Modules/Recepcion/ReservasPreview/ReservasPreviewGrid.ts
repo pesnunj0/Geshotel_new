@@ -1,7 +1,7 @@
 ﻿/*
     Este es un Grid un tantos especial, ya que pertenece a un tab de reservas y por lo tanto, será llamado con numero de reserva
     Además, se elimina el AddButton.
-    Totalizamos Importe y Agrupamos por Fecha
+    Totalizamos Importe y Agrupamos por Fecha (Ver el Formateo de la fecha ya que por defecto la pone yyyy-MM-dd hh:mm:ss y es un asco
     Miramos si el campo error = 1 y ponemos la fila en rojo.
     Finalmente ponemos un custom link, el link sobre contratoId nos llevará a ver el contrato segun ContratoId
     Javier Nuñez Abril 2017
@@ -32,7 +32,7 @@ namespace Geshotel.Recepcion {
                     new Slick.Aggregators.Sum('Importe')
                 ]
             });
-            // Agrupamos por día
+            // Agrupamos por día Ver el formateo de la fecha
             this.view.setGrouping(
                 [{
                     getter: 'Fecha',
@@ -99,10 +99,10 @@ namespace Geshotel.Recepcion {
         protected getItemCssClass(item: Recepcion.ReservasPreviewItem, index: number): string {
 
             let klass: string = "";
-            if (item.Error == 1 && item.DescTipo == null)
+            if (item.Error == 1)
                 klass += " con-errores";
-            else
-                klass += " sin-errores";
+            //else
+            //    klass += " sin-errores";
 
             return Q.trimToNull(klass);
         }

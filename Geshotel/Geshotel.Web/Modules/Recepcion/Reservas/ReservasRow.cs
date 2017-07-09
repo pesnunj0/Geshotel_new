@@ -210,7 +210,8 @@ namespace Geshotel.Recepcion.Entities
             set { Fields.Observaciones[this] = value; }
         }
 
-        [DisplayName("Fecha Llegada"), Column("fecha_llegada"), DateTimeKind(DateTimeKind.Local)]
+        //[DisplayName("Fecha Llegada"), Column("fecha_llegada"), DateTimeKind(DateTimeKind.Local)] Quito DateTimeKind para quickfilter solo sea por fecha
+        [DisplayName("Fecha Llegada"), Column("fecha_llegada")]
         public DateTime? FechaLlegada
         {
             get { return Fields.FechaLlegada[this]; }
