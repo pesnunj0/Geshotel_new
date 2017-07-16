@@ -6017,7 +6017,7 @@ var Geshotel;
         }(Serenity.PrefixedContext));
         HabitacionesBloqueosForm.formKey = 'Recepcion.HabitacionesBloqueos';
         Recepcion.HabitacionesBloqueosForm = HabitacionesBloqueosForm;
-        [['HabitacionId', function () { return Serenity.LookupEditor; }], ['TipoBloqueoId', function () { return Serenity.LookupEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Observaciones', function () { return Serenity.TextAreaEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(HabitacionesBloqueosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['EmpresaId', function () { return Serenity.LookupEditor; }], ['HotelId', function () { return Serenity.LookupEditor; }], ['HabitacionId', function () { return Serenity.LookupEditor; }], ['TipoBloqueoId', function () { return Serenity.LookupEditor; }], ['FechaDesde', function () { return Serenity.DateEditor; }], ['FechaHasta', function () { return Serenity.DateEditor; }], ['Observaciones', function () { return Serenity.TextAreaEditor; }], ['ReservaId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(HabitacionesBloqueosForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
 var Geshotel;
@@ -6032,7 +6032,7 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HabitacionesBloqueosRow.Fields || (HabitacionesBloqueosRow.Fields = {}));
-            ['HabitacionBloqueoId', 'HabitacionId', 'TipoBloqueoId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'ReservaId', 'UserId', 'FechaModificacion', 'HotelId', 'EmpresaId', 'HabitacionNumeroHabitacion', 'HabitacionTipoHabitacionId', 'DescCorta', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            ['HabitacionBloqueoId', 'HabitacionId', 'TipoBloqueoId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'ReservaId', 'UserId', 'FechaModificacion', 'HotelId', 'HotelName', 'EmpresaId', 'Empresa', 'HabitacionNumeroHabitacion', 'HabitacionTipoHabitacionId', 'TipoBloqueo', 'Editable', 'DescCorta', 'UserName'].forEach(function (x) { return Fields[x] = x; });
         })(HabitacionesBloqueosRow = Recepcion.HabitacionesBloqueosRow || (Recepcion.HabitacionesBloqueosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -13231,10 +13231,55 @@ var Geshotel;
             HabitacionesBloqueosGrid.prototype.getIdProperty = function () { return Recepcion.HabitacionesBloqueosRow.idProperty; };
             HabitacionesBloqueosGrid.prototype.getLocalTextPrefix = function () { return Recepcion.HabitacionesBloqueosRow.localTextPrefix; };
             HabitacionesBloqueosGrid.prototype.getService = function () { return Recepcion.HabitacionesBloqueosService.baseUrl; };
+            HabitacionesBloqueosGrid.prototype.onViewSubmit = function () {
+                // only continue if base class returns true (didn't cancel request)
+                if (!_super.prototype.onViewSubmit.call(this)) {
+                    return false;
+                }
+                // view object is the data source for grid (SlickRemoteView)
+                // this is an EntityGrid so its Params object is a ListRequest
+                var request = this.view.params;
+                // list request has a Criteria parameter
+                // we AND criteria here to existing one because 
+                // otherwise we might clear filter set by 
+                // an edit filter dialog if any.
+                request.Criteria = Serenity.Criteria.and(request.Criteria, [['Editable'], '=', 1]);
+                // TypeScript doesn't support operator overloading
+                // so we had to use array syntax above to build criteria.
+                // Make sure you write
+                // [['Field'], '>', 10] (which means field A is greater than 10)
+                // not 
+                // ['A', '>', 10] (which means string 'A' is greater than 10
+                return true;
+            };
+            HabitacionesBloqueosGrid.prototype.getQuickFilters = function () {
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var fld = Recepcion.HabitacionesBloqueosRow.Fields;
+                var user = Q.Authorization.userDefinition;
+                Q.first(filters, function (x) { return x.field == fld.EmpresaId; }).init = function (w) {
+                    w.value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+                };
+                Q.first(filters, function (x) { return x.field == fld.HotelId; }).init = function (w) {
+                    w.value = user.HotelId == null ? "" : user.HotelId.toString();
+                };
+                //Q.first(filters, x => x.field == fld.Editable).init = w => {
+                //    (w as Serenity.BooleanEditor).value = true;
+                //};
+                return filters;
+            };
+            HabitacionesBloqueosGrid.prototype.createQuickFilters = function () {
+                // let base class to create quick filters first
+                _super.prototype.createQuickFilters.call(this);
+                // get a reference to HabitacionesBloqueos row field names
+                var fld = Recepcion.HabitacionesBloqueosRow.Fields;
+                // find a quick filter widget by its field name
+                this.findQuickFilter(Serenity.IntegerEditor, fld.Editable).value = 1;
+            };
             return HabitacionesBloqueosGrid;
         }(Serenity.EntityGrid));
         HabitacionesBloqueosGrid = __decorate([
-            Serenity.Decorators.registerClass()
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.filterable()
         ], HabitacionesBloqueosGrid);
         Recepcion.HabitacionesBloqueosGrid = HabitacionesBloqueosGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));

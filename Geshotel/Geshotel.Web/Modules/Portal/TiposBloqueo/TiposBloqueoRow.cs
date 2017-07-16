@@ -16,7 +16,7 @@ namespace Geshotel.Portal.Entities
     
     public sealed class TiposBloqueoRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), Identity]
+        [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), Identity,LookupInclude]
         public Int16? TipoBloqueoId
         {
             get { return Fields.TipoBloqueoId[this]; }

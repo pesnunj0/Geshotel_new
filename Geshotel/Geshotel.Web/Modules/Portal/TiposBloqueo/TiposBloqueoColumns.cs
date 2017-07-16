@@ -15,8 +15,9 @@ namespace Geshotel.Portal.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int16 TipoBloqueoId { get; set; }
-        [EditLink]
+        [EditLink,Width(100)]
         public String Descriptivo { get; set; }
+        [Width(100),QuickFilter,AlignCenter]
         public Boolean Editable { get; set; }
     }
 }

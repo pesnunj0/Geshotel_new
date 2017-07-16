@@ -6627,6 +6627,8 @@ declare namespace Geshotel.Recepcion {
         static formKey: string;
     }
     interface HabitacionesBloqueosForm {
+        EmpresaId: Serenity.LookupEditor;
+        HotelId: Serenity.LookupEditor;
         HabitacionId: Serenity.LookupEditor;
         TipoBloqueoId: Serenity.LookupEditor;
         FechaDesde: Serenity.DateEditor;
@@ -6647,9 +6649,13 @@ declare namespace Geshotel.Recepcion {
         UserId?: number;
         FechaModificacion?: string;
         HotelId?: number;
+        HotelName?: string;
         EmpresaId?: number;
+        Empresa?: string;
         HabitacionNumeroHabitacion?: string;
         HabitacionTipoHabitacionId?: number;
+        TipoBloqueo?: string;
+        Editable?: boolean;
         DescCorta?: string;
         UserName?: string;
     }
@@ -6668,9 +6674,13 @@ declare namespace Geshotel.Recepcion {
             const UserId: string;
             const FechaModificacion: string;
             const HotelId: string;
+            const HotelName: string;
             const EmpresaId: string;
+            const Empresa: string;
             const HabitacionNumeroHabitacion: string;
             const HabitacionTipoHabitacionId: string;
+            const TipoBloqueo: string;
+            const Editable: string;
             const DescCorta: string;
             const UserName: string;
         }
@@ -10367,6 +10377,9 @@ declare namespace Geshotel.Recepcion {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewSubmit(): boolean;
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected createQuickFilters(): void;
     }
 }
 declare namespace Geshotel.Recepcion {

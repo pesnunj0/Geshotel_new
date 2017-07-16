@@ -11,9 +11,13 @@ namespace Geshotel.Recepcion {
         UserId?: number;
         FechaModificacion?: string;
         HotelId?: number;
+        HotelName?: string;
         EmpresaId?: number;
+        Empresa?: string;
         HabitacionNumeroHabitacion?: string;
         HabitacionTipoHabitacionId?: number;
+        TipoBloqueo?: string;
+        Editable?: boolean;
         DescCorta?: string;
         UserName?: string;
     }
@@ -34,14 +38,18 @@ namespace Geshotel.Recepcion {
             export declare const UserId: string;
             export declare const FechaModificacion: string;
             export declare const HotelId: string;
+            export declare const HotelName: string;
             export declare const EmpresaId: string;
+            export declare const Empresa: string;
             export declare const HabitacionNumeroHabitacion: string;
             export declare const HabitacionTipoHabitacionId: string;
+            export declare const TipoBloqueo: string;
+            export declare const Editable: string;
             export declare const DescCorta: string;
             export declare const UserName: string;
         }
 
-        ['HabitacionBloqueoId', 'HabitacionId', 'TipoBloqueoId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'ReservaId', 'UserId', 'FechaModificacion', 'HotelId', 'EmpresaId', 'HabitacionNumeroHabitacion', 'HabitacionTipoHabitacionId', 'DescCorta', 'UserName'].forEach(x => (<any>Fields)[x] = x);
+        ['HabitacionBloqueoId', 'HabitacionId', 'TipoBloqueoId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'ReservaId', 'UserId', 'FechaModificacion', 'HotelId', 'HotelName', 'EmpresaId', 'Empresa', 'HabitacionNumeroHabitacion', 'HabitacionTipoHabitacionId', 'TipoBloqueo', 'Editable', 'DescCorta', 'UserName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

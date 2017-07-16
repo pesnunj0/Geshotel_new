@@ -22,7 +22,7 @@ namespace Geshotel.Recepcion.Entities
         }
 
         [DisplayName("Habitacion"), Column("habitacion_id"), NotNull, ForeignKey("[habitaciones]", "habitacion_id"), LeftJoin("jHabitacion"), TextualField("HabitacionNumeroHabitacion")]
-        [LookupEditor("Contratos.Habitaciones")]
+        [LookupEditor(("Contratos.Habitaciones"),CascadeFrom = "HotelId", CascadeField = "HotelId")]
         public Int16? HabitacionId
         {
             get { return Fields.HabitacionId[this]; }
@@ -61,12 +61,26 @@ namespace Geshotel.Recepcion.Entities
 
         }
 
-        [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), ForeignKey("tipos_bloqueo","tipo_bloqueo_id"),LeftJoin("jTipoBloqueo"), NotNull]
-        [LookupEditor("Portal.TiposBloqueo")]
+        [DisplayName("Tipo Bloqueo Id"), Column("tipo_bloqueo_id"), ForeignKey("tipos_bloqueo","tipo_bloqueo_id"),LeftJoin("jTipoBloqueo"), NotNull,LookupInclude,TextualField("TipoBloqueo")]
+        [LookupEditor("Portal.TiposBloqueo", FilterField = "Editable", FilterValue = true)]
         public Int16? TipoBloqueoId
         {
             get { return Fields.TipoBloqueoId[this]; }
             set { Fields.TipoBloqueoId[this] = value; }
+        }
+
+        [DisplayName("Tipo Bloqueo"), Expression("jTipoBloqueo.[descriptivo]")]
+        public String TipoBloqueo
+        {
+            get { return Fields.TipoBloqueo[this]; }
+            set { Fields.TipoBloqueo[this] = value; }
+        }
+
+        [DisplayName("Editable"), Expression("jTipoBloqueo.[editable]")]
+        public Boolean? Editable
+        {
+            get { return Fields.Editable[this]; }
+            set { Fields.Editable[this] = value; }
         }
 
         [DisplayName("Fecha Desde"), Column("fecha_desde"), NotNull]
@@ -172,6 +186,8 @@ namespace Geshotel.Recepcion.Entities
             public StringField Empresa;
             public StringField HabitacionNumeroHabitacion;
             public Int16Field HabitacionTipoHabitacionId;
+            public StringField TipoBloqueo;
+            public BooleanField Editable;
 
             public StringField DescCorta;
             public StringField UserName;
