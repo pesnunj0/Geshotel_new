@@ -75,10 +75,6 @@ namespace Geshotel.Recepcion {
                 this.ReservasContratosGrid.refresh();
                 this.ReservasOfertasGrid.refresh();
                 this.ReservasPreviewGrid.refresh();
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                 Serenity.SubDialogHelper.triggerDataChange(this);
             } else {
                 //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -92,10 +88,6 @@ namespace Geshotel.Recepcion {
                 this.ReservasContratosGrid.refresh();
                 this.ReservasOfertasGrid.refresh();
                 this.ReservasPreviewGrid.refresh();
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                 Serenity.SubDialogHelper.triggerDataChange(this);
             }
         }
@@ -181,11 +173,11 @@ namespace Geshotel.Recepcion {
                         }, response => {
                             Q.notifySuccess(Q.text('Reservation.Pending'));
                             this.reloadById();
+                            this.ReservasServiciosGrid.refresh();
+                            this.ReservasContratosGrid.refresh();
+                            this.ReservasOfertasGrid.refresh();
+                            this.ReservasPreviewGrid.refresh();
                             Serenity.SubDialogHelper.triggerDataChange(this);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                         });
                     });
                 }
@@ -204,11 +196,11 @@ namespace Geshotel.Recepcion {
                         }, response => {
                             Q.notifySuccess(Q.text('Reservation.CheckedIn'));
                             this.reloadById();
+                            this.ReservasServiciosGrid.refresh();
+                            this.ReservasContratosGrid.refresh();
+                            this.ReservasOfertasGrid.refresh();
+                            this.ReservasPreviewGrid.refresh();
                             Serenity.SubDialogHelper.triggerDataChange(this);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                         });
                     });
                 }
@@ -228,11 +220,11 @@ namespace Geshotel.Recepcion {
                             Q.notifySuccess(Q.text('Reservation.PreCheckedOut'));
                             this.reloadById();
 
+                            this.ReservasServiciosGrid.refresh();
+                            this.ReservasContratosGrid.refresh();
+                            this.ReservasOfertasGrid.refresh();
+                            this.ReservasPreviewGrid.refresh();
                             Serenity.SubDialogHelper.triggerDataChange(this);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                         });
                     });
                 }
@@ -250,11 +242,11 @@ namespace Geshotel.Recepcion {
                         }, response => {
                             Q.notifySuccess(Q.text('Reservation.CheckedOut'));
                             this.reloadById();
+                            this.ReservasServiciosGrid.refresh();
+                            this.ReservasContratosGrid.refresh();
+                            this.ReservasOfertasGrid.refresh();
+                            this.ReservasPreviewGrid.refresh();
                             Serenity.SubDialogHelper.triggerDataChange(this);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                            Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                         });
                     });
                 }

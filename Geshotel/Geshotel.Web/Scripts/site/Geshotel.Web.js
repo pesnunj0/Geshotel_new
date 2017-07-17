@@ -13389,10 +13389,6 @@ var Geshotel;
                     this.ReservasContratosGrid.refresh();
                     this.ReservasOfertasGrid.refresh();
                     this.ReservasPreviewGrid.refresh();
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                     Serenity.SubDialogHelper.triggerDataChange(this);
                 }
                 else {
@@ -13407,10 +13403,6 @@ var Geshotel;
                     this.ReservasContratosGrid.refresh();
                     this.ReservasOfertasGrid.refresh();
                     this.ReservasPreviewGrid.refresh();
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                    //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                     Serenity.SubDialogHelper.triggerDataChange(this);
                 }
             };
@@ -13478,11 +13470,11 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess(Q.text('Reservation.Pending'));
                                 _this.reloadById();
+                                _this.ReservasServiciosGrid.refresh();
+                                _this.ReservasContratosGrid.refresh();
+                                _this.ReservasOfertasGrid.refresh();
+                                _this.ReservasPreviewGrid.refresh();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13499,11 +13491,11 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess(Q.text('Reservation.CheckedIn'));
                                 _this.reloadById();
+                                _this.ReservasServiciosGrid.refresh();
+                                _this.ReservasContratosGrid.refresh();
+                                _this.ReservasOfertasGrid.refresh();
+                                _this.ReservasPreviewGrid.refresh();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13520,11 +13512,11 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess(Q.text('Reservation.PreCheckedOut'));
                                 _this.reloadById();
+                                _this.ReservasServiciosGrid.refresh();
+                                _this.ReservasContratosGrid.refresh();
+                                _this.ReservasOfertasGrid.refresh();
+                                _this.ReservasPreviewGrid.refresh();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
@@ -13541,11 +13533,11 @@ var Geshotel;
                             }, function (response) {
                                 Q.notifySuccess(Q.text('Reservation.CheckedOut'));
                                 _this.reloadById();
+                                _this.ReservasServiciosGrid.refresh();
+                                _this.ReservasContratosGrid.refresh();
+                                _this.ReservasOfertasGrid.refresh();
+                                _this.ReservasPreviewGrid.refresh();
                                 Serenity.SubDialogHelper.triggerDataChange(_this);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasServiciosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasContratosGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasOfertasGrid);
-                                Serenity.SubDialogHelper.triggerDataChange(_this.ReservasPreviewGrid);
                             });
                         });
                     }
