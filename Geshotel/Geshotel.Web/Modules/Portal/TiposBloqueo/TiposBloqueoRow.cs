@@ -30,7 +30,7 @@ namespace Geshotel.Portal.Entities
             set { Fields.Descriptivo[this] = value; }
         }
 
-        [DisplayName("Editable"), Column("editable"), NotNull]
+        [DisplayName("Editable"), Column("editable"), NotNull,LookupInclude]
         public Boolean? Editable
         {
             get { return Fields.Editable[this]; }

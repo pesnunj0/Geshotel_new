@@ -18,7 +18,7 @@ namespace Geshotel.Recepcion.Forms
         public Int16 HotelId { get; set; }
         [LookupEditor(("Contratos.Habitaciones"), CascadeFrom = "HotelId", CascadeField = "HotelId")]
         public Int16 HabitacionId { get; set; }
-        [LookupEditor(("Portal.TiposBloqueo"),FilterField = "Editable", FilterValue = "no")]
+        [LookupEditor(("Portal.TiposBloqueo"),FilterField = "Editable", FilterValue = true)]
         public Int16 TipoBloqueoId { get; set; }
         
         public DateTime FechaDesde { get; set; }
