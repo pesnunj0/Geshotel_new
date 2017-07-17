@@ -71,10 +71,14 @@ namespace Geshotel.Recepcion {
                 }, resp => {
                     Q.notifyInfo("Looks like you added a new Reservation To: " + resp.Entity.NombreReserva);
                     });
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
+                this.ReservasServiciosGrid.refresh();
+                this.ReservasContratosGrid.refresh();
+                this.ReservasOfertasGrid.refresh();
+                this.ReservasPreviewGrid.refresh();
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                 Serenity.SubDialogHelper.triggerDataChange(this);
             } else {
                 //Q.notifySuccess("Just Modified Reservation with ID: " + response.EntityId + " Let's Proceed To Check, recalculate  & Reload");
@@ -84,10 +88,14 @@ namespace Geshotel.Recepcion {
                 }, resp => {
                     Q.notifyInfo("Looks like you Updated Reservation To: " + resp.Entity.NombreReserva);
                     });
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
-                Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
+                this.ReservasServiciosGrid.refresh();
+                this.ReservasContratosGrid.refresh();
+                this.ReservasOfertasGrid.refresh();
+                this.ReservasPreviewGrid.refresh();
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasServiciosGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasContratosGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasOfertasGrid);
+                //Serenity.SubDialogHelper.triggerDataChange(this.ReservasPreviewGrid);
                 Serenity.SubDialogHelper.triggerDataChange(this);
             }
         }

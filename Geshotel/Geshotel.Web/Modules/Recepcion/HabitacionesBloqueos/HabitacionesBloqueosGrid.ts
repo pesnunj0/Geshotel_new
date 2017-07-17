@@ -71,7 +71,7 @@ namespace Geshotel.Recepcion {
             let fld = Recepcion.HabitacionesBloqueosRow.Fields;
 
             // find a quick filter widget by its field name
-            this.findQuickFilter(Serenity.IntegerEditor, fld.Editable).value = 1;
+            //this.findQuickFilter(Serenity.IntegerEditor, fld.Editable).value = 1;
         }
     }
 }
