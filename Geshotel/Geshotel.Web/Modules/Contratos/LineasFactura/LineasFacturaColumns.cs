@@ -17,7 +17,7 @@ namespace Geshotel.Contratos.Columns
         public Int32 LineaFacturaId { get; set; }
         [Width(150), QuickFilter, Hidden]
         public String Empresa { get; set; }
-        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
+        [Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId"), QuickFilterOption("multiple", true), Hidden]
         public String HotelName { get; set; }
         [Width(70), QuickFilter]
         public DateTime Fecha { get; set; }

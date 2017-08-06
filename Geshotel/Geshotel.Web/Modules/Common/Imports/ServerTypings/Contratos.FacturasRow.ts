@@ -20,6 +20,11 @@ namespace Geshotel.Contratos {
         MotivoRectificacion?: string;
         UserId?: number;
         FechaModificacion?: string;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        UserName?: string;
+        Razon?: string;
     }
 
     export namespace FacturasRow {
@@ -47,9 +52,14 @@ namespace Geshotel.Contratos {
             export declare const MotivoRectificacion: string;
             export declare const UserId: string;
             export declare const FechaModificacion: string;
+            export declare const HotelName: string;
+            export declare const EmpresaId: string;
+            export declare const Empresa: string;
+            export declare const UserName: string;
+            export declare const Razon: string;
         }
 
-        ['FacturaId', 'NumeroFactura', 'SerieId', 'FechaFactura', 'HotelId', 'ClienteId', 'FormaPagoId', 'DireccionFactura', 'PoblacionFactura', 'Zip', 'ProvinciaId', 'FechaVencimiento', 'EstadoFacturaId', 'RefFra1', 'RefFra2', 'IdFacturaRectificada', 'MotivoRectificacion', 'UserId', 'FechaModificacion'].forEach(x => (<any>Fields)[x] = x);
+        ['FacturaId', 'NumeroFactura', 'SerieId', 'FechaFactura', 'HotelId', 'ClienteId', 'FormaPagoId', 'DireccionFactura', 'PoblacionFactura', 'Zip', 'ProvinciaId', 'FechaVencimiento', 'EstadoFacturaId', 'RefFra1', 'RefFra2', 'IdFacturaRectificada', 'MotivoRectificacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName', 'Razon'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -8,12 +8,24 @@ namespace Geshotel.Contratos.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    // Necesario para pillar las Rows de Portal en los Lookupeditor
+    using Geshotel.Portal.Entities;
+    using Geshotel.Behaviors;
 
     [ConnectionKey("Default"), TableName("[dbo].[contadores]"), DisplayName("Contadores"), InstanceName("Contadores"), TwoLevelCached]
     [ReadPermission("Contratos:Empresa")]
     [ModifyPermission("Contratos:Empresa")]
-    public sealed class ContadoresRow : Row, IIdRow
+    public sealed class ContadoresRow : Row, IIdRow, ITenantRow
     {
+        public Int16Field HotelIdField
+        {
+            get { return null; }
+        }
+        public Int16Field EmpresaIdField
+        {
+            get { return Fields.EmpresaId; }
+        }
+    
         [DisplayName("Contador Id"), Column("contador_id"), Identity]
         public Int32? ContadorId
         {
@@ -21,19 +33,34 @@ namespace Geshotel.Contratos.Entities
             set { Fields.ContadorId[this] = value; }
         }
 
-        [DisplayName("Empresa Id"), Column("empresa_id"), NotNull]
+        [DisplayName("Empresa"), Column("empresa_id"), NotNull, ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresa"), TextualField("Empresa"), LookupInclude]
+        [LookupEditor("Portal.Empresas")]
         public Int16? EmpresaId
         {
             get { return Fields.EmpresaId[this]; }
             set { Fields.EmpresaId[this] = value; }
         }
 
-        [DisplayName("Serie Id"), Column("serie_id"), NotNull]
+        [DisplayName("Empresa"), Expression("jEmpresa.[empresa]")]
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+        }
+
+        [DisplayName("Serie Id"), Column("serie_id"), NotNull,ForeignKey("series","serie_id"),LeftJoin("jSeries"),TextualField("Serie"),LookupInclude]
+        [LookupEditor("Contratos.Series")]
         public Int16? SerieId
         {
             get { return Fields.SerieId[this]; }
             set { Fields.SerieId[this] = value; }
         }
+        public String Serie
+        {
+            get { return Fields.Serie[this]; }
+            set { Fields.Serie[this] = value; }
+        }
+
 
         [DisplayName("Ano"), Column("ano"), NotNull]
         public Int16? Ano
@@ -68,6 +95,8 @@ namespace Geshotel.Contratos.Entities
             public Int16Field SerieId;
             public Int16Field Ano;
             public Int32Field Contador;
+            public StringField Empresa;
+            public StringField Serie;
 
             public RowFields()
                 : base()

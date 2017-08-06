@@ -56,7 +56,8 @@ namespace Geshotel.Recepcion.Repositories
                 var user = (UserDefinition)Authorization.UserDefinition;
                 Int32 userId = user.UserId;
                 Int32 ReservaId = (int)Row.ReservaId;
-                
+                Row.FlagContrato = 0;
+                Row.ServicioExtra = 1;         
             }
  
             protected override void AfterSave()
@@ -66,7 +67,7 @@ namespace Geshotel.Recepcion.Repositories
                 var user = (UserDefinition)Authorization.UserDefinition;
                 Int32 userId = user.UserId;
                 var x = new GesHotelClase(userId);
-                x.crearLineasFacturas((int)Row.ReservaId,(int)Row.ServicioId,(int)Row.UnidadCalculoId,(float)Row.Cantidad,Row.FechaDesde,Row.FechaHasta);
+                x.crearLineasFacturas((int)Row.ReservaId,(int)Row.ServicioId,(int)Row.UnidadCalculoId,(float)Row.Cantidad,Row.FechaDesde,Row.FechaHasta,(int)Row.ServicioReservaId);
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
@@ -78,7 +79,7 @@ namespace Geshotel.Recepcion.Repositories
                 base.ApplyFilters(query);
 
                 query.Where(
-                     fld.FlagContrato == 2 && fld.ServicioExtra == 1
+                     fld.FlagContrato == 0 && fld.ServicioExtra == 1
                        .ToString()
                         );
 

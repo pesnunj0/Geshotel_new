@@ -17,8 +17,10 @@ namespace Geshotel.Contratos.Columns
         public Int32 EdadesId { get; set; }
         [EditLink,Width(100)]
         public String TipoHuesped { get; set; }
-        //public String Touroperador { get; set; }
-        //public String HotelName { get; set; }
+        [Width(150), QuickFilter, Hidden]
+        public String Empresa { get; set; }
+        [EditLink, Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
+        public String HotelName { get; set; }
         public DateTime FechaDesde { get; set; }
         public DateTime FechaHasta { get; set; }
         [AlignCenter, Width(80)]

@@ -8,6 +8,12 @@ namespace Geshotel.Contratos.Endpoints
     using System.Web.Mvc;
     using MyRepository = Repositories.TemporadasRepository;
     using MyRow = Entities.TemporadasRow;
+    // Añadidos
+    using Geshotel;
+    using System;
+    using Serenity.Reporting;
+    using Serenity.Web;
+    // Fin Añadidos
 
     [RoutePrefix("Services/Contratos/Temporadas"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -39,6 +45,14 @@ namespace Geshotel.Contratos.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.TemporadasColumns));
+            var bytes = new ReportRepository().Render(report);
+            return ExcelContentResult.Create(bytes, "TemporadasList_" +
+                DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

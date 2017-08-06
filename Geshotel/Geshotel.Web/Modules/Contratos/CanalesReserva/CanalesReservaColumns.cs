@@ -15,6 +15,7 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int16 CanalReservaId { get; set; }
+        [Width(100), QuickFilter]
         public String Empresa { get; set; }
         [EditLink]
         public String NombreCanal { get; set; }

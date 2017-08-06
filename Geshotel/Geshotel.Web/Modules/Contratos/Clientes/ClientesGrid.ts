@@ -30,5 +30,18 @@ namespace Geshotel.Contratos {
 
             return buttons;
         }
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
+
+            let filters = super.getQuickFilters();
+            let fld = Contratos.ClientesRow.Fields;
+
+            var user = Q.Authorization.userDefinition as ScriptUserDefinition;
+
+            Q.first(filters, x => x.field == fld.EmpresaId).init = w => {
+                (w as Serenity.LookupEditor).value = user.EmpresaId == null ? "" : user.EmpresaId.toString();
+            };
+
+            return filters;
+        }
     }
 }

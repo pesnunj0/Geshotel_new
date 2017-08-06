@@ -6324,7 +6324,7 @@ Namespace geshotelk
             End If
             Return resultado
         End Function
-        Private Function generaAjuste(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal datosnuevos As tablaServicios, Optional ByVal fechaini As String = Nothing, Optional ByVal alcheckin As Boolean = False, Optional ByVal soloAgregar As Boolean = False, Optional ByVal tipo_linea_fac As String = Nothing, Optional ByVal regenera As Boolean = False)
+        Private Function generaAjuste(ByVal cmd As MySqlCommand, ByVal reserva As Integer, ByVal datosnuevos As tablaServicios, Optional ByVal fechaini As String = Nothing, Optional ByVal alcheckin As Boolean = False, Optional ByVal soloAgregar As Boolean = False, Optional ByVal tipo_linea_fac As String = Nothing, Optional ByVal regenera As Boolean = False, Optional ByVal reserva_servicio_id As Integer = 1)
             Try
                 Dim datos As DataSet = getDataSet(cmd, sqlLineasFacturasPorDiaYHotel)
                 Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
@@ -6522,6 +6522,13 @@ Namespace geshotelk
                                 Row.Item("tipo_linea_factura") = tipo_linea_factura
                                 Row.Item("servicio_id") = servicio_id
                                 Row.Item("pag_factura") = pag_factura
+                                '************************************************************
+                                ' Julio 2017
+                                ' Javier Nuñez
+                                If reserva_servicio_id <> 1 Then
+                                    Row.Item("reserva_servicio_id") = reserva_servicio_id
+                                End If
+                                '*************************************************************
                                 cant = 1
                             End If
 
@@ -6563,6 +6570,14 @@ Namespace geshotelk
                                     Row.Item("tipo_linea_factura") = tipo_linea_factura
                                     Row.Item("servicio_id") = servicio_id
                                     Row.Item("pag_factura") = pag_factura
+                                    '************************************************************
+                                    ' Julio 2017
+                                    ' Javier Nuñez
+                                    If reserva_servicio_id <> 1 Then
+                                        Row.Item("reserva_servicio_id") = reserva_servicio_id
+                                    End If
+                                    '*************************************************************
+
                                 Else
                                     cant = lcant
                                 End If
@@ -6585,6 +6600,14 @@ Namespace geshotelk
                                 Row.Item("tipo_linea_factura") = tipo_linea_factura
                                 Row.Item("servicio_id") = servicio_id
                                 Row.Item("pag_factura") = pag_factura
+                                '************************************************************
+                                ' Julio 2017
+                                ' Javier Nuñez
+                                If reserva_servicio_id <> 1 Then
+                                    Row.Item("reserva_servicio_id") = reserva_servicio_id
+                                End If
+                                '*************************************************************
+
                             End If
                         End If
                         datosnuevos.borrarDeTabla(filtro)
@@ -6626,6 +6649,13 @@ Namespace geshotelk
                             End If
                             Row.Item("servicio_id") = datosnuevos.servicios.Rows(y)("servicio_id")
                             Row.Item("pag_factura") = datosnuevos.servicios.Rows(y)("pag_factura")
+                            '************************************************************
+                            ' Julio 2017
+                            ' Javier Nuñez
+                            If reserva_servicio_id <> 1 Then
+                                Row.Item("reserva_servicio_id") = reserva_servicio_id
+                            End If
+                            '*************************************************************
                         End If
                     Next
                     Dim writer As MySqlDataAdapter
@@ -11588,7 +11618,7 @@ Namespace geshotelk
 
             Return retVal
         End Function
-        Public Function crearLineasFacturas(ByVal reserva_id As Integer, ByVal servicio_id As Integer, ByVal unidad_calculo_id As Integer, ByVal cantidad As Single, Optional ByVal fecha_desde As Object = Nothing, Optional ByVal fecha_hasta As Object = Nothing)
+        Public Function crearLineasFacturas(ByVal reserva_id As Integer, ByVal servicio_id As Integer, ByVal unidad_calculo_id As Integer, ByVal cantidad As Single, Optional ByVal fecha_desde As Object = Nothing, Optional ByVal fecha_hasta As Object = Nothing, Optional ByVal reserva_servicio_id As Integer = 1)
 
             Dim errorCode As Integer = 0
             Dim cmd As MySqlCommand = prepareConection()
@@ -11615,7 +11645,7 @@ Namespace geshotelk
                     ds.Tables.Remove("tablaservicios")
                 End If
                 Dim dr As DataRow = ds.Tables("reservas_servicios").Rows.Add
-                dr("servicio_reserva_id") = 1
+                dr("servicio_reserva_id") = reserva_servicio_id
                 dr("reserva_id") = reserva_id
                 dr("servicio_id") = servicio_id
                 dr("unidad_calculo_id") = unidad_calculo_id
@@ -11668,7 +11698,7 @@ Namespace geshotelk
                             dt.Rows(xx).SetAdded()
                         Next
 
-                        If Not IsNothing(ds.Tables("reservas_servicios").GetChanges) Then
+                        If Not IsNothing(ds.Tables("reservas_servicios").GetChanges) And reserva_servicio_id = 1 Then
                             cmd.Parameters.Clear()
                             Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva_id)
                             cmd.Parameters.Add(reserva_idParam)
@@ -11676,7 +11706,7 @@ Namespace geshotelk
                             writer.Fill(ds.Tables("reservas_servicios"))
                             writer.Update(ds.Tables("reservas_servicios"))
                         End If
-                        generaAjuste(cmd, reserva_id, resultado, fecha_desde, True, True, "M")
+                        generaAjuste(cmd, reserva_id, resultado, fecha_desde, True, True, "M", False, reserva_servicio_id)
                     Else
                         errorCode = 3
                         AgregaInfo("crearLineasFacturas", "No hay lineas que generar:" & reserva_id, -errorCode)

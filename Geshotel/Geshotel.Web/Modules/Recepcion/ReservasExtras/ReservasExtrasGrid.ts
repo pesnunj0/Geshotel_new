@@ -21,7 +21,7 @@ namespace Geshotel.Recepcion {
             // To get intellisense, use a TS cast like below <ReservasServiciosRow>
             this.editItem(<ReservasServiciosRow>{
                 ReservaId: this.reservaID,
-                FlagContrato: 2,   // Los añadidos son manuales. es importante para que no sean destruidos en caso de regrabar reserva
+                FlagContrato: 0,   // Los añadidos son manuales. es importante para que no sean destruidos en caso de regrabar reserva
                 ServicioExtra:1
             });
         }
@@ -34,7 +34,7 @@ namespace Geshotel.Recepcion {
         private _flagcontrato: number;
 
         get flagcontrato() {
-            return 2;
+            return 0;
         }
 
         get reservaID() {
@@ -47,6 +47,11 @@ namespace Geshotel.Recepcion {
                 this.setEquality(ReservasServiciosRow.Fields.ReservaId, value);
                 this.refresh();
             }
+        }
+        set flagcontrato(value: number) {
+            this._flagcontrato = 0;
+            this.setEquality(ReservasServiciosRow.Fields.FlagContrato, 0);
+            this.refresh();
         }
     }
 }

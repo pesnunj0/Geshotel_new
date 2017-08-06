@@ -42,18 +42,52 @@ namespace Geshotel.Contratos.Entities
             set { Fields.FechaFactura[this] = value; }
         }
 
-        [DisplayName("Hotel Id"), Column("hotel_id"), NotNull]
+        [DisplayName("Hotel"), Column("hotel_id"), ForeignKey("hoteles", "hotel_id"), LeftJoin("jHoteles")]
+        [LookupEditor("Portal.Hoteles")]
         public Int16? HotelId
         {
             get { return Fields.HotelId[this]; }
             set { Fields.HotelId[this] = value; }
+
         }
 
-        [DisplayName("Cliente Id"), Column("cliente_id"), NotNull]
+        [DisplayName("Empresa"), Expression("jHoteles.[empresa_id]"), ForeignKey("empresas", "empresa_id"), LeftJoin("jEmpresas")]
+        [LookupEditor("Portal.Empresas")]
+        public Int16? EmpresaId
+        {
+            get { return Fields.EmpresaId[this]; }
+            set { Fields.EmpresaId[this] = value; }
+
+        }
+
+        [DisplayName("Empresa"), Expression("jEmpresas.empresa")]
+
+        public String Empresa
+        {
+            get { return Fields.Empresa[this]; }
+            set { Fields.Empresa[this] = value; }
+
+        }
+
+        [DisplayName("Hotel"), Expression("jHoteles.hotel")]
+        public String HotelName
+        {
+            get { return Fields.HotelName[this]; }
+            set { Fields.HotelName[this] = value; }
+        }
+
+        [DisplayName("Cliente Id"), Column("cliente_id"), NotNull, ForeignKey("clientes","cliente_id"),LeftJoin("jClientes"),TextualField("Cliente")]
+        [LookupEditor("Contratos.Clientes")]
         public Int32? ClienteId
         {
             get { return Fields.ClienteId[this]; }
             set { Fields.ClienteId[this] = value; }
+        }
+        [DisplayName("Razon"), Expression("jClientes.razon")]
+        public String Razon
+        {
+            get { return Fields.Razon[this]; }
+            set { Fields.Razon[this] = value; }
         }
 
         [DisplayName("Forma Pago Id"), Column("forma_pago_id")]
@@ -133,11 +167,19 @@ namespace Geshotel.Contratos.Entities
             set { Fields.MotivoRectificacion[this] = value; }
         }
 
-        [DisplayName("User Id"), Column("user_id")]
+        [DisplayName("Usuario"), Column("user_id"), ForeignKey("users", "UserId"), LeftJoin("jUsers")]
+        [LookupEditor(typeof(Geshotel.Administration.Entities.UserRow))]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
+        }
+
+        [DisplayName("Usuario"), Expression("jUsers.Username")]
+        public String UserName
+        {
+            get { return Fields.UserName[this]; }
+            set { Fields.UserName[this] = value; }
         }
 
         [DisplayName("Fecha Modificacion"), Column("fecha_modificacion")]
@@ -185,6 +227,12 @@ namespace Geshotel.Contratos.Entities
             public StringField MotivoRectificacion;
             public Int32Field UserId;
             public DateTimeField FechaModificacion;
+
+            public StringField HotelName;
+            public Int16Field EmpresaId;
+            public StringField Empresa;
+            public StringField UserName;
+            public StringField Razon;
 
             public RowFields()
                 : base()

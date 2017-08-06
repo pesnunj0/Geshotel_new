@@ -19,7 +19,7 @@ namespace Geshotel.Contratos.Columns
         public String Razon { get; set; }
         public String DescCorta { get; set; }
 
-        [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
+        [Width(100), QuickFilter]
         public String Empresa { get; set; }
         [Width(100), QuickFilter, QuickFilterOption("multiple", true)]
         public String TipoDocumento { get; set; }

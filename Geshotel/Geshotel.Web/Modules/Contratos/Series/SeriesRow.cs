@@ -24,7 +24,7 @@ namespace Geshotel.Contratos.Entities
             get { return Fields.EmpresaId; }
         }
     
-        [DisplayName("Serie Id"), Column("serie_id"), Identity]
+        [DisplayName("Serie Id"), Column("serie_id"), Identity,LookupInclude]
         public Int16? SerieId
         {
             get { return Fields.SerieId[this]; }
@@ -47,11 +47,11 @@ namespace Geshotel.Contratos.Entities
         }
 
 
-        [DisplayName("Descripcion"), Column("descripcion"), Size(20), NotNull, QuickSearch]
-        public String Descripcion
+        [DisplayName("Serie"), Column("descripcion"), Size(20), NotNull, QuickSearch]
+        public String Serie
         {
-            get { return Fields.Descripcion[this]; }
-            set { Fields.Descripcion[this] = value; }
+            get { return Fields.Serie[this]; }
+            set { Fields.Serie[this] = value; }
         }
 
         [DisplayName("Abreviatura"), Column("abreviatura"), Size(4), NotNull]
@@ -140,7 +140,7 @@ namespace Geshotel.Contratos.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Descripcion; }
+            get { return Fields.Serie; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -154,7 +154,7 @@ namespace Geshotel.Contratos.Entities
         {
             public Int16Field SerieId;
             public Int16Field EmpresaId;
-            public StringField Descripcion;
+            public StringField Serie;
             public StringField Abreviatura;
             public BooleanField Manocorriente;
             public BooleanField Visible;

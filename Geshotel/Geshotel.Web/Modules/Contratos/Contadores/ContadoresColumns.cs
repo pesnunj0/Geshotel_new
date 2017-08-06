@@ -15,8 +15,11 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ContadorId { get; set; }
-        public Int16 EmpresaId { get; set; }
-        public Int16 SerieId { get; set; }
+        [Width(100), QuickFilter]
+        public String Empresa { get; set; }
+        [Width(90), QuickFilter]
+        public String Serie { get; set; }
+        [Width(50),QuickFilter]
         public Int16 Ano { get; set; }
         public Int32 Contador { get; set; }
     }

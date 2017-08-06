@@ -16,8 +16,8 @@ namespace Geshotel.Contratos.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int16 SerieId { get; set; }
         [EditLink,Width(100)]
-        public String Descripcion { get; set; }
-        [Width(150), QuickFilter]
+        public String Serie { get; set; }
+        [Width(150), QuickFilter,Hidden]
         public String Empresa { get; set; }
         [Width(90)]
         public String Abreviatura { get; set; }

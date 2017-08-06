@@ -3,7 +3,7 @@ namespace Geshotel.Contratos {
     export interface SeriesRow {
         SerieId?: number;
         EmpresaId?: number;
-        Descripcion?: string;
+        Serie?: string;
         Abreviatura?: string;
         Manocorriente?: boolean;
         Visible?: boolean;
@@ -20,13 +20,18 @@ namespace Geshotel.Contratos {
 
     export namespace SeriesRow {
         export const idProperty = 'SerieId';
-        export const nameProperty = 'Descripcion';
+        export const nameProperty = 'Serie';
         export const localTextPrefix = 'Contratos.Series';
+        export const lookupKey = 'Contratos.Series';
+
+        export function getLookup(): Q.Lookup<SeriesRow> {
+            return Q.getLookup<SeriesRow>('Contratos.Series');
+        }
 
         export namespace Fields {
             export declare const SerieId: string;
             export declare const EmpresaId: string;
-            export declare const Descripcion: string;
+            export declare const Serie: string;
             export declare const Abreviatura: string;
             export declare const Manocorriente: string;
             export declare const Visible: string;
@@ -41,7 +46,7 @@ namespace Geshotel.Contratos {
             export declare const UserName: string;
         }
 
-        ['SerieId', 'EmpresaId', 'Descripcion', 'Abreviatura', 'Manocorriente', 'Visible', 'Factura', 'Deposito', 'ServicioId', 'ImpuestoId', 'Voxel', 'UserId', 'FechaModificacion', 'Empresa', 'UserName'].forEach(x => (<any>Fields)[x] = x);
+        ['SerieId', 'EmpresaId', 'Serie', 'Abreviatura', 'Manocorriente', 'Visible', 'Factura', 'Deposito', 'ServicioId', 'ImpuestoId', 'Voxel', 'UserId', 'FechaModificacion', 'Empresa', 'UserName'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

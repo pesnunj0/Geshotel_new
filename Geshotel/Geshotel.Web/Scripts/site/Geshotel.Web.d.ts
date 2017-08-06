@@ -1191,8 +1191,8 @@ declare namespace Geshotel.Contratos {
         static formKey: string;
     }
     interface ContadoresForm {
-        EmpresaId: Serenity.IntegerEditor;
-        SerieId: Serenity.IntegerEditor;
+        EmpresaId: Serenity.LookupEditor;
+        SerieId: Serenity.LookupEditor;
         Ano: Serenity.IntegerEditor;
         Contador: Serenity.IntegerEditor;
     }
@@ -1204,6 +1204,8 @@ declare namespace Geshotel.Contratos {
         SerieId?: number;
         Ano?: number;
         Contador?: number;
+        Empresa?: string;
+        Serie?: string;
     }
     namespace ContadoresRow {
         const idProperty = "ContadorId";
@@ -1214,6 +1216,8 @@ declare namespace Geshotel.Contratos {
             const SerieId: string;
             const Ano: string;
             const Contador: string;
+            const Empresa: string;
+            const Serie: string;
         }
     }
 }
@@ -1542,8 +1546,8 @@ declare namespace Geshotel.Contratos {
         NumeroFactura: Serenity.IntegerEditor;
         SerieId: Serenity.IntegerEditor;
         FechaFactura: Serenity.DateEditor;
-        HotelId: Serenity.IntegerEditor;
-        ClienteId: Serenity.IntegerEditor;
+        HotelId: Serenity.LookupEditor;
+        ClienteId: Serenity.LookupEditor;
         FormaPagoId: Serenity.IntegerEditor;
         DireccionFactura: Serenity.StringEditor;
         PoblacionFactura: Serenity.StringEditor;
@@ -1555,7 +1559,7 @@ declare namespace Geshotel.Contratos {
         RefFra2: Serenity.StringEditor;
         IdFacturaRectificada: Serenity.IntegerEditor;
         MotivoRectificacion: Serenity.StringEditor;
-        UserId: Serenity.IntegerEditor;
+        UserId: Serenity.LookupEditor;
         FechaModificacion: Serenity.DateEditor;
     }
 }
@@ -1580,6 +1584,11 @@ declare namespace Geshotel.Contratos {
         MotivoRectificacion?: string;
         UserId?: number;
         FechaModificacion?: string;
+        HotelName?: string;
+        EmpresaId?: number;
+        Empresa?: string;
+        UserName?: string;
+        Razon?: string;
     }
     namespace FacturasRow {
         const idProperty = "FacturaId";
@@ -1605,6 +1614,11 @@ declare namespace Geshotel.Contratos {
             const MotivoRectificacion: string;
             const UserId: string;
             const FechaModificacion: string;
+            const HotelName: string;
+            const EmpresaId: string;
+            const Empresa: string;
+            const UserName: string;
+            const Razon: string;
         }
     }
 }
@@ -2290,7 +2304,7 @@ declare namespace Geshotel.Contratos {
     interface SeriesRow {
         SerieId?: number;
         EmpresaId?: number;
-        Descripcion?: string;
+        Serie?: string;
         Abreviatura?: string;
         Manocorriente?: boolean;
         Visible?: boolean;
@@ -2306,12 +2320,14 @@ declare namespace Geshotel.Contratos {
     }
     namespace SeriesRow {
         const idProperty = "SerieId";
-        const nameProperty = "Descripcion";
+        const nameProperty = "Serie";
         const localTextPrefix = "Contratos.Series";
+        const lookupKey = "Contratos.Series";
+        function getLookup(): Q.Lookup<SeriesRow>;
         namespace Fields {
             const SerieId: string;
             const EmpresaId: string;
-            const Descripcion: string;
+            const Serie: string;
             const Abreviatura: string;
             const Manocorriente: string;
             const Visible: string;
@@ -8512,6 +8528,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8532,6 +8550,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8552,6 +8572,7 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8573,6 +8594,7 @@ declare namespace Geshotel.Contratos {
         protected getService(): string;
         constructor(container: JQuery);
         getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8592,6 +8614,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8813,6 +8837,7 @@ declare namespace Geshotel.Contratos {
         protected getService(): string;
         constructor(container: JQuery);
         getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8823,6 +8848,7 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8843,6 +8869,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8863,6 +8891,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8893,6 +8923,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8972,6 +9004,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -8992,6 +9026,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -9012,6 +9048,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Contratos {
@@ -9033,6 +9071,8 @@ declare namespace Geshotel.Contratos {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Meeting {
@@ -9871,6 +9911,8 @@ declare namespace Geshotel.Portal {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        getButtons(): Serenity.ToolButton[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Geshotel.Portal {
@@ -10537,7 +10579,7 @@ declare namespace Geshotel.Recepcion {
         protected getGridCanLoad(): boolean;
         private _reservaID;
         private _flagcontrato;
-        readonly flagcontrato: number;
+        flagcontrato: number;
         reservaID: number;
     }
 }

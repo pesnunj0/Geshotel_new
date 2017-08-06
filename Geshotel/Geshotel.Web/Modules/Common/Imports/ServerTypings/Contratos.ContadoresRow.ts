@@ -6,6 +6,8 @@ namespace Geshotel.Contratos {
         SerieId?: number;
         Ano?: number;
         Contador?: number;
+        Empresa?: string;
+        Serie?: string;
     }
 
     export namespace ContadoresRow {
@@ -18,9 +20,11 @@ namespace Geshotel.Contratos {
             export declare const SerieId: string;
             export declare const Ano: string;
             export declare const Contador: string;
+            export declare const Empresa: string;
+            export declare const Serie: string;
         }
 
-        ['ContadorId', 'EmpresaId', 'SerieId', 'Ano', 'Contador'].forEach(x => (<any>Fields)[x] = x);
+        ['ContadorId', 'EmpresaId', 'SerieId', 'Ano', 'Contador', 'Empresa', 'Serie'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

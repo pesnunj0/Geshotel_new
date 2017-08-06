@@ -15,8 +15,10 @@ namespace Geshotel.Contratos.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 CupoId { get; set; }
-        //public String ClienteRazon { get; set; }
-        //public String  HotelName { get; set; }
+        [Width(150), QuickFilter, Hidden]
+        public String Empresa { get; set; }
+        [EditLink, Width(150), QuickFilter, QuickFilterOption("CascadeFrom", "EmpresaId")]
+        public String HotelName { get; set; }
         [EditLink,QuickFilter,Width(100)]
         public String TipoHabitacionDescripcion { get; set; }
         [QuickFilter]
