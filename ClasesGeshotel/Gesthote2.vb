@@ -125,9 +125,6 @@ Namespace geshotelk
             Dim resultado As New Text.StringBuilder
             Dim resultadoTabla As New DataSet()
             Try
-
-
-
                 cmd.CommandText = sqlVolcadoErrores
 
                 Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
@@ -332,7 +329,7 @@ Namespace geshotelk
                 Dim dt As Date = Now
                 valor = cmd.ExecuteScalar
                 queryMicrosecs += (Now - dt).Ticks
-            Catch
+            Catch Ex As Exception
                 AgregaInfo("ExecuteScalar", "Error Query:" & sql, -1)
             Finally
                 If previousConnectionState = ConnectionState.Closed Then
@@ -3621,7 +3618,7 @@ Namespace geshotelk
                 If reserva.Tables(0).Rows.Count > 0 Then
                     Dim row As DataRow = reserva.Tables(0).Rows(0)
                     Dim fecha_hotel As Date = FechaHotel(cmd, row("hotel_id"))
-                    If fecha_hotel = row("fecha_prevista_llegada") Then
+                    If fecha_hotel = row("fecha_llegada") Then
                         retVal = True
                     End If
                 End If
@@ -3814,7 +3811,7 @@ Namespace geshotelk
             Return fac
         End Function
         Shared sqlCabReserva = "select * from reservas where reserva_id=?"
-        Shared sqlPrimerHuesped = "SELECT cliente_id FROM reservas_huespedes WHERE reserva_id = ? LIMIT 0, 1"
+        Shared sqlPrimerHuesped = "SELECT huesped_id FROM reservas_huespedes WHERE reserva_id = ? LIMIT 0, 1"
 
         Private Function preparaFactura(ByVal cmd As MySqlCommand, ByVal forma_pago_id As Integer, ByVal reserva_id As Integer, Optional ByVal primerHuesped As Boolean = False, Optional ByVal extCliente_id As Integer = 0)
             Dim sw_ajuste As Boolean = False
@@ -5116,7 +5113,7 @@ Namespace geshotelk
         Shared sqlCuentaServicios = "SELECT count(*) FROM reservas_servicios WHERE reservas_servicios.reserva_id =  ?"
         Shared sqlCuentaLineasFacturaSinFacturas = "SELECT count(*) FROM lineas_factura Left Join facturas ON lineas_factura.factura_id = facturas.Factura_Id WHERE lineas_factura.reserva_id = ? AND ( facturas.Estado_Factura_Id = 0 or facturas.Estado_Factura_Id is null)"
         '    Dim sqlCuentaServiciosSinContrato = "SELECT count(*)-count(contrato_id) FROM reservas_servicios WHERE reservas_servicios.reserva_id =  ?"
-        Shared sqlCuentaLineasFacturaSinFacturasYTipo = "select count(*) from lineas_factura where factura_id is null and lineas_factura.reserva_id=? and tipo_linea_factura=?"
+        Shared sqlCuentaLineasFacturaSinFacturasYTipo = "select count(*) from lineas_factura where factura_id is null and reserva_id=? and tipo_linea_factura=?"
         Shared sqlCuentaLineasFacturaSinFacturasYDistintoTipo = "select count(*) from lineas_factura where factura_id is null and lineas_factura.reserva_id=? and tipo_linea_factura<>?"
         Shared sqlActulizaFechaSalidaLlegadaReserva = "update reservas set fecha_llegada=fecha_prevista_llegada,fecha_salida=? where (permite_devolucion=1 or fecha_prevista_salida=?) and reserva_id=?"
         Shared sqlFacturaAnticipada = "SELECT IF(Coalesce(clientes_hotel.factura_anticipada,0)=1,1,clientes.factura_anticipada) As factura_anticipada " _
@@ -5652,7 +5649,7 @@ Namespace geshotelk
                 Dim nerrores As Integer = datosReservaActual.sumaErrores()
                 cmd.Parameters.Clear()
                 Dim reserva_idParam As New MySqlParameter("@reserva_id", reserva)
-                Dim reserva_idParam2 As New MySqlParameter("@reserva_id", reserva)
+                Dim reserva_idParam2 As New MySqlParameter("@reserva2_id", reserva)
                 cmd.Parameters.Add(reserva_idParam)
                 Dim estado_anterior As Integer = Nothing
                 estado_anterior = ExecuteScalar(cmd, sqlEstadoReserva)
@@ -6013,12 +6010,13 @@ Namespace geshotelk
             Dim retVal2 As Boolean = True
             Dim retVal As Boolean = True
             'cuenta cuantas lineas tipo A existen
-            Dim tipoParam As New MySqlParameter("@tipo", 0)
-            tipoParam.Value = "A"
+            Dim tipoParam As New MySqlParameter("@tipo", "A")
+            'tipoParam.Value = "A"
             cmd.Parameters.Clear()
             cmd.Parameters.Add(reserva_idParam)
             cmd.Parameters.Add(tipoParam)
-            If Me.ExecuteScalar(cmd, sqlCuentaLineasFacturaSinFacturasYTipo) > 0 Then
+            Dim NumLineas = ExecuteScalar(cmd, sqlCuentaLineasFacturaSinFacturasYTipo)
+            If NumLineas > 0 Then
                 'TODO: crear tantas facturas como pag_facturas existan
                 Dim fac As Factura '= abreFactura(cmd, -1, reserva)
                 fac = preparaFactura(cmd, 2, reserva)
