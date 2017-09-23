@@ -1,8 +1,14 @@
-﻿
+﻿/* Se ha añadido
+@Serenity.Decorators.responsive()
+@Serenity.Decorators.maximizable()
+Para hacer el grid responsive
+Javier Nuñez Septiembre 2017
+*/
 namespace Geshotel.Contratos {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()
+    @Serenity.Decorators.maximizable()
     export class ContratosDialog extends Serenity.EntityDialog<ContratosRow, any> {
         protected getFormKey() { return ContratosForm.formKey; }
         protected getIdProperty() { return ContratosRow.idProperty; }

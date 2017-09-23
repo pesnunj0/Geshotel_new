@@ -7856,6 +7856,12 @@ var Geshotel;
         Contratos.ContratosCuposGrid = ContratosCuposGrid;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
+/* Se ha añadido
+@Serenity.Decorators.responsive()
+@Serenity.Decorators.maximizable()
+Para hacer el grid responsive
+Javier Nuñez Septiembre 2017
+*/
 var Geshotel;
 (function (Geshotel) {
     var Contratos;
@@ -7914,7 +7920,8 @@ var Geshotel;
         }(Serenity.EntityDialog));
         ContratosDialog = __decorate([
             Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
+            Serenity.Decorators.responsive(),
+            Serenity.Decorators.maximizable()
         ], ContratosDialog);
         Contratos.ContratosDialog = ContratosDialog;
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
@@ -13675,6 +13682,12 @@ var Geshotel;
         Recepcion.HuespedesGrid = HuespedesGrid;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
+/* Se ha añadido
+@Serenity.Decorators.responsive()
+@Serenity.Decorators.maximizable()
+Para hacer el grid responsive
+Javier Nuñez Septiembre 2017
+*/
 var Geshotel;
 (function (Geshotel) {
     var Recepcion;
@@ -13909,7 +13922,8 @@ var Geshotel;
         }(Serenity.EntityDialog));
         ReservasDialog = __decorate([
             Serenity.Decorators.registerClass(),
-            Serenity.Decorators.responsive()
+            Serenity.Decorators.responsive(),
+            Serenity.Decorators.maximizable()
         ], ReservasDialog);
         Recepcion.ReservasDialog = ReservasDialog;
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));

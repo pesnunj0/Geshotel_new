@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/ClasesGeshotel.dll">
-      <publishTime>08/08/2017 16:48:27</publishTime>
+      <publishTime>09/19/2017 16:31:24</publishTime>
     </File>
     <File Include="bin/CsQuery.dll">
       <publishTime>02/05/2013 06:41:36</publishTime>
@@ -31,7 +31,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 11:25:12</publishTime>
     </File>
     <File Include="bin/Geshotel.Web.dll">
-      <publishTime>08/08/2017 16:48:37</publishTime>
+      <publishTime>09/19/2017 16:31:27</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 12:48:56</publishTime>
@@ -52,19 +52,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 20:56:14</publishTime>
     </File>
     <File Include="bin/Serenity.Core.dll">
-      <publishTime>07/23/2017 13:59:04</publishTime>
+      <publishTime>06/09/2017 23:42:30</publishTime>
     </File>
     <File Include="bin/Serenity.Data.dll">
-      <publishTime>07/23/2017 13:59:06</publishTime>
+      <publishTime>06/09/2017 23:42:34</publishTime>
     </File>
     <File Include="bin/Serenity.Data.Entity.dll">
-      <publishTime>07/23/2017 13:59:06</publishTime>
+      <publishTime>06/09/2017 23:42:34</publishTime>
     </File>
     <File Include="bin/Serenity.Services.dll">
-      <publishTime>07/23/2017 13:59:08</publishTime>
+      <publishTime>06/09/2017 23:42:34</publishTime>
     </File>
     <File Include="bin/Serenity.Web.dll">
-      <publishTime>07/23/2017 13:59:10</publishTime>
+      <publishTime>06/09/2017 23:42:36</publishTime>
     </File>
     <File Include="bin/StackExchange.Exceptional.dll">
       <publishTime>08/04/2015 00:51:54</publishTime>
@@ -853,946 +853,946 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/29/2017 22:11:44</publishTime>
     </File>
     <File Include="Content/serenity/images/32px.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/accessright.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/accordion-down.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/accordion-left.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/accordion-right.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/add.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/add2.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/address-book-open.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/address-book.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/agenda.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/alarm-clock-exclamation.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/alarm-clock.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/application-resize-actual.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/application-resize-full.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/application-resize.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/apply-button.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/apply-changes-button.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-circle-135.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-circle-double.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-continue.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-curve-left.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-down.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-step-over.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-stop.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/arrow-up.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/asterisk.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/auction-hammer.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/back-arrow-black.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/back-arrow-white.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/balance.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/balloon.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/balloons.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/barcode.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bell.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bin-exclamation.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bin-minus.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bin.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/binocular.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/blank.gif">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/block.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/blog.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bomb.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/book-open.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/book.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/bookmark.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:41</publishTime>
     </File>
     <File Include="Content/serenity/images/box.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/briefcase.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/brightness-small-low.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/brightness-small.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/bug.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/building-arrow.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/building-medium.png">
-      <publishTime>01/08/2017 08:43:16</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/building-old.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/building.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calculator.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calculator2.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calculator3.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calendar-blue.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calendar-day.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calendar-task.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/calendar.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/card-small.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/categories.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/category.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/certificate-fail.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/certificate-fail2.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/certificate-ok.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/certificate-ok2.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/chain-small.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/check2.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/checkbox-gray.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/checkbox-no.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/checkbox-null.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/checkbox-states.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/checkbox-yes.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/clipboard-list.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/clipboard-task.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/clock.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/column-picker.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/construction.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/control-record-small.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/counter.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/credit-card.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/cross-script.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/cross.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/csv.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/currency.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/cv.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/data-sync.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/datepicker.gif">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/datepicker.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/delete.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/delete2.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/dialog-alert.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/dialog-confirm.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/dialog-information.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/dialog-warning.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/direction.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/disk-arrow.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/disk-black-accept.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/disk-black.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/disk.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/doc.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document-copy.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document-print-preview.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document-small-list.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document-small.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document-task.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/document.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/documents-stack.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/docx.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/door.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/down.gif">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/drawer.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/dropdown.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/edit.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/envelope.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/eraser-plus.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/eraser.png">
-      <publishTime>01/08/2017 08:43:15</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/exclamation.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/eye.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/feed.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/file-import.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/fingerprint.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/folder-arrow.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/folder-close.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/folder-horizontal.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/folder-import.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/folder-open-document.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/full-screen-2.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/funnel.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/gear.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/get-products.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/get.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/globe-small.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/grid-title-bg.gif">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/gtk-print-preview.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/hammer-screwdriver.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/hammer.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/header-columns-bg.gif">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/header-columns-over-bg.gif">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/home.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/hourglass.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/inbox-document-text.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/inbox-document.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/inbox.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/information-frame.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/item.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/jpg.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/key.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/keyboard.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/layer-small.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/license-key.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/lifebuoy.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/light-bulb.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/list-delete.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/loading.gif">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/location.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/lock.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/luggage.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/magnifier-left.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/magnifier-medium-left.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/magnifier-medium.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/magnifier-zoom.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:40</publishTime>
     </File>
     <File Include="Content/serenity/images/magnifier.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/mail-open.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/mail.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/maximize-button.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/maximize-button2.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/medal.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/meeting.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/mhtml.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/money.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/new.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/newspaper.png">
-      <publishTime>01/08/2017 08:43:14</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/node-insert-next.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/node-select-all.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/notebook-pencil.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/notebook-share.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/notebook.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/notebooks.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/odata.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ok.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/open-share.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/order.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/organization-tree.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/outlook.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pager-bg.gif">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pager-buttons.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pager-load.gif">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/paper-bag.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/paper-clip.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/payment.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pda.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pdf.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pencil.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/picture-delete.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/picture.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pill.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pin.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/pipette.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/place-empty.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plug.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plus-button.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plus-circle-false.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plus-circle.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plus-octagon-frame.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/plus.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/png.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/price-tag.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/printer.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/product.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/project-logs.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/project-module.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/project-version.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/project.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/projection-screen-presentation.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/projection-screen.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/property-blue.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/property.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/question-frame.png">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/quick-search-loading.gif">
-      <publishTime>01/08/2017 08:43:13</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/receipt.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report-arrow.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report-excel.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report-minus.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report-pencil.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report-plus.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/report.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ruby.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ruler.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/safe.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sale.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/scissors.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/script.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/scripts-text.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sitemap-application-blue.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sitemap.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/slash.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/slick-header-columns-over-bg.gif">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/slides.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sofa.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sort-order.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/spreadsheet-template.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/spreadsheet.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sprites.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/star-pencil.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-note-plus.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-note-small-pin.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-note-small.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-notes-pin.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-notes-stack.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/sticky-notes.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/stock.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/store.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/table-chart.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/table-header.gif">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/table-select-all.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/table.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag--arrow.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag--exclamation.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag-label.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag-plus.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag-small.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tag.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tags-label.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tags.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/thumb-file-72.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tick-empty.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tick-green.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tick-red.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ticket-arrow.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ticket-exclamation.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ticket-plus.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ticket-stub.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ticket-user.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toggle-expand.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toggle-small-expand.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toggle-small.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toggle.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toolbar-bg.gif">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/toolbox.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/trash.gif">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/trash.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/tree-item.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/truck.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ui-check-box-uncheck.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/ui-radio-button-uncheck.png">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/unchecked.gif">
-      <publishTime>01/08/2017 08:43:12</publishTime>
+      <publishTime>09/10/2017 16:16:39</publishTime>
     </File>
     <File Include="Content/serenity/images/universal.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/unlock-disable.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/unlock.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user-arrow.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user-business.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user-female.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user-share.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user-worker.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/user.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/users.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/viewtree.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wall-brick.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wand-plus.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wand.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/warning.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wheel.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wooden-box.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wrench-screwdriver.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/wrench.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/xls.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/xlsx.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/xml.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/zones-stack.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/images/zoom.png">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/serenity/serenity.css">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Content/simple-line-icons.css">
       <publishTime>01/29/2017 22:11:44</publishTime>
@@ -1831,7 +1831,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2017 21:45:20</publishTime>
     </File>
     <File Include="Content/site/site.css">
-      <publishTime>08/08/2017 16:48:40</publishTime>
+      <publishTime>09/19/2017 16:31:28</publishTime>
     </File>
     <File Include="Content/site/site.htmlcontent.css">
       <publishTime>01/29/2017 22:11:49</publishTime>
@@ -2221,7 +2221,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/29/2017 16:23:25</publishTime>
     </File>
     <File Include="Modules/Common/Imports/ClientTypes/ClientTypes.log">
-      <publishTime>08/08/2017 16:46:25</publishTime>
+      <publishTime>09/19/2017 16:27:48</publishTime>
     </File>
     <File Include="Modules/Common/Imports/CodeGenerationHelpers.ttinclude">
       <publishTime>05/29/2017 16:23:25</publishTime>
@@ -2527,10 +2527,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/29/2017 16:23:24</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/08/2017 08:43:47</publishTime>
+      <publishTime>09/10/2017 16:17:12</publishTime>
     </File>
     <File Include="Readme.CodeGenerator.txt">
-      <publishTime>01/08/2017 08:43:47</publishTime>
+      <publishTime>09/10/2017 16:17:12</publishTime>
     </File>
     <File Include="Scripts/adminlte/app.js">
       <publishTime>01/29/2017 22:11:57</publishTime>
@@ -3823,49 +3823,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/29/2017 22:11:57</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.CoreLib.js">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.CoreLib.min.js">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.Script.UI.js">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/Serenity.Script.UI.min.js">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.de.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.es.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.fa.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.it.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.pt-BR.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.pt.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.ru.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.tr.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.vi-VN.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/serenity/texts/serenity.texts.zh-CN.json">
-      <publishTime>01/08/2017 08:43:11</publishTime>
+      <publishTime>09/10/2017 16:16:38</publishTime>
     </File>
     <File Include="Scripts/site/Geshotel.Web.js">
-      <publishTime>08/08/2017 16:48:51</publishTime>
+      <publishTime>09/19/2017 16:31:36</publishTime>
     </File>
     <File Include="Scripts/site/texts/meeting/meeting.vi-VN.json">
       <publishTime>01/29/2017 22:11:59</publishTime>
@@ -4306,7 +4306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/08/2017 18:59:29</publishTime>
+      <publishTime>09/10/2017 16:24:09</publishTime>
     </File>
     <File Include="Welcome.htm">
       <publishTime>01/29/2017 22:11:44</publishTime>
