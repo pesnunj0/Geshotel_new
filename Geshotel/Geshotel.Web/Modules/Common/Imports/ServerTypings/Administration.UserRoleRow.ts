@@ -20,7 +20,13 @@ namespace Geshotel.Administration {
             export declare const User: string;
         }
 
-        ['UserRoleId', 'UserId', 'RoleId', 'Username', 'User'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'UserRoleId', 
+            'UserId', 
+            'RoleId', 
+            'Username', 
+            'User'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

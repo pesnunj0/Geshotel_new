@@ -34,7 +34,17 @@ namespace Geshotel.Contratos {
             export declare const ServicioName: string;
         }
 
-        ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'HotelName', 'EmpresaId', 'Empresa', 'TipoHabitacionName', 'ServicioName'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoHabitacionHotelId', 
+            'HotelId', 
+            'TipoHabitacionId', 
+            'ServicioId', 
+            'HotelName', 
+            'EmpresaId', 
+            'Empresa', 
+            'TipoHabitacionName', 
+            'ServicioName'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

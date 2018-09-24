@@ -20,7 +20,10 @@ namespace Geshotel.Meeting {
             export declare const Name: string;
         }
 
-        ['AgendaTypeId', 'Name'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'AgendaTypeId', 
+            'Name'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

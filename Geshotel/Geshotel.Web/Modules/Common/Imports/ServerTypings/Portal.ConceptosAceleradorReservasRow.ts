@@ -20,7 +20,10 @@ namespace Geshotel.Portal {
             export declare const Concepto: string;
         }
 
-        ['ConceptoAceleradorId', 'Concepto'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ConceptoAceleradorId', 
+            'Concepto'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

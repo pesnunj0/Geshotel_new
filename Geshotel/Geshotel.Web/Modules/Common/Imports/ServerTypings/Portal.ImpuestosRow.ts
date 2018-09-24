@@ -36,7 +36,18 @@ namespace Geshotel.Portal {
             export declare const Empresa: string;
         }
 
-        ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaModificacion', 'UserName', 'Empresa'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ImpuestoId', 
+            'EmpresaId', 
+            'Impuesto', 
+            'Porcentaje', 
+            'CtaContable', 
+            'ActivoGeshotel', 
+            'UserId', 
+            'FechaModificacion', 
+            'UserName', 
+            'Empresa'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

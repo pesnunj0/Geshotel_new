@@ -20,7 +20,10 @@ namespace Geshotel.Portal {
             export declare const Imputacion: string;
         }
 
-        ['TipoImputacionId', 'Imputacion'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoImputacionId', 
+            'Imputacion'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

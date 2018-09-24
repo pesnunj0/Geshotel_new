@@ -22,7 +22,11 @@ namespace Geshotel.Administration {
             export declare const LanguageName: string;
         }
 
-        ['Id', 'LanguageId', 'LanguageName'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'Id', 
+            'LanguageId', 
+            'LanguageName'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -26,7 +26,13 @@ namespace Geshotel.Northwind {
             export declare const RegionDescription: string;
         }
 
-        ['ID', 'TerritoryID', 'TerritoryDescription', 'RegionID', 'RegionDescription'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ID', 
+            'TerritoryID', 
+            'TerritoryDescription', 
+            'RegionID', 
+            'RegionDescription'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -1511,7 +1511,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = LanguageRow.Fields || (LanguageRow.Fields = {}));
-            ['Id', 'LanguageId', 'LanguageName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'Id',
+                'LanguageId',
+                'LanguageName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(LanguageRow = Administration.LanguageRow || (Administration.LanguageRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1525,8 +1529,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = LanguageService.Methods || (LanguageService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                LanguageService[x] = function (r, s, o) { return Q.serviceRequest(LanguageService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                LanguageService[x] = function (r, s, o) {
+                    return Q.serviceRequest(LanguageService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = LanguageService.baseUrl + '/' + x;
             });
         })(LanguageService = Administration.LanguageService || (Administration.LanguageService = {}));
@@ -1560,7 +1572,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = RolePermissionRow.Fields || (RolePermissionRow.Fields = {}));
-            ['RolePermissionId', 'RoleId', 'PermissionKey', 'RoleRoleName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'RolePermissionId',
+                'RoleId',
+                'PermissionKey',
+                'RoleRoleName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(RolePermissionRow = Administration.RolePermissionRow || (Administration.RolePermissionRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1574,8 +1591,13 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = RolePermissionService.Methods || (RolePermissionService.Methods = {}));
-            ['Update', 'List'].forEach(function (x) {
-                RolePermissionService[x] = function (r, s, o) { return Q.serviceRequest(RolePermissionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Update',
+                'List'
+            ].forEach(function (x) {
+                RolePermissionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RolePermissionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = RolePermissionService.baseUrl + '/' + x;
             });
         })(RolePermissionService = Administration.RolePermissionService || (Administration.RolePermissionService = {}));
@@ -1598,7 +1620,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = RoleRow.Fields || (RoleRow.Fields = {}));
-            ['RoleId', 'RoleName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'RoleId',
+                'RoleName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(RoleRow = Administration.RoleRow || (Administration.RoleRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1612,8 +1637,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = RoleService.Methods || (RoleService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                RoleService[x] = function (r, s, o) { return Q.serviceRequest(RoleService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                RoleService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RoleService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = RoleService.baseUrl + '/' + x;
             });
         })(RoleService = Administration.RoleService || (Administration.RoleService = {}));
@@ -1629,8 +1662,13 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TranslationService.Methods || (TranslationService.Methods = {}));
-            ['List', 'Update'].forEach(function (x) {
-                TranslationService[x] = function (r, s, o) { return Q.serviceRequest(TranslationService.baseUrl + '/' + x, r, s, o); };
+            [
+                'List',
+                'Update'
+            ].forEach(function (x) {
+                TranslationService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TranslationService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TranslationService.baseUrl + '/' + x;
             });
         })(TranslationService = Administration.TranslationService || (Administration.TranslationService = {}));
@@ -1664,7 +1702,14 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = UserPermissionRow.Fields || (UserPermissionRow.Fields = {}));
-            ['UserPermissionId', 'UserId', 'PermissionKey', 'Granted', 'Username', 'User'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UserPermissionId',
+                'UserId',
+                'PermissionKey',
+                'Granted',
+                'Username',
+                'User'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(UserPermissionRow = Administration.UserPermissionRow || (Administration.UserPermissionRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1678,8 +1723,15 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = UserPermissionService.Methods || (UserPermissionService.Methods = {}));
-            ['Update', 'List', 'ListRolePermissions', 'ListPermissionKeys'].forEach(function (x) {
-                UserPermissionService[x] = function (r, s, o) { return Q.serviceRequest(UserPermissionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Update',
+                'List',
+                'ListRolePermissions',
+                'ListPermissionKeys'
+            ].forEach(function (x) {
+                UserPermissionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserPermissionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = UserPermissionService.baseUrl + '/' + x;
             });
         })(UserPermissionService = Administration.UserPermissionService || (Administration.UserPermissionService = {}));
@@ -1696,7 +1748,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = UserRoleRow.Fields || (UserRoleRow.Fields = {}));
-            ['UserRoleId', 'UserId', 'RoleId', 'Username', 'User'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UserRoleId',
+                'UserId',
+                'RoleId',
+                'Username',
+                'User'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(UserRoleRow = Administration.UserRoleRow || (Administration.UserRoleRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1710,8 +1768,13 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = UserRoleService.Methods || (UserRoleService.Methods = {}));
-            ['Update', 'List'].forEach(function (x) {
-                UserRoleService[x] = function (r, s, o) { return Q.serviceRequest(UserRoleService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Update',
+                'List'
+            ].forEach(function (x) {
+                UserRoleService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserRoleService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = UserRoleService.baseUrl + '/' + x;
             });
         })(UserRoleService = Administration.UserRoleService || (Administration.UserRoleService = {}));
@@ -1735,7 +1798,28 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = UserRow.Fields || (UserRow.Fields = {}));
-            ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'EmpresaId', 'HotelId', 'Empresa', 'HotelName', 'Password', 'PasswordConfirm', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UserId',
+                'Username',
+                'Source',
+                'PasswordHash',
+                'PasswordSalt',
+                'DisplayName',
+                'Email',
+                'UserImage',
+                'LastDirectoryUpdate',
+                'IsActive',
+                'EmpresaId',
+                'HotelId',
+                'Empresa',
+                'HotelName',
+                'Password',
+                'PasswordConfirm',
+                'InsertUserId',
+                'InsertDate',
+                'UpdateUserId',
+                'UpdateDate'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(UserRow = Administration.UserRow || (Administration.UserRow = {}));
     })(Administration = Geshotel.Administration || (Geshotel.Administration = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1749,8 +1833,17 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = UserService.Methods || (UserService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Undelete', 'Retrieve', 'List'].forEach(function (x) {
-                UserService[x] = function (r, s, o) { return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Undelete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                UserService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = UserService.baseUrl + '/' + x;
             });
         })(UserService = Administration.UserService || (Administration.UserService = {}));
@@ -1768,7 +1861,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = UserPreferenceRow.Fields || (UserPreferenceRow.Fields = {}));
-            ['UserPreferenceId', 'UserId', 'PreferenceType', 'Name', 'Value'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UserPreferenceId',
+                'UserId',
+                'PreferenceType',
+                'Name',
+                'Value'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(UserPreferenceRow = Common.UserPreferenceRow || (Common.UserPreferenceRow = {}));
     })(Common = Geshotel.Common || (Geshotel.Common = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1782,8 +1881,13 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = UserPreferenceService.Methods || (UserPreferenceService.Methods = {}));
-            ['Update', 'Retrieve'].forEach(function (x) {
-                UserPreferenceService[x] = function (r, s, o) { return Q.serviceRequest(UserPreferenceService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Update',
+                'Retrieve'
+            ].forEach(function (x) {
+                UserPreferenceService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserPreferenceService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = UserPreferenceService.baseUrl + '/' + x;
             });
         })(UserPreferenceService = Common.UserPreferenceService || (Common.UserPreferenceService = {}));
@@ -1822,7 +1926,55 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = AgenciasRow.Fields || (AgenciasRow.Fields = {}));
-            ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ClienteId',
+                'Razon',
+                'DescCorta',
+                'EmpresaId',
+                'GrupoClienteId',
+                'TipoDocumentoId',
+                'Nif',
+                'FechaDocumento',
+                'Direccion',
+                'Poblacion',
+                'Zip',
+                'NacionId',
+                'ProvinciaId',
+                'CtaContableAnticipo',
+                'CtaContable',
+                'DptoContable',
+                'CtaDepositos',
+                'Telefono',
+                'Email',
+                'Fax',
+                'Contacto',
+                'TelefonoContacto',
+                'FaxContacto',
+                'EmailContacto',
+                'CifFra',
+                'DireccionFra',
+                'PoblacionFra',
+                'ZipFra',
+                'NacionIdFactura',
+                'ProvinciaIdFactura',
+                'ClienteFactura',
+                'ClienteHuesped',
+                'PermiteCredito',
+                'LimiteCredito',
+                'FacturaAnticipada',
+                'VencimientoFacturasId',
+                'UserId',
+                'FechaModificacion',
+                'ClienteBavel',
+                'DingusExtras',
+                'Empresa',
+                'TipoDocumento',
+                'Nacion',
+                'Provincia',
+                'FacturaNacion',
+                'FacturaProvincia',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(AgenciasRow = Contratos.AgenciasRow || (Contratos.AgenciasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1836,8 +1988,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = AgenciasService.Methods || (AgenciasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                AgenciasService[x] = function (r, s, o) { return Q.serviceRequest(AgenciasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                AgenciasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(AgenciasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = AgenciasService.baseUrl + '/' + x;
             });
         })(AgenciasService = Contratos.AgenciasService || (Contratos.AgenciasService = {}));
@@ -1876,7 +2036,21 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CajasRow.Fields || (CajasRow.Fields = {}));
-            ['CajaId', 'HotelId', 'NombreCaja', 'DescCorta', 'CierreDia', 'CtaContable', 'DptoContable', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CajaId',
+                'HotelId',
+                'NombreCaja',
+                'DescCorta',
+                'CierreDia',
+                'CtaContable',
+                'DptoContable',
+                'UserId',
+                'FechaModificacion',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CajasRow = Contratos.CajasRow || (Contratos.CajasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1890,8 +2064,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CajasService.Methods || (CajasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CajasService[x] = function (r, s, o) { return Q.serviceRequest(CajasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CajasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CajasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CajasService.baseUrl + '/' + x;
             });
         })(CajasService = Contratos.CajasService || (Contratos.CajasService = {}));
@@ -1930,7 +2112,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CanalesReservaRow.Fields || (CanalesReservaRow.Fields = {}));
-            ['CanalReservaId', 'EmpresaId', 'NombreCanal', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CanalReservaId',
+                'EmpresaId',
+                'NombreCanal',
+                'Empresa'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CanalesReservaRow = Contratos.CanalesReservaRow || (Contratos.CanalesReservaRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1944,8 +2131,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CanalesReservaService.Methods || (CanalesReservaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CanalesReservaService[x] = function (r, s, o) { return Q.serviceRequest(CanalesReservaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CanalesReservaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CanalesReservaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CanalesReservaService.baseUrl + '/' + x;
             });
         })(CanalesReservaService = Contratos.CanalesReservaService || (Contratos.CanalesReservaService = {}));
@@ -1984,7 +2179,58 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ClientesRow.Fields || (ClientesRow.Fields = {}));
-            ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'AgenciaId', 'ClienteDefecto', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'Agencia', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ClienteId',
+                'Razon',
+                'DescCorta',
+                'EmpresaId',
+                'AgenciaId',
+                'ClienteDefecto',
+                'GrupoClienteId',
+                'TipoDocumentoId',
+                'Nif',
+                'FechaDocumento',
+                'Direccion',
+                'Poblacion',
+                'Zip',
+                'NacionId',
+                'ProvinciaId',
+                'CtaContableAnticipo',
+                'CtaContable',
+                'DptoContable',
+                'CtaDepositos',
+                'Telefono',
+                'Email',
+                'Fax',
+                'Contacto',
+                'TelefonoContacto',
+                'FaxContacto',
+                'EmailContacto',
+                'CifFra',
+                'DireccionFra',
+                'PoblacionFra',
+                'ZipFra',
+                'NacionIdFactura',
+                'ProvinciaIdFactura',
+                'ClienteFactura',
+                'ClienteHuesped',
+                'PermiteCredito',
+                'LimiteCredito',
+                'FacturaAnticipada',
+                'VencimientoFacturasId',
+                'UserId',
+                'FechaModificacion',
+                'ClienteBavel',
+                'DingusExtras',
+                'Empresa',
+                'Agencia',
+                'TipoDocumento',
+                'Nacion',
+                'Provincia',
+                'FacturaNacion',
+                'FacturaProvincia',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ClientesRow = Contratos.ClientesRow || (Contratos.ClientesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -1998,8 +2244,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ClientesService.Methods || (ClientesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ClientesService[x] = function (r, s, o) { return Q.serviceRequest(ClientesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ClientesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ClientesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ClientesService.baseUrl + '/' + x;
             });
         })(ClientesService = Contratos.ClientesService || (Contratos.ClientesService = {}));
@@ -2032,7 +2286,15 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ContadoresRow.Fields || (ContadoresRow.Fields = {}));
-            ['ContadorId', 'EmpresaId', 'SerieId', 'Ano', 'Contador', 'Empresa', 'Serie'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ContadorId',
+                'EmpresaId',
+                'SerieId',
+                'Ano',
+                'Contador',
+                'Empresa',
+                'Serie'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ContadoresRow = Contratos.ContadoresRow || (Contratos.ContadoresRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2046,8 +2308,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ContadoresService.Methods || (ContadoresService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ContadoresService[x] = function (r, s, o) { return Q.serviceRequest(ContadoresService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ContadoresService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ContadoresService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ContadoresService.baseUrl + '/' + x;
             });
         })(ContadoresService = Contratos.ContadoresService || (Contratos.ContadoresService = {}));
@@ -2134,7 +2404,28 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ContratosRow.Fields || (ContratosRow.Fields = {}));
-            ['ContratoId', 'HotelId', 'ClienteId', 'FechaContrato', 'FechaDesde', 'FechaHasta', 'NumeroContratoCliente', 'UserId', 'FechaModificacion', 'TemporadaId', 'ImpuestoIncluido', 'MercadoId', 'HotelName', 'Touroperador', 'EmpresaId', 'Empresa', 'Mercado', 'Temporada', 'UserName', 'Ficheros'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ContratoId',
+                'HotelId',
+                'ClienteId',
+                'FechaContrato',
+                'FechaDesde',
+                'FechaHasta',
+                'NumeroContratoCliente',
+                'UserId',
+                'FechaModificacion',
+                'TemporadaId',
+                'ImpuestoIncluido',
+                'MercadoId',
+                'HotelName',
+                'Touroperador',
+                'EmpresaId',
+                'Empresa',
+                'Mercado',
+                'Temporada',
+                'UserName',
+                'Ficheros'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ContratosRow = Contratos.ContratosRow || (Contratos.ContratosRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2148,8 +2439,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ContratosService.Methods || (ContratosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ContratosService[x] = function (r, s, o) { return Q.serviceRequest(ContratosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ContratosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ContratosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ContratosService.baseUrl + '/' + x;
             });
         })(ContratosService = Contratos.ContratosService || (Contratos.ContratosService = {}));
@@ -2187,7 +2486,27 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CuposRow.Fields || (CuposRow.Fields = {}));
-            ['CupoId', 'ClienteId', 'HotelId', 'FechaDesde', 'FechaHasta', 'TipoHabitacionId', 'Garantia', 'ReservaAutomatica', 'Cupo', 'UserId', 'FechaModificacion', 'ClienteRazon', 'ClienteDescCorta', 'HotelName', 'EmpresaId', 'Empresa', 'TipoHabitacionDescCorta', 'TipoHabitacionDescripcion', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CupoId',
+                'ClienteId',
+                'HotelId',
+                'FechaDesde',
+                'FechaHasta',
+                'TipoHabitacionId',
+                'Garantia',
+                'ReservaAutomatica',
+                'Cupo',
+                'UserId',
+                'FechaModificacion',
+                'ClienteRazon',
+                'ClienteDescCorta',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'TipoHabitacionDescCorta',
+                'TipoHabitacionDescripcion',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CuposRow = Contratos.CuposRow || (Contratos.CuposRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2201,8 +2520,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CuposService.Methods || (CuposService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CuposService[x] = function (r, s, o) { return Q.serviceRequest(CuposService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CuposService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CuposService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CuposService.baseUrl + '/' + x;
             });
         })(CuposService = Contratos.CuposService || (Contratos.CuposService = {}));
@@ -2236,7 +2563,24 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = EdadesRow.Fields || (EdadesRow.Fields = {}));
-            ['EdadesId', 'HotelId', 'ClienteId', 'FechaDesde', 'FechaHasta', 'TipoHuespedId', 'EdadMinima', 'EdadMaxima', 'UserId', 'FechaModificacion', 'HotelName', 'Touroperador', 'EmpresaId', 'Empresa', 'UserName', 'TipoHuesped'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EdadesId',
+                'HotelId',
+                'ClienteId',
+                'FechaDesde',
+                'FechaHasta',
+                'TipoHuespedId',
+                'EdadMinima',
+                'EdadMaxima',
+                'UserId',
+                'FechaModificacion',
+                'HotelName',
+                'Touroperador',
+                'EmpresaId',
+                'Empresa',
+                'UserName',
+                'TipoHuesped'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(EdadesRow = Contratos.EdadesRow || (Contratos.EdadesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2250,8 +2594,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = EdadesService.Methods || (EdadesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                EdadesService[x] = function (r, s, o) { return Q.serviceRequest(EdadesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                EdadesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(EdadesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = EdadesService.baseUrl + '/' + x;
             });
         })(EdadesService = Contratos.EdadesService || (Contratos.EdadesService = {}));
@@ -2285,7 +2637,32 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = FacturasRow.Fields || (FacturasRow.Fields = {}));
-            ['FacturaId', 'NumeroFactura', 'SerieId', 'FechaFactura', 'HotelId', 'ClienteId', 'FormaPagoId', 'DireccionFactura', 'PoblacionFactura', 'Zip', 'ProvinciaId', 'FechaVencimiento', 'EstadoFacturaId', 'RefFra1', 'RefFra2', 'IdFacturaRectificada', 'MotivoRectificacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName', 'Razon'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'FacturaId',
+                'NumeroFactura',
+                'SerieId',
+                'FechaFactura',
+                'HotelId',
+                'ClienteId',
+                'FormaPagoId',
+                'DireccionFactura',
+                'PoblacionFactura',
+                'Zip',
+                'ProvinciaId',
+                'FechaVencimiento',
+                'EstadoFacturaId',
+                'RefFra1',
+                'RefFra2',
+                'IdFacturaRectificada',
+                'MotivoRectificacion',
+                'UserId',
+                'FechaModificacion',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'UserName',
+                'Razon'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(FacturasRow = Contratos.FacturasRow || (Contratos.FacturasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2299,8 +2676,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = FacturasService.Methods || (FacturasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                FacturasService[x] = function (r, s, o) { return Q.serviceRequest(FacturasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                FacturasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(FacturasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = FacturasService.baseUrl + '/' + x;
             });
         })(FacturasService = Contratos.FacturasService || (Contratos.FacturasService = {}));
@@ -2339,7 +2724,35 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HabitacionesRow.Fields || (HabitacionesRow.Fields = {}));
-            ['HabitacionId', 'HotelId', 'NumeroHabitacion', 'TipoHabitacionId', 'Extension', 'Observaciones', 'SituacionId', 'FechaInicio', 'EstadoTelefono', 'EstadoProcesado', 'HabitacionIsta', 'ZonaLimpiezaId', 'Lat', 'Lng', 'PrimaryImage', 'Galleryimages', 'Planta', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName', 'TipoHabitacionDescCorta', 'TipoHabitacionName', 'Situacion', 'ZonaLimpiezaNombreZona'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'HabitacionId',
+                'HotelId',
+                'NumeroHabitacion',
+                'TipoHabitacionId',
+                'Extension',
+                'Observaciones',
+                'SituacionId',
+                'FechaInicio',
+                'EstadoTelefono',
+                'EstadoProcesado',
+                'HabitacionIsta',
+                'ZonaLimpiezaId',
+                'Lat',
+                'Lng',
+                'PrimaryImage',
+                'Galleryimages',
+                'Planta',
+                'UserId',
+                'FechaModificacion',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'UserName',
+                'TipoHabitacionDescCorta',
+                'TipoHabitacionName',
+                'Situacion',
+                'ZonaLimpiezaNombreZona'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(HabitacionesRow = Contratos.HabitacionesRow || (Contratos.HabitacionesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2353,8 +2766,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = HabitacionesService.Methods || (HabitacionesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                HabitacionesService[x] = function (r, s, o) { return Q.serviceRequest(HabitacionesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                HabitacionesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(HabitacionesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = HabitacionesService.baseUrl + '/' + x;
             });
         })(HabitacionesService = Contratos.HabitacionesService || (Contratos.HabitacionesService = {}));
@@ -2388,7 +2809,35 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = LineasFacturaRow.Fields || (LineasFacturaRow.Fields = {}));
-            ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste', 'HotelName', 'EmpresaId', 'Empresa', 'Username', 'Importe', 'NombreServicio', 'UnidadCalculo'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'LineaFacturaId',
+                'HotelId',
+                'Fecha',
+                'FacturaId',
+                'ReservaId',
+                'ContratoId',
+                'Descripcion',
+                'Cantidad',
+                'Precio',
+                'ImpuestoId',
+                'PorcImpuesto',
+                'ServicioId',
+                'UnidadCalculoId',
+                'TipoLineaFactura',
+                'PrecioProduccion',
+                'PagFactura',
+                'Costo',
+                'UserId',
+                'FechaModificacion',
+                'SwAjuste',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'Username',
+                'Importe',
+                'NombreServicio',
+                'UnidadCalculo'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(LineasFacturaRow = Contratos.LineasFacturaRow || (Contratos.LineasFacturaRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2402,8 +2851,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = LineasFacturaService.Methods || (LineasFacturaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                LineasFacturaService[x] = function (r, s, o) { return Q.serviceRequest(LineasFacturaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                LineasFacturaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(LineasFacturaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = LineasFacturaService.baseUrl + '/' + x;
             });
         })(LineasFacturaService = Contratos.LineasFacturaService || (Contratos.LineasFacturaService = {}));
@@ -2436,7 +2893,39 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = LineasRow.Fields || (LineasRow.Fields = {}));
-            ['LineaContratoId', 'ContratoId', 'Oferta', 'Desde', 'Hasta', 'ServicioId', 'UnidadCalculoId', 'FrecuenciaId', 'TipoImputacionId', 'Importe', 'TipoServicioId', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo', 'PagFactura', 'UserId', 'FechaModificacion', 'Servicio', 'DescripcionUnidadCalculo', 'Frecuencia', 'Imputacion', 'UserName', 'TipoServicio', 'HotelId', 'HotelName', 'EmpresaId', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'LineaContratoId',
+                'ContratoId',
+                'Oferta',
+                'Desde',
+                'Hasta',
+                'ServicioId',
+                'UnidadCalculoId',
+                'FrecuenciaId',
+                'TipoImputacionId',
+                'Importe',
+                'TipoServicioId',
+                'Lunes',
+                'Martes',
+                'Miercoles',
+                'Jueves',
+                'Viernes',
+                'Sabado',
+                'Domingo',
+                'PagFactura',
+                'UserId',
+                'FechaModificacion',
+                'Servicio',
+                'DescripcionUnidadCalculo',
+                'Frecuencia',
+                'Imputacion',
+                'UserName',
+                'TipoServicio',
+                'HotelId',
+                'HotelName',
+                'EmpresaId',
+                'Empresa'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(LineasRow = Contratos.LineasRow || (Contratos.LineasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2450,8 +2939,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = LineasService.Methods || (LineasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                LineasService[x] = function (r, s, o) { return Q.serviceRequest(LineasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                LineasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(LineasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = LineasService.baseUrl + '/' + x;
             });
         })(LineasService = Contratos.LineasService || (Contratos.LineasService = {}));
@@ -2490,7 +2987,14 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MercadosRow.Fields || (MercadosRow.Fields = {}));
-            ['MercadoId', 'Mercado', 'EmpresaId', 'HotelId', 'Empresa', 'HotelName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'MercadoId',
+                'Mercado',
+                'EmpresaId',
+                'HotelId',
+                'Empresa',
+                'HotelName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MercadosRow = Contratos.MercadosRow || (Contratos.MercadosRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2504,8 +3008,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MercadosService.Methods || (MercadosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MercadosService[x] = function (r, s, o) { return Q.serviceRequest(MercadosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MercadosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MercadosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MercadosService.baseUrl + '/' + x;
             });
         })(MercadosService = Contratos.MercadosService || (Contratos.MercadosService = {}));
@@ -2554,7 +3066,14 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = OfertasRejillasRow.Fields || (OfertasRejillasRow.Fields = {}));
-            ['RejillaId', 'OfertaId', 'N', 'TipoCondicionId', 'TipoAplicacion', 'M'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'RejillaId',
+                'OfertaId',
+                'N',
+                'TipoCondicionId',
+                'TipoAplicacion',
+                'M'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(OfertasRejillasRow = Contratos.OfertasRejillasRow || (Contratos.OfertasRejillasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2568,8 +3087,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = OfertasRejillasService.Methods || (OfertasRejillasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                OfertasRejillasService[x] = function (r, s, o) { return Q.serviceRequest(OfertasRejillasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OfertasRejillasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OfertasRejillasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = OfertasRejillasService.baseUrl + '/' + x;
             });
         })(OfertasRejillasService = Contratos.OfertasRejillasService || (Contratos.OfertasRejillasService = {}));
@@ -2587,7 +3114,44 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = OfertasRow.Fields || (OfertasRow.Fields = {}));
-            ['OfertaId', 'Texto', 'ContratoId', 'FechaDesde', 'FechaHasta', 'TipoAplicacionOfertaId', 'AplicableAuto', 'FechaReservaDesde', 'FechaReservaHasta', 'EstanciaMinimaDias', 'EstanciaMaximaDias', 'DiasDeAntelacion', 'TipoServicioId', 'ServicioId', 'UnidadCalculoId', 'ServicioLigadoId', 'CupoOferta', 'Precio', 'N', 'TipoOfertaId', 'M', 'AmbitoOfertaId', 'UserId', 'FechaModificacion', 'ImpuestoIncluido', 'TipoImputacionId', 'OrdenAplicacion', 'AmbitoOfertaName', 'TipoOfertaName', 'TipoServicioName', 'ServicioName', 'ServicioLigadoName', 'UnidadCalculoName', 'UserName', 'TipoAplicacionOfertaName', 'TipoImputacionName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'OfertaId',
+                'Texto',
+                'ContratoId',
+                'FechaDesde',
+                'FechaHasta',
+                'TipoAplicacionOfertaId',
+                'AplicableAuto',
+                'FechaReservaDesde',
+                'FechaReservaHasta',
+                'EstanciaMinimaDias',
+                'EstanciaMaximaDias',
+                'DiasDeAntelacion',
+                'TipoServicioId',
+                'ServicioId',
+                'UnidadCalculoId',
+                'ServicioLigadoId',
+                'CupoOferta',
+                'Precio',
+                'N',
+                'TipoOfertaId',
+                'M',
+                'AmbitoOfertaId',
+                'UserId',
+                'FechaModificacion',
+                'ImpuestoIncluido',
+                'TipoImputacionId',
+                'OrdenAplicacion',
+                'AmbitoOfertaName',
+                'TipoOfertaName',
+                'TipoServicioName',
+                'ServicioName',
+                'ServicioLigadoName',
+                'UnidadCalculoName',
+                'UserName',
+                'TipoAplicacionOfertaName',
+                'TipoImputacionName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(OfertasRow = Contratos.OfertasRow || (Contratos.OfertasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2601,8 +3165,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = OfertasService.Methods || (OfertasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                OfertasService[x] = function (r, s, o) { return Q.serviceRequest(OfertasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OfertasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OfertasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = OfertasService.baseUrl + '/' + x;
             });
         })(OfertasService = Contratos.OfertasService || (Contratos.OfertasService = {}));
@@ -2636,7 +3208,22 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReleasesRow.Fields || (ReleasesRow.Fields = {}));
-            ['ReleaseId', 'ClienteId', 'HotelId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'Dias', 'UserId', 'FechaModificacion', 'ClienteRazon', 'HotelName', 'EmpresaId', 'Empresa', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReleaseId',
+                'ClienteId',
+                'HotelId',
+                'FechaDesde',
+                'FechaHasta',
+                'Observaciones',
+                'Dias',
+                'UserId',
+                'FechaModificacion',
+                'ClienteRazon',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReleasesRow = Contratos.ReleasesRow || (Contratos.ReleasesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2650,8 +3237,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReleasesService.Methods || (ReleasesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReleasesService[x] = function (r, s, o) { return Q.serviceRequest(ReleasesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReleasesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReleasesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReleasesService.baseUrl + '/' + x;
             });
         })(ReleasesService = Contratos.ReleasesService || (Contratos.ReleasesService = {}));
@@ -2690,7 +3285,23 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = SeriesRow.Fields || (SeriesRow.Fields = {}));
-            ['SerieId', 'EmpresaId', 'Serie', 'Abreviatura', 'Manocorriente', 'Visible', 'Factura', 'Deposito', 'ServicioId', 'ImpuestoId', 'Voxel', 'UserId', 'FechaModificacion', 'Empresa', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'SerieId',
+                'EmpresaId',
+                'Serie',
+                'Abreviatura',
+                'Manocorriente',
+                'Visible',
+                'Factura',
+                'Deposito',
+                'ServicioId',
+                'ImpuestoId',
+                'Voxel',
+                'UserId',
+                'FechaModificacion',
+                'Empresa',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(SeriesRow = Contratos.SeriesRow || (Contratos.SeriesRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2704,8 +3315,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = SeriesService.Methods || (SeriesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SeriesService[x] = function (r, s, o) { return Q.serviceRequest(SeriesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                SeriesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SeriesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = SeriesService.baseUrl + '/' + x;
             });
         })(SeriesService = Contratos.SeriesService || (Contratos.SeriesService = {}));
@@ -2744,7 +3363,24 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ServiciosHotelRow.Fields || (ServiciosHotelRow.Fields = {}));
-            ['ServicioHotelId', 'ServicioId', 'HotelId', 'ImpuestoId', 'Costo', 'CtaContable', 'DptoContable', 'PermiteCredito', 'HotelName', 'EmpresaId', 'Empresa', 'NombreServicio', 'ServicioTipoServicioId', 'ConceptoAceleradorReservasId', 'SwPension', 'Impuesto'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ServicioHotelId',
+                'ServicioId',
+                'HotelId',
+                'ImpuestoId',
+                'Costo',
+                'CtaContable',
+                'DptoContable',
+                'PermiteCredito',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'NombreServicio',
+                'ServicioTipoServicioId',
+                'ConceptoAceleradorReservasId',
+                'SwPension',
+                'Impuesto'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ServiciosHotelRow = Contratos.ServiciosHotelRow || (Contratos.ServiciosHotelRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2758,8 +3394,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ServiciosHotelService.Methods || (ServiciosHotelService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ServiciosHotelService[x] = function (r, s, o) { return Q.serviceRequest(ServiciosHotelService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ServiciosHotelService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ServiciosHotelService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ServiciosHotelService.baseUrl + '/' + x;
             });
         })(ServiciosHotelService = Contratos.ServiciosHotelService || (Contratos.ServiciosHotelService = {}));
@@ -2798,7 +3442,17 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TemporadasRow.Fields || (TemporadasRow.Fields = {}));
-            ['TemporadaId', 'Temporada', 'HotelId', 'EmpresaId', 'Ano', 'FechaDesde', 'FechaHasta', 'HotelName', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TemporadaId',
+                'Temporada',
+                'HotelId',
+                'EmpresaId',
+                'Ano',
+                'FechaDesde',
+                'FechaHasta',
+                'HotelName',
+                'Empresa'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TemporadasRow = Contratos.TemporadasRow || (Contratos.TemporadasRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2812,8 +3466,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TemporadasService.Methods || (TemporadasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TemporadasService[x] = function (r, s, o) { return Q.serviceRequest(TemporadasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TemporadasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TemporadasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TemporadasService.baseUrl + '/' + x;
             });
         })(TemporadasService = Contratos.TemporadasService || (Contratos.TemporadasService = {}));
@@ -2852,7 +3514,17 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposHabitacionHotelRow.Fields || (TiposHabitacionHotelRow.Fields = {}));
-            ['TipoHabitacionHotelId', 'HotelId', 'TipoHabitacionId', 'ServicioId', 'HotelName', 'EmpresaId', 'Empresa', 'TipoHabitacionName', 'ServicioName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoHabitacionHotelId',
+                'HotelId',
+                'TipoHabitacionId',
+                'ServicioId',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'TipoHabitacionName',
+                'ServicioName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposHabitacionHotelRow = Contratos.TiposHabitacionHotelRow || (Contratos.TiposHabitacionHotelRow = {}));
     })(Contratos = Geshotel.Contratos || (Geshotel.Contratos = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2866,8 +3538,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposHabitacionHotelService.Methods || (TiposHabitacionHotelService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposHabitacionHotelService[x] = function (r, s, o) { return Q.serviceRequest(TiposHabitacionHotelService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposHabitacionHotelService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposHabitacionHotelService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposHabitacionHotelService.baseUrl + '/' + x;
             });
         })(TiposHabitacionHotelService = Contratos.TiposHabitacionHotelService || (Contratos.TiposHabitacionHotelService = {}));
@@ -2965,7 +3645,25 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAgendaRelevantRow.Fields || (MeetingAgendaRelevantRow.Fields = {}));
-            ['AgendaRelevantId', 'AgendaId', 'ContactId', 'AgendaMeetingId', 'AgendaAgendaNumber', 'AgendaTitle', 'AgendaDescription', 'AgendaAgendaTypeId', 'AgendaRequestedByContactId', 'AgendaImages', 'AgendaAttachments', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'AgendaRelevantId',
+                'AgendaId',
+                'ContactId',
+                'AgendaMeetingId',
+                'AgendaAgendaNumber',
+                'AgendaTitle',
+                'AgendaDescription',
+                'AgendaAgendaTypeId',
+                'AgendaRequestedByContactId',
+                'AgendaImages',
+                'AgendaAttachments',
+                'ContactTitle',
+                'ContactFirstName',
+                'ContactLastName',
+                'ContactEmail',
+                'ContactIdentityNo',
+                'ContactUserId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingAgendaRelevantRow = Meeting.MeetingAgendaRelevantRow || (Meeting.MeetingAgendaRelevantRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -2979,8 +3677,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaRelevantService.Methods || (MeetingAgendaRelevantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaRelevantService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaRelevantService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingAgendaRelevantService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingAgendaRelevantService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingAgendaRelevantService.baseUrl + '/' + x;
             });
         })(MeetingAgendaRelevantService = Meeting.MeetingAgendaRelevantService || (Meeting.MeetingAgendaRelevantService = {}));
@@ -2998,7 +3704,39 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAgendaRow.Fields || (MeetingAgendaRow.Fields = {}));
-            ['AgendaId', 'MeetingId', 'AgendaNumber', 'Title', 'Description', 'AgendaTypeId', 'RequestedByContactId', 'Images', 'Attachments', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'AgendaTypeName', 'RequestedByContactTitle', 'RequestedByContactFirstName', 'RequestedByContactLastName', 'RequestedByContactFullName', 'RequestedByContactEmail', 'RequestedByContactIdentityNo', 'RequestedByContactUserId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'AgendaId',
+                'MeetingId',
+                'AgendaNumber',
+                'Title',
+                'Description',
+                'AgendaTypeId',
+                'RequestedByContactId',
+                'Images',
+                'Attachments',
+                'MeetingMeetingName',
+                'MeetingMeetingNumber',
+                'MeetingMeetingGuid',
+                'MeetingMeetingTypeId',
+                'MeetingStartDate',
+                'MeetingEndDate',
+                'MeetingLocationId',
+                'MeetingUnitId',
+                'MeetingOrganizerContactId',
+                'MeetingReporterContactId',
+                'MeetingInsertUserId',
+                'MeetingInsertDate',
+                'MeetingUpdateUserId',
+                'MeetingUpdateDate',
+                'AgendaTypeName',
+                'RequestedByContactTitle',
+                'RequestedByContactFirstName',
+                'RequestedByContactLastName',
+                'RequestedByContactFullName',
+                'RequestedByContactEmail',
+                'RequestedByContactIdentityNo',
+                'RequestedByContactUserId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingAgendaRow = Meeting.MeetingAgendaRow || (Meeting.MeetingAgendaRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3012,8 +3750,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaService.Methods || (MeetingAgendaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingAgendaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingAgendaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingAgendaService.baseUrl + '/' + x;
             });
         })(MeetingAgendaService = Meeting.MeetingAgendaService || (Meeting.MeetingAgendaService = {}));
@@ -3052,7 +3798,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAgendaTypeRow.Fields || (MeetingAgendaTypeRow.Fields = {}));
-            ['AgendaTypeId', 'Name'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'AgendaTypeId',
+                'Name'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingAgendaTypeRow = Meeting.MeetingAgendaTypeRow || (Meeting.MeetingAgendaTypeRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3066,8 +3815,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaTypeService.Methods || (MeetingAgendaTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingAgendaTypeService[x] = function (r, s, o) { return Q.serviceRequest(MeetingAgendaTypeService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingAgendaTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingAgendaTypeService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingAgendaTypeService.baseUrl + '/' + x;
             });
         })(MeetingAgendaTypeService = Meeting.MeetingAgendaTypeService || (Meeting.MeetingAgendaTypeService = {}));
@@ -3114,7 +3871,34 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAttendeeRow.Fields || (MeetingAttendeeRow.Fields = {}));
-            ['AttendeeId', 'MeetingId', 'ContactId', 'AttendeeType', 'AttendanceStatus', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactFullName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'AttendeeId',
+                'MeetingId',
+                'ContactId',
+                'AttendeeType',
+                'AttendanceStatus',
+                'MeetingMeetingName',
+                'MeetingMeetingNumber',
+                'MeetingMeetingGuid',
+                'MeetingMeetingTypeId',
+                'MeetingStartDate',
+                'MeetingEndDate',
+                'MeetingLocationId',
+                'MeetingUnitId',
+                'MeetingOrganizerContactId',
+                'MeetingReporterContactId',
+                'MeetingInsertUserId',
+                'MeetingInsertDate',
+                'MeetingUpdateUserId',
+                'MeetingUpdateDate',
+                'ContactTitle',
+                'ContactFirstName',
+                'ContactLastName',
+                'ContactFullName',
+                'ContactEmail',
+                'ContactIdentityNo',
+                'ContactUserId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingAttendeeRow = Meeting.MeetingAttendeeRow || (Meeting.MeetingAttendeeRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3173,7 +3957,26 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingDecisionRelevantRow.Fields || (MeetingDecisionRelevantRow.Fields = {}));
-            ['DecisionRelevantId', 'DecisionId', 'ContactId', 'DecisionMeetingId', 'DecisionAgendaId', 'DecisionDescription', 'DecisionDecisionNumber', 'DecisionResponsibleContactId', 'DecisionDueDate', 'DecisionResolutionStatus', 'DecisionImages', 'DecisionAttachments', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'DecisionRelevantId',
+                'DecisionId',
+                'ContactId',
+                'DecisionMeetingId',
+                'DecisionAgendaId',
+                'DecisionDescription',
+                'DecisionDecisionNumber',
+                'DecisionResponsibleContactId',
+                'DecisionDueDate',
+                'DecisionResolutionStatus',
+                'DecisionImages',
+                'DecisionAttachments',
+                'ContactTitle',
+                'ContactFirstName',
+                'ContactLastName',
+                'ContactEmail',
+                'ContactIdentityNo',
+                'ContactUserId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingDecisionRelevantRow = Meeting.MeetingDecisionRelevantRow || (Meeting.MeetingDecisionRelevantRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3187,8 +3990,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingDecisionRelevantService.Methods || (MeetingDecisionRelevantService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingDecisionRelevantService[x] = function (r, s, o) { return Q.serviceRequest(MeetingDecisionRelevantService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingDecisionRelevantService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingDecisionRelevantService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingDecisionRelevantService.baseUrl + '/' + x;
             });
         })(MeetingDecisionRelevantService = Meeting.MeetingDecisionRelevantService || (Meeting.MeetingDecisionRelevantService = {}));
@@ -3206,7 +4017,48 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingDecisionRow.Fields || (MeetingDecisionRow.Fields = {}));
-            ['DecisionId', 'MeetingId', 'AgendaId', 'Description', 'DecisionNumber', 'ResponsibleContactId', 'DueDate', 'ResolutionStatus', 'Images', 'Attachments', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'AgendaMeetingId', 'AgendaNumber', 'AgendaTitle', 'AgendaDescription', 'AgendaAgendaTypeId', 'AgendaRequestedByContactId', 'AgendaImages', 'AgendaAttachments', 'DecisionNumberName', 'ResponsibleContactTitle', 'ResponsibleContactFirstName', 'ResponsibleContactLastName', 'ResponsibleContactFullName', 'ResponsibleContactEmail', 'ResponsibleContactIdentityNo', 'ResponsibleContactUserId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'DecisionId',
+                'MeetingId',
+                'AgendaId',
+                'Description',
+                'DecisionNumber',
+                'ResponsibleContactId',
+                'DueDate',
+                'ResolutionStatus',
+                'Images',
+                'Attachments',
+                'MeetingMeetingName',
+                'MeetingMeetingNumber',
+                'MeetingMeetingGuid',
+                'MeetingMeetingTypeId',
+                'MeetingStartDate',
+                'MeetingEndDate',
+                'MeetingLocationId',
+                'MeetingUnitId',
+                'MeetingOrganizerContactId',
+                'MeetingReporterContactId',
+                'MeetingInsertUserId',
+                'MeetingInsertDate',
+                'MeetingUpdateUserId',
+                'MeetingUpdateDate',
+                'AgendaMeetingId',
+                'AgendaNumber',
+                'AgendaTitle',
+                'AgendaDescription',
+                'AgendaAgendaTypeId',
+                'AgendaRequestedByContactId',
+                'AgendaImages',
+                'AgendaAttachments',
+                'DecisionNumberName',
+                'ResponsibleContactTitle',
+                'ResponsibleContactFirstName',
+                'ResponsibleContactLastName',
+                'ResponsibleContactFullName',
+                'ResponsibleContactEmail',
+                'ResponsibleContactIdentityNo',
+                'ResponsibleContactUserId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingDecisionRow = Meeting.MeetingDecisionRow || (Meeting.MeetingDecisionRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3220,8 +4072,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingDecisionService.Methods || (MeetingDecisionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingDecisionService[x] = function (r, s, o) { return Q.serviceRequest(MeetingDecisionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingDecisionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingDecisionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingDecisionService.baseUrl + '/' + x;
             });
         })(MeetingDecisionService = Meeting.MeetingDecisionService || (Meeting.MeetingDecisionService = {}));
@@ -3276,7 +4136,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingLocationRow.Fields || (MeetingLocationRow.Fields = {}));
-            ['LocationId', 'Name', 'Address', 'Latitude', 'Longitude'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'LocationId',
+                'Name',
+                'Address',
+                'Latitude',
+                'Longitude'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingLocationRow = Meeting.MeetingLocationRow || (Meeting.MeetingLocationRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3290,8 +4156,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingLocationService.Methods || (MeetingLocationService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingLocationService[x] = function (r, s, o) { return Q.serviceRequest(MeetingLocationService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingLocationService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingLocationService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingLocationService.baseUrl + '/' + x;
             });
         })(MeetingLocationService = Meeting.MeetingLocationService || (Meeting.MeetingLocationService = {}));
@@ -3309,7 +4183,42 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingRow.Fields || (MeetingRow.Fields = {}));
-            ['MeetingId', 'MeetingName', 'MeetingNumber', 'MeetingGuid', 'MeetingTypeId', 'StartDate', 'EndDate', 'LocationId', 'UnitId', 'OrganizerContactId', 'ReporterContactId', 'MeetingTypeName', 'LocationName', 'UnitName', 'UnitParentUnitId', 'OrganizerContactTitle', 'OrganizerContactFirstName', 'OrganizerContactLastName', 'OrganizerContactFullName', 'OrganizerContactEmail', 'OrganizerContactIdentityNo', 'OrganizerContactUserId', 'ReporterContactTitle', 'ReporterContactFirstName', 'ReporterContactLastName', 'ReporterContactFullName', 'ReporterContactEmail', 'ReporterContactIdentityNo', 'ReporterContactUserId', 'AttendeeList', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'MeetingId',
+                'MeetingName',
+                'MeetingNumber',
+                'MeetingGuid',
+                'MeetingTypeId',
+                'StartDate',
+                'EndDate',
+                'LocationId',
+                'UnitId',
+                'OrganizerContactId',
+                'ReporterContactId',
+                'MeetingTypeName',
+                'LocationName',
+                'UnitName',
+                'UnitParentUnitId',
+                'OrganizerContactTitle',
+                'OrganizerContactFirstName',
+                'OrganizerContactLastName',
+                'OrganizerContactFullName',
+                'OrganizerContactEmail',
+                'OrganizerContactIdentityNo',
+                'OrganizerContactUserId',
+                'ReporterContactTitle',
+                'ReporterContactFirstName',
+                'ReporterContactLastName',
+                'ReporterContactFullName',
+                'ReporterContactEmail',
+                'ReporterContactIdentityNo',
+                'ReporterContactUserId',
+                'AttendeeList',
+                'InsertUserId',
+                'InsertDate',
+                'UpdateUserId',
+                'UpdateDate'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingRow = Meeting.MeetingRow || (Meeting.MeetingRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3323,8 +4232,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingService.Methods || (MeetingService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingService[x] = function (r, s, o) { return Q.serviceRequest(MeetingService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingService.baseUrl + '/' + x;
             });
         })(MeetingService = Meeting.MeetingService || (Meeting.MeetingService = {}));
@@ -3363,7 +4280,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingTypeRow.Fields || (MeetingTypeRow.Fields = {}));
-            ['MeetingTypeId', 'Name'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'MeetingTypeId',
+                'Name'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MeetingTypeRow = Meeting.MeetingTypeRow || (Meeting.MeetingTypeRow = {}));
     })(Meeting = Geshotel.Meeting || (Geshotel.Meeting = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3377,8 +4297,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MeetingTypeService.Methods || (MeetingTypeService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MeetingTypeService[x] = function (r, s, o) { return Q.serviceRequest(MeetingTypeService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MeetingTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MeetingTypeService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MeetingTypeService.baseUrl + '/' + x;
             });
         })(MeetingTypeService = Meeting.MeetingTypeService || (Meeting.MeetingTypeService = {}));
@@ -3492,7 +4420,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CategoryLangRow.Fields || (CategoryLangRow.Fields = {}));
-            ['Id', 'CategoryId', 'LanguageId', 'CategoryName', 'Description'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'Id',
+                'CategoryId',
+                'LanguageId',
+                'CategoryName',
+                'Description'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CategoryLangRow = Northwind.CategoryLangRow || (Northwind.CategoryLangRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3506,8 +4440,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CategoryLangService.Methods || (CategoryLangService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CategoryLangService[x] = function (r, s, o) { return Q.serviceRequest(CategoryLangService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryLangService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CategoryLangService.baseUrl + '/' + x;
             });
         })(CategoryLangService = Northwind.CategoryLangService || (Northwind.CategoryLangService = {}));
@@ -3530,7 +4472,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CategoryRow.Fields || (CategoryRow.Fields = {}));
-            ['CategoryID', 'CategoryName', 'Description', 'Picture'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CategoryID',
+                'CategoryName',
+                'Description',
+                'Picture'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CategoryRow = Northwind.CategoryRow || (Northwind.CategoryRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3544,8 +4491,17 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CategoryService.Methods || (CategoryService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'RetrieveLocalization', 'Retrieve', 'List'].forEach(function (x) {
-                CategoryService[x] = function (r, s, o) { return Q.serviceRequest(CategoryService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'RetrieveLocalization',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoryService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CategoryService.baseUrl + '/' + x;
             });
         })(CategoryService = Northwind.CategoryService || (Northwind.CategoryService = {}));
@@ -3563,7 +4519,22 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CustomerCustomerDemoRow.Fields || (CustomerCustomerDemoRow.Fields = {}));
-            ['ID', 'CustomerID', 'CustomerTypeID', 'CustomerCompanyName', 'CustomerContactName', 'CustomerContactTitle', 'CustomerAddress', 'CustomerCity', 'CustomerRegion', 'CustomerPostalCode', 'CustomerCountry', 'CustomerPhone', 'CustomerFax', 'CustomerTypeCustomerDesc'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ID',
+                'CustomerID',
+                'CustomerTypeID',
+                'CustomerCompanyName',
+                'CustomerContactName',
+                'CustomerContactTitle',
+                'CustomerAddress',
+                'CustomerCity',
+                'CustomerRegion',
+                'CustomerPostalCode',
+                'CustomerCountry',
+                'CustomerPhone',
+                'CustomerFax',
+                'CustomerTypeCustomerDesc'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CustomerCustomerDemoRow = Northwind.CustomerCustomerDemoRow || (Northwind.CustomerCustomerDemoRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3579,7 +4550,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CustomerDemographicRow.Fields || (CustomerDemographicRow.Fields = {}));
-            ['ID', 'CustomerTypeID', 'CustomerDesc'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ID',
+                'CustomerTypeID',
+                'CustomerDesc'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CustomerDemographicRow = Northwind.CustomerDemographicRow || (Northwind.CustomerDemographicRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3595,7 +4570,30 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CustomerDetailsRow.Fields || (CustomerDetailsRow.Fields = {}));
-            ['Id', 'LastContactDate', 'LastContactedBy', 'Email', 'SendBulletin', 'LastContactedByLastName', 'LastContactedByFirstName', 'LastContactedByTitle', 'LastContactedByTitleOfCourtesy', 'LastContactedByBirthDate', 'LastContactedByHireDate', 'LastContactedByAddress', 'LastContactedByCity', 'LastContactedByRegion', 'LastContactedByPostalCode', 'LastContactedByCountry', 'LastContactedByHomePhone', 'LastContactedByExtension', 'LastContactedByPhoto', 'LastContactedByNotes', 'LastContactedByReportsTo', 'LastContactedByPhotoPath'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'Id',
+                'LastContactDate',
+                'LastContactedBy',
+                'Email',
+                'SendBulletin',
+                'LastContactedByLastName',
+                'LastContactedByFirstName',
+                'LastContactedByTitle',
+                'LastContactedByTitleOfCourtesy',
+                'LastContactedByBirthDate',
+                'LastContactedByHireDate',
+                'LastContactedByAddress',
+                'LastContactedByCity',
+                'LastContactedByRegion',
+                'LastContactedByPostalCode',
+                'LastContactedByCountry',
+                'LastContactedByHomePhone',
+                'LastContactedByExtension',
+                'LastContactedByPhoto',
+                'LastContactedByNotes',
+                'LastContactedByReportsTo',
+                'LastContactedByPhotoPath'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CustomerDetailsRow = Northwind.CustomerDetailsRow || (Northwind.CustomerDetailsRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3626,7 +4624,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CustomerRepresentativesRow.Fields || (CustomerRepresentativesRow.Fields = {}));
-            ['RepresentativeId', 'CustomerId', 'EmployeeId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'RepresentativeId',
+                'CustomerId',
+                'EmployeeId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CustomerRepresentativesRow = Northwind.CustomerRepresentativesRow || (Northwind.CustomerRepresentativesRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3647,7 +4649,26 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CustomerRow.Fields || (CustomerRow.Fields = {}));
-            ['ID', 'CustomerID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'NoteList', 'Representatives', 'LastContactDate', 'LastContactedBy', 'Email', 'SendBulletin'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ID',
+                'CustomerID',
+                'CompanyName',
+                'ContactName',
+                'ContactTitle',
+                'Address',
+                'City',
+                'Region',
+                'PostalCode',
+                'Country',
+                'Phone',
+                'Fax',
+                'NoteList',
+                'Representatives',
+                'LastContactDate',
+                'LastContactedBy',
+                'Email',
+                'SendBulletin'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CustomerRow = Northwind.CustomerRow || (Northwind.CustomerRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3661,8 +4682,17 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CustomerService.Methods || (CustomerService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'GetNextNumber', 'Retrieve', 'List'].forEach(function (x) {
-                CustomerService[x] = function (r, s, o) { return Q.serviceRequest(CustomerService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'GetNextNumber',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CustomerService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CustomerService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CustomerService.baseUrl + '/' + x;
             });
         })(CustomerService = Northwind.CustomerService || (Northwind.CustomerService = {}));
@@ -3685,7 +4715,46 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = EmployeeRow.Fields || (EmployeeRow.Fields = {}));
-            ['EmployeeID', 'LastName', 'FirstName', 'FullName', 'Title', 'TitleOfCourtesy', 'BirthDate', 'HireDate', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'HomePhone', 'Extension', 'Photo', 'Notes', 'ReportsTo', 'PhotoPath', 'ReportsToFullName', 'ReportsToLastName', 'ReportsToFirstName', 'ReportsToTitle', 'ReportsToTitleOfCourtesy', 'ReportsToBirthDate', 'ReportsToHireDate', 'ReportsToAddress', 'ReportsToCity', 'ReportsToRegion', 'ReportsToPostalCode', 'ReportsToCountry', 'ReportsToHomePhone', 'ReportsToExtension', 'ReportsToPhoto', 'ReportsToNotes', 'ReportsToReportsTo', 'ReportsToPhotoPath', 'Gender'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EmployeeID',
+                'LastName',
+                'FirstName',
+                'FullName',
+                'Title',
+                'TitleOfCourtesy',
+                'BirthDate',
+                'HireDate',
+                'Address',
+                'City',
+                'Region',
+                'PostalCode',
+                'Country',
+                'HomePhone',
+                'Extension',
+                'Photo',
+                'Notes',
+                'ReportsTo',
+                'PhotoPath',
+                'ReportsToFullName',
+                'ReportsToLastName',
+                'ReportsToFirstName',
+                'ReportsToTitle',
+                'ReportsToTitleOfCourtesy',
+                'ReportsToBirthDate',
+                'ReportsToHireDate',
+                'ReportsToAddress',
+                'ReportsToCity',
+                'ReportsToRegion',
+                'ReportsToPostalCode',
+                'ReportsToCountry',
+                'ReportsToHomePhone',
+                'ReportsToExtension',
+                'ReportsToPhoto',
+                'ReportsToNotes',
+                'ReportsToReportsTo',
+                'ReportsToPhotoPath',
+                'Gender'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(EmployeeRow = Northwind.EmployeeRow || (Northwind.EmployeeRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3701,7 +4770,29 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = EmployeeTerritoryRow.Fields || (EmployeeTerritoryRow.Fields = {}));
-            ['EmployeeID', 'TerritoryID', 'EmployeeLastName', 'EmployeeFirstName', 'EmployeeTitle', 'EmployeeTitleOfCourtesy', 'EmployeeBirthDate', 'EmployeeHireDate', 'EmployeeAddress', 'EmployeeCity', 'EmployeeRegion', 'EmployeePostalCode', 'EmployeeCountry', 'EmployeeHomePhone', 'EmployeeExtension', 'EmployeePhoto', 'EmployeeNotes', 'EmployeeReportsTo', 'EmployeePhotoPath', 'TerritoryTerritoryDescription', 'TerritoryRegionID'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EmployeeID',
+                'TerritoryID',
+                'EmployeeLastName',
+                'EmployeeFirstName',
+                'EmployeeTitle',
+                'EmployeeTitleOfCourtesy',
+                'EmployeeBirthDate',
+                'EmployeeHireDate',
+                'EmployeeAddress',
+                'EmployeeCity',
+                'EmployeeRegion',
+                'EmployeePostalCode',
+                'EmployeeCountry',
+                'EmployeeHomePhone',
+                'EmployeeExtension',
+                'EmployeePhoto',
+                'EmployeeNotes',
+                'EmployeeReportsTo',
+                'EmployeePhotoPath',
+                'TerritoryTerritoryDescription',
+                'TerritoryRegionID'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(EmployeeTerritoryRow = Northwind.EmployeeTerritoryRow || (Northwind.EmployeeTerritoryRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3729,7 +4820,15 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = NoteRow.Fields || (NoteRow.Fields = {}));
-            ['NoteId', 'EntityType', 'EntityId', 'Text', 'InsertUserId', 'InsertDate', 'InsertUserDisplayName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'NoteId',
+                'EntityType',
+                'EntityId',
+                'Text',
+                'InsertUserId',
+                'InsertDate',
+                'InsertUserDisplayName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(NoteRow = Northwind.NoteRow || (Northwind.NoteRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3760,7 +4859,27 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = OrderDetailRow.Fields || (OrderDetailRow.Fields = {}));
-            ['DetailID', 'OrderID', 'ProductID', 'UnitPrice', 'Quantity', 'Discount', 'OrderCustomerID', 'OrderEmployeeID', 'OrderDate', 'OrderShippedDate', 'OrderShipVia', 'OrderShipCity', 'OrderShipCountry', 'ProductName', 'ProductDiscontinued', 'ProductSupplierID', 'ProductQuantityPerUnit', 'ProductUnitPrice', 'LineTotal'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'DetailID',
+                'OrderID',
+                'ProductID',
+                'UnitPrice',
+                'Quantity',
+                'Discount',
+                'OrderCustomerID',
+                'OrderEmployeeID',
+                'OrderDate',
+                'OrderShippedDate',
+                'OrderShipVia',
+                'OrderShipCity',
+                'OrderShipCountry',
+                'ProductName',
+                'ProductDiscontinued',
+                'ProductSupplierID',
+                'ProductQuantityPerUnit',
+                'ProductUnitPrice',
+                'LineTotal'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(OrderDetailRow = Northwind.OrderDetailRow || (Northwind.OrderDetailRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3774,8 +4893,13 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = OrderDetailService.Methods || (OrderDetailService.Methods = {}));
-            ['Retrieve', 'List'].forEach(function (x) {
-                OrderDetailService[x] = function (r, s, o) { return Q.serviceRequest(OrderDetailService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderDetailService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = OrderDetailService.baseUrl + '/' + x;
             });
         })(OrderDetailService = Northwind.OrderDetailService || (Northwind.OrderDetailService = {}));
@@ -3814,7 +4938,36 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = OrderRow.Fields || (OrderRow.Fields = {}));
-            ['OrderID', 'CustomerID', 'EmployeeID', 'OrderDate', 'RequiredDate', 'ShippedDate', 'ShipVia', 'Freight', 'ShipName', 'ShipAddress', 'ShipCity', 'ShipRegion', 'ShipPostalCode', 'ShipCountry', 'CustomerCompanyName', 'CustomerContactName', 'CustomerContactTitle', 'CustomerCity', 'CustomerRegion', 'CustomerCountry', 'CustomerPhone', 'CustomerFax', 'EmployeeFullName', 'EmployeeGender', 'ShipViaCompanyName', 'ShipViaPhone', 'ShippingState', 'DetailList'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'OrderID',
+                'CustomerID',
+                'EmployeeID',
+                'OrderDate',
+                'RequiredDate',
+                'ShippedDate',
+                'ShipVia',
+                'Freight',
+                'ShipName',
+                'ShipAddress',
+                'ShipCity',
+                'ShipRegion',
+                'ShipPostalCode',
+                'ShipCountry',
+                'CustomerCompanyName',
+                'CustomerContactName',
+                'CustomerContactTitle',
+                'CustomerCity',
+                'CustomerRegion',
+                'CustomerCountry',
+                'CustomerPhone',
+                'CustomerFax',
+                'EmployeeFullName',
+                'EmployeeGender',
+                'ShipViaCompanyName',
+                'ShipViaPhone',
+                'ShippingState',
+                'DetailList'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(OrderRow = Northwind.OrderRow || (Northwind.OrderRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3828,8 +4981,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = OrderService.Methods || (OrderService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                OrderService[x] = function (r, s, o) { return Q.serviceRequest(OrderService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = OrderService.baseUrl + '/' + x;
             });
         })(OrderService = Northwind.OrderService || (Northwind.OrderService = {}));
@@ -3875,7 +5036,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ProductLangRow.Fields || (ProductLangRow.Fields = {}));
-            ['Id', 'ProductId', 'LanguageId', 'ProductName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'Id',
+                'ProductId',
+                'LanguageId',
+                'ProductName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ProductLangRow = Northwind.ProductLangRow || (Northwind.ProductLangRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3889,8 +5055,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ProductLangService.Methods || (ProductLangService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ProductLangService[x] = function (r, s, o) { return Q.serviceRequest(ProductLangService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductLangService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductLangService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ProductLangService.baseUrl + '/' + x;
             });
         })(ProductLangService = Northwind.ProductLangService || (Northwind.ProductLangService = {}));
@@ -3907,7 +5081,24 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ProductLogRow.Fields || (ProductLogRow.Fields = {}));
-            ['ProductLogID', 'OperationType', 'ChangingUserId', 'ValidFrom', 'ValidUntil', 'ProductID', 'ProductName', 'ProductImage', 'Discontinued', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ProductLogID',
+                'OperationType',
+                'ChangingUserId',
+                'ValidFrom',
+                'ValidUntil',
+                'ProductID',
+                'ProductName',
+                'ProductImage',
+                'Discontinued',
+                'SupplierID',
+                'CategoryID',
+                'QuantityPerUnit',
+                'UnitPrice',
+                'UnitsInStock',
+                'UnitsOnOrder',
+                'ReorderLevel'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ProductLogRow = Northwind.ProductLogRow || (Northwind.ProductLogRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3928,7 +5119,33 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ProductRow.Fields || (ProductRow.Fields = {}));
-            ['ProductID', 'ProductName', 'ProductImage', 'Discontinued', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel', 'SupplierCompanyName', 'SupplierContactName', 'SupplierContactTitle', 'SupplierAddress', 'SupplierCity', 'SupplierRegion', 'SupplierPostalCode', 'SupplierCountry', 'SupplierPhone', 'SupplierFax', 'SupplierHomePage', 'CategoryName', 'CategoryDescription', 'CategoryPicture'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ProductID',
+                'ProductName',
+                'ProductImage',
+                'Discontinued',
+                'SupplierID',
+                'CategoryID',
+                'QuantityPerUnit',
+                'UnitPrice',
+                'UnitsInStock',
+                'UnitsOnOrder',
+                'ReorderLevel',
+                'SupplierCompanyName',
+                'SupplierContactName',
+                'SupplierContactTitle',
+                'SupplierAddress',
+                'SupplierCity',
+                'SupplierRegion',
+                'SupplierPostalCode',
+                'SupplierCountry',
+                'SupplierPhone',
+                'SupplierFax',
+                'SupplierHomePage',
+                'CategoryName',
+                'CategoryDescription',
+                'CategoryPicture'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ProductRow = Northwind.ProductRow || (Northwind.ProductRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3942,8 +5159,17 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ProductService.Methods || (ProductService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'RetrieveLocalization', 'List'].forEach(function (x) {
-                ProductService[x] = function (r, s, o) { return Q.serviceRequest(ProductService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'RetrieveLocalization',
+                'List'
+            ].forEach(function (x) {
+                ProductService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ProductService.baseUrl + '/' + x;
             });
         })(ProductService = Northwind.ProductService || (Northwind.ProductService = {}));
@@ -3982,7 +5208,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = RegionRow.Fields || (RegionRow.Fields = {}));
-            ['RegionID', 'RegionDescription'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'RegionID',
+                'RegionDescription'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(RegionRow = Northwind.RegionRow || (Northwind.RegionRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -3996,8 +5225,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = RegionService.Methods || (RegionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                RegionService[x] = function (r, s, o) { return Q.serviceRequest(RegionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                RegionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RegionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = RegionService.baseUrl + '/' + x;
             });
         })(RegionService = Northwind.RegionService || (Northwind.RegionService = {}));
@@ -4014,7 +5251,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = SalesByCategoryRow.Fields || (SalesByCategoryRow.Fields = {}));
-            ['CategoryId', 'CategoryName', 'ProductName', 'ProductSales'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CategoryId',
+                'CategoryName',
+                'ProductName',
+                'ProductSales'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(SalesByCategoryRow = Northwind.SalesByCategoryRow || (Northwind.SalesByCategoryRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4028,8 +5270,12 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = SalesByCategoryService.Methods || (SalesByCategoryService.Methods = {}));
-            ['List'].forEach(function (x) {
-                SalesByCategoryService[x] = function (r, s, o) { return Q.serviceRequest(SalesByCategoryService.baseUrl + '/' + x, r, s, o); };
+            [
+                'List'
+            ].forEach(function (x) {
+                SalesByCategoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SalesByCategoryService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = SalesByCategoryService.baseUrl + '/' + x;
             });
         })(SalesByCategoryService = Northwind.SalesByCategoryService || (Northwind.SalesByCategoryService = {}));
@@ -4068,7 +5314,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ShipperRow.Fields || (ShipperRow.Fields = {}));
-            ['ShipperID', 'CompanyName', 'Phone'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ShipperID',
+                'CompanyName',
+                'Phone'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ShipperRow = Northwind.ShipperRow || (Northwind.ShipperRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4082,8 +5332,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ShipperService.Methods || (ShipperService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ShipperService[x] = function (r, s, o) { return Q.serviceRequest(ShipperService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ShipperService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ShipperService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ShipperService.baseUrl + '/' + x;
             });
         })(ShipperService = Northwind.ShipperService || (Northwind.ShipperService = {}));
@@ -4122,7 +5380,20 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = SupplierRow.Fields || (SupplierRow.Fields = {}));
-            ['SupplierID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'HomePage'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'SupplierID',
+                'CompanyName',
+                'ContactName',
+                'ContactTitle',
+                'Address',
+                'City',
+                'Region',
+                'PostalCode',
+                'Country',
+                'Phone',
+                'Fax',
+                'HomePage'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(SupplierRow = Northwind.SupplierRow || (Northwind.SupplierRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4136,8 +5407,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = SupplierService.Methods || (SupplierService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                SupplierService[x] = function (r, s, o) { return Q.serviceRequest(SupplierService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                SupplierService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SupplierService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = SupplierService.baseUrl + '/' + x;
             });
         })(SupplierService = Northwind.SupplierService || (Northwind.SupplierService = {}));
@@ -4176,7 +5455,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TerritoryRow.Fields || (TerritoryRow.Fields = {}));
-            ['ID', 'TerritoryID', 'TerritoryDescription', 'RegionID', 'RegionDescription'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ID',
+                'TerritoryID',
+                'TerritoryDescription',
+                'RegionID',
+                'RegionDescription'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TerritoryRow = Northwind.TerritoryRow || (Northwind.TerritoryRow = {}));
     })(Northwind = Geshotel.Northwind || (Geshotel.Northwind = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4190,8 +5475,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TerritoryService.Methods || (TerritoryService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TerritoryService[x] = function (r, s, o) { return Q.serviceRequest(TerritoryService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TerritoryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TerritoryService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TerritoryService.baseUrl + '/' + x;
             });
         })(TerritoryService = Northwind.TerritoryService || (Northwind.TerritoryService = {}));
@@ -4230,7 +5523,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = BusinessUnitRow.Fields || (BusinessUnitRow.Fields = {}));
-            ['UnitId', 'Name', 'ParentUnitId', 'ParentUnitName', 'ParentUnitParentUnitId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UnitId',
+                'Name',
+                'ParentUnitId',
+                'ParentUnitName',
+                'ParentUnitParentUnitId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(BusinessUnitRow = Organization.BusinessUnitRow || (Organization.BusinessUnitRow = {}));
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4244,8 +5543,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = BusinessUnitService.Methods || (BusinessUnitService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                BusinessUnitService[x] = function (r, s, o) { return Q.serviceRequest(BusinessUnitService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                BusinessUnitService[x] = function (r, s, o) {
+                    return Q.serviceRequest(BusinessUnitService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = BusinessUnitService.baseUrl + '/' + x;
             });
         })(BusinessUnitService = Organization.BusinessUnitService || (Organization.BusinessUnitService = {}));
@@ -4284,7 +5591,29 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ContactRow.Fields || (ContactRow.Fields = {}));
-            ['ContactId', 'Title', 'FirstName', 'LastName', 'FullName', 'Email', 'IdentityNo', 'UserId', 'Username', 'UserDisplayName', 'UserEmail', 'UserSource', 'UserPasswordHash', 'UserPasswordSalt', 'UserLastDirectoryUpdate', 'UserUserImage', 'UserInsertDate', 'UserInsertUserId', 'UserUpdateDate', 'UserUpdateUserId', 'UserIsActive'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ContactId',
+                'Title',
+                'FirstName',
+                'LastName',
+                'FullName',
+                'Email',
+                'IdentityNo',
+                'UserId',
+                'Username',
+                'UserDisplayName',
+                'UserEmail',
+                'UserSource',
+                'UserPasswordHash',
+                'UserPasswordSalt',
+                'UserLastDirectoryUpdate',
+                'UserUserImage',
+                'UserInsertDate',
+                'UserInsertUserId',
+                'UserUpdateDate',
+                'UserUpdateUserId',
+                'UserIsActive'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ContactRow = Organization.ContactRow || (Organization.ContactRow = {}));
     })(Organization = Geshotel.Organization || (Geshotel.Organization = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4298,8 +5627,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ContactService.Methods || (ContactService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ContactService[x] = function (r, s, o) { return Q.serviceRequest(ContactService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ContactService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ContactService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ContactService.baseUrl + '/' + x;
             });
         })(ContactService = Organization.ContactService || (Organization.ContactService = {}));
@@ -4338,7 +5675,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = AmbitoOfertaRow.Fields || (AmbitoOfertaRow.Fields = {}));
-            ['AmbitoOfertaId', 'Nombre'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'AmbitoOfertaId',
+                'Nombre'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(AmbitoOfertaRow = Portal.AmbitoOfertaRow || (Portal.AmbitoOfertaRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4352,8 +5692,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = AmbitoOfertaService.Methods || (AmbitoOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                AmbitoOfertaService[x] = function (r, s, o) { return Q.serviceRequest(AmbitoOfertaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                AmbitoOfertaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(AmbitoOfertaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = AmbitoOfertaService.baseUrl + '/' + x;
             });
         })(AmbitoOfertaService = Portal.AmbitoOfertaService || (Portal.AmbitoOfertaService = {}));
@@ -4392,7 +5740,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = CategoriaHotelesRow.Fields || (CategoriaHotelesRow.Fields = {}));
-            ['CategoriaId', 'Abreviatura', 'Categoria'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'CategoriaId',
+                'Abreviatura',
+                'Categoria'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(CategoriaHotelesRow = Portal.CategoriaHotelesRow || (Portal.CategoriaHotelesRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4406,8 +5758,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = CategoriaHotelesService.Methods || (CategoriaHotelesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                CategoriaHotelesService[x] = function (r, s, o) { return Q.serviceRequest(CategoriaHotelesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CategoriaHotelesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CategoriaHotelesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = CategoriaHotelesService.baseUrl + '/' + x;
             });
         })(CategoriaHotelesService = Portal.CategoriaHotelesService || (Portal.CategoriaHotelesService = {}));
@@ -4446,7 +5806,21 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ComunidadesAutonomasRow.Fields || (ComunidadesAutonomasRow.Fields = {}));
-            ['ComunidadId', 'NacionId', 'ComunidadAutonoma', 'ComunidadAutonomaIsta', 'Nacion', 'NacionDescCorta', 'NacionMonedaId', 'NacionIdiomaId', 'NacionNumeroIne', 'NacionPaisIsta', 'NacionDefecto', 'NacionNombreReal', 'NacionIdiomaMails'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ComunidadId',
+                'NacionId',
+                'ComunidadAutonoma',
+                'ComunidadAutonomaIsta',
+                'Nacion',
+                'NacionDescCorta',
+                'NacionMonedaId',
+                'NacionIdiomaId',
+                'NacionNumeroIne',
+                'NacionPaisIsta',
+                'NacionDefecto',
+                'NacionNombreReal',
+                'NacionIdiomaMails'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ComunidadesAutonomasRow = Portal.ComunidadesAutonomasRow || (Portal.ComunidadesAutonomasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4460,8 +5834,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ComunidadesAutonomasService.Methods || (ComunidadesAutonomasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ComunidadesAutonomasService[x] = function (r, s, o) { return Q.serviceRequest(ComunidadesAutonomasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ComunidadesAutonomasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ComunidadesAutonomasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ComunidadesAutonomasService.baseUrl + '/' + x;
             });
         })(ComunidadesAutonomasService = Portal.ComunidadesAutonomasService || (Portal.ComunidadesAutonomasService = {}));
@@ -4484,7 +5866,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ConceptosAceleradorReservasRow.Fields || (ConceptosAceleradorReservasRow.Fields = {}));
-            ['ConceptoAceleradorId', 'Concepto'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ConceptoAceleradorId',
+                'Concepto'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ConceptosAceleradorReservasRow = Portal.ConceptosAceleradorReservasRow || (Portal.ConceptosAceleradorReservasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4521,7 +5906,24 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = EmpresasRow.Fields || (EmpresasRow.Fields = {}));
-            ['EmpresaId', 'Empresa', 'EmpresaContable', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'Telefono', 'Fax', 'Cif', 'RutaFicheros', 'Provincia', 'ProvinciaComunidadAutonomaId', 'ProvinciaNacionId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EmpresaId',
+                'Empresa',
+                'EmpresaContable',
+                'Direccion',
+                'Poblacion',
+                'Zip',
+                'ProvinciaId',
+                'Telefono',
+                'Fax',
+                'Cif',
+                'RutaFicheros',
+                'Provincia',
+                'ProvinciaComunidadAutonomaId',
+                'ProvinciaNacionId',
+                'ProvinciaProvinciaIsta',
+                'ProvinciaDefectoIsta'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(EmpresasRow = Portal.EmpresasRow || (Portal.EmpresasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4535,8 +5937,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = EmpresasService.Methods || (EmpresasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                EmpresasService[x] = function (r, s, o) { return Q.serviceRequest(EmpresasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                EmpresasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(EmpresasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = EmpresasService.baseUrl + '/' + x;
             });
         })(EmpresasService = Portal.EmpresasService || (Portal.EmpresasService = {}));
@@ -4559,7 +5969,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = EstadosFacturasRow.Fields || (EstadosFacturasRow.Fields = {}));
-            ['EstadoFacturaId', 'Descripcion', 'EsError'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EstadoFacturaId',
+                'Descripcion',
+                'EsError'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(EstadosFacturasRow = Portal.EstadosFacturasRow || (Portal.EstadosFacturasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4596,7 +6010,18 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = FormasDePagoRow.Fields || (FormasDePagoRow.Fields = {}));
-            ['FormaPagoId', 'FormaPago', 'Credito', 'SwEfectivo', 'SwTarjeta', 'TarjetaLength', 'TarjetaPrefixes', 'TarjetaCheckdigit', 'SwDingus', 'ProduccionTpv'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'FormaPagoId',
+                'FormaPago',
+                'Credito',
+                'SwEfectivo',
+                'SwTarjeta',
+                'TarjetaLength',
+                'TarjetaPrefixes',
+                'TarjetaCheckdigit',
+                'SwDingus',
+                'ProduccionTpv'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(FormasDePagoRow = Portal.FormasDePagoRow || (Portal.FormasDePagoRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4610,8 +6035,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = FormasDePagoService.Methods || (FormasDePagoService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                FormasDePagoService[x] = function (r, s, o) { return Q.serviceRequest(FormasDePagoService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                FormasDePagoService[x] = function (r, s, o) {
+                    return Q.serviceRequest(FormasDePagoService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = FormasDePagoService.baseUrl + '/' + x;
             });
         })(FormasDePagoService = Portal.FormasDePagoService || (Portal.FormasDePagoService = {}));
@@ -4650,7 +6083,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = FrecuenciaFacturacionRow.Fields || (FrecuenciaFacturacionRow.Fields = {}));
-            ['FrecuenciaId', 'DescripcionCorta', 'Descripcion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'FrecuenciaId',
+                'DescripcionCorta',
+                'Descripcion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(FrecuenciaFacturacionRow = Portal.FrecuenciaFacturacionRow || (Portal.FrecuenciaFacturacionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4664,8 +6101,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = FrecuenciaFacturacionService.Methods || (FrecuenciaFacturacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                FrecuenciaFacturacionService[x] = function (r, s, o) { return Q.serviceRequest(FrecuenciaFacturacionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                FrecuenciaFacturacionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(FrecuenciaFacturacionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = FrecuenciaFacturacionService.baseUrl + '/' + x;
             });
         })(FrecuenciaFacturacionService = Portal.FrecuenciaFacturacionService || (Portal.FrecuenciaFacturacionService = {}));
@@ -4704,7 +6149,15 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = GruposDeClienteRow.Fields || (GruposDeClienteRow.Fields = {}));
-            ['GrupoClienteId', 'NombreGrupo', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'GrupoClienteId',
+                'NombreGrupo',
+                'Huesped',
+                'Contratos',
+                'Facturar',
+                'Agencia',
+                'Perfil'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(GruposDeClienteRow = Portal.GruposDeClienteRow || (Portal.GruposDeClienteRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4718,8 +6171,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = GruposDeClienteService.Methods || (GruposDeClienteService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                GruposDeClienteService[x] = function (r, s, o) { return Q.serviceRequest(GruposDeClienteService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                GruposDeClienteService[x] = function (r, s, o) {
+                    return Q.serviceRequest(GruposDeClienteService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = GruposDeClienteService.baseUrl + '/' + x;
             });
         })(GruposDeClienteService = Portal.GruposDeClienteService || (Portal.GruposDeClienteService = {}));
@@ -4758,7 +6219,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = GruposDeServiciosRow.Fields || (GruposDeServiciosRow.Fields = {}));
-            ['GrupoServicioId', 'NombreGrupo', 'CtaContable'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'GrupoServicioId',
+                'NombreGrupo',
+                'CtaContable'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(GruposDeServiciosRow = Portal.GruposDeServiciosRow || (Portal.GruposDeServiciosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4772,8 +6237,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = GruposDeServiciosService.Methods || (GruposDeServiciosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                GruposDeServiciosService[x] = function (r, s, o) { return Q.serviceRequest(GruposDeServiciosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                GruposDeServiciosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(GruposDeServiciosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = GruposDeServiciosService.baseUrl + '/' + x;
             });
         })(GruposDeServiciosService = Portal.GruposDeServiciosService || (Portal.GruposDeServiciosService = {}));
@@ -4812,7 +6285,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = GruposHabitacionRow.Fields || (GruposHabitacionRow.Fields = {}));
-            ['HabitacionId', 'Habitacion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'HabitacionId',
+                'Habitacion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(GruposHabitacionRow = Portal.GruposHabitacionRow || (Portal.GruposHabitacionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4826,8 +6302,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = GruposHabitacionService.Methods || (GruposHabitacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                GruposHabitacionService[x] = function (r, s, o) { return Q.serviceRequest(GruposHabitacionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                GruposHabitacionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(GruposHabitacionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = GruposHabitacionService.baseUrl + '/' + x;
             });
         })(GruposHabitacionService = Portal.GruposHabitacionService || (Portal.GruposHabitacionService = {}));
@@ -4866,7 +6350,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HabitacionesSituacionRow.Fields || (HabitacionesSituacionRow.Fields = {}));
-            ['SituacionId', 'Situacion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'SituacionId',
+                'Situacion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(HabitacionesSituacionRow = Portal.HabitacionesSituacionRow || (Portal.HabitacionesSituacionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4880,8 +6367,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = HabitacionesSituacionService.Methods || (HabitacionesSituacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                HabitacionesSituacionService[x] = function (r, s, o) { return Q.serviceRequest(HabitacionesSituacionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                HabitacionesSituacionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(HabitacionesSituacionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = HabitacionesSituacionService.baseUrl + '/' + x;
             });
         })(HabitacionesSituacionService = Portal.HabitacionesSituacionService || (Portal.HabitacionesSituacionService = {}));
@@ -4920,7 +6415,63 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HotelesRow.Fields || (HotelesRow.Fields = {}));
-            ['HotelId', 'Hotel', 'EmpresaId', 'TipoHotelId', 'CategoriaId', 'NombreCorto', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'NacionId', 'Telefono', 'Fax', 'CtaManocorriente', 'DptoContable', 'CtaContableCajas', 'CtaContableBanco', 'FechaInicioPrograma', 'RutaFicheroPolicia', 'ContadorFicheroPolicia', 'IdentificadorFicheroPolicia', 'EmailReservas', 'EmailVentas', 'EmailSmtp', 'TextoCancelacion', 'UsuarioIsta', 'PasswordIsta', 'UrlIsta', 'MunicipioIsta', 'NumeroRegistroIsta', 'RutaBavel', 'DingusUsuario', 'DingusPassword', 'DingusHotelCode', 'DingusTraductor', 'DingusUrl', 'CheckinOnLine', 'MinimoDiasCheckinOnline', 'ZoomMapa', 'Lat', 'Lng', 'Ancho', 'Alto', 'OverbookingLimit', 'Empresa', 'TipoHotel', 'TipoHotelAbreviatura', 'Categoria', 'CategoriaAbreviatura', 'Provincia', 'Nacion', 'ProvinciaComunidadAutonomaId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta', 'FechaHotel'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'HotelId',
+                'Hotel',
+                'EmpresaId',
+                'TipoHotelId',
+                'CategoriaId',
+                'NombreCorto',
+                'Direccion',
+                'Poblacion',
+                'Zip',
+                'ProvinciaId',
+                'NacionId',
+                'Telefono',
+                'Fax',
+                'CtaManocorriente',
+                'DptoContable',
+                'CtaContableCajas',
+                'CtaContableBanco',
+                'FechaInicioPrograma',
+                'RutaFicheroPolicia',
+                'ContadorFicheroPolicia',
+                'IdentificadorFicheroPolicia',
+                'EmailReservas',
+                'EmailVentas',
+                'EmailSmtp',
+                'TextoCancelacion',
+                'UsuarioIsta',
+                'PasswordIsta',
+                'UrlIsta',
+                'MunicipioIsta',
+                'NumeroRegistroIsta',
+                'RutaBavel',
+                'DingusUsuario',
+                'DingusPassword',
+                'DingusHotelCode',
+                'DingusTraductor',
+                'DingusUrl',
+                'CheckinOnLine',
+                'MinimoDiasCheckinOnline',
+                'ZoomMapa',
+                'Lat',
+                'Lng',
+                'Ancho',
+                'Alto',
+                'OverbookingLimit',
+                'Empresa',
+                'TipoHotel',
+                'TipoHotelAbreviatura',
+                'Categoria',
+                'CategoriaAbreviatura',
+                'Provincia',
+                'Nacion',
+                'ProvinciaComunidadAutonomaId',
+                'ProvinciaProvinciaIsta',
+                'ProvinciaDefectoIsta',
+                'FechaHotel'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(HotelesRow = Portal.HotelesRow || (Portal.HotelesRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4934,8 +6485,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = HotelesService.Methods || (HotelesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                HotelesService[x] = function (r, s, o) { return Q.serviceRequest(HotelesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                HotelesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(HotelesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = HotelesService.baseUrl + '/' + x;
             });
         })(HotelesService = Portal.HotelesService || (Portal.HotelesService = {}));
@@ -4974,7 +6533,18 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ImpuestosRow.Fields || (ImpuestosRow.Fields = {}));
-            ['ImpuestoId', 'EmpresaId', 'Impuesto', 'Porcentaje', 'CtaContable', 'ActivoGeshotel', 'UserId', 'FechaModificacion', 'UserName', 'Empresa'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ImpuestoId',
+                'EmpresaId',
+                'Impuesto',
+                'Porcentaje',
+                'CtaContable',
+                'ActivoGeshotel',
+                'UserId',
+                'FechaModificacion',
+                'UserName',
+                'Empresa'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ImpuestosRow = Portal.ImpuestosRow || (Portal.ImpuestosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -4988,8 +6558,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ImpuestosService.Methods || (ImpuestosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ImpuestosService[x] = function (r, s, o) { return Q.serviceRequest(ImpuestosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ImpuestosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ImpuestosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ImpuestosService.baseUrl + '/' + x;
             });
         })(ImpuestosService = Portal.ImpuestosService || (Portal.ImpuestosService = {}));
@@ -5028,7 +6606,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = MonedasRow.Fields || (MonedasRow.Fields = {}));
-            ['MonedaId', 'DescCorta', 'Descripcion', 'Cambio'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'MonedaId',
+                'DescCorta',
+                'Descripcion',
+                'Cambio'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(MonedasRow = Portal.MonedasRow || (Portal.MonedasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5042,8 +6625,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = MonedasService.Methods || (MonedasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                MonedasService[x] = function (r, s, o) { return Q.serviceRequest(MonedasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                MonedasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(MonedasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = MonedasService.baseUrl + '/' + x;
             });
         })(MonedasService = Portal.MonedasService || (Portal.MonedasService = {}));
@@ -5082,7 +6673,23 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = NacionesRow.Fields || (NacionesRow.Fields = {}));
-            ['NacionId', 'Nacion', 'DescCorta', 'MonedaId', 'IdiomaId', 'NumeroIne', 'PaisIsta', 'Defecto', 'NombreReal', 'IdiomaMails', 'MonedaDescripcion', 'MonedaDescCorta', 'MonedaCambio', 'IdiomaLanguageId', 'IdiomaLanguageName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'NacionId',
+                'Nacion',
+                'DescCorta',
+                'MonedaId',
+                'IdiomaId',
+                'NumeroIne',
+                'PaisIsta',
+                'Defecto',
+                'NombreReal',
+                'IdiomaMails',
+                'MonedaDescripcion',
+                'MonedaDescCorta',
+                'MonedaCambio',
+                'IdiomaLanguageId',
+                'IdiomaLanguageName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(NacionesRow = Portal.NacionesRow || (Portal.NacionesRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5096,8 +6703,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = NacionesService.Methods || (NacionesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                NacionesService[x] = function (r, s, o) { return Q.serviceRequest(NacionesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                NacionesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(NacionesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = NacionesService.baseUrl + '/' + x;
             });
         })(NacionesService = Portal.NacionesService || (Portal.NacionesService = {}));
@@ -5136,7 +6751,26 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ProvinciasRow.Fields || (ProvinciasRow.Fields = {}));
-            ['ProvinciaId', 'Provincia', 'ComunidadAutonomaId', 'NacionId', 'ProvinciaIsta', 'DefectoIsta', 'ComunidadAutonomaNacionId', 'ComunidadAutonoma', 'ComunidadAutonomaComunidadAutonomaIsta', 'Nacion', 'NacionDescCorta', 'NacionMonedaId', 'NacionIdiomaId', 'NacionNumeroIne', 'NacionPaisIsta', 'NacionDefecto', 'NacionNombreReal', 'NacionIdiomaMails'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ProvinciaId',
+                'Provincia',
+                'ComunidadAutonomaId',
+                'NacionId',
+                'ProvinciaIsta',
+                'DefectoIsta',
+                'ComunidadAutonomaNacionId',
+                'ComunidadAutonoma',
+                'ComunidadAutonomaComunidadAutonomaIsta',
+                'Nacion',
+                'NacionDescCorta',
+                'NacionMonedaId',
+                'NacionIdiomaId',
+                'NacionNumeroIne',
+                'NacionPaisIsta',
+                'NacionDefecto',
+                'NacionNombreReal',
+                'NacionIdiomaMails'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ProvinciasRow = Portal.ProvinciasRow || (Portal.ProvinciasRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5150,8 +6784,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ProvinciasService.Methods || (ProvinciasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ProvinciasService[x] = function (r, s, o) { return Q.serviceRequest(ProvinciasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProvinciasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProvinciasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ProvinciasService.baseUrl + '/' + x;
             });
         })(ProvinciasService = Portal.ProvinciasService || (Portal.ProvinciasService = {}));
@@ -5174,7 +6816,12 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservaEstadosRow.Fields || (ReservaEstadosRow.Fields = {}));
-            ['EstadoReservaId', 'Estado', 'EsErrorFechaini', 'EsErrorFechafin'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'EstadoReservaId',
+                'Estado',
+                'EsErrorFechaini',
+                'EsErrorFechafin'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservaEstadosRow = Portal.ReservaEstadosRow || (Portal.ReservaEstadosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5211,7 +6858,34 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ServiciosRow.Fields || (ServiciosRow.Fields = {}));
-            ['ServicioId', 'NombreServicio', 'Abreviatura', 'TipoServicioId', 'SwProduccion', 'SwDescuento', 'SwAjustes', 'SwGastos', 'SwPension', 'SwRectificativa', 'TipoUnidadCalculoId', 'ConceptoAceleradorReservasId', 'Costo', 'SumaServicioId', 'RestaServicioId', 'UserId', 'FechaModificacion', 'TipoHab', 'TipoPension', 'TipoServicioNombreTipoServicio', 'Tipo_UC', 'Concepto', 'Suma', 'Resta', 'NombreTipoHab', 'NombreTipoPension'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ServicioId',
+                'NombreServicio',
+                'Abreviatura',
+                'TipoServicioId',
+                'SwProduccion',
+                'SwDescuento',
+                'SwAjustes',
+                'SwGastos',
+                'SwPension',
+                'SwRectificativa',
+                'TipoUnidadCalculoId',
+                'ConceptoAceleradorReservasId',
+                'Costo',
+                'SumaServicioId',
+                'RestaServicioId',
+                'UserId',
+                'FechaModificacion',
+                'TipoHab',
+                'TipoPension',
+                'TipoServicioNombreTipoServicio',
+                'Tipo_UC',
+                'Concepto',
+                'Suma',
+                'Resta',
+                'NombreTipoHab',
+                'NombreTipoPension'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ServiciosRow = Portal.ServiciosRow || (Portal.ServiciosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5225,8 +6899,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ServiciosService.Methods || (ServiciosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ServiciosService[x] = function (r, s, o) { return Q.serviceRequest(ServiciosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ServiciosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ServiciosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ServiciosService.baseUrl + '/' + x;
             });
         })(ServiciosService = Portal.ServiciosService || (Portal.ServiciosService = {}));
@@ -5249,7 +6931,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = SexosRow.Fields || (SexosRow.Fields = {}));
-            ['SexoId', 'Sexo'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'SexoId',
+                'Sexo'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(SexosRow = Portal.SexosRow || (Portal.SexosRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5286,7 +6971,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TipoAplicacionOfertaRow.Fields || (TipoAplicacionOfertaRow.Fields = {}));
-            ['TipoAplicacionOfertaId', 'AplicableSegunFechaDe'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoAplicacionOfertaId',
+                'AplicableSegunFechaDe'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TipoAplicacionOfertaRow = Portal.TipoAplicacionOfertaRow || (Portal.TipoAplicacionOfertaRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5300,8 +6988,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TipoAplicacionOfertaService.Methods || (TipoAplicacionOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TipoAplicacionOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TipoAplicacionOfertaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TipoAplicacionOfertaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TipoAplicacionOfertaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TipoAplicacionOfertaService.baseUrl + '/' + x;
             });
         })(TipoAplicacionOfertaService = Portal.TipoAplicacionOfertaService || (Portal.TipoAplicacionOfertaService = {}));
@@ -5340,7 +7036,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposBloqueoRow.Fields || (TiposBloqueoRow.Fields = {}));
-            ['TipoBloqueoId', 'Descriptivo', 'Editable'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoBloqueoId',
+                'Descriptivo',
+                'Editable'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposBloqueoRow = Portal.TiposBloqueoRow || (Portal.TiposBloqueoRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5354,8 +7054,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposBloqueoService.Methods || (TiposBloqueoService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposBloqueoService[x] = function (r, s, o) { return Q.serviceRequest(TiposBloqueoService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposBloqueoService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposBloqueoService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposBloqueoService.baseUrl + '/' + x;
             });
         })(TiposBloqueoService = Portal.TiposBloqueoService || (Portal.TiposBloqueoService = {}));
@@ -5394,7 +7102,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposCondicionRow.Fields || (TiposCondicionRow.Fields = {}));
-            ['TipoCondicionId', 'Condicion', 'Literal'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoCondicionId',
+                'Condicion',
+                'Literal'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposCondicionRow = Portal.TiposCondicionRow || (Portal.TiposCondicionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5408,8 +7120,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposCondicionService.Methods || (TiposCondicionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposCondicionService[x] = function (r, s, o) { return Q.serviceRequest(TiposCondicionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposCondicionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposCondicionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposCondicionService.baseUrl + '/' + x;
             });
         })(TiposCondicionService = Portal.TiposCondicionService || (Portal.TiposCondicionService = {}));
@@ -5448,7 +7168,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposDeImputacionRow.Fields || (TiposDeImputacionRow.Fields = {}));
-            ['TipoImputacionId', 'Imputacion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoImputacionId',
+                'Imputacion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposDeImputacionRow = Portal.TiposDeImputacionRow || (Portal.TiposDeImputacionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5462,8 +7185,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposDeImputacionService.Methods || (TiposDeImputacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDeImputacionService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeImputacionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposDeImputacionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposDeImputacionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposDeImputacionService.baseUrl + '/' + x;
             });
         })(TiposDeImputacionService = Portal.TiposDeImputacionService || (Portal.TiposDeImputacionService = {}));
@@ -5502,7 +7233,14 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposDeOfertaRow.Fields || (TiposDeOfertaRow.Fields = {}));
-            ['TipoOfertaId', 'Oferta', 'PermitirMMayorQueN', 'Rejilla', 'Observaciones', 'OrdenAplicacion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoOfertaId',
+                'Oferta',
+                'PermitirMMayorQueN',
+                'Rejilla',
+                'Observaciones',
+                'OrdenAplicacion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposDeOfertaRow = Portal.TiposDeOfertaRow || (Portal.TiposDeOfertaRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5516,8 +7254,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposDeOfertaService.Methods || (TiposDeOfertaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDeOfertaService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeOfertaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposDeOfertaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposDeOfertaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposDeOfertaService.baseUrl + '/' + x;
             });
         })(TiposDeOfertaService = Portal.TiposDeOfertaService || (Portal.TiposDeOfertaService = {}));
@@ -5556,7 +7302,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposDeTarjetaRow.Fields || (TiposDeTarjetaRow.Fields = {}));
-            ['TipoTarjetaId', 'TipoTarjeta', 'TarjetaLength', 'TarjetaPrefixes', 'TarjetaCheckdigit'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoTarjetaId',
+                'TipoTarjeta',
+                'TarjetaLength',
+                'TarjetaPrefixes',
+                'TarjetaCheckdigit'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposDeTarjetaRow = Portal.TiposDeTarjetaRow || (Portal.TiposDeTarjetaRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5570,8 +7322,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposDeTarjetaService.Methods || (TiposDeTarjetaService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposDeTarjetaService[x] = function (r, s, o) { return Q.serviceRequest(TiposDeTarjetaService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposDeTarjetaService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposDeTarjetaService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposDeTarjetaService.baseUrl + '/' + x;
             });
         })(TiposDeTarjetaService = Portal.TiposDeTarjetaService || (Portal.TiposDeTarjetaService = {}));
@@ -5594,7 +7354,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposDocumentoRow.Fields || (TiposDocumentoRow.Fields = {}));
-            ['DocumentoId', 'Documento'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'DocumentoId',
+                'Documento'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposDocumentoRow = Portal.TiposDocumentoRow || (Portal.TiposDocumentoRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5631,7 +7394,16 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposHabitacionRow.Fields || (TiposHabitacionRow.Fields = {}));
-            ['TipoHabitacionId', 'DescCorta', 'Descripcion', 'GrupoHabitacionId', 'NumeroPersonas', 'Desvios', 'NoShow', 'GrupoHabitacion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoHabitacionId',
+                'DescCorta',
+                'Descripcion',
+                'GrupoHabitacionId',
+                'NumeroPersonas',
+                'Desvios',
+                'NoShow',
+                'GrupoHabitacion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposHabitacionRow = Portal.TiposHabitacionRow || (Portal.TiposHabitacionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5645,8 +7417,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposHabitacionService.Methods || (TiposHabitacionService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposHabitacionService[x] = function (r, s, o) { return Q.serviceRequest(TiposHabitacionService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposHabitacionService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposHabitacionService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposHabitacionService.baseUrl + '/' + x;
             });
         })(TiposHabitacionService = Portal.TiposHabitacionService || (Portal.TiposHabitacionService = {}));
@@ -5685,7 +7465,11 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposHotelRow.Fields || (TiposHotelRow.Fields = {}));
-            ['TipoHotelId', 'TipoHotel', 'Abreviatura'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoHotelId',
+                'TipoHotel',
+                'Abreviatura'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposHotelRow = Portal.TiposHotelRow || (Portal.TiposHotelRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5699,8 +7483,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposHotelService.Methods || (TiposHotelService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposHotelService[x] = function (r, s, o) { return Q.serviceRequest(TiposHotelService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposHotelService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposHotelService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposHotelService.baseUrl + '/' + x;
             });
         })(TiposHotelService = Portal.TiposHotelService || (Portal.TiposHotelService = {}));
@@ -5739,7 +7531,13 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposHuespedRow.Fields || (TiposHuespedRow.Fields = {}));
-            ['TipoHuespedId', 'Descripcion', 'DescCorta', 'UcId', 'UcDescripcionUnidadCalculo'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoHuespedId',
+                'Descripcion',
+                'DescCorta',
+                'UcId',
+                'UcDescripcionUnidadCalculo'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposHuespedRow = Portal.TiposHuespedRow || (Portal.TiposHuespedRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5753,8 +7551,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposHuespedService.Methods || (TiposHuespedService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposHuespedService[x] = function (r, s, o) { return Q.serviceRequest(TiposHuespedService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposHuespedService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposHuespedService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposHuespedService.baseUrl + '/' + x;
             });
         })(TiposHuespedService = Portal.TiposHuespedService || (Portal.TiposHuespedService = {}));
@@ -5777,7 +7583,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposPensionRow.Fields || (TiposPensionRow.Fields = {}));
-            ['TipoPensionId', 'TipoPension'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoPensionId',
+                'TipoPension'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposPensionRow = Portal.TiposPensionRow || (Portal.TiposPensionRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5814,7 +7623,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposServicioRow.Fields || (TiposServicioRow.Fields = {}));
-            ['TipoServicioId', 'NombreTipoServicio'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'TipoServicioId',
+                'NombreTipoServicio'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposServicioRow = Portal.TiposServicioRow || (Portal.TiposServicioRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5828,8 +7640,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposServicioService.Methods || (TiposServicioService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposServicioService[x] = function (r, s, o) { return Q.serviceRequest(TiposServicioService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposServicioService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposServicioService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposServicioService.baseUrl + '/' + x;
             });
         })(TiposServicioService = Portal.TiposServicioService || (Portal.TiposServicioService = {}));
@@ -5868,7 +7688,10 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = TiposUnidadCalculoRow.Fields || (TiposUnidadCalculoRow.Fields = {}));
-            ['UnidadCalculoId', 'Uc'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UnidadCalculoId',
+                'Uc'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(TiposUnidadCalculoRow = Portal.TiposUnidadCalculoRow || (Portal.TiposUnidadCalculoRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5882,8 +7705,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = TiposUnidadCalculoService.Methods || (TiposUnidadCalculoService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                TiposUnidadCalculoService[x] = function (r, s, o) { return Q.serviceRequest(TiposUnidadCalculoService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TiposUnidadCalculoService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TiposUnidadCalculoService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = TiposUnidadCalculoService.baseUrl + '/' + x;
             });
         })(TiposUnidadCalculoService = Portal.TiposUnidadCalculoService || (Portal.TiposUnidadCalculoService = {}));
@@ -5922,7 +7753,16 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = UnidadesCalculoRow.Fields || (UnidadesCalculoRow.Fields = {}));
-            ['UnidadCalculoId', 'Uc', 'DescripcionUnidadCalculo', 'TipoUnidadCalculoId', 'Pax', 'ServicioId', 'TipoUc', 'ServicioNombreServicio'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'UnidadCalculoId',
+                'Uc',
+                'DescripcionUnidadCalculo',
+                'TipoUnidadCalculoId',
+                'Pax',
+                'ServicioId',
+                'TipoUc',
+                'ServicioNombreServicio'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(UnidadesCalculoRow = Portal.UnidadesCalculoRow || (Portal.UnidadesCalculoRow = {}));
     })(Portal = Geshotel.Portal || (Geshotel.Portal = {}));
 })(Geshotel || (Geshotel = {}));
@@ -5936,8 +7776,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = UnidadesCalculoService.Methods || (UnidadesCalculoService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                UnidadesCalculoService[x] = function (r, s, o) { return Q.serviceRequest(UnidadesCalculoService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                UnidadesCalculoService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UnidadesCalculoService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = UnidadesCalculoService.baseUrl + '/' + x;
             });
         })(UnidadesCalculoService = Portal.UnidadesCalculoService || (Portal.UnidadesCalculoService = {}));
@@ -6002,8 +7850,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ClientesAlojadosService.Methods || (ClientesAlojadosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ClientesAlojadosService[x] = function (r, s, o) { return Q.serviceRequest(ClientesAlojadosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ClientesAlojadosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ClientesAlojadosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ClientesAlojadosService.baseUrl + '/' + x;
             });
         })(ClientesAlojadosService = Recepcion.ClientesAlojadosService || (Recepcion.ClientesAlojadosService = {}));
@@ -6037,7 +7893,27 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HabitacionesBloqueosRow.Fields || (HabitacionesBloqueosRow.Fields = {}));
-            ['HabitacionBloqueoId', 'HabitacionId', 'TipoBloqueoId', 'FechaDesde', 'FechaHasta', 'Observaciones', 'ReservaId', 'UserId', 'FechaModificacion', 'HotelId', 'HotelName', 'EmpresaId', 'Empresa', 'HabitacionNumeroHabitacion', 'HabitacionTipoHabitacionId', 'TipoBloqueo', 'Editable', 'DescCorta', 'UserName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'HabitacionBloqueoId',
+                'HabitacionId',
+                'TipoBloqueoId',
+                'FechaDesde',
+                'FechaHasta',
+                'Observaciones',
+                'ReservaId',
+                'UserId',
+                'FechaModificacion',
+                'HotelId',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'HabitacionNumeroHabitacion',
+                'HabitacionTipoHabitacionId',
+                'TipoBloqueo',
+                'Editable',
+                'DescCorta',
+                'UserName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(HabitacionesBloqueosRow = Recepcion.HabitacionesBloqueosRow || (Recepcion.HabitacionesBloqueosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6051,8 +7927,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = HabitacionesBloqueosService.Methods || (HabitacionesBloqueosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                HabitacionesBloqueosService[x] = function (r, s, o) { return Q.serviceRequest(HabitacionesBloqueosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                HabitacionesBloqueosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(HabitacionesBloqueosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = HabitacionesBloqueosService.baseUrl + '/' + x;
             });
         })(HabitacionesBloqueosService = Recepcion.HabitacionesBloqueosService || (Recepcion.HabitacionesBloqueosService = {}));
@@ -6135,7 +8019,34 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = HuespedesRow.Fields || (HuespedesRow.Fields = {}));
-            ['HuespedId', 'EmpresaId', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'FechaNacimiento', 'SexoId', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'Telefono', 'Email', 'Foto1', 'Foto2', 'TarjetaFidelizacion', 'Empresa', 'TipoDocumento', 'Nacion', 'NacionDescCorta', 'Provincia', 'ReservaId'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'HuespedId',
+                'EmpresaId',
+                'Nombre',
+                'Apellidos',
+                'NombreCompleto',
+                'TipoDocumentoId',
+                'Nif',
+                'FechaDocumento',
+                'FechaNacimiento',
+                'SexoId',
+                'Direccion',
+                'Poblacion',
+                'Zip',
+                'NacionId',
+                'ProvinciaId',
+                'Telefono',
+                'Email',
+                'Foto1',
+                'Foto2',
+                'TarjetaFidelizacion',
+                'Empresa',
+                'TipoDocumento',
+                'Nacion',
+                'NacionDescCorta',
+                'Provincia',
+                'ReservaId'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(HuespedesRow = Recepcion.HuespedesRow || (Recepcion.HuespedesRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6149,8 +8060,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = HuespedesService.Methods || (HuespedesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                HuespedesService[x] = function (r, s, o) { return Q.serviceRequest(HuespedesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                HuespedesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(HuespedesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = HuespedesService.baseUrl + '/' + x;
             });
         })(HuespedesService = Recepcion.HuespedesService || (Recepcion.HuespedesService = {}));
@@ -6183,7 +8102,16 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasContratosRow.Fields || (ReservasContratosRow.Fields = {}));
-            ['ReservaContratoId', 'ReservaId', 'ContratoId', 'Directo', 'FechaDesde', 'FechaHasta', 'ClienteId', 'ClienteName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReservaContratoId',
+                'ReservaId',
+                'ContratoId',
+                'Directo',
+                'FechaDesde',
+                'FechaHasta',
+                'ClienteId',
+                'ClienteName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasContratosRow = Recepcion.ReservasContratosRow || (Recepcion.ReservasContratosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6197,8 +8125,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasContratosService.Methods || (ReservasContratosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasContratosService[x] = function (r, s, o) { return Q.serviceRequest(ReservasContratosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasContratosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasContratosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasContratosService.baseUrl + '/' + x;
             });
         })(ReservasContratosService = Recepcion.ReservasContratosService || (Recepcion.ReservasContratosService = {}));
@@ -6232,7 +8168,78 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasDescuentosRow.Fields || (ReservasDescuentosRow.Fields = {}));
-            ['ReservaDescuentoId', 'ReservaId', 'ServicioId', 'TipoDescuentoId', 'Tipo', 'Descuento', 'UserId', 'FechaModificacion', 'ReservaFechaCreacion', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaClienteId', 'ReservaCanalReservaId', 'ReservaClienteIdFactura', 'ReservaFechaReserva', 'ReservaNombreReserva', 'ReservaFechaPrevistaLlegada', 'ReservaFechaPrevistaSalida', 'ReservaHoraPrevistaLlegada', 'ReservaHoraPrevistaSalida', 'ReservaObservacionesLlegada', 'ReservaObservacionesSalida', 'ReservaObservacionesCliente', 'ReservaObservaciones', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'ReservaBonoReferencia', 'ReservaBonoOnline', 'ReservaBloquearTarifa', 'ReservaPermiteDevolucion', 'ReservaTipoTarjetaId', 'ReservaTarjetaCredito', 'ReservaCaducidad', 'ReservaCodSeguridad', 'ReservaContratoTtoo', 'ReservaCodigoOferta', 'ReservaValor', 'ReservaValorValidado', 'ReservaFechaValidacion', 'ReservaUsuarioValidacion', 'ReservaParoventasCheck', 'ReservaCuposCheck', 'ReservaReleaseCheck', 'ReservaReservaDingus', 'ReservaDingusImpuestosIncluidos', 'ReservaDingusComision', 'ReservaReservaDingusTipo', 'ReservaFechaAnulacion', 'ReservaUserId', 'ReservaFechaModificacion', 'ServicioNombreServicio', 'ServicioAbreviatura', 'ServicioTipoServicioId', 'ServicioSwProduccion', 'ServicioSwDescuento', 'ServicioSwAjustes', 'ServicioSwGastos', 'ServicioSwPension', 'ServicioSwRectificativa', 'ServicioTipoUnidadCalculoId', 'ServicioConceptoAceleradorReservasId', 'ServicioCosto', 'ServicioSumaServicioId', 'ServicioRestaServicioId', 'ServicioUserId', 'ServicioFechaModificacion', 'ServicioTipoHab', 'ServicioTipoPension', 'TipoDescuentoDescuento', 'TipoDescripcion'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReservaDescuentoId',
+                'ReservaId',
+                'ServicioId',
+                'TipoDescuentoId',
+                'Tipo',
+                'Descuento',
+                'UserId',
+                'FechaModificacion',
+                'ReservaFechaCreacion',
+                'ReservaHotelId',
+                'ReservaEstadoReservaId',
+                'ReservaClienteId',
+                'ReservaCanalReservaId',
+                'ReservaClienteIdFactura',
+                'ReservaFechaReserva',
+                'ReservaNombreReserva',
+                'ReservaFechaPrevistaLlegada',
+                'ReservaFechaPrevistaSalida',
+                'ReservaHoraPrevistaLlegada',
+                'ReservaHoraPrevistaSalida',
+                'ReservaObservacionesLlegada',
+                'ReservaObservacionesSalida',
+                'ReservaObservacionesCliente',
+                'ReservaObservaciones',
+                'ReservaFechaLlegada',
+                'ReservaFechaSalida',
+                'ReservaBonoReferencia',
+                'ReservaBonoOnline',
+                'ReservaBloquearTarifa',
+                'ReservaPermiteDevolucion',
+                'ReservaTipoTarjetaId',
+                'ReservaTarjetaCredito',
+                'ReservaCaducidad',
+                'ReservaCodSeguridad',
+                'ReservaContratoTtoo',
+                'ReservaCodigoOferta',
+                'ReservaValor',
+                'ReservaValorValidado',
+                'ReservaFechaValidacion',
+                'ReservaUsuarioValidacion',
+                'ReservaParoventasCheck',
+                'ReservaCuposCheck',
+                'ReservaReleaseCheck',
+                'ReservaReservaDingus',
+                'ReservaDingusImpuestosIncluidos',
+                'ReservaDingusComision',
+                'ReservaReservaDingusTipo',
+                'ReservaFechaAnulacion',
+                'ReservaUserId',
+                'ReservaFechaModificacion',
+                'ServicioNombreServicio',
+                'ServicioAbreviatura',
+                'ServicioTipoServicioId',
+                'ServicioSwProduccion',
+                'ServicioSwDescuento',
+                'ServicioSwAjustes',
+                'ServicioSwGastos',
+                'ServicioSwPension',
+                'ServicioSwRectificativa',
+                'ServicioTipoUnidadCalculoId',
+                'ServicioConceptoAceleradorReservasId',
+                'ServicioCosto',
+                'ServicioSumaServicioId',
+                'ServicioRestaServicioId',
+                'ServicioUserId',
+                'ServicioFechaModificacion',
+                'ServicioTipoHab',
+                'ServicioTipoPension',
+                'TipoDescuentoDescuento',
+                'TipoDescripcion'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasDescuentosRow = Recepcion.ReservasDescuentosRow || (Recepcion.ReservasDescuentosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6246,8 +8253,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasDescuentosService.Methods || (ReservasDescuentosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasDescuentosService[x] = function (r, s, o) { return Q.serviceRequest(ReservasDescuentosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasDescuentosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasDescuentosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasDescuentosService.baseUrl + '/' + x;
             });
         })(ReservasDescuentosService = Recepcion.ReservasDescuentosService || (Recepcion.ReservasDescuentosService = {}));
@@ -6279,8 +8294,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasExtrasService.Methods || (ReservasExtrasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasExtrasService[x] = function (r, s, o) { return Q.serviceRequest(ReservasExtrasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasExtrasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasExtrasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasExtrasService.baseUrl + '/' + x;
             });
         })(ReservasExtrasService = Recepcion.ReservasExtrasService || (Recepcion.ReservasExtrasService = {}));
@@ -6329,7 +8352,52 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasHuespedesRow.Fields || (ReservasHuespedesRow.Fields = {}));
-            ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId', 'Desde', 'Hasta', 'HotelName', 'Empresa', 'TipoHabitacionId', 'PensionId', 'TipoHabitacion', 'Pension', 'Ficheros', 'EstadoReserva'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReservasHuespedesId',
+                'ReservaId',
+                'HuespedId',
+                'FechaLlegada',
+                'FechaSalida',
+                'HabitacionId',
+                'Edad',
+                'ReservaHotelId',
+                'ReservaEstadoReservaId',
+                'ReservaFechaLlegada',
+                'ReservaFechaSalida',
+                'Nombre',
+                'Apellidos',
+                'NombreCompleto',
+                'TipoDocumentoId',
+                'TipoDocumento',
+                'FechaDocumento',
+                'Nif',
+                'FechaNacimiento',
+                'Direccion',
+                'Poblacion',
+                'ProvinciaId',
+                'Provincia',
+                'NacionId',
+                'Nacion',
+                'Telefono',
+                'Zip',
+                'Email',
+                'TarjetaFidelizacion',
+                'NumeroHabitacion',
+                'SexoId',
+                'Sexo',
+                'HotelId',
+                'EmpresaId',
+                'Desde',
+                'Hasta',
+                'HotelName',
+                'Empresa',
+                'TipoHabitacionId',
+                'PensionId',
+                'TipoHabitacion',
+                'Pension',
+                'Ficheros',
+                'EstadoReserva'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasHuespedesRow = Recepcion.ReservasHuespedesRow || (Recepcion.ReservasHuespedesRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6343,8 +8411,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasHuespedesService.Methods || (ReservasHuespedesService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasHuespedesService[x] = function (r, s, o) { return Q.serviceRequest(ReservasHuespedesService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasHuespedesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasHuespedesService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasHuespedesService.baseUrl + '/' + x;
             });
         })(ReservasHuespedesService = Recepcion.ReservasHuespedesService || (Recepcion.ReservasHuespedesService = {}));
@@ -6378,7 +8454,21 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasOfertasRow.Fields || (ReservasOfertasRow.Fields = {}));
-            ['ReservaOfertaId', 'ReservaId', 'OfertaId', 'Tipo', 'Activa', 'OfertaUsada', 'UnidadCalculoId', 'Texto', 'N', 'TipoOfertaId', 'M', 'TipoOfertaName', 'UnidadCalculoName'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReservaOfertaId',
+                'ReservaId',
+                'OfertaId',
+                'Tipo',
+                'Activa',
+                'OfertaUsada',
+                'UnidadCalculoId',
+                'Texto',
+                'N',
+                'TipoOfertaId',
+                'M',
+                'TipoOfertaName',
+                'UnidadCalculoName'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasOfertasRow = Recepcion.ReservasOfertasRow || (Recepcion.ReservasOfertasRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6392,8 +8482,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasOfertasService.Methods || (ReservasOfertasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasOfertasService[x] = function (r, s, o) { return Q.serviceRequest(ReservasOfertasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasOfertasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasOfertasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasOfertasService.baseUrl + '/' + x;
             });
         })(ReservasOfertasService = Recepcion.ReservasOfertasService || (Recepcion.ReservasOfertasService = {}));
@@ -6409,8 +8507,12 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasPreviewService.Methods || (ReservasPreviewService.Methods = {}));
-            ['List'].forEach(function (x) {
-                ReservasPreviewService[x] = function (r, s, o) { return Q.serviceRequest(ReservasPreviewService.baseUrl + '/' + x, r, s, o); };
+            [
+                'List'
+            ].forEach(function (x) {
+                ReservasPreviewService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasPreviewService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasPreviewService.baseUrl + '/' + x;
             });
         })(ReservasPreviewService = Recepcion.ReservasPreviewService || (Recepcion.ReservasPreviewService = {}));
@@ -6428,7 +8530,72 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasRow.Fields || (ReservasRow.Fields = {}));
-            ['ReservaId', 'FechaCreacion', 'HotelId', 'EstadoReservaId', 'ClienteId', 'CanalReservaId', 'ClienteIdFactura', 'FechaReserva', 'NombreReserva', 'TipoHabitacionId', 'PensionId', 'Adultos', 'Child50', 'ChildFree', 'Bebes', 'Pax', 'Vip', 'FechaPrevistaLlegada', 'FechaPrevistaSalida', 'ObservacionesLlegada', 'ObservacionesSalida', 'ObservacionesCliente', 'Observaciones', 'FechaLlegada', 'FechaSalida', 'BonoReferencia', 'BonoOnline', 'BloquearTarifa', 'PermiteDevolucion', 'TipoTarjetaId', 'TarjetaCredito', 'Caducidad', 'CodSeguridad', 'ContratoTtoo', 'CodigoOferta', 'Valor', 'ValorValidado', 'FechaValidacion', 'UsuarioValidacion', 'ParoventasCheck', 'CuposCheck', 'ReleaseCheck', 'ReservaDingus', 'DingusImpuestosIncluidos', 'DingusComision', 'ReservaDingusTipo', 'FechaAnulacion', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'EstadoReserva', 'TipoTarjeta', 'ClienteRazon', 'CanalReserva', 'ClienteIdFacturaRazon', 'TipoHabitacion', 'Pension', 'Username', 'ValidationUsername', 'ReservaName', 'Noches', 'Ficheros'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ReservaId',
+                'FechaCreacion',
+                'HotelId',
+                'EstadoReservaId',
+                'ClienteId',
+                'CanalReservaId',
+                'ClienteIdFactura',
+                'FechaReserva',
+                'NombreReserva',
+                'TipoHabitacionId',
+                'PensionId',
+                'Adultos',
+                'Child50',
+                'ChildFree',
+                'Bebes',
+                'Pax',
+                'Vip',
+                'FechaPrevistaLlegada',
+                'FechaPrevistaSalida',
+                'ObservacionesLlegada',
+                'ObservacionesSalida',
+                'ObservacionesCliente',
+                'Observaciones',
+                'FechaLlegada',
+                'FechaSalida',
+                'BonoReferencia',
+                'BonoOnline',
+                'BloquearTarifa',
+                'PermiteDevolucion',
+                'TipoTarjetaId',
+                'TarjetaCredito',
+                'Caducidad',
+                'CodSeguridad',
+                'ContratoTtoo',
+                'CodigoOferta',
+                'Valor',
+                'ValorValidado',
+                'FechaValidacion',
+                'UsuarioValidacion',
+                'ParoventasCheck',
+                'CuposCheck',
+                'ReleaseCheck',
+                'ReservaDingus',
+                'DingusImpuestosIncluidos',
+                'DingusComision',
+                'ReservaDingusTipo',
+                'FechaAnulacion',
+                'UserId',
+                'FechaModificacion',
+                'HotelName',
+                'EmpresaId',
+                'Empresa',
+                'EstadoReserva',
+                'TipoTarjeta',
+                'ClienteRazon',
+                'CanalReserva',
+                'ClienteIdFacturaRazon',
+                'TipoHabitacion',
+                'Pension',
+                'Username',
+                'ValidationUsername',
+                'ReservaName',
+                'Noches',
+                'Ficheros'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasRow = Recepcion.ReservasRow || (Recepcion.ReservasRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6442,8 +8609,18 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasService.Methods || (ReservasService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List', 'ChangeReservationStatus', 'CheckIn'].forEach(function (x) {
-                ReservasService[x] = function (r, s, o) { return Q.serviceRequest(ReservasService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List',
+                'ChangeReservationStatus',
+                'CheckIn'
+            ].forEach(function (x) {
+                ReservasService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasService.baseUrl + '/' + x;
             });
         })(ReservasService = Recepcion.ReservasService || (Recepcion.ReservasService = {}));
@@ -6476,7 +8653,23 @@ var Geshotel;
             var Fields;
             (function (Fields) {
             })(Fields = ReservasServiciosRow.Fields || (ReservasServiciosRow.Fields = {}));
-            ['ServicioReservaId', 'ReservaId', 'ServicioId', 'UnidadCalculoId', 'FechaDesde', 'FechaHasta', 'Cantidad', 'UserId', 'FechaModificacion', 'FlagContrato', 'PrecioServicio', 'ServicioExtra', 'ServicioNombreServicio', 'UnidadCalculo', 'Username'].forEach(function (x) { return Fields[x] = x; });
+            [
+                'ServicioReservaId',
+                'ReservaId',
+                'ServicioId',
+                'UnidadCalculoId',
+                'FechaDesde',
+                'FechaHasta',
+                'Cantidad',
+                'UserId',
+                'FechaModificacion',
+                'FlagContrato',
+                'PrecioServicio',
+                'ServicioExtra',
+                'ServicioNombreServicio',
+                'UnidadCalculo',
+                'Username'
+            ].forEach(function (x) { return Fields[x] = x; });
         })(ReservasServiciosRow = Recepcion.ReservasServiciosRow || (Recepcion.ReservasServiciosRow = {}));
     })(Recepcion = Geshotel.Recepcion || (Geshotel.Recepcion = {}));
 })(Geshotel || (Geshotel = {}));
@@ -6490,8 +8683,16 @@ var Geshotel;
             var Methods;
             (function (Methods) {
             })(Methods = ReservasServiciosService.Methods || (ReservasServiciosService.Methods = {}));
-            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
-                ReservasServiciosService[x] = function (r, s, o) { return Q.serviceRequest(ReservasServiciosService.baseUrl + '/' + x, r, s, o); };
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ReservasServiciosService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ReservasServiciosService.baseUrl + '/' + x, r, s, o);
+                };
                 Methods[x] = ReservasServiciosService.baseUrl + '/' + x;
             });
         })(ReservasServiciosService = Recepcion.ReservasServiciosService || (Recepcion.ReservasServiciosService = {}));

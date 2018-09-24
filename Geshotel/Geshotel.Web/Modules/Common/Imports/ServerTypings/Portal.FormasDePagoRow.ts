@@ -36,7 +36,18 @@ namespace Geshotel.Portal {
             export declare const ProduccionTpv: string;
         }
 
-        ['FormaPagoId', 'FormaPago', 'Credito', 'SwEfectivo', 'SwTarjeta', 'TarjetaLength', 'TarjetaPrefixes', 'TarjetaCheckdigit', 'SwDingus', 'ProduccionTpv'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'FormaPagoId', 
+            'FormaPago', 
+            'Credito', 
+            'SwEfectivo', 
+            'SwTarjeta', 
+            'TarjetaLength', 
+            'TarjetaPrefixes', 
+            'TarjetaCheckdigit', 
+            'SwDingus', 
+            'ProduccionTpv'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

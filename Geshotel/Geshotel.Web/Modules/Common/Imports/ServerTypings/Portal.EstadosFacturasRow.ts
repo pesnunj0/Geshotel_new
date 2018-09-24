@@ -22,7 +22,11 @@ namespace Geshotel.Portal {
             export declare const EsError: string;
         }
 
-        ['EstadoFacturaId', 'Descripcion', 'EsError'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'EstadoFacturaId', 
+            'Descripcion', 
+            'EsError'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

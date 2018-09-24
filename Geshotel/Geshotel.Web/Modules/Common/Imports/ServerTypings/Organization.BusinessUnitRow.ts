@@ -26,7 +26,13 @@ namespace Geshotel.Organization {
             export declare const ParentUnitParentUnitId: string;
         }
 
-        ['UnitId', 'Name', 'ParentUnitId', 'ParentUnitName', 'ParentUnitParentUnitId'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'UnitId', 
+            'Name', 
+            'ParentUnitId', 
+            'ParentUnitName', 
+            'ParentUnitParentUnitId'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

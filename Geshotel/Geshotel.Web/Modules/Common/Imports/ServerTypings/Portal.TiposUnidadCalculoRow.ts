@@ -20,7 +20,10 @@ namespace Geshotel.Portal {
             export declare const Uc: string;
         }
 
-        ['UnidadCalculoId', 'Uc'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'UnidadCalculoId', 
+            'Uc'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -22,7 +22,11 @@ namespace Geshotel.Portal {
             export declare const Editable: string;
         }
 
-        ['TipoBloqueoId', 'Descriptivo', 'Editable'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoBloqueoId', 
+            'Descriptivo', 
+            'Editable'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

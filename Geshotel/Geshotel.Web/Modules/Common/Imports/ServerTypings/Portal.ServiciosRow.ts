@@ -68,7 +68,34 @@ namespace Geshotel.Portal {
             export declare const NombreTipoPension: string;
         }
 
-        ['ServicioId', 'NombreServicio', 'Abreviatura', 'TipoServicioId', 'SwProduccion', 'SwDescuento', 'SwAjustes', 'SwGastos', 'SwPension', 'SwRectificativa', 'TipoUnidadCalculoId', 'ConceptoAceleradorReservasId', 'Costo', 'SumaServicioId', 'RestaServicioId', 'UserId', 'FechaModificacion', 'TipoHab', 'TipoPension', 'TipoServicioNombreTipoServicio', 'Tipo_UC', 'Concepto', 'Suma', 'Resta', 'NombreTipoHab', 'NombreTipoPension'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ServicioId', 
+            'NombreServicio', 
+            'Abreviatura', 
+            'TipoServicioId', 
+            'SwProduccion', 
+            'SwDescuento', 
+            'SwAjustes', 
+            'SwGastos', 
+            'SwPension', 
+            'SwRectificativa', 
+            'TipoUnidadCalculoId', 
+            'ConceptoAceleradorReservasId', 
+            'Costo', 
+            'SumaServicioId', 
+            'RestaServicioId', 
+            'UserId', 
+            'FechaModificacion', 
+            'TipoHab', 
+            'TipoPension', 
+            'TipoServicioNombreTipoServicio', 
+            'Tipo_UC', 
+            'Concepto', 
+            'Suma', 
+            'Resta', 
+            'NombreTipoHab', 
+            'NombreTipoPension'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

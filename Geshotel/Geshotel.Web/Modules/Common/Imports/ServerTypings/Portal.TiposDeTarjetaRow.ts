@@ -26,7 +26,13 @@ namespace Geshotel.Portal {
             export declare const TarjetaCheckdigit: string;
         }
 
-        ['TipoTarjetaId', 'TipoTarjeta', 'TarjetaLength', 'TarjetaPrefixes', 'TarjetaCheckdigit'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoTarjetaId', 
+            'TipoTarjeta', 
+            'TarjetaLength', 
+            'TarjetaPrefixes', 
+            'TarjetaCheckdigit'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

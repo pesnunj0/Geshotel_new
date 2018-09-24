@@ -40,7 +40,23 @@ namespace Geshotel.Recepcion {
             export declare const Username: string;
         }
 
-        ['ServicioReservaId', 'ReservaId', 'ServicioId', 'UnidadCalculoId', 'FechaDesde', 'FechaHasta', 'Cantidad', 'UserId', 'FechaModificacion', 'FlagContrato', 'PrecioServicio', 'ServicioExtra', 'ServicioNombreServicio', 'UnidadCalculo', 'Username'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ServicioReservaId', 
+            'ReservaId', 
+            'ServicioId', 
+            'UnidadCalculoId', 
+            'FechaDesde', 
+            'FechaHasta', 
+            'Cantidad', 
+            'UserId', 
+            'FechaModificacion', 
+            'FlagContrato', 
+            'PrecioServicio', 
+            'ServicioExtra', 
+            'ServicioNombreServicio', 
+            'UnidadCalculo', 
+            'Username'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

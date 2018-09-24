@@ -83,7 +83,44 @@ namespace Geshotel.Contratos {
             export declare const TipoImputacionName: string;
         }
 
-        ['OfertaId', 'Texto', 'ContratoId', 'FechaDesde', 'FechaHasta', 'TipoAplicacionOfertaId', 'AplicableAuto', 'FechaReservaDesde', 'FechaReservaHasta', 'EstanciaMinimaDias', 'EstanciaMaximaDias', 'DiasDeAntelacion', 'TipoServicioId', 'ServicioId', 'UnidadCalculoId', 'ServicioLigadoId', 'CupoOferta', 'Precio', 'N', 'TipoOfertaId', 'M', 'AmbitoOfertaId', 'UserId', 'FechaModificacion', 'ImpuestoIncluido', 'TipoImputacionId', 'OrdenAplicacion', 'AmbitoOfertaName', 'TipoOfertaName', 'TipoServicioName', 'ServicioName', 'ServicioLigadoName', 'UnidadCalculoName', 'UserName', 'TipoAplicacionOfertaName', 'TipoImputacionName'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'OfertaId', 
+            'Texto', 
+            'ContratoId', 
+            'FechaDesde', 
+            'FechaHasta', 
+            'TipoAplicacionOfertaId', 
+            'AplicableAuto', 
+            'FechaReservaDesde', 
+            'FechaReservaHasta', 
+            'EstanciaMinimaDias', 
+            'EstanciaMaximaDias', 
+            'DiasDeAntelacion', 
+            'TipoServicioId', 
+            'ServicioId', 
+            'UnidadCalculoId', 
+            'ServicioLigadoId', 
+            'CupoOferta', 
+            'Precio', 
+            'N', 
+            'TipoOfertaId', 
+            'M', 
+            'AmbitoOfertaId', 
+            'UserId', 
+            'FechaModificacion', 
+            'ImpuestoIncluido', 
+            'TipoImputacionId', 
+            'OrdenAplicacion', 
+            'AmbitoOfertaName', 
+            'TipoOfertaName', 
+            'TipoServicioName', 
+            'ServicioName', 
+            'ServicioLigadoName', 
+            'UnidadCalculoName', 
+            'UserName', 
+            'TipoAplicacionOfertaName', 
+            'TipoImputacionName'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

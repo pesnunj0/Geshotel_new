@@ -22,7 +22,11 @@ namespace Geshotel.Portal {
             export declare const CtaContable: string;
         }
 
-        ['GrupoServicioId', 'NombreGrupo', 'CtaContable'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'GrupoServicioId', 
+            'NombreGrupo', 
+            'CtaContable'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

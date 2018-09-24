@@ -9,8 +9,12 @@ namespace Geshotel.Recepcion {
             export declare const List: string;
         }
 
-        ['List'].forEach(x => {
-            (<any>ReservasPreviewService)[x] = function (r, s, o) { return Q.serviceRequest(baseUrl + '/' + x, r, s, o); };
+        [
+            'List'
+        ].forEach(x => {
+            (<any>ReservasPreviewService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
+            };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }

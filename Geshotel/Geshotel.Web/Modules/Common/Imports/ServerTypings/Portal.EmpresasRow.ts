@@ -48,7 +48,24 @@ namespace Geshotel.Portal {
             export declare const ProvinciaDefectoIsta: string;
         }
 
-        ['EmpresaId', 'Empresa', 'EmpresaContable', 'Direccion', 'Poblacion', 'Zip', 'ProvinciaId', 'Telefono', 'Fax', 'Cif', 'RutaFicheros', 'Provincia', 'ProvinciaComunidadAutonomaId', 'ProvinciaNacionId', 'ProvinciaProvinciaIsta', 'ProvinciaDefectoIsta'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'EmpresaId', 
+            'Empresa', 
+            'EmpresaContable', 
+            'Direccion', 
+            'Poblacion', 
+            'Zip', 
+            'ProvinciaId', 
+            'Telefono', 
+            'Fax', 
+            'Cif', 
+            'RutaFicheros', 
+            'Provincia', 
+            'ProvinciaComunidadAutonomaId', 
+            'ProvinciaNacionId', 
+            'ProvinciaProvinciaIsta', 
+            'ProvinciaDefectoIsta'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

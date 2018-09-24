@@ -42,7 +42,21 @@ namespace Geshotel.Portal {
             export declare const NacionIdiomaMails: string;
         }
 
-        ['ComunidadId', 'NacionId', 'ComunidadAutonoma', 'ComunidadAutonomaIsta', 'Nacion', 'NacionDescCorta', 'NacionMonedaId', 'NacionIdiomaId', 'NacionNumeroIne', 'NacionPaisIsta', 'NacionDefecto', 'NacionNombreReal', 'NacionIdiomaMails'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ComunidadId', 
+            'NacionId', 
+            'ComunidadAutonoma', 
+            'ComunidadAutonomaIsta', 
+            'Nacion', 
+            'NacionDescCorta', 
+            'NacionMonedaId', 
+            'NacionIdiomaId', 
+            'NacionNumeroIne', 
+            'NacionPaisIsta', 
+            'NacionDefecto', 
+            'NacionNombreReal', 
+            'NacionIdiomaMails'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

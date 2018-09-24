@@ -98,7 +98,52 @@ namespace Geshotel.Recepcion {
             export declare const EstadoReserva: string;
         }
 
-        ['ReservasHuespedesId', 'ReservaId', 'HuespedId', 'FechaLlegada', 'FechaSalida', 'HabitacionId', 'Edad', 'ReservaHotelId', 'ReservaEstadoReservaId', 'ReservaFechaLlegada', 'ReservaFechaSalida', 'Nombre', 'Apellidos', 'NombreCompleto', 'TipoDocumentoId', 'TipoDocumento', 'FechaDocumento', 'Nif', 'FechaNacimiento', 'Direccion', 'Poblacion', 'ProvinciaId', 'Provincia', 'NacionId', 'Nacion', 'Telefono', 'Zip', 'Email', 'TarjetaFidelizacion', 'NumeroHabitacion', 'SexoId', 'Sexo', 'HotelId', 'EmpresaId', 'Desde', 'Hasta', 'HotelName', 'Empresa', 'TipoHabitacionId', 'PensionId', 'TipoHabitacion', 'Pension', 'Ficheros', 'EstadoReserva'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ReservasHuespedesId', 
+            'ReservaId', 
+            'HuespedId', 
+            'FechaLlegada', 
+            'FechaSalida', 
+            'HabitacionId', 
+            'Edad', 
+            'ReservaHotelId', 
+            'ReservaEstadoReservaId', 
+            'ReservaFechaLlegada', 
+            'ReservaFechaSalida', 
+            'Nombre', 
+            'Apellidos', 
+            'NombreCompleto', 
+            'TipoDocumentoId', 
+            'TipoDocumento', 
+            'FechaDocumento', 
+            'Nif', 
+            'FechaNacimiento', 
+            'Direccion', 
+            'Poblacion', 
+            'ProvinciaId', 
+            'Provincia', 
+            'NacionId', 
+            'Nacion', 
+            'Telefono', 
+            'Zip', 
+            'Email', 
+            'TarjetaFidelizacion', 
+            'NumeroHabitacion', 
+            'SexoId', 
+            'Sexo', 
+            'HotelId', 
+            'EmpresaId', 
+            'Desde', 
+            'Hasta', 
+            'HotelName', 
+            'Empresa', 
+            'TipoHabitacionId', 
+            'PensionId', 
+            'TipoHabitacion', 
+            'Pension', 
+            'Ficheros', 
+            'EstadoReserva'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

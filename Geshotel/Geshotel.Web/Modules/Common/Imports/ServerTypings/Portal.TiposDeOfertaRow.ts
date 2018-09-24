@@ -28,7 +28,14 @@ namespace Geshotel.Portal {
             export declare const OrdenAplicacion: string;
         }
 
-        ['TipoOfertaId', 'Oferta', 'PermitirMMayorQueN', 'Rejilla', 'Observaciones', 'OrdenAplicacion'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoOfertaId', 
+            'Oferta', 
+            'PermitirMMayorQueN', 
+            'Rejilla', 
+            'Observaciones', 
+            'OrdenAplicacion'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

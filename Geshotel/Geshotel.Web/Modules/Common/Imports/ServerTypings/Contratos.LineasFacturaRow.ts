@@ -65,7 +65,35 @@ namespace Geshotel.Contratos {
             export declare const UnidadCalculo: string;
         }
 
-        ['LineaFacturaId', 'HotelId', 'Fecha', 'FacturaId', 'ReservaId', 'ContratoId', 'Descripcion', 'Cantidad', 'Precio', 'ImpuestoId', 'PorcImpuesto', 'ServicioId', 'UnidadCalculoId', 'TipoLineaFactura', 'PrecioProduccion', 'PagFactura', 'Costo', 'UserId', 'FechaModificacion', 'SwAjuste', 'HotelName', 'EmpresaId', 'Empresa', 'Username', 'Importe', 'NombreServicio', 'UnidadCalculo'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'LineaFacturaId', 
+            'HotelId', 
+            'Fecha', 
+            'FacturaId', 
+            'ReservaId', 
+            'ContratoId', 
+            'Descripcion', 
+            'Cantidad', 
+            'Precio', 
+            'ImpuestoId', 
+            'PorcImpuesto', 
+            'ServicioId', 
+            'UnidadCalculoId', 
+            'TipoLineaFactura', 
+            'PrecioProduccion', 
+            'PagFactura', 
+            'Costo', 
+            'UserId', 
+            'FechaModificacion', 
+            'SwAjuste', 
+            'HotelName', 
+            'EmpresaId', 
+            'Empresa', 
+            'Username', 
+            'Importe', 
+            'NombreServicio', 
+            'UnidadCalculo'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

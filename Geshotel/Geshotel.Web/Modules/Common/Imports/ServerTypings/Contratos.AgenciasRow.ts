@@ -110,7 +110,55 @@ namespace Geshotel.Contratos {
             export declare const UserName: string;
         }
 
-        ['ClienteId', 'Razon', 'DescCorta', 'EmpresaId', 'GrupoClienteId', 'TipoDocumentoId', 'Nif', 'FechaDocumento', 'Direccion', 'Poblacion', 'Zip', 'NacionId', 'ProvinciaId', 'CtaContableAnticipo', 'CtaContable', 'DptoContable', 'CtaDepositos', 'Telefono', 'Email', 'Fax', 'Contacto', 'TelefonoContacto', 'FaxContacto', 'EmailContacto', 'CifFra', 'DireccionFra', 'PoblacionFra', 'ZipFra', 'NacionIdFactura', 'ProvinciaIdFactura', 'ClienteFactura', 'ClienteHuesped', 'PermiteCredito', 'LimiteCredito', 'FacturaAnticipada', 'VencimientoFacturasId', 'UserId', 'FechaModificacion', 'ClienteBavel', 'DingusExtras', 'Empresa', 'TipoDocumento', 'Nacion', 'Provincia', 'FacturaNacion', 'FacturaProvincia', 'UserName'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ClienteId', 
+            'Razon', 
+            'DescCorta', 
+            'EmpresaId', 
+            'GrupoClienteId', 
+            'TipoDocumentoId', 
+            'Nif', 
+            'FechaDocumento', 
+            'Direccion', 
+            'Poblacion', 
+            'Zip', 
+            'NacionId', 
+            'ProvinciaId', 
+            'CtaContableAnticipo', 
+            'CtaContable', 
+            'DptoContable', 
+            'CtaDepositos', 
+            'Telefono', 
+            'Email', 
+            'Fax', 
+            'Contacto', 
+            'TelefonoContacto', 
+            'FaxContacto', 
+            'EmailContacto', 
+            'CifFra', 
+            'DireccionFra', 
+            'PoblacionFra', 
+            'ZipFra', 
+            'NacionIdFactura', 
+            'ProvinciaIdFactura', 
+            'ClienteFactura', 
+            'ClienteHuesped', 
+            'PermiteCredito', 
+            'LimiteCredito', 
+            'FacturaAnticipada', 
+            'VencimientoFacturasId', 
+            'UserId', 
+            'FechaModificacion', 
+            'ClienteBavel', 
+            'DingusExtras', 
+            'Empresa', 
+            'TipoDocumento', 
+            'Nacion', 
+            'Provincia', 
+            'FacturaNacion', 
+            'FacturaProvincia', 
+            'UserName'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

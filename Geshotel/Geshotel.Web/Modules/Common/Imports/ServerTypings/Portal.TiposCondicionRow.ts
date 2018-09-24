@@ -22,7 +22,11 @@ namespace Geshotel.Portal {
             export declare const Literal: string;
         }
 
-        ['TipoCondicionId', 'Condicion', 'Literal'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoCondicionId', 
+            'Condicion', 
+            'Literal'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

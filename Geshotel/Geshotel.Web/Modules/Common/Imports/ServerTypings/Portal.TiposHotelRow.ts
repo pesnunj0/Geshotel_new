@@ -22,7 +22,11 @@ namespace Geshotel.Portal {
             export declare const Abreviatura: string;
         }
 
-        ['TipoHotelId', 'TipoHotel', 'Abreviatura'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoHotelId', 
+            'TipoHotel', 
+            'Abreviatura'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

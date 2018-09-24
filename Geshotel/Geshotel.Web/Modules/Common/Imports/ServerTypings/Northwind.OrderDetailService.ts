@@ -11,8 +11,13 @@ namespace Geshotel.Northwind {
             export declare const List: string;
         }
 
-        ['Retrieve', 'List'].forEach(x => {
-            (<any>OrderDetailService)[x] = function (r, s, o) { return Q.serviceRequest(baseUrl + '/' + x, r, s, o); };
+        [
+            'Retrieve', 
+            'List'
+        ].forEach(x => {
+            (<any>OrderDetailService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
+            };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }

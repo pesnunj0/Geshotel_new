@@ -46,7 +46,23 @@ namespace Geshotel.Portal {
             export declare const IdiomaLanguageName: string;
         }
 
-        ['NacionId', 'Nacion', 'DescCorta', 'MonedaId', 'IdiomaId', 'NumeroIne', 'PaisIsta', 'Defecto', 'NombreReal', 'IdiomaMails', 'MonedaDescripcion', 'MonedaDescCorta', 'MonedaCambio', 'IdiomaLanguageId', 'IdiomaLanguageName'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'NacionId', 
+            'Nacion', 
+            'DescCorta', 
+            'MonedaId', 
+            'IdiomaId', 
+            'NumeroIne', 
+            'PaisIsta', 
+            'Defecto', 
+            'NombreReal', 
+            'IdiomaMails', 
+            'MonedaDescripcion', 
+            'MonedaDescCorta', 
+            'MonedaCambio', 
+            'IdiomaLanguageId', 
+            'IdiomaLanguageName'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

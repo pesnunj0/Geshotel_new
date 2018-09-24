@@ -20,7 +20,10 @@ namespace Geshotel.Portal {
             export declare const AplicableSegunFechaDe: string;
         }
 
-        ['TipoAplicacionOfertaId', 'AplicableSegunFechaDe'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'TipoAplicacionOfertaId', 
+            'AplicableSegunFechaDe'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

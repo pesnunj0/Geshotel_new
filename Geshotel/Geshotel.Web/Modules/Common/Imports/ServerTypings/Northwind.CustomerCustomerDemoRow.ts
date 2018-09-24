@@ -39,7 +39,22 @@ namespace Geshotel.Northwind {
             export declare const CustomerTypeCustomerDesc: string;
         }
 
-        ['ID', 'CustomerID', 'CustomerTypeID', 'CustomerCompanyName', 'CustomerContactName', 'CustomerContactTitle', 'CustomerAddress', 'CustomerCity', 'CustomerRegion', 'CustomerPostalCode', 'CustomerCountry', 'CustomerPhone', 'CustomerFax', 'CustomerTypeCustomerDesc'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ID', 
+            'CustomerID', 
+            'CustomerTypeID', 
+            'CustomerCompanyName', 
+            'CustomerContactName', 
+            'CustomerContactTitle', 
+            'CustomerAddress', 
+            'CustomerCity', 
+            'CustomerRegion', 
+            'CustomerPostalCode', 
+            'CustomerCountry', 
+            'CustomerPhone', 
+            'CustomerFax', 
+            'CustomerTypeCustomerDesc'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

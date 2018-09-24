@@ -30,7 +30,15 @@ namespace Geshotel.Portal {
             export declare const Perfil: string;
         }
 
-        ['GrupoClienteId', 'NombreGrupo', 'Huesped', 'Contratos', 'Facturar', 'Agencia', 'Perfil'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'GrupoClienteId', 
+            'NombreGrupo', 
+            'Huesped', 
+            'Contratos', 
+            'Facturar', 
+            'Agencia', 
+            'Perfil'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

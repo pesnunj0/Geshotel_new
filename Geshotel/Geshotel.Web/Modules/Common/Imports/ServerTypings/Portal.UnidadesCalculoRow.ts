@@ -32,7 +32,16 @@ namespace Geshotel.Portal {
             export declare const ServicioNombreServicio: string;
         }
 
-        ['UnidadCalculoId', 'Uc', 'DescripcionUnidadCalculo', 'TipoUnidadCalculoId', 'Pax', 'ServicioId', 'TipoUc', 'ServicioNombreServicio'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'UnidadCalculoId', 
+            'Uc', 
+            'DescripcionUnidadCalculo', 
+            'TipoUnidadCalculoId', 
+            'Pax', 
+            'ServicioId', 
+            'TipoUc', 
+            'ServicioNombreServicio'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

@@ -15,8 +15,15 @@ namespace Geshotel.Administration {
             export declare const ListPermissionKeys: string;
         }
 
-        ['Update', 'List', 'ListRolePermissions', 'ListPermissionKeys'].forEach(x => {
-            (<any>UserPermissionService)[x] = function (r, s, o) { return Q.serviceRequest(baseUrl + '/' + x, r, s, o); };
+        [
+            'Update', 
+            'List', 
+            'ListRolePermissions', 
+            'ListPermissionKeys'
+        ].forEach(x => {
+            (<any>UserPermissionService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
+            };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }

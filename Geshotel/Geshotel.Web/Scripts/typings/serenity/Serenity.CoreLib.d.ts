@@ -10,23 +10,10 @@ declare class RSVP<TResult> {
 }
 declare module RSVP {
     function on(handler: (e: any) => void): void;
-    function resolve(): Thenable<any>;
+    function resolve(): PromiseLike<any>;
 }
 declare module RSVP {
-    interface Thenable<R> {
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => Thenable<U>): Thenable<U>;
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => U): Thenable<U>;
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => void): Thenable<U>;
-        then<U>(onFulfilled?: (value: R) => U, onRejected?: (error: any) => Thenable<U>): Thenable<U>;
-        then<U>(onFulfilled?: (value: R) => U, onRejected?: (error: any) => U): Thenable<U>;
-        then<U>(onFulfilled?: (value: R) => U, onRejected?: (error: any) => void): Thenable<U>;
-    }
-    interface Deferred<T> {
-        promise: Promise<T>;
-        resolve(value: T): void;
-        reject(reason: any): void;
-    }
-    class Promise<R> implements Thenable<R> {
+    class Promise<R> implements PromiseLike<R> {
         /**
          * If you call resolve in the body of the callback passed to the constructor,
          * your promise is fulfilled with result object passed to resolve.
@@ -42,7 +29,7 @@ declare module RSVP {
          * For consistency and debugging (eg stack traces), obj should be an instanceof Error.
          * Any errors thrown in the constructor callback will be implicitly passed to reject().
          */
-        constructor(callback: (resolve: (thenable?: Thenable<R>) => void, reject: (error: any) => void) => void, label?: string);
+        constructor(callback: (resolve: (thenable?: PromiseLike<R>) => void, reject: (error: any) => void) => void, label?: string);
         /**
          * onFulfilled is called when/if "promise" resolves. onRejected is called when/if "promise" rejects.
          * Both are optional, if either/both are omitted the next onFulfilled/onRejected in the chain is called.
@@ -53,7 +40,7 @@ declare module RSVP {
          * @param onFulfilled called when/if "promise" resolves
          * @param onRejected called when/if "promise" rejects
          */
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => Thenable<U>): Promise<U>;
+        then<U>(onFulfilled?: (value: R) => PromiseLike<U>, onRejected?: (error: any) => PromiseLike<U>): Promise<U>;
         /**
          * onFulfilled is called when/if "promise" resolves. onRejected is called when/if "promise" rejects.
          * Both are optional, if either/both are omitted the next onFulfilled/onRejected in the chain is called.
@@ -64,7 +51,7 @@ declare module RSVP {
          * @param onFulfilled called when/if "promise" resolves
          * @param onRejected called when/if "promise" rejects
          */
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => U): Promise<U>;
+        then<U>(onFulfilled?: (value: R) => PromiseLike<U>, onRejected?: (error: any) => U): Promise<U>;
         /**
          * onFulfilled is called when/if "promise" resolves. onRejected is called when/if "promise" rejects.
          * Both are optional, if either/both are omitted the next onFulfilled/onRejected in the chain is called.
@@ -75,7 +62,7 @@ declare module RSVP {
          * @param onFulfilled called when/if "promise" resolves
          * @param onRejected called when/if "promise" rejects
          */
-        then<U>(onFulfilled?: (value: R) => Thenable<U>, onRejected?: (error: any) => void): Promise<U>;
+        then<U>(onFulfilled?: (value: R) => PromiseLike<U>, onRejected?: (error: any) => void): Promise<U>;
         /**
          * onFulfilled is called when/if "promise" resolves. onRejected is called when/if "promise" rejects.
          * Both are optional, if either/both are omitted the next onFulfilled/onRejected in the chain is called.
@@ -86,7 +73,7 @@ declare module RSVP {
          * @param onFulfilled called when/if "promise" resolves
          * @param onRejected called when/if "promise" rejects
          */
-        then<U>(onFulfilled?: (value: R) => U, onRejected?: (error: any) => Thenable<U>): Promise<U>;
+        then<U>(onFulfilled?: (value: R) => U, onRejected?: (error: any) => PromiseLike<U>): Promise<U>;
         /**
          * onFulfilled is called when/if "promise" resolves. onRejected is called when/if "promise" rejects.
          * Both are optional, if either/both are omitted the next onFulfilled/onRejected in the chain is called.
@@ -114,7 +101,7 @@ declare module RSVP {
          *
          * @param onRejected called when/if "promise" rejects
          */
-        catch<U>(onRejected?: (error: any) => Thenable<U>): Promise<U>;
+        catch<U>(onRejected?: (error: any) => PromiseLike<U>): Promise<U>;
         /**
          * Sugar for promise.then(undefined, onRejected)
          *
@@ -128,7 +115,7 @@ declare module RSVP {
          */
         catch<U>(onRejected?: (error: any) => void): Promise<U>;
         finally(finallyCallback: () => any): Promise<R>;
-        static all<T>(promises: Thenable<T>[]): Promise<T[]>;
+        static all<T>(promises: PromiseLike<T>[]): Promise<T[]>;
         static all<T>(promises: any[]): Promise<T[]>;
         static race<R>(promises: Promise<R>[]): Promise<R>;
         /**
@@ -139,7 +126,7 @@ declare module RSVP {
          @return {Promise} a promise that will become fulfilled with the given
          `value`
          */
-        static resolve<T>(object: Thenable<T>): Promise<T>;
+        static resolve<T>(object: PromiseLike<T>): Promise<T>;
         static resolve<T>(object: T): Promise<T>;
         /**
          @method cast (Deprecated in favor of resolve
@@ -149,7 +136,7 @@ declare module RSVP {
          @return {Promise} a promise that will become fulfilled with the given
          `value`
          */
-        static cast<T>(object: Thenable<T>, label?: string): Promise<T>;
+        static cast<T>(object: PromiseLike<T>, label?: string): Promise<T>;
         static cast<T>(object: T, label?: string): Promise<T>;
         /**
          `RSVP.Promise.reject` returns a promise rejected with the passed `reason`.
@@ -188,64 +175,9 @@ declare module RSVP {
      * the array passed to all can be a mixture of promise-like objects and other objects.
      * The fulfillment value is an array (in order) of fulfillment values. The rejection value is the first rejection value.
      */
-    function all<T>(promises: Thenable<T>[]): Promise<T[]>;
+    function all<T>(promises: PromiseLike<T>[]): Promise<T[]>;
     function all<T>(promises: any[]): Promise<T[]>;
-    /**
-     * Make a promise that fulfills when every item in the array fulfills, and rejects if (and when) any item rejects.
-     * the array passed to all can be a mixture of promise-like objects and other objects.
-     * The fulfillment value is an array (in order) of fulfillment values. The rejection value is the first rejection value.
-     * The key difference to the all() function is that both the fulfillment value and the argument to the hash() function
-     * are object literals. This allows you to simply reference the results directly off the returned object without
-     * having to remember the initial order like you would with all().
-     *
-     */
-    function hash<T>(promises: Thenable<T>[]): Promise<T[]>;
-    function hash<T>(promises: any[]): Promise<T[]>;
-    /**
-     `RSVP.map` is similar to JavaScript's native `map` method, except that it
-     waits for all promises to become fulfilled before running the `mapFn` on
-     each item in given to `promises`. `RSVP.map` returns a promise that will
-     become fulfilled with the result of running `mapFn` on the values the promises
-     become fulfilled with.
-     */
-    function map<T>(promises: Thenable<T>[], mapFn: (item: any) => any, label?: string): Promise<T[]>;
-    function map<T>(promises: any[], mapFn: (item: any) => any, label?: string): Promise<T[]>;
-    /**
-     * `RSVP.allSettled` is similar to `RSVP.all`, but instead of implementing
-     * a fail-fast method, it waits until all the promises have returned and
-     * shows you all the results. This is useful if you want to handle multiple
-     * promises' failure states together as a set.
-     */
-    function allSettled<T>(promises: Thenable<T>[]): Promise<PromiseState<T>[]>;
-    function allSettled<T>(promises: any[]): Promise<PromiseState<T>[]>;
-    /**
-     * `RSVP.hashSettled` is similar to `RSVP.allSettled`, but takes an object
-     * instead of an array for its `promises` argument.
-     *
-     * Unlike `RSVP.all` or `RSVP.hash`, which implement a fail-fast method,
-     * but like `RSVP.allSettled`, `hashSettled` waits until all the
-     * constituent promises have returned and then shows you all the results
-     * with their states and values/reasons. This is useful if you want to
-     * handle multiple promises' failure states together as a set.
-     */
-    function hashSettled<T>(promises: Thenable<T>[]): Promise<PromiseState<T>[]>;
-    function hashSettled<T>(promises: any[]): Promise<PromiseState<T>[]>;
-    /**
-     * Make a Promise that fulfills when any item fulfills, and rejects if any item rejects.
-     */
     function race<R>(promises: Promise<R>[]): Promise<R>;
-    /**
-     * `RSVP.denodeify` takes a "node-style" function and returns a function that
-     * will return an `RSVP.Promise`. You can use `denodeify` in Node.js or the
-     *  browser when you'd prefer to use promises over using callbacks. For example,
-     * `denodeify` transforms the following:
-     */
-    function denodeify<T>(nodeFunction: Function, ...args: any[]): (...args: any[]) => Promise<T>;
-    /**
-     * Favor the Promise Constructor instead (if possible)
-     *
-     */
-    function defer<T>(): Deferred<T>;
     /**
      `RSVP.Promise.reject` returns a promise rejected with the passed `reason`.
      */
@@ -254,16 +186,8 @@ declare module RSVP {
      `RSVP.Promise.resolve` returns a promise that will become resolved with the
      passed `value`.
      */
-    function resolve<T>(object: Thenable<T>): Promise<T>;
+    function resolve<T>(object: PromiseLike<T>): Promise<T>;
     function resolve<T>(object: T): Promise<T>;
-    /**
-     * `RSVP.filter` is similar to JavaScript's native `filter` method, except that it
-     * waits for all promises to become fulfilled before running the `filterFn` on
-     * each item in given to `promises`. `RSVP.filter` returns a promise that will
-     * become fulfilled with the result of running `filterFn` on the values the
-     * promises become fulfilled with.
-     */
-    function filter<T>(promises: Thenable<T>[], filterFn: (value: any) => any): Promise<T[]>;
     /**
      `RSVP.rethrow` will rethrow an error on the next turn of the JavaScript event
      loop in order to aid debugging.
@@ -277,6 +201,42 @@ declare module RSVP {
      */
     function rethrow(reason: any): void;
 }
+/**
+ * Represents the completion of an asynchronous operation
+ */
+interface PromiseConstructor {
+    /**
+     * Creates a new Promise.
+     * @param executor A callback used to initialize the promise. This callback is passed two arguments:
+     * a resolve callback used resolve the promise with a value or the result of another promise,
+     * and a reject callback used to reject the promise with a provided reason or error.
+     */
+    new <T>(executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): PromiseLike<T>;
+    /**
+     * Creates a new rejected promise for the provided reason.
+     * @param reason The reason the promise was rejected.
+     * @returns A new rejected Promise.
+     */
+    reject(reason: any): PromiseLike<never>;
+    /**
+     * Creates a new rejected promise for the provided reason.
+     * @param reason The reason the promise was rejected.
+     * @returns A new rejected Promise.
+     */
+    reject<T>(reason: any): PromiseLike<T>;
+    /**
+     * Creates a new resolved promise for the provided value.
+     * @param value A promise.
+     * @returns A promise whose internal state matches the provided promise.
+     */
+    resolve<T>(value: T | PromiseLike<T>): PromiseLike<T>;
+    /**
+     * Creates a new resolved promise .
+     * @returns A resolved promise.
+     */
+    resolve(): PromiseLike<void>;
+}
+declare var Promise: PromiseConstructor;
 declare namespace Select2 {
     namespace util {
         function stripDiacritics(input: string): string;
@@ -618,6 +578,11 @@ declare namespace Q {
     function clearOptions(select: JQuery): void;
     function findElementWithRelativeId(element: JQuery, relativeId: string): JQuery;
     /**
+     * Html attribute encodes a string (encodes quotes in addition to &, > and <)
+     * @param s String to be HTML attribute encoded
+     */
+    function attrEncode(s: any): string;
+    /**
      * Html encodes a string
      * @param s String to be HTML encoded
      */
@@ -718,6 +683,7 @@ declare namespace Q {
     function resolveUrl(url: string): string;
 }
 declare namespace Q {
+    function getCookie(name: string): any;
     interface ServiceOptions<TResponse extends Serenity.ServiceResponse> extends JQueryAjaxSettings {
         request?: any;
         service?: string;
@@ -748,25 +714,25 @@ declare namespace Q {
         function triggerChange(name: string): void;
         function unbindFromChange(regClass: string): void;
         function ensure(name: string): any;
-        function ensureAsync(name: string): RSVP.Thenable<any>;
+        function ensureAsync(name: string): PromiseLike<any>;
         function reload(name: string): any;
-        function reloadAsync(name: string): RSVP.Thenable<any>;
+        function reloadAsync(name: string): PromiseLike<any>;
         function canLoad(name: string): boolean;
         function setRegisteredScripts(scripts: any[]): void;
         function set(name: string, value: any): void;
     }
     function getRemoteData(key: string): any;
-    function getRemoteDataAsync(key: string): RSVP.Thenable<any>;
+    function getRemoteDataAsync(key: string): PromiseLike<any>;
     function getLookup<TItem>(key: string): Lookup<TItem>;
-    function getLookupAsync<TItem>(key: string): RSVP.Thenable<Lookup<TItem>>;
+    function getLookupAsync<TItem>(key: string): PromiseLike<Lookup<TItem>>;
     function reloadLookup(key: string): void;
-    function reloadLookupAsync(key: string): RSVP.Thenable<any>;
+    function reloadLookupAsync(key: string): PromiseLike<any>;
     function getColumns(key: string): any;
-    function getColumnsAsync(key: string): RSVP.Thenable<any>;
+    function getColumnsAsync(key: string): PromiseLike<any>;
     function getForm(key: string): any;
-    function getFormAsync(key: string): RSVP.Thenable<any>;
+    function getFormAsync(key: string): PromiseLike<any>;
     function getTemplate(key: string): any;
-    function getTemplateAsync(key: string): RSVP.Thenable<any>;
+    function getTemplateAsync(key: string): PromiseLike<any>;
     function canLoadScriptData(name: string): boolean;
 }
 declare namespace Q {
@@ -964,9 +930,10 @@ declare namespace Serenity {
         function generatedCode(origin?: string): (target: Function) => void;
         function idProperty(value: string): (target: Function) => void;
         function registerClass(intf?: any[], asm?: ss.AssemblyReg): (target: Function) => void;
+        function registerInterface(intf?: any[], asm?: ss.AssemblyReg): (target: Function) => void;
         function registerEnum(target: any, enumKey?: string, asm?: ss.AssemblyReg): void;
         function registerEditor(intf?: any[], asm?: ss.AssemblyReg): (target: Function) => void;
-        function registerFormatter(intf?: typeof ISlickFormatter[], asm?: ss.AssemblyReg): (target: Function) => void;
+        function registerFormatter(intf?: (typeof ISlickFormatter)[], asm?: ss.AssemblyReg): (target: Function) => void;
         function filterable(value?: boolean): (target: Function) => void;
         function itemName(value: string): (target: Function) => void;
         function isActiveProperty(value: string): (target: Function) => void;
@@ -1155,185 +1122,108 @@ declare namespace Serenity {
         constructor(container: JQuery, options?: TOptions);
         protected byId(id: string): JQuery;
         private byID<TWidget>(id, type);
+        private static noGeneric(s);
+        private getDefaultTemplateName();
         protected getTemplateName(): string;
+        protected getFallbackTemplate(): string;
         protected getTemplate(): string;
     }
 }
 declare namespace Serenity {
-    namespace EditorUtils {
-        function getValue(editor: Serenity.Widget<any>): any;
-        function saveValue(editor: Serenity.Widget<any>, item: PropertyItem, target: any): void;
-        function setValue(editor: Serenity.Widget<any>, value: any): void;
-        function loadValue(editor: Serenity.Widget<any>, item: PropertyItem, source: any): void;
-        function setReadonly(elements: JQuery, isReadOnly: boolean): JQuery;
-        function setReadOnly(widget: Serenity.Widget<any>, isReadOnly: boolean): void;
-        function setRequired(widget: Serenity.Widget<any>, isRequired: boolean): void;
+    class IBooleanValue {
     }
-    class PublicEditorTypes {
-        static get_registeredTypes(): any;
+    interface IBooleanValue {
+        get_value(): boolean;
+        set_value(value: boolean): void;
     }
-    class GoogleMap extends Widget<GoogleMapOptions> {
-        constructor(container: JQuery, opt: GoogleMapOptions);
-        get_map(): any;
+}
+declare namespace Serenity {
+    class IDoubleValue {
     }
-    interface GoogleMapOptions {
-        latitude?: any;
-        longitude?: any;
-        zoom?: any;
-        mapTypeId?: any;
-        markerTitle?: string;
-        markerLatitude?: any;
-        markerLongitude?: any;
+    interface IDoubleValue {
+        get_value(): any;
+        set_value(value: any): void;
     }
-    class BooleanEditor extends Widget<any> {
-        constructor(input: JQuery);
-        value: boolean;
+}
+declare namespace Serenity {
+    class IGetEditValue {
     }
-    interface RadioButtonEditorOptions {
-        enumKey?: string;
-        enumType?: any;
-        lookupKey?: string;
+    interface IGetEditValue {
+        getEditValue(property: PropertyItem, target: any): void;
     }
-    class RadioButtonEditor extends Widget<RadioButtonEditorOptions> {
-        constructor(input: JQuery);
-        value: string;
+}
+declare namespace Serenity {
+    class ISetEditValue {
     }
-    interface EnumEditorOptions {
-        enumKey?: string;
-        enumType?: any;
-        allowClear?: boolean;
+    interface ISetEditValue {
+        setEditValue(source: any, property: PropertyItem): void;
     }
-    interface HtmlContentEditorOptions {
-        cols?: any;
-        rows?: any;
+}
+declare namespace Serenity {
+    class IStringValue {
     }
-    class HtmlContentEditor extends Widget<HtmlContentEditorOptions> {
-        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
-        instanceReady(x: any): void;
-        getLanguage(): string;
-        getConfig(): CKEditorConfig;
-        value: string;
-    }
-    class HtmlNoteContentEditor extends HtmlContentEditor {
-        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
-    }
-    class HtmlReportContentEditor extends HtmlContentEditor {
-        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
-    }
-    interface ImageUploadEditorOptions {
-        minWidth?: number;
-        maxWidth?: number;
-        minHeight?: number;
-        maxHeight?: number;
-        minSize?: number;
-        maxSize?: number;
-        originalNameProperty?: string;
-        urlPrefix?: string;
-        allowNonImage?: boolean;
-    }
-    class ImageUploadEditor extends Widget<ImageUploadEditorOptions> {
-        entity: UploadedFile;
-        toolbar: Toolbar;
-        fileSymbols: JQuery;
-        uploadInput: JQuery;
-        constructor(div: JQuery, opt: ImageUploadEditorOptions);
-        addFileButtonText(): string;
-        getToolButtons(): ToolButton[];
-        populate(): void;
-        updateInterface(): void;
-        get_readOnly(): boolean;
-        set_readOnly(value: boolean): void;
-        value: UploadedFile;
-    }
-    interface MaskedEditorOptions {
-        mask?: string;
-        placeholder?: string;
-    }
-    class MaskedEditor extends Widget<MaskedEditorOptions> {
-        constructor(input: JQuery, opt: MaskedEditorOptions);
-        value: string;
-    }
-    class MultipleImageUploadEditor extends Widget<ImageUploadEditorOptions> {
-        entities: UploadedFile[];
-        toolbar: Toolbar;
-        fileSymbols: JQuery;
-        uploadInput: JQuery;
-        constructor(div: JQuery, opt: ImageUploadEditorOptions);
-        addFileButtonText(): string;
-        getToolButtons(): ToolButton[];
-        populate(): void;
-        updateInterface(): void;
-        get_readOnly(): boolean;
-        set_readOnly(value: boolean): void;
-        value: UploadedFile[];
-        get_jsonEncodeValue(): boolean;
-        set_jsonEncodeValue(value: boolean): void;
-    }
-    interface PhoneEditorOptions {
-        multiple?: boolean;
-        internal?: boolean;
-        mobile?: boolean;
-        allowExtension?: boolean;
-        allowInternational?: boolean;
-    }
-    class PhoneEditor extends Widget<PhoneEditorOptions> {
-        constructor(input: JQuery, opt?: PhoneEditorOptions);
-        validate(value: string): string;
-        formatValue(): void;
-        getFormattedValue(): string;
-        value: string;
-    }
-    class EnumEditor extends Select2Editor<EnumEditorOptions, Select2Item> {
-        constructor(hidden: JQuery, opt: EnumEditorOptions);
-        updateItems(): void;
-    }
-    class Select2AjaxEditor<TOptions, TItem> extends Widget<TOptions> {
-        pageSize: number;
-        constructor(hidden: JQuery, opt: any);
-        emptyItemText(): string;
-        getService(): string;
-        query(request: ListRequest, callback: (p1: ListResponse<any>) => void): void;
-        executeQuery(options: ServiceOptions<ListResponse<any>>): void;
-        queryByKey(key: string, callback: (p1: any) => void): void;
-        executeQueryByKey(options: ServiceOptions<RetrieveResponse<any>>): void;
-        getItemKey(item: any): string;
-        getItemText(item: any): string;
-        getTypeDelay(): number;
-        getSelect2Options(): Select2Options;
-        addInplaceCreate(title: string): void;
-        inplaceCreateClick(e: any): void;
-        get_select2Container(): JQuery;
-        value: string;
-    }
-    interface TextAreaEditorOptions {
-        cols?: number;
-        rows?: number;
-    }
-    class TextAreaEditor extends Widget<TextAreaEditorOptions> {
-        constructor(input: JQuery, opt?: TextAreaEditorOptions);
-        value: string;
-    }
-    interface TimeEditorOptions {
-        noEmptyOption?: boolean;
-        startHour?: any;
-        endHour?: any;
-        intervalMinutes?: any;
-    }
-    class TimeEditor extends Widget<TimeEditorOptions> {
-        constructor(input: JQuery, opt?: TimeEditorOptions);
-        value: number;
-    }
-    class URLEditor extends StringEditor {
-        constructor(input: JQuery);
-    }
-    class Recaptcha extends Widget<RecaptchaOptions> {
-        constructor(div: JQuery, opt: RecaptchaOptions);
+    interface IStringValue {
         get_value(): string;
         set_value(value: string): void;
     }
-    interface RecaptchaOptions {
-        siteKey?: string;
-        language?: string;
+}
+declare namespace Serenity {
+    interface PropertyItem {
+        name?: string;
+        title?: string;
+        hint?: string;
+        placeholder?: string;
+        editorType?: string;
+        editorParams?: any;
+        category?: string;
+        cssClass?: string;
+        headerCssClass?: string;
+        formCssClass?: string;
+        maxLength?: number;
+        required?: boolean;
+        insertable?: boolean;
+        insertPermission?: string;
+        hideOnInsert?: boolean;
+        updatable?: boolean;
+        updatePermission?: string;
+        hideOnUpdate?: boolean;
+        readOnly?: boolean;
+        readPermission?: string;
+        oneWay?: boolean;
+        defaultValue?: any;
+        localizable?: boolean;
+        visible?: boolean;
+        formatterType?: string;
+        formatterParams?: any;
+        displayFormat?: string;
+        alignment?: string;
+        width?: number;
+        minWidth?: number;
+        maxWidth?: number;
+        labelWidth?: string;
+        resizable?: boolean;
+        sortable?: boolean;
+        sortOrder?: number;
+        editLink?: boolean;
+        editLinkItemType?: string;
+        editLinkIdField?: string;
+        editLinkCssClass?: string;
+        filteringType?: string;
+        filteringParams?: any;
+        filteringIdField?: string;
+        notFilterable?: boolean;
+        filterOnly?: boolean;
+        quickFilter?: boolean;
+        quickFilterParams?: any;
+        quickFilterSeparator?: boolean;
+    }
+}
+declare namespace Serenity {
+    class BooleanEditor extends Widget<any> {
+        constructor(input: JQuery);
+        value: boolean;
+        protected get_value(): boolean;
+        protected set_value(value: boolean): void;
     }
 }
 declare namespace Serenity {
@@ -1454,6 +1344,7 @@ declare namespace Serenity {
     interface LookupEditorOptions {
         lookupKey?: string;
         minimumResultsForSearch?: any;
+        autoComplete?: boolean;
         inplaceAdd?: boolean;
         inplaceAddPermission?: string;
         dialogType?: string;
@@ -1467,6 +1358,202 @@ declare namespace Serenity {
     }
     class LookupEditor extends LookupEditorBase<LookupEditorOptions, any> {
         constructor(input: JQuery, opt?: LookupEditorOptions);
+    }
+}
+declare namespace Serenity {
+    class MaskedEditor extends Widget<MaskedEditorOptions> {
+        constructor(input: JQuery, opt?: MaskedEditorOptions);
+        value: string;
+        protected get_value(): string;
+        protected set_value(value: string): void;
+    }
+    interface MaskedEditorOptions {
+        mask?: string;
+        placeholder?: string;
+    }
+}
+declare namespace Serenity {
+    class StringEditor extends Widget<any> {
+        constructor(input: JQuery);
+        value: string;
+        protected get_value(): string;
+        protected set_value(value: string): void;
+    }
+}
+declare namespace Serenity {
+    class TextAreaEditor extends Widget<TextAreaEditorOptions> {
+        constructor(input: JQuery, opt?: TextAreaEditorOptions);
+        value: string;
+        protected get_value(): string;
+        protected set_value(value: string): void;
+    }
+    interface TextAreaEditorOptions {
+        cols?: number;
+        rows?: number;
+    }
+}
+declare namespace Serenity {
+    class TimeEditor extends Widget<TimeEditorOptions> {
+        private minutes;
+        constructor(input: JQuery, opt?: TimeEditorOptions);
+        value: number;
+        protected get_value(): number;
+        protected set_value(value: number): void;
+    }
+    interface TimeEditorOptions {
+        noEmptyOption?: boolean;
+        startHour?: any;
+        endHour?: any;
+        intervalMinutes?: any;
+    }
+}
+declare namespace Serenity {
+    class URLEditor extends StringEditor {
+        constructor(input: JQuery);
+    }
+}
+declare namespace Serenity {
+    namespace EditorUtils {
+        function getValue(editor: Serenity.Widget<any>): any;
+        function saveValue(editor: Serenity.Widget<any>, item: PropertyItem, target: any): void;
+        function setValue(editor: Serenity.Widget<any>, value: any): void;
+        function loadValue(editor: Serenity.Widget<any>, item: PropertyItem, source: any): void;
+        function setReadonly(elements: JQuery, isReadOnly: boolean): JQuery;
+        function setReadOnly(widget: Serenity.Widget<any>, isReadOnly: boolean): void;
+        function setRequired(widget: Serenity.Widget<any>, isRequired: boolean): void;
+    }
+    class PublicEditorTypes {
+        static get_registeredTypes(): any;
+    }
+    class GoogleMap extends Widget<GoogleMapOptions> {
+        constructor(container: JQuery, opt: GoogleMapOptions);
+        get_map(): any;
+    }
+    interface GoogleMapOptions {
+        latitude?: any;
+        longitude?: any;
+        zoom?: any;
+        mapTypeId?: any;
+        markerTitle?: string;
+        markerLatitude?: any;
+        markerLongitude?: any;
+    }
+    interface RadioButtonEditorOptions {
+        enumKey?: string;
+        enumType?: any;
+        lookupKey?: string;
+    }
+    class RadioButtonEditor extends Widget<RadioButtonEditorOptions> {
+        constructor(input: JQuery, opt: RadioButtonEditorOptions);
+        value: string;
+    }
+    interface EnumEditorOptions {
+        enumKey?: string;
+        enumType?: any;
+        allowClear?: boolean;
+    }
+    interface HtmlContentEditorOptions {
+        cols?: any;
+        rows?: any;
+    }
+    class HtmlContentEditor extends Widget<HtmlContentEditorOptions> {
+        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
+        instanceReady(x: any): void;
+        getLanguage(): string;
+        getConfig(): CKEditorConfig;
+        value: string;
+    }
+    class HtmlNoteContentEditor extends HtmlContentEditor {
+        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
+    }
+    class HtmlReportContentEditor extends HtmlContentEditor {
+        constructor(textArea: JQuery, opt?: HtmlContentEditorOptions);
+    }
+    interface ImageUploadEditorOptions {
+        minWidth?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        maxHeight?: number;
+        minSize?: number;
+        maxSize?: number;
+        originalNameProperty?: string;
+        urlPrefix?: string;
+        allowNonImage?: boolean;
+    }
+    class ImageUploadEditor extends Widget<ImageUploadEditorOptions> {
+        entity: UploadedFile;
+        toolbar: Toolbar;
+        fileSymbols: JQuery;
+        uploadInput: JQuery;
+        constructor(div: JQuery, opt: ImageUploadEditorOptions);
+        addFileButtonText(): string;
+        getToolButtons(): ToolButton[];
+        populate(): void;
+        updateInterface(): void;
+        get_readOnly(): boolean;
+        set_readOnly(value: boolean): void;
+        value: UploadedFile;
+    }
+    class MultipleImageUploadEditor extends Widget<ImageUploadEditorOptions> {
+        entities: UploadedFile[];
+        toolbar: Toolbar;
+        fileSymbols: JQuery;
+        uploadInput: JQuery;
+        constructor(div: JQuery, opt: ImageUploadEditorOptions);
+        addFileButtonText(): string;
+        getToolButtons(): ToolButton[];
+        populate(): void;
+        updateInterface(): void;
+        get_readOnly(): boolean;
+        set_readOnly(value: boolean): void;
+        value: UploadedFile[];
+        get_jsonEncodeValue(): boolean;
+        set_jsonEncodeValue(value: boolean): void;
+    }
+    interface PhoneEditorOptions {
+        multiple?: boolean;
+        internal?: boolean;
+        mobile?: boolean;
+        allowExtension?: boolean;
+        allowInternational?: boolean;
+    }
+    class PhoneEditor extends Widget<PhoneEditorOptions> {
+        constructor(input: JQuery, opt?: PhoneEditorOptions);
+        validate(value: string): string;
+        formatValue(): void;
+        getFormattedValue(): string;
+        value: string;
+    }
+    class EnumEditor extends Select2Editor<EnumEditorOptions, Select2Item> {
+        constructor(hidden: JQuery, opt: EnumEditorOptions);
+        updateItems(): void;
+    }
+    class Select2AjaxEditor<TOptions, TItem> extends Widget<TOptions> {
+        pageSize: number;
+        constructor(hidden: JQuery, opt: any);
+        emptyItemText(): string;
+        getService(): string;
+        query(request: ListRequest, callback: (p1: ListResponse<any>) => void): void;
+        executeQuery(options: ServiceOptions<ListResponse<any>>): void;
+        queryByKey(key: string, callback: (p1: any) => void): void;
+        executeQueryByKey(options: ServiceOptions<RetrieveResponse<any>>): void;
+        getItemKey(item: any): string;
+        getItemText(item: any): string;
+        getTypeDelay(): number;
+        getSelect2Options(): Select2Options;
+        addInplaceCreate(title: string): void;
+        inplaceCreateClick(e: any): void;
+        get_select2Container(): JQuery;
+        value: string;
+    }
+    class Recaptcha extends Widget<RecaptchaOptions> {
+        constructor(div: JQuery, opt: RecaptchaOptions);
+        get_value(): string;
+        set_value(value: string): void;
+    }
+    interface RecaptchaOptions {
+        siteKey?: string;
+        language?: string;
     }
 }
 declare namespace Serenity {
@@ -1536,6 +1623,8 @@ declare namespace Serenity {
         get_items(): FilterLine[];
         get_activeCriteria(): any[];
         get_displayText(): string;
+        static getCriteriaFor(items: FilterLine[]): any[];
+        static getDisplayTextFor(items: FilterLine[]): string;
     }
 }
 declare namespace Serenity {
@@ -1660,6 +1749,9 @@ declare namespace Serenity {
         init?: (w: TWidget) => void;
         separator?: boolean;
         cssClass?: string;
+        loadState?: (w: TWidget, state: any) => void;
+        saveState?: (w: TWidget) => any;
+        displayText?: (w: TWidget, label: string) => string;
     }
 }
 declare namespace Serenity {
@@ -1790,9 +1882,6 @@ declare namespace Serenity {
         constructor(prefix: string);
         w(id: string, type: Function): any;
     }
-    class StringEditor extends Widget<any> {
-        value: string;
-    }
     interface EmailEditorOptions {
         domain?: string;
         readOnlyDomain?: boolean;
@@ -1889,21 +1978,14 @@ declare namespace Serenity {
     }
     interface HtmlContentEditorOptions {
     }
-    class ISetEditValue {
-    }
-    interface ISetEditValue {
-        setEditValue(source: any, property: PropertyItem): void;
-    }
-    interface IStringValue {
-        get_value(): string;
-        set_value(value: string): void;
-    }
     interface GridPersistanceFlags {
         columnWidths?: boolean;
         columnVisibility?: boolean;
         sortColumns?: boolean;
         filterItems?: boolean;
         quickFilters?: boolean;
+        quickFilterText?: boolean;
+        quickSearch?: boolean;
         includeDeleted?: boolean;
     }
     interface PersistedGridColumn {
@@ -1916,6 +1998,9 @@ declare namespace Serenity {
         columns?: PersistedGridColumn[];
         filterItems?: FilterLine[];
         quickFilters?: Q.Dictionary<any>;
+        quickFilterText?: string;
+        quickSearchField: QuickSearchField;
+        quickSearchText?: string;
         includeDeleted?: boolean;
     }
     interface SettingStorage {
@@ -1980,68 +2065,6 @@ declare namespace Serenity {
 }
 declare namespace Serenity {
     class IAsyncInit {
-    }
-}
-declare namespace Serenity {
-}
-declare namespace Serenity {
-}
-declare namespace Serenity {
-    class IGetEditValue {
-    }
-    interface IGetEditValue {
-        getEditValue(property: PropertyItem, target: any): void;
-    }
-}
-declare namespace Serenity {
-}
-declare namespace Serenity {
-    interface PropertyItem {
-        name?: string;
-        title?: string;
-        hint?: string;
-        placeholder?: string;
-        editorType?: string;
-        editorParams?: any;
-        category?: string;
-        cssClass?: string;
-        headerCssClass?: string;
-        maxLength?: number;
-        required?: boolean;
-        insertable?: boolean;
-        insertPermission?: string;
-        hideOnInsert?: boolean;
-        updatable?: boolean;
-        updatePermission?: string;
-        hideOnUpdate?: boolean;
-        readOnly?: boolean;
-        readPermission?: string;
-        oneWay?: boolean;
-        defaultValue?: any;
-        localizable?: boolean;
-        visible?: boolean;
-        formatterType?: string;
-        formatterParams?: any;
-        displayFormat?: string;
-        alignment?: string;
-        width?: number;
-        minWidth?: number;
-        maxWidth?: number;
-        resizable?: boolean;
-        sortable?: boolean;
-        sortOrder?: number;
-        editLink?: boolean;
-        editLinkItemType?: string;
-        editLinkIdField?: string;
-        editLinkCssClass?: string;
-        filteringType?: string;
-        filteringParams?: any;
-        filteringIdField?: string;
-        notFilterable?: boolean;
-        filterOnly?: boolean;
-        quickFilter?: boolean;
-        quickFilterParams?: any;
-        quickFilterSeparator?: boolean;
     }
 }
 declare namespace Serenity {
@@ -2183,12 +2206,12 @@ declare namespace Serenity {
 }
 declare namespace Serenity {
     class TemplatedDialog<TOptions> extends TemplatedWidget<TOptions> {
-        protected isPanel: boolean;
-        protected responsive: boolean;
         protected tabs: JQuery;
         protected toolbar: Serenity.Toolbar;
         protected validator: JQueryValidation.Validator;
         constructor(options?: TOptions);
+        private readonly isMarkedAsPanel;
+        private readonly isResponsive;
         private static getCssSize(element, name);
         private static applyCssSizes(opt, dialogClass);
         destroy(): void;
@@ -2199,14 +2222,18 @@ declare namespace Serenity {
         protected initValidator(): void;
         protected resetValidation(): void;
         protected validateForm(): boolean;
-        dialogOpen(): void;
+        dialogOpen(asPanel?: boolean): void;
+        static openPanel(element: JQuery, uniqueName: string): void;
+        static closePanel(element: JQuery, e?: JQueryEventObject): void;
         protected onDialogOpen(): void;
         protected arrange(): void;
         protected onDialogClose(): void;
         protected addCssClass(): void;
         protected getDialogOptions(): JQueryUI.DialogOptions;
+        protected getDialogTitle(): string;
         dialogClose(): void;
         dialogTitle: string;
+        private setupPanelTitle();
         set_dialogTitle(value: string): void;
         protected initTabs(): void;
         protected handleResponsive(): void;
@@ -2246,8 +2273,6 @@ declare namespace Serenity {
 declare namespace Serenity {
     class DataGrid<TItem, TOptions> extends Widget<TOptions> {
         constructor(container: JQuery, options?: TOptions);
-        dialogOpen(): void;
-        loadByIdAndOpenDialog(id: any): void;
         protected allColumns: Slick.Column[];
         protected defaultColumns: string[];
         protected titleDiv: JQuery;
@@ -2338,6 +2363,7 @@ declare namespace Serenity {
         protected subDialogDataChange(): void;
         protected updateDisabledState(): void;
         protected usePager(): boolean;
+        openDialogsAsPanel?: boolean;
         refresh(): void;
         getItems(): TItem[];
         setItems(value: TItem[]): void;
@@ -2438,7 +2464,7 @@ declare namespace Serenity {
         protected getCloningEntity(): TItem;
         protected getDeleteOptions(callback: (response: DeleteResponse) => void): ServiceOptions<DeleteResponse>;
         protected getEntityIdField(): string;
-        protected getEntityIsActiveField(): string;
+        protected getIsActiveProperty(): string;
         protected getEntityNameField(): string;
         protected getEntityNameFieldValue(): any;
         protected getEntitySingular(): string;

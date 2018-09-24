@@ -24,7 +24,12 @@ namespace Geshotel.Portal {
             export declare const EsErrorFechafin: string;
         }
 
-        ['EstadoReservaId', 'Estado', 'EsErrorFechaini', 'EsErrorFechafin'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'EstadoReservaId', 
+            'Estado', 
+            'EsErrorFechaini', 
+            'EsErrorFechafin'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

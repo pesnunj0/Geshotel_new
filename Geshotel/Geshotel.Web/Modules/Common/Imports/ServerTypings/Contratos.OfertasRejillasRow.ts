@@ -22,7 +22,14 @@ namespace Geshotel.Contratos {
             export declare const M: string;
         }
 
-        ['RejillaId', 'OfertaId', 'N', 'TipoCondicionId', 'TipoAplicacion', 'M'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'RejillaId', 
+            'OfertaId', 
+            'N', 
+            'TipoCondicionId', 
+            'TipoAplicacion', 
+            'M'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

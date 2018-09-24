@@ -24,7 +24,12 @@ namespace Geshotel.Portal {
             export declare const Cambio: string;
         }
 
-        ['MonedaId', 'DescCorta', 'Descripcion', 'Cambio'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'MonedaId', 
+            'DescCorta', 
+            'Descripcion', 
+            'Cambio'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

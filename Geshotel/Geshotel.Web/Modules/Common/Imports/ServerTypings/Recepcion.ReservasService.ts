@@ -21,8 +21,18 @@ namespace Geshotel.Recepcion {
             export declare const CheckIn: string;
         }
 
-        ['Create', 'Update', 'Delete', 'Retrieve', 'List', 'ChangeReservationStatus', 'CheckIn'].forEach(x => {
-            (<any>ReservasService)[x] = function (r, s, o) { return Q.serviceRequest(baseUrl + '/' + x, r, s, o); };
+        [
+            'Create', 
+            'Update', 
+            'Delete', 
+            'Retrieve', 
+            'List', 
+            'ChangeReservationStatus', 
+            'CheckIn'
+        ].forEach(x => {
+            (<any>ReservasService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
+            };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }

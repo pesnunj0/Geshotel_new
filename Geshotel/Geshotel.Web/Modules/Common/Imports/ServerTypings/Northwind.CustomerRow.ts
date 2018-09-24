@@ -52,7 +52,26 @@ namespace Geshotel.Northwind {
             export declare const SendBulletin: string;
         }
 
-        ['ID', 'CustomerID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'NoteList', 'Representatives', 'LastContactDate', 'LastContactedBy', 'Email', 'SendBulletin'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'ID', 
+            'CustomerID', 
+            'CompanyName', 
+            'ContactName', 
+            'ContactTitle', 
+            'Address', 
+            'City', 
+            'Region', 
+            'PostalCode', 
+            'Country', 
+            'Phone', 
+            'Fax', 
+            'NoteList', 
+            'Representatives', 
+            'LastContactDate', 
+            'LastContactedBy', 
+            'Email', 
+            'SendBulletin'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

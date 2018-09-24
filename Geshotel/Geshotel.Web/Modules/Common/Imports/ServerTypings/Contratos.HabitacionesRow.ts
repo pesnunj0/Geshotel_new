@@ -70,7 +70,35 @@ namespace Geshotel.Contratos {
             export declare const ZonaLimpiezaNombreZona: string;
         }
 
-        ['HabitacionId', 'HotelId', 'NumeroHabitacion', 'TipoHabitacionId', 'Extension', 'Observaciones', 'SituacionId', 'FechaInicio', 'EstadoTelefono', 'EstadoProcesado', 'HabitacionIsta', 'ZonaLimpiezaId', 'Lat', 'Lng', 'PrimaryImage', 'Galleryimages', 'Planta', 'UserId', 'FechaModificacion', 'HotelName', 'EmpresaId', 'Empresa', 'UserName', 'TipoHabitacionDescCorta', 'TipoHabitacionName', 'Situacion', 'ZonaLimpiezaNombreZona'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'HabitacionId', 
+            'HotelId', 
+            'NumeroHabitacion', 
+            'TipoHabitacionId', 
+            'Extension', 
+            'Observaciones', 
+            'SituacionId', 
+            'FechaInicio', 
+            'EstadoTelefono', 
+            'EstadoProcesado', 
+            'HabitacionIsta', 
+            'ZonaLimpiezaId', 
+            'Lat', 
+            'Lng', 
+            'PrimaryImage', 
+            'Galleryimages', 
+            'Planta', 
+            'UserId', 
+            'FechaModificacion', 
+            'HotelName', 
+            'EmpresaId', 
+            'Empresa', 
+            'UserName', 
+            'TipoHabitacionDescCorta', 
+            'TipoHabitacionName', 
+            'Situacion', 
+            'ZonaLimpiezaNombreZona'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

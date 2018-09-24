@@ -40,7 +40,20 @@ namespace Geshotel.Northwind {
             export declare const HomePage: string;
         }
 
-        ['SupplierID', 'CompanyName', 'ContactName', 'ContactTitle', 'Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone', 'Fax', 'HomePage'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'SupplierID', 
+            'CompanyName', 
+            'ContactName', 
+            'ContactTitle', 
+            'Address', 
+            'City', 
+            'Region', 
+            'PostalCode', 
+            'Country', 
+            'Phone', 
+            'Fax', 
+            'HomePage'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

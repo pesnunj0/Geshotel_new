@@ -17,8 +17,16 @@ namespace Geshotel.Portal {
             export declare const List: string;
         }
 
-        ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(x => {
-            (<any>ComunidadesAutonomasService)[x] = function (r, s, o) { return Q.serviceRequest(baseUrl + '/' + x, r, s, o); };
+        [
+            'Create', 
+            'Update', 
+            'Delete', 
+            'Retrieve', 
+            'List'
+        ].forEach(x => {
+            (<any>ComunidadesAutonomasService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
+            };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }

@@ -62,7 +62,34 @@ namespace Geshotel.Meeting {
             export declare const ContactUserId: string;
         }
 
-        ['AttendeeId', 'MeetingId', 'ContactId', 'AttendeeType', 'AttendanceStatus', 'MeetingMeetingName', 'MeetingMeetingNumber', 'MeetingMeetingGuid', 'MeetingMeetingTypeId', 'MeetingStartDate', 'MeetingEndDate', 'MeetingLocationId', 'MeetingUnitId', 'MeetingOrganizerContactId', 'MeetingReporterContactId', 'MeetingInsertUserId', 'MeetingInsertDate', 'MeetingUpdateUserId', 'MeetingUpdateDate', 'ContactTitle', 'ContactFirstName', 'ContactLastName', 'ContactFullName', 'ContactEmail', 'ContactIdentityNo', 'ContactUserId'].forEach(x => (<any>Fields)[x] = x);
+        [
+            'AttendeeId', 
+            'MeetingId', 
+            'ContactId', 
+            'AttendeeType', 
+            'AttendanceStatus', 
+            'MeetingMeetingName', 
+            'MeetingMeetingNumber', 
+            'MeetingMeetingGuid', 
+            'MeetingMeetingTypeId', 
+            'MeetingStartDate', 
+            'MeetingEndDate', 
+            'MeetingLocationId', 
+            'MeetingUnitId', 
+            'MeetingOrganizerContactId', 
+            'MeetingReporterContactId', 
+            'MeetingInsertUserId', 
+            'MeetingInsertDate', 
+            'MeetingUpdateUserId', 
+            'MeetingUpdateDate', 
+            'ContactTitle', 
+            'ContactFirstName', 
+            'ContactLastName', 
+            'ContactFullName', 
+            'ContactEmail', 
+            'ContactIdentityNo', 
+            'ContactUserId'
+        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
 
